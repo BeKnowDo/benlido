@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woothemes-updater",
+    "type": "wordpress-plugin",
+    "description": "WooThemes Helper",
+    "version":"1.7.2",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woothemes-updater.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

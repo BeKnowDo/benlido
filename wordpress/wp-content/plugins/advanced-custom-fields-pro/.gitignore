@@ -1,0 +1,12 @@
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+
+# aptana
+.project
+
+.idea

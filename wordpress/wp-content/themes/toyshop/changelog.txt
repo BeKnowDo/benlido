@@ -1,0 +1,65 @@
+*** Toyshop Changelog ***
+
+2017.07.13 - version 2.0.14
+ * Fix - Move side by side cart to a different break point.
+
+2017.07.03 - version 2.0.13
+ * Fix - Invalid default body color.
+
+2017.06.06 - version 2.0.12
+ * Tweak - Remove homepage top padding.
+
+2017.02.16 - version 2.0.11
+ * Tweak - Storefront 2.2.0 compatibility.
+
+2017.01.04 - version 2.0.10
+ * Tweak - Specificity used in the css selector which targets the secondary nav. Improves compatibiltiy with Storefront Powerpack.
+
+2016.10.03 - version 2.0.9
+ * Fix - Dropdown no longer permanently visible when using Storefront 2.1.3.
+
+2016.09.06 - version 2.0.8
+ * Fix - Site title font, weight and color.
+ * Fix - Sale marker wrapping on mobile.
+
+2016.08.15 - version 2.0.7
+ * Tweak - Storefront 2.1 compatibility.
+
+2016.05.16 - version 2.0.6
+ * Fix - Minor styling issues for product tabs, breadcrumb, and product rating.
+ * Fix - Styling of add to cart buttons in the sidebar.
+ * Tweak - Input / Button / Table styles.
+
+2016.05.12 - version 2.0.5
+ * Fix - Error on activation.
+
+2016.05.11 - version 2.0.4
+ * Tweak - Adopt Storefront 2.0's methods for applying default settings.
+ * Fix - Support for WordPress 4.5's custom logo feature.
+
+2016.04.15 - version 2.0.3
+ * Fix - Correct placement of the homepage contact section when using https://wordpress.org/plugins/storefront-homepage-contact-section/
+
+2016.03.30 - version 2.0.2
+ * Fix - Updated homepage script that generates the tabs for Recent, Featured, On-Sale and Top rated products, which wasn't working properly when product categories section was hidden.
+
+2016.03.22 - version 2.0.1
+ * Tweak - Storefront 2.0 compatibility.
+
+2016.02.18 - version 2.0.0
+* New - Underlying code structure rewritten to use a more efficient class structure.
+* Tweak - Some general tweaks in preparation for Storefront 2.0.
+
+2016.01.25 - version 1.2.0
+* New - Compatibility with Storefront Hamburger Menu plugin
+* Tweak - Some general tweaks in preparation for Storefront 2.0.
+
+2015.12.02 - version 1.1.1
+* Tweak - Support for Storefront 1.6.0 sticky order review feature.
+
+2015.11.05 - version 1.1.0
+* New - Storefront Mega Menus integration.
+* New - Integration with Storefront Parallax Hero 1.4.0
+
+2015.10.07 - version 1.0.0
+ * Initial release.

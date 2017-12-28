@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-brands",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Brands field",
+    "version":"1.5.2",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-brands.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

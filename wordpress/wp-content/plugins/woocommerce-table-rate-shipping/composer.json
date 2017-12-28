@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-table-rate-shipping",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Table Rate Shipping",
+    "version":"3.0.4",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
