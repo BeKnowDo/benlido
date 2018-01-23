@@ -14,8 +14,8 @@ switch($_SERVER['HTTP_HOST'])
     case 'ip-172-31-51-171':
         define('SERVER_ENVIRONMENT','PROD');
         break;
-    case 'benlido.upco.co':
-    case 'ip-172-31-63-11':
+    case 'dev.benlido.com':
+    case 'ip-172-31-45-93':
         define('SERVER_ENVIRONMENT','DEV');
         break;
     default:
@@ -34,7 +34,7 @@ switch(SERVER_ENVIRONMENT) {
         break;
 
     case "DEV":
-        define('DB_HOST', 'up-aurora-1-cluster.cluster-coy6j35ly0yk.us-east-1.rds.amazonaws.com');
+        define('DB_HOST', 'localhost');
         define('DB_NAME', 'ben_lido_dev');
         define('DB_USER', 'benlido');
         define('DB_PASSWORD', 'benlido');
