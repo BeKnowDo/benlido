@@ -16,13 +16,14 @@
 			$logo = '';
 			if (function_exists('get_field')) {
 				$logo = get_field('logo');
+				$hero_title = get_field('hero_title');
 				if (!empty($logo)) {
 					$logo = $logo['url'];
 				}
 			}
 		?>
 		<div class="logo">
-			<a href="<?php echo home_url();?>" title="<?php echo esc_attr(get_bloginfo('description'));?>"><img src="<?php echo $logo;?>" /></a>
+			<a href="<?php echo home_url();?>" title="<?php echo esc_attr(get_bloginfo('description'));?>"><img src="<?php echo $logo;?>" /> <h1 class="site-title"><?php echo get_bloginfo('title');?></h1></a>
 		</div>
 		<div class="row hero">
 		<div class="site-branding-text">
@@ -31,6 +32,7 @@
 
 			if ( $description || is_customize_preview() ) :
 			?>
+				<h2 class="hero-title"><?php echo $hero_title;?></h2>
 				<p class="site-description"><?php echo $description; ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding-text -->
