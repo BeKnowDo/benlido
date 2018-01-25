@@ -1,0 +1,14 @@
+@mixin breakpoint($bp, $rule: min-width) {
+    @media screen and (#{$rule}: $bp) {
+        @content;
+    }
+}
+
+// Animation snippit
+@mixin animate($focus: all, $duration: 0.5s, $function: ease, $delay: 0s) {
+    -webkit-transition: $focus $duration $function $delay;
+    -moz-transition: $focus $duration $function $delay;
+    -o-transition: $focus $duration $function $delay;
+    transition: $focus $duration $function $delay;
+}
+

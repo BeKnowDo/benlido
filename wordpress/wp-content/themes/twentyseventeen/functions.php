@@ -453,6 +453,10 @@ function twentyseventeen_scripts() {
 
 	wp_localize_script( 'twentyseventeen-skip-link-focus-fix', 'twentyseventeenScreenReaderText', $twentyseventeen_l10n );
 
+	wp_enqueue_style('ben-lido-styles', get_theme_file_uri('/assets/css/style.css'), array( 'twentyseventeen-style' ), '1.0' );
+	wp_register_script('ben-lido-scripts',get_theme_file_uri('/assets/js/benlido.min.js'),array('jquery'),'1.0');
+	wp_enqueue_script('ben-lido-scripts');
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
