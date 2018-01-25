@@ -11,7 +11,7 @@ switch($_SERVER['HTTP_HOST'])
 {
     case 'benlido.com':
     case 'www.benlido.com':
-    case 'ip-172-31-51-171':
+    case 'ip-172-31-39-199':
         define('SERVER_ENVIRONMENT','PROD');
         break;
     case 'dev.benlido.com':
@@ -25,7 +25,8 @@ switch($_SERVER['HTTP_HOST'])
 
 switch(SERVER_ENVIRONMENT) {
     case "PROD":
-        define('DB_HOST', 'up-aurora-1-cluster.cluster-coy6j35ly0yk.us-east-1.rds.amazonaws.com');
+        // NOTE: we are temporarily using a local mysql database to save money until we have e-commerce ready to go
+        define('DB_HOST', 'localhost');
         define('DB_NAME', 'ben_lido_live');
         define('DB_USER', 'benlido');
         define('DB_PASSWORD', 'benlido');
