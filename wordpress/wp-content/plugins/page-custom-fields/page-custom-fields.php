@@ -12,3 +12,4 @@ if( function_exists('acf_add_options_page') ) {
 
 include_once ( plugin_dir_path(__FILE__) . '/acf-options.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-travel-kit.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-coming-soon.php');
