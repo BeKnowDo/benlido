@@ -99,7 +99,7 @@ body {
         }
         .site-content-contain {
             @include breakpoint($large-tablet) {
-                margin-top:-160px;
+                margin-top:-140px;
                 background-color:transparent;
                 position:relative;
                 min-height: 400px;
