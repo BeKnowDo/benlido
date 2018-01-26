@@ -32,7 +32,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "This is where you create kits.\r\nA kit is composed of a title, description, and featured image.\r\nYou will then add which category or subcategory of products each kit can contain as well as how many someone can choose.",
+                "message": "This is where you create kits.\r\nA kit is composed of a title, description, and featured image.\r\nYou will then add which category or subcategory of products each kit can contain as well as how many someone can choose.\r\nYou can also select a featured product to show. If there is no featured product, then the first available product will be displayed.",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
@@ -68,7 +68,7 @@
                 "collapsed": "",
                 "min": 0,
                 "max": 0,
-                "layout": "table",
+                "layout": "block",
                 "button_label": "Add Product Category",
                 "sub_fields": [
                     {
@@ -113,6 +113,28 @@
                         "min": "",
                         "max": "",
                         "step": ""
+                    },
+                    {
+                        "key": "field_5a6b444e0b99a",
+                        "label": "Featured Product",
+                        "name": "featured_product",
+                        "type": "post_object",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "product"
+                        ],
+                        "taxonomy": [],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "return_format": "object",
+                        "ui": 1
                     }
                 ]
             }
@@ -122,7 +144,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "post_type"
+                    "value": "travel_kit"
                 }
             ]
         ],

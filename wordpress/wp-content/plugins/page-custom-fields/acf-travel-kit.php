@@ -36,7 +36,8 @@ if( function_exists('acf_add_local_field_group') ):
                 ),
                 'message' => 'This is where you create kits.
     A kit is composed of a title, description, and featured image.
-    You will then add which category or subcategory of products each kit can contain as well as how many someone can choose.',
+    You will then add which category or subcategory of products each kit can contain as well as how many someone can choose.
+    You can also select a featured product to show. If there is no featured product, then the first available product will be displayed.',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ),
@@ -72,7 +73,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'collapsed' => '',
                 'min' => 0,
                 'max' => 0,
-                'layout' => 'table',
+                'layout' => 'block',
                 'button_label' => 'Add Product Category',
                 'sub_fields' => array(
                     array(
@@ -118,6 +119,29 @@ if( function_exists('acf_add_local_field_group') ):
                         'max' => '',
                         'step' => '',
                     ),
+                    array(
+                        'key' => 'field_5a6b444e0b99a',
+                        'label' => 'Featured Product',
+                        'name' => 'featured_product',
+                        'type' => 'post_object',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'post_type' => array(
+                            0 => 'product',
+                        ),
+                        'taxonomy' => array(
+                        ),
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'return_format' => 'object',
+                        'ui' => 1,
+                    ),
                 ),
             ),
         ),
@@ -126,7 +150,7 @@ if( function_exists('acf_add_local_field_group') ):
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'post_type',
+                    'value' => 'travel_kit',
                 ),
             ),
         ),
