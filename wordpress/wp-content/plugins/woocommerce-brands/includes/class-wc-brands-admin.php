@@ -31,14 +31,13 @@ class WC_Brands_Admin {
 			'brands' => __( 'Brands', 'wc_brands' )
 		);
 
-		// Add the settings fields to each tab.
-		$this->init_form_fields();
-
-		if ( defined( 'WC_VERSION' ) && WC_VERSION > '2.2.0' ) {
+		// Hiding setting for future depreciation. Only users who have touched this settings should see it.
+		$setting_value = get_option( 'wc_brands_show_description' );
+		if ( is_string( $setting_value ) ) {
+			// Add the settings fields to each tab.
+			$this->init_form_fields();
 			add_action( 'woocommerce_get_sections_products', array( $this, 'add_settings_tab' ) );
 			add_action( 'woocommerce_get_settings_products', array( $this, 'add_settings_section' ), null, 2 );
-		} else {
-			add_action( 'woocommerce_settings_catalog_options_after', array( $this, 'admin_settings' ) );
 		}
 
 		add_action( 'woocommerce_update_options_catalog', array( $this, 'save_admin_settings' ) );

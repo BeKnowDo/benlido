@@ -162,7 +162,20 @@ if ( ! defined( 'ABSPATH' ) ) {
       </tr>
 
     </table>
-    
+
+      <hr>
+      <h2 class="section-title">ViewCategory Event</h2>
+      <p>ViewCategory is added on product categories and it is required for Facebook Dynamic Product Ads.</p>
+      <table class="layout">
+          <tr class="">
+              <td colspan="2" class="narrow">
+                  <input type="checkbox" name="pys[woo][on_view_category]" value="1" class="woo-option"
+                      <?php pys_checkbox_state( 'woo', 'on_view_category' ); ?> >
+                  <strong>Enable ViewCategory on product categories</strong>
+              </td>
+          </tr>
+      </table>
+      
     <hr>
     <h2 class="section-title">AddToCart Event</h2>
     <p>AddToCart event will be added on add to cart button click and on cart page. It is required for Facebook Dynamic Product Ads.</p>

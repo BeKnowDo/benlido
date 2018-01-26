@@ -1,5 +1,11 @@
 *** Brands Changelog ***
 
+2017-12-14 - version 1.5.3
+* Fix   - Update pot file.
+* Fix   - when copying product also copy brands.
+* Tweak - Remove brands archive settings as this functionality must be added to theme.
+* Fix   - WC 3.3 compatibility.
+
 2017-06-22 - version 1.5.2
 * Fix - Access coupon property directly error.
 * Fix - Additional WC 3.0 compatibility for REST API.

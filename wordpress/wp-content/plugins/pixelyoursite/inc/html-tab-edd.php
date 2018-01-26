@@ -138,6 +138,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		</table>
 
+        <hr>
+        <h2 class="section-title">ViewCategory Event</h2>
+        <p>ViewCategory is added on download categories and it is required for Facebook Dynamic Product Ads.</p>
+        <table class="layout">
+            <tr class="">
+                <td colspan="2" class="narrow">
+                    <input type="checkbox" name="pys[edd][on_view_category]" value="1" class="edd-option"
+                        <?php pys_checkbox_state( 'edd', 'on_view_category' ); ?> >
+                    <strong>Enable ViewCategory on download categories</strong>
+                </td>
+            </tr>
+        </table>
+
 		<!-- AddToCart -->
 		<hr>
 		<h2 class="section-title"><?php _e( 'AddToCart Event', 'pys' ); ?></h2>

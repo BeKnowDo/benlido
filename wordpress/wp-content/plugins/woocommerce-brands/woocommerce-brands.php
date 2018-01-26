@@ -8,10 +8,12 @@
  * Developer: WooCommerce
  * Developer URI: http://woocommerce.com/
  * Requires at least: 3.3.0
- * Tested up to: 4.5.3
- * Version: 1.5.2
+ * Tested up to: 4.9
+ * Version: 1.5.3
  * Text Domain: wc_brands
  * Domain Path: /languages/
+ * WC tested up to: 3.3
+ * WC requires at least: 2.6
  *
  * Copyright (c) 2015-2017 WooCommerce
  *
@@ -46,7 +48,7 @@ woothemes_queue_update( plugin_basename( __FILE__ ), '8a88c7cbd2f1e73636c331c7a8
 
 if ( is_woocommerce_active() ) {
 
-	define( 'WC_BRANDS_VERSION', '1.5.2' );
+	define( 'WC_BRANDS_VERSION', '1.5.3' );
 
 	/**
 	 * Localisation

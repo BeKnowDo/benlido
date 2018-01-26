@@ -2,7 +2,7 @@
     "name": "up-plugins/advanced-custom-fields-pro",
     "type": "wordpress-plugin",
     "description": "Advanced Custom Fields Pro",
-    "version":"5.6.5",
+    "version":"5.6.7",
     "repositories":[
 	{
 	"type":"git",

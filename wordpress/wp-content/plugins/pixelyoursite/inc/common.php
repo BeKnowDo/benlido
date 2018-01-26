@@ -424,7 +424,7 @@ if ( ! function_exists( 'pys_get_product_content_id' ) ) {
         if ( pys_get_option( 'woo', 'content_id' ) == 'sku' ) {
             $content_id = get_post_meta( $product_id, '_sku', true );
         } else {
-            $content_id = intval( $product_id );
+            $content_id = $product_id;
         }
         
         return apply_filters( 'pys_fb_pixel_woo_product_content_id', array( $content_id ), $product_id,
@@ -794,14 +794,33 @@ if( ! function_exists( 'pys_general_event' ) ) {
 if( ! function_exists( 'pys_search_event' ) ) {
 
 	function pys_search_event() {
+	    global $posts;
 
 		if ( pys_get_option( 'general', 'search_event_enabled' ) == false || is_search() == false || ! isset( $_REQUEST['s'] ) ) {
 			return;
 		}
 
-		pys_add_event( 'Search', array(
-			'search_string' => $_REQUEST['s']
-		) );
+		$params = array(
+            'search_string' => $_REQUEST['s']
+        );
+
+        if ( pys_is_woocommerce_active() && pys_get_option( 'woo', 'enabled' )
+            && isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) {
+
+            $content_ids = array();
+            $limit       = min( count( $posts ), 5 );
+
+            for ( $i = 0; $i < $limit; $i ++ ) {
+                $content_ids = array_merge( pys_get_product_content_id( $posts[ $i ]->ID ), $content_ids );
+            }
+
+            $params['content_ids']  = json_encode( $content_ids );
+            $params['content_type'] = 'product';
+
+        }
+
+
+        pys_add_event( 'Search',  $params );
 
 	}
 
@@ -1016,48 +1035,50 @@ if( !function_exists( 'pys_get_woo_checkout_params' ) ) {
 if( !function_exists( 'pys_get_default_options' ) ) {
 
 	function pys_get_default_options() {
-
-		$options = array();
-
-		$options['general']['pixel_id'] = '';
-		$options['general']['enabled']  = 0;
-		$options['general']['add_traffic_source']  = 1;
-		$options['general']['enable_advance_matching']  = 1;
-		$options['general']['in_footer']  = 0;
-
-		$options['general']['general_event_enabled']          = 1;
-		$options['general']['general_event_name']             = 'GeneralEvent';
-		$options['general']['general_event_on_posts_enabled'] = 1;
-		$options['general']['general_event_on_pages_enabled'] = 1;
-		$options['general']['general_event_on_tax_enabled']   = 1;
-		$options['general']['general_event_on_woo_enabled']   = 0;
-		$options['general']['general_event_on_edd_enabled']   = 0;
-		$options['general']['general_event_add_tags']         = 0;
-
-		$options['general']['timeonpage_enabled'] = 1;
-
-		$options['general']['search_event_enabled'] = 1;
-
-		$options['std']['enabled'] = 0;
-
-		$options['dyn']['enabled']            = 0;
-		$options['dyn']['enabled_on_content'] = 0;
-		$options['dyn']['enabled_on_widget']  = 0;
-
-		$options['woo']['enabled'] = pys_is_woocommerce_active() ? 1 : 0;
-
-		$options['woo']['content_id']   = 'id';
-		$options['woo']['variation_id'] = 'variation';
-
-		$options['woo']['enable_additional_params'] = 1;
-		$options['woo']['enable_tags']              = 1;
-		$options['woo']['tax']                      = 'incl';
-
-		$options['woo']['on_view_content']            = 1;
-		$options['woo']['enable_view_content_value']  = 1;
-		$options['woo']['view_content_value_option']  = 'price';
-		$options['woo']['view_content_percent_value'] = '';
-		$options['woo']['view_content_global_value']  = '';
+        
+        $options = array();
+        
+        $options['general']['pixel_id']                = '';
+        $options['general']['enabled']                 = 0;
+        $options['general']['add_traffic_source']      = 1;
+        $options['general']['enable_advance_matching'] = 1;
+        $options['general']['in_footer']               = 0;
+        
+        $options['general']['general_event_enabled']          = 1;
+        $options['general']['general_event_name']             = 'GeneralEvent';
+        $options['general']['general_event_on_posts_enabled'] = 1;
+        $options['general']['general_event_on_pages_enabled'] = 1;
+        $options['general']['general_event_on_tax_enabled']   = 1;
+        $options['general']['general_event_on_woo_enabled']   = 0;
+        $options['general']['general_event_on_edd_enabled']   = 0;
+        $options['general']['general_event_add_tags']         = 0;
+        
+        $options['general']['timeonpage_enabled'] = 1;
+        
+        $options['general']['search_event_enabled'] = 1;
+        
+        $options['std']['enabled'] = 0;
+        
+        $options['dyn']['enabled']            = 0;
+        $options['dyn']['enabled_on_content'] = 0;
+        $options['dyn']['enabled_on_widget']  = 0;
+        
+        $options['woo']['enabled'] = pys_is_woocommerce_active() ? 1 : 0;
+        
+        $options['woo']['content_id']   = 'id';
+        $options['woo']['variation_id'] = 'variation';
+        
+        $options['woo']['enable_additional_params'] = 1;
+        $options['woo']['enable_tags']              = 1;
+        $options['woo']['tax']                      = 'incl';
+        
+        $options['woo']['on_view_content']            = 1;
+        $options['woo']['enable_view_content_value']  = 1;
+        $options['woo']['view_content_value_option']  = 'price';
+        $options['woo']['view_content_percent_value'] = '';
+        $options['woo']['view_content_global_value']  = '';
+        
+        $options['woo']['on_view_category'] = 1;
         
         $options['woo']['on_add_to_cart_btn']        = 1;
         $options['woo']['on_add_to_cart_page']       = 0;
@@ -1066,39 +1087,39 @@ if( !function_exists( 'pys_get_default_options' ) ) {
         $options['woo']['add_to_cart_value_option']  = 'price';
         $options['woo']['add_to_cart_percent_value'] = '';
         $options['woo']['add_to_cart_global_value']  = '';
-
-		$options['woo']['on_checkout_page']       = 1;
-		$options['woo']['enable_checkout_value']  = 1;
-		$options['woo']['checkout_value_option']  = 'price';
-		$options['woo']['checkout_percent_value'] = '';
-		$options['woo']['checkout_global_value']  = '';
-
-		$options['woo']['on_thank_you_page']      = 1;
-		$options['woo']['enable_purchase_value']  = 1;
-		$options['woo']['purchase_fire_once']     = 1;
-		$options['woo']['purchase_transport']     = 'included';
-		$options['woo']['purchase_value_option']  = 'total';
-		$options['woo']['purchase_percent_value'] = '';
-		$options['woo']['purchase_global_value']  = '';
-
-		$options['woo']['purchase_add_address']         = 1;
-		$options['woo']['purchase_add_payment_method']  = 1;
-		$options['woo']['purchase_add_shipping_method'] = 1;
-		$options['woo']['purchase_add_coupons']         = 1;
-
-		$options['woo']['enable_aff_event']     = 0;
-		$options['woo']['aff_event']            = 'predefined';
-		$options['woo']['aff_predefined_value'] = 'Lead';
-		$options['woo']['aff_custom_value']     = '';
-		$options['woo']['aff_value_option']     = 'none';
-		$options['woo']['aff_global_value']     = '';
-
-		$options['woo']['enable_paypal_event'] = 0;
-		$options['woo']['pp_event']            = 'predefined';
-		$options['woo']['pp_predefined_value'] = 'InitiatePayment';
-		$options['woo']['pp_custom_value']     = '';
-		$options['woo']['pp_value_option']     = 'none';
-		$options['woo']['pp_global_value']     = '';
+        
+        $options['woo']['on_checkout_page']       = 1;
+        $options['woo']['enable_checkout_value']  = 1;
+        $options['woo']['checkout_value_option']  = 'price';
+        $options['woo']['checkout_percent_value'] = '';
+        $options['woo']['checkout_global_value']  = '';
+        
+        $options['woo']['on_thank_you_page']      = 1;
+        $options['woo']['enable_purchase_value']  = 1;
+        $options['woo']['purchase_fire_once']     = 1;
+        $options['woo']['purchase_transport']     = 'included';
+        $options['woo']['purchase_value_option']  = 'total';
+        $options['woo']['purchase_percent_value'] = '';
+        $options['woo']['purchase_global_value']  = '';
+        
+        $options['woo']['purchase_add_address']         = 1;
+        $options['woo']['purchase_add_payment_method']  = 1;
+        $options['woo']['purchase_add_shipping_method'] = 1;
+        $options['woo']['purchase_add_coupons']         = 1;
+        
+        $options['woo']['enable_aff_event']     = 0;
+        $options['woo']['aff_event']            = 'predefined';
+        $options['woo']['aff_predefined_value'] = 'Lead';
+        $options['woo']['aff_custom_value']     = '';
+        $options['woo']['aff_value_option']     = 'none';
+        $options['woo']['aff_global_value']     = '';
+        
+        $options['woo']['enable_paypal_event'] = 0;
+        $options['woo']['pp_event']            = 'predefined';
+        $options['woo']['pp_predefined_value'] = 'InitiatePayment';
+        $options['woo']['pp_custom_value']     = '';
+        $options['woo']['pp_value_option']     = 'none';
+        $options['woo']['pp_global_value']     = '';
 		
 		/**
 		 * Easy Digital Downloads
@@ -1117,6 +1138,8 @@ if( !function_exists( 'pys_get_default_options' ) ) {
 		$options['edd']['view_content_value_option']  = 'price';
 		$options['edd']['view_content_percent_value'] = null;
 		$options['edd']['view_content_global_value']  = null;
+        
+        $options['edd']['on_view_category'] = 1;
         
         $options['edd']['on_add_to_cart_btn']        = 1;
         $options['edd']['on_add_to_cart_checkout']   = 0;

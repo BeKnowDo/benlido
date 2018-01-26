@@ -23,7 +23,7 @@ jQuery(document).ready(function( $ ) {
          */
         if (options.hasOwnProperty('woo')) {
 
-            // WooCommerce single product AddToCart handler on AJAX-ed themes
+            // WooCommerce Single Product AJAX AddToCart handler
             if (options.woo.is_product && options.woo.add_to_cart_enabled ) {
 
                 $(document).on('added_to_cart', function () {
@@ -54,6 +54,32 @@ jQuery(document).ready(function( $ ) {
                     }
 
                     fbq('track', 'AddToCart', params);
+
+                });
+
+            }
+
+            // WooCommerce Shop and Product Category AJAX AddToCart handler
+            if ( ( options.woo.is_shop || options.woo.is_cat ) && options.woo.add_to_cart_enabled ) {
+
+                $(document).on('adding_to_cart', function ( e, $button, data ) {
+
+                    data.action = 'pys_fb_ajax';
+                    data.sub_action = 'get_woo_product_addtocart_params';
+
+                    $.get( options.ajax_url, data, function( response ) {
+
+                        if ( ! response ) {
+                            return;
+                        }
+
+                        if ( response.error ) {
+                            return;
+                        }
+
+                        fbq('track', 'AddToCart', response.data);
+
+                    });
 
                 });
 

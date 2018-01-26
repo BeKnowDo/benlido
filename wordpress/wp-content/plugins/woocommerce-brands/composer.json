@@ -2,7 +2,7 @@
     "name": "up-plugins/woocommerce-brands",
     "type": "wordpress-plugin",
     "description": "WooCommerce Brands field",
-    "version":"1.5.2",
+    "version":"1.5.3",
     "repositories":[
 	{
 	"type":"git",

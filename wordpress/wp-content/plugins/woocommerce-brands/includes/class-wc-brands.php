@@ -38,6 +38,10 @@ class WC_Brands {
 
 		add_action( 'woocommerce_product_meta_end', array( $this, 'show_brand' ) );
 
+		// duplicate product brands
+		add_action( 'woocommerce_product_duplicate_before_save', array( $this, 'duplicate_store_temporary_brands' ), 10, 2 );
+		add_action( 'woocommerce_new_product', array( $this, 'duplicate_add_product_brand_terms' ) );
+
 		// Coupon validation and error handling.
 		add_filter( 'woocommerce_coupon_is_valid', array( $this, 'validate_coupon' ), null, 2 );
 		add_filter( 'woocommerce_coupon_error', array( $this, 'add_coupon_error_message' ), null, 3 );
@@ -932,6 +936,48 @@ class WC_Brands {
 			$brands = array_map( 'absint', $brands );
 			wp_set_object_terms( $product_id, $brands, 'product_brand' );
 		}
+	}
+
+	/**
+	 * Temporarily tag a post with meta before it is saved in order
+	 * to allow us to be able to use the meta when the product is saved to add
+	 * the brands when an ID has been generated.
+	 *
+	 * @since 1.5.3
+	 *
+	 * @param WC_Product $duplicate
+	 * @return WC_Product $original
+	 */
+	public function duplicate_store_temporary_brands( $duplicate, $original ) {
+		$terms = get_the_terms( $original->get_id(), 'product_brand' );
+		if ( ! is_array( $terms ) ) {
+			return;
+		}
+
+		$ids = array();
+		foreach ( $terms as $term ) {
+			$ids[] = $term->term_id;
+		}
+		$duplicate->add_meta_data( 'duplicate_temp_brand_ids', $ids );
+	}
+
+	/**
+	 * After product was added check if there are temporary brands and
+	 * add them officially and remove the temporary brands.
+	 *
+	 * @since 1.5.3
+	 *
+	 * @param int $product_id
+	 */
+	public function duplicate_add_product_brand_terms( $product_id ) {
+		$product = wc_get_product( $product_id );
+		$term_ids = $product->get_meta( 'duplicate_temp_brand_ids' );
+		if ( empty( $term_ids ) ) {
+			return;
+		}
+		$term_taxonomy_ids = wp_set_object_terms( $product_id, $term_ids, 'product_brand' );
+		$product->delete_meta_data( 'duplicate_temp_brand_ids' );
+		$product->save();
 	}
 }
 

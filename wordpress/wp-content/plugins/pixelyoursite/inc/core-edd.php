@@ -7,12 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'pys_edd_events' ) ) {
 
 	function pys_edd_events() {
+        global $post, $posts;
 
 		if ( pys_get_option( 'edd', 'enabled' ) == false || pys_is_edd_active() == false ) {
 			return;
 		}
-
-		global $post;
 
 		// set defaults params
 		$params                 = array();
@@ -30,12 +29,52 @@ if ( ! function_exists( 'pys_edd_events' ) ) {
 				$params['currency'] = edd_get_currency();
 				
 			}
+            
+            // contents
+            $params['contents'] = json_encode( array(
+                array(
+                    'id'         => (string) $post->ID,
+                    'quantity'   => 1,
+                )
+            ) );
 			
 			pys_add_event( 'ViewContent', $params, 0 );
 
 			return;
 
 		}
+        
+        // ViewCategory
+        if ( pys_get_option( 'edd', 'on_view_category', true ) && is_tax( 'download_category' ) ) {
+            
+            $term                   = get_term_by( 'slug', get_query_var( 'term' ), 'download_category' );
+            $params['content_name'] = $term->name;
+            
+            $parent_ids                 = get_ancestors( $term->term_id, 'download_category', 'taxonomy' );
+            $params['content_category'] = array();
+            
+            foreach ( $parent_ids as $term_id ) {
+                $term                         = get_term_by( 'id', $term_id, 'download_category' );
+                $params['content_category'][] = $term->name;
+            }
+            
+            $params['content_category'] = implode( ',', $params['content_category'] );
+            
+            $content_ids = array();
+            $limit       = min( count( $posts ), 5 );
+            
+            for ( $i = 0; $i < $limit; $i ++ ) {
+                $content_ids[] = (string) $posts[ $i ]->ID;
+            }
+            
+            $params['content_ids']  = json_encode( $content_ids );
+            $params['content_type'] = 'product';
+    
+            pys_add_event( 'ViewCategory', $params );
+            
+            return;
+            
+        }
 
 		/**
 		 * AddToCart Event (button)
@@ -47,15 +86,23 @@ if ( ! function_exists( 'pys_edd_events' ) ) {
         if ( pys_get_option( 'edd', 'on_add_to_cart_checkout' ) && edd_is_checkout() ) {
             
             $ids = array();
+            $contents = array();
             
             foreach ( edd_get_cart_contents() as $cart_item ) {
                 
                 $download_id = intval( $cart_item['id'] );
-                $ids[]       = pys_get_edd_content_id( $download_id );
+                $ids[]       = (string) pys_get_edd_content_id( $download_id );
+    
+                // contents
+                $contents[] = array(
+                    'id'         => (string) $download_id,
+                    'quantity'   => $cart_item['quantity']
+                );
                 
             }
             
-            $params['content_ids'] = "'[" . implode( "','", $ids ) . "']";
+            $params['content_ids'] = json_encode( $ids );
+            $params['contents'] = json_encode( $contents );
             
             // currency, value
             if ( pys_get_option( 'edd', 'enable_add_to_cart_value' ) ) {
@@ -134,17 +181,25 @@ if ( ! function_exists( 'pys_edd_events' ) ) {
 			if( strtolower( $status ) != 'complete' && strtolower( $status ) != 'pending' ) {
 				return;
 			}
-
-			$ids   = array();
+            
+            $ids      = array();
+            $contents = array();
 
 			foreach ( $cart as $cart_item ) {
 
 				$download_id = intval( $cart_item['id'] );
-				$ids[]       = pys_get_edd_content_id( $download_id );
-
+				$ids[]       = (string) pys_get_edd_content_id( $download_id );
+                
+                // contents
+                $contents[] = array(
+                    'id'       => (string) $download_id,
+                    'quantity' => $cart_item['quantity']
+                );
+                
 			}
-
-			$params['content_ids'] = "['" . implode( "','", $ids ) . "']";
+            
+            $params['content_ids'] = json_encode( $ids );
+            $params['contents']    = json_encode( $contents );
 
 			// currency, value
 			if ( pys_get_option( 'edd', 'enable_purchase_value' ) ) {
@@ -170,11 +225,13 @@ if ( ! function_exists( 'pys_edd_purchase_link_args' ) ) {
 		global $pys_edd_ajax_events;
 
 		$download_id = $args['download_id'];
+		$content_id = (string) pys_get_edd_content_id( $download_id );
+		
 		$event_id    = uniqid();
 
 		$params                 = array();
 		$params['content_type'] = 'product';
-		$params['content_ids']  = "['" . pys_get_edd_content_id( $download_id ) . "']";
+		$params['content_ids']  = json_encode( array( $content_id ) );
 
 		// currency, value
 		if ( pys_get_option( 'edd', 'enable_add_to_cart_value' ) ) {
@@ -183,6 +240,12 @@ if ( ! function_exists( 'pys_edd_purchase_link_args' ) ) {
 			$params['currency'] = edd_get_currency();
 
 		}
+        
+        // contents
+        $params['contents'] = json_encode( array(
+            'id'       => (string) $content_id,
+            'quantity' => 1,
+        ) );
 
 		$pys_edd_ajax_events[ $event_id ] = array(
 			'name'   => 'AddToCart',

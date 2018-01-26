@@ -4,7 +4,7 @@ Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pi
 Requires at least: 3.0.1
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.0.8
+Stable tag: 5.0.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,7 +19,7 @@ The New Facebook Pixel can be a very powerful tool for anyone doing Facebook ads
 
 [youtube https://www.youtube.com/watch?v=V_IWVxUrzSM]
 
-**PixelYourSite will help you insert the Facebook pixel code on every page of your site with just one click** and set up Custom or Standard Events. 
+**PixelYourSite will help you insert the Facebook pixel code on every page of your site with just one click** and set up Custom or Standard Events.
 
 **E-commerce Ready**
 
@@ -41,7 +41,7 @@ Not ready to install yet? Read on some of the key features that make PYS a power
 
 * You can **insert the pixel on every page of your website with just ONE click**. No need to edit any posts or pages
 
-* **Optimize your site for Facebook Custom Audiences.** We add a special event (GeneralEvent) on every page that will send key parameters to Facebook, like content name, content ID, category name and post type. You can use it to create super-powerful Custom Audiences to retarget with your ads, or to expand your reach with Lookalike Audiences.
+* **Optimise your site for Facebook Custom Audiences.** We add a special event (GeneralEvent) on every page that will send key parameters to Facebook, like content name, content ID, category name and post type. You can use it to create super-powerful Custom Audiences to retarget with your ads, or to expand your reach with Lookalike Audiences.
 
 >**How to use the GeneralEvent**
 >
@@ -55,7 +55,7 @@ Not ready to install yet? Read on some of the key features that make PYS a power
 >* domain (it will pull the domain name - useful if you are using the pixel on more than one sites)
 >* tags - pro version
 >
->**Example:** you can create a Custom Audience from people that viewed articles from one specific category in the last 30 days or people that visited articles having one or more tags, a particular page (using the name or the ID), or content that has a particular word in the name. 
+>**Example:** you can create a Custom Audience from people that viewed articles from one specific category in the last 30 days or people that visited articles having one or more tags, a particular page (using the name or the ID), or content that has a particular word in the name.
 >
 >**2. Custom Conversions**
 >
@@ -81,9 +81,9 @@ Retargeting the users that performed a search on your site is a smart strategy b
 
 Tested with the latest WooCommerce version.
 
-* You can **insert the Facebook pixel and start tracking events on any WooCommerce** website with just a few clicks (Purchase, ViewContent, AddToCart, InitiateCheckout)
+* You can **insert the Facebook pixel and start tracking events on any WooCommerce** website with just a few clicks (Purchase, ViewContent, AddToCart, InitiateCheckout, ViewCategory)
 
-* Out of the box **Facebook Dynamic Ads** (promote a product catalog) pixel setup for your Woocommerce website (we also have a dedicated feed plugin for Facebook Dynamic Ads Product Catalog)
+* Out of the box **Facebook Dynamic Ads** (promote a product catalog) pixel setup for your WooCommerce website (we also have a dedicated feed plugin for Facebook Dynamic Ads Product Catalog)
 
 * Flexible AddToCart Event: the event will fire by default on add to cart button clicks. Ajax buttons are supported. Additionally, the event can be fired on the Cart Page, or on the Checkout Page (useful for some particular web structures).
 
@@ -97,7 +97,7 @@ Tested with the latest WooCommerce version.
 
 * **Dynamic AddToCart** is fully supported (the AddToCart event will fire on add to cart button click)
 
-* **Track conversion value for Easy Digital Downloads** 
+* **Track conversion value for Easy Digital Downloads**
 
 * You can turn ON/OFF each Easy Digital Downloads event.
 
@@ -109,22 +109,22 @@ If you are serious about your Facebook ads, you'll love our [pro version](http:/
 
 * **Traffic Source and URL tags (UTM)** are added to all the events and you can use them to create Custom Audiences based on where your visitors are coming from. It is possible to track a particular Facebook Ad too.
 
->You can create Custom Audiences based on where the traffic is coming from, like Google, Facebook or a particular referer.
+>You can create Custom Audiences based on where the traffic is coming from, like Google, Facebook or a particular referrer.
 >
 >Additionally, if you are using URL parameters they will be tracked and added as parameters for all your events. This is extremely useful because you can create Custom Audiences from people coming from a particular ad or campaign, for example.
 
 Find out more on [how the pro version can help you with Custom Conversion and Custom Audiences](http://www.pixelyoursite.com/facebook-pixel-plugin/custom-audiences-conversions)
 
-* **NEW: The ClickEvent** - It will fire EVERYTIME a click is made on your site. Use it for Custom Audiences or Custom Conversions. [Find more here](http://www.pixelyoursite.com/clicks-facebook-custom-conversions-audiences)
+* **NEW: The ClickEvent** - It will fire EVERY TIME a click is made on your site. Use it for Custom Audiences or Custom Conversions. [Find more here](http://www.pixelyoursite.com/clicks-facebook-custom-conversions-audiences)
 
 * **NEW: Head/Footer scripts** - Add any script you want with our Head/Footer option. It also works on the WooCommerce thank you page. [Find more here](http://www.pixelyoursite.com/head-footer-scripts)
 
-* **NEW: WatchVideo Event** - This event will fire on embedded videos on your site. It can be used to optimize your ads for video views or to retarget your video watchers using Custom Audiences. [Find more here](http://www.pixelyoursite.com/facebook-pixel-plugin/watchvideo-event)
+* **NEW: WatchVideo Event** - This event will fire on embedded videos on your site. It can be used to optimise your ads for video views or to retarget your video watchers using Custom Audiences. [Find more here](http://www.pixelyoursite.com/facebook-pixel-plugin/watchvideo-event)
 
 
-**Dynamic Events** 
+**Dynamic Events**
 
-Optimize your Facebook Campaigns for actions on your website with dynamic events. You can fire them:
+Optimise your Facebook Campaigns for actions on your website with dynamic events. You can fire them:
 
 * When a URL is clicked
 * When a CSS element is clicked (any form button, for example)
@@ -133,7 +133,7 @@ Optimize your Facebook Campaigns for actions on your website with dynamic events
 
 Works with **almost all forms or pop-up plugins.**
 
-Fire a Dynamic Event when the visitor performs a key action on your site and optimize your ads for that event (perfect for affiliate sites, newsletter signups and so on).
+Fire a Dynamic Event when the visitor performs a key action on your site and optimise your ads for that event (perfect for affiliate sites, newsletter signups and so on).
 
 Additionally, you can create Custom Audiences based on these dynamic events and retarget them.
 
@@ -145,7 +145,7 @@ This FB feature increases the chances to correctly identify users visiting your 
 
 **Improved WooCommerce & Easy Digital Downloads Integration**
 
-* **Customize each event value:** You can include or exclude tax and shipping, you can use the product price, **a percent of the product price**, or a global value. Using the proper event value can improve your ads delivery and ROI.
+* **Customise each event value:** You can include or exclude tax and shipping, you can use the product price, **a percent of the product price**, or a global value. Using the proper event value can improve your ads delivery and ROI.
 
 * Delay the WooCommerce & EDD ViewContent Event, so you don't spend your money on retargeting bouncing visitors.
 
@@ -153,12 +153,12 @@ This FB feature increases the chances to correctly identify users visiting your 
 
 * **Improved Purchase Event** - The purchase event will have payment and shipping methods, client city, state, and country, plus use of coupons and coupons names tracked as parameters.
 
->With the Improved Purchased Event you can create extremely useful Custom Audiences and retarget them with highly efficient ads. 
->Example: Clients that bought products from category X for at least $100 and that never used coupon ABC. 
+>With the Improved Purchased Event you can create extremely useful Custom Audiences and retarget them with highly efficient ads.
+>Example: Clients that bought products from category X for at least $100 and that never used coupon ABC.
 >
->Retargeting this audience with products from the same or similar category and give them the coupon ABC might be a winning strategy. 
+>Retargeting this audience with products from the same or similar category and give them the coupon ABC might be a winning strategy.
 
-* **Advance Matching** is supported for all the events - it will work best for your Purchase event because we will use the client data directly. 
+* **Advance Matching** is supported for all the events - it will work best for your Purchase event because we will use the client data directly.
 
 * **WooCommerce Affiliate Products Events:** you can add a dynamic event that will trigger on affiliate button clicks.
 
@@ -229,8 +229,8 @@ You can find it here:
 
 **Can I use the plugin for  Custom Audiences or Custom Conversions?**
 
-Absolutely yes! Actually, the plugin will super-optimize your site for Custom Audiences and Custom Conversions. 
-You will be able to create the classical ones based on URLs, but also Custom Combinations, like people who visited posts from category XYZ, or tagged with tag ABC in the last 30 days. 
+Absolutely yes! Actually, the plugin will super-optimize your site for Custom Audiences and Custom Conversions.
+You will be able to create the classical ones based on URLs, but also Custom Combinations, like people who visited posts from category XYZ, or tagged with tag ABC in the last 30 days.
 
 Use the PRO version, and you'll be able to do crazy things, like targeting people that came from Google and visited products under category "blue widget", or clients who bought products of at least $100, using the discount coupon "promo".
 
@@ -244,7 +244,7 @@ Yes, it does. The plugin adds all the necessary events, like ViewContent, AddToC
 
 ** Do I have to manually add the events for WooCommerce?**
 
-No, you don't, the plugin will take care of everything for you. 
+No, you don't, the plugin will take care of everything for you.
 
 **Does it work with Easy Digital Downloads?**
 
@@ -252,7 +252,7 @@ Yes, it works in the same way it does with WooCommerce.
 
 **Does it work with Dynamic Ads (promote a product catalog)**
 
-Yes, all the WooCommerce and EDD pixel events are Dynamic Ads ready. 
+Yes, all the WooCommerce and EDD pixel events are Dynamic Ads ready.
 
 **Can I fire additional events if I need to?**
 
@@ -267,7 +267,7 @@ With the PRO version, you can use Dynamic Events and fire them on:
 
 **Will your plugin increase the loading time of my site?**
 
-The plugin itself is really fast. However, you have to remember that the pixel has to communicate with Facebook to send all the data, and this will add a little load on your site. 
+The plugin itself is really fast. However, you have to remember that the pixel has to communicate with Facebook to send all the data, and this will add a little load on your site.
 
 Will this impact on your visitors? No, because all the requests are asynchronous, meaning that the browser will continue to load and your users will not see any delay whatsoever.
 
@@ -300,9 +300,17 @@ We have an article about how to create Custom Reports:
 
 == Changelog ==
 
+= PixelYourSite 5.0.9 =
+
+* ViewCategory - new WooCommerce event, compatible with Facebook Dynamic Product Ads (DPA)
+
+* New WooCommerce events parameter: contents - A list of JSON object that contains the product ids associated with the event as well as additional information about the products. It can help with DPA
+
+* Declaring compatibility with WooCommerce 3.2.6
+
 = PixelYourSite 5.0.8 =
 
-* AddToCart new option: fire the event on the Checkout Page. It will be helpful for some websites with customized structure.
+* AddToCart new option: fire the event on the Checkout Page. It will be helpful for some websites with customised structure.
 
 * The AddToCart event was improved to work with AJAX buttons on single product pages. This will help to catch events on a number of themes that use AJAX on the product pages.
 
@@ -361,7 +369,7 @@ We have an article about how to create Custom Reports:
 
 = PixelYourSite 4.0.2 =
 
-* WordDpress 4.7 compatibility checked
+* WordPress 4.7 compatibility checked
 
 * Manage Events buttons fixed - they were not looking right on WP 4.7
 
@@ -386,9 +394,9 @@ We have an article about how to create Custom Reports:
 
 * Changing GeneralEvent parameters names to avoid Pixel Helper warning (post_id and post_type are now being used)
 
-* Updating new pro features (tracking tags, advanced matching) 
+* Updating new pro features (tracking tags, advanced matching)
 
-* Minor fixes and code changes 
+* Minor fixes and code changes
 
 = PixelYourSite 3.0.3 =
 
@@ -485,7 +493,7 @@ This is a major release, with a new design and new features:
 = PixelYourSite 1.01 =
 
 * Dynamic AddToCart event for WooCommerce (the AddToCart event will trigger when a users click on the add to cart button)
-* Dynamic AddToCart works with WooCommerce shortcodes.
+* Dynamic AddToCart works with WooCommerce short-codes.
 * Fixed a false error that was reported for the Purchase WooCommerce event by Pixel Helper extension on the Thank You page.
 
 = PixelYourSite 1.0 =
