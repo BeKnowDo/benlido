@@ -66,3 +66,9 @@ function benlido_kits() {
 add_action( 'init', 'benlido_kits', 0 );
 
 }
+
+function bl_list_kits() {
+	$args = array(
+
+	);
+}
