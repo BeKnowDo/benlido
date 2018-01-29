@@ -191,6 +191,8 @@ function bl_create_product($data) {
         } else {
             $aws_prod = bl_search_aws_by_name_and_size($name,$size_display_label);
         }
+        //print_r ($aws_prod);
+        //die;
         // process things out
         // we use the description from Amazon
         $description = $aws_prod['description'];
@@ -205,6 +207,12 @@ function bl_create_product($data) {
         $should_proceed = true;
         if (!empty($aws_upc) && $aws_upc != $upc_code) {
             $should_proceed = false;
+        }
+        if (!empty($aws_prod['error'])) {
+            $should_proceed = false;
+            $res['missed'] = true;
+            $res['error'] = $aws_prod['error'];
+            $res['success'] = false;
         }
         if ($product_type == 'simple' && $should_proceed !== false) {
             $product_id = bl_create_simple_product($name,$sku,$price,$description,$short_description);
@@ -534,6 +542,7 @@ function bl_get_parent_cats($obj) {
 function bl_distill_aws_product($prod) {
     //print_r ($prod);
     //die;
+    $error = '';
     $asin = $prod['ASIN'];
     $image = $prod['LargeImage'];
     $amazon_url = $prod['DetailPageURL'];
@@ -586,6 +595,10 @@ function bl_distill_aws_product($prod) {
         }
     }
 
+    if (!empty($prod['error'])) {
+        $error = $prod['error'];
+    }
+
     // Category stuff... we're going to make them all parent categories for now.
     $categories = array();
     if (!empty($current_cat)) {
@@ -620,7 +633,8 @@ function bl_distill_aws_product($prod) {
         'height' => $height,
         'length' => $length,
         'weight' => $weight,
-        'categories' => $categories
+        'categories' => $categories,
+        'error' => $error
     );
     //print_r ($final_prod);
     return $final_prod;
@@ -649,7 +663,7 @@ function bl_product_import_url_intercept()
                 $resp['has_more'] = true;
             }
             if ($resp['missed'] == true) {
-                $resp['message'] = 'MISSED ';
+                $resp['message'] = 'MISSED ' . $resp['error'];
                 $resp['success'] = false;
             } else {
                 $resp['message'] = 'IMPORTED ';

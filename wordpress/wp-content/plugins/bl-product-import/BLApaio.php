@@ -65,6 +65,7 @@ class BLApaio {
         try {
             $res = $this->apaio->runOperation($lookup);
         } catch (Exception $e) {
+            //print_r ($e);
             error_log($e);
         }
 
@@ -73,6 +74,9 @@ class BLApaio {
         }
         if (!empty($item) && !empty($item[0]['ASIN'])) {
             $item = $item[0];
+        }
+        if (empty($item) && !empty($res['Items']['Request']['Errors'])) {
+            $item = array('error'=>$res['Items']['Request']['Errors']['Error']['Message']);
         }
         return $item;
     }
