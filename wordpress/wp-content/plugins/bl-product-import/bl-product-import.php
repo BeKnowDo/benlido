@@ -217,13 +217,17 @@ function bl_create_product($data) {
         }
     } else {
         $product_id = $test_prod;
+        $res['product_id'] = $product_id;
     }
     // import image
     if ($product_id > 0 && strlen($image)>0 && !empty($sku)) {
-        $res['product_id'] = $product_id;
-        $id = bl_import_image($sku,$image,$product_id);
-        $res['image_id'] = $id;
-        $res['name'] = $name;
+        // we'll import only if there's no image
+        $has_image = get_the_post_thumbnail_url($product_id);
+        if ($has_image == false) {
+            $id = bl_import_image($sku,$image,$product_id);
+            $res['image_id'] = $id;
+            $res['name'] = $name;
+        }
     }
     
 
