@@ -4,7 +4,7 @@ Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pi
 Requires at least: 3.0.1
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.0.9
+Stable tag: 5.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -299,6 +299,11 @@ We have an article about how to create Custom Reports:
 9. These are the normal events on a WooCommerce thank you page: the Purchase event has content_ids and content_types (required by Dynamic Ads). The reported error for the GeneralEvent can be ignored (as explained in the help pages)
 
 == Changelog ==
+
+= PixelYourSite 5.1.0 =
+
+* Fixing possible compatibility problem with Facebook for WooCommerce extension
+* Improving Facebook for WooCommerce ID logic
 
 = PixelYourSite 5.0.9 =
 

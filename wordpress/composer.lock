@@ -471,15 +471,15 @@
         },
         {
             "name": "wpackagist-plugin/pixelyoursite",
-            "version": "5.0.9",
+            "version": "5.1.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pixelyoursite/",
-                "reference": "tags/5.0.9"
+                "reference": "tags/5.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.0.9.zip",
+                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.1.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -511,15 +511,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.0.1",
+            "version": "3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.0.1"
+                "reference": "tags/3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.0.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -531,15 +531,15 @@
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
-                "reference": "tags/3.0.1"
+                "reference": "tags/3.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.3.0.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.3.0.2.zip",
                 "reference": null,
                 "shasum": null
             },

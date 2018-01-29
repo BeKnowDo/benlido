@@ -21,7 +21,7 @@ if ( class_exists( 'WC_Facebookcommerce' ) && ! class_exists( 'WC_Facebookcommer
 	/** @noinspection PhpUndefinedClassInspection */
 	class WC_Facebookcommerce_EventsTracker {
 
-		public function __construct( $pixel_id, $user_info ) {
+		public function __construct( $pixel_id = null, $user_info = null ) {
 		}
 
 		public function inject_base_pixel() {
@@ -72,19 +72,13 @@ if ( class_exists( 'WC_Facebookcommerce' ) ) :
 			return $content_id;
 		}
 
-		// Call $product->get_id() instead of ->id to account for Variable
-		// products, which have their own variant_ids.
-        $retailer_id = $product->get_sku()
-            ? $product->get_sku() . '_' . $product->get_id()
-            : false;
+		if ( $sku = $product->get_sku() ) {
+			$value = $product->get_sku() . '_' . $product->get_id();
+		} else {
+			$value = 'wc_post_id_' . $product->get_id();
+		}
 
-		$ids = array(
-			$product->get_sku(),
-			'wc_post_id_' . $product->get_id(),
-			$retailer_id
-		);
-        
-        return array_values( array_filter( $ids ) );
+		return array( $value );
 
 	}
     
