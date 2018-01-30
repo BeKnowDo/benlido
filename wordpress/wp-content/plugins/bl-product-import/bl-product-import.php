@@ -87,7 +87,7 @@ function bl_product_import_settings() {
 
 function bl_product_import_admin() {
     global $bl_product_import_admin_slug;
-    add_options_page('Ben Lido Product Import', 'Product Import', 'manage_options', $bl_product_import_admin_slug, 'bl_product_import_settings');
+    add_submenu_page('woocommerce', 'Product Import',  'Product Import', 'manage_options', $bl_product_import_admin_slug, 'bl_product_import_settings');
 }
   
 add_action('admin_menu', 'bl_product_import_admin');
