@@ -656,6 +656,7 @@ function bl_product_import_url_intercept()
                 update_option($bl_stored_product_array,$data);
             }
             if (!empty($row)) {
+                sleep(0.5);
                 $resp = bl_create_product($row);
                 $resp['name'] = $row['name'];
             }
