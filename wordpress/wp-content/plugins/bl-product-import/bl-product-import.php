@@ -27,6 +27,7 @@ function bl_product_import_settings() {
             if (function_exists('bl_parse_csv')) {
                 $data = bl_parse_csv($tmp_name);
                 //print_r ($data);
+                //die;
 
             }
         }
@@ -39,7 +40,7 @@ function bl_product_import_settings() {
                     jQuery.post(
                         "' . $bl_product_import_api_slug . '",
                         function(res) {
-                            var message = res.message + ":" + res.name;
+                            var message = res.message + " : " + res.name;
                             jQuery("ul.line-results").append("<li>"+message+"</li>");
                             if (res.has_more == true) {
                                 bl_ajax_import_item();
@@ -146,6 +147,7 @@ function bl_remove_utf8_bom($text)
 function bl_create_product($data) {
     //print_r ($data);
     //error_log(json_encode($data));
+    $match_by = 'upc';
     $product_id = 0;
     $res = array();
     $sku = $data['id'];
@@ -171,7 +173,7 @@ function bl_create_product($data) {
     }
     $product_width = $data['product_width'];
     $product_height = $data['product_height'];
-    $price = $data['price'];
+    $price = $data['unit_sell_price'];
     
     $weight = $data['weight'];
     $categories = $data['categories'];
@@ -180,15 +182,17 @@ function bl_create_product($data) {
     $test_prod = wc_get_product_id_by_sku($sku);
     if (!empty($test_prod)) {
         $res['product_id'] = $test_prod;
-        $res['message'] = 'NO UPDATE: Product Exists.';
+        $res['error'] = 'NO UPDATE: Product Exists.';
     }
     if (empty($test_prod)) {
         // look for ASIN
         if (!empty($amazon_asin)) {
+            $match_by = 'asin';
             $aws_prod = bl_search_aws_by_asin($amazon_asin);
         } elseif (!empty($upc_code)) {
             $aws_prod = bl_search_aws_by_upc($upc_code);
         } else {
+            $match_by = 'search';
             $aws_prod = bl_search_aws_by_name_and_size($name,$size_display_label);
         }
         //print_r ($aws_prod);
@@ -202,10 +206,14 @@ function bl_create_product($data) {
         $product_width = $aws_prod['width'];
         $product_depth = $aws_prod['length'];
         $product_height = $aws_prod['height'];
-        $price = $aws_prod['price'];
+        if ($price <= 0) {
+            $price = $aws_prod['price'];
+        }
+        
         // sanity check
         $should_proceed = true;
-        if (!empty($aws_upc) && $aws_upc != $upc_code) {
+        if ($match_by == 'upc' && !empty($aws_upc) && $aws_upc != $upc_code) {
+            $res['error'] = 'UPC MisMatch! Closest Product: <a href="' . $aws_prod['url'] . '" target="_blank">' . $aws_upc . '</a>';
             $should_proceed = false;
         }
         if (!empty($aws_prod['error'])) {
@@ -504,9 +512,11 @@ function bl_search_aws_by_upc($upc) {
     }
     $aws = new BLApaio($access_key,$secret_key,$associate_tag);
     $prod = $aws->_getByUPC($upc);
-    //print_r ($prod);
     // clean up for WooCommerce
+    //print_r ($prod);
     $item = bl_distill_aws_product($prod);
+    //print_r ($item);
+    //die;
     return $item;
 }
 
@@ -564,6 +574,7 @@ function bl_distill_aws_product($prod) {
         $BrowseNodes = $prod['BrowseNodes'];
         $BrowseNode = $BrowseNodes['BrowseNode'];
         // current category
+
         $current_cat = $BrowseNode['Name'];
         $parent_cats = $BrowseNode['Ancestors'];
     }
@@ -619,6 +630,29 @@ function bl_distill_aws_product($prod) {
                 break;
             }
         } // end while
+    }
+    if (empty($parent_cats) && empty($BrowseNode['Name']) && !empty($BrowseNode[0]['Name'])) {
+
+        // we need to iterate to get the parents
+        foreach ($BrowseNode as $single_node) {
+            if ($single_node['Name']) {
+                $categories[] = trim($single_node['Name']);
+            }
+            $ancestors = $single_node['Ancestors'];
+            $limit = 100;
+            while($limit != 0) {
+                $res = bl_get_parent_cats($ancestors);
+                $categories[] = trim($res['name']);
+                if ($res['more'] == true) {
+                    $ancestors = $res['parent'];
+                } else {
+                    break;
+                }
+            } // end while
+            
+        } // end foreach
+
+        $categories = array_unique($categories);
     }
 
     $final_prod = array(
