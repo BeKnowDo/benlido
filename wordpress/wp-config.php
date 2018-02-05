@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors',0);
 if (!isset($_SERVER['HTTP_HOST'])) {
     $SERVER_NAME = php_uname('n');
     if (!empty($SERVER_NAME)) {
@@ -46,6 +46,9 @@ switch(SERVER_ENVIRONMENT) {
         define('DB_NAME', 'ben_lido');
         define('DB_USER', 'root');
         define('DB_PASSWORD', '');
+        define( 'WP_DEBUG', false );
+        define( 'WP_DEBUG_DISPLAY', false );
+        define( 'WP_DEBUG_LOG', true );
         break;
 }
 

@@ -12,14 +12,14 @@ global $bl_stored_product_array;
 $bl_stored_product_array = 'bl-stored-products';
 global $bl_product_import_api_slug;
 $bl_product_import_api_slug = '/bl-product-import-api';
-
+@ini_set('display_errors', false); 
 function bl_product_import_settings() {
     global $bl_product_import_admin_slug;
     global $bl_product_import_api_slug;
     global $bl_stored_product_array;
     $message = '';
     $script = '';
-    
+    @ini_set('display_errors', false); 
     if (!empty($_POST)) {
         $data = array();
         $tmp_name = $_FILES['bl_inv_import']['tmp_name'];
@@ -149,8 +149,9 @@ function bl_create_product($data) {
     //error_log(json_encode($data));
     $match_by = 'upc';
     $product_id = 0;
+    $test_prod = 0;
     $res = array();
-    $sku = $data['id'];
+    $sku = trim($data['id']);
     $upc_code = $data['upc_code'];
     // clean UPC
     $upc_code = bl_distill_upc($upc_code);
@@ -159,7 +160,12 @@ function bl_create_product($data) {
     if (!empty($data['display_name'])) {
         $name = $data['display_name'];
     }
-    
+    $active = $data['active'];
+    if ($active == '1') {
+        $active = true;
+    } else {
+        $active = false;
+    }
     $size_display_label = $data['disp_size_style'];
     $in_stock = $data['stocked'];
     $description = '';
@@ -179,12 +185,17 @@ function bl_create_product($data) {
     $categories = $data['categories'];
     //$sku = $data['sku'];
     // let's see if the SKU exists
-    $test_prod = wc_get_product_id_by_sku($sku);
-    if (!empty($test_prod)) {
-        $res['product_id'] = $test_prod;
-        $res['error'] = 'NO UPDATE: Product Exists.';
+    if (!empty($sku)) {
+        $test_prod = wc_get_product_id_by_sku($sku);
+        //error_log ("tested: " . $sku . 'and got: ' . $test_prod);
     }
-    if (empty($test_prod)) {
+    
+    if (!empty($test_prod) && $test_prod > 0) {
+        $res['product_id'] = $test_prod;
+        $res['error'] = 'Product Exists. UPDATING';
+    }
+    // had to force test_prod to make sure the ID < 0
+    if (empty($test_prod) || $test_prod < 1) {
         // look for ASIN
         if (!empty($amazon_asin)) {
             $match_by = 'asin';
@@ -232,8 +243,20 @@ function bl_create_product($data) {
             $res['success'] = false;
         }
     } else {
+        // we're updating the product here
         $product_id = $test_prod;
         $res['product_id'] = $product_id;
+        // we only check aws if we have an asin
+        $aws_prod = bl_search_aws_by_asin($amazon_asin);
+        $description = $aws_prod['description'];
+        $image = $aws_prod['image'];
+        $brand = $aws_prod['brand'];
+        $product_width = $aws_prod['width'];
+        $product_depth = $aws_prod['length'];
+        $product_height = $aws_prod['height'];
+        if ($price <= 0) {
+            $price = $aws_prod['price'];
+        }
     }
     // import image
     if ($product_id > 0 && strlen($image)>0 && !empty($sku)) {
@@ -249,7 +272,7 @@ function bl_create_product($data) {
 
 
     if ($product_id > 0) {
-        if (empty($amazon_asin)) {
+        if (empty($amazon_asin) && !empty($aws_prod)) {
             $amason_asin = $aws_prod['asin'];
         }
         if (!empty($brand)) {
@@ -258,7 +281,9 @@ function bl_create_product($data) {
         $amazon_product_url = $aws_prod['url'];
         bl_insert_product_acf('upc_code',$upc_code,$product_id);
         bl_insert_product_acf('size_display_label',$size_display_label,$product_id);
-        bl_insert_product_acf('amazon_asin',$amazon_asin,$product_id);
+        if (!empty($aws_prod['asin'])) {
+            bl_insert_product_acf('amazon_asin',$amazon_asin,$product_id);
+        }
         bl_insert_product_acf('amazon_product_url',$amazon_product_url,$product_id);
         bl_product_update_tsa_compliant($tsa_compliant,$product_id);
         // create product categories
@@ -298,6 +323,11 @@ function bl_create_product($data) {
             }
             $prod->save();
         }
+        // if active == false, set as draft
+        if ($active == false) {
+            wp_update_post( array( 'ID' => $product_id, 'post_status' => 'draft', ) );
+        }
+        
     }
     return $res;
 } // end bl_create_product()
@@ -332,8 +362,12 @@ function bl_get_product_acf_field_key($field_name,$group) {
     }
 }
 
-function bl_create_simple_product($name,$sku,$price,$description,$short_description) {
+function bl_create_simple_product($name,$sku,$price,$description,$short_description,$active=true) {
     $post_id = 0;
+    $publish = 'publish';
+    if ($active==false) {
+        $publish = 'draft';
+    }
     if (!empty($name) && !empty($sku)) {
         $args = array(	   
             'post_author' => 1, 
@@ -702,6 +736,9 @@ function bl_product_import_url_intercept()
                 $resp['success'] = false;
             } else {
                 $resp['message'] = 'IMPORTED ';
+                if (!empty($resp['error'])) {
+                    $resp['message'] .= ' - ' . $resp['error'];
+                }
                 $resp['success'] = true;
             }
             header('Content-Type: application/json');
