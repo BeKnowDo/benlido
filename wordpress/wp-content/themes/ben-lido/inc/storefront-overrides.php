@@ -8,12 +8,16 @@ function bl_storefront_overrides() {
 	add_action('storefront_before_content','storefront_primary_navigation',5);
 	add_action('storefront_before_content','storefront_product_search',6);
 
+	add_action('storefront_footer','bl_footer_menus',10);
+
     remove_action('storefront_header','storefront_social_icons',10);
 	remove_action('storefront_header','storefront_primary_navigation_wrapper',42);
 	remove_action('storefront_header','storefront_secondary_navigation ',30);
     remove_action('storefront_header','storefront_primary_navigation',50);
     remove_action('storefront_header','storefront_primary_navigation_wrapper_close',68);
     remove_action('storefront_header','storefront_product_search',40);
+
+	remove_action('storefront_footer','storefront_footer_widgets',10);
 
 }
 
@@ -166,6 +170,37 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 	}
 }
 
+if ( ! function_exists( 'storefront_credit' ) ) {
+	/**
+	 * Display the theme credit
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	function storefront_credit() {
+		?>
+		<div class="footer-brand column hd-2 no-margin-left">
+			<img src="<?php echo get_stylesheet_directory_uri();?>/assets/images/logo-diamond.svg" alt="">
+			<div class="legal">
+				© Ben Lido <?php echo date('Y');?>
+			</div>
+		</div>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'storefront_handheld_footer_bar' ) ) {
+	/**
+	 * Display a menu intended for use on handheld devices
+	 *
+	 * @since 2.0.0
+	 */
+	function storefront_handheld_footer_bar() {
+		return false;
+	}
+}
+
+
 
 function bl_storefront_before_header () {
     echo '<div id="ui-cover"></div>';
@@ -177,5 +212,51 @@ function bl_storefront_burger() {
 
 function bl_storefront_search_button() {
     echo '<div id="search-button"><img src="' . get_stylesheet_directory_uri() . '/assets/images/icon-search.svg" alt="search toggle"></div>';
+}
+
+function bl_footer_menus() {
+	?>
+	<div id="link-container" class="column hd-10 no-margin-right">
+		<div class="row no-margin">
+			<?php
+				$locations = get_nav_menu_locations();
+				$menu_id = $locations[ 'footer' ];
+				wp_nav_menu(
+					array(
+						'menu'				=> $menu_id,
+						'menu_class'		=> 'footer-links column hd-4 push-1',
+						'container'			=> '',
+						)
+				);
+			?>
+
+			<?php
+				$locations = get_nav_menu_locations();
+				$menu_id = $locations[ 'social-menu-footer' ];
+				wp_nav_menu(
+					array(
+						'menu'				=> $menu_id,
+						'menu_class'		=> 'footer-links column hd-4 push-1',
+						'container'			=> '',
+						)
+				);
+			?>
+
+			<?php
+				$locations = get_nav_menu_locations();
+				$menu_id = $locations[ 'contact' ];
+				wp_nav_menu(
+					array(
+						'menu'				=> $menu_id,
+						'menu_class'		=> 'footer-links column hd-4 push-1',
+						'container'			=> '',
+						)
+				);
+			?>
+
+
+		</div>
+	</div>
+	<?php
 }
 

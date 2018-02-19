@@ -39,6 +39,13 @@ footer {
             }
             &.blue {
                 color: $blue;
+                > a {
+                    color: $blue;
+                    &:hover {
+                        text-decoration:none;
+                        cursor: default;
+                    }
+                }
             }
             &.title {
                 display: none;
