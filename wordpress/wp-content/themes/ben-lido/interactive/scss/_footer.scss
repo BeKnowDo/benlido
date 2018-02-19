@@ -1,0 +1,62 @@
+// main: _footer.scss
+
+footer {
+    display: block;
+    margin-top: px(200);
+    padding: px(getBaseline(8)) 0 px(getBaseline(14));
+    @include minpoint($min-hd) {
+        padding: px(getBaseline(11)) 0 px(getBaseline(14));
+    }
+    background-color: $white;
+
+    .legal {
+        margin-top: px(getBaseline());
+        font-size: rem(17);
+        color: $gray;
+        text-align: center;
+    }
+    .footer-links {
+        width: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        @include minpoint($min-tab) {
+            left: 0;
+            transform: none;
+        }
+        margin-bottom: px(getBaseline(4));
+        font-size: rem(15);
+        color: $gray;
+
+        li {
+            margin-bottom: px(getBaseline(1.5));
+            a {
+                color: $gray;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            &.blue {
+                color: $blue;
+            }
+            &.title {
+                display: none;
+                @include minpoint($min-tab) {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+#sticky-container {
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    padding: px(getBaseline(2)) 0;
+
+    &.foam {
+        background-color: $seafoam;
+    }
+}

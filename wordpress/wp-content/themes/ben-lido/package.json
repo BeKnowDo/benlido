@@ -1,0 +1,37 @@
+{
+  "name": "cbca",
+  "version": "1.0.0",
+  "description": "CBCA custom scripts and styles",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.5.4",
+    "bootstrap": "^4.0.0-beta.3",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.2.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-less": "^3.4.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-postcss": "^6.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "infinite-scroll": "^3.0.2",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "magnific-popup": "^1.1.0",
+    "postcss-flexibility": "^1.1.0"
+  },
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "jquery": "^1.12.4",
+    "popper.js": "^1.13.0",
+    "sticky-sidebar": "^3.3.1"
+  }
+}

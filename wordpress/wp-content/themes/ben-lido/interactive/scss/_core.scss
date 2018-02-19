@@ -1,0 +1,498 @@
+// main: ../ui.scss
+html, body {
+    background-color: $light-gray;
+}
+
+@import 'header';
+@import 'elements';
+
+#ui-cover {
+    // display: none;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($white, .5);
+    @include animate(opacity, .25s, ease-in-out);
+
+    &.active {
+        // display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.body-container {
+    position: relative;
+    margin-top: px(60);
+}
+#hero {
+    width: 100%;
+    max-height: px(425);
+    margin-bottom: px(150);
+    padding: px(35) 0 0;
+    @include minpoint($min-hd) {
+        max-height: px(400);
+        padding: px(44) 0 0;
+    }
+    &.foam {
+        background-color: $seafoam;
+    }
+    &.brown {
+        background-color: $light-brown;
+    }
+
+    #hero-copy {
+        text-align: center;
+
+        h1 {
+            margin-bottom: px(getBaseline(5));
+            @include knockout;
+            font-size: rem(50);
+            @include minpoint($min-hd) {
+                font-size: rem(75);
+            }
+            color: $white;
+            text-transform: uppercase;
+        }
+        p {
+            margin-bottom: px(getBaseline(6));
+            @include sentinel;
+            font-size: rem(18);
+            @include minpoint($min-hd) {
+                font-size: rem(22);
+            }
+            font-weight: 500;
+            color: $gray;
+            line-height: 1.3;
+        }
+    }
+    #hero-image {
+        top: px(30);
+        text-align: right;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+        &.pad-top {
+            padding-top: px(getBaseline(14));
+        }
+        &.ceiling {
+            top: 0;
+        }
+    }
+}
+.feature-card {
+    // display: block;
+    position: relative;
+    height: 100%;
+    margin-bottom: px(32);
+    padding: px(32) 0;
+    @include minpoint($min-hd) {
+        padding: px(42) 0;
+    }
+    background-color: $white;
+    text-align: center;
+
+    .feature-image {
+        position: relative;
+        margin-bottom: px(getBaseline(5));
+
+        img {
+            max-width: 100%;
+            &.pad {
+                padding: px(getBaseline(4)) 0;
+            }
+        }
+    }
+    .feature-content {
+        padding: 0 px(32) px(getBaseline(5));
+        @include minpoint($min-hd) {
+            padding: 0 px(48) px(getBaseline(5));
+        }
+        h1 {
+            margin-bottom: px(getBaseline(5));
+        }
+        p {
+            @include minpoint($min-hd) {
+                font-size: rem(17);
+            }
+            color: $gray;
+        }
+    }
+}
+.anchor-card {
+    position: relative;
+    height: px(460);
+    padding: 0 px(32);
+    @include minpoint($min-hd) {
+        padding: 0;
+        height: px(400);
+    }
+    background-color: $white;
+
+    img {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .anchor-info-container {
+        display: block;
+        position: relative;
+        top: px(getBaseline(6));
+        @include minpoint($min-hd) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .anchor-content {
+        margin-bottom: px(getBaseline(5));
+        @include minpoint($min-hd) {
+            margin-bottom: px(getBaseline(8));
+        }
+        @include sentinel;
+        font-size: rem(18);
+        @include minpoint($min-hd) {
+            font-size: rem(22);
+        }
+        font-weight: 500;
+        line-height: 1.3;
+        color: $gray;
+        text-align: center;
+
+        h1 {
+            @include knockout-jr;
+        }
+        p {
+            @include knockout-jr;
+            font-size: rem(15);
+            line-height: 1.3;
+        }
+    }
+}
+#store-item-container {
+    clear: both;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-top: px(30);
+    border-top: px(1) solid $dark-gray;
+
+    .bag, .product {
+        padding: px(getBaseline(12)) 0;
+        border-bottom: px(1) solid $dark-gray;
+    }
+    .bag-image {
+        margin-bottom: px(getBaseline(6));
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .bag-content {
+        h1 {
+            margin-bottom: px(getBaseline());
+            text-align: center;
+        }
+        p {
+            margin-bottom: px(getBaseline(6));
+            font-size: rem(15);
+            text-align: center;
+            color: $gray;
+        }
+    }
+    .product-details-container {
+        
+        .product-details {
+            display: block;
+            position: relative;
+            @include minpoint($min-hd) {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .product-category {
+                margin-bottom: px(getBaseline(4));
+                @include minpoint($min-hd) {
+                    margin-bottom: px(getBaseline(6));
+                }
+                font-size: rem(15);
+                color: $gray;
+            }
+            .product-name {
+                margin-bottom: px(getBaseline(6));
+                @include sentinel;
+                font-size: rem(18);
+                @include minpoint($min-hd) {
+                    font-size: rem(22);
+                }
+                font-weight: 500;
+                line-height: 1.3;
+                color: $gray;
+            }
+            .product-cost {
+                font-size: rem(24);
+                @include minpoint($min-hd) {
+                    font-size: rem(32);
+                }
+                color: $blue;
+            }
+        }
+        .product-category, .product-name, .product-cost {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .product-image {
+        margin-bottom: px(getBaseline(4));
+        @include minpoint($min-hd) {
+            margin-bottom: 0;
+        }
+        img {
+            max-height: px(220);
+            object-fit: contain;
+            object-position: center;
+            @include minpoint($min-hd) {
+                max-height: px(400);
+            }
+        }
+    }
+    .product-buttons {
+        display: block;
+        position: absolute;
+        z-index: 99;
+        top: px(-70);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 px($outer-mobile);
+        @include minpoint($min-hd) {
+            position: relative;
+            top: 0;
+            transform: none;
+            height: auto;
+            padding: 0 0 0 px($gutters-hd/2);
+        }
+    }
+    .product-button {
+        text-align: center;
+        img {
+            position: relative;
+            width: px(32);
+            @include minpoint($min-hd) {
+                width: 100%;
+            }
+            height: auto;
+            margin-bottom: px(getBaseline());
+        }
+        span {
+            display: none;
+            @include minpoint($min-hd) {
+                display: table;
+            }
+            position: relative;
+            clear: both;
+            width: 100%;
+            color: $brown;
+            text-align: center;
+        }
+    }
+}
+.header-group {
+    width: 100%;
+    padding: px(getBaseline(4)) 0;
+    @include minpoint($min-hd) {
+        padding-top: px(getBaseline(8));
+    }
+    text-align: center;
+
+    h1 {
+        font-size: rem(24);
+        @include minpoint($min-hd) {
+            font-size: rem(32);
+        }
+        color: $blue;
+    }
+    h2 {
+        margin-bottom: px(getBaseline(1));
+        @include minpoint($min-hd) {
+            margin-bottom: px(getBaseline());
+        }
+        @include sentinel;
+        font-size: rem(18);
+        @include minpoint($min-hd) {
+            font-size: rem(22);
+        }
+        font-weight: 500;
+        color: $gray;
+    }
+    h3 {
+       margin-top: px(getBaseline());
+       font-size: rem(15);
+       color: $gray; 
+    }
+}
+.category-items {
+    .item {
+        padding-bottom: px($gutters-hd);
+
+        .item-details {
+            display: block;
+            padding: px(32);
+            border: px(1) solid $light-gray2;
+            border-radius: px(6);
+            @include animate(border, .25s, ease-in-out);
+
+            .item-image, .item-info {
+                width: 100%;
+                margin-bottom: px(getBaseline());
+                text-align: center;
+            }
+            .item-info {
+                p {
+                    font-size: rem(14);
+                    line-height: 1.3;
+                    color: $gray;
+                }
+            }
+        }
+        &:hover {
+            a {
+                text-decoration: none;
+            }
+            .item-details {
+                border: px(1) solid gray;
+            }
+        }
+        .generic-button {
+            width: 100%;
+        }
+    }
+}
+.product-image {
+    img {
+        width: 100%;
+        height: 100%;
+        max-height: px(600);
+        object-fit: contain;
+        object-position: center;
+    }
+}
+.product-details {
+    position: relative;
+    text-align: center;
+    @include minpoint($min-hd) {
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+    }
+    .product-description {
+        p {
+            font-size: rem(15);
+            color: $gray;
+            line-height: 1.3;
+        }
+    }
+}
+.related-container {
+    .category-items {
+        justify-content: center;
+    }
+}
+.detail-group {
+    .info-container {
+        padding: px(getBaseline(6)) 0;
+        background-color: $white;
+    }
+    h1 {
+        @include sentinel;
+        font-size: rem(22);
+        font-weight: 500;
+        color: $gray;
+        text-align: center;
+    }
+    .confirmation-items {
+        margin-top: px(getBaseline(6));
+        border-top: px(1) solid $light-gray2;
+        font-size: rem(15);
+        color: $gray;
+
+        .item {
+            padding: px(getBaseline()) px(45);
+            border-bottom: px(1) solid $light-gray2;
+
+            &:last-child {
+                border-bottom: none;
+            }
+            &.product {
+                position: relative;
+                height: px(52);
+                padding: 0 px(45);
+
+                .row {
+                    height: 100%;
+                }
+            }
+            .thumbnail, .product-name, .product-cost {
+                // display: table;
+                p {
+                    position: relative;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            .thumbnail {
+                display: block;
+                height: 100%;
+    
+                img {
+                    // display: table;
+                    height: 100%;
+                    // max-height: px(46);
+                    // object-fit: contain;
+                    // object-position: center;
+                }
+            }
+            &.total-details {
+                padding: px(getBaseline(6)) px(45);
+                @include sentinel;
+                font-size: rem(22);
+                font-weight: 500;
+                color: $gray;
+
+                .label {
+                    text-align: left;
+                }
+                .cost {
+                    text-align: right;
+                }
+
+                &.blue {
+                    color: $blue;
+                }
+                &:last-child {
+                    border-bottom: px(1) solid $light-gray2;
+                }
+            }
+        }
+    }
+    .button-container {
+        padding: px(getBaseline(6)) px(45) 0;
+    }
+}
+#no-thanks {
+    display: none;
+    @include minpoint($max-hd) {
+        display: block;
+    }
+}
+@import 'footer';

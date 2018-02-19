@@ -1,0 +1,278 @@
+// main: ../ui.scss
+.ui-container {
+	width: 100%;
+	height: 100%;
+}
+@mixin border-box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    @include border-box;
+}
+%clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.row {
+	// display: flex;
+	// flex-direction: row;
+	padding: px(getBaseline(4)) 0;
+}
+@include minpoint($min-tab) {
+	.row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		position: relative;
+		width: auto;
+		padding: px(getBaseline(8)) 0;
+	
+		&.wrap {
+			flex-wrap: wrap;
+			-webkit-flex: 1 1 auto;
+		}
+		&.pad-top {
+			margin-top: px(getBaseline(16));
+		}
+		&.reverse {
+			flex-direction: row-reverse;
+		}
+	}
+}
+// @include breakpoint($max-desk) {
+// 	.row {
+// 		padding: px(getBaseline(4)) 0;
+// 	}
+// }
+// @include breakpoint($max-tab) {
+// 	.row {
+// 		flex-wrap: wrap;
+// 		-webkit-flex: 1 1 auto;
+// 	}
+// }
+.row-wrap {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	position: relative;
+	padding: px(getBaseline(8)) 0;
+}
+.form-row {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding: px(getBaseline(2)) 0;
+}
+.column {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	@include minpoint($min-mobile) {
+		// padding: 0 px($gutters-mobile/2);
+	}
+}
+@include minpoint($min-tab) {
+	.column {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		@include minpoint($min-hd) {
+			padding: 0 px($gutters-hd/2);
+		}
+	}
+}
+
+// @include breakpoint($max-tab) {
+// 	.column {
+// 		padding: 0 px($gutters-tab/2);
+// 	}
+// }
+.grid-container {
+	display: table;
+	@include border-box;
+	position: relative;
+	margin:auto;
+	width: 100%;
+	max-width: px($max-mobile);
+	padding: 0 px($outer-mobile);
+	@include minpoint($min-tab) {
+		max-width: px($max-tab);
+		padding: 0 px($outer-tab);
+	}
+	@include minpoint($min-desk) {
+		max-width: px($max-desk);
+		padding: 0 px($outer-desk);
+	}
+	@include minpoint($min-hd) {
+		max-width: px($max-hd);
+		padding: 0 px($outer-hd);
+	}
+}
+ul.grid-container {
+	margin: 0;
+}
+// @include breakpoint($max-tab) {
+// 	.grid-container {
+// 		max-width: px($max-tab);
+// 		padding: 0 px($outer-tab);
+// 	}
+// }
+// @include breakpoint($max-mobile) {
+// 	.grid-container {
+// 		max-width: px($max-mobile);
+// 		padding: 0 px($outer-mobile);
+// 	}
+// }
+.container {
+	width: 100%;
+	height: 100%;
+}
+.block {
+	@include border-box;
+	position: relative;
+	@include minpoint($min-hd) {
+		margin: 0 percent($gutters-hd/2, $max-hd) percent($gutters-hd, $max-hd);
+	}
+}
+// @include breakpoint($max-tab) {
+// 	.block {
+// 		margin: 0 px($gutters-tab/2) px($gutters-tab);
+// 	}
+// }
+@include maxpoint($max-mobile) {
+	@for $i from 1 through $cols-mobile {
+		.mobile-#{$i} {
+			flex-basis: 100%;
+			max-width: ((100% / $cols-mobile) * $i);
+		}
+		.mpush-#{$i} {
+			margin-left: ((100% / $cols-mobile) * $i) !important;
+			padding-left: px($gutters-mobile) !important;
+		}
+	}
+}
+@include minpoint($min-hd) {
+	@for $i from 1 through $cols-hd {
+		.hd-#{$i} {
+			flex-basis: 100%;
+			max-width: ((100% / $cols-hd) * $i);
+		}
+		.push-#{$i} {
+			margin-left: ((100% / $cols-hd) * $i) !important;
+			padding-left: px($gutters-hd) !important;
+		}
+	}
+}
+// @for $i from 1 through $cols-hd {
+//     .hd-#{$i} {
+// 		flex-basis: ((100% / $cols-hd) * $i);
+// 		width: 100%;
+// 		max-width: ((100% / $cols-hd) * $i);
+// 	}
+// 	.push-#{$i} {
+// 		margin-left: ((100% / $cols-hd) * $i) !important;
+// 		padding-left: px($gutters-hd) !important;
+// 	}
+// }
+// @include breakpoint($max-desk) {
+// 	@for $i from 1 through $cols-desk {
+// 	    .desk-#{$i} {
+// 			flex-basis: ((100% / $cols-desk) * $i);
+// 			width: 100%;
+// 			max-width: ((100% / $cols-desk) * $i);
+// 	    }
+// 	}
+// }
+// @include breakpoint($max-tab) {
+// 	@for $i from 1 through $cols-tab {
+// 	    .tab-#{$i} {
+// 			flex-basis: ((100% / $cols-tab) * $i);
+// 			width: 100%;
+// 			max-width: ((100% / $cols-tab) * $i);
+// 	    }
+// 	}
+// 	.tab-6:nth-child(2n) {
+// 		padding-right: 0;
+// 	}
+// 	.tab-6:nth-child(2n+1) {
+// 		padding-left: 0;
+// 	}
+// 	.tab-12 {
+// 		padding-left: 0;
+// 		padding-right: 0;
+// 	}
+// }
+// @include breakpoint($max-mobile) {
+// 	@for $i from 1 through $cols-mobile {
+// 	    .mobile-#{$i} {
+// 			flex-basis: ((100% / $cols-mobile) * $i);
+// 			width: 100%;
+// 			max-width: ((100% / $cols-mobile) * $i);
+// 	    }
+// 	}
+// 	.mobile-2:nth-child(2n) {
+// 		padding-right: 0;
+// 	}
+// 	.mobile-2:nth-child(2n+1) {
+// 		padding-left: 0;
+// 	}
+// 	.mobile-4 {
+// 		margin-left: 0;
+// 		margin-right: 0;
+// 		padding-left: 0;
+// 		padding-right: 0;
+// 	}
+// }
+.no-wrap {
+	flex-wrap: nowrap;
+}
+// @include breakpoint($max-mobile) {
+// 	.mobile-wrap {
+// 		flex-wrap: wrap;
+// 	}
+// 	.mobile-margin-bottom {
+// 		margin-bottom: px(getBaseline(6)) !important;
+// 	}
+// 	.mobile-hide {
+// 		display: none;
+// 	}
+// }
+.no-margin {
+	margin: 0;
+	padding: 0;
+}
+// @include breakpoint($max-mobile) {
+// 	.mobile-no-margin {
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// }
+.no-margin-top {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+.no-margin-bottom {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.no-margin-left {
+	margin-left: 0;
+	padding-left: 0;
+}
+.no-margin-right {
+	margin-right: 0;
+	padding-right: 0;
+}

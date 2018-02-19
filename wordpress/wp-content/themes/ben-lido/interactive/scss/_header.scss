@@ -1,0 +1,253 @@
+// main: _core.scss
+
+header {
+    &#masthead {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: px(60);
+    }
+
+    // background-color: $seafoam;
+    &.foam {
+        background-color: $seafoam;
+    }
+    &.brown {
+        background-color: $light-brown;
+    }
+    .head-container {
+        box-sizing: border-box;
+        position: relative;
+        margin:auto;
+        width: 100%;
+        max-width: px(1280);
+        height: 100%;
+        padding: 0 px($outer-mobile);
+        @include minpoint($min-tab) {
+            padding: 0 px($outer-tab);
+        }
+        @include minpoint($min-desk) {
+            padding: 0 px($outer-desk);
+        }
+        @include minpoint($min-hd) {
+            padding: 0 px($outer-hd);
+        }
+        vertical-align: middle;
+    }
+    #burger-button, #search-button {
+        position: relative;
+        z-index: 99;
+        top: 50%;
+        transform: translateY(-50%);
+        float: left;
+        margin-right: px(16);
+        @include minpoint($min-tab) {
+            margin-right: px(36);
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    // #search-button {
+    //     display: none;
+    //     @include minpoint($min-hd) {
+    //         display: block;
+    //     }
+    // }
+    #brand {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #cart-button, #cart-item-count {
+        position: relative;
+        z-index: 99;
+        top: 50%;
+        transform: translateY(-50%);
+        float: right;
+        margin-right: px(16);
+    }
+    #cart-button {
+        display: none;
+        @include minpoint($min-tab) {
+            display: block;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    #cart-item-count {
+        margin-right: 0;
+        color: $white;
+    }
+}
+#nav-menu {
+    position: fixed;
+    z-index: 9999;
+    top: -100%;
+    @include minpoint($min-tab) {
+        top: px(-300);
+    }
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include minpoint($min-tab) {
+        height: px(300);
+    }
+    background-color: $blue;
+    @include animate(top, .25s, ease-in-out);
+
+    &.active {
+        top: 0;
+    }
+}
+#search-menu {
+    position: fixed;
+    z-index: 9999;
+    top: -100%;
+    @include minpoint($min-tab) {
+        top: px(-500);
+    }
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include minpoint($min-tab) {
+        height: px(500);
+    }
+    background-color: $blue;
+    @include animate(top, .25s, ease-in-out);
+
+    &.active {
+        top: 0;
+    }
+
+    .search-cat-header {
+        margin-bottom: px(getBaseline(6));
+        @include sentinel;
+        font-size: rem(22);
+        color: $white;
+    }
+}
+.outer-nav-container {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 99;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: px(1280);
+    padding: 0 px($outer-mobile);
+    @include minpoint($min-hd) {
+        padding: 0 px($outer-hd);
+    }
+}
+.menu-close {
+    position: relative;
+    margin-top: px(18);
+    // left: px(120);
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+#primary-nav {
+    top: px(getBaseline(9));
+    margin-bottom: px(getBaseline(6));
+    @include sentinel;
+    font-size: rem(22);
+    font-weight: 500;
+
+    li {
+        margin-bottom: px(getBaseline());
+
+        a {
+            color: $light-gray;
+        }
+    }
+}
+#social-nav {
+    clear: both;
+    top: px(getBaseline(9));
+    font-size: rem(15);
+
+    li {
+        margin-bottom: px(getBaseline(2));
+
+        a {
+            color: $gray;
+        }
+    }
+}
+.menu-brand {
+    top: px(getBaseline(9));
+}
+#search-menu {
+    .menu-brand {
+        display: none;
+        @include minpoint($min-tab);
+    }
+}
+#search-container {
+    margin: px(getBaseline(9)) 0;
+    padding-left: 0 !important;
+    border:0;
+    @include minpoint($min-tab) {
+        padding-left: initial;
+    }
+    input {
+        &[type="search"] {
+            box-shadow: 0;
+            background-color:transparent;
+        }
+    }
+}
+#search-field-button {
+    display: block;
+    position: absolute;
+    left: px($outer-mobile);
+    @include minpoint($min-hd) {
+        position: relative;
+        padding-top: px(12);
+        max-width: 60px;
+        margin-right:10px;
+    }
+}
+.search-field {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 0 px(12) !important;
+    background: none;
+    border: none;
+    border-bottom: px(1) solid $gray !important;
+    @include sentinel;
+    font-size: rem(18);
+    @include minpoint($min-hd) {
+        font-size: rem(22);
+    }
+    color: $white !important;
+
+    &::placeholder, :-ms-input-placeholder {
+        color: $gray;
+    }
+}
+.category-container {
+    .category-group {
+        li {
+            margin-bottom: px(getBaseline(2));
+
+            a {
+                font-size: rem(15);
+                color: $gray;
+            }
+        }
+    }
+    &.push-3 {
+        padding-left: 0 !important;
+    }
+}

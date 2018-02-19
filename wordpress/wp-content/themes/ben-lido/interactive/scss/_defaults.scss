@@ -1,0 +1,122 @@
+// main: ../ui.scss
+
+// hd
+$max-hd: 1224;
+$min-hd: 1025;
+$cols-hd: 12;
+$gutters-hd: 32;
+$outer-hd: 40;
+
+// desktop
+$max-desk: 1024;
+$min-desk: 861;
+$cols-desk: 12;
+$gutters-desk: 20;
+$outer-desk: 40;
+
+// tablet
+$max-tab: 860;
+$min-tab: 661;
+$cols-tab: 12;
+$gutters-tab: 15;
+$outer-tab: 30;
+
+// mobile
+$max-mobile: 660;
+$min-mobile: 320;
+$cols-mobile: 4;
+$gutters-mobile: 32;
+$outer-mobile: 16;
+
+// color palette
+$black: #000000;
+$white: #ffffff;
+$light-gray: #F7F7F7;
+$light-gray2: #E4E4E4;
+$gray: #999999;
+$dark-gray: #979797;
+$blue: #393D5B;
+$seafoam: #BACDD4;
+$brown: #C08059;
+$brown-hover: #D58F64;
+$brown2: #BC804E;
+$light-brown: #D4C1BA;
+
+// fonts
+@mixin sentinel {
+    font-family: "Sentinel SSm A", "Sentinel SSm B";
+    font-style: normal;
+    font-weight: 400;
+}
+@mixin knockout-jr {
+    font-family: "Knockout 32 A", "Knockout 32 B";
+    font-style: normal;
+    font-weight: 400;
+}
+@mixin knockout {
+    font-family: "Knockout 47 A", "Knockout 47 B";
+    font-style: normal;
+    font-weight: 400;
+}
+
+// typography
+html, body {
+    @include knockout-jr;
+}
+h1 {
+    font-size: rem(24);
+    @include minpoint($min-hd) {
+        font-size: rem(32);
+    }
+    color: $blue;
+}
+h2 {
+    @include sentinel;
+    font-size: rem(18);
+    @include minpoint($min-hd) {
+        font-size: rem(22);
+    }
+    font-weight: 500;
+    color: $gray;
+}
+a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// general
+.center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.center-text {
+    width: 100%;
+    text-align: center;
+}
+.pad-top {
+    padding-top: px(getBaseline(4)) !important;
+    @include minpoint($min-hd) {
+        padding-top: px(getBaseline(8)) !important;
+    }
+}
+.pull-up {
+    margin-top: px(getBaseline(-32));
+}
+.middle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.max-width {
+    width: 100% !important;
+}

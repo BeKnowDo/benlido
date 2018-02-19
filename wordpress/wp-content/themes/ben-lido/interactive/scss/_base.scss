@@ -1,0 +1,177 @@
+// main: ../ui.scss
+
+@function px($num) {
+	@return ($num)+px;
+}
+// Convert pixels to root em
+@function rem($num) {
+	@return ($num/16)+rem;
+}
+
+// Convert pixels to percentage
+@function percent($num, $max-width) {
+	@return percentage($num/$max-width);
+}
+
+// @mixin breakpoint($size) {
+// 	@media screen and (max-width: rem($size)) {
+// 		@content;
+// 	}
+// }
+
+// Breakpoint: min-width
+@mixin minpoint($size) {
+	@media screen and (min-width: px($size)) {
+		@content;
+	}
+}
+// Breakpoint: max-width
+@mixin maxpoint($size) {
+	@media screen and (max-width: px($size)) {
+		@content;
+	}
+}
+
+// Define responsive breakpoint height
+@mixin breakpoint_h($size) {
+	@media only screen and (max-height: rem($size)) {
+		@content;
+	}
+}
+
+// Define responsive breakpoint and orientation
+@mixin breakpoint_w_o($size, $orientation: landscape) {
+	@media only screen and (max-width: rem($size)) and (orientation: $orientation) {
+		@content;
+	}
+}
+
+// Calculate Baseline (Primarily used for calculating "line-height" or "margin-bottom")
+@function getBaseline($num: 3, $multiplier: 6) {
+	@return $multiplier*$num;
+}
+
+// Calculate column width for responsive grid
+// @function columnWidth($max, $columns, $gutter) {
+// 	@return ($max - $gutter) / $columns;
+// }
+
+// // Define width of element
+// 	// amount = number of columns the element should span
+// 	// max-width = the maximum width of the primary container
+// 	// columns = the total number of columns (12 and 16 are pretty standard for desktop, but any number will work)
+// 	// !!-- EVERYTHING BELOW IS OPTIONAL --!!
+// 	// height = if you want to define a height (default: auto)
+// 	// margin = define your magins if you want (default: 0 top and bottom, and percentage based on gutter size)
+// 	// padding = define padding size(s)
+// @mixin column($amount, $max-width, $columns, $gutter, $height: auto, $margin: 0, $padding: 0) {
+// 	box-sizing: border-box;
+// 	width: 100%;
+// 	max-width: percentage((columnWidth($max-width, $columns, $gutter) * $amount) / $max-width);
+// 	height: $height;
+// 	margin: $margin;
+// 	padding: $padding;
+// }
+
+// // "Push" element based on number of columns specified using either "left" or "margin-left"
+// @function push($columns, $max-width, $column-total) {
+// 	@return $columns*columnWidth($max-width, $column-total) - ($pad-size*2);
+// }
+
+// Center div/element container (should be position: relative)
+@mixin centerContainer() {
+	margin: 0 auto;
+}
+
+// Animation snippit
+@mixin animate($focus: all, $duration: 0.5s, $function: ease, $delay: 0s) {
+	-webkit-transition: $focus $duration $function $delay;
+	-moz-transition: $focus $duration $function $delay;
+	-o-transition: $focus $duration $function $delay;
+	transition: $focus $duration $function $delay;
+}
+
+// Keyframes snippit
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+@mixin keyframe-animation($animate) {
+	-webkit-animation: $animate;
+	-moz-animation: $animate;
+	-ms-animation: $animate;
+	animation: $animate;
+}
+
+// General CSS "reset"
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+// remember to define focus styles
+:focus {
+	outline: 0;
+}
+
+body {
+	background-color: #eee;
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+//tables still need 'cellspacing="0"' in the markup
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+
+blockquote, q {
+	quotes: "" "";
+}
+
+a img {
+	border: 0;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
