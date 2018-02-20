@@ -14,3 +14,7 @@ if ($show_feature_cards == true) {
     get_template_part( 'template-parts/partials/home/feature','cards'); 
 }
 
+if ($show_bottom_section == true) {
+    get_template_part( 'template-parts/partials/home/bottom'); 
+}
+

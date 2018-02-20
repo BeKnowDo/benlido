@@ -16,12 +16,14 @@ function bl_child_theme_init()
     wp_style_add_data( 'parent-storefront-woocommerce-style', 'rtl', 'replace' );
 
     wp_register_style('bl-fonts', '//cloud.typography.com/7086216/6631592/css/fonts.css', array(), $version, 'all');
-    wp_register_style('bl-style', get_stylesheet_directory_uri() . '/css/style.css', array(), $version, 'all');
-    //wp_enqueue_script('bl-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.libs.js', array('jquery'),$version);
+    wp_register_style('bl-style-libs', get_stylesheet_directory_uri() . '/css/bl.libs.css', array(), $version, 'all');
+    wp_register_style('bl-style', get_stylesheet_directory_uri() . '/css/style.css', array('bl-style-libs','bl-fonts'), $version, 'all');
+    wp_enqueue_script('bl-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.libs.js', array('jquery'),$version);
     wp_enqueue_script('bl-no-uglify-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.main.js', array('jquery'),$version,true);
     wp_enqueue_script('bl-scripts', get_stylesheet_directory_uri() . '/js/bl.min.js', array('jquery'), $version);
     wp_enqueue_style('parent-storefront-style');
     wp_enqueue_style('parent-storefront-woocommerce-style');
+    wp_enqueue_style('bl-style-libs'); // Enqueue it!
     wp_enqueue_style('bl-fonts'); // Enqueue it!
     wp_enqueue_style('bl-style'); // Enqueue it!
 

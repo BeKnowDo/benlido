@@ -33,7 +33,10 @@ gulp.task('fonts', function(done) {
 
 gulp.task('styles-libs', function(done) {
     return gulp.src([
-                'node_modules/animate.css/animate.min.css'
+                'node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
+                'node_modules/owl.carousel/dist/assets/owl.theme.default.min.css',
+                'node_modules/animate.css/animate.min.css',
+                'node_modules/font-awesome/css/font-awesome.min.css'
             ])
             .on('error', done)
             .pipe($.postcss([
@@ -51,6 +54,7 @@ gulp.task('styles-libs', function(done) {
 
 gulp.task('scripts-libs', function(done) {
 	return gulp.src([
+            'node_modules/owl.carousel/dist/owl.carousel.min.js'
 		])
         .on('error', done)
         .pipe(uglify().on('error', done))

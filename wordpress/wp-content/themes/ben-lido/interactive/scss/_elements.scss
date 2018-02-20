@@ -110,21 +110,22 @@
         left: 0;
     }
 }
-.counter-dots {
+.counter-dots, .owl-dots {
     display: table;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 
-    .dot {
+    .dot, .owl-dot {
         display: block;
         position: relative;
         float: left;
         width: px(13);
         height: px(13);
-        margin-right: px(10);
+        margin: 0 5px !important;
         border: px(1) solid $gray;
         border-radius: px(13/2);
+        span {
+            display:none !important;
+        }
         @include animate(all, .25s, ease-in-out);
 
         &:last-child {

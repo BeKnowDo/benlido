@@ -3,8 +3,49 @@ $images_path: '/wp-content/themes/ben-lido/images';
 $fonts_path: '/wp-content/themes/ben-lido/fonts';
 
 // colors
-$white: #ffffff;
-$black: #1a1a1a;
 $lighter-gray: #f5f5f5;
-$light-gray: #999999;
 $red: #cc0000;
+
+// color palette
+$black: #000000;
+$white: #ffffff;
+$light-gray: #F7F7F7;
+$light-gray2: #E4E4E4;
+$gray: #999999;
+$dark-gray: #979797;
+$blue: #393D5B;
+$seafoam: #BACDD4;
+$brown: #C08059;
+$brown-hover: #D58F64;
+$brown2: #BC804E;
+$light-brown: #D4C1BA;
+
+// hd
+$max-hd: 1224;
+$min-hd: 1025;
+$cols-hd: 12;
+$gutters-hd: 32;
+$outer-hd: 40;
+
+// desktop
+$max-desk: 1024;
+$min-desk: 861;
+$cols-desk: 12;
+$gutters-desk: 20;
+$outer-desk: 40;
+
+// tablet
+$max-tab: 860;
+$min-tab: 661;
+$cols-tab: 12;
+$gutters-tab: 15;
+$outer-tab: 30;
+
+// mobile
+$max-mobile: 660;
+$min-mobile: 320;
+$cols-mobile: 4;
+$gutters-mobile: 32;
+$outer-mobile: 16;
+
+
