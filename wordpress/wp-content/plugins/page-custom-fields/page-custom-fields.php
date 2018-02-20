@@ -15,3 +15,4 @@ include_once ( plugin_dir_path(__FILE__) . '/acf-travel-kit.php');
 //include_once ( plugin_dir_path(__FILE__) . '/acf-coming-soon.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-product.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-user.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-home.php');
