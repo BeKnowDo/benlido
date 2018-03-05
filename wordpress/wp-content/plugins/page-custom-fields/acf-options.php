@@ -78,6 +78,45 @@ if( function_exists('acf_add_local_field_group') ):
                 'append' => '',
                 'maxlength' => '',
             ),
+            array(
+                'key' => 'field_5a9dbe4ff0bc3',
+                'label' => 'Page Sections',
+                'name' => '',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placement' => 'top',
+                'endpoint' => 0,
+            ),
+            array(
+                'key' => 'field_5a9dbe5ef0bc4',
+                'label' => 'Kitting Page',
+                'name' => 'kitting_page',
+                'type' => 'post_object',
+                'instructions' => 'Select the page that shows the kitting process of selecting products for the kit.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'page',
+                ),
+                'taxonomy' => array(
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+                'return_format' => 'object',
+                'ui' => 1,
+            ),
         ),
         'location' => array(
             array(

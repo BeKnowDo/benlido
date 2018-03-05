@@ -11,8 +11,10 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 include_once ( plugin_dir_path(__FILE__) . '/acf-options.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-page.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-travel-kit.php');
 //include_once ( plugin_dir_path(__FILE__) . '/acf-coming-soon.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-product.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-user.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-home.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-bags.php');
