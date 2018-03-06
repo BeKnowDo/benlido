@@ -37,9 +37,28 @@ class Red_Fixer {
 				'message' => $valid_monitor === false ? __( 'Post monitor group is invalid', 'redirection' ) : __( 'Post monitor group is valid' ),
 				'status' => $valid_monitor === false ? 'problem' : 'good',
 			),
+			$this->get_http_settings(),
 		);
 
 		return $result;
+	}
+
+	private function get_http_settings() {
+		$site = parse_url( get_site_url(), PHP_URL_SCHEME );
+		$home = parse_url( get_home_url(), PHP_URL_SCHEME );
+
+		$message = __( 'Site and home are consistent', 'redirection' );
+		if ( $site !== $home ) {
+			$message = __( 'Site and home URL are inconsistent - please correct from your General settings', 'redirection' );
+			$message .= ' - '.get_site_url().' !== '.get_home_url();
+		}
+
+		return array(
+			'name' => __( 'Site and home protocol', 'redirection' ),
+			'id' => 'redirect_url',
+			'message' => $message,
+			'status' => $site === $home ? 'good' : 'problem',
+		);
 	}
 
 	private function get_rest_route_status( $status ) {
@@ -50,23 +69,16 @@ class Red_Fixer {
 		);
 
 		if ( $status['status'] === 'good' ) {
-			$rest_api = red_get_rest_api();
+			$response = $this->request_from_api( red_get_rest_api() );
 
 			$result['message'] = __( 'Redirection does not appear in your REST API routes. Have you disabled it with a plugin?', 'redirection' );
 
-			if ( strpos( $rest_api, 'admin-ajax.php' ) !== false ) {
-				$result['message'] = __( 'Redirection routes are working', 'redirection' );
-				$result['status'] = 'good';
-			} else {
-				$response = wp_remote_get( $rest_api, array( 'cookies' => $_COOKIE ) );
+			if ( $response && is_array( $response ) && isset( $response['body'] ) ) {
+				$json = @json_decode( $response['body'], true );
 
-				if ( $response && is_array( $response ) && isset( $response['body'] ) ) {
-					$json = @json_decode( $response['body'], true );
-
-					if ( isset( $json['routes']['/redirection/v1'] ) ) {
-						$result['message'] = __( 'Redirection routes are working', 'redirection' );
-						$result['status'] = 'good';
-					}
+				if ( isset( $json['routes']['/redirection/v1'] ) ) {
+					$result['message'] = __( 'Redirection routes are working', 'redirection' );
+					$result['status'] = 'good';
 				}
 			}
 		} else {
@@ -129,7 +141,7 @@ class Red_Fixer {
 
 			if ( is_wp_error( $result ) ) {
 				$rest_api = admin_url( 'admin-ajax.php' );
-				$response = wp_remote_get( $rest_api );
+				$response = $this->request_from_api( $rest_api );
 
 				if ( is_array( $response ) && isset( $response['body'] ) && $response['body'] === '0' ) {
 					red_set_options( array( 'rest_api' => 2 ) );
@@ -150,8 +162,29 @@ class Red_Fixer {
 		return true;
 	}
 
+	private function normalize_url( $url ) {
+		if ( substr( $url, 0, 4 ) !== 'http' ) {
+			$parts = parse_url( get_site_url() );
+			$url = ( isset( $parts['scheme'] ) ? $parts['scheme'] : 'http' ).'://'.$parts['host'].$url;
+		}
+
+		return $url;
+	}
+
+	private function request_from_api( $url ) {
+		$url = $this->normalize_url( $url.'redirection/v1/' );
+		$url = add_query_arg( '_wpnonce', wp_create_nonce( 'wp_rest' ), $url );
+		$options = array( 'cookies' => $_COOKIE, 'redirection' => 0 );
+
+		if ( Redirection_Request::get_user_agent() ) {
+			$options['user-agent'] = Redirection_Request::get_user_agent();
+		}
+
+		return wp_remote_get( $url, $options );
+	}
+
 	private function check_api( $url ) {
-		$response = wp_remote_get( $url, array( 'cookies' => $_COOKIE ) );
+		$response = $this->request_from_api( $url );
 		$http_code = wp_remote_retrieve_response_code( $response );
 
 		$specific = 'REST API returns an error code';
@@ -164,7 +197,7 @@ class Red_Fixer {
 				$specific = 'REST API returned invalid JSON data. This is probably an error page of some kind and indicates it has been disabled';
 			}
 		} elseif ( $http_code === 301 || $http_code === 302 ) {
-			$specific = 'REST API is being redirected. This indicates it has been disabled.';
+			$specific = 'REST API is being redirected. This indicates it has been disabled or you have a trailing slash redirect.';
 		} elseif ( $http_code === 404 ) {
 			$specific = 'REST API is returning 404 error. This indicates it has been disabled.';
 		}

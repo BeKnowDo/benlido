@@ -1292,67 +1292,15 @@ if( ! function_exists( 'pys_woocommerce_events' ) ) {
 			if ( pys_get_option( 'woo', 'variation_id' ) != 'main' && isset( $_REQUEST['variation_id'] ) ) {
 				$product_id = $_REQUEST['variation_id'];
 			} else {
-                $product_id = isset( $_REQUEST['add-to-cart'] ) ? $_REQUEST['add-to-cart'] : null;
+                $product_id = isset( $_REQUEST['add-to-cart'] ) ? (int) $_REQUEST['add-to-cart'] : null;
             }
 
-			$params = pys_get_woo_ajax_addtocart_params( $product_id );
+            $qty = isset( $_REQUEST['quantity'] ) ? (int) $_REQUEST['quantity'] : 1;
+			$params = pys_get_woo_product_addtocart_params( $product_id, $qty );
 
 			pys_add_event( 'AddToCart', $params );
 
 		}
-
-	}
-
-}
-
-if( ! function_exists( 'pys_output_woo_ajax_events_code' ) ) {
-
-	function pys_output_woo_ajax_events_code() {
-		global $pys_woo_ajax_events;
-
-		if( empty( $pys_woo_ajax_events ) ) {
-			return;
-		}
-
-		$events = array();
-
-		foreach ( $pys_woo_ajax_events as $id => $event ) {
-
-			$params = pys_clean_system_event_params( $event['params'] );
-
-			// sanitize params
-			$sanitized = array();
-			foreach ( $params as $name => $value ) {
-
-				// skip empty but not zero values
-				if ( empty( $value ) && ! is_numeric( $value ) ) {
-					continue;
-				}
-
-				$key               = esc_js( $name );
-				$sanitized[ $key ] = $value;
-
-			}
-
-			$name = $event['name'];
-
-			$events[ $id ] = array(
-				'type'   => pys_is_standard_event( $name ) ? 'track' : 'trackCustom',
-				'name'   => $name,
-				'params' => $sanitized
-			);
-
-		}
-
-		?>
-
-	<script type="text/javascript">
-	/* <![CDATA[ */
-	var pys_woo_ajax_events = <?php echo json_encode( $events ); ?>;
-	/* ]]> */
-	</script>
-
-		<?php
 
 	}
 

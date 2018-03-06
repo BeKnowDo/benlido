@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "be55c4847670a217ca4aea73790da080",
+    "content-hash": "5b9a03a863e267866b7c5f4c8d1e9c04",
     "packages": [
         {
             "name": "composer/installers",
@@ -189,6 +189,37 @@
             "time": "2018-01-02T14:38:03+00:00"
         },
         {
+            "name": "up-plugins/woocommerce-cost-of-goods",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods.git",
+                "reference": "f9a88ba6151c5036889e123141f657a64d81dedc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods/get/f9a88ba6151c5036889e123141f657a64d81dedc.zip",
+                "reference": "f9a88ba6151c5036889e123141f657a64d81dedc",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Cost of Goods Sold",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods/src/f9a88ba6151c5036889e123141f657a64d81dedc/?at=master"
+            },
+            "time": "2017-05-15T16:41:08+00:00"
+        },
+        {
             "name": "up-plugins/woocommerce-table-rate-shipping",
             "version": "dev-master",
             "source": {
@@ -251,15 +282,15 @@
         },
         {
             "name": "wpackagist-plugin/akismet",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/4.0.2"
+                "reference": "tags/4.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.4.0.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/akismet.4.0.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -331,15 +362,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "6.2.7",
+            "version": "7.0.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/6.2.7"
+                "reference": "tags/7.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.6.2.7.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -411,15 +442,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "5.7.1",
+            "version": "5.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/5.7.1"
+                "reference": "tags/5.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.5.7.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.5.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -431,15 +462,15 @@
         },
         {
             "name": "wpackagist-plugin/mailchimp-for-wp",
-            "version": "4.1.14",
+            "version": "4.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/mailchimp-for-wp/",
-                "reference": "tags/4.1.14"
+                "reference": "tags/4.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.1.14.zip",
+                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -471,15 +502,15 @@
         },
         {
             "name": "wpackagist-plugin/pixelyoursite",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pixelyoursite/",
-                "reference": "tags/5.1.0"
+                "reference": "tags/5.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.1.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.2.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -511,15 +542,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.1",
+            "version": "3.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.1"
+                "reference": "tags/3.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -591,15 +622,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce",
-            "version": "3.2.6",
+            "version": "3.3.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.2.6"
+                "reference": "tags/3.3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.2.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.3.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -631,15 +662,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "6.2",
+            "version": "7.0.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/6.2"
+                "reference": "tags/7.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.6.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.0.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -676,6 +707,7 @@
     "stability-flags": {
         "up-plugins/advanced-custom-fields-pro": 20,
         "up-plugins/woocommerce-brands": 20,
+        "up-plugins/woocommerce-cost-of-goods": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
         "up-plugins/woothemes-updater": 20
     },

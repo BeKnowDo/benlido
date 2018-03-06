@@ -4,8 +4,6 @@ jQuery(document).ready(function( $ ) {
         return;
     }
 
-    var options = pys_fb_pixel_options; // variable shorthand
-
     // load FB pixel
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -13,97 +11,62 @@ jQuery(document).ready(function( $ ) {
         t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
         document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    /**
-     * Setup Events Handlers
-     */
-    !function setupEventHandlers() {
+    var fbAddToCart = function ($button) {
 
-        /**
-         * WooCommerce Events
-         */
-        if (options.hasOwnProperty('woo')) {
+        var data = {
+            action: 'pys_woo_addtocart_params',
+            product_id: undefined,
+            variation_id: undefined,
+            quantity: 1
+        };
 
-            // WooCommerce Single Product AJAX AddToCart handler
-            if (options.woo.is_product && options.woo.add_to_cart_enabled ) {
+        $.each($button.data(), function (key, value) {
+            data[key] = value;
+        });
 
-                $(document).on('added_to_cart', function () {
+        var $variations_form = $button.closest('form.variations_form.cart'),
+            $single_form = $button.closest('form.cart');
 
-                    var params = {};
-
-                    if (options.woo.single_product.type === 'variable') {
-
-                        var $form = $('form.variations_form.cart'),
-                            variation_id = false,
-                            qty;
-
-                        if ($form.length === 1) {
-                            variation_id = $form.find('input[name="variation_id"]').val();
-                        }
-
-                        if (false === variation_id || false === options.woo.single_product.add_to_cart_params.hasOwnProperty(variation_id)) {
-                            console.error('PYS PRO: product variation ID not found in available product variants.');
-                            return;
-                        }
-
-                        params = clone(options.woo.single_product.add_to_cart_params[variation_id], {});
-                        qty = parseInt($form.find('input[name="quantity"]').val());
-                        params.value = params.value * qty;
-
-                    } else {
-                        params = clone(options.woo.single_product.add_to_cart_params, {});
-                    }
-
-                    fbq('track', 'AddToCart', params);
-
-                });
-
-            }
-
-            // WooCommerce Shop and Product Category AJAX AddToCart handler
-            if ( ( options.woo.is_shop || options.woo.is_cat ) && options.woo.add_to_cart_enabled ) {
-
-                $(document).on('adding_to_cart', function ( e, $button, data ) {
-
-                    data.action = 'pys_fb_ajax';
-                    data.sub_action = 'get_woo_product_addtocart_params';
-
-                    $.get( options.ajax_url, data, function( response ) {
-
-                        if ( ! response ) {
-                            return;
-                        }
-
-                        if ( response.error ) {
-                            return;
-                        }
-
-                        fbq('track', 'AddToCart', response.data);
-
-                    });
-
-                });
-
-            }
-
+        if ($variations_form.length === 1) {
+            data.variation_id = parseInt($variations_form.find('input[name="variation_id"]').val());
+            data.quantity = parseInt($variations_form.find('input[name="quantity"]').val());
+        } else if ($single_form.length === 1) {
+            data.product_id = parseInt($single_form.find('input[name="add-to-cart"]').val());
+            data.quantity = parseInt($single_form.find('input[name="quantity"]').val());
         }
 
-    }();
+        $.ajax({
+            url: pys_fb_pixel_options.ajax_url,
+            data: data,
+            dataType: 'json',
+            async: false,
+            success: function (response) {
+
+                if (!response || response.error) {
+                    return;
+                }
+
+                fbq('track', 'AddToCart', response.data);
+
+            }
+        });
+
+    };
+
+    /**
+     * WooCommerce AddToCart on button
+     */
+    if (pys_fb_pixel_options.woo.addtocart_enabled && typeof wc_add_to_cart_params !== 'undefined'
+        && wc_add_to_cart_params.cart_redirect_after_add !== 'yes') {
+
+        $(document.body).on('added_to_cart', function (e, fragments, cart_hash, $button) {
+            fbAddToCart($button);
+        });
+
+    }
 
     regularEvents();
     customCodeEvents();
-
-    // AddToCart button
-    $(".ajax_add_to_cart").click(function(e){
-
-        var attr = $(this).attr('data-pys-event-id');
-
-        if( typeof attr == 'undefined' || typeof pys_woo_ajax_events == 'undefined' ) {
-            return;
-        }
-
-        evaluateEventByID( attr.toString(), pys_woo_ajax_events );
-
-    });
 
     // EDD AddToCart
     $('.edd-add-to-cart').click(function () {
@@ -209,12 +172,5 @@ jQuery(document).ready(function( $ ) {
         }
 
     }
-
-    var clone = function (src, dest) {
-        for (var key in src) {
-            dest[key] = src[key];
-        }
-        return dest;
-    };
 
 });

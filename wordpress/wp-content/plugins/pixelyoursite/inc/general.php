@@ -182,13 +182,7 @@ function pys_free_init() {
     add_action( 'wp_head', 'pys_output_custom_events_code', 4 );
     
     add_action( 'wp_footer', 'pys_output_noscript_code', 10 );
-    add_action( 'wp_footer', 'pys_output_woo_ajax_events_code', 10 );
     add_action( 'wp_footer', 'pys_output_edd_ajax_events_code', 10 );
-    
-    // woocommerce shop page add_to_cart
-    if ( pys_get_option( 'woo', 'enabled' ) && pys_get_option( 'woo', 'on_add_to_cart_btn' ) ) {
-        add_filter( 'woocommerce_loop_add_to_cart_link', 'pys_add_code_to_woo_cart_link', 10, 2 );
-    }
     
     ## add pixel code to EDD add_to_cart buttons
     if ( pys_get_option( 'edd', 'enabled' ) && pys_get_option( 'edd', 'on_add_to_cart_btn', false ) ) {

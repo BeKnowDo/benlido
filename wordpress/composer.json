@@ -10,6 +10,10 @@
         "type":"vcs",
         "url":"https://bitbucket.org/upcomposer/woocommerce-brands.git"
     },
+    {
+        "type":"vcs",
+        "url":"https://bitbucket.org/upcomposer/woocommerce-cost-of-goods.git"
+    },
 	{
             "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping.git"
@@ -26,6 +30,7 @@
     "require": {
         "up-plugins/advanced-custom-fields-pro":"dev-master",
         "up-plugins/woocommerce-brands":"dev-master",
+        "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",
         "wpackagist-plugin/akismet":"*",

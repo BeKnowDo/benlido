@@ -4,7 +4,7 @@ Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pi
 Requires at least: 3.0.1
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.1.0
+Stable tag: 5.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -299,6 +299,14 @@ We have an article about how to create Custom Reports:
 9. These are the normal events on a WooCommerce thank you page: the Purchase event has content_ids and content_types (required by Dynamic Ads). The reported error for the GeneralEvent can be ignored (as explained in the help pages)
 
 == Changelog ==
+
+= PixelYourSite 5.2.0 =
+
+* Fixing a possible error with the add to cart button when WooCommerce and WPML are installed on some hostings (we were able to replicate it on SiteGround servers only)
+
+* Enabling the AddToCart event on the Cart page when WooCommerce "Redirect to the cart page after successful addition" option is active. This will ensure that the events are captured.
+
+* Other small improvements to the code related to the AddToCart event
 
 = PixelYourSite 5.1.0 =
 

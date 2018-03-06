@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-cost-of-goods",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Cost of Goods Sold",
+    "version":"2.3.2",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-cost-of-goods.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

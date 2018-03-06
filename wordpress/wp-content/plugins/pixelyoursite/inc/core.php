@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-function pys_get_woo_product_price_to_display( $product_id ) {
+function pys_get_woo_product_price_to_display( $product_id, $qty = 1 ) {
     
     if ( ! $product = wc_get_product( $product_id ) ) {
         return 0;
@@ -12,21 +12,21 @@ function pys_get_woo_product_price_to_display( $product_id ) {
     
     if ( pys_is_wc_version_gte( '2.7' ) ) {
         
-        return wc_get_price_to_display( $product );
+        return wc_get_price_to_display( $product, array( 'qty' => $qty ) );
         
     } else {
         
         return 'incl' === get_option( 'woocommerce_tax_display_shop' )
-            ? $product->get_price_including_tax()
-            : $product->get_price_excluding_tax();
+            ? $product->get_price_including_tax( $qty )
+            : $product->get_price_excluding_tax( $qty );
         
     }
     
 }
 
-if ( ! function_exists( 'pys_get_woo_ajax_addtocart_params' ) ) {
+if ( ! function_exists( 'pys_get_woo_product_addtocart_params' ) ) {
 	
-	function pys_get_woo_ajax_addtocart_params( $product_id ) {
+	function pys_get_woo_product_addtocart_params( $product_id, $qty = 1 ) {
 		
 	    $content_id = pys_get_product_content_id( $product_id );
 	    
@@ -44,7 +44,7 @@ if ( ! function_exists( 'pys_get_woo_ajax_addtocart_params' ) ) {
 					break;
 
 				case 'price':
-					$value = pys_get_product_price( $product_id );
+					$value = pys_get_product_price( $product_id, $qty );
 					break;
 
 				default:
@@ -60,7 +60,7 @@ if ( ! function_exists( 'pys_get_woo_ajax_addtocart_params' ) ) {
         $params['contents'] = json_encode( array(
             array(
                 'id'         => (string) reset( $content_id ),
-                'quantity'   => 1,
+                'quantity'   => $qty,
                 'item_price' => pys_get_woo_product_price_to_display( $product_id ),
             )
         ) );
@@ -185,7 +185,7 @@ if ( ! function_exists( 'pys_get_woo_code' ) ) {
         }
         
         // AddToCart Cart Page Event
-        if ( pys_get_option( 'woo', 'on_add_to_cart_page' ) && is_cart() ) {
+        if ( is_cart() && ( pys_get_option( 'woo', 'on_add_to_cart_page' ) || get_option( 'woocommerce_cart_redirect_after_add' ) === 'yes' ) ) {
             
             $ids = array();  // cart items ids or sku
             $contents = array();
@@ -391,92 +391,6 @@ if ( ! function_exists( 'pys_get_woo_code' ) ) {
 	
 }
 
-if ( ! function_exists( 'pys_add_code_to_woo_cart_link' ) ) {
-	
-	/**
-	 * Adds data-pixelcode attribute to "add to cart" buttons in the WooCommerce loop.
-	 *
-	 * @param string     $tag
-	 * @param WC_Product $product
-	 *
-	 * @return string
-	 */
-	function pys_add_code_to_woo_cart_link( $tag, $product ) {
-		global $pys_woo_ajax_events;
-		
-		// do not add code if AJAX is disabled. event will be processed by another function
-		if ( 'yes' !== get_option( 'woocommerce_enable_ajax_add_to_cart' ) ) {
-			return $tag;
-		}
-  
-		if ( false == pys_woo_product_is_type( $product, 'simple' ) ) {
-			return $tag;
-		}
-		
-		/**
-		 * @since 5.0.1
-		 */
-		if ( pys_is_wc_version_gte( '2.6' ) ) {
-			$product_id = $product->get_id();
-		} else {
-			$product_id = $product->post->ID;
-		}
-		
-		$content_id = pys_get_product_content_id( $product_id );
-		
-		// common params
-		$params                 = array();
-		$params['content_type'] = 'product';
-		$params['content_ids']  = json_encode( $content_id );
-		
-		// currency, value
-		if ( pys_get_option( 'woo', 'enable_add_to_cart_value' ) ) {
-			
-			$option = pys_get_option( 'woo', 'view_content_value_option' );
-			switch ( $option ) {
-				case 'global':
-					$value = pys_get_option( 'woo', 'view_content_global_value' );
-					break;
-				
-				case 'price':
-					$value = pys_get_product_price( $product_id );
-					break;
-				
-				default:
-					$value = null;
-				
-			}
-			
-			$params['value']    = $value;
-			$params['currency'] = get_woocommerce_currency();
-			
-		}
-        
-        // contents
-        $params['contents'] = json_encode( array(
-            array(
-                'id'         => (string) reset( $content_id ),
-                'quantity'   => 1,
-                'item_price' => pys_get_woo_product_price_to_display( $product_id ),
-            )
-        ) );
-        
-        $params = apply_filters( 'pys_event_params', $params, 'AddToCart' );
-		
-        $event_id = 'pys_' . md5( serialize( $params ) );
-		$tag = pys_insert_attribute( 'data-pys-event-id', $event_id, $tag, true, 'any' );
-		
-		$pys_woo_ajax_events[ $event_id ] = array(
-			'name'   => 'AddToCart',
-			'params' => $params
-		);
-		
-		return $tag;
-		
-	}
-	
-}
-
 if ( ! function_exists( 'pys_get_additional_matching_code' ) ) {
 	
 	/**
@@ -555,7 +469,7 @@ if ( ! function_exists( 'pys_get_product_price' ) ) {
 	 *
 	 * @return null|int Product price
 	 */
-	function pys_get_product_price( $product_id ) {
+	function pys_get_product_price( $product_id, $qty = 1 ) {
 		
 		$product = wc_get_product( $product_id );
 
@@ -566,17 +480,17 @@ if ( ! function_exists( 'pys_get_product_price' ) ) {
 		if ( $product->is_taxable() ) {
 
 			if ( pys_is_wc_version_gte( '3.0' ) ) {
-				$value = wc_get_price_including_tax( $product, array( 'price' => $product->get_price() ) );
+				$value = wc_get_price_including_tax( $product, array( 'price' => $product->get_price(), 'qty' => $qty ) );
 			} else {
-				$value = $product->get_price_including_tax( 1, $product->get_price() );
+				$value = $product->get_price_including_tax( $qty, $product->get_price() );
 			}
 			
 		} else {
    
 			if ( pys_is_wc_version_gte( '3.0' ) ) {
-				$value = wc_get_price_excluding_tax( $product, array( 'price' => $product->get_price() ) );
+				$value = wc_get_price_excluding_tax( $product, array( 'price' => $product->get_price(), 'qty' => $qty ) );
 			} else {
-				$value = $product->get_price_excluding_tax( 1, $product->get_price() );
+				$value = $product->get_price_excluding_tax( $qty, $product->get_price() );
 			}
 			
 		}
@@ -613,87 +527,33 @@ if ( ! function_exists( 'pys_get_order_total' ) ) {
 }
 
 function pys_pixel_options() {
-    global $post;
-    
-    $options = array(
-        'woo' => array(),
-    );
-    
-    if ( pys_get_option( 'woo', 'enabled' ) && pys_is_woocommerce_active() ) {
 
-        $options['woo']['is_shop'] = is_shop();
-        $options['woo']['is_cat'] = is_product_category();
-        $options['woo']['is_product'] = is_product();
-        $options['woo']['add_to_cart_enabled'] = (bool) pys_get_option( 'woo', 'on_add_to_cart_btn' );
-    
-        if ( is_product() ) {
-    
-            $product = wc_get_product( $post );
-    
-            if ( pys_woo_product_is_type( $product, 'simple' ) ) {
-                $options['woo']['single_product']['type']               = 'simple';
-                $options['woo']['single_product']['add_to_cart_params'] = pys_get_woo_ajax_addtocart_params(
-                    $post->ID );
-            } elseif ( pys_woo_product_is_type( $product, 'variable' ) ) {
-                $options['woo']['single_product']['type']               = 'variable';
-                $options['woo']['single_product']['add_to_cart_params'] = pys_woo_product_variations_add_to_cart_params( $product );
-            }
-            
-        }
-        
-    }
-
-    $options['ajax_url'] = admin_url( 'admin-ajax.php' );
+	$options['ajax_url'] = admin_url( 'admin-ajax.php' );
+    $options['woo']['addtocart_enabled'] = pys_is_woocommerce_active() && pys_get_option( 'woo', 'enabled' )
+                                                 && (bool) pys_get_option( 'woo', 'on_add_to_cart_btn' );
     
     return $options;
     
 }
 
-function pys_woo_product_variations_add_to_cart_params( $product ) {
+add_action( 'wp_ajax_pys_woo_addtocart_params', 'pys_woo_addtocart_params_ajax_handler' );
+add_action( 'wp_ajax_nopriv_pys_woo_addtocart_params', 'pys_woo_addtocart_params_ajax_handler' );
 
-    $params  = array();
-    $product = wc_get_product( $product );
+function pys_woo_addtocart_params_ajax_handler() {
 
-    if ( false == $product || false == pys_woo_product_is_type( $product, 'variable' ) ) {
-        return array();
+    if ( empty( $_GET['product_id'] ) ) {
+        wp_send_json_error();
     }
 
-    foreach ( $product->get_available_variations() as $variation ) {
-        $params[ $variation['variation_id'] ] = pys_get_woo_ajax_addtocart_params( $variation['variation_id'] );
-    }
+	$qty = empty( $_GET['quantity'] ) ? 1 : (int) $_GET['quantity'];
 
+	if ( pys_get_option( 'woo', 'variation_id' ) != 'main' && isset( $_REQUEST['variation_id'] ) ) {
+		$product_id = (int) $_GET['variation_id'];
+	} else {
+		$product_id = (int) $_GET['product_id'];
+	}
 
-    return $params;
-
-}
-
-function pys_woo_product_is_type( $product, $type ) {
-    
-    if ( pys_is_wc_version_gte( '2.7' ) ) {
-        return $type == $product->is_type( $type );
-    } else {
-        return $product->product_type == $type;
-    }
-    
-}
-
-// front-end ajax handler
-add_action( 'wp_ajax_pys_fb_ajax', 'pys_ajax_handler' );
-add_action( 'wp_ajax_nopriv_pys_fb_ajax', 'pys_ajax_handler' );
-
-function pys_ajax_handler() {
-
-    if ( empty( $_GET['sub_action'] ) ) {
-        wp_die();
-    }
-
-    switch ( $_GET['sub_action'] ) {
-        case 'get_woo_product_addtocart_params':
-            pys_get_woo_ajax_addtocart_params( absint( $_GET['product_id'] ) );
-            break;
-
-        default:
-            wp_die( 'Unknown sub action.' );
-    }
+	$params = pys_get_woo_product_addtocart_params( $product_id, $qty );
+	wp_send_json_success( $params );
 
 }
