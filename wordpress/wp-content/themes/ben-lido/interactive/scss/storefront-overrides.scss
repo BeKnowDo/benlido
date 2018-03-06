@@ -4,3 +4,8 @@
 .site-footer {
     background-color: $white;
 }
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message, .woocommerce-noreviews, p.no-comments {
+    background-color: $gray;
+    margin-bottom:0;
+}

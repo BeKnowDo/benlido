@@ -18,3 +18,5 @@ include_once ( plugin_dir_path(__FILE__) . '/acf-product.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-user.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-home.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-bags.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-kitting.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-frequency.php');

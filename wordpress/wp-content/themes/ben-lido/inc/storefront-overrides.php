@@ -5,8 +5,14 @@ function bl_storefront_overrides() {
     add_action('storefront_before_header','bl_storefront_before_header',10); // adding custom header cover
     add_action('storefront_header','bl_storefront_burger',10); // adding menu burger
 	add_action('storefront_header','bl_storefront_search_button',10); // adding search button
+	
 	add_action('storefront_before_content','storefront_primary_navigation',5);
 	add_action('storefront_before_content','storefront_product_search',6);
+	if (is_woocommerce() || is_cart() || is_checkout()) {
+		add_action('storefront_before_content','bl_storefront_main_content_wrapper_start',10);
+		add_action('storefront_before_footer','bl_storefront_main_content_wrapper_end',99);
+	}
+
 
 	add_action('storefront_footer','bl_footer_menus',10);
 
@@ -19,8 +25,11 @@ function bl_storefront_overrides() {
 
 	remove_action('storefront_footer','storefront_footer_widgets',10);
 
-}
 
+
+}
+// for adding frequency to session
+add_action( 'wp_loaded', 'bl_add_frequency_to_session', 100);
 add_action( 'wp', 'bl_storefront_overrides' );
 
 
@@ -214,6 +223,13 @@ function bl_storefront_search_button() {
     echo '<div id="search-button"><img src="' . get_stylesheet_directory_uri() . '/assets/images/icon-search.svg" alt="search toggle"></div>';
 }
 
+function bl_storefront_main_content_wrapper_start() {
+	echo '<div class="grid-container">';
+}
+function bl_storefront_main_content_wrapper_end() {
+	echo '</div>';
+}
+
 function bl_footer_menus() {
 	?>
 	<div id="link-container" class="column hd-10 no-margin-right">
@@ -259,4 +275,19 @@ function bl_footer_menus() {
 	</div>
 	<?php
 }
+
+if (!function_exists('bl_add_frequency_to_session')) {
+	function bl_add_frequency_to_session() {
+		if (isset($_POST['frequency'])) {
+			$frequency = intval($_POST['frequency']);
+			if( function_exists('WC')) {
+				WC()->session->set( 'frequency', $frequency);
+				global $woocommerce;
+				$cart_url = $woocommerce->cart->get_cart_url();
+				wp_redirect($cart_url);
+			}
+		}
+	 }
+}
+
 
