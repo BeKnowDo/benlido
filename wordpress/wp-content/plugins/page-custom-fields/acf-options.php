@@ -140,6 +140,29 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'object',
                 'ui' => 1,
             ),
+            array(
+                'key' => 'field_5ab14b33f44a2',
+                'label' => 'Category Page',
+                'name' => 'category_page',
+                'type' => 'post_object',
+                'instructions' => 'The page that displays the Kitting "Edit" category',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'page',
+                ),
+                'taxonomy' => array(
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+                'return_format' => 'object',
+                'ui' => 1,
+            ),
         ),
         'location' => array(
             array(

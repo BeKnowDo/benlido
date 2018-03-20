@@ -135,6 +135,28 @@
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
+            },
+            {
+                "key": "field_5ab14b33f44a2",
+                "label": "Category Page",
+                "name": "category_page",
+                "type": "post_object",
+                "instructions": "The page that displays the Kitting \"Edit\" category",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
             }
         ],
         "location": [

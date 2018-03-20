@@ -72,3 +72,18 @@ function bl_list_kits() {
 
 	);
 }
+
+function bl_override_category_default($cat_id,$product_id) {
+	$session = array();
+	$session = WC()->session->get( 'bl_kitting_overrides' );
+	if (empty($session)) {
+		$session = array();
+	}
+	$session[$cat_id] = $product_id;
+	WC()->session->set('bl_kitting_overrides' , $session );
+}
+
+function bl_get_category_overrides() {
+	$session = WC()->session->get( 'bl_kitting_overrides' );
+	return $session;
+}

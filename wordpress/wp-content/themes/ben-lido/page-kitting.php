@@ -30,6 +30,17 @@
             wp_redirect($delivery_frequency_page);
         }
     }
+    if (isset($_REQUEST['cat']) && isset($_REQUEST['prod'])) {
+        // overriding featured product for this category
+        if (function_exists('bl_override_category_default')) {
+            $cat_id = $_REQUEST['cat'];
+            $prod_id = $_REQUEST['prod'];
+            if (!empty($cat_id) && is_numeric($cat_id) && !empty($prod_id) && is_numeric($prod_id)) {
+                bl_override_category_default($cat_id,$prod_id);
+            }
+            
+        }
+    }
     //print_r ($selected_products);
 
  // removing the add to cart message

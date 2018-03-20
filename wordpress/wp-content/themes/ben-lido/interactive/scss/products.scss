@@ -1,0 +1,18 @@
+.category-items {
+    .item {
+        .item-details {
+            display:table;
+            height: 100%;
+            .item-image {
+                display:table-row;
+            }
+            .item-info {
+                display:table-row;
+            }
+            .item-button {
+                display:table-row;
+                height: 100%;
+            }
+        }
+    }
+}
