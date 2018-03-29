@@ -47,7 +47,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		'disable-attachment'           => true,
 
 		'breadcrumbs-404crumb'         => '', // Text field.
-		'breadcrumbs-blog-remove'      => false,
+		'breadcrumbs-display-blog-page' => true,
 		'breadcrumbs-boldlast'         => false,
 		'breadcrumbs-archiveprefix'    => '', // Text field.
 		'breadcrumbs-enable'           => false,
@@ -395,7 +395,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				case 'rssbefore':
 				case 'rssafter':
 					if ( isset( $dirty[ $key ] ) ) {
-						$clean[ $key ] = WPSEO_Utils::sanitize_text_field( $dirty[ $key ] );
+						$clean[ $key ] = wp_kses_post( $dirty[ $key ] );
 					}
 					break;
 
@@ -528,7 +528,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				 *  'display-metabox-pt-'. $pt->name
 				 *  'display-metabox-tax-'
 				 *  'display-metabox-tax-' . $tax->name
-				 *  'breadcrumbs-blog-remove'
+				 *  'breadcrumbs-display-blog-page'
 				 *  'breadcrumbs-boldlast'
 				 *  'breadcrumbs-enable'
 				 *  'stripcategorybase'

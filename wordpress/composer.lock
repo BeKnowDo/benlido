@@ -151,11 +151,10 @@
                 }
             ],
             "description": "Advanced Custom Fields Pro",
-            "homepage": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro",
             "support": {
                 "source": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/src/bf302ce3bfdf4abd719eb06c1b23f882ea7988b5/?at=master"
             },
-            "time": "2018-01-22T16:17:28+00:00"
+            "time": "2018-01-22T17:17:28+00:00"
         },
         {
             "name": "up-plugins/woocommerce-brands",
@@ -182,11 +181,10 @@
                 }
             ],
             "description": "WooCommerce Brands field",
-            "homepage": "https://bitbucket.org/upcomposer/woocommerce-brands",
             "support": {
                 "source": "https://bitbucket.org/upcomposer/woocommerce-brands/src/c4bd082bb09e3e4f3fe2763a39779f22c0fe8716/?at=master"
             },
-            "time": "2018-01-02T14:38:03+00:00"
+            "time": "2018-01-02T15:38:03+00:00"
         },
         {
             "name": "up-plugins/woocommerce-cost-of-goods",
@@ -213,11 +211,10 @@
                 }
             ],
             "description": "WooCommerce Cost of Goods Sold",
-            "homepage": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods",
             "support": {
                 "source": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods/src/f9a88ba6151c5036889e123141f657a64d81dedc/?at=master"
             },
-            "time": "2017-05-15T16:41:08+00:00"
+            "time": "2017-05-15T18:41:08+00:00"
         },
         {
             "name": "up-plugins/woocommerce-table-rate-shipping",
@@ -244,11 +241,10 @@
                 }
             ],
             "description": "WooCommerce Table Rate Shipping",
-            "homepage": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping",
             "support": {
                 "source": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping/src/31d16ee5b578acd13451680eb9dcbf0413eaeb45/?at=master"
             },
-            "time": "2018-01-02T14:36:10+00:00"
+            "time": "2018-01-02T15:36:10+00:00"
         },
         {
             "name": "up-plugins/woothemes-updater",
@@ -362,15 +358,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "7.0.3",
+            "version": "7.0.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/7.0.3"
+                "reference": "tags/7.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -402,15 +398,15 @@
         },
         {
             "name": "wpackagist-plugin/hyper-cache",
-            "version": "3.3.4",
+            "version": "3.3.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/hyper-cache/",
-                "reference": "tags/3.3.4"
+                "reference": "tags/3.3.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.3.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.3.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -502,15 +498,15 @@
         },
         {
             "name": "wpackagist-plugin/pixelyoursite",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pixelyoursite/",
-                "reference": "tags/5.2.0"
+                "reference": "tags/5.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.2.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -622,15 +618,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce",
-            "version": "3.3.3",
+            "version": "3.3.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.3.3"
+                "reference": "tags/3.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.3.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -642,15 +638,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce-google-analytics-integration",
-            "version": "1.4.3",
+            "version": "1.4.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce-google-analytics-integration/",
-                "reference": "tags/1.4.3"
+                "reference": "tags/1.4.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-google-analytics-integration.1.4.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-google-analytics-integration.1.4.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -662,15 +658,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "7.0.1",
+            "version": "7.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/7.0.1"
+                "reference": "tags/7.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.0.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.1.zip",
                 "reference": null,
                 "shasum": null
             },

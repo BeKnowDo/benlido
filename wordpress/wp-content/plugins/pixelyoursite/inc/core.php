@@ -328,7 +328,7 @@ if ( ! function_exists( 'pys_get_woo_code' ) ) {
 		}
 		
 		// Purchase Event
-		if ( pys_get_option( 'woo', 'on_thank_you_page' ) && is_wc_endpoint_url( 'order-received' ) ) {
+		if ( pys_get_option( 'woo', 'on_thank_you_page' ) && is_order_received_page() && isset( $_REQUEST['key'] ) ) {
 			
 			$order_id = wc_get_order_id_by_order_key( $_REQUEST['key'] );
 			$order    = new WC_Order( $order_id );
