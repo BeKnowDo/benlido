@@ -28,10 +28,11 @@ jQuery(document).ready(function( $ ) {
             $single_form = $button.closest('form.cart');
 
         if ($variations_form.length === 1) {
+            data.product_id = parseInt($single_form.find('*[name="add-to-cart"]').val());
             data.variation_id = parseInt($variations_form.find('input[name="variation_id"]').val());
             data.quantity = parseInt($variations_form.find('input[name="quantity"]').val());
         } else if ($single_form.length === 1) {
-            data.product_id = parseInt($single_form.find('input[name="add-to-cart"]').val());
+            data.product_id = parseInt($single_form.find('*[name="add-to-cart"]').val());
             data.quantity = parseInt($single_form.find('input[name="quantity"]').val());
         }
 

@@ -1,8 +1,8 @@
 === Hyper Cache ===
 Tags: cache,performance,staticizer,apache,htaccess,tuning,speed,bandwidth,optimization,tidy,gzip,compression,server load,boost
 Requires at least: 2.5
-Tested up to: 4.8
-Stable tag: 3.3.4
+Tested up to: 4.9.4
+Stable tag: 3.3.5
 Donate link: http://www.satollo.net/donations
 Contributors: satollo
 
@@ -67,6 +67,10 @@ the [Hyper Cache official forum](http://www.satollo.net/forums/forum/hyper-cache
 3. Mobile devices configuration
 
 == Changelog ==
+
+= 3.3.5 =
+
+* Added event of cache purged
 
 = 3.3.4 =
 

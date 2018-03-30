@@ -1,10 +1,10 @@
-===Facebook Pixel by PixelYourSite - Events, WooCommerce & Easy Digital Downloads===
+===PixelYourSite - Facebook Pixel (Events, WooCommerce & Easy Digital Downloads)===
 Contributors: PixelYourSite, c0d3fev3r, themister
 Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pixel Events, Facebook, New Facebook Pixel Events, Dynamic Events, Standard Events, Facebook Events, Facebook Standard Events, Facebook Dynamic Product Ads, WooCommerce, WooCommerce Facebook Pixel, Facebook Custom Events, Facebook Conversion Value, WooCommerce Affiliate Products, Easy Digital Downloads Pixel, Easy Digital Downloads Facebook Pixel
 Requires at least: 3.0.1
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.2.0
+Stable tag: 5.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -299,6 +299,12 @@ We have an article about how to create Custom Reports:
 9. These are the normal events on a WooCommerce thank you page: the Purchase event has content_ids and content_types (required by Dynamic Ads). The reported error for the GeneralEvent can be ignored (as explained in the help pages)
 
 == Changelog ==
+
+= PixelYourSite 5.2.1 =
+
+* AddToCart small improvements to ensure compatibility with some themes using AJAX cart
+
+* Plugin name update
 
 = PixelYourSite 5.2.0 =
 
