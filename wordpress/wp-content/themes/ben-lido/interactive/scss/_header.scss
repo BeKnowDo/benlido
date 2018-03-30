@@ -110,7 +110,7 @@ header {
 #search-menu {
     position: fixed;
     z-index: 9999;
-    top: -100%;
+    top: -170%;
     @include minpoint($min-tab) {
         top: px(-500);
     }
