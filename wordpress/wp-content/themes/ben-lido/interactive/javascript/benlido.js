@@ -6,7 +6,7 @@
         $('.add-kit-to-cart-button').on('click',function(e) {
             e.preventDefault();
             $('#add-items-to-kit-form').submit();
-        })
+        });
         $('#frequency button').on('click',function(e) {
             e.preventDefault();
             var freq = $(this).val();

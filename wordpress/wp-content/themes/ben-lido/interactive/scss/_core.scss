@@ -88,16 +88,26 @@ html, body {
 }
 
 #store-item-container {
-    clear: both;
-    display: inline-block;
-    position: relative;
-    width: 100%;
     margin-top: px(30);
-    border-top: px(1) solid $dark-gray;
+    border-top: px(1) solid $light-gray2;
 
     .bag, .product {
         padding: px(getBaseline(12)) 0;
         border-bottom: px(1) solid $dark-gray;
+    }
+    .bag-item{
+        background-color:$white;
+        border: px(1) solid $light-gray2;
+        border-radius:5px;
+        &:first-child{
+            margin-right:15px;
+        }
+        &:last-child{
+            margin-left:15px;
+        }
+        .h-100{
+            padding:20px;
+        }
     }
     .bag-image {
         margin-bottom: px(getBaseline(6));
@@ -108,6 +118,7 @@ html, body {
         }
     }
     .bag-content {
+        text-align: center;
         h1 {
             margin-bottom: px(getBaseline());
             text-align: center;
@@ -120,7 +131,7 @@ html, body {
         }
     }
     .product-details-container {
-        
+
         .product-details {
             display: block;
             position: relative;
