@@ -87,6 +87,9 @@ html, body {
     }
 }
 
+.brown{color:$brown}
+.blue{color:$blue}
+
 #store-item-container {
     margin-top: px(30);
     border-top: px(1) solid $light-gray2;
@@ -107,6 +110,28 @@ html, body {
         }
         .h-100{
             padding:20px;
+        }
+        .bag-footer{
+            padding:15px 10px;
+            border-top: px(1) solid $light-gray2;
+            .bag-colors{
+                display:inline-block;
+            }
+            i{
+                &.fa{
+                    font-size:26px;
+                }
+            }
+        }
+        .bag-details-link{
+            font-size: rem(15);
+            a{
+                color:$brown;
+                &:hover{
+                    color:$brown-hover;
+                    text-decoration: none;
+                }
+            }
         }
     }
     .bag-image {
