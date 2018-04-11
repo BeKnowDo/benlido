@@ -103,17 +103,24 @@ html, body {
     }
     .bag-item{
         .card-footer{
+            background-color:$white;
             .bag-colors{
                 display:inline-block;
                 margin-right:20px;
             }
             i{
                 &.fa{
-                    font-size:26px;
+                    font-size:28px;
                 }
             }
             .price{
+                margin-right:30px;
+                font-size:rem(15);
                 line-height:25px;
+            }
+            .offer{
+                color:$dark-gray;
+                font-size:rem(13.5);
             }
         }
         .bag-details-link{

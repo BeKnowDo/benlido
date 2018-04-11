@@ -55,7 +55,7 @@
 
                             <div class="card-footer">
                                 <span class="price">$<?php echo money_format('%!n', $bag_product->get_price()); ?></span>
-                                <span class="brown">Free</span> shipping and % off products with purchase
+                                <span class="offer"><span class="brown">Free</span> shipping and % off products with purchase</span>
                                 <div class="right">
                                     <div class="bag-colors">
                                         <a href="#"><i class="fa fa-circle brown"></i></a>
