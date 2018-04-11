@@ -41,24 +41,29 @@
             <?php if (!empty($bag_product)):?>
                 <?php if($loop%2 ==0): ?><div class="row"><?php endif;?>
                     <div class="col-sm-6 bag-item">
-                        <div class="h-100">
-                            <div class="bag-details-link"><a href="#">Details</a></div>
-                            <div class="bag-image hd-8 center">
-                                <img src="<?php echo $product_image;?>" srcset="<?php if (!empty($product_image_retina)) { echo $product_image_retina . ' 2x ';} ?>" alt="<?php echo esc_attr($product_name);?>">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="bag-details-link"><a href="#">Details</a></div>
+                                <div class="bag-image hd-8 center">
+                                    <img src="<?php echo $product_image;?>" srcset="<?php if (!empty($product_image_retina)) { echo $product_image_retina . ' 2x ';} ?>" alt="<?php echo esc_attr($product_name);?>">
+                                </div>
+                                <div class="bag-content">
+                                    <h1><?php echo $product_name;?></h1>
+                                    <?php echo apply_filters( 'the_content', $bag_product->get_description() );?>
+                                </div>
                             </div>
-                            <div class="bag-content">
-                                <h1><?php echo $product_name;?></h1>
-                                <?php echo apply_filters( 'the_content', $bag_product->get_description() );?>
+
+                            <div class="card-footer">
+                                <span class="price">$<?php echo money_format('%!n', $bag_product->get_price()); ?></span>
+                                <span class="brown">Free</span> shipping and % off products with purchase
+                                <div class="right">
+                                    <div class="bag-colors">
+                                        <a href="#"><i class="fa fa-circle brown"></i></a>
+                                        <a href="#"><i class="fa fa-circle blue"></i></a>
+                                    </div>
+                                    <a href="<?php echo $add_to_cart_url;?>" class="right"><i class="fa fa-plus-circle brown"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="bag-footer d-flex justify-content-between">
-                            <span class="price">$<?php echo money_format('%!n', $bag_product->get_price()); ?></span>
-                            <span class="offer"><span class="brown">Free</span> shipping and % off products with purchase</span>
-                            <div class="bag-colors">
-                                <i class="fa fa-circle brown"></i>
-                                <i class="fa fa-circle blue"></i>
-                            </div>
-                            <a href="<?php echo $add_to_cart_url;?>" class="float-right"><i class="fa fa-plus-circle brown"></i></a>
                         </div>
                     </div>
                 <?php $loop++;?>

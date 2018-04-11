@@ -87,40 +87,33 @@ html, body {
     }
 }
 
-.brown{color:$brown}
-.blue{color:$blue}
-
 #store-item-container {
     margin-top: px(30);
     border-top: px(1) solid $light-gray2;
-
+    .row{
+        padding:0;
+        margin-bottom:40px;
+        &:first-child{
+            margin-top:60px;
+        }
+    }
     .bag, .product {
         padding: px(getBaseline(12)) 0;
         border-bottom: px(1) solid $dark-gray;
     }
     .bag-item{
-        background-color:$white;
-        border: px(1) solid $light-gray2;
-        border-radius:5px;
-        &:first-child{
-            margin-right:15px;
-        }
-        &:last-child{
-            margin-left:15px;
-        }
-        .h-100{
-            padding:20px;
-        }
-        .bag-footer{
-            padding:15px 10px;
-            border-top: px(1) solid $light-gray2;
+        .card-footer{
             .bag-colors{
                 display:inline-block;
+                margin-right:20px;
             }
             i{
                 &.fa{
                     font-size:26px;
                 }
+            }
+            .price{
+                line-height:25px;
             }
         }
         .bag-details-link{

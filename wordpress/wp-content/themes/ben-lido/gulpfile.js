@@ -82,6 +82,7 @@ gulp.task('less', function(done) {
 
 gulp.task('styles', [], function (done) {
   return gulp.src([
+    'node_modules/bootstrap/scss/bootstrap.scss',
     'interactive/scss/style.scss'
   ])
     .on('error', function(e) {console.log(e)})
