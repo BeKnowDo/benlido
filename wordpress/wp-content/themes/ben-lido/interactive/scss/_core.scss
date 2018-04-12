@@ -103,16 +103,9 @@ html, body {
     }
     .bag-item{
         .card-footer{
-            background-color:$white;
-            padding:0.5rem 0.75rem;
             .bag-colors{
                 display:inline-block;
                 margin-right:20px;
-            }
-            i{
-                &.fa{
-                    font-size:28px;
-                }
             }
             .price{
                 margin-right:30px;
@@ -156,102 +149,60 @@ html, body {
             color: $gray;
         }
     }
-    .product-details-container {
+    .card-footer{
+        background-color:$white;
+        padding:0.5rem 0.75rem;
+        i{
+            &.fa{
+                font-size:28px;
+            }
+        }
+    }
 
-        .product-details {
-            display: block;
-            position: relative;
-            @include minpoint($min-hd) {
-                top: 50%;
-                transform: translateY(-50%);
+    &.kitting{
+        .kitting-header{
+            text-align:center;
+            color: $blue;
+            font-size:rem(28);
+            margin-top:30px;
+        }
+        .kitting-description{
+            text-align:center;
+            color: $dark-gray;
+            font-weight:normal;
+            font-size:rem(14);
+            margin-top:30px;
+            line-height:rem(18);
+        }
+        .card{
+            .card-body{
+                color:$dark-gray;
             }
-            .product-category {
-                margin-bottom: px(getBaseline(4));
-                @include minpoint($min-hd) {
-                    margin-bottom: px(getBaseline(6));
+            .card-footer{
+                font-size:rem(15);
+                line-height:28px;
+                span{
+                    color:$dark-gray;
+                    font-size:rem(13);
                 }
-                font-size: rem(15);
-                color: $gray;
-            }
-            .product-name {
-                margin-bottom: px(getBaseline(6));
-                @include sentinel;
-                font-size: rem(18);
-                @include minpoint($min-hd) {
-                    font-size: rem(22);
+                a{
+                    &:hover{
+                        color:$brown-hover
+                    }
                 }
-                font-weight: 500;
-                line-height: 1.3;
-                color: $gray;
-            }
-            .product-cost {
-                font-size: rem(24);
-                @include minpoint($min-hd) {
-                    font-size: rem(32);
-                }
-                color: $blue;
             }
         }
-        .product-category, .product-name, .product-cost {
-            width: 100%;
-            text-align: center;
+        .product-category{
+            font-size:rem(13);
+            margin-bottom:20px;
         }
-    }
-    .product-image {
-        margin-bottom: px(getBaseline(4));
-        @include minpoint($min-hd) {
-            margin-bottom: 0;
-        }
-        img {
-            max-height: px(220);
-            object-fit: contain;
-            object-position: center;
-            @include minpoint($min-hd) {
-                max-height: px(400);
-            }
-        }
-    }
-    .product-buttons {
-        display: block;
-        position: absolute;
-        z-index: 99;
-        top: px(-70);
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 0 px($outer-mobile);
-        @include minpoint($min-hd) {
-            position: relative;
-            top: 0;
-            transform: none;
-            height: auto;
-            padding: 0 0 0 px($gutters-hd/2);
-        }
-    }
-    .product-button {
-        text-align: center;
-        img {
-            position: relative;
-            width: px(32);
-            @include minpoint($min-hd) {
-                width: 100%;
-            }
-            height: auto;
-            margin-bottom: px(getBaseline());
-        }
-        span {
-            display: none;
-            @include minpoint($min-hd) {
-                display: table;
-            }
-            position: relative;
-            clear: both;
-            width: 100%;
-            color: $brown;
-            text-align: center;
+        .product-name{
+            font-size:rem(14);
+            margin-top:20px;
         }
     }
 }
+
 .header-group {
     width: 100%;
     padding: px(getBaseline(4)) 0;
@@ -332,22 +283,7 @@ html, body {
         object-position: center;
     }
 }
-.product-details {
-    position: relative;
-    text-align: center;
-    @include minpoint($min-hd) {
-        top: 50%;
-        transform: translateY(-50%);
-        text-align: left;
-    }
-    .product-description {
-        p {
-            font-size: rem(15);
-            color: $gray;
-            line-height: 1.3;
-        }
-    }
-}
+
 .related-container {
     .category-items {
         justify-content: center;

@@ -41,7 +41,7 @@
             <?php if (!empty($bag_product)):?>
                 <?php if($loop%2 ==0): ?><div class="row"><?php endif;?>
                     <div class="col-sm-6 bag-item">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-body">
                                 <div class="bag-details-link"><a href="<?php echo esc_url( get_permalink($bag_product->get_id()) ); ?>">Details</a></div>
                                 <div class="bag-image hd-8 center">
