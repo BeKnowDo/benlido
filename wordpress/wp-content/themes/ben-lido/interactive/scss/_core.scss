@@ -160,10 +160,8 @@ html, body {
     }
 
     &.kitting{
-        .kitting-header{
+        h1{
             text-align:center;
-            color: $blue;
-            font-size:rem(28);
             margin-top:30px;
         }
         .kitting-description{
@@ -202,7 +200,9 @@ html, body {
         }
     }
 }
-
+.kitting-additional-items{
+    border-top:1px solid $light-gray2;
+}
 .header-group {
     width: 100%;
     padding: px(getBaseline(4)) 0;
