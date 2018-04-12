@@ -27,19 +27,16 @@
     }
 
 ?>
+<a name="items"></a>
 <div id="store-item-container" class="kitting">
     <div class="grid-container">
-
         <h1>Customize your kit</h1>
         <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <p class="kitting-description">Here is a list of the top 15 essentials the folks at Kipling can't live without. Add the products you want, remove the ones you don't, and make the kit uniquely yours.</p>
             </div>
         </div>
-
-        <a name="items"></a>
         <form method="post" id="add-items-to-kit-form" action="<?php echo $kitting_page ;?>">
-
             <?php
                 if (!empty($categories) && is_array($categories)):
                     $loop = 0;
