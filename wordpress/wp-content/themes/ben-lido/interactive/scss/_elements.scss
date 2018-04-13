@@ -59,6 +59,64 @@
         margin-right: 0;
     }
 }
+.generic-button-inverse{
+    border:1px solid $light-gray2;
+    display: block;
+    position: relative;
+    width: auto;
+    max-width: px(210);
+    padding: 0 px(15);
+    @include minpoint($min-hd) {
+        width: px(210);
+        max-width: none;
+        padding: 0;
+    }
+    height: px(50);
+    background-color: transparent;
+    border-radius: px(3);
+    @include sentinel;
+    font-size: rem(15);
+    font-weight: 500;
+    color: $brown;
+    text-decoration: none;
+    text-align: center;
+    @include animate(all, .25s, ease-in-out);
+
+    span {
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+
+        &.separator {
+            word-spacing: px(20);
+            text-transform: uppercase;
+        }
+    }
+
+    &:hover {
+        background-color: transparent;
+        color: $brown-hover;
+        text-decoration: none;
+    }
+    &.float {
+        float: left;
+        margin-right: px(16);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &.place-right {
+        position: absolute;
+        top: 0;
+        right: px($outer-hd);
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+}
 #frequency {
     .button-container {
         width: 100%;
