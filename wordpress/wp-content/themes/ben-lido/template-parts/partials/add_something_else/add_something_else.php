@@ -4,15 +4,14 @@
             <div class="back-icon"><a href="#"><i class="fa fa-chevron-left"></i></a></div>
             <h1>Shop you essentials</h1>
             <p class="pad-top">
-                <a href="#" class="generic-button-inverse center" title="Close"><span>Close</span></a>
+                <a href="#" class="generic-button-inverse center" id="filter"><span>Filter</span></a>
             </p>
         </div>
     </div>
 
-    <div class="separator"></div>
-
-    <div class="grid-container">
-        <div class="filters">
+    <div class="filters">
+        <div class="separator"></div>
+        <div class="grid-container">
             <div class="row">
                 <div class="col-sm-3">
                     <p>Sort</p>
@@ -60,11 +59,10 @@
                 </div>
             </div>
         </div>
+        <div class="separator"></div>
     </div>
 
-    <div class="separator"></div>
-
-    <div class="grid-container">
+    <div class="grid-container pad-top">
         <div class="categories">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">

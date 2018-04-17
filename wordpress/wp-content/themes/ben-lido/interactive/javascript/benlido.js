@@ -32,5 +32,16 @@
                 }
             }
         });
+
+        // filter toggle on Shop Your Essentials page
+        $('#filter').on('click', function(){
+            if($('.filters').is(':visible')) {
+                $('.filters').slideToggle(400);
+                $(this).html('<span>Filter</span>');
+            } else {
+                $('.filters').slideToggle(400);
+                $(this).html('<span>Close</span>');
+            }
+        });
     });
 })(jQuery);

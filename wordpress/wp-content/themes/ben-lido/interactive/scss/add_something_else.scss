@@ -6,11 +6,20 @@
   .separator{
     border-bottom:1px solid $light-gray2;
     width:100%;
-    margin:40px 0;
+    margin-top:40px;
   }
 
   .filters{
+    transition: display .5s ease;
+    -webkit-transition: display .5s ease;
+    -moz-transition: display .5s ease;
+    -o-transition: display .5s ease;
+
+    display:none;
     font-size:rem(15);
+    .grid-container{
+      margin-top:40px;
+    }
     ul{
       li{
         margin-top:7px;
