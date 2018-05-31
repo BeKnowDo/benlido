@@ -1,0 +1,5 @@
+{% if products is defined %}
+    {% for item in products %}
+        {% include './hero-product.twig', with { items: item} %}
+    {% endfor %}
+{% endif %}

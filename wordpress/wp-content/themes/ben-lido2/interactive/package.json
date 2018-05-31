@@ -13,9 +13,10 @@
     "styles:watch": "onchange 'src/styles/**/*.scss' -- yarn styles",
     "fonts": "node scripts/fonts.js",
     "images": "node scripts/images.js",
+    "twig": "node scripts/twig.js",
     "webpack": "webpack --watch --mode development --config webpack.config.js",
     "wordpress":
-      "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\""
+      "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\" \"yarn twig\""
   },
   "proxy": {},
   "repository": {

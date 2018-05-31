@@ -1,0 +1,64 @@
+{% extends "../layout/document.twig" %}
+
+{% block content %}
+    {% set heroData = [
+      {
+        header: 'Let Us Help You Get Started',
+        copy: 'Choose a curated kit, customize it and make it your own. No shipping costs and all products up to 100% free with kit purchase.'
+      }
+  ]%}
+
+    {% include '../common/step-navigation.twig' %}
+    {% include '../common/hero-title-copy.twig' %}
+
+    {% set items = [
+      {
+        logo: '/images/kipling.png',
+        header: 'AIDEN BY KIPLING',
+        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
+        price: '$35',
+        picked: true,
+        href: '/product/123',
+        image: '/images/product-image.png',
+        bagURL: '/bag/123'
+      },
+      {
+        logo: '/images/kipling.png',
+        header: 'THE EMERSON',
+        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
+        price: '$45',
+        href: '/product/123',
+        image: '/images/product-image.png',
+        bagURL: '/bag/123'
+      },
+      {
+        logo: '/images/kipling.png',
+        header: 'THE SANDINISTA',
+        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
+        price: '$35',
+        href: '/product/123',
+        image: '/images/product-image.png',
+        bagURL: '/bag/123',
+        disabled: true
+      },
+      {
+        logo: '/images/kipling.png',
+        header: 'THE CENTURION',
+        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
+        price: '$35',
+        href: '/product/123',
+        image: '/images/product-image.png',
+        bagURL: '/bag/123'
+      }
+
+    ]%}
+
+    <div class="bg-grey">
+        <div class="max-width-1200">
+            {% include '../common/hero-product-list.twig', with { products: items } %}
+        </div>
+    </div>
+
+    {% include '../common/back-to-top.twig' %}
+
+{% endblock %}

@@ -1,0 +1,7 @@
+<ul class="social-media-links">
+    {% for item in socialMediaLinks %}
+        <li>
+            <a href="{{item.href}}" title="{{item.title}}">{{item.text}}</a>
+        </li>
+    {% endfor %}
+</ul>
