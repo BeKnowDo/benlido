@@ -1,0 +1,65 @@
+{
+  "name": "benlido",
+  "version": "1.0.0",
+  "description": "Ben-Lido Frontend Template",
+  "main": "index.js",
+  "scripts": {
+    "json": "node scripts/json-seeder.js quiet=true --users=20",
+    "server": "nodemon -e js,twig server",
+    "api": "concurrently \"yarn server\" \"yarn server\" \"yarn json\"",
+    "dev":
+      "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn webpack\" \"yarn server\"",
+    "styles": "node scripts/styles.js",
+    "styles:watch": "onchange 'src/styles/**/*.scss' -- yarn styles",
+    "fonts": "node scripts/fonts.js",
+    "images": "node scripts/images.js",
+    "webpack": "webpack --watch --mode development --config webpack.config.js",
+    "wordpress":
+      "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\""
+  },
+  "proxy": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/bkd-digital/bdk-benlido.git"
+  },
+  "keywords": ["frontend", "wordpress"],
+  "author": "Cesar M. Perez",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/bkd-digital/bdk-benlido#readme",
+  "devDependencies": {
+    "autoprefixer": "^8.5.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "browser-sync": "^2.24.4",
+    "chalk": "^2.4.1",
+    "clean-css": "^4.1.11",
+    "clean-webpack-plugin": "^0.1.19",
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "imagemin": "^5.3.1",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-pngquant": "^5.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.17.5",
+    "onchange": "^4.0.0",
+    "opn": "^5.3.0",
+    "postcss": "^6.0.22",
+    "standard": "*",
+    "twig": "^1.11.1",
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4",
+    "yargs": "^11.0.0"
+  },
+  "testURL": "http://localhost",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "kute.js": "^1.6.5",
+    "spectre.css": "^0.5.1"
+  }
+}

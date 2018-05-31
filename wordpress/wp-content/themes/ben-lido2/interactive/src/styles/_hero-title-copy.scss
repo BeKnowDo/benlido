@@ -1,0 +1,11 @@
+.hero-title-copy {
+  padding: 40px 20px 48px;
+  border-top: $hero-border;
+  border-bottom: $hero-border;
+  &-header {
+    text-transform: uppercase;
+  }
+  &-copy {
+    font-family: $sentinel;
+  }
+}

@@ -1,0 +1,70 @@
+.navbar {
+  padding: 10px;
+  z-index: 100;
+  &-toggle {
+    > i {
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    .fa-bars {
+      &:before {
+        font-size: 22px;
+      }
+    }
+    .fa-search {
+      &:before {
+        font-size: 22px;
+      }
+    }
+  }
+  &-dropdown {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    background-color: $brown-grey;
+    transform: translate3d(0, -110%, 0);
+    box-shadow: 0 -20px 27px 20px rgba(3, 3, 3, 0.8);
+
+    box-sizing: content-box;
+    width: 100%;
+    padding: 40px 40px 60px 60px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    &.active {
+      animation-name: fadeInDown;
+      display: block;
+    }
+    &-exit {
+      cursor: pointer;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      padding: 10px;
+
+      color: $white;
+      &:before {
+        font-size: 25px;
+        color: $white;
+      }
+    }
+    &-primary-items {
+      margin-bottom: 30px;
+      font-size: 50px;
+      font-family: $knockout;
+      text-transform: uppercase;
+      a {
+        color: $white;
+      }
+    }
+  }
+  &-item-counter {
+    display: inline-block;
+    font-size: 18px;
+  }
+  .fa-suitcase {
+    &:before {
+      font-size: 30px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.hero {
+  &-home {
+    background-image: url(/images/triangle.svg);
+    background-position: 100% bottom;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    background-size: 103%;
+
+    .hero-image-container {
+      padding-top: 82px;
+    }
+
+    .hero-image {
+      margin: 0 0 0 auto;
+    }
+  }
+}

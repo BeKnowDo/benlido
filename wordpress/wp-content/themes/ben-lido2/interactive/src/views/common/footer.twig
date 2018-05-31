@@ -1,0 +1,77 @@
+{% set className = "footer-primary-items" %}
+{% set list = [
+  {
+    href: '/whatever',
+    title: 'Home',
+    text: 'Home'
+  },
+  {
+    href: '/whatever',
+    title: 'Shop',
+    text: 'Shop'
+  },
+  {
+    href: '/whatever',
+    title: 'About',
+    text: 'About'
+  },
+  {
+    href: '/whatever',
+    title: 'Help',
+    text: 'Help'
+  },
+  {
+    href: '/whatever',
+    title: 'Sign In',
+    text: 'Sign In'
+  }
+  ]%}
+
+{% set socialMediaLinks = [
+  {
+    href: '/whatever',
+    title: 'Newsletter',
+    text: 'Newsletter'
+  },
+  {
+    href: '/whatever',
+    title: 'Google +',
+    text: 'Google +'
+  },
+  {
+    href: '/whatever',
+    title: 'Instagram',
+    text: 'Instagram'
+  },
+  {
+    href: '/whatever',
+    title: 'Twitter',
+    text: 'Twitter'
+  },
+  {
+    href: '/whatever',
+    title: 'Facebook',
+    text: 'Facebook'
+  }
+  ]%}
+
+<footer class="footer">
+    <div class="max-width-1200 columns">
+        <div class="column col-md-12">
+            {% include './navbar-items.twig' %}
+        </div>
+
+        <div class="column col-md-12">
+            {% include './social-media-links.twig' %}
+        </div>
+
+        <div class="column col-md-12">
+            {% include './contact-links.twig' %}
+        </div>
+
+        <div class="column col-md-12">
+            {% include './copyright.twig' %}
+        </div>
+
+    </div>
+</footer>

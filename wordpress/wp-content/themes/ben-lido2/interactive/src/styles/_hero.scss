@@ -1,0 +1,52 @@
+.hero {
+  text-align: center;
+  color: $grey;
+  padding: 42px 20px 20px;
+
+  &-header {
+    color: $dark-grey;
+    text-transform: uppercase;
+  }
+
+  &-copy {
+    padding: 20px 0 0;
+    margin: 0;
+  }
+
+  &-shape {
+    display: block;
+  }
+
+  &-image-container {
+    position: relative;
+    margin: 0 0 0 auto;
+    padding-top: 45px;
+    width: 100%;
+  }
+
+  &-image {
+    display: block;
+    margin: 0 auto;
+    &.absolute {
+      position: absolute;
+    }
+    &.bottom {
+      bottom: 30px;
+    }
+    &.right {
+      right: 10px;
+    }
+  }
+
+  &-action-buttons {
+    padding-top: 42px;
+    .btn {
+      max-width: 192px;
+      display: inline-block;
+      margin: auto;
+      &:first-child {
+        margin: 0 0 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@media (min-width: $size-md) {
+  .footer {
+    .columns {
+      flex-direction: row;
+      .column {
+        &:last-child {
+          order: -1;
+        }
+      }
+    }
+  }
+}

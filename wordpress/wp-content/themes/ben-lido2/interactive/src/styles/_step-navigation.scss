@@ -1,0 +1,42 @@
+.step-navigation {
+  padding: 28px 10px;
+
+  .btn {
+    &-no-border {
+      .step-navigation-text {
+        font-size: 16px;
+      }
+    }
+    &-lg {
+      padding: 6px 16px;
+    }
+    &-primary {
+      .step-navigation-text {
+        font-family: $knockout32;
+        color: $white;
+      }
+    }
+  }
+
+  .step-navigation-text {
+    vertical-align: super;
+    font-family: $sentinel;
+    color: $medium-grey;
+  }
+
+  .fal {
+    font-size: 25px;
+  }
+
+  .text-left {
+    .fal {
+      padding-right: 46px;
+    }
+  }
+
+  .text-right {
+    .fal {
+      padding-left: 46px;
+    }
+  }
+}

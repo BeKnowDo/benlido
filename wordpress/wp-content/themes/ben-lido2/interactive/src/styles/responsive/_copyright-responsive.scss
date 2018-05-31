@@ -1,0 +1,11 @@
+@media (min-width: $size-sm) {
+  .copyright {
+    padding: 0;
+  }
+}
+
+@media (min-width: $size-md) {
+  .copyright {
+    text-align: left;
+  }
+}

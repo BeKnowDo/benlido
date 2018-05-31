@@ -1,0 +1,22 @@
+.footer {
+  padding: 34px 34px 34px 48px;
+  border-top: 1px solid $light-grey;
+  background-color: $white;
+
+  &-primary-items {
+    margin: 0;
+    padding: 0;
+  }
+
+  .column {
+    margin-bottom: 30px;
+  }
+
+  li {
+    a {
+      color: $grey;
+      display: inline-block;
+      font-size: 15px;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@media (min-width: $size-sm) {
+  .hero {
+    &-action-buttons {
+      .btn {
+        max-width: none;
+      }
+    }
+  }
+}

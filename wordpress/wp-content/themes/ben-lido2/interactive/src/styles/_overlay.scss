@@ -1,0 +1,17 @@
+.dimmed-overlay {
+  display: none;
+  opacity: 0;
+  transition: background-color 0.8s ease-in;
+  &.active {
+    transition: background-color 0.8s ease-out;
+    background-color: rgba(3, 3, 3, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    display: block;
+    opacity: 1;
+  }
+}

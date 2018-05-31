@@ -1,0 +1,10 @@
+.btn {
+  border-radius: 4px;
+  &.btn-lg {
+    padding: 10px 34px;
+    height: auto;
+  }
+  &-no-border {
+    border: 0;
+  }
+}

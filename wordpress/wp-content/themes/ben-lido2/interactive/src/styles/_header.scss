@@ -1,0 +1,9 @@
+header {
+  border-bottom: $hero-border;
+  box-shadow: 0 0 2px 0 rgba(3, 3, 3, 0.2);
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
