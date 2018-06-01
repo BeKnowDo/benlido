@@ -1,6 +1,37 @@
 Changelog
 =========
 
+#### 4.2.2 - May 22, 2018
+
+**Fixes**
+
+- Events Manager integration was not working with logged-in users.
+- Form preview URL should respect admin HTTP(S) scheme.
+- Removed use of PHP 5.4 function.
+
+**Improvements**
+
+- Add "agree to terms" checkbox to field helper.
+
+**Additions**
+
+- Add filter `mc4wp_http_request_args`.
+
+
+#### 4.2.1 - April 11, 2018
+
+**Fixes**
+
+- Namespace usage warning when running PHP 5.2
+
+**Improvements**
+
+- Remove obsolete `type` attribute from all `<script>` tags printed by the plugin.
+- Improved tooltips on settings pages.
+- Do not pre-check integration checkboxes by default. 
+- Add textual warnings to settings that may affect [GDPR compliance](https://kb.mc4wp.com/gdpr-compliance/).
+- Update translation files.
+
 #### 4.2 - March 5, 2018
 
 **Additions**

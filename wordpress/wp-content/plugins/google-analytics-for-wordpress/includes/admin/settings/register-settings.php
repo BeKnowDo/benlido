@@ -105,6 +105,10 @@ function monsterinsights_get_settings_tabs() {
 			'title' => esc_html__( 'Compatibility', 'google-analytics-for-wordpress' ),
 			'level' => 'lite'
 		),
+		'eucompliance' => array( 
+			'title' => esc_html__( 'EU Compliance', 'google-analytics-for-wordpress' ),
+			'level' => 'basic'
+		),
 		'permissions' => array( 
 			'title' => esc_html__( 'Permissions', 'google-analytics-for-wordpress' ),
 			'level' => 'lite'
@@ -161,7 +165,7 @@ function monsterinsights_get_registered_settings() {
 				'events_mode' => array(
 					'id'          => 'events_mode',
 					'name'        => __( 'Enable MonsterInsights events tracking:', 'google-analytics-for-wordpress' ),
-					'desc'        => __( 'This turns on our Javascript based tracking system which among other things tracks clicks on outbound, affiliate, mail, telephone, hashed and download links.', 'google-analytics-for-wordpress', 'google-analytics-for-wordpress' ),
+					'desc'        => __( 'This turns on our Javascript based tracking system which among other things tracks clicks on outbound, affiliate, mail, telephone, hashed and download links.', 'google-analytics-for-wordpress' ),
 					'type' 		  => 'radio',
 					'std'  		  => 'js',
 					'options'     => array(
@@ -342,6 +346,10 @@ function monsterinsights_get_registered_settings() {
 					'type' 		  => 'checkbox',
 				),
 			)
+		),
+		/** EU Compliance Tracking Settings */
+		'eucompliance' => apply_filters('monsterinsights_settings_eucompliance',
+			array()
 		),
 		/** Permissions Tracking Settings */
 		'permissions' => apply_filters('monsterinsights_settings_permissions',

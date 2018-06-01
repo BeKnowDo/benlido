@@ -98,7 +98,6 @@ function monsterinsights_admin_scripts() {
 		return;
 	}
 
-
 	// Tooltips
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
@@ -171,11 +170,12 @@ function monsterinsights_admin_scripts() {
 				'verify_success_text_text'  	=> esc_html__( "Your site is connected to MonsterInsights!" ,'google-analytics-for-wordpress'),
 				'ok_text' 						=> esc_html__( "OK" ,'google-analytics-for-wordpress'),
 				'force_deauth_button_text'  	=> esc_html__( "Force Deauthenticate" ,'google-analytics-for-wordpress'),
-				'refresh_report_title'          => esc_html__( 'Refreshing Report', 'ga-premium' ),
-				'refresh_report_text'           => esc_html__( 'Loading new report data...', 'ga-premium' ),
-				'refresh_report_success_text'   => esc_html__( 'Success', 'ga-premium' ),
-				'refresh_report_success_text'   => esc_html__( 'Retrieved the new report data successfully', 'ga-premium' ),
-				'refresh_report_failure_title'  => esc_html__( 'Error', 'ga-premium' ),
+				'refresh_report_title'          => esc_html__( 'Refreshing Report', 'google-analytics-for-wordpress' ),
+				'refresh_report_text'           => esc_html__( 'Loading new report data...', 'google-analytics-for-wordpress' ),
+				'refresh_report_success_text'   => esc_html__( 'Success', 'google-analytics-for-wordpress' ),
+				'refresh_report_success_text'   => esc_html__( 'Retrieved the new report data successfully', 'google-analytics-for-wordpress' ),
+				'refresh_report_failure_title'  => esc_html__( 'Error', 'google-analytics-for-wordpress' ),
+				'timezone'						=> date('e'),
 			)
 		);
 
@@ -217,7 +217,13 @@ function monsterinsights_remove_conflicting_asset_files() {
 		'imagify-sweetalert', // Imagify 
 		'smls-backend-style', // Smart Logo Showcase Lite
 		'wp-reactjs-starter', // wp-real-media-library
+		'control-panel-modal-plugin', // Ken Theme
+		'theme-admin-css', // Vitrine Theme
+		'qi-framework-styles', //  Artisan Nayma Theme
+		'artisan-pages-style', // Artisan Pages Plugin
 		'control-panel-modal-plugin', // Ken Theme 
+		'sweetalert', //  Church Suite Theme by Webnus
+		'woo_stock_alerts_admin_css', // WooCommerce bolder product alerts
 	);
 	
 	$scripts = array(
@@ -229,25 +235,45 @@ function monsterinsights_remove_conflicting_asset_files() {
 		'tweeetshare_custom_script', // TweetShare - Click To Tweet
 		'imagify-promise-polyfill', // Imagify 
 		'imagify-sweetalert', // Imagify 
-	    'imagify-chart', // Imagify
+		'imagify-chart', // Imagify
 		'chartjs', // Comet Cache Pro
 		'wp-reactjs-starter', // wp-real-media-library
 		'jquery-tooltipster', // WP Real Media Library
-    	'jquery-nested-sortable', // WP Real Media Library
+		'jquery-nested-sortable', // WP Real Media Library
 		'jquery-aio-tree', // WP Real Media Library
 		'wp-media-picker', // WP Real Media Library
 		'rml-general', // WP Real Media Library
 		'rml-library', // WP Real Media Library
 		'rml-grid', // WP Real Media Library
-        'rml-list', // WP Real Media Library
-        'rml-modal', // WP Real Media Library
-        'rml-order', // WP Real Media Library
-        'rml-meta', // WP Real Media Library
-        'rml-uploader',  // WP Real Media Library
-        'rml-options',  // WP Real Media Library
-        'rml-usersettings',  // WP Real Media Library
-        'rml-main', // WP Real Media Library
-        'control-panel-sweet-alert', // Ken Theme
+		'rml-list', // WP Real Media Library
+		'rml-modal', // WP Real Media Library
+		'rml-order', // WP Real Media Library
+		'rml-meta', // WP Real Media Library
+		'rml-uploader',  // WP Real Media Library
+		'rml-options',  // WP Real Media Library
+		'rml-usersettings',  // WP Real Media Library
+		'rml-main', // WP Real Media Library
+		'control-panel-sweet-alert', // Ken Theme
+		'sweet-alert-js', // Vitrine Theme
+		'theme-admin-script', // Vitrine Theme
+		'sweetalert', //  Church Suite Theme by Webnus
+		'be_alerts_charts', //  WooCommerce bolder product alerts
+ 		'magayo-lottery-results',  //  Magayo Lottery Results
+		'control-panel-sweet-alert', // Ken Theme
+		'cpm_chart', // WP Project Manager
+		'adminscripts', //  Artisan Nayma Theme
+		'artisan-pages-script', // Artisan Pages Plugin
+		'tooltipster', // Grand News Theme
+		'fancybox', // Grand News Theme
+		'grandnews-admin-cript', // Grand News Theme
+		'colorpicker', // Grand News Theme
+		'eye', // Grand News Theme
+		'utils', // Grand News Theme
+		'icheck', // Grand News Theme
+		'learn-press-chart', //  LearnPress
+		'theme-script-main', //  My Listing Theme by 27collective
+		'selz ', //   Selz eCommerce
+		'tie-admin-scripts', //   Tie Theme
 	);
 
 	if ( ! empty( $styles ) ) {

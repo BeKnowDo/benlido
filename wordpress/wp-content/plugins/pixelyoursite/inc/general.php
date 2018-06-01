@@ -10,6 +10,7 @@ require_once 'common-edd.php';
 require_once 'core.php';
 require_once 'core-edd.php';
 require_once 'ajax-standard.php';
+require_once 'gdpr.php';
 
 if ( ! function_exists( 'pys_initialize_settings' ) ) {
     

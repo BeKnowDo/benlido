@@ -4,7 +4,7 @@ Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pi
 Requires at least: 3.0.1
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.2.1
+Stable tag: 5.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,9 +15,16 @@ Insert the new Facebook Pixel on WordPress, add Events, enjoy superb WooCommerce
 
 The New Facebook Pixel can be a very powerful tool for anyone doing Facebook ads, and with the PixelYourSite plugin, you can unleash its real potential.
 
+
 **Take a look at this video to see the plugin in action:**
 
 [youtube https://www.youtube.com/watch?v=V_IWVxUrzSM]
+
+>**GDPR update**
+>
+>PixelYourSite manages the Facebook pixel tracking code. Chances are that you have other scripts or third-party cookies running on your website (embedded videos, ad networks, chats, etc). In order to be GDPR compliant, you’ll need to implement a technical solution that will inform and obtain consent for all your tracking scripts and cookies, not just the Facebook pixel. That’s why we don’t have an individual solution to ask consent for our plugin only. We will offer a few ways to integrate with other existing cookie policy plugins.
+>
+>**[Find more about the Facebook pixel and GDPR here](http://www.pixelyoursite.com/gdpr-cookie-compliance)**
 
 **PixelYourSite will help you insert the Facebook pixel code on every page of your site with just one click** and set up Custom or Standard Events.
 
@@ -61,7 +68,7 @@ Not ready to install yet? Read on some of the key features that make PYS a power
 >
 >**Example:** You can define a Custom Conversion when someone reads at least 3 articles from a particular category, or when it lands on a specific page, or on any article that has a particular tag.
 
-* **Search Event** on the search page with the search string pulled as parameter - super useful for creating search based Custom Audiences
+* **Search Event** on the search page with the search string pulled as a parameter - super useful for creating search based Custom Audiences
 
 >**How to use the Search Event:**
 >
@@ -119,7 +126,7 @@ Find out more on [how the pro version can help you with Custom Conversion and Cu
 
 * **NEW: Head/Footer scripts** - Add any script you want with our Head/Footer option. It also works on the WooCommerce thank you page. [Find more here](http://www.pixelyoursite.com/head-footer-scripts)
 
-* **NEW: WatchVideo Event** - This event will fire on embedded videos on your site. It can be used to optimise your ads for video views or to retarget your video watchers using Custom Audiences. [Find more here](http://www.pixelyoursite.com/facebook-pixel-plugin/watchvideo-event)
+* **NEW: WatchVideo Event** - This event will fire on embedded videos on your site. It can be used to optimize your ads for video views or to retarget your video watchers using Custom Audiences. [Find more here](http://www.pixelyoursite.com/facebook-pixel-plugin/watchvideo-event)
 
 
 **Dynamic Events**
@@ -133,7 +140,7 @@ Optimise your Facebook Campaigns for actions on your website with dynamic events
 
 Works with **almost all forms or pop-up plugins.**
 
-Fire a Dynamic Event when the visitor performs a key action on your site and optimise your ads for that event (perfect for affiliate sites, newsletter signups and so on).
+Fire a Dynamic Event when the visitor performs a key action on your site and optimize your ads for that event (perfect for affiliate sites, newsletter signups and so on).
 
 Additionally, you can create Custom Audiences based on these dynamic events and retarget them.
 
@@ -240,7 +247,7 @@ Yes, they will, you won't lose anything.
 
 **Does it work with WooCommerce?**
 
-Yes, it does. The plugin adds all the necessary events, like ViewContent, AddToCart, InitiateCheckout and Purchase. This way you can easily track conversion and c**onversion value.**
+Yes, it does. The plugin adds all the necessary events, like ViewContent, AddToCart, InitiateCheckout, and Purchase. This way you can easily track conversion and c**onversion value.**
 
 ** Do I have to manually add the events for WooCommerce?**
 
@@ -256,7 +263,7 @@ Yes, all the WooCommerce and EDD pixel events are Dynamic Ads ready.
 
 **Can I fire additional events if I need to?**
 
-Of course, you can fire any type of event (standard or custom) on any URL of your site. You can also use a partial URL by adding a * at the end of it (this way all the URLs starting with that string will be targeted).
+Of course, you can fire any type of event (standard or custom) on any URL of your site. You can also use a partial URL by adding an * at the end of it (this way all the URLs starting with that string will be targeted).
 
 With the PRO version, you can use Dynamic Events and fire them on:
 
@@ -278,7 +285,7 @@ Any program, service, code or plugin that adds the Pixel Code, since you can't h
 * We had a problem with Mamaya, a retargeting service
 * It won't work with LeadPages or any similar system  because those pages are generated outside WordPress
 
-If any incompatibilities will arise we will add them here and, of course, will try to fix them as soon is possible.
+If any incompatibilities will arise we will add them here and, of course, will try to fix them as soon as possible.
 
 **I have the pixel installed on my website and I am running a Facebook Campaign, but the reports are confusing me. How can I see my campaign results?**
 
@@ -299,6 +306,19 @@ We have an article about how to create Custom Reports:
 9. These are the normal events on a WooCommerce thank you page: the Purchase event has content_ids and content_types (required by Dynamic Ads). The reported error for the GeneralEvent can be ignored (as explained in the help pages)
 
 == Changelog ==
+
+= PixelYourSite 5.3.1 =
+
+* GDPR related update - we've implemented a dedicated filter to disable pixel tracking before consent: pys_disable_by_gdpr
+
+* GDPR related update - we've added built-in integration with Ginger – EU Cookie Law plugin and Cookiebot
+
+= PixelYourSite 5.3.0 =
+
+* Additional improvements to the WooCommerce AddToCart event ("Cannot read property 'data' of undefined" error with some AJAX based themes)
+
+* Fixing potential security issue
+
 
 = PixelYourSite 5.2.1 =
 
@@ -329,7 +349,7 @@ We have an article about how to create Custom Reports:
 
 = PixelYourSite 5.0.8 =
 
-* AddToCart new option: fire the event on the Checkout Page. It will be helpful for some websites with customised structure.
+* AddToCart new option: fire the event on the Checkout Page. It will be helpful for some websites with customized structure.
 
 * The AddToCart event was improved to work with AJAX buttons on single product pages. This will help to catch events on a number of themes that use AJAX on the product pages.
 
@@ -350,7 +370,7 @@ We have an article about how to create Custom Reports:
 = PixelYourSite 5.0.5.2 =
 
 
-* Quick fix for a small error with our previous release (we didn't included all the files)
+* Quick fix for a small error with our previous release (we didn't include all the files)
 
 
 = PixelYourSite 5.0.5 =
@@ -525,3 +545,4 @@ This is a major release, with a new design and new features:
 = 5.0 =
 
 Version 5.0 comes with full Easy Digital Downloads integrations plus the ability to give each WooCommerce and EDD event a global value.
+

@@ -1,7 +1,8 @@
 <?php
 /**
- * @package    WPSEO
- * @subpackage Internal
+ * WPSEO plugin file.
+ *
+ * @package WPSEO\Internal
  */
 
 /**
@@ -69,7 +70,7 @@ class WPSEO_Upgrade {
 		}
 
 		if ( version_compare( $version, '5.0', '>=' )
-			 && version_compare( $version, '5.1', '<' )
+			&& version_compare( $version, '5.1', '<' )
 		) {
 			$this->upgrade_50_51();
 		}
@@ -96,6 +97,18 @@ class WPSEO_Upgrade {
 
 		if ( version_compare( $version, '7.1-RC0', '<' ) ) {
 			$this->upgrade_71();
+		}
+
+		if ( version_compare( $version, '7.3-RC0', '<' ) ) {
+			$this->upgrade_73();
+		}
+
+		if ( version_compare( $version, '7.4-RC0', '<' ) ) {
+			$this->upgrade_74();
+		}
+
+		if ( version_compare( $version, '7.5.3', '<' ) ) {
+			$this->upgrade_753();
 		}
 
 		// Since 3.7.
@@ -508,6 +521,8 @@ class WPSEO_Upgrade {
 
 	/**
 	 * Perform the 7.1 upgrade.
+	 *
+	 * @return void
 	 */
 	private function upgrade_71() {
 		$this->cleanup_option_data( 'wpseo_social' );
@@ -520,6 +535,65 @@ class WPSEO_Upgrade {
 
 			$this->cleanup_option_data( 'wpseo_titles' );
 		}
+	}
+
+	/**
+	 * Perform the 7.3 upgrade.
+	 *
+	 * @return void
+	 */
+	private function upgrade_73() {
+		global $wpdb;
+		// We've moved the cornerstone checkbox to our proper namespace.
+		$wpdb->query( "UPDATE $wpdb->postmeta SET meta_key = '_yoast_wpseo_is_cornerstone' WHERE meta_key = '_yst_is_cornerstone'" );
+
+		// Remove the previous Whip dismissed message, as this is a new one regarding PHP 5.2.
+		delete_option( 'whip_dismiss_timestamp' );
+	}
+
+	/**
+	 * Performs the 7.4 upgrade.
+	 *
+	 * @return void
+	 */
+	private function upgrade_74() {
+		$this->remove_sitemap_validators();
+	}
+
+	/**
+	 * Performs the 7.5.3 upgrade.
+	 *
+	 * When upgrading purging media is potentially relevant.
+	 *
+	 * @return void
+	 */
+	private function upgrade_753() {
+		// Only when attachments are not disabled.
+		if ( WPSEO_Options::get( 'disable-attachment' ) === true ) {
+			return;
+		}
+
+		// Only when attachments are not no-indexed.
+		if ( WPSEO_Options::get( 'noindex-attachment' ) === true ) {
+			return;
+		}
+
+		// Set purging relevancy.
+		WPSEO_Options::set( 'is-media-purge-relevant', true );
+	}
+
+	/**
+	 * Removes all sitemap validators.
+	 *
+	 * This should be executed on every upgrade routine until we have removed the sitemap caching in the database.
+	 *
+	 * @return void
+	 */
+	private function remove_sitemap_validators() {
+		global $wpdb;
+
+		// Remove all sitemap validators.
+		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'wpseo_sitemap%validator%'" );
 	}
 
 	/**

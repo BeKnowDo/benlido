@@ -13,7 +13,7 @@ class MC4WP_Form_Previewer {
 
         try {
             $form = mc4wp_get_form( $_GET['mc4wp_preview_form'] );
-        } catch( \Exception $e ) {
+        } catch( Exception $e ) {
             return;
         }  
 
@@ -30,7 +30,7 @@ class MC4WP_Form_Previewer {
         }
 
         $form_id = (int) $_GET['mc4wp_preview_form'];
-        http_response_code(200);
+        status_header(200);
         require dirname( __FILE__ ) . '/views/preview.php';
         exit;
 	}

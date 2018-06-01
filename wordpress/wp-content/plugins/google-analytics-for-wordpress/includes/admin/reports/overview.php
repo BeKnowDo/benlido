@@ -72,6 +72,10 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 			$up2x       = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/up@2x.png';
 			$down       = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/down.png';
 			$down2x     = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/down@2x.png';
+			$upred      = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/up-red.png';
+			$upred2x    = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/up-red@2x.png';
+			$downgrn    = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/down-green.png';
+			$downgrn2x  = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/down-green@2x.png';
 			$uplabel    = esc_attr__( 'Up', 'google-analytics-for-wordpress' );
 			$downlabel  = esc_attr__( 'Down', 'google-analytics-for-wordpress' );
 			?>
@@ -171,12 +175,12 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 				</div>
 				<?php } else if ( $data['infobox']['bounce']['prev'] > 0 ) { ?>
 				<div class="monsterinsights-reports-infobox-prev">
-					<img src="<?php echo $up; ?>" srcset="<?php echo $up2x; ?> 2x" alt="<?php echo $uplabel; ?>"/>
+					<img src="<?php echo $upred; ?>" srcset="<?php echo $upred2x; ?> 2x" alt="<?php echo $uplabel; ?>"/>
 					<?php echo esc_html( $data['infobox']['bounce']['prev'] ) . '%'; ?>
 				</div>
 				<?php } else  { ?>
 				<div class="monsterinsights-reports-infobox-prev">
-					<img src="<?php echo $down; ?>" srcset="<?php echo $down2x; ?> 2x" alt="<?php echo $downlabel; ?>"/>
+					<img src="<?php echo $downgrn; ?>" srcset="<?php echo $downgrn2x; ?> 2x" alt="<?php echo $downlabel; ?>"/>
 					<?php echo esc_html( absint( $data['infobox']['bounce']['prev'] ) ) . '%'; ?>
 				</div>
 				<?php } ?>
@@ -503,13 +507,13 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 					<div class="monsterinsights-reports-list">
 						<ul class="monsterinsights-reports-country-list list-group">
 						<?php 
-						$countries = monsterinsights_get_country_list( false );
+						$countries = monsterinsights_get_country_list( true );
 						$i = 1;
 						foreach( $data['countries'] as $icountry => $countrydata ) {
 							if ( ! empty( $countries[ $countrydata['iso'] ] ) ) {
 								echo '<li class="list-group-item"><span class="monsterinsights-reports-list-count">'. $i .'.</span><span class="monsterinsights-reports-country-flag monsterinsights-flag-icon monsterinsights-flag-icon-' . strtolower( $countrydata['iso'] ) . ' "></span><span class="monsterinsights-reports-list-text">' . $countries[ $countrydata['iso'] ] . '</span><span class="monsterinsights-reports-list-number">' . number_format_i18n( $countrydata['sessions'] ) . '</span></li>';
 							} else { 
-								echo '<li class="list-group-item"><span class="monsterinsights-reports-list-count">'. $num .'</span><span class="monsterinsights-flag-icon monsterinsights-flag-icon-' . strtolower( $countrydata['iso'] ) . ' "></span><span class="monsterinsights-reports-list-text">' . $countrydata['iso'] . '</span><span class="monsterinsights-reports-list-number">' . number_format_i18n( $countrydata['sessions'] ) . '</span></li>';
+								echo '<li class="list-group-item"><span class="monsterinsights-reports-list-count">'. $i .'</span><span class="monsterinsights-flag-icon monsterinsights-flag-icon-' . strtolower( $countrydata['iso'] ) . ' "></span><span class="monsterinsights-reports-list-text">' . $countrydata['iso'] . '</span><span class="monsterinsights-reports-list-number">' . number_format_i18n( $countrydata['sessions'] ) . '</span></li>';
 							}
 							$i++;
 						}
@@ -556,7 +560,7 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 					$referral_url = 'https://analytics.google.com/analytics/web/#report/trafficsources-referrals/'. MonsterInsights()->auth->get_referral_url() . $this->get_ga_report_range( $data );
 					?>
 					<div class="monsterinsights-reports-panel-footer">
-						<a href="<?php echo $referral_url; ?>" target="_blank" title="<?php echo esc_html__( 'View All Referral Resources', 'google-analytics-for-wordpress' );?>" class="monsterinsights-reports-panel-footer-button"><?php echo esc_html__( 'View All Referral Resources', 'google-analytics-for-wordpress' );?></a>
+						<a href="<?php echo $referral_url; ?>" target="_blank" title="<?php echo esc_html__( 'View All Referral Sources', 'google-analytics-for-wordpress' );?>" class="monsterinsights-reports-panel-footer-button"><?php echo esc_html__( 'View All Referral Sources', 'google-analytics-for-wordpress' );?></a>
 					</div>
 				</div>
 			  </div>
@@ -623,7 +627,7 @@ final class MonsterInsights_Report_Overview extends MonsterInsights_Report {
 		$down2x     = MONSTERINSIGHTS_PLUGIN_URL . 'assets/images/down@2x.png';
 		$uplabel    = esc_attr__( 'UP', 'google-analytics-for-wordpress' );
 		$downlabel  = esc_attr__( 'DOWN', 'google-analytics-for-wordpress' );
-		$descriptor = $class === 'sessions' ? esc_js( __( 'Unique' ) ) . '<br />' . esc_js( __( 'Sessions' ) ) : esc_js( __( 'Unique' ) ) . '<br />' . esc_js( __( 'Page Views' ) );
+		$descriptor = $class === 'sessions' ? esc_js( __( 'Unique', 'google-analytics-for-wordpress' ) ) . '<br />' . esc_js( __( 'Sessions', 'google-analytics-for-wordpress' ) ) : esc_js( __( 'Unique', 'google-analytics-for-wordpress' ) ) . '<br />' . esc_js( __( 'Page Views', 'google-analytics-for-wordpress' ) );
 		$descriptor = "'" . $descriptor . "'";
 
 		$labels     = array();

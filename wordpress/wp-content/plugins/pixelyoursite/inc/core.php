@@ -26,7 +26,7 @@ function pys_get_woo_product_price_to_display( $product_id, $qty = 1 ) {
 
 if ( ! function_exists( 'pys_get_woo_product_addtocart_params' ) ) {
 	
-	function pys_get_woo_product_addtocart_params( $product_id, $qty = 1 ) {
+	function pys_get_woo_product_addtocart_params( $product_id ) {
 		
 	    $content_id = pys_get_product_content_id( $product_id );
 	    
@@ -44,7 +44,7 @@ if ( ! function_exists( 'pys_get_woo_product_addtocart_params' ) ) {
 					break;
 
 				case 'price':
-					$value = pys_get_product_price( $product_id, $qty );
+					$value = pys_get_product_price( $product_id );
 					break;
 
 				default:
@@ -57,13 +57,13 @@ if ( ! function_exists( 'pys_get_woo_product_addtocart_params' ) ) {
 		}
         
         // contents
-        $params['contents'] = json_encode( array(
+        $params['contents'] = array(
             array(
                 'id'         => (string) reset( $content_id ),
-                'quantity'   => $qty,
+                'quantity'   => 1,
                 'item_price' => pys_get_woo_product_price_to_display( $product_id ),
             )
-        ) );
+        );
 		
 		return $params;
 		
@@ -185,7 +185,7 @@ if ( ! function_exists( 'pys_get_woo_code' ) ) {
         }
         
         // AddToCart Cart Page Event
-        if ( is_cart() && ( pys_get_option( 'woo', 'on_add_to_cart_page' ) || get_option( 'woocommerce_cart_redirect_after_add' ) === 'yes' ) ) {
+        if ( is_cart() && pys_get_option( 'woo', 'on_add_to_cart_page' ) ) {
             
             $ids = array();  // cart items ids or sku
             $contents = array();
@@ -527,33 +527,120 @@ if ( ! function_exists( 'pys_get_order_total' ) ) {
 }
 
 function pys_pixel_options() {
+	global $post;
 
-	$options['ajax_url'] = admin_url( 'admin-ajax.php' );
-    $options['woo']['addtocart_enabled'] = pys_is_woocommerce_active() && pys_get_option( 'woo', 'enabled' )
-                                                 && (bool) pys_get_option( 'woo', 'on_add_to_cart_btn' );
-    
+	$options['woo']['addtocart_enabled'] = pys_is_woocommerce_active()
+                                           && (bool) pys_get_option( 'woo', 'enabled' )
+                                           && (bool) pys_get_option( 'woo', 'on_add_to_cart_btn' );
+
+	$options['woo']['product_data'] = pys_get_option( 'woo', 'variation_id' );
+
+	if ( is_singular( 'product' ) ) {
+
+		$options['woo']['product_id'] = $post->ID;
+
+		$options['woo']['product_value_enabled'] = (bool) pys_get_option( 'woo', 'enable_add_to_cart_value' );
+		$options['woo']['product_value_option']  = pys_get_option( 'woo', 'add_to_cart_value_option' );
+
+	}
+	
+	/**
+	 * GDPR
+	 */
+	
+	$options['gdpr'] = array(
+        'disable' => apply_filters( 'pys_disable_by_gdpr', false ),
+        'enable_before_consent' => pys_get_option( 'gdpr', 'enable_before_consent' ),
+//        'gdpr_enabled' => pys_is_gdpr_plugin_activated() && pys_get_option( 'gdpr', 'gdpr_enabled' ),
+        'ginger_enabled' => pys_is_ginger_plugin_activated() && pys_get_option( 'gdpr', 'ginger_enabled' ),
+        'cookiebot_enabled' => pys_is_cookiebot_plugin_activated() && pys_get_option( 'gdpr', 'cookiebot_enabled' )
+    );
+
     return $options;
     
 }
 
-add_action( 'wp_ajax_pys_woo_addtocart_params', 'pys_woo_addtocart_params_ajax_handler' );
-add_action( 'wp_ajax_nopriv_pys_woo_addtocart_params', 'pys_woo_addtocart_params_ajax_handler' );
+function pys_add_woo_loop_product_data() {
+	global $product;
 
-function pys_woo_addtocart_params_ajax_handler() {
-
-    if ( empty( $_GET['product_id'] ) ) {
-        wp_send_json_error();
-    }
-
-	$qty = empty( $_GET['quantity'] ) ? 1 : (int) $_GET['quantity'];
-
-	if ( pys_get_option( 'woo', 'variation_id' ) != 'main' && isset( $_REQUEST['variation_id'] ) ) {
-		$product_id = (int) $_GET['variation_id'];
-	} else {
-		$product_id = (int) $_GET['product_id'];
+	// skip variable products, supported only on Single
+	if ( pys_woo_product_is_type( $product, 'variable' ) ) {
+		return;
 	}
 
-	$params = pys_get_woo_product_addtocart_params( $product_id, $qty );
-	wp_send_json_success( $params );
+	// skip external products, not supported
+	if ( pys_woo_product_is_type( $product, 'external' ) ) {
+		return;
+	}
 
+	/** @var \WC_Product $product */
+	if ( pys_is_wc_version_gte( '2.6' ) ) {
+		$product_id = $product->get_id();
+	} else {
+		$product_id = $product->post->ID;
+	}
+
+	$params = pys_get_woo_product_addtocart_params( $product_id );
+	$params = json_encode( $params );
+
+	?>
+
+	<script type="text/javascript">
+        /* <![CDATA[ */
+        window.pys_woo_product_data = window.pys_woo_product_data || [];
+        window.pys_woo_product_data[ <?php echo $product_id; ?> ] = <?php echo $params; ?>;
+        /* ]]> */
+	</script>
+
+	<?php
+
+}
+
+function pys_add_woo_single_product_data() {
+	global $product;
+
+	// skip external products, not supported
+	if ( pys_woo_product_is_type( $product, 'external' ) ) {
+		return;
+	}
+
+	/** @var \WC_Product $product */
+	if ( pys_is_wc_version_gte( '2.6' ) ) {
+		$product_id = $product->get_id();
+	} else {
+		$product_id = $product->post->ID;
+	}
+
+	$params[ $product_id ] = pys_get_woo_product_addtocart_params( $product_id );
+
+	if ( pys_woo_product_is_type( $product, 'variable' ) && pys_get_option( 'woo', 'add_to_cart_value_option' ) != 'main' ) {
+
+		foreach ( $product->get_available_variations() as $variation ) {
+
+			$variation = wc_get_product( $variation['variation_id'] );
+
+			if ( pys_is_wc_version_gte( '2.6' ) ) {
+				$variation_id = $variation->get_id();
+			} else {
+				$variation_id = $variation->post->ID;
+			}
+
+			$params[ $variation_id ] = pys_get_woo_product_addtocart_params( $variation_id );
+
+		}
+
+	}
+
+	?>
+
+	<script type="text/javascript">
+        /* <![CDATA[ */
+        window.pys_woo_product_data = window.pys_woo_product_data || [];
+		<?php foreach ( $params as $product_id => $product_data ) : ?>
+        window.pys_woo_product_data[<?php echo $product_id; ?>] = <?php echo json_encode( $product_data ); ?>;
+		<?php endforeach; ?>
+        /* ]]> */
+	</script>
+
+	<?php
 }
