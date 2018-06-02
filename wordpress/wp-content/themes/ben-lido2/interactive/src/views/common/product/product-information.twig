@@ -1,48 +1,50 @@
-<div class="product-information">
+{% for product in productInformation %}
+  <div class="product-information">
 
-  <h1 class="product-information-header">Aiden Travel Toiletry Bag By Kipling</h1>
+    <h1 class="product-information-header">{{product.header}}</h1>
 
-  <div class="product-information-colors">
-    <ul class="product-information-colors-options">
-      <li>
-        <i class="product-information-colors-option"></i>
-        <i class="product-information-colors-option"></i>
-      </li>
-    </ul>
-  </div>
+    <div class="product-information-colors">
+      <ul class="product-information-colors-options">
+        <li>
+          <i class="product-information-colors-option"></i>
+          <i class="product-information-colors-option"></i>
+        </li>
+      </ul>
+    </div>
 
-  <div class="product-information-cart">
+    <div class="product-information-cart">
 
-    <div class="columns">
+      <div class="columns">
 
-      <div class="column col-3">
-        <span class="product-information-price">$2.25</span>
-      </div>
-
-      <div class="column col-3">
-        <div class="product-quantity">
-          <span class="product-quantity-value">
-            1
-          </span>
-          <i class="fal fa-chevron-down"></i>
+        <div class="column col-3">
+          <span class="product-information-price">{{product.price}}</span>
         </div>
+
+        <div class="column col-3">
+          <div class="product-quantity">
+            <span class="product-quantity-value">
+              1
+            </span>
+            <i class="fal fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <div class="column col-3">
+          <div class="btn btn-lg btn-primary">
+            Add to kit
+            <i class="fal fa-plus-circle"></i>
+          </div>
+        </div>
+
       </div>
 
-      <div class="column col-3">
-        <div class="btn btn-lg btn-primary">
-          Add to kit
-          <i class="fal fa-plus-circle"></i>
-        </div>
-      </div>
+      <h5 class="product-information-byline border-bottom-grey">
+        {{product.byLine}}
+      </h5>
 
     </div>
 
-    <h5 class="product-information-byline border-bottom-grey">
-      ( This item is free with the purchase of a Ben Lido Bag )
-    </h5>
+    {% include 'common/product/product-ratings.twig' %}
 
   </div>
-
-  {% include 'common/product/product-ratings.twig' %}
-
-</div>
+{% endfor %}

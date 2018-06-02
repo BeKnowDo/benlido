@@ -37,6 +37,10 @@ app.get("/pick-a-kit", (req, res) => {
   res.render("pages/pick-a-kit");
 });
 
+app.get("/kit-selected", (req, res) => {
+  res.render("pages/kit-selected");
+});
+
 app.get("/product/:id", (req, res) => {
   res.render("pages/product");
 });

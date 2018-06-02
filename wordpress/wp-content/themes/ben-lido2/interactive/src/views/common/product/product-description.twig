@@ -1,13 +1,19 @@
-<div class="product-description">
+{% for product in productInformation %}
+  <div class="product-description">
     <h3>Description</h3>
-    <h4 class="product-description-sku">Item# AC7808</h4>
+    <h4 class="product-description-sku">Item#
+      {{product.sku}}
+    </h4>
     <p class="product-description-copy">
-        Our recommendation: this case makes a perfect companion for your travel adventures. Finished with a special side snap tab to easily hook up to your backpack or suitcase, this lightweight travel kit is especially easy to tow on-the-go. Fill it up with makeup or shower essentials and go! Bonus: You can personalize this pouch with a custom monogram. Add a touch of flair with initials, emoji's, or a fun saying (up to 9 characters).
+      {{product.description}}
     </p>
     <p class="product-description-dimensions">
-        Dimensions: 11.25" L x 5.5" H x 4" D
+      Dimensions:
+      {{product.dimensions}}
     </p>
     <p class="product-description-weight">
-        Weight: 0.29 lbs.
+      Weight:
+      {{product.weight}}
     </p>
-</div>
+  </div>
+{% endfor %}

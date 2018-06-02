@@ -3,15 +3,13 @@
   <h4 class="product-row-header text-center">You might also like</h4>
 
   <div class="columns">
-    <div class="column col-4 col-xs-11 col-sm-10 col-md-4 col-mx-auto">
-      {% include 'common/product/product-tile.twig' %}
-    </div>
-    <div class="column col-4 col-xs-11 col-sm-10 col-md-4 col-mx-auto">
-      {% include 'common/product/product-tile.twig' %}
-    </div>
-    <div class="column col-4 col-xs-11 col-sm-10 col-md-4 col-mx-auto">
-      {% include 'common/product/product-tile.twig' %}
-    </div>
+
+    {% for product in associatedProducts %}
+      <div class="column col-4 col-xs-11 col-sm-10 col-md-4 col-mx-auto">
+        {% include 'common/product/product-tile.twig' %}
+      </div>
+    {% endfor %}
+
   </div>
 
 </div>

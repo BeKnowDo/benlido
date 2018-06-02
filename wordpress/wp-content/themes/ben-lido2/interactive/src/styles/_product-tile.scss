@@ -5,15 +5,30 @@
     border: $grey-border;
     border-radius: 4px;
     &-link {
+      display: inline-block;
+      padding: 10px 0;
+    }
+    &-header {
+      @include sentinel(16px, 400);
     }
     &-image {
       &:hover {
       }
     }
+    &-price {
+      @include sentinel(22px, 400);
+    }
     &-description {
-      font-family: $knockout32;
+      @include knockout32(14px, 400);
       font-style: normal;
       font-weight: 400;
+      font-size: 14px;
+    }
+    .btn {
+      @include knockout32(15px, 400);
+    }
+    .fal {
+      margin-left: 4px;
       font-size: 14px;
     }
   }
