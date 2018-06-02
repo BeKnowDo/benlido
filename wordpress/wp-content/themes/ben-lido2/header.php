@@ -22,34 +22,28 @@
 
 <?php do_action( 'storefront_before_site' ); ?>
 
-<div id="page" class="hfeed site ui-container">
+<div id="page" class="">
 	<?php do_action( 'storefront_before_header' ); ?>
 
 	<?php
-		$header_class = 'foam';
+		/**
+		 * NOTE: unhooked storefront_header action
+		 *
+		 * @UNHOOKED storefront_skip_links                       - 0
+		 * @UNHOOKED storefront_social_icons                     - 10
+		 * @UNHOOKED storefront_site_branding                    - 20
+		 * @UNHOOKED storefront_secondary_navigation             - 30
+		 * @UNHOOKED storefront_product_search                   - 40
+		 * @UNHOOKED storefront_primary_navigation_wrapper       - 42
+		 * @UNHOOKED storefront_primary_navigation               - 50
+		 * @UNHOOKED storefront_header_cart                      - 60
+		 * @UNHOOKED storefront_primary_navigation_wrapper_close - 68
+		 */
+
+		// instead, the header is replaced by the template part
+		get_template_part('template-parts/partials/global/header');
 	?>
-	<header id="masthead" class="site-header <?php echo $header_class;?>" role="banner" style="<?php storefront_header_styles(); ?>">
-		<div class="col-full head-container">
-
-			<?php
-			/**
-			 * Functions hooked into storefront_header action
-			 *
-			 * @hooked storefront_skip_links                       - 0
-			 * @hooked storefront_social_icons                     - 10
-			 * @hooked storefront_site_branding                    - 20
-			 * @hooked storefront_secondary_navigation             - 30
-			 * @hooked storefront_product_search                   - 40
-			 * @hooked storefront_primary_navigation_wrapper       - 42
-			 * @hooked storefront_primary_navigation               - 50
-			 * @hooked storefront_header_cart                      - 60
-			 * @hooked storefront_primary_navigation_wrapper_close - 68
-			 */
-			do_action( 'storefront_header' ); ?>
-
-		</div>
-	</header><!-- #masthead -->
-
+	
 	<?php
 	/**
 	 * Functions hooked in to storefront_before_content
@@ -58,7 +52,7 @@
 	 */
 	do_action( 'storefront_before_content' ); ?>
 
-	<div id="content" class="site-content body-container" tabindex="-1">
+	<div id="content" class="" tabindex="-1">
 		<div class="">
 
 		<?php

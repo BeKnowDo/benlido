@@ -8,27 +8,21 @@
  */
 
 ?>
-
+		<i id="dimmed-overlay" class="dimmed-overlay"></i>
 		</div><!-- .col-full -->
 	</div><!-- #content -->
 
 	<?php do_action( 'storefront_before_footer' ); ?>
-
-	<footer id="colophon" class="" role="contentinfo">
-		<div class="grid-container">
-            <div class="row no-margin reverse">
-
-			<?php
+	<?php
 			/**
-			 * Functions hooked in to storefront_footer action
+			 * NOTE: unhooked storefront_footer action
 			 *
-			 * @hooked storefront_footer_widgets - 10
-			 * @hooked storefront_credit         - 20
+			 * @UNHOOKED storefront_footer_widgets - 10
+			 * @UNHOOKED storefront_credit         - 20
 			 */
-			do_action( 'storefront_footer' ); ?>
-            </div>
-		</div><!-- .col-full -->
-	</footer><!-- #colophon -->
+			do_action( 'storefront_footer' ); 
+			get_template_part( 'template-parts/partials/global/footer' );
+	?>
 
 	<?php do_action( 'storefront_after_footer' ); ?>
 

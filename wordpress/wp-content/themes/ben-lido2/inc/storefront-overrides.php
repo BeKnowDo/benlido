@@ -16,18 +16,22 @@ function bl_storefront_overrides() {
 
 	add_action('storefront_footer','bl_footer_menus',10);
 
-    remove_action('storefront_header','storefront_social_icons',10);
+	// basically removed all the storefront_header action because we are removing it from the template itself to accommodate for how Cesar is building the template
+	remove_action('storefront_header','storefront_skip_links',0);
+	remove_action('storefront_header','storefront_social_icons',10);
+	remove_action('storefront_header','storefront_site_branding',20);
 	remove_action('storefront_header','storefront_primary_navigation_wrapper',42);
 	remove_action('storefront_header','storefront_secondary_navigation ',30);
-    remove_action('storefront_header','storefront_primary_navigation',50);
+	remove_action('storefront_header','storefront_primary_navigation',50);
+	remove_action('storefront_header','storefront_header_cart',60);
     remove_action('storefront_header','storefront_primary_navigation_wrapper_close',68);
-    remove_action('storefront_header','storefront_product_search',40);
+	remove_action('storefront_header','storefront_product_search',40);
 
+	// also removing all the storefront_footer actions as well
 	remove_action('storefront_footer','storefront_footer_widgets',10);
-
-
-
+	remove_action('storefront_footer','storefront_credit',20);
 }
+
 // for adding frequency to session
 add_action( 'wp_loaded', 'bl_add_frequency_to_session', 100);
 add_action( 'wp', 'bl_storefront_overrides' );
