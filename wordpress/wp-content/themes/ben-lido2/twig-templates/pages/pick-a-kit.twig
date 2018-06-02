@@ -8,8 +8,8 @@
       }
   ]%}
 
-    {% include '../common/step-navigation.twig' %}
-    {% include '../common/hero-title-copy.twig' %}
+    {% include 'common/step-navigation.twig' %}
+    {% include 'common/hero-title-copy.twig' %}
 
     {% set items = [
       {
@@ -55,10 +55,10 @@
 
     <div class="bg-grey">
         <div class="max-width-1200">
-            {% include '../common/hero-product-list.twig', with { products: items } %}
+            {% include 'common/hero-product-list.twig', with { products: items } %}
         </div>
     </div>
 
-    {% include '../common/back-to-top.twig' %}
+    {% include 'common/back-to-top.twig' %}
 
 {% endblock %}

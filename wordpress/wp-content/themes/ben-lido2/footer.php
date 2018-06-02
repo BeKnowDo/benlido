@@ -9,7 +9,6 @@
 
 ?>
 		<i id="dimmed-overlay" class="dimmed-overlay"></i>
-		</div><!-- .col-full -->
 	</div><!-- #content -->
 
 	<?php do_action( 'storefront_before_footer' ); ?>
@@ -20,13 +19,12 @@
 			 * @UNHOOKED storefront_footer_widgets - 10
 			 * @UNHOOKED storefront_credit         - 20
 			 */
-			do_action( 'storefront_footer' ); 
-			get_template_part( 'template-parts/partials/global/footer' );
+			//do_action( 'storefront_footer' ); 
+			get_template_part( 'template-parts/common/footer' );
 	?>
 
 	<?php do_action( 'storefront_after_footer' ); ?>
 
-</div><!-- #page -->
 
 <?php wp_footer(); ?>
 

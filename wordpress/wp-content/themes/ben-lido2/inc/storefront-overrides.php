@@ -2,19 +2,19 @@
 // this file contains overrides of standard storefront theme functions or actions
 
 function bl_storefront_overrides() {
-    add_action('storefront_before_header','bl_storefront_before_header',10); // adding custom header cover
-    add_action('storefront_header','bl_storefront_burger',10); // adding menu burger
-	add_action('storefront_header','bl_storefront_search_button',10); // adding search button
+    //add_action('storefront_before_header','bl_storefront_before_header',10); // adding custom header cover
+    //add_action('storefront_header','bl_storefront_burger',10); // adding menu burger
+	//add_action('storefront_header','bl_storefront_search_button',10); // adding search button
 	
-	add_action('storefront_before_content','storefront_primary_navigation',5);
-	add_action('storefront_before_content','storefront_product_search',6);
+	//add_action('storefront_before_content','storefront_primary_navigation',5);
+	//add_action('storefront_before_content','storefront_product_search',6);
 	if (is_woocommerce() || is_cart() || is_checkout()) {
 		add_action('storefront_before_content','bl_storefront_main_content_wrapper_start',10);
 		add_action('storefront_before_footer','bl_storefront_main_content_wrapper_end',99);
 	}
 
 
-	add_action('storefront_footer','bl_footer_menus',10);
+	//add_action('storefront_footer','bl_footer_menus',10);
 
 	// basically removed all the storefront_header action because we are removing it from the template itself to accommodate for how Cesar is building the template
 	remove_action('storefront_header','storefront_skip_links',0);

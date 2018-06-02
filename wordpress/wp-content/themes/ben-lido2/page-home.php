@@ -26,20 +26,22 @@ get_header(); ?>
                 </div>
             <?php endif;?>
 
-            if ($show_feature_cards == true) {
-                get_template_part( 'template-parts/partials/home/feature','cards'); 
-            }
+            <?php if ($show_feature_cards == true):?>
+                <?php get_template_part( 'template-parts/partials/home/feature','cards'); ?>
+            <?php endif;?>
 
-            if ($show_bottom_section == true) {
-                get_template_part( 'template-parts/partials/home/bottom'); 
-            }
+            <?php if ($show_bottom_section == true):?>
+                <?php get_template_part( 'template-parts/partials/home/bottom'); ?>
+            <?php endif;?>
 
+            <?php
             /**
              * Functions hooked in to storefront_page_after action
              *
              * @hooked storefront_display_comments - 10
              */
             do_action( 'storefront_page_after' );
+            ?>
 
         <?php endwhile; // End of the loop. ?>
 

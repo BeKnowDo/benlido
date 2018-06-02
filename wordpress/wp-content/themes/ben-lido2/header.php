@@ -22,7 +22,6 @@
 
 <?php do_action( 'storefront_before_site' ); ?>
 
-<div id="page" class="">
 	<?php do_action( 'storefront_before_header' ); ?>
 
 	<?php
@@ -41,7 +40,7 @@
 		 */
 
 		// instead, the header is replaced by the template part
-		get_template_part('template-parts/partials/global/header');
+		get_template_part('template-parts/common/header');
 	?>
 	
 	<?php
@@ -53,7 +52,6 @@
 	do_action( 'storefront_before_content' ); ?>
 
 	<div id="content" class="" tabindex="-1">
-		<div class="">
 
 		<?php
 		/**
