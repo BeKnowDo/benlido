@@ -7,23 +7,24 @@
     "json": "node scripts/json-seeder.js quiet=true --users=20",
     "server": "nodemon -e js,twig server",
     "api": "concurrently \"yarn server\" \"yarn server\" \"yarn json\"",
-    "dev":
-      "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn webpack\" \"yarn server\"",
+    "dev": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn webpack\" \"yarn server\"",
     "styles": "node scripts/styles.js",
     "styles:watch": "onchange 'src/styles/**/*.scss' -- yarn styles",
     "fonts": "node scripts/fonts.js",
     "images": "node scripts/images.js",
     "twig": "node scripts/twig.js",
     "webpack": "webpack --watch --mode development --config webpack.config.js",
-    "wordpress":
-      "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\" \"yarn twig\""
+    "wordpress": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\" \"yarn twig\""
   },
   "proxy": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/bkd-digital/bdk-benlido.git"
   },
-  "keywords": ["frontend", "wordpress"],
+  "keywords": [
+    "frontend",
+    "wordpress"
+  ],
   "author": "Cesar M. Perez",
   "license": "ISC",
   "homepage": "https://bitbucket.org/bkd-digital/bdk-benlido#readme",
@@ -61,6 +62,9 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "kute.js": "^1.6.5",
-    "spectre.css": "^0.5.1"
+    "lodash": "^4.17.10",
+    "selectivity": "^3.0.6",
+    "spectre.css": "^0.5.1",
+    "swiper": "^4.3.2"
   }
 }

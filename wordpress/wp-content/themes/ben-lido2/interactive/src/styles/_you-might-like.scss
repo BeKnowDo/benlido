@@ -1,0 +1,10 @@
+.product-row {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 100px;
+  &-header {
+    font-family: $sentinel;
+    font-style: normal;
+    font-weight: 400;
+  }
+}

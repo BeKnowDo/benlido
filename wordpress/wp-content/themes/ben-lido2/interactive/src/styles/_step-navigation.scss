@@ -3,6 +3,7 @@
 
   .btn {
     &-no-border {
+      position: relative;
       .step-navigation-text {
         font-size: 16px;
       }
@@ -12,26 +13,39 @@
     }
     &-primary {
       .step-navigation-text {
+        text-align: left;
         font-family: $knockout32;
         color: $white;
       }
     }
   }
 
-  .step-navigation-text {
-    vertical-align: super;
-    font-family: $sentinel;
-    color: $medium-grey;
+  .step-navigation {
+    &-text {
+      vertical-align: super;
+      color: $medium-grey;
+      &-back {
+        font-size: 11px;
+        display: block;
+        width: 100%;
+        font-weight: normal;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+      }
+    }
+    &-current {
+      color: $medium-grey;
+      padding: 8px 0;
+      vertical-align: super;
+      font-family: $sentinel;
+      font-style: normal;
+      font-weight: 400;
+    }
   }
 
   .fal {
     font-size: 25px;
-  }
-
-  .text-left {
-    .fal {
-      padding-right: 46px;
-    }
   }
 
   .text-right {

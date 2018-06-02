@@ -1,0 +1,16 @@
+.swiper-container-horizontal {
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+  .swiper-pagination-bullets {
+    .swiper-pagination-bullet {
+      background-color: transparent;
+      border: 1px solid $dark-grey;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $blue-shale;
+      border: 0;
+    }
+  }
+}

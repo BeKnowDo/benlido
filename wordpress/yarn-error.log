@@ -1,0 +1,32 @@
+Arguments: 
+  /Users/bkd/.nvm/versions/node/v9.9.0/bin/node /Users/bkd/.yarn/bin/yarn.js dev
+
+PATH: 
+  /Users/bkd/.nvm/versions/node/v9.9.0/bin:/Users/bkd/.yarn/bin:/Users/bkd/.rbenv/shims:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/bkd/.yarn/bin:/Users/bkd/.rbenv/shims
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.9.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/bkd/Repositories/ben-lido/wordpress"
+      at new MessageError (/Users/bkd/.yarn/lib/cli.js:186:110)
+      at /Users/bkd/.yarn/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/Users/bkd/.yarn/lib/cli.js:98:30)
+      at /Users/bkd/.yarn/lib/cli.js:109:13
+      at <anonymous>

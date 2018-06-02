@@ -1,0 +1,12 @@
+.product {
+  &-row {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 93px 10px 100px;
+    &-header {
+      @include sentinel(25px, 400);
+      color: $medium-grey;
+      padding: 0 0 60px;
+    }
+  }
+}

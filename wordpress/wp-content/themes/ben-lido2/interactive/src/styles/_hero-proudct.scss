@@ -1,6 +1,6 @@
 .hero-product {
   padding: 44px 20px;
-  border-bottom: $hero-border;
+  border-bottom: $grey-border;
   position: relative;
 
   a {
@@ -15,8 +15,7 @@
   }
   &-price {
     color: $brown-grey;
-    font-family: $sentinel;
-    font-size: 22px;
+    @include sentinel(22px, 400);
   }
   &-bag-link {
     display: inline-block;
@@ -34,7 +33,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    // background-color: rgba(9, 9, 9, 0.1);
     &-header {
       font-size: 75px;
     }

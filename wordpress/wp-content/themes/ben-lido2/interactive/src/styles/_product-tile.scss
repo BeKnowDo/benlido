@@ -1,0 +1,20 @@
+.product {
+  &-tile {
+    padding: 20px;
+    margin: 0 0 10px;
+    border: $grey-border;
+    border-radius: 4px;
+    &-link {
+    }
+    &-image {
+      &:hover {
+      }
+    }
+    &-description {
+      font-family: $knockout32;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}

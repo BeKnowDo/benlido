@@ -1,0 +1,37 @@
+{% extends "layout/document.twig" %}
+
+{% block content %}
+
+  <div class="max-width-1200">
+
+    <div class="back-to-previous-page">
+      <i class="fal fa-chevron-circle-left fa-2x"></i>
+    </div>
+
+    <div class="max-width-960">
+      <div class="columns">
+
+        <div class="column col-5 col-xs-12 col-sm-12">
+          {% include 'common/product/product-images.twig' %}
+        </div>
+
+        <div class="column col-6 col-xs-12 col-sm-12 col-mx-auto">
+
+          {% include 'common/product/product-information.twig' %}
+          {% include 'common/product/product-description.twig' %}
+          {% include 'common/product/product-additional-information.twig' %}
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bg-grey border-top-grey">
+
+    {% include 'common/product/product-row.twig' %}
+
+  </div>
+
+{% endblock %}

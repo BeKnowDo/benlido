@@ -45,7 +45,7 @@ const compileSass = () => {
     log(chalk.black.bgYellow(`CSS Map File written to: ${cssMapFilePath}`));
   } else {
     postCSS()
-      .process(sassOutput, { from: undefined, map: { inline: false } })
+      .process(sassOutput, { from: undefined })
       .then(styles => {
         cssContent = styles.css;
         //Clean CSS options

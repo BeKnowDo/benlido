@@ -2,11 +2,12 @@
 
 {% block content %}
 
-    <div class="max-width-1200">
-        {% include './hero/home-hero.twig' %}
-    </div>
+  <div class="max-width-1200">
+    {% include 'common/hero/home-hero.twig' %}
+  </div>
 
-    {% set homePageHeros = [
+  {% if not homePageHeroes %}
+    {% set homePageHeroes = [
         {
             header: 'How it Works',
             copy: "Premium, personalized bags packed with the products you love, delivered anywhere, with easy subscription reorders.",
@@ -18,10 +19,11 @@
         }
       ]
     %}
-    <div class="bg-grey">
-        <div class="max-width-1200">
-            {% include './hero/hero.twig'%}
-        </div>
+  {% endif %}
+  <div class="bg-grey">
+    <div class="max-width-1200">
+      {% include 'common/hero/hero.twig', with { homePageHeroes: homePageHeroes }%}
     </div>
+  </div>
 
 {% endblock %}

@@ -1,16 +1,19 @@
 {% extends "../layout/document.twig" %}
 
 {% block content %}
+
+  {% if not heroData %}
     {% set heroData = [
       {
         header: 'Let Us Help You Get Started',
         copy: 'Choose a curated kit, customize it and make it your own. No shipping costs and all products up to 100% free with kit purchase.'
       }
   ]%}
+  {% endif %}
+  {% include 'common/step-navigation.twig' %}
+  {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
 
-    {% include '../common/step-navigation.twig' %}
-    {% include '../common/hero-title-copy.twig' %}
-
+  {% if not items %}
     {% set items = [
       {
         logo: '/images/kipling.png',
@@ -20,7 +23,7 @@
         picked: true,
         href: '/product/123',
         image: '/images/product-image.png',
-        bagURL: '/bag/123'
+        bagURL: '/product/123'
       },
       {
         logo: '/images/kipling.png',
@@ -29,7 +32,7 @@
         price: '$45',
         href: '/product/123',
         image: '/images/product-image.png',
-        bagURL: '/bag/123'
+        bagURL: '/product/123'
       },
       {
         logo: '/images/kipling.png',
@@ -38,7 +41,7 @@
         price: '$35',
         href: '/product/123',
         image: '/images/product-image.png',
-        bagURL: '/bag/123',
+        bagURL: '/product/123',
         disabled: true
       },
       {
@@ -48,17 +51,18 @@
         price: '$35',
         href: '/product/123',
         image: '/images/product-image.png',
-        bagURL: '/bag/123'
+        bagURL: '/product/123'
       }
 
     ]%}
+  {% endif %}
 
-    <div class="bg-grey">
-        <div class="max-width-1200">
-            {% include '../common/hero-product-list.twig', with { products: items } %}
-        </div>
+  <div class="bg-grey">
+    <div class="max-width-1200">
+      {% include 'common/hero/hero-product-list.twig', with { products: items } %}
     </div>
+  </div>
 
-    {% include '../common/back-to-top.twig' %}
+  {% include 'common/back-to-top.twig' %}
 
 {% endblock %}

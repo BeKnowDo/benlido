@@ -1,0 +1,27 @@
+@mixin sentinel($size, $weight) {
+  font-family: $sentinel;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: normal;
+}
+
+@mixin knockout($size, $weight) {
+  font-family: $knockout;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: normal;
+}
+
+@mixin knockout32($size, $weight) {
+  font-family: $knockout32;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: normal;
+}
+
+@mixin knockout47($size, $weight) {
+  font-family: $knockout47;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: normal;
+}

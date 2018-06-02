@@ -2,19 +2,27 @@
 @import "./font-awesome/fa-light.scss";
 @import "./font-awesome/fa-solid.scss";
 
-// Global
+// Variables and Mixins
 @import "./variables";
+@import "./mixins";
+
+// Libraries
 @import "node_modules/spectre.css/src/spectre";
+@import "node_modules/swiper/dist/css/swiper";
+@import "node_modules/selectivity/styles/selectivity";
+@import "./swiper-overrides";
+
+// Globals
 @import "./animations";
 @import "./typography";
 @import "./borders";
 @import "./global";
 @import "./layout";
 @import "./utilities";
-@import "./header";
-@import "./overlay";
 
 // Components
+@import "./overlay";
+@import "./header";
 @import "./navigation";
 @import "./footer";
 @import "./footer-contact-links";
@@ -27,6 +35,17 @@
 @import "./hero-proudct";
 @import "./back-to-top";
 @import "./step-navigation";
+@import "./back-to-previous-page";
+
+@import "./product-detail";
+@import "./product-tile";
+@import "./product-row";
+@import "./product-information";
+@import "./product-additional-info";
+@import "./product-quantity";
+@import "./ratings";
+@import "./product-row";
+@import "./product-images";
 
 // Responsive
 @import "./responsive";

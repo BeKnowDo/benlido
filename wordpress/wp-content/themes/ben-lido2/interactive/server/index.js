@@ -37,6 +37,10 @@ app.get("/pick-a-kit", (req, res) => {
   res.render("pages/pick-a-kit");
 });
 
+app.get("/product/:id", (req, res) => {
+  res.render("pages/product");
+});
+
 app.get("/search", (req, res) => {
   return res.send("search page");
 });
@@ -44,7 +48,7 @@ app.get("/search", (req, res) => {
 const listening = function() {
   if (!isProduction) {
     browserSync({
-      files: ["src/**/*.{html,twig}", "build/**/*.{css, js}"],
+      files: ["interactive/**/*.{html,twig}", "build/**/*.{css, js}"],
       online: false,
       open: false,
       port: env.BROWSER_SYNC_PORT,
