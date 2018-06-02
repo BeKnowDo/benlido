@@ -2,6 +2,7 @@
 {% if not productInformation %}
   {% set productInformation = [
     {
+      category: '123',
       sku: 'AC7808',
       header: 'Aiden Travel Toiletry Bag By Kipling',
       description: "Our recommendation: this case makes a perfect companion for your travel adventures. Finished with a special side snap tab to easily hook up to your backpack or suitcase, this lightweight travel kit is especially easy to tow on-the-go. Fill it up with makeup or shower essentials and go! Bonus: You can personalize this pouch with a custom monogram. Add a touch of flair with initials, emoji's, or a fun saying (up to 9 characters).",
@@ -49,6 +50,24 @@
   ]%}
 {% endif %}
 
+{% if not productImages %}
+  {% set productImages = [
+   {
+     url: '/images/product-image-1.png',
+     altText: 'Product alt text'
+   },
+   {
+     url: '/images/product-image-2.png',
+     altText: 'Product alt text'
+   },
+   {
+     url: '/images/product-image-3.png',
+     altText: 'Product alt text'
+   }
+
+ ] %}
+{% endif %}
+
 {% block content %}
 
   <div class="max-width-1200">
@@ -61,7 +80,7 @@
       <div class="columns">
 
         <div class="column col-5 col-xs-12 col-sm-12">
-          {% include 'common/product/product-images.twig' %}
+          {% include 'common/product/product-images.twig', with { productImages: productImages } %}
         </div>
 
         <div class="column col-6 col-xs-12 col-sm-12 col-mx-auto">
