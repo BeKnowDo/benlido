@@ -50,6 +50,10 @@
       align-items: center;
       padding: 60px 0 0 0;
 
+      .product-tile-sub-header {
+        padding-bottom: 60px;
+      }
+
       &-add {
         color: $medium-grey;
         font-size: 102px;
@@ -59,7 +63,6 @@
       .btn-primary {
         margin-top: auto;
         position: relative;
-        bottom: 10px;
       }
     }
   }

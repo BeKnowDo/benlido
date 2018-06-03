@@ -12,6 +12,6 @@ const initializeNavigation = new Navigation(
   "#dimmed-overlay"
 ).init();
 
-const initializeScrollToTop = new ScrollToTop("#benlido-back-to-top").init();
+const initializeScrollToTop = new ScrollToTop("#back-to-top").init();
 const productCarousels = new ProductImageCarousel(".swiper-container").init();
 const productQuantity = new ProductQuantity(".product-quantity").init();

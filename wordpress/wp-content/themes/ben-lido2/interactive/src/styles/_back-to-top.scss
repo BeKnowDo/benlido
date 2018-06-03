@@ -1,5 +1,11 @@
-.benlido-back-to-top {
-  padding: 40px 0;
+.back-to-top {
+  padding: 20px 0;
+
+  .column {
+    &:nth-child(1) {
+      margin-bottom: 20px;
+    }
+  }
 
   .btn {
     padding: 10px 14px 10px 10px;
@@ -9,6 +15,7 @@
       display: inline-block;
     }
   }
+
   .fal {
     font-size: 22px;
   }

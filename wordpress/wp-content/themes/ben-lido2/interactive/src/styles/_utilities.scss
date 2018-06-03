@@ -1,11 +1,17 @@
-.max-width-1200 {
+.max-width-xl {
   max-width: $size-xl;
   padding: 0 10px;
   margin: 0 auto;
 }
 
-.max-width-960 {
+.max-width-lg {
   max-width: $size-lg;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.max-width-md {
+  max-width: $size-md;
   padding: 0 10px;
   margin: 0 auto;
 }

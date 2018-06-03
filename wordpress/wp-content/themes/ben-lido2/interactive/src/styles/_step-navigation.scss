@@ -2,6 +2,37 @@
   padding: 28px 10px;
   border-bottom: $grey-border;
 
+  &-text {
+    vertical-align: super;
+    color: $medium-grey;
+    &-back {
+      font-weight: normal;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      font-size: 11px;
+      display: block;
+      width: 55px;
+    }
+    &-next {
+      font-weight: normal;
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      font-size: 11px;
+      display: block;
+      width: 55px;
+    }
+  }
+  &-current {
+    color: $medium-grey;
+    padding: 8px 0;
+    vertical-align: super;
+    font-family: $sentinel;
+    font-style: normal;
+    font-weight: 400;
+  }
+
   .btn {
     &-no-border {
       position: relative;
@@ -18,30 +49,6 @@
         font-family: $knockout32;
         color: $white;
       }
-    }
-  }
-
-  .step-navigation {
-    &-text {
-      vertical-align: super;
-      color: $medium-grey;
-      &-back {
-        font-size: 11px;
-        display: block;
-        width: 100%;
-        font-weight: normal;
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-      }
-    }
-    &-current {
-      color: $medium-grey;
-      padding: 8px 0;
-      vertical-align: super;
-      font-family: $sentinel;
-      font-style: normal;
-      font-weight: 400;
     }
   }
 

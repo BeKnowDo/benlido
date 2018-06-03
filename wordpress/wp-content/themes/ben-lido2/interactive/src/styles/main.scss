@@ -1,6 +1,7 @@
 @import "./font-awesome/fontawesome";
 @import "./font-awesome/fa-light.scss";
 @import "./font-awesome/fa-solid.scss";
+@import "./font-awesome/fa-regular.scss";
 
 // Variables and Mixins
 @import "./variables";
@@ -47,6 +48,7 @@
 @import "./ratings";
 @import "./product-row";
 @import "./product-images";
+@import "./shipping-tile";
 
 // Page Specific
 @import "./pages/kit-selected";

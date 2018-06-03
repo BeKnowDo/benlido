@@ -41,6 +41,10 @@ app.get("/kit-selected", (req, res) => {
   res.render("pages/kit-selected");
 });
 
+app.get("/shipping-schedule", (req, res) => {
+  res.render("pages/shipping-schedule");
+});
+
 app.get("/product/:id", (req, res) => {
   res.render("pages/product");
 });

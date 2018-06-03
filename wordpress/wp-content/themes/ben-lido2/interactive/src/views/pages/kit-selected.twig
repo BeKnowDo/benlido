@@ -2,7 +2,16 @@
 
 {% block content %}
 
-  {% include 'common/step-navigation.twig' %}
+  {% if not stepNavigation %}
+    {% set stepNavigation = [
+      {
+        previousStep: '/pick-a-kit',
+        nextStep: '/shipping-schedule'
+      }
+    ] %}
+  {% endif %}
+
+  {% include 'common/step-navigation.twig', with {stepNavigation: stepNavigation} %}
 
   {% if not heroProduct %}
     {% set heroProduct = [
@@ -146,7 +155,7 @@
 
   <div class="bg-grey">
 
-    <div class="max-width-1200">
+    <div class="max-width-xl">
 
       {% include 'common/hero/hero-product-list.twig', with { products: heroProduct } %}
 
