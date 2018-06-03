@@ -7,4 +7,19 @@
   &-no-border {
     border: 0;
   }
+
+  &.btn-selected {
+    background-color: $brown-grey;
+    padding: 10px;
+    display: flex;
+  }
+  .btn-selected {
+    &-remove {
+      width: 50%;
+      border-right: 2px solid $white;
+    }
+    &-swap {
+      width: 50%;
+    }
+  }
 }

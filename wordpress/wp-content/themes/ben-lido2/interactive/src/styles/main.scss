@@ -29,6 +29,7 @@
 @import "./social-media-links";
 @import "./copyright";
 @import "./buttons";
+@import "./category-header";
 @import "./hero";
 @import "./hero-home";
 @import "./hero-title-copy";
@@ -46,6 +47,9 @@
 @import "./ratings";
 @import "./product-row";
 @import "./product-images";
+
+// Page Specific
+@import "./pages/kit-selected";
 
 // Responsive
 @import "./responsive";
