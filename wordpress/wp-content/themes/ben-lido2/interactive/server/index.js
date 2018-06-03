@@ -58,7 +58,7 @@ const listening = function() {
       port: env.BROWSER_SYNC_PORT,
       proxy: "localhost:" + env.PROXY_PORT,
       ui: false,
-      reloadDelay: 1000
+      reloadDelay: 500
     });
   }
 };

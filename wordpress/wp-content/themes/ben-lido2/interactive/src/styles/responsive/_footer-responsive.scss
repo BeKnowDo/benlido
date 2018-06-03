@@ -2,7 +2,7 @@
   .footer {
     .columns {
       flex-direction: row;
-      .column {
+      .col-3 {
         &:last-child {
           order: -1;
         }

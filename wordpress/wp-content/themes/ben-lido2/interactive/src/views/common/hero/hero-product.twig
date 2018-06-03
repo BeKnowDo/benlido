@@ -6,6 +6,12 @@
     {% set className = "" %}
   {% endif %}
 
+  {% if item.triangleBackground %}
+    {% set backgroundClassname = 'triangle-background'%}
+  {% else %}
+    {% set backgroundClassname = ''%}
+  {% endif %}
+
   {% if item.bagURL is defined %}
     {% set bagURL = item.bagURL %}
   {% else %}
@@ -37,12 +43,16 @@
           </a>
         </h1>
         <p class="hero-product-copy">{{item.copy}}</p>
-        <p class="hero-product-price">{{item.price}}</p>
+
+        {% if item.price %}
+          <p class="hero-product-price">{{item.price}}</p>
+        {% endif %}
+
         <a class="btn btn-primary btn-lg {{picked}}" href="{{item.href}}" title="">
           {{pickedCopy}}
         </a>
       </div>
-      <div class="column col-4 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
+      <div class="column col-6 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
         <a class="hero-product-bag-link" href="{{bagURL}}" title="{{item.header}}">
           <img class="hero-product-bag-image" src="{{item.image}}"/>
         </a>

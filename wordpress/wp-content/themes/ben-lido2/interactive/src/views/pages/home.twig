@@ -1,6 +1,18 @@
 {% extends "../layout/document.twig" %}
 
 {% block content %}
+  {% if not homePageHero %}
+    {% set homePageHero = [
+    {
+      triangleBackground: true,
+      header: 'Wander Well',
+      copy: "Your favorite brands, in the right sizes, at the best prices—delivered to your door, ready to travel. You're good to go with Ben Lido.",
+      image: '/images/home-hero@2x.png',
+      altText: 'Hero image alt text'
+    }
+  ]%}
+
+  {% endif %}
 
   <div class="max-width-1200">
     {% include 'common/hero/home-hero.twig' %}

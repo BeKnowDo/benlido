@@ -18,9 +18,14 @@
     @include sentinel(22px, 400);
   }
   &-bag-link {
-    display: inline-block;
+    display: flex;
+    height: 100%;
+    align-content: center;
   }
   &-bag-image {
+    margin: 0 auto;
+    align-self: center;
+    display: block;
   }
   &-disabled {
     display: flex;

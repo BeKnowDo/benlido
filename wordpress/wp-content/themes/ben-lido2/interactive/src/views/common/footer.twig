@@ -1,5 +1,9 @@
-{% set className = "footer-primary-items" %}
-{% set list = [
+{% if not className %}
+  {% set className = "footer-primary-items" %}
+{% endif %}
+
+{% if not list %}
+  {% set list = [
   {
     href: '/whatever',
     title: 'Home',
@@ -26,8 +30,10 @@
     text: 'Sign In'
   }
   ]%}
+{% endif %}
 
-{% set socialMediaLinks = [
+{% if not socialMediaLinks %}
+  {% set socialMediaLinks = [
   {
     href: '/whatever',
     title: 'Newsletter',
@@ -54,22 +60,23 @@
     text: 'Facebook'
   }
   ]%}
+{% endif %}
 
 <footer class="footer">
   <div class="max-width-1200 columns">
-    <div class="column col-md-12">
+    <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
       {% include 'common/navigation/navbar-items.twig' %}
     </div>
 
-    <div class="column col-md-12">
+    <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
       {% include 'common/social-media-links.twig' %}
     </div>
 
-    <div class="column col-md-12">
+    <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
       {% include 'common/contact-links.twig' %}
     </div>
 
-    <div class="column col-md-12">
+    <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
       {% include 'common/copyright.twig' %}
     </div>
 

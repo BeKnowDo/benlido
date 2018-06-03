@@ -1,15 +1,4 @@
 @media (min-width: $size-md) {
-  .hero {
-    &-home {
-      background-image: url(/images/product-svg.svg);
-      background-position: 100% bottom;
-      background-size: 49%;
-    }
-  }
 }
 @media (min-width: $size-sm) {
-  .hero {
-    &-home {
-    }
-  }
 }

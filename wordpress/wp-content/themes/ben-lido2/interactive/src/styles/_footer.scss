@@ -3,12 +3,16 @@
   border-top: 1px solid $light-grey;
   background-color: $white;
 
+  .social-media-links {
+    padding-top: 0;
+  }
+
   &-primary-items {
     margin: 0;
     padding: 0;
   }
 
-  .column {
+  .col-3 {
     margin-bottom: 30px;
   }
 
