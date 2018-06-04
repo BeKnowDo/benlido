@@ -1,0 +1,35 @@
+.shipping-tile {
+  background-color: $white;
+  height: 100%;
+  padding: 20px;
+  border: $grey-border;
+  border-radius: 4px;
+
+  &-container {
+    padding-bottom: 40px;
+    .column {
+      margin-bottom: 20px;
+    }
+  }
+
+  &-image {
+    margin: 0 auto;
+    display: block;
+  }
+
+  &-header {
+    @include knockout(35px, 400);
+    text-align: center;
+    padding: 30px 0 20px;
+  }
+
+  &-copy {
+    @include knockout32(14px, 400);
+    padding: 0 0 20px;
+    color: $medium-grey;
+  }
+
+  .fa-calendar {
+    margin-left: 10px;
+  }
+}

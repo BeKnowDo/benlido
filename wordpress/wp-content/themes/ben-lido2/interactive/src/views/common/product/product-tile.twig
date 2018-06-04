@@ -23,10 +23,18 @@
       <p class="product-tile-description" itemprop="description">{{product.description}}</p>
     </div>
 
-    <button class="btn btn-lg btn-block btn-primary" data-sku="{{product.sku}}" data-category="{{product.category}}">
-      Add to kit
-      <i class="fal fa-plus-circle"></i>
-    </button>
+    {% if product.selected == true %}
+      <div class="product-selected">
+        <button class="btn btn-lg btn-block btn-primary btn-selected" data-sku="{{product.sku}}" data-category="{{product.category}}">
+          <span class="btn-selected-remove">Remove</span>
+          <span class="btn-selected-swap">Swap</span>
+        </div>
+      {% else %}
+        <button class="btn btn-lg btn-block btn-primary" data-sku="{{product.sku}}" data-category="{{product.category}}">
+          Add to kit
+          <i class="fal fa-plus-circle"></i>
+        </button>
+      {% endif %}
 
+    </div>
   </div>
-</div>

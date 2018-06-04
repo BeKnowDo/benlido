@@ -1,41 +1,68 @@
 .product {
   &-tile {
+    height: 100%;
     padding: 20px;
-    margin: 0 0 10px;
     border: $grey-border;
     border-radius: 4px;
+
+    &-column {
+      margin: 0 0 10px;
+    }
 
     &-link {
       display: inline-block;
       padding: 10px 0;
     }
     &-header {
-      @include sentinel(16px, 400);
+      @include sentinel(20px, 400);
+      padding: 0;
     }
-    &-image {
-      &:hover {
-      }
+    &-sub-header {
+      @include sentinel(14px, 400);
+      color: $medium-grey;
+      padding: 10px 0 0;
     }
+
     &-price {
       @include sentinel(22px, 400);
     }
+
     &-description {
       @include knockout32(14px, 400);
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
     }
+
     .btn {
       @include knockout32(15px, 400);
     }
+
     .fal {
       margin-left: 4px;
       font-size: 14px;
     }
 
-    .add-empty-product {
-      &.fal {
-        font-size: 82px;
+    .empty-product {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 0 0 0;
+
+      .product-tile-sub-header {
+        padding-bottom: 60px;
+      }
+
+      &-add {
+        color: $medium-grey;
+        font-size: 102px;
+        padding: 0 0 40px;
+      }
+
+      .btn-primary {
+        margin-top: auto;
+        position: relative;
       }
     }
   }

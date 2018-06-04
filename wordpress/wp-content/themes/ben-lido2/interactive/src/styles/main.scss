@@ -1,6 +1,7 @@
 @import "./font-awesome/fontawesome";
 @import "./font-awesome/fa-light.scss";
 @import "./font-awesome/fa-solid.scss";
+@import "./font-awesome/fa-regular.scss";
 
 // Variables and Mixins
 @import "./variables";
@@ -29,6 +30,7 @@
 @import "./social-media-links";
 @import "./copyright";
 @import "./buttons";
+@import "./category-header";
 @import "./hero";
 @import "./hero-home";
 @import "./hero-title-copy";
@@ -46,6 +48,10 @@
 @import "./ratings";
 @import "./product-row";
 @import "./product-images";
+@import "./shipping-tile";
+
+// Page Specific
+@import "./pages/kit-selected";
 
 // Responsive
 @import "./responsive";

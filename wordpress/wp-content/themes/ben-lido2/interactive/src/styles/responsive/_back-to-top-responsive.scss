@@ -1,0 +1,13 @@
+@media (min-width: $size-md) {
+  .back-to-top {
+    .column {
+      &:nth-child(1) {
+        order: 1;
+        margin-top: 0;
+      }
+      &:nth-child(2) {
+        order: 2;
+      }
+    }
+  }
+}
