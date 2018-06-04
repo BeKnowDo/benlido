@@ -29,7 +29,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/bkd-digital/bdk-benlido#readme",
   "devDependencies": {
-    "autoprefixer": "^8.5.0",
+    "autoprefixer": "^8.6.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -56,7 +56,7 @@
     "twig": "^1.11.1",
     "webpack": "^4.9.1",
     "webpack-cli": "^2.1.4",
-    "yargs": "^11.0.0"
+    "yargs": "^11.1.0"
   },
   "testURL": "http://localhost",
   "dependencies": {
