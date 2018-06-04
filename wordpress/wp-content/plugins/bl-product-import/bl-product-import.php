@@ -31,9 +31,18 @@ function bl_product_import_settings() {
 
             }
         }
+        //print_r( $data);
+        //die;
         if (!empty($data) && is_array($data)) {
             // saving data for ajax
-            update_option($bl_stored_product_array,$data);
+            //print_r ($data);
+            //delete_option( $bl_stored_product_array );
+            // we're going to serialize the data
+            //die;
+            //$data_string = json_encode($data);
+            //print_r ($data_string);
+            //die;
+            update_option($bl_stored_product_array,$data,false);
             $script = '<script>
                 function bl_ajax_import_item() {
 
@@ -122,7 +131,7 @@ function bl_parse_csv($csv)
 
                         $rowData = array();
                         for ($c = 0; $c < $num; $c++) {
-                                $rowData[$keys[$c]] = $data[$c];
+                                $rowData[$keys[$c]] = utf8_encode($data[$c]);
                         }
 
                         $csvData[] = $rowData;
@@ -145,18 +154,26 @@ function bl_remove_utf8_bom($text)
 } // end if not function_exists
 
 function bl_create_product($data) {
+    require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+    // NOTE: new format from Drew
     //print_r ($data);
+    //die;
     //error_log(json_encode($data));
     $match_by = 'upc';
     $product_id = 0;
     $test_prod = 0;
     $res = array();
-    $sku = trim($data['id']);
-    $upc_code = $data['upc_code'];
+    // SKU is the combination of the "ben_lido_sku" field and the "upc_a" field
+    $sku = trim(trim($data['ben_lido_sku']) . '-' . trim($data['upc_a']));
+    //$sku = trim($data['id']);
+    $upc_code = $data['upc_a'];
     // clean UPC
     $upc_code = bl_distill_upc($upc_code);
-    $amazon_asin = $data['amazon_asin'];
-    $name = $data['name'];
+
+    // see if there are images for this product
+    $images = bl_fetch_local_product_images($upc_code);
+    $amazon_asin = trim($data['asin']);
+    $name = trim($data['product_name']);
     if (!empty($data['display_name'])) {
         $name = $data['display_name'];
     }
@@ -166,23 +183,97 @@ function bl_create_product($data) {
     } else {
         $active = false;
     }
-    $size_display_label = $data['disp_size_style'];
+    $active = true;
+    $manufacturer = $data['manufacturer'];
+    $brand = $data['brand'];
+    $label = $data['label'];
+    $size = $data['size']; // for display purposes
     $in_stock = $data['stocked'];
-    $description = '';
-    $short_description = '';
+    $description = $data['description'];
+    $features = $data['features'];
+    $short_description = $features;
     $product_type = 'simple';
     $tsa_compliant = $data['tsa_compliant'];
+    $tsa_compliant = 'Y'; // making it always "Yes"
     if ($tsa_compliant == 'Y') {
         $tsa_compliant = 'Yes';
     } else {
         $tsa_compliant = 'No';
     }
-    $product_width = $data['product_width'];
-    $product_height = $data['product_height'];
-    $price = $data['unit_sell_price'];
-    
+    $length = $data['length'];
+    $width = $data['width'];
+    $height = $data['height'];
     $weight = $data['weight'];
-    $categories = $data['categories'];
+    $price = $data['unit_sell_price'];
+
+    // distill weight
+    $weight = bl_distill_weight($weight);
+    
+    // other store prices
+    $store_name_1 = $data['store_name_1'];
+    $store_price_1 = floatval($data['store_price_1']);
+    $store_product_url_1 = $data['store_product_url_1'];
+    $store_name_2 = $data['store_name_2'];
+    $store_price_2 = floatval($data['store_price_2']);
+    $store_product_url_2 = $data['store_product_url_2'];
+    $store_name_3 = $data['store_name_3'];
+    $store_price_3 = floatval($data['store_price_3']);
+    $store_product_url_3 = $data['store_product_url_3'];
+    $store_name_4 = $data['store_name_4'];
+    $store_price_4 = floatval($data['store_price_4']);
+    $store_product_url_4 = $data['store_product_url_4'];
+    $store_name_5 = $data['store_name_5'];
+    $store_price_5 = floatval($data['store_price_5']);
+    $store_product_url_5 = $data['store_product_url_5'];
+
+    // we're going to take the lowest price of them all
+    if (empty($price)) {
+        $price = $store_price_1;
+        if (!empty($store_price_2) && $store_price_2 > 0 && $price > $store_price_2) {
+            $price = $store_price_2;
+        }
+        if (!empty($store_price_3) && $store_price_3 > 0 && $price > $store_price_3) {
+            $price = $store_price_3;
+        }
+        if (!empty($store_price_4) && $store_price_4 > 0 && $price > $store_price_4) {
+            $price = $store_price_4;
+        }
+        if (!empty($store_price_5) && $store_price_5 > 0 && $price > $store_price_5) {
+            $price = $store_price_5;
+        }
+    }
+
+    // basicaly, category is the top category
+    // $sub_category is the sub category
+    // $category_descriptor is the 3rd level category
+    // $alternate_sub_category is t
+    $category = trim($data['category']);
+    $sub_category = trim($data['sub_category']);
+    $category_descriptor = trim($data['category_descriptor']);
+    // $alternate_sub_category should be a second top category
+    // $alternate_descriptor should be a second sub category
+    $alternate_sub_category = trim($data['alternate_sub_category']);
+    $alternate_descriptor = trim($data['alternate_descriptor']);
+
+    
+    $categories = array();
+    if (!empty($category)) {
+        $categories[] = $category;
+    }
+    if (!empty($sub_category)) {
+        $categories[] = $sub_category;
+    }
+    if (!empty($category_descriptor)) {
+        $categories[] = $category_descriptor;
+    }
+    if (!empty($alternate_sub_category)) {
+        $categories[] = $alternate_sub_category;
+    }
+    if (!empty($alternate_descriptor)) {
+        $categories[] = $alternate_descriptor;
+    }
+
+    
     //$sku = $data['sku'];
     // let's see if the SKU exists
     if (!empty($sku)) {
@@ -197,6 +288,8 @@ function bl_create_product($data) {
     // had to force test_prod to make sure the ID < 0
     if (empty($test_prod) || $test_prod < 1) {
         // look for ASIN
+        //NOTE: no more matching by others
+        /*
         if (!empty($amazon_asin)) {
             $match_by = 'asin';
             $aws_prod = bl_search_aws_by_asin($amazon_asin);
@@ -206,23 +299,26 @@ function bl_create_product($data) {
             $match_by = 'search';
             $aws_prod = bl_search_aws_by_name_and_size($name,$size_display_label);
         }
+        */
         //print_r ($aws_prod);
         //die;
         // process things out
         // we use the description from Amazon
-        $description = $aws_prod['description'];
-        $image = $aws_prod['image'];
-        $brand = $aws_prod['brand'];
-        $aws_upc = $aws_prod['upc'];
-        $product_width = $aws_prod['width'];
-        $product_depth = $aws_prod['length'];
-        $product_height = $aws_prod['height'];
+        //$description = $aws_prod['description'];
+        //$image = $aws_prod['image'];
+        //$brand = $aws_prod['brand'];
+        //$aws_upc = $aws_prod['upc'];
+        //$product_width = $aws_prod['width'];
+        //$product_depth = $aws_prod['length'];
+        //$product_height = $aws_prod['height'];
         if ($price <= 0) {
             $price = $aws_prod['price'];
         }
         
         // sanity check
         $should_proceed = true;
+        $match_by = '';
+        $aws_prod = array();// clearing this because we are not getting data from AWS anymore.
         if ($match_by == 'upc' && !empty($aws_upc) && $aws_upc != $upc_code) {
             $res['error'] = 'UPC MisMatch! Closest Product: <a href="' . $aws_prod['url'] . '" target="_blank">' . $aws_upc . '</a>';
             $should_proceed = false;
@@ -247,23 +343,35 @@ function bl_create_product($data) {
         $product_id = $test_prod;
         $res['product_id'] = $product_id;
         // we only check aws if we have an asin
-        $aws_prod = bl_search_aws_by_asin($amazon_asin);
-        $description = $aws_prod['description'];
-        $image = $aws_prod['image'];
-        $brand = $aws_prod['brand'];
-        $product_width = $aws_prod['width'];
-        $product_depth = $aws_prod['length'];
-        $product_height = $aws_prod['height'];
+        $aws_prod = array();// clearing this because we are not getting data from AWS anymore.
+        //$aws_prod = bl_search_aws_by_asin($amazon_asin);
+        //$description = $aws_prod['description'];
+        //$image = $aws_prod['image'];
+        //$brand = $aws_prod['brand'];
+        //$product_width = $aws_prod['width'];
+        //$product_depth = $aws_prod['length'];
+        //$product_height = $aws_prod['height'];
         if ($price <= 0) {
             $price = $aws_prod['price'];
         }
     }
+
+
     // import image
-    if ($product_id > 0 && strlen($image)>0 && !empty($sku)) {
+    if ($product_id > 0 && !empty($images) && !empty($sku)) {
         // we'll import only if there's no image
         $has_image = get_the_post_thumbnail_url($product_id);
         if ($has_image == false) {
-            $id = bl_import_image($sku,$image,$product_id);
+            if (!empty($images) && is_array($images)) {
+                $k=0;
+                // we're going to image all the images, but only hook up the first one.
+                foreach ($images as $image) {
+                    if ($k==0) {
+                        $id = bl_import_image($sku,$image,$product_id,false);
+                    }
+                    $k++;
+                }
+            }         
             $res['image_id'] = $id;
             $res['name'] = $name;
         }
@@ -287,7 +395,8 @@ function bl_create_product($data) {
         bl_insert_product_acf('amazon_product_url',$amazon_product_url,$product_id);
         bl_product_update_tsa_compliant($tsa_compliant,$product_id);
         // create product categories
-        $cats = $aws_prod['categories'];
+       // $cats = $aws_prod['categories'];
+       $cats = $categories;
         if (!empty($cats) && is_array($cats)) {
             $term_ids = array();
             foreach ($cats as $cat) {
@@ -450,13 +559,17 @@ function bl_product_update_brand($term,$product_id) {
     return $term_id;
 }
 
-function bl_import_image($sku, $image_url,$product_id) {
+function bl_import_image($sku, $image_url,$product_id,$is_url=true) {
     $attach_id = 0;
     $timeout_seconds = 5;
     require_once(ABSPATH . "wp-admin" . '/includes/image.php');
     require_once(ABSPATH . "wp-admin" . '/includes/file.php');
     require_once(ABSPATH . "wp-admin" . '/includes/media.php');
-    $temp_file = download_url( $image_url, $timeout_seconds );
+    if ($is_url == true) {
+        $temp_file = download_url( $image_url, $timeout_seconds );
+    } else {
+        $temp_file = $image_url;
+    }
     //error_log(json_encode(parse_url($image_url)));
     if ( !is_wp_error( $temp_file ) ) {
         // Array based on $_FILE as seen in PHP file uploads
@@ -706,6 +819,50 @@ function bl_distill_aws_product($prod) {
     );
     //print_r ($final_prod);
     return $final_prod;
+} // end bl_distill_aws_product()
+
+// fetches the path to the image
+function bl_fetch_local_product_images($upc) {
+    // we will use the UPC code to try to find images 
+    // NOTE: the image location is DOCUMENT_ROOT . '/../assets/product-images'
+    $product_images = realpath(get_home_path() . '/../assets/product-images');
+    $image_files = scandir($product_images);
+    if (!empty($image_files) && is_array($image_files)) {
+        $high = 0;
+        $holder = array();
+        foreach ($image_files as $image_file) {
+            $match = similar_text($image_file,$upc,$per);
+            //print_r ($image_file);
+            // only match anything over $70%
+            if ($per > 70) {
+                //if ($per > $high) {
+                    $high = $per;
+                    $holder[] = $product_images . '/' . $image_file;
+                //}
+            }
+
+        }
+    }
+    return $holder;
+} // end bl_fetch_local_product_images()
+
+function bl_distill_weight($weight) {
+    if (!empty($weight)) {
+        if (!is_numeric($weight)) {
+            $weight = preg_replace("/[^0-9,.]/", "", $weight);
+        }
+        if (!empty($weight)) {
+            $weight = floatval($weight);
+            if ($weight > 1) {
+                $weight = $weight / 16; // it is probably in ounces, chaning to pounds
+            }
+        } else {
+            $weight = 0.1;
+        }
+    } else {
+        $weight = 0.1;
+    }
+    return $weight;
 }
 
 function bl_product_import_url_intercept()
@@ -718,13 +875,16 @@ function bl_product_import_url_intercept()
         if (isset($_POST)) {
             $resp = array('success'=>false,'has_more'=>false,'message'=>'','name'=>'');
             //error_log('POST');
+            //echo $bl_stored_product_array;
             $data = get_option($bl_stored_product_array);
+            //print_r ($data);
+            //die;
             if (!empty($data) && is_array($data)) {
                 $row = array_shift($data);
                 update_option($bl_stored_product_array,$data);
             }
             if (!empty($row)) {
-                sleep(0.5);
+                //sleep(0.5);
                 $resp = bl_create_product($row);
                 $resp['name'] = $row['name'];
             }
