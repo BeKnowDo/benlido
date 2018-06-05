@@ -8,5 +8,10 @@
       color: $medium-grey;
       padding: 0 0 60px;
     }
+    .columns {
+      .column {
+        margin-bottom: 20px;
+      }
+    }
   }
 }

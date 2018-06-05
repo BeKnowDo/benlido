@@ -1,0 +1,35 @@
+.category-list {
+  padding: 10px 10px;
+
+  &-all-header {
+    @include knockout32(14px, 400);
+    padding: 0 0 10px;
+    color: $blumine;
+  }
+
+  &-group {
+    margin-bottom: 10px;
+  }
+
+  &-parent {
+    @include knockout32(14px, 400);
+    a {
+      color: $blumine;
+    }
+  }
+
+  &-sub-items {
+    @include knockout32(12px, 400);
+    a {
+      color: $medium-grey;
+    }
+  }
+
+  &-items {
+    margin-top: 10px;
+
+    .column {
+      margin-bottom: 10px;
+    }
+  }
+}

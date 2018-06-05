@@ -49,6 +49,10 @@ app.get("/product/:id", (req, res) => {
   res.render("pages/product");
 });
 
+app.get("/categories/", (req, res) => {
+  res.render("pages/categories");
+});
+
 app.get("/search", (req, res) => {
   return res.send("search page");
 });
