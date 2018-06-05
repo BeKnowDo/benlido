@@ -1,0 +1,40 @@
+{% if homePageHero is defined %}
+
+  {% for hero in homePageHero%}
+
+    {% if hero.triangleBackground %}
+      {% set backgroundClassname = 'triangle-background'%}
+    {% else %}
+      {% set backgroundClassname = ''%}
+    {% endif %}
+
+    <div class="hero hero-home {{ backgroundClassname }}">
+
+      <div class="columns">
+
+        <div class="column col-5 col-sm-12 col-md-8 col-xl-6 col-mx-auto">
+
+          <h1 class="hero-header">{{hero.header}}</h1>
+          <p class="hero-copy">{{hero.copy}}</p>
+
+          <div class="hero-action-buttons columns">
+            <div class="column col-sm-12">
+              <a href="/build-a-kit" class="btn btn-primary btn-lg btn-block">Buiild your own kit</a>
+            </div>
+            <div class="column col-sm-12">
+              <a href="/pick-a-kit" class="btn btn-primary btn-lg btn-block">Start with a prebuilt kit</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="column col-5 col-md-12 col-xl-5 col-ml-auto">
+          <div class="hero-image-container">
+            <img class="hero-image hero-image" src="{{hero.image}}" alt="{{hero.altText}}"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,50 @@
+{% for product in productInformation %}
+  <div class="product-information">
+
+    <h1 class="product-information-header">{{product.header}}</h1>
+
+    <div class="product-information-colors">
+      <ul class="product-information-colors-options">
+        <li>
+          <i class="product-information-colors-option"></i>
+          <i class="product-information-colors-option"></i>
+        </li>
+      </ul>
+    </div>
+
+    <div class="product-information-cart">
+
+      <div class="columns">
+
+        <div class="column col-3">
+          <span class="product-information-price">{{product.price}}</span>
+        </div>
+
+        <div class="column col-3">
+          <div class="product-quantity">
+            <span class="product-quantity-value">
+              1
+            </span>
+            <i class="fal fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <div class="column col-3">
+          <div class="btn btn-lg btn-primary" data-sku="{{product.sku}}" data-category="{{product.category}}">
+            Add to kit
+            <i class="fal fa-plus-circle"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <h5 class="product-information-byline border-bottom-grey">
+        {{product.byLine}}
+      </h5>
+
+    </div>
+
+    {% include 'common/product/product-ratings.twig' %}
+
+  </div>
+{% endfor %}

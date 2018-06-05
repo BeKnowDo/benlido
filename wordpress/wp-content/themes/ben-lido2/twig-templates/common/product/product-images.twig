@@ -1,0 +1,19 @@
+{% if productImages is defined %}
+  <div id="product-images" class="product-images">
+
+    <div class="swiper-container not-initialized" data-toggle-class="not-initialized">
+
+      <ul class="swiper-wrapper">
+        {% for image in productImages %}
+          <li class="swiper-slide">
+            <img class="product-images-image" src="{{image.url}}" alt="{{image.altText}}"/>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="swiper-pagination"></div>
+
+    </div>
+
+  </div>
+{% endif %}

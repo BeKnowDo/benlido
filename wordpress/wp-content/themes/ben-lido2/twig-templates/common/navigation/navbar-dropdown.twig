@@ -1,0 +1,31 @@
+{% set className = "navbar-dropdown-primary-items" %}
+{% set list = [
+  {
+    href: '/whatever',
+    title: 'Home',
+    text: 'Home'
+  },
+  {
+    href: '/whatever',
+    title: 'Build a Kit',
+    text: 'Build a Kit'
+  },
+  {
+    href: '/whatever',
+    title: 'Prebuilt Kits',
+    text: 'Prebuilt Kits'
+  },
+  {
+    href: '/whatever',
+    title: 'About',
+    text: 'About'
+  },
+  {
+    href: '/register',
+    title: 'Sign In',
+    text: 'Sign In'
+  }
+  ]%}
+
+<i id="navbar-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
+{% include 'common/navigation/navbar-items.twig' %}

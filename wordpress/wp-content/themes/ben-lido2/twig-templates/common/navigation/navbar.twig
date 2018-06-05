@@ -1,0 +1,46 @@
+<span class="navbar-toggle">
+  <i id="navbar-trigger" class="fas fa-bars"></i>
+  <i class="fal fa-search"></i>
+</span>
+{% set socialMediaLinks = [
+  {
+    href: '/whatever',
+    title: 'Newsletter',
+    text: 'Newsletter'
+  },
+  {
+    href: '/whatever',
+    title: 'Google +',
+    text: 'Google +'
+  },
+  {
+    href: '/whatever',
+    title: 'Instagram',
+    text: 'Instagram'
+  },
+  {
+    href: '/whatever',
+    title: 'Twitter',
+    text: 'Twitter'
+  },
+  {
+    href: '/whatever',
+    title: 'Facebook',
+    text: 'Facebook'
+  }
+  ]%}
+
+<div id="navbar-dropdown" class="navbar-dropdown">
+  <div class="columns">
+    <div class="column col-3 col-xs-12 col-sm-12 col-md-4 col-ml-auto">
+      {% include 'common/navigation/navbar-dropdown.twig' %}
+    </div>
+
+    <div class="column col-3 col-xs-12 col-sm-12">
+      {% include 'common/social-media-links.twig' %}
+    </div>
+    <div class="column col-3 col-xs-12 col-sm-12 col-mr-auto hide-sm">
+      <img src="/images/ben-lido-header-logo.svg" alt=""/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{% for item in heroData %}
+  <div class="hero-title-copy bg-gray text-center">
+    <div class="columns">
+      <div class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 col-5 col-mx-auto">
+        {% if item.header %}
+          <h1 class="hero-title-copy-header">{{item.header}}</h1>
+        {% endif %}
+
+        {% if item.copy %}
+          <p class="hero-title-copy-copy">{{item.copy}}</p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
