@@ -10,7 +10,8 @@ if ( ! class_exists( 'Timber' ) ) {
 Timber::$dirname = array('twig-templates', 'views');
 
 // NOTE: woocommerce and storefront add_action and remove_action calls are in inc/storefront-overrides.php
-require_once 'inc/storefront-overrides.php';
+require_once 'inc/storefront-overrides.php'; // overriding the storefront parent theme
+require_once 'inc/template-functions.php'; // functions for displaying things: like navigation, etc.
 
 function bl_child_theme_init()
 {
