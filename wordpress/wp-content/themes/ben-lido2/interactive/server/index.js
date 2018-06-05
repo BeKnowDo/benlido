@@ -53,8 +53,16 @@ app.get("/categories/", (req, res) => {
   res.render("pages/categories");
 });
 
+app.get("/register", (req, res) => {
+  return res.send("register page");
+});
+
 app.get("/search", (req, res) => {
   return res.send("search page");
+});
+
+app.get("/account", (req, res) => {
+  return res.send("account page");
 });
 
 const listening = function() {

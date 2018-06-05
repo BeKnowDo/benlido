@@ -62,6 +62,13 @@
     display: inline-block;
     font-size: 18px;
   }
+  &-section {
+    &-account {
+      color: $brown-grey;
+    }
+    &-cart {
+    }
+  }
   .fa-suitcase {
     &:before {
       font-size: 30px;
