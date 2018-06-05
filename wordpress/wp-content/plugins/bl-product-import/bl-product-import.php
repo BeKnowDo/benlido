@@ -332,6 +332,7 @@ function bl_create_product($data) {
         if ($product_type == 'simple' && $should_proceed !== false) {
             $product_id = bl_create_simple_product($name,$sku,$price,$description,$short_description);
             $res['product_id'] = $product_id;
+            $res['name'] = $name;
             $res['missed'] = false;
             $res['success'] = true;
         } else {
@@ -342,6 +343,7 @@ function bl_create_product($data) {
         // we're updating the product here
         $product_id = $test_prod;
         $res['product_id'] = $product_id;
+        $res['name'] = $name;
         // we only check aws if we have an asin
         $aws_prod = array();// clearing this because we are not getting data from AWS anymore.
         //$aws_prod = bl_search_aws_by_asin($amazon_asin);
@@ -373,7 +375,7 @@ function bl_create_product($data) {
                 }
             }         
             $res['image_id'] = $id;
-            $res['name'] = $name;
+            //$res['name'] = $name;
         }
     }
     

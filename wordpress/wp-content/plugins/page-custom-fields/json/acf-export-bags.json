@@ -249,7 +249,7 @@
                             "product"
                         ],
                         "taxonomy": [
-                            "product_cat:bags-cases"
+                            "product_cat:bags"
                         ],
                         "allow_null": 0,
                         "multiple": 0,
