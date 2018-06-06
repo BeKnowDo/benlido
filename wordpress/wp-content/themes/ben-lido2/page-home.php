@@ -22,16 +22,20 @@ get_header(); ?>
 
             <?php if ($show_hero_section == true):?>
                 <div class="max-width-1200">
-                <?php get_template_part( 'template-parts/partials/home/hero'); ?>
+                    <?php get_template_part( 'template-parts/common/hero/home','hero'); ?>
                 </div>
             <?php endif;?>
 
             <?php if ($show_feature_cards == true):?>
-                <?php get_template_part( 'template-parts/partials/home/feature','cards'); ?>
+                <div class="bg-grey">
+                    <div class="max-width-xl">
+                        <?php get_template_part( 'template-parts/common/hero/hero'); ?>
+                    </div>
+                </div>
             <?php endif;?>
 
             <?php if ($show_bottom_section == true):?>
-                <?php get_template_part( 'template-parts/partials/home/bottom'); ?>
+                
             <?php endif;?>
 
             <?php

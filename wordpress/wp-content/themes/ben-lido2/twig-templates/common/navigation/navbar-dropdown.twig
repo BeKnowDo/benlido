@@ -1,4 +1,5 @@
 {% set className = "navbar-dropdown-primary-items" %}
+{% if not list %}
 {% set list = [
   {
     href: '/whatever',
@@ -27,5 +28,7 @@
   }
   ]%}
 
+{% endif %}
+
 <i id="navbar-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
-{% include 'common/navigation/navbar-items.twig' %}
+{% include 'common/navigation/navbar-items.twig' with { className: className, list: list} %}

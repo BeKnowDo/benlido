@@ -2,6 +2,7 @@
   <i id="navbar-trigger" class="fas fa-bars"></i>
   <i class="fal fa-search"></i>
 </span>
+{% if not socialMediaLinks %}
 {% set socialMediaLinks = [
   {
     href: '/whatever',
@@ -29,15 +30,16 @@
     text: 'Facebook'
   }
   ]%}
+{% endif %}
 
 <div id="navbar-dropdown" class="navbar-dropdown">
   <div class="columns">
     <div class="column col-3 col-xs-12 col-sm-12 col-md-4 col-ml-auto">
-      {% include 'common/navigation/navbar-dropdown.twig' %}
+      {% include 'common/navigation/navbar-dropdown.twig' with { className: className, list: list} %}
     </div>
 
     <div class="column col-3 col-xs-12 col-sm-12">
-      {% include 'common/social-media-links.twig' %}
+      {% include 'common/social-media-links.twig' with { socialMediaLinks: socialMediaLinks } %}
     </div>
     <div class="column col-3 col-xs-12 col-sm-12 col-mr-auto hide-sm">
       <img src="/images/ben-lido-header-logo.svg" alt=""/>

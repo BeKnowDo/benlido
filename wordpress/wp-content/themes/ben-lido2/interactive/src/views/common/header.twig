@@ -2,7 +2,7 @@
   <div class="max-width-xl">
     <div class="navbar">
       <div class="navbar-section">
-        {% include 'common/navigation/navbar.twig' %}
+        {% include 'common/navigation/navbar.twig' with { socialMediaLinks: socialMediaLinks, className: className, list: list } %}
       </div>
 
       <div class="navbar-center">
