@@ -1,7 +1,7 @@
 <ul class="social-media-links">
     {% for item in socialMediaLinks %}
         <li>
-            <a href="{{item.url}}" title="{{item.alt_title}}">{{item.title}}</a>
+            <a href="{{item.url}}" title="{{item.alt_title}}" {{ item.classes ? 'class="' ~ item.classes ~ '"' }} {{ item.target ? 'rel="noopener noferrer" target="_blank"' }} >{{item.title}}</a>
         </li>
     {% endfor %}
 </ul>
