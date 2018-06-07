@@ -1,8 +1,7 @@
 <ul class="footer-contact-links">
+    {% for item in contact %}
     <li>
-        <a href="mailto:help@benlido.com" title="">Email: help@benlido.com</a>
+        <a href="{{item.url}}" title="{{item.alt_title}}"  {{ item.classes ? 'class="' ~ item.classes ~ '"' }} {{ item.target ? 'rel="noopener noferrer" target="_blank"' }} >{{item.title}}</a>
     </li>
-    <li>
-        <a href="tel:55555555555" title="">Call: 555-555-5555</a>
-    </li>
+    {% endfor %}
 </ul>

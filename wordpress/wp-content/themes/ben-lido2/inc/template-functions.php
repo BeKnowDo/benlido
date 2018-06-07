@@ -28,6 +28,18 @@ function bl_get_top_nav() {
     return $final_nav;
 }
 
+function bl_get_footer_nav() {
+  $final_nav = array();
+  $locations = get_nav_menu_locations();
+  $menu_id = $locations[ 'footer' ] ;
+  $nav = wp_get_nav_menu_items($menu_id);
+  foreach ($nav as $item) {
+    $res = bl_generate_nav_links($item);
+    $final_nav[] = $res;
+  }
+  return $final_nav;
+}
+
 function bl_get_social_media_nav() {
     $final_nav = array();
     $locations = get_nav_menu_locations();
@@ -38,6 +50,18 @@ function bl_get_social_media_nav() {
       $final_nav[] = $res;
     }
     return $final_nav;
+}
+
+function bl_get_contact_nav() {
+  $final_nav = array();
+  $locations = get_nav_menu_locations();
+  $menu_id = $locations[ 'contact' ] ;
+  $nav = wp_get_nav_menu_items($menu_id);
+  foreach ($nav as $item) {
+    $res = bl_generate_nav_links($item);
+    $final_nav[] = $res;
+  }
+  return $final_nav;
 }
 
 function bl_generate_nav_links($item) {
