@@ -2,9 +2,15 @@
 // this file contains functions to get general display elements
 // like nav menu, social media, etc.
 
-function bl_get_site_logo() {
+function bl_get_site_logo($is_diamond=false) {
   $logo = null;
-  if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
+  if ($is_diamond == true && function_exists('get_field')) {
+    $diamond_logo = get_field('diamond_shaped_logo','option');
+    if (!empty($diamond_logo) && isset($diamond_logo['url'])) {
+      $logo = '<a href="' . get_home_url() . '" title="' . esc_attr(get_bloginfo( 'name') ) . '" ><img src="' . $diamond_logo['url'] . '" /></a>';
+    }
+  }
+  elseif ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
     $logo = get_custom_logo();
   }
   return $logo;

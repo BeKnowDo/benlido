@@ -7,14 +7,16 @@
     "json": "node scripts/json-seeder.js quiet=true --users=20",
     "server": "nodemon -e js,twig server",
     "api": "concurrently \"yarn server\" \"yarn server\" \"yarn json\"",
-    "dev": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn webpack\" \"yarn server\"",
+    "dev": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn twig:watch\" \"yarn webpack\" \"yarn server\" \"yarn wordpress:watch\"",
     "styles": "node scripts/styles.js",
     "styles:watch": "onchange 'src/styles/**/*.scss' -- yarn styles",
     "fonts": "node scripts/fonts.js",
     "images": "node scripts/images.js",
     "twig": "node scripts/twig.js",
+    "twig:watch": "onchange 'src/views/**/*.twig' -- yarn twig",
     "webpack": "webpack --watch --mode development --config webpack.config.js",
-    "wordpress": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\" \"yarn twig\""
+    "wordpress": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress  --config webpack.config.js --mode production\" \"yarn images --wordpress\" \"yarn twig\"",
+    "wordpress:watch": "onchange 'src/views/**/*.twig' 'src/styles/**/*.scss' 'src/javascript/**/*.js' -- yarn wordpress"
   },
   "proxy": {},
   "repository": {

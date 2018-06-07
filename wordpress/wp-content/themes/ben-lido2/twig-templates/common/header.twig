@@ -2,11 +2,11 @@
   <div class="max-width-xl">
     <div class="navbar">
       <div class="navbar-section">
-        {% include 'common/navigation/navbar.twig' with { socialMediaLinks: socialMediaLinks, className: className, list: list } %}
+        {% include 'common/navigation/navbar.twig' with { socialMediaLinks: socialMediaLinks, className: className, list: list, logo:diamond_logo } %}
       </div>
 
       <div class="navbar-center">
-        {% include 'common/logo.twig' %}
+        {% include 'common/logo.twig' with {logo: logo} %}
       </div>
 
       <div class="navbar-section">
