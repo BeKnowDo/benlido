@@ -228,7 +228,7 @@ function bl_storefront_search_button() {
 }
 
 function bl_storefront_main_content_wrapper_start() {
-	echo '<div class="grid-container">';
+	echo '<div class="max-width-xl">';
 }
 function bl_storefront_main_content_wrapper_end() {
 	echo '</div>';
