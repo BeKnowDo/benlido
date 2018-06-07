@@ -18,12 +18,11 @@
           <p class="hero-copy">{{hero.copy}}</p>
 
           <div class="hero-action-buttons columns">
+            {% for button in hero_call_to_action_buttons %}
             <div class="column col-sm-12">
-              <a href="/build-a-kit" class="btn btn-primary btn-lg btn-block">Buiild your own kit</a>
+              <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ? 'rel="noopener noferrer" target="_blank"' }} >{{button.title}}</a>
             </div>
-            <div class="column col-sm-12">
-              <a href="/pick-a-kit" class="btn btn-primary btn-lg btn-block">Start with a prebuilt kit</a>
-            </div>
+            {% endfor %}
           </div>
 
         </div>

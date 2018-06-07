@@ -80,3 +80,18 @@ function bl_generate_nav_links($item) {
   
   return $res;
 }
+
+function bl_process_acf_buttons($items) {
+  $results = array();
+  if (!empty($items) && is_array($items)) {
+    foreach ($items as $item) {
+      // NOTE: we should have the same names for iterations
+      $title = $item['button_name'];
+      $url = $item['button_url'];
+      $classes = $item['button_css_class'];
+      $target = $item['open_in_a_new_tab'];
+      $results[] = array('title'=>$title,'url'=>$url,'classes'=>$classes,'target'=>$target);
+    }
+  }
+  return $results;
+}

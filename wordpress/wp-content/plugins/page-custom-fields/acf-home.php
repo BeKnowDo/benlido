@@ -35,10 +35,10 @@ if( function_exists('acf_add_local_field_group') ):
                     'id' => '',
                 ),
                 'message' => 'These are the fields required for the home page broken down by section.
-                Hero Section.
-                How It Works.
-                Brands You Love.
-                Bottom Tout',
+    Hero Section.
+    How It Works.
+    Brands You Love.
+    Bottom Tout',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ),
@@ -85,7 +85,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'label' => 'Show Bottom Section?',
                 'name' => 'show_bottom_section',
                 'type' => 'true_false',
-                'instructions' => '',
+                'instructions' => 'This is from the old site..	We will need a twig for this if it is every required.',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -104,7 +104,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'label' => 'Show Kit Section?',
                 'name' => 'show_kit_section',
                 'type' => 'true_false',
-                'instructions' => '',
+                'instructions' => 'This will show some featured kits',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -162,41 +162,6 @@ if( function_exists('acf_add_local_field_group') ):
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_5a8b4db3c14fa',
-                'label' => 'Call To Action Button Text',
-                'name' => 'call_to_action_button_text',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-            ),
-            array(
-                'key' => 'field_5a8b4dc0c14fb',
-                'label' => 'Call To Action URL',
-                'name' => 'call_to_action_url',
-                'type' => 'url',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-            ),
-            array(
                 'key' => 'field_5a8b4dd6c14fc',
                 'label' => 'Hero Image',
                 'name' => 'hero_image',
@@ -243,6 +208,100 @@ if( function_exists('acf_add_local_field_group') ):
                 'max_height' => '',
                 'max_size' => '',
                 'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_5b192c74bd5ad',
+                'label' => 'Hero Call-to-action Buttons',
+                'name' => 'hero_call_to_action_buttons',
+                'type' => 'repeater',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'collapsed' => '',
+                'min' => 0,
+                'max' => 0,
+                'layout' => 'table',
+                'button_label' => '',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_5b192c8abd5ae',
+                        'label' => 'Button Name',
+                        'name' => 'button_name',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array(
+                        'key' => 'field_5b192c92bd5af',
+                        'label' => 'Button URL',
+                        'name' => 'button_url',
+                        'type' => 'url',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                    ),
+                    array(
+                        'key' => 'field_5b192c9fbd5b0',
+                        'label' => 'Open in a new tab?',
+                        'name' => 'open_in_a_new_tab',
+                        'type' => 'true_false',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'message' => '',
+                        'default_value' => 0,
+                        'ui' => 0,
+                        'ui_on_text' => '',
+                        'ui_off_text' => '',
+                    ),
+                    array(
+                        'key' => 'field_5b192cb2bd5b1',
+                        'label' => 'Button CSS Class',
+                        'name' => 'button_css_class',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                ),
             ),
             array(
                 'key' => 'field_5a8b5011c14fe',
@@ -882,5 +941,5 @@ if( function_exists('acf_add_local_field_group') ):
         'active' => 1,
         'description' => '',
     ));
-
-endif;
+    
+    endif;
