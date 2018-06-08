@@ -27,7 +27,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 2',
-          sku: '34230asdf',
+          sku: 'lll',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -38,9 +39,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '456',
           categoryTitle: 'Category Name 3',
-          sku: '34230asdf',
+          sku: 'mmm',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -51,9 +53,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '789',
           categoryTitle: 'Category Name 4',
-          sku: '34230asdf',
+          sku: 'nnn',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -64,9 +67,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '987',
           categoryTitle: 'Category Name 5',
-          sku: '34230asdf',
+          sku: 'ooo',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -77,9 +81,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '654',
           categoryTitle: 'Category Name 6',
-          sku: '34230asdf',
+          sku: 'ppp',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -90,9 +95,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '321',
           categoryTitle: 'Category Name 1',
-          sku: '34230asdf',
+          sku: 'qqq',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -104,9 +110,10 @@
         },
         
         {
-          categoryID: '123',
+          categoryID: '147',
           categoryTitle: 'Category Name 2',
-          sku: '34230asdf',
+          sku: 'rrr',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -117,9 +124,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '258',
           categoryTitle: 'Category Name 3',
-          sku: '34230asdf',
+          sku: 'sss',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -130,9 +138,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '369',
           categoryTitle: 'Category Name 4',
-          sku: '34230asdf',
+          sku: 'ttt',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -143,9 +152,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '753',
           categoryTitle: 'Category Name 5',
-          sku: '34230asdf',
+          sku: 'uuu',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -156,9 +166,10 @@
 
         },
         {
-          categoryID: '123',
+          categoryID: '159',
           categoryTitle: 'Category Name 6',
-          sku: '34230asdf',
+          sku: 'vvv',
+          name: 'Product Name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -259,19 +270,19 @@
 
   <div class="bg-grey">
     <div class="max-width-xl">
+
       <div class="columns">
-        <div class="column col-xs-12 col-sm-4 col-md-4 col-lg-3 col-2">
+        <div class="column col-12">
           {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
         </div>
-        <div class="column col-xs-12 col-sm-8 col-md-8 col-lg-9 col-10">
-          {% include 'common/product/product-category-list.twig', with { products } %}
-        </div>
       </div>
+
+      {% include 'common/product/product-category-list.twig', with { products } %}
+
     </div>
-  </div>
 
-  <div class="bg-grey">
-    {% include 'common/back-to-top.twig' %}
-  </div>
+    <div class="bg-grey">
+      {% include 'common/back-to-top.twig' %}
+    </div>
 
-{% endblock %}
+  {% endblock %}

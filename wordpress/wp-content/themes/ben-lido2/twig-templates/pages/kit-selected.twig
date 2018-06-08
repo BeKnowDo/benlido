@@ -33,7 +33,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 2',
-          sku: '34230asdf',
+          sku: 'aaa',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -43,7 +44,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 3',
-          sku: '34230asdf',
+          sku: 'bbb',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -53,7 +55,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 4',
-          sku: '34230asdf',
+          sku: 'ccc',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -63,7 +66,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 5',
-          sku: '34230asdf',
+          sku: 'ddd',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -73,7 +77,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 6',
-          sku: '34230asdf',
+          sku: 'eee',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -83,7 +88,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 1',
-          sku: '34230asdf',
+          sku: 'fff',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -94,7 +100,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 2',
-          sku: '34230asdf',
+          sku: 'ggg',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -104,7 +111,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 3',
-          sku: '34230asdf',
+          sku: 'hhh',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -114,7 +122,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 4',
-          sku: '34230asdf',
+          sku: 'iii',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -124,7 +133,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 5',
-          sku: '34230asdf',
+          sku: 'jjj',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -134,7 +144,8 @@
         {
           categoryID: '123',
           categoryTitle: 'Category Name 6',
-          sku: '34230asdf',
+          sku: 'kkk',
+          name: 'Product name',
           image: '/images/product-example.png',
           description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
           href: '/',
@@ -154,11 +165,9 @@
   {% endif %}
 
   <div class="bg-grey">
-
     <div class="max-width-xl">
 
       {% include 'common/hero/hero-product-list.twig', with { products: heroProduct } %}
-
       {% include 'common/category-header.twig', with { categoryHeader } %}
 
       {% if products is defined%}
@@ -178,7 +187,6 @@
       {% endif %}
 
     </div>
-
   </div>
 
   {% include 'common/back-to-top.twig' %}

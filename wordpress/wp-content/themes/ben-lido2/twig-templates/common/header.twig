@@ -1,4 +1,4 @@
-<header class="bg-white">
+<header class="bg-white benlido-header">
   <div class="max-width-xl">
     <div class="navbar">
       <div class="navbar-section">
@@ -22,7 +22,21 @@
             </span>
           </div>
           <div class="column">
-            <span id="navbar-item-counter" class="navbar-item-counter"></span>
+            <div class="navbar-item-wrapper">
+              <span id="navbar-item-counter" class="navbar-item-counter">0</span>
+              <div id="navbar-bag-container" class="navbar-bag-container position-relative">
+                <div class="navbar-bag">
+                  <div id="navbar-bag-list" class="navbar-bag-list">
+                  </div>
+                  <a class="btn btn-lg btn-block btn-primary" href="/cart" title="Go to my cart">
+                    View kit
+                  </a>
+                  <span class="navbar-login">
+                    <a href="/register" title="Register an account">Sign Up</a> or <a href="/login" title="Login to your account">Log in</a> to save your bag.
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
