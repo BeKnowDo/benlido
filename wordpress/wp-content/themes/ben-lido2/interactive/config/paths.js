@@ -48,6 +48,8 @@ module.exports = {
   jsEntry: resolveApp("src/javascript/index.js"),
   fontsSource: resolveApp("src/styles/font-awesome/webfonts"),
 
+  categoriesPath: resolveApp("data"),
+
   appIndexJs: resolveApp("src/index.js"),
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp("src"),
@@ -68,5 +70,7 @@ module.exports = {
   wordpressImageDestination: resolveApp("../assets/images"),
   wordpressCssPath: resolveApp("../assets/styles"),
   wordpressJSPath: resolveApp("../assets/javascript"),
-  wordpressFontsDestination: resolveApp("../assets/styles/webfonts")
+  wordpressFontsDestination: resolveApp("../assets/styles/webfonts"),
+
+  cartLimit: 26
 };

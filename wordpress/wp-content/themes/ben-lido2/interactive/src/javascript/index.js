@@ -2,16 +2,15 @@ import {
   Navigation,
   ScrollToTop,
   ProductImageCarousel,
-  ProductQuantity
+  ProductQuantity,
+  CategoryMenu,
+  Cart
 } from "./components";
 
-const initializeNavigation = new Navigation(
-  "#navbar-trigger",
-  "#navbar-dropdown",
-  "#navbar-exit",
-  "#dimmed-overlay"
-).init();
+const initializeNavigation = new Navigation().init();
 
-const initializeScrollToTop = new ScrollToTop("#back-to-top").init();
-const productCarousels = new ProductImageCarousel(".swiper-container").init();
-const productQuantity = new ProductQuantity(".product-quantity").init();
+const cart = new Cart().init();
+const initializeScrollToTop = new ScrollToTop().init();
+const productCarousels = new ProductImageCarousel().init();
+const productQuantity = new ProductQuantity().init();
+const categoryMenu = new CategoryMenu().init();

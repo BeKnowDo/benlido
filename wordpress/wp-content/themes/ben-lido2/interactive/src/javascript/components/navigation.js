@@ -1,11 +1,11 @@
 import KUTE from "kute.js";
 
 export class Navigation {
-  constructor(openTrigger, menu, closeTrigger, overlay) {
-    this.openTrigger = document.querySelector(openTrigger) || undefined;
-    this.menu = document.querySelector(menu) || undefined;
-    this.closeTrigger = document.querySelector(closeTrigger) || undefined;
-    this.overlay = document.querySelector(overlay) || undefined;
+  constructor() {
+    this.openTrigger = document.querySelector("#navbar-trigger") || undefined;
+    this.menu = document.querySelector("#navbar-dropdown") || undefined;
+    this.closeTrigger = document.querySelector("#navbar-exit") || undefined;
+    this.overlay = document.querySelector("#dimmed-overlay") || undefined;
   }
   init() {
     this.enable();

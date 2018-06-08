@@ -86,6 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./config/endpoints.js":
+/*!*****************************!*\
+  !*** ./config/endpoints.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var endpoints = exports.endpoints = {
+  getCartItems: "/json/cart",
+  addToCart: "/json/add-to-cart",
+  removeFromCart: "/json/remove-from-cart"
+};
+
+/***/ }),
+
 /***/ "./node_modules/dom7/dist/dom7.modular.js":
 /*!************************************************!*\
   !*** ./node_modules/dom7/dist/dom7.modular.js ***!
@@ -26345,10 +26366,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ScrollToTop = exports.ScrollToTop = function () {
-  function ScrollToTop(clickTarget) {
+  function ScrollToTop() {
     _classCallCheck(this, ScrollToTop);
 
-    this.clickTarget = document.querySelector(clickTarget) || undefined;
+    this.clickTarget = document.querySelector("#back-to-top") || undefined;
   }
 
   _createClass(ScrollToTop, [{
@@ -26368,6 +26389,364 @@ var ScrollToTop = exports.ScrollToTop = function () {
   }]);
 
   return ScrollToTop;
+}();
+
+/***/ }),
+
+/***/ "./src/javascript/components/cart.js":
+/*!*******************************************!*\
+  !*** ./src/javascript/components/cart.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Cart = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _endpoints = __webpack_require__(/*! ../../../config/endpoints */ "./config/endpoints.js");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Cart = exports.Cart = function () {
+  function Cart() {
+    _classCallCheck(this, Cart);
+
+    this.counter = document.querySelector("#navbar-item-counter") || undefined;
+    this.listContainer = document.querySelector("#navbar-bag-list") || undefined;
+    this.addToCartButtons = document.querySelectorAll(".add-to-cart") || undefined;
+    this.removeFromCartButton = document.querySelectorAll(".remove-from-cart") || undefined;
+    this.swapFromCartButton = document.querySelectorAll(".swap-from-cart") || undefined;
+    this.cart = document.querySelector("#benlido-cart") || undefined;
+    this.cartContainer = document.querySelector("#navbar-bag-container") || undefined;
+  }
+
+  _createClass(Cart, [{
+    key: "init",
+    value: function init() {
+      this.enable();
+    }
+  }, {
+    key: "enable",
+    value: function enable() {
+      if (this.counter) {
+        this.getCurrentItems();
+      }
+
+      if (this.addToCartButtons) {
+        this.addItem();
+      }
+
+      if (this.cart) {
+        this.openCart();
+      }
+    }
+  }, {
+    key: "openCart",
+    value: function openCart() {
+      var _this = this;
+
+      this.cart.addEventListener("click", function (e) {
+        e.preventDefault();
+        _this.cartContainer.classList.toggle("active");
+      });
+    }
+  }, {
+    key: "getCurrentItems",
+    value: function getCurrentItems() {
+      var _this2 = this;
+
+      fetch(_endpoints.endpoints.getCartItems).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        _this2.updateCount(response);
+        _this2.fillCart(response);
+      });
+    }
+  }, {
+    key: "fillCart",
+    value: function fillCart(items) {
+      if (items.length > 0) {
+        this.listContainer.innerHTML = "\n        <ul class=\"navbar-bag-list-container\">\n        " + items.map(function (item) {
+          return "<li class=\"navbar-bag-item columns col-gapless\">\n\n              <p class=\"column col-7 navbar-product-name\">" + item.count + "x &nbsp; " + item.name + " " + item.sku + "</p>\n\n              <div class=\"column col-5 text-right\">\n                \n                <a\n                  href=\"/cart\"\n                  class=\"navbar-edit-item\"\n                  data-sku=\"" + item.sku + "\"\n                  data-name=\"" + item.name + "\"\n                  data-category=\"" + item.category + "\"\n                >\n                  <i class=\"fal fa-edit\"></i>\n                </a>\n                \n                <span class=\"navbar-remove-item\">\n                  <i\n                    class=\"fal fa-times\"\n                    data-sku=\"" + item.sku + "\"\n                    data-name=\"" + item.name + "\"\n                    data-category=\"" + item.category + "\"\n                  ></i>\n                </span>\n\n              </div>\n              \n            </li>";
+        }).join("") + "\n        </ul>\n      ";
+
+        if (this.listContainer) {
+          this.removeItem();
+        }
+      } else {
+        this.listContainer.innerHTML = "<h4 class=\"navbar-bag-empty\">Your cart is empty...</h4>";
+      }
+    }
+  }, {
+    key: "updateCount",
+    value: function updateCount(items) {
+      if (items.length > 0) {
+        var count = 0;
+
+        items.map(function (item) {
+          if (item.count) {
+            count = count + item.count;
+          }
+        });
+        this.counter.innerHTML = count;
+      } else {
+        this.counter.innerHTML = 0;
+      }
+    }
+  }, {
+    key: "receiveItem",
+    value: function receiveItem() {}
+  }, {
+    key: "removeItem",
+    value: function removeItem() {
+      var _this3 = this;
+
+      var cartItems = this.listContainer.querySelectorAll(".navbar-remove-item");
+
+      cartItems.forEach(function (item) {
+        item.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (e.target.dataset) {
+            var target = e.target.dataset;
+            var sku = target.sku ? target.sku : undefined;
+            var name = target.name ? target.name : undefined;
+            var category = target.category ? target.category : undefined;
+
+            if (sku !== undefined && name !== undefined && category !== undefined) {
+              var removeItem = {
+                sku: sku,
+                name: name,
+                category: category
+              };
+
+              fetch(_endpoints.endpoints.removeFromCart, {
+                method: "POST",
+                body: JSON.stringify(removeItem),
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              }).then(function (res) {
+                return res.json();
+              }).catch(function (error) {
+                return console.error("Error:", error);
+              }).then(function (response) {
+                if (response.error) {} else {
+                  _this3.updateCount(response);
+                  _this3.fillCart(response);
+                }
+              });
+            }
+          }
+        });
+      });
+    }
+  }, {
+    key: "swapItem",
+    value: function swapItem() {}
+  }, {
+    key: "addItem",
+    value: function addItem() {
+      var _this4 = this;
+
+      if (this.addToCartButtons.length > 0) {
+        this.addToCartButtons.forEach(function (button) {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            var productID = e.target.dataset.sku ? e.target.dataset.sku : undefined;
+
+            var categoryID = e.target.dataset.category ? e.target.dataset.category : undefined;
+
+            var productName = e.target.dataset.name ? e.target.dataset.name : undefined;
+
+            if (productID !== undefined && categoryID !== undefined && productName !== undefined) {
+              var newItem = {
+                sku: productID,
+                category: categoryID,
+                name: productName
+              };
+
+              fetch(_endpoints.endpoints.addToCart, {
+                method: "POST",
+                body: JSON.stringify(newItem),
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              }).then(function (res) {
+                return res.json();
+              }).catch(function (error) {
+                return console.error("Error:", error);
+              }).then(function (response) {
+                if (response.error) {} else {
+                  _this4.updateCount(response);
+                  _this4.fillCart(response);
+                }
+              });
+            }
+            _this4.cartContainer.classList.add("active");
+          });
+        });
+      }
+    }
+  }]);
+
+  return Cart;
+}();
+
+/***/ }),
+
+/***/ "./src/javascript/components/category-menu.js":
+/*!****************************************************!*\
+  !*** ./src/javascript/components/category-menu.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CategoryMenu = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _kute = __webpack_require__(/*! kute.js */ "./node_modules/kute.js/kute.js");
+
+var _kute2 = _interopRequireDefault(_kute);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var CategoryMenu = exports.CategoryMenu = function () {
+  function CategoryMenu() {
+    _classCallCheck(this, CategoryMenu);
+
+    this.openTrigger = document.querySelector("#category-list-all-header") || undefined;
+    this.menu = document.querySelector("#category-list-wrapper") || undefined;
+    this.subCategories = document.querySelectorAll(".category-list-sub-items-group");
+  }
+
+  _createClass(CategoryMenu, [{
+    key: "init",
+    value: function init() {
+      if (this.menu) {
+        this.enable();
+      }
+    }
+  }, {
+    key: "enable",
+    value: function enable() {
+      this.navigation();
+      this.parentCategories();
+    }
+  }, {
+    key: "navigation",
+    value: function navigation() {
+      var _this = this;
+
+      // add toggling event to target
+      if (this.openTrigger) {
+        this.openTrigger.onclick = function () {
+          _this.menu.classList.contains("active") ? _this.closeNavigationAnimation() : _this.openNavigationAnimation();
+        };
+      }
+    }
+  }, {
+    key: "openNavigationAnimation",
+    value: function openNavigationAnimation() {
+      var _this2 = this;
+
+      var revealAnimation = _kute2.default.fromTo(this.menu, { translate3d: ["-100%", 0, 0], opacity: 0 }, { translate3d: [0, 0, 0], opacity: 1 }, {
+        duration: 150,
+        complete: function complete() {
+          _this2.menu.classList.toggle("active");
+        }
+      });
+      revealAnimation.start();
+    }
+  }, {
+    key: "closeNavigationAnimation",
+    value: function closeNavigationAnimation() {
+      var _this3 = this;
+
+      var revealAnimation = _kute2.default.fromTo(this.menu, { translate3d: [0, 0, 0], opacity: 1 }, { translate3d: ["-100%", 0, 0], opacity: 0 }, {
+        duration: 150,
+        complete: function complete() {
+          _this3.menu.classList.toggle("active");
+        }
+      });
+      revealAnimation.start();
+    }
+  }, {
+    key: "parentCategories",
+    value: function parentCategories() {
+      var _this4 = this;
+
+      var parents = this.menu.querySelectorAll(".category-list-parent a");
+      parents.forEach(function (item) {
+        item.addEventListener("click", function (e) {
+          e.preventDefault();
+          var target = e.target;
+          var category = target.dataset.categoryId;
+
+          _this4.closeNavigationAnimation();
+
+          var targetCategory = _this4.getSubCategory(category);
+
+          if (targetCategory) {
+            _this4.openSubCategory(targetCategory);
+          }
+        });
+      });
+    }
+  }, {
+    key: "getSubCategory",
+    value: function getSubCategory(id) {
+      var targetCategory = id;
+
+      var result = Array.from(this.subCategories).find(function (category) {
+        if (category.dataset.categoryId === targetCategory) {
+          return category;
+        }
+      });
+
+      return result;
+    }
+  }, {
+    key: "openSubCategory",
+    value: function openSubCategory(target) {
+      var revealAnimation = _kute2.default.fromTo(target, { translate3d: ["-150%", 0, 0], opacity: 0 }, { translate3d: [0, 0, 0], opacity: 1 }, {
+        duration: 150,
+        complete: function complete() {
+          target.classList.toggle("active");
+        }
+      });
+      revealAnimation.start();
+    }
+  }, {
+    key: "closeSubCategory",
+    value: function closeSubCategory(target) {
+      var revealAnimation = _kute2.default.fromTo(target, { translate3d: [0, 0, 0], opacity: 1 }, { translate3d: ["-150%", 0, 0], opacity: 0 }, {
+        duration: 150,
+        complete: function complete() {
+          target.classList.toggle("active");
+        }
+      });
+      revealAnimation.start();
+    }
+  }]);
+
+  return CategoryMenu;
 }();
 
 /***/ }),
@@ -26434,6 +26813,30 @@ Object.keys(_productQuantity).forEach(function (key) {
   });
 });
 
+var _categoryMenu = __webpack_require__(/*! ./category-menu */ "./src/javascript/components/category-menu.js");
+
+Object.keys(_categoryMenu).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _categoryMenu[key];
+    }
+  });
+});
+
+var _cart = __webpack_require__(/*! ./cart */ "./src/javascript/components/cart.js");
+
+Object.keys(_cart).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _cart[key];
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./src/javascript/components/navigation.js":
@@ -26462,13 +26865,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Navigation = exports.Navigation = function () {
-  function Navigation(openTrigger, menu, closeTrigger, overlay) {
+  function Navigation() {
     _classCallCheck(this, Navigation);
 
-    this.openTrigger = document.querySelector(openTrigger) || undefined;
-    this.menu = document.querySelector(menu) || undefined;
-    this.closeTrigger = document.querySelector(closeTrigger) || undefined;
-    this.overlay = document.querySelector(overlay) || undefined;
+    this.openTrigger = document.querySelector("#navbar-trigger") || undefined;
+    this.menu = document.querySelector("#navbar-dropdown") || undefined;
+    this.closeTrigger = document.querySelector("#navbar-exit") || undefined;
+    this.overlay = document.querySelector("#dimmed-overlay") || undefined;
   }
 
   _createClass(Navigation, [{
@@ -26567,10 +26970,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ProductImageCarousel = exports.ProductImageCarousel = function () {
-  function ProductImageCarousel(target) {
+  function ProductImageCarousel() {
     _classCallCheck(this, ProductImageCarousel);
 
-    this.target = document.querySelector(target) || undefined;
+    this.target = document.querySelector(".swiper-container") || undefined;
   }
 
   _createClass(ProductImageCarousel, [{
@@ -26659,10 +27062,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ProductQuantity = exports.ProductQuantity = function () {
-  function ProductQuantity(target) {
+  function ProductQuantity() {
     _classCallCheck(this, ProductQuantity);
 
-    this.target = document.querySelector(target) || undefined;
+    this.target = document.querySelector(".product-quantity") || undefined;
   }
 
   _createClass(ProductQuantity, [{
@@ -26694,11 +27097,13 @@ var ProductQuantity = exports.ProductQuantity = function () {
 
 var _components = __webpack_require__(/*! ./components */ "./src/javascript/components/index.js");
 
-var initializeNavigation = new _components.Navigation("#navbar-trigger", "#navbar-dropdown", "#navbar-exit", "#dimmed-overlay").init();
+var initializeNavigation = new _components.Navigation().init();
 
-var initializeScrollToTop = new _components.ScrollToTop("#back-to-top").init();
-var productCarousels = new _components.ProductImageCarousel(".swiper-container").init();
-var productQuantity = new _components.ProductQuantity(".product-quantity").init();
+var cart = new _components.Cart().init();
+var initializeScrollToTop = new _components.ScrollToTop().init();
+var productCarousels = new _components.ProductImageCarousel().init();
+var productQuantity = new _components.ProductQuantity().init();
+var categoryMenu = new _components.CategoryMenu().init();
 
 /***/ })
 

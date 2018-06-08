@@ -1,6 +1,6 @@
 export class ProductQuantity {
-  constructor(target) {
-    this.target = document.querySelector(target) || undefined;
+  constructor() {
+    this.target = document.querySelector(".product-quantity") || undefined;
   }
   init() {
     if (this.target) {

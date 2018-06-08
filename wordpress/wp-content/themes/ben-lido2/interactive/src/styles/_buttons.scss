@@ -1,11 +1,20 @@
 .btn {
   border-radius: 4px;
+
   &.btn-lg {
     padding: 10px 34px;
     height: auto;
   }
+
   &-no-border {
     border: 0;
+  }
+
+  &.btn-primary {
+    &:hover,
+    &:focus {
+      background-color: $brown-grey;
+    }
   }
 
   &.btn-selected {
@@ -13,6 +22,12 @@
     padding: 10px;
     display: flex;
   }
+
+  &.btn-warning {
+    background-color: $medium-brick-red;
+    color: $white;
+  }
+
   .btn-selected {
     &-remove {
       width: 50%;

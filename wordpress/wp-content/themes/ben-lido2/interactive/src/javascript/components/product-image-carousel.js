@@ -2,8 +2,8 @@ import Swiper from "swiper";
 import { debounce } from "lodash";
 
 export class ProductImageCarousel {
-  constructor(target) {
-    this.target = document.querySelector(target) || undefined;
+  constructor() {
+    this.target = document.querySelector(".swiper-container") || undefined;
   }
 
   init() {

@@ -1,6 +1,36 @@
 .navbar {
   padding: 10px 0;
   z-index: 100;
+
+  &-product-name {
+    @include knockout32(14px, 400);
+    color: $white;
+    margin: 0;
+  }
+  &-remove-item {
+    cursor: pointer;
+    position: relative;
+    bottom: 2px;
+    > i {
+      font-size: 22px;
+      color: red;
+    }
+  }
+
+  &-edit-item {
+    cursor: pointer;
+    position: relative;
+    bottom: 4px;
+    margin-right: 26px;
+    &:hover {
+      text-decoration: none;
+    }
+    > i {
+      font-size: 18px;
+      color: $white;
+    }
+  }
+
   &-toggle {
     > i {
       padding: 4px 6px;
@@ -63,10 +93,74 @@
     font-size: 18px;
   }
   &-section {
+    &-cart {
+      display: block;
+      cursor: pointer;
+    }
     &-account {
       color: $brown-grey;
     }
-    &-cart {
+  }
+  &-bag {
+    user-select: none;
+    border-radius: 4px;
+    background-color: $brown-grey;
+    padding: 20px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 312px;
+    color: $white;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-bottom-color: $brown-grey;
+      border-top: 0;
+      margin-left: -10px;
+      margin-top: -10px;
+    }
+    &-empty {
+      @include knockout32(18px, 400);
+      padding: 0 0 20px;
+    }
+    &-container {
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+      transform: translate3d(0, -800px, 0);
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    &-list {
+      &-container {
+        max-height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 10px;
+      }
+    }
+
+    &-item {
+      text-transform: capitalize;
+      border-bottom: $cart-border;
+      padding: 18px 10px 12px 0;
+    }
+  }
+  &-login {
+    @include knockout32(14px, 400);
+    display: inline-block;
+    padding: 20px 0 0;
+    color: $grey;
+    > a {
+      text-decoration: underline;
     }
   }
   .fa-suitcase {

@@ -63,10 +63,13 @@
   "testURL": "http://localhost",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "body-scroll-lock": "^2.4.6",
     "kute.js": "^1.6.5",
     "lodash": "^4.17.10",
     "selectivity": "^3.0.6",
     "spectre.css": "^0.5.1",
-    "swiper": "^4.3.2"
+    "swiper": "^4.3.2",
+    "whatwg-fetch": "^2.0.4"
   }
 }

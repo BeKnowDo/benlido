@@ -1,8 +1,8 @@
 import KUTE from "kute.js";
 
 export class ScrollToTop {
-  constructor(clickTarget) {
-    this.clickTarget = document.querySelector(clickTarget) || undefined;
+  constructor() {
+    this.clickTarget = document.querySelector("#back-to-top") || undefined;
   }
   init() {
     if (this.clickTarget) {

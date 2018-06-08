@@ -1,26 +1,37 @@
 {% if categoryItems is defined %}
 
   <div class="category-list">
-    <h4 class="category-list-all-header">All Categories</h4>
-    {% for category in categoryItems %}
+    <h4 id="category-list-all-header" class="category-list-all-header">
+      <i class="far fa-ellipsis-v fa-2x"></i>
+      <span class="category-list-active">All</span>
+    </h4>
 
-      <div class="category-list-group">
-        <h4 class="category-list-parent">
-          <a href="{{ category.href }}" title="">{{ category.name }}</a>
-        </h4>
-        {% if category.items %}
+    <div id="category-list-wrapper" class="category-list-wrapper">
+      {% for category in categoryItems %}
+        <div class="category-list-parent-group" data-category-id="{{category.id}}">
+          <h4 class="category-list-parent">
+            <a href="{{ category.href }}" title="" data-category-id="{{category.id}}">{{ category.name }}</a>
+          </h4>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% for category in categoryItems %}
+      {% if category.items %}
+        <div class="category-list-sub-items-group" data-category-id="{{category.id}}">
           <ul class="category-list-sub-items">
             {% for item in category.items %}
               <li>
-                <a href="{{ item.name }}" title="{{ item.href }}" data-category-id="{{ item.id}}">
+                <a href="{{ item.name }}" title="{{ item.href }}" data-category-id="{{category.id}}">
                   {{ item.name }}
                 </a>
               </li>
             {% endfor %}
           </ul>
-        {% endif %}
-      </div>
-
+        </div>
+      {% endif %}
     {% endfor %}
+
   </div>
+
 {% endif %}
