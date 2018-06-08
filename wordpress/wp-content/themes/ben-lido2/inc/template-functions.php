@@ -95,3 +95,68 @@ function bl_process_acf_buttons($items) {
   }
   return $results;
 }
+
+function bl_process_bags_list($items) {
+  $results = array();
+  $now = time();
+  if (!empty($items) && is_array($items)) {
+    foreach ($items as $el) {
+      $image = '';
+      $prod = null;
+      //print_r ($el);
+      // get if the item is published or coming soon
+      if (!empty($el) && is_array($el)) {
+        $item = $el['product'];
+        if (!empty($item) && is_object($item)) {
+          $item_id = $item->ID;
+          $title = $item->post_title;
+          $description = $item->post_content;
+          $status = $item->post_status;
+        }
+        
+        $url = get_permalink($item_id);
+        if (function_exists('wc_get_product')) {
+          $prod = wc_get_product($item_id);
+        }
+        if (!empty($prod)) {
+          $price = $prod->get_price_html();
+        }
+        
+        $disabled = false;
+        if ($status == 'draft') {
+          // see when it's available
+          $post_date = $item->post_date;
+          $timestamp = strtotime($post_date);
+          if ($timestamp > $time) {
+            $disabled = true;
+          }
+        }
+        // get image
+        $image = wp_get_attachment_image_url( get_post_thumbnail_id( $item_id ), 'full' ); // NOTE: we'll need to figure out a good image size for here
+        if (empty($image)) {
+
+        }
+        // image overrides
+        if (!empty($el['image_override']) && isset($el['image_override']['url'])) {
+          $image = $el['image_override']['url'];
+        }
+        if (!empty($el['image_override_retina']) && isset($el['image_override_retina']['url'])) {
+          $image_retina = $el['image_override_retina']['url'];
+        }
+        $results[] = array(
+          'feature'=>$feature,
+          'logo'=>$logo,
+          'header'=>$title,
+          'copy'=>$description,
+          'price'=>$price,
+          'href'=>'#'.$item_id,
+          'image'=>$image,
+          'image_retina'=>$image_retina,
+          'bagURL'=>$url,
+          'disabled'=>$disabled
+        );
+      } // end $item
+    }
+  }
+  return $results;
+} // end bl_process_bags_list()
