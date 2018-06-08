@@ -31,6 +31,9 @@ node_modules
 npm-debug.log
 package-lock.json
 
+# yarn stuff
+yarn-error.log
+
 # wpengine specific
 .smushit-status
 .gitattributes
