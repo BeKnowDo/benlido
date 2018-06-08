@@ -32,6 +32,10 @@
   ]%}
 {% endif %}
 
+{% if not logo %}
+{% set logo = '<img src="/images/diamond_logo.svg" >' %}
+{% endif %}
+
 {% if not socialMediaLinks %}
   {% set socialMediaLinks = [
   {
@@ -60,6 +64,10 @@
     text: 'Facebook'
   }
   ]%}
+{% endif %}
+
+{% if not contact %}
+{% set contact = [{"id":1302,"title":"Email: help@benlido.com","alt_title":"Email: help@benlido.com","post_name":"helpbenlido-com","url":"mailto:help@benlido.com","target":"","classes":""},{"id":1303,"title":"Call: 1-800-555-5555","alt_title":"Call: 1-800-555-5555","post_name":"1-800-555-5555","url":"tel:1-800-555-5555","target":"","classes":""}] %}
 {% endif %}
 
 <footer class="footer">

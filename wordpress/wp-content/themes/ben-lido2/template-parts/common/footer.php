@@ -29,4 +29,6 @@ $data = array(
     'contact'=>$contact
 );
 
+//print_r (json_encode($contact));
+
 Timber::render( 'common/footer.twig', $data);
