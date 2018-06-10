@@ -32,7 +32,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "These are the fields required for the home page broken down by section.\r\nHero Section\r\nSelect Bags to sell",
+                "message": "This is the section where you can pick bags or kits to be listed.\r\nBasically, this is the start of either the \"Build your own Kit\" or \"Pick a kit\" page where you pick the bag first.\r\nIf you activate the \"hero\" tab, you can add in buttons and a hero image that looks just like the home page.",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
@@ -40,6 +40,25 @@
                 "key": "field_5a9dafa44e0ab",
                 "label": "Show Hero Section?",
                 "name": "show_hero_section",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_5b1da465b29a1",
+                "label": "Show Step Navigation?",
+                "name": "show_step_navigation",
                 "type": "true_false",
                 "instructions": "",
                 "required": 0,
@@ -78,76 +97,6 @@
                 },
                 "placement": "top",
                 "endpoint": 0
-            },
-            {
-                "key": "field_5a9dafda4e0ad",
-                "label": "Hero First Button Copy",
-                "name": "hero_first_button_copy",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5a9db00a4e0ae",
-                "label": "Hero First Button URL",
-                "name": "hero_first_button_url",
-                "type": "url",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": ""
-            },
-            {
-                "key": "field_5a9db0404e0af",
-                "label": "Hero Second Button Copy",
-                "name": "hero_second_button_copy",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5a9db05d4e0b0",
-                "label": "Hero Second Button URL",
-                "name": "hero_second_button_url",
-                "type": "url",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": ""
             },
             {
                 "key": "field_5a9db0774e0b1",
@@ -198,6 +147,221 @@
                 "mime_types": ""
             },
             {
+                "key": "field_5b1d9c681676e",
+                "label": "Hero Call-to-action Buttons",
+                "name": "hero_call_to_action_buttons",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5a9dafa44e0ab",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "field_5b1d9ca31676f",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_5b1d9ca31676f",
+                        "label": "Button Name",
+                        "name": "button_name",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b1d9caa16770",
+                        "label": "Button URL",
+                        "name": "button_url",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5b1d9cb916771",
+                        "label": "Open in a new tab?",
+                        "name": "open_in_a_new_tab",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 0,
+                        "ui_on_text": "",
+                        "ui_off_text": ""
+                    },
+                    {
+                        "key": "field_5b1d9cc916772",
+                        "label": "Button CSS Class",
+                        "name": "button_css_class",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5b1da44cb29a0",
+                "label": "Step Navigation Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5b1da465b29a1",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b1da48bb29a2",
+                "label": "Previous URL",
+                "name": "previous_url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_5b1da495b29a3",
+                "label": "Previous Copy",
+                "name": "previous_copy",
+                "type": "text",
+                "instructions": "What you want to call the link that takes you to the previous page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Previous",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b1da4d9b29a4",
+                "label": "Current Section Name",
+                "name": "current_section_name",
+                "type": "text",
+                "instructions": "What you want to call the current page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b1da4ffb29a5",
+                "label": "Next URL",
+                "name": "next_url",
+                "type": "url",
+                "instructions": "The URL to the next page after this step",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_5b1da512b29a6",
+                "label": "Next Copy",
+                "name": "next_copy",
+                "type": "text",
+                "instructions": "What you want to name the next page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
                 "key": "field_5a9db0974e0b3",
                 "label": "Bags Section",
                 "name": "",
@@ -237,7 +401,7 @@
                         "label": "Product",
                         "name": "product",
                         "type": "post_object",
-                        "instructions": "",
+                        "instructions": "Pick either a bag or a kit for this area",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
@@ -246,11 +410,10 @@
                             "id": ""
                         },
                         "post_type": [
-                            "product"
+                            "product",
+                            "travel_kit"
                         ],
-                        "taxonomy": [
-                            "product_cat:bags"
-                        ],
+                        "taxonomy": [],
                         "allow_null": 0,
                         "multiple": 0,
                         "return_format": "object",

@@ -7,6 +7,14 @@
  * @package storefront
  */
 
+ // see if we are removing the breadcrumb
+if (function_exists('get_field')) {
+    $remove_woocommerce_breadcrumb = get_field('remove_woocommerce_breadcrumb');
+    if ($remove_woocommerce_breadcrumb == true) {
+       remove_action( 'storefront_content_top','woocommerce_breadcrumb', 10, 0);
+    }
+}
+
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>

@@ -3,12 +3,12 @@
 {% block content %}
 
   {% if not stepNavigation %}
-    {% set stepNavigation = [
+    {% set stepNavigation =
       {
         previousStep: '/pick-a-kit',
         nextStep: '/shipping-schedule'
       }
-    ] %}
+    %}
   {% endif %}
 
   {% include 'common/step-navigation.twig', with {stepNavigation: stepNavigation} %}

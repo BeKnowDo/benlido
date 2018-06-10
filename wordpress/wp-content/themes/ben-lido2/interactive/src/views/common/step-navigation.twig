@@ -1,28 +1,27 @@
 {% if stepNavigation %}
-  {% for step in stepNavigation %}
     <div class="step-navigation">
       <div class="max-width-xl">
         <div class="columns">
 
           <div class="col-4 col-mr-auto text-left">
-            <a class="btn btn-lg btn-no-border" href="{{step.previousStep}}" title="">
+            <a class="btn btn-lg btn-no-border" href="{{stepNavigation.previousStep}}" title="">
               <i class="fal fa-chevron-circle-left"></i>
               <span class="step-navigation-text-back">
-                Back
+                {{stepNavigation.back}}
               </span>
             </a>
           </div>
 
           <div class="col-4 text-center">
             <div class="step-navigation-current">
-              Choose A Bag
+              {{stepNavigation.current}}
             </div>
           </div>
 
           <div class="col-4 col-ml-auto text-right">
-            <a class="btn btn-lg btn-no-border" href="{{step.nextStep}}" title="">
+            <a class="btn btn-lg btn-no-border" href="{{stepNavigation.nextStep}}" title="">
               <span class="step-navigation-text-next">
-                Next
+                {{stepNavigation.next}}
               </span>
               <i class="fal fa-chevron-circle-right"></i>
             </a>
@@ -31,5 +30,4 @@
         </div>
       </div>
     </div>
-  {% endfor %}
 {% endif %}
