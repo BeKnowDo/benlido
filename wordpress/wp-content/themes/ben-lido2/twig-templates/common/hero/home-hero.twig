@@ -18,7 +18,6 @@
           <p class="hero-copy">{{hero.copy}}</p>
 
           <div class="hero-action-buttons columns">
-          {{hero}}
             {% for button in hero.hero_call_to_action_buttons %}
             <div class="column col-sm-12">
               <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ? 'rel="noopener noferrer" target="_blank"' }} >{{button.title}}</a>

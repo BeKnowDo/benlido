@@ -5,7 +5,7 @@
   {% if not heroData %}
     {% set heroData = [
       {
-        header: 'SHOP BEAUTY & GROOMING'
+        header: 'Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc...'
       }
   ]%}
   {% endif %}
@@ -22,251 +22,41 @@
   {% include 'common/step-navigation.twig' %}
   {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
 
-  {% if not products %}
-    {% set products = [
-        {
-          categoryID: '123',
-          categoryTitle: 'Category Name 2',
-          sku: 'lll',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '456',
-          categoryTitle: 'Category Name 3',
-          sku: 'mmm',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '789',
-          categoryTitle: 'Category Name 4',
-          sku: 'nnn',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '987',
-          categoryTitle: 'Category Name 5',
-          sku: 'ooo',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '654',
-          categoryTitle: 'Category Name 6',
-          sku: 'ppp',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '321',
-          categoryTitle: 'Category Name 1',
-          sku: 'qqq',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        
-        {
-          categoryID: '147',
-          categoryTitle: 'Category Name 2',
-          sku: 'rrr',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '258',
-          categoryTitle: 'Category Name 3',
-          sku: 'sss',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '369',
-          categoryTitle: 'Category Name 4',
-          sku: 'ttt',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '753',
-          categoryTitle: 'Category Name 5',
-          sku: 'uuu',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        },
-        {
-          categoryID: '159',
-          categoryTitle: 'Category Name 6',
-          sku: 'vvv',
-          name: 'Product Name',
-          image: '/images/product-example.png',
-          description: 'Colgate Total Advanced Pro-sheild Mouthwash Peppermint...',
-          href: '/',
-          price: '2.45',
-          selected: {
-            quantity: '2',
-          }
-        }
-      ]%}
-  {% endif %}
-
-  {% if not categoryItems %}
-    {% set categoryItems = [
-      {
-        name: 'Bath and Body',
-        id: '123',
-        href: '?',
-        items: [
-          {
-            name: 'Deodorants',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Eye Care',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Hair Care',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Oral Care',
-            id: '',
-            href: '?'
-          }
-        ]
-      }, {
-        name: 'Beauty & Grooming',
-        id: '456',
-        href: '?',
-        items: [
-          {
-            name: 'Shaving',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Skin Care',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Makeup',
-            id: '',
-            href: '?'
-          }
-        ]
-      }, {
-        name: 'Health',
-        id: '789',
-        href: '?',
-        items: [
-          {
-            name: 'Over the counter',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Feminine Protection',
-            id: '',
-            href: '?'
-          }
-        ]
-      }, {
-        name: 'Tools & Accessories',
-        id: '321',
-        href: '?',
-        items: [
-          {
-            name: 'Tools',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Gum & Mints',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Wipes & Sanitizers',
-            id: '',
-            href: '?'
-          }, {
-            name: 'Baby Care',
-            id: '',
-            href: '?'
-          }
-        ]
-      }
-    ] %}
-  {% endif %}
-
   <div class="bg-grey">
-    <div class="max-width-xl">
+    <div class="max-width-xl shop-landing-featured">
 
       <div class="columns">
-        <div class="column col-12">
+        <div class="column col-xs-12 col-sm-4 col-md-4 col-3">
           {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
         </div>
-      </div>
 
-      {% include 'common/product/product-category-list.twig', with { products } %}
+        <div class="column col-xs-12 col-sm-8 col-md-8 col-9 shop-landing-featured-products">
+
+          {% for category in categoryItems %}
+            <div class="columns">
+              <h3 class="column col-12 shop-landing-featured-header">{{category.name}}</h3>
+
+              {% for product in category.featured %}
+                <div class="column col-xs-12 col-sm-12 col-md-6 col-4">
+                  {% include 'common/product/product-tile.twig', with {product: product } %}
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="columns shop-landing-featured-view-all">
+              <div class="column col-mx-auto text-center">
+                <a href="" class="btn btn-lg">View all
+                  {{category.name}}
+                </a>
+              </div>
+            </div>
+
+          {% endfor %}
+
+        </div>
+        {# {% include 'common/product/product-category-list.twig' %} #}
+
+      </div>
 
     </div>
 

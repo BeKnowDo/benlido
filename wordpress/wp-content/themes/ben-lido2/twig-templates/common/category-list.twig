@@ -1,37 +1,35 @@
 {% if categoryItems is defined %}
 
   <div class="category-list">
-    <h4 id="category-list-breadcrumbs" class="category-list-breadcrumbs">
-      <i class="far fa-ellipsis-v fa-2x"></i>
-      <span id="category-list-all-header" class="category-list-all-header">All</span>
-    </h4>
 
     <div id="category-list-wrapper" class="category-list-wrapper">
+
+      <h4 id="category-list-breadcrumbs" class="category-list-breadcrumbs">
+        <span id="category-list-all-header" class="category-list-all-header">All Categories</span>
+      </h4>
+
       {% for category in categoryItems %}
         <div class="category-list-parent-group" data-category-id="{{category.id}}">
           <h4 class="category-list-parent">
             <a href="{{ category.href }}" title="" data-category-id="{{category.id}}">{{ category.name }}</a>
           </h4>
+          {% if category.subs %}
+            <div class="category-list-sub-items-group" data-category-id="{{category.id}}">
+              <ul class="category-list-sub-items">
+                {% for item in category.subs %}
+                  <li>
+                    <a href="{{ item.name }}" title="{{ item.href }}" data-category-id="{{category.id}}">
+                      {{ item.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
+
     </div>
-
-    {% for category in categoryItems %}
-      {% if category.items %}
-        <div class="category-list-sub-items-group" data-category-id="{{category.id}}">
-          <ul class="category-list-sub-items">
-            {% for item in category.items %}
-              <li>
-                <a href="{{ item.name }}" title="{{ item.href }}" data-category-id="{{category.id}}">
-                  {{ item.name }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-    {% endfor %}
-
   </div>
 
 {% endif %}
