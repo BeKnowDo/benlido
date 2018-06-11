@@ -386,7 +386,10 @@ if( function_exists('acf_add_local_field_group') ):
                 'label' => 'Selectable Bags',
                 'name' => 'selectable_bags',
                 'type' => 'repeater',
-                'instructions' => '',
+                'instructions' => 'This is where we add a bag, or a kit to the page.
+    Please make sure that you also include a call-to-action button copy.
+    For example, if you are creating a page with a list of bags, the call-to-action is "Add Bag".
+    if you are creating a page with a list of kits, the call-to-action is "Select Kit"',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -397,7 +400,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'collapsed' => '',
                 'min' => 0,
                 'max' => 0,
-                'layout' => 'table',
+                'layout' => 'block',
                 'button_label' => '',
                 'sub_fields' => array(
                     array(
@@ -471,6 +474,65 @@ if( function_exists('acf_add_local_field_group') ):
                         'max_height' => '',
                         'max_size' => '',
                         'mime_types' => '',
+                    ),
+                    array(
+                        'key' => 'field_5b1e42bfaa865',
+                        'label' => 'Button Copy',
+                        'name' => 'button_copy',
+                        'type' => 'text',
+                        'instructions' => 'This button is the button that adds the bag to the cart.',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => 'Add Bag',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array(
+                        'key' => 'field_5b1e51c4ab350',
+                        'label' => 'Selected Copy',
+                        'name' => 'selected_copy',
+                        'type' => 'text',
+                        'instructions' => 'If this item (bag or kit) has been selected, the button copy changes.
+    This is where you can customize the copy',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array(
+                        'key' => 'field_5b1e738215a96',
+                        'label' => 'Coming Soon Copy',
+                        'name' => 'coming_soon_copy',
+                        'type' => 'text',
+                        'instructions' => 'If the bag isn\'t available yet, you can enter a copy for when it will be available.
+    Example, coming this fall!',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => 'Coming soon!',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
                     ),
                 ),
             ),

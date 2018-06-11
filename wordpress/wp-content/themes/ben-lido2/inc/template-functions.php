@@ -103,6 +103,8 @@ function bl_process_bags_list($items) {
     foreach ($items as $el) {
       $image = '';
       $prod = null;
+      $coming_soon = '';
+      $skip = false;
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -113,6 +115,8 @@ function bl_process_bags_list($items) {
           $description = $item->post_content;
           $status = $item->post_status;
         }
+        $coming_soon = $el['coming_soon_copy'];
+        $button_copy = $el['button_copy'];
         
         $url = get_permalink($item_id);
         if (function_exists('wc_get_product')) {
@@ -123,12 +127,15 @@ function bl_process_bags_list($items) {
         }
         
         $disabled = false;
-        if ($status == 'draft') {
+        if ($status == 'draft' || $status == 'future') {
           // see when it's available
           $post_date = $item->post_date;
           $timestamp = strtotime($post_date);
           if ($timestamp > $time) {
             $disabled = true;
+          } else {
+            // we're going to remove it
+            $skip = true;
           }
         }
         // get image
@@ -143,18 +150,23 @@ function bl_process_bags_list($items) {
         if (!empty($el['image_override_retina']) && isset($el['image_override_retina']['url'])) {
           $image_retina = $el['image_override_retina']['url'];
         }
-        $results[] = array(
-          'feature'=>$feature,
-          'logo'=>$logo,
-          'header'=>$title,
-          'copy'=>$description,
-          'price'=>$price,
-          'href'=>'#'.$item_id,
-          'image'=>$image,
-          'image_retina'=>$image_retina,
-          'bagURL'=>$url,
-          'disabled'=>$disabled
-        );
+        if ($skip != true) {
+          $results[] = array(
+            'feature'=>$feature,
+            'logo'=>$logo,
+            'header'=>$title,
+            'copy'=>$description,
+            'price'=>$price,
+            'href'=>'#'.$item_id,
+            'button_copy'=>$button_copy,
+            'image'=>$image,
+            'image_retina'=>$image_retina,
+            'bagURL'=>$url,
+            'coming_soon' => $coming_soon,
+            'disabled'=>$disabled
+          );
+        }
+
       } // end $item
     }
   }

@@ -29,7 +29,7 @@
   <div class="hero-product bg-white {{ className }}">
     {% if items.disabled == true %}
       <div class="hero-product-disabled">
-        <h1 class="hero-product-disabled-header">COMING SOON</h1>
+        <h1 class="hero-product-disabled-header">{{ items.coming_soon }}</h1>
       </div>
     {% endif %}
     <div class="columns text-center">

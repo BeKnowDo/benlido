@@ -8,6 +8,7 @@ if (function_exists('get_field')) {
         $bags = bl_process_bags_list($selectable_bags);
     }  
 }
+
 $data = array('products'=>$bags);
 //print_r ($data);
 Timber::render( 'common/hero/hero-product-list.twig', $data);
