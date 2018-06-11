@@ -11,9 +11,11 @@
   }
 
   &.btn-primary {
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: $brown-grey;
+    }
+    &:active {
+      background-color: $blue-shale;
     }
   }
 
@@ -37,4 +39,56 @@
       width: 50%;
     }
   }
+
+  &.add-to-cart {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      width: 50%;
+      text-align: right;
+    }
+
+    .fa-minus-circle {
+      text-align: right;
+      width: 40%;
+      font-size: 18px;
+      padding: 10px 6px;
+    }
+
+    .fa-plus-circle {
+      width: 40%;
+      text-align: left;
+      font-size: 18px;
+      padding: 10px 6px;
+    }
+    .hidden {
+      display: none;
+    }
+    .add-to-cart-text {
+      text-align: right;
+      width: 60%;
+    }
+    &.in-cart {
+      background-color: $brown-grey;
+      .add-to-cart-text {
+        text-align: center;
+        width: 20%;
+      }
+      .fa-plus-circle {
+        text-align: left;
+        width: 40%;
+      }
+    }
+  }
+}
+
+.remove-from-cart {
+  padding: 10px 6px;
+}
+
+.swap-from-cart {
+  padding: 10px 6px;
 }

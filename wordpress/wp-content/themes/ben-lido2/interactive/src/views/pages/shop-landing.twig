@@ -1,0 +1,67 @@
+{% extends "../layout/document.twig" %}
+
+{% block content %}
+
+  {% if not heroData %}
+    {% set heroData = [
+      {
+        header: 'Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc...'
+      }
+  ]%}
+  {% endif %}
+
+  {% if not stepNavigation %}
+    {% set stepNavigation = [
+      {
+        previousStep: '/pick-a-kit',
+        nextStep: '/shipping-schedule'
+      }
+    ] %}
+  {% endif %}
+
+  {% include 'common/step-navigation.twig' %}
+  {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
+
+  <div class="bg-grey">
+    <div class="max-width-xl shop-landing-featured">
+
+      <div class="columns">
+        <div class="column col-xs-12 col-sm-4 col-md-4 col-3">
+          {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
+        </div>
+
+        <div class="column col-xs-12 col-sm-8 col-md-8 col-9 shop-landing-featured-products">
+
+          {% for category in categoryItems %}
+            <div class="columns">
+              <h3 class="column col-12 shop-landing-featured-header">{{category.name}}</h3>
+
+              {% for product in category.featured %}
+                <div class="column col-xs-12 col-sm-12 col-md-6 col-4">
+                  {% include 'common/product/product-tile.twig', with {product: product } %}
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="columns shop-landing-featured-view-all">
+              <div class="column col-mx-auto text-center">
+                <a href="" class="btn btn-lg">View all
+                  {{category.name}}
+                </a>
+              </div>
+            </div>
+
+          {% endfor %}
+
+        </div>
+        {# {% include 'common/product/product-category-list.twig' %} #}
+
+      </div>
+
+    </div>
+
+    <div class="bg-grey">
+      {% include 'common/back-to-top.twig' %}
+    </div>
+
+  {% endblock %}

@@ -4,14 +4,8 @@
   z-index: 1;
 
   &-wrapper {
-    // display: none;
-    background-color: $brown-grey;
-    position: absolute;
-    top: 50px;
-    left: 0;
     width: 100%;
     padding: 10px;
-    opacity: 0;
   }
 
   &-breadcrumbs {
@@ -21,7 +15,6 @@
 
     > span {
       display: inline-block;
-      padding-left: 6px;
       vertical-align: super;
     }
 
@@ -39,33 +32,24 @@
     a {
       display: inline-block;
       padding: 10px 0;
-      color: $white;
+      color: $medium-grey;
     }
   }
 
   &-sub-items {
     @include knockout32(14px, 400);
+    display: none;
     li {
       display: block;
     }
     a {
       display: inline-block;
       padding: 10px 0;
-      color: $white;
     }
 
     &-group {
-      transform: translate3d(-150%, 0, 0);
-      opacity: 0;
-      background-color: $brown-grey;
-      position: absolute;
-      top: 50px;
-
-      overflow: hidden;
-      overflow-y: scroll;
       width: 100%;
       margin: 0;
-      padding: 10px;
       list-style-type: none;
     }
   }

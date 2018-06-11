@@ -7,10 +7,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "456",
@@ -20,10 +17,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "789",
@@ -33,10 +27,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "987",
@@ -46,10 +37,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "654",
@@ -59,10 +47,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "321",
@@ -72,10 +57,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
 
   {
@@ -86,10 +68,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "258",
@@ -99,10 +78,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "369",
@@ -112,10 +88,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "753",
@@ -125,10 +98,7 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   },
   {
     categoryID: "159",
@@ -138,11 +108,8 @@ const products = [
     image: "/images/product-example.png",
     description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
     href: "/",
-    price: "2.45",
-    selected: {
-      quantity: "2"
-    }
+    price: "2.45"
   }
 ];
 
-export { products };
+module.exports = products;

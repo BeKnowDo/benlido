@@ -11,7 +11,7 @@ export class CategoryMenu {
   }
   init() {
     if (this.menu) {
-      this.enable();
+      // this.enable();
     }
   }
 

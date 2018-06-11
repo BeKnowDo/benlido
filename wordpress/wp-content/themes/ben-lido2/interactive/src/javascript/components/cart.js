@@ -7,9 +7,9 @@ export class Cart {
       document.querySelector("#navbar-bag-list") || undefined;
     this.addToCartButtons =
       document.querySelectorAll(".add-to-cart") || undefined;
-    this.removeFromCartButton =
+    this.removeFromCartButtons =
       document.querySelectorAll(".remove-from-cart") || undefined;
-    this.swapFromCartButton =
+    this.swapFromCartButtons =
       document.querySelectorAll(".swap-from-cart") || undefined;
     this.cart = document.querySelector("#benlido-cart") || undefined;
     this.cartContainer =
@@ -27,6 +27,14 @@ export class Cart {
 
     if (this.addToCartButtons) {
       this.addItem();
+      this.removeItem();
+    }
+    if (this.removeFromCartButtons) {
+      this.removeTileItem();
+    }
+
+    if (this.swapFromCartButtons) {
+      this.swapItem();
     }
 
     if (this.cart) {
@@ -94,7 +102,7 @@ export class Cart {
       `;
 
       if (this.listContainer) {
-        this.removeItem();
+        this.removeCartItem();
       }
     } else {
       this.listContainer.innerHTML = `<h4 class="navbar-bag-empty">Your cart is empty...</h4>`;
@@ -116,9 +124,68 @@ export class Cart {
     }
   }
 
-  receiveItem() {}
+  swapItem() {
+    const swaps = this.swapFromCartButtons;
+    if (swaps.length > 0) {
+      swaps.forEach(swap => {
+        swap.addEventListener("click", e => {
+          e.preventDefault();
+          console.log(e);
+        });
+      });
+    }
+  }
 
-  removeItem() {
+  removeItemAPI(removeItem) {
+    fetch(endpoints.removeFromCart, {
+      method: "POST",
+      body: JSON.stringify(removeItem),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if (response.error) {
+        } else {
+          this.updateCount(response);
+          this.fillCart(response);
+          this.updateTileQuantity(response);
+        }
+      });
+  }
+
+  removeTileItem() {
+    const buttons = this.removeFromCartButtons;
+    if (buttons.length > 0) {
+      buttons.forEach(button => {
+        button.addEventListener("click", e => {
+          e.preventDefault();
+          console.log(e);
+
+          // fetch(endpoints.addToCart, {
+          //   method: "POST",
+          //   body: JSON.stringify(newItem),
+          //   headers: {
+          //     "Content-Type": "application/json"
+          //   }
+          // })
+          //   .then(res => res.json())
+          //   .catch(error => console.error("Error:", error))
+          //   .then(response => {
+          //     if (response.error) {
+          //     } else {
+          //       this.updateCount(response);
+          //       this.fillCart(response);
+          //     }
+          //   });
+        });
+      });
+    }
+  }
+
+  removeCartItem() {
     const cartItems = this.listContainer.querySelectorAll(
       ".navbar-remove-item"
     );
@@ -126,74 +193,51 @@ export class Cart {
     cartItems.forEach(item => {
       item.addEventListener("click", e => {
         e.preventDefault();
+
         if (e.target.dataset) {
           const target = e.target.dataset;
           const sku = target.sku ? target.sku : undefined;
-          const name = target.name ? target.name : undefined;
           const category = target.category ? target.category : undefined;
 
-          if (
-            sku !== undefined &&
-            name !== undefined &&
-            category !== undefined
-          ) {
+          if (sku !== undefined && category !== undefined) {
             const removeItem = {
               sku,
-              name,
               category
             };
 
-            fetch(endpoints.removeFromCart, {
-              method: "POST",
-              body: JSON.stringify(removeItem),
-              headers: {
-                "Content-Type": "application/json"
-              }
-            })
-              .then(res => res.json())
-              .catch(error => console.error("Error:", error))
-              .then(response => {
-                if (response.error) {
-                } else {
-                  this.updateCount(response);
-                  this.fillCart(response);
-                }
-              });
+            this.removeItemAPI(removeItem);
           }
         }
       });
     });
   }
 
-  swapItem() {}
-
   addItem() {
     if (this.addToCartButtons.length > 0) {
       this.addToCartButtons.forEach(button => {
-        button.addEventListener("click", e => {
+        const removeItemIcon = button.querySelector(".fa-minus-circle");
+        const addItemIcon = button.querySelector(".fa-plus-circle");
+        const text = button.querySelector(".add-to-cart-text");
+        const inCartText = text.dataset.cartText;
+
+        button.addEventListener("click", e => {});
+
+        addItemIcon.addEventListener("click", e => {
           e.preventDefault();
-
-          const productID = e.target.dataset.sku
-            ? e.target.dataset.sku
+          e.stopPropagation();
+          const addIcon = e.target;
+          const button = addIcon.parentElement;
+          const sku = button.dataset.sku ? button.dataset.sku : undefined;
+          const category = button.dataset.category
+            ? button.dataset.category
             : undefined;
+          const name = button.dataset.name ? button.dataset.name : undefined;
 
-          const categoryID = e.target.dataset.category
-            ? e.target.dataset.category
-            : undefined;
-
-          const productName = e.target.dataset.name
-            ? e.target.dataset.name
-            : undefined;
-
-          if (
-            productID !== undefined &&
-            categoryID !== undefined &&
-            productName !== undefined
-          ) {
+          if (sku !== undefined && category !== undefined) {
             const newItem = {
-              sku: productID,
-              category: categoryID,
-              name: productName
+              sku,
+              category,
+              name
             };
 
             fetch(endpoints.addToCart, {
@@ -210,10 +254,77 @@ export class Cart {
                 } else {
                   this.updateCount(response);
                   this.fillCart(response);
+                  // TODO: DRY
+                  const match = response.filter(item => {
+                    return item.sku === sku && item.category === category;
+                  });
+
+                  if (match.length > 0) {
+                    text.innerHTML = match[0].count + inCartText;
+                    button.classList.add("in-cart");
+                    removeItemIcon.classList.remove("hidden");
+                  }
                 }
               });
           }
-          this.cartContainer.classList.add("active");
+        });
+      });
+    }
+  }
+
+  removeItem() {
+    if (this.addToCartButtons.length > 0) {
+      this.addToCartButtons.forEach(button => {
+        const removeItemIcon = button.querySelector(".fa-minus-circle");
+        const text = button.querySelector(".add-to-cart-text");
+        const inCartText = text.dataset.cartText;
+        const defaultText = text.dataset.defaultText;
+
+        removeItemIcon.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
+          const addIcon = e.target;
+          const button = addIcon.parentElement;
+          const sku = button.dataset.sku ? button.dataset.sku : undefined;
+          const category = button.dataset.category
+            ? button.dataset.category
+            : undefined;
+
+          const removeItem = {
+            sku,
+            category
+          };
+
+          fetch(endpoints.removeFromCart, {
+            method: "POST",
+            body: JSON.stringify(removeItem),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(res => res.json())
+            .catch(error => console.error("Error:", error))
+            .then(response => {
+              if (response.error) {
+              } else {
+                this.updateCount(response);
+                this.fillCart(response);
+                // TODO: DRY
+                const match = response.filter(item => {
+                  return item.sku === sku && item.category === category;
+                });
+
+                if (match.length > 0) {
+                  text.innerHTML = match[0].count + inCartText;
+                  button.classList.add("in-cart");
+                  removeItemIcon.classList.remove("hidden");
+                } else {
+                  button.classList.remove("in-cart");
+                  text.innerHTML = defaultText;
+                  removeItemIcon.classList.add("hidden");
+                }
+              }
+            });
         });
       });
     }

@@ -76,6 +76,7 @@
 
     .btn {
       @include knockout32(15px, 400);
+      padding: 0;
     }
 
     .fal {
@@ -101,6 +102,7 @@
       }
 
       .btn-primary {
+        padding: 22px 6px;
         margin-top: auto;
         position: relative;
       }

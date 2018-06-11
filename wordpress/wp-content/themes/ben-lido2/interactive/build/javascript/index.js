@@ -19583,7 +19583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var dom7_dist_dom7_modular__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dom7/dist/dom7.modular */ "./node_modules/dom7/dist/dom7.modular.js");
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/dist/ssr-window.esm.js");
 /**
- * Swiper 4.3.3
+ * Swiper 4.3.2
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * http://www.idangero.us/swiper/
  *
@@ -19591,7 +19591,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Released under the MIT License
  *
- * Released on: June 5, 2018
+ * Released on: June 1, 2018
  */
 
 
@@ -20142,11 +20142,9 @@ function updateSlides () {
       if (prevSlideSize === 0 && i !== 0) slidePosition = slidePosition - (swiperSize / 2) - spaceBetween;
       if (i === 0) slidePosition = slidePosition - (swiperSize / 2) - spaceBetween;
       if (Math.abs(slidePosition) < 1 / 1000) slidePosition = 0;
-      if (params.roundLengths) slidePosition = Math.floor(slidePosition);
       if ((index$$1) % params.slidesPerGroup === 0) snapGrid.push(slidePosition);
       slidesGrid.push(slidePosition);
     } else {
-      if (params.roundLengths) slidePosition = Math.floor(slidePosition);
       if ((index$$1) % params.slidesPerGroup === 0) snapGrid.push(slidePosition);
       slidesGrid.push(slidePosition);
       slidePosition = slidePosition + slideSize + spaceBetween;
@@ -20178,9 +20176,7 @@ function updateSlides () {
     if (params.centeredSlides) {
       newSlidesGrid = [];
       for (let i = 0; i < snapGrid.length; i += 1) {
-        let slidesGridItem = snapGrid[i];
-        if (params.roundLengths) slidesGridItem = Math.floor(slidesGridItem);
-        if (snapGrid[i] < swiper.virtualSize + snapGrid[0]) newSlidesGrid.push(slidesGridItem);
+        if (snapGrid[i] < swiper.virtualSize + snapGrid[0]) newSlidesGrid.push(snapGrid[i]);
       }
       snapGrid = newSlidesGrid;
     }
@@ -20190,10 +20186,8 @@ function updateSlides () {
   if (!params.centeredSlides) {
     newSlidesGrid = [];
     for (let i = 0; i < snapGrid.length; i += 1) {
-      let slidesGridItem = snapGrid[i];
-      if (params.roundLengths) slidesGridItem = Math.floor(slidesGridItem);
       if (snapGrid[i] <= swiper.virtualSize - swiperSize) {
-        newSlidesGrid.push(slidesGridItem);
+        newSlidesGrid.push(snapGrid[i]);
       }
     }
     snapGrid = newSlidesGrid;
@@ -20552,7 +20546,7 @@ function setTranslate (translate, byController) {
     if (Support.transforms3d) $wrapperEl.transform(`translate3d(${x}px, ${y}px, ${z}px)`);
     else $wrapperEl.transform(`translate(${x}px, ${y}px)`);
   }
-  swiper.previousTranslate = swiper.translate;
+
   swiper.translate = swiper.isHorizontal() ? x : y;
 
   // Check if we need to update progress
@@ -20796,13 +20790,10 @@ function slidePrev (speed = this.params.speed, runCallbacks = true, internal) {
     swiper._clientLeft = swiper.$wrapperEl[0].clientLeft;
   }
   const translate = rtlTranslate ? swiper.translate : -swiper.translate;
-  function normalize(val) {
-    if (val < 0) return -Math.floor(Math.abs(val));
-    return Math.floor(val);
-  }
-  const normalizedTranslate = normalize(translate);
-  const normalizedSnapGrid = snapGrid.map(val => normalize(val));
-  const normalizedSlidesGrid = slidesGrid.map(val => normalize(val));
+
+  const normalizedTranslate = translate < 0 ? -Math.floor(Math.abs(translate)) : Math.floor(translate);
+  const normalizedSnapGrid = snapGrid.map(val => Math.floor(val));
+  const normalizedSlidesGrid = slidesGrid.map(val => Math.floor(val));
 
   const currentSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate)];
   const prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
@@ -22390,7 +22381,6 @@ class Swiper extends SwiperClass {
 
       // Props
       translate: 0,
-      previousTranslate: 0,
       progress: 0,
       velocity: 0,
       animating: false,
@@ -23282,7 +23272,7 @@ const Mousewheel = {
       swiper.emit('scroll', e);
 
       // Stop autoplay
-      if (swiper.params.autoplay && swiper.params.autoplayDisableOnInteraction) swiper.autoplay.stop();
+      if (swiper.params.autoplay && swiper.params.autoplayDisableOnInteraction) swiper.stopAutoplay();
       // Return page scroll on edge positions
       if (position === swiper.minTranslate() || position === swiper.maxTranslate()) return true;
     }
@@ -26431,8 +26421,8 @@ var Cart = exports.Cart = function () {
     this.counter = document.querySelector("#navbar-item-counter") || undefined;
     this.listContainer = document.querySelector("#navbar-bag-list") || undefined;
     this.addToCartButtons = document.querySelectorAll(".add-to-cart") || undefined;
-    this.removeFromCartButton = document.querySelectorAll(".remove-from-cart") || undefined;
-    this.swapFromCartButton = document.querySelectorAll(".swap-from-cart") || undefined;
+    this.removeFromCartButtons = document.querySelectorAll(".remove-from-cart") || undefined;
+    this.swapFromCartButtons = document.querySelectorAll(".swap-from-cart") || undefined;
     this.cart = document.querySelector("#benlido-cart") || undefined;
     this.cartContainer = document.querySelector("#navbar-bag-container") || undefined;
   }
@@ -26451,6 +26441,14 @@ var Cart = exports.Cart = function () {
 
       if (this.addToCartButtons) {
         this.addItem();
+        this.removeItem();
+      }
+      if (this.removeFromCartButtons) {
+        this.removeTileItem();
+      }
+
+      if (this.swapFromCartButtons) {
+        this.swapItem();
       }
 
       if (this.cart) {
@@ -26488,7 +26486,7 @@ var Cart = exports.Cart = function () {
         }).join("") + "\n        </ul>\n      ";
 
         if (this.listContainer) {
-          this.removeItem();
+          this.removeCartItem();
         }
       } else {
         this.listContainer.innerHTML = "<h4 class=\"navbar-bag-empty\">Your cart is empty...</h4>";
@@ -26511,76 +26509,127 @@ var Cart = exports.Cart = function () {
       }
     }
   }, {
-    key: "receiveItem",
-    value: function receiveItem() {}
+    key: "swapItem",
+    value: function swapItem() {
+      var swaps = this.swapFromCartButtons;
+      if (swaps.length > 0) {
+        swaps.forEach(function (swap) {
+          swap.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log(e);
+          });
+        });
+      }
+    }
   }, {
-    key: "removeItem",
-    value: function removeItem() {
+    key: "removeItemAPI",
+    value: function removeItemAPI(removeItem) {
       var _this3 = this;
+
+      fetch(_endpoints.endpoints.removeFromCart, {
+        method: "POST",
+        body: JSON.stringify(removeItem),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function (res) {
+        return res.json();
+      }).catch(function (error) {
+        return console.error("Error:", error);
+      }).then(function (response) {
+        if (response.error) {} else {
+          _this3.updateCount(response);
+          _this3.fillCart(response);
+          _this3.updateTileQuantity(response);
+        }
+      });
+    }
+  }, {
+    key: "removeTileItem",
+    value: function removeTileItem() {
+      var buttons = this.removeFromCartButtons;
+      if (buttons.length > 0) {
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log(e);
+
+            // fetch(endpoints.addToCart, {
+            //   method: "POST",
+            //   body: JSON.stringify(newItem),
+            //   headers: {
+            //     "Content-Type": "application/json"
+            //   }
+            // })
+            //   .then(res => res.json())
+            //   .catch(error => console.error("Error:", error))
+            //   .then(response => {
+            //     if (response.error) {
+            //     } else {
+            //       this.updateCount(response);
+            //       this.fillCart(response);
+            //     }
+            //   });
+          });
+        });
+      }
+    }
+  }, {
+    key: "removeCartItem",
+    value: function removeCartItem() {
+      var _this4 = this;
 
       var cartItems = this.listContainer.querySelectorAll(".navbar-remove-item");
 
       cartItems.forEach(function (item) {
         item.addEventListener("click", function (e) {
           e.preventDefault();
+
           if (e.target.dataset) {
             var target = e.target.dataset;
             var sku = target.sku ? target.sku : undefined;
-            var name = target.name ? target.name : undefined;
             var category = target.category ? target.category : undefined;
 
-            if (sku !== undefined && name !== undefined && category !== undefined) {
+            if (sku !== undefined && category !== undefined) {
               var removeItem = {
                 sku: sku,
-                name: name,
                 category: category
               };
 
-              fetch(_endpoints.endpoints.removeFromCart, {
-                method: "POST",
-                body: JSON.stringify(removeItem),
-                headers: {
-                  "Content-Type": "application/json"
-                }
-              }).then(function (res) {
-                return res.json();
-              }).catch(function (error) {
-                return console.error("Error:", error);
-              }).then(function (response) {
-                if (response.error) {} else {
-                  _this3.updateCount(response);
-                  _this3.fillCart(response);
-                }
-              });
+              _this4.removeItemAPI(removeItem);
             }
           }
         });
       });
     }
   }, {
-    key: "swapItem",
-    value: function swapItem() {}
-  }, {
     key: "addItem",
     value: function addItem() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this.addToCartButtons.length > 0) {
         this.addToCartButtons.forEach(function (button) {
-          button.addEventListener("click", function (e) {
+          var removeItemIcon = button.querySelector(".fa-minus-circle");
+          var addItemIcon = button.querySelector(".fa-plus-circle");
+          var text = button.querySelector(".add-to-cart-text");
+          var inCartText = text.dataset.cartText;
+
+          button.addEventListener("click", function (e) {});
+
+          addItemIcon.addEventListener("click", function (e) {
             e.preventDefault();
+            e.stopPropagation();
+            var addIcon = e.target;
+            var button = addIcon.parentElement;
+            var sku = button.dataset.sku ? button.dataset.sku : undefined;
+            var category = button.dataset.category ? button.dataset.category : undefined;
+            var name = button.dataset.name ? button.dataset.name : undefined;
 
-            var productID = e.target.dataset.sku ? e.target.dataset.sku : undefined;
-
-            var categoryID = e.target.dataset.category ? e.target.dataset.category : undefined;
-
-            var productName = e.target.dataset.name ? e.target.dataset.name : undefined;
-
-            if (productID !== undefined && categoryID !== undefined && productName !== undefined) {
+            if (sku !== undefined && category !== undefined) {
               var newItem = {
-                sku: productID,
-                category: categoryID,
-                name: productName
+                sku: sku,
+                category: category,
+                name: name
               };
 
               fetch(_endpoints.endpoints.addToCart, {
@@ -26595,12 +26644,80 @@ var Cart = exports.Cart = function () {
                 return console.error("Error:", error);
               }).then(function (response) {
                 if (response.error) {} else {
-                  _this4.updateCount(response);
-                  _this4.fillCart(response);
+                  _this5.updateCount(response);
+                  _this5.fillCart(response);
+                  // TODO: DRY
+                  var match = response.filter(function (item) {
+                    return item.sku === sku && item.category === category;
+                  });
+
+                  if (match.length > 0) {
+                    text.innerHTML = match[0].count + inCartText;
+                    button.classList.add("in-cart");
+                    removeItemIcon.classList.remove("hidden");
+                  }
                 }
               });
             }
-            _this4.cartContainer.classList.add("active");
+          });
+        });
+      }
+    }
+  }, {
+    key: "removeItem",
+    value: function removeItem() {
+      var _this6 = this;
+
+      if (this.addToCartButtons.length > 0) {
+        this.addToCartButtons.forEach(function (button) {
+          var removeItemIcon = button.querySelector(".fa-minus-circle");
+          var text = button.querySelector(".add-to-cart-text");
+          var inCartText = text.dataset.cartText;
+          var defaultText = text.dataset.defaultText;
+
+          removeItemIcon.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var addIcon = e.target;
+            var button = addIcon.parentElement;
+            var sku = button.dataset.sku ? button.dataset.sku : undefined;
+            var category = button.dataset.category ? button.dataset.category : undefined;
+
+            var removeItem = {
+              sku: sku,
+              category: category
+            };
+
+            fetch(_endpoints.endpoints.removeFromCart, {
+              method: "POST",
+              body: JSON.stringify(removeItem),
+              headers: {
+                "Content-Type": "application/json"
+              }
+            }).then(function (res) {
+              return res.json();
+            }).catch(function (error) {
+              return console.error("Error:", error);
+            }).then(function (response) {
+              if (response.error) {} else {
+                _this6.updateCount(response);
+                _this6.fillCart(response);
+                // TODO: DRY
+                var match = response.filter(function (item) {
+                  return item.sku === sku && item.category === category;
+                });
+
+                if (match.length > 0) {
+                  text.innerHTML = match[0].count + inCartText;
+                  button.classList.add("in-cart");
+                  removeItemIcon.classList.remove("hidden");
+                } else {
+                  button.classList.remove("in-cart");
+                  text.innerHTML = defaultText;
+                  removeItemIcon.classList.add("hidden");
+                }
+              }
+            });
           });
         });
       }
@@ -26650,7 +26767,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
     key: "init",
     value: function init() {
       if (this.menu) {
-        this.enable();
+        // this.enable();
       }
     }
   }, {

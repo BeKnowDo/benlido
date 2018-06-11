@@ -18,15 +18,26 @@ const log = console.log;
 
 const categoriesAPI = require("./routes/categories-api");
 const cartAPI = require("./routes/cart-api");
+const productAPI = require("./routes/product-api");
+const productData = require("./product-data");
+const originalProductData = require("./product-data");
+const categoryItems = require("./categories-data");
+const cartJson = require("./read-json-file");
 
+// Dummy data for routes
+const cartFile = `${myConfiguration.fakeData}/cart.json`;
+
+// Twig cache
+Twig.cache(false);
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set("etag", isProduction);
-app.set("views", path.join(myConfiguration.twigViews));
+app.set("etag", true);
 app.set("view engine", "twig");
+app.set("view cache", false);
+app.set("views", path.join(myConfiguration.twigViews));
 
 app.use("/images", express.static(path.join(myConfiguration.imagePath)));
 app.use("/javascript", express.static(path.join(myConfiguration.jsPath)));
@@ -46,7 +57,116 @@ app.get("/pick-a-kit", (req, res) => {
 });
 
 app.get("/kit-selected", (req, res) => {
-  res.render("pages/kit-selected");
+  const check = fs.existsSync(cartFile);
+  // If cart JSON exists, store existing values
+  if (check) {
+    const cartItems = cartJson.read();
+    const results = productData;
+
+    if (cartItems.length > 0) {
+      log(`We have items in our cart so add counts for each matched product`);
+      results.map(item => {
+        let i;
+        for (i = 0; i < cartItems.length; i++) {
+          const prodSku = item.sku;
+          const prodCategory = item.categoryID;
+          const cartSku = cartItems[i].sku;
+          const cartCategory = cartItems[i].category;
+
+          if (prodSku === cartSku && prodCategory === cartCategory) {
+            const count = cartItems[i].count;
+            item.count = count;
+          }
+        }
+      });
+
+      res.render("pages/kit-selected", {
+        products: results
+      });
+    } else {
+      log(`We don't have items in our cart so just send product list`);
+
+      res.render("pages/kit-selected", {
+        products: originalProductData
+      });
+    }
+  } else {
+    log(`We don't have items in our cart so just send product list`);
+
+    res.render("pages/kit-selected", {
+      products: originalProductData
+    });
+  }
+});
+
+app.get("/categories", (req, res) => {
+  res.render("pages/categories", {
+    products: productData
+  });
+});
+
+app.get("/shop-landing", (req, res) => {
+  const check = fs.existsSync(cartFile);
+  // If cart JSON exists, store existing values
+  if (check) {
+    const cartItems = cartJson.read();
+    const results = productData;
+
+    if (cartItems.length > 0) {
+      log(`We have items in our cart so add counts for each matched product`);
+
+      categoryItems.map(category => {
+        category.featured.map(item => {
+          let i;
+          for (i = 0; i < cartItems.length; i++) {
+            const prodSku = item.sku;
+            const prodCategory = item.categoryID;
+            const cartSku = cartItems[i].sku;
+            const cartCategory = cartItems[i].category;
+
+            if (prodSku === cartSku && prodCategory === cartCategory) {
+              const count = cartItems[i].count;
+              item.count = count;
+            }
+          }
+        });
+      });
+      res.render("pages/shop-landing", {
+        categoryItems: categoryItems,
+        buildAKit: true
+      });
+    } else {
+      log(`We don't have items in our cart so just send product list`);
+
+      categoryItems.map(category => {
+        category.featured.map(item => {
+          let i;
+          for (i = 0; i < cartItems.length; i++) {
+            const prodSku = item.sku;
+            const prodCategory = item.categoryID;
+            const cartSku = cartItems[i].sku;
+            const cartCategory = cartItems[i].category;
+
+            if (prodSku === cartSku && prodCategory === cartCategory) {
+              const count = cartItems[i].count;
+              item.count = count;
+            }
+          }
+        });
+      });
+
+      res.render("pages/shop-landing", {
+        categoryItems: categoryItems,
+        buildAKit: true
+      });
+    }
+  } else {
+    log(`We don't have items in our cart so just send product list`);
+    res.render("pages/shop-landing", {
+      categoryItems: categoryItems,
+      buildAKit: true
+    });
+  }
 });
 
 app.get("/shipping-schedule", (req, res) => {
@@ -57,170 +177,9 @@ app.get("/product/:id", (req, res) => {
   res.render("pages/product");
 });
 
-app.get("/categories", (req, res) => {
-  res.render("pages/categories", {
-    products: [
-      {
-        categoryID: "123",
-        categoryTitle: "Category Name 2",
-        sku: "lll",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "456",
-        categoryTitle: "Category Name 3",
-        sku: "mmm",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "789",
-        categoryTitle: "Category Name 4",
-        sku: "nnn",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "987",
-        categoryTitle: "Category Name 5",
-        sku: "ooo",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "654",
-        categoryTitle: "Category Name 6",
-        sku: "ppp",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "321",
-        categoryTitle: "Category Name 1",
-        sku: "qqq",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-
-      {
-        categoryID: "147",
-        categoryTitle: "Category Name 2",
-        sku: "rrr",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "258",
-        categoryTitle: "Category Name 3",
-        sku: "sss",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "369",
-        categoryTitle: "Category Name 4",
-        sku: "ttt",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "753",
-        categoryTitle: "Category Name 5",
-        sku: "uuu",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      },
-      {
-        categoryID: "159",
-        categoryTitle: "Category Name 6",
-        sku: "vvv",
-        name: "Product Name",
-        image: "/images/product-example.png",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
-        price: "2.45",
-        selected: {
-          quantity: "2"
-        }
-      }
-    ]
-  });
-});
-
 app.use("/json", categoriesAPI);
 app.use("/json", cartAPI);
+app.use("/json", productAPI);
 
 app.get("/search", (req, res) => {
   return res.send("search page");
