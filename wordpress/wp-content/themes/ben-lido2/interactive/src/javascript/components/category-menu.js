@@ -1,124 +1,122 @@
 import KUTE from "kute.js";
+import inView from "in-view";
 
 export class CategoryMenu {
   constructor() {
     this.openTrigger =
       document.querySelector("#category-list-all-header") || undefined;
-    this.menu = document.querySelector("#category-list-wrapper") || undefined;
-    this.subCategories = document.querySelectorAll(
-      ".category-list-sub-items-group"
-    );
+    this.menu = document.querySelector("#category-list") || undefined;
+    this.categoryList =
+      document.querySelector("#category-list-wrapper") || undefined;
+    this.parentCategoryContainer =
+      document.querySelectorAll(".category-list-parent-group") || undefined;
+    this.subCategories =
+      document.querySelectorAll(".category-list-sub-items-group") || undefined;
+    this.productGridContainer =
+      document.querySelector("#shop-landing-featured-products") || undefined;
   }
   init() {
     if (this.menu) {
-      // this.enable();
+      this.enable();
     }
   }
 
   enable() {
-    this.navigation();
-    this.parentCategories();
-  }
-
-  navigation() {
-    // add toggling event to target
-    if (this.openTrigger) {
-      this.openTrigger.onclick = () => {
-        this.menu.classList.contains("active")
-          ? this.closeNavigationAnimation()
-          : this.openNavigationAnimation();
-      };
+    if (this.parentCategoryContainer) {
+      this.parentCategories();
+      this.stickyCategoryNav();
     }
   }
 
-  openNavigationAnimation() {
-    const revealAnimation = KUTE.fromTo(
-      this.menu,
-      { translate3d: ["-100%", 0, 0], opacity: 0 },
-      { translate3d: [0, 0, 0], opacity: 1 },
-      {
-        duration: 150,
-        complete: () => {
-          this.menu.classList.toggle("active");
-        }
-      }
-    );
-    revealAnimation.start();
-  }
+  stickyCategoryNav() {
+    const selector = `#${this.menu.id}`;
+    const check = inView.is(this.categoryList);
 
-  closeNavigationAnimation() {
-    const revealAnimation = KUTE.fromTo(
-      this.menu,
-      { translate3d: [0, 0, 0], opacity: 1 },
-      { translate3d: ["-100%", 0, 0], opacity: 0 },
-      {
-        duration: 150,
-        complete: () => {
-          this.menu.classList.toggle("active");
-        }
-      }
-    );
-    revealAnimation.start();
+    check
+      ? this.menu.classList.remove("nav-fixed")
+      : this.menu.classList.add("nav-fixed");
+
+    inView(selector)
+      .on("enter", el => {
+        el.classList.remove("nav-fixed");
+      })
+      .on("exit", el => {
+        const check = el.classList.contains("nav-fixed");
+        !check ? el.classList.add("nav-fixed") : undefined;
+      });
   }
 
   parentCategories() {
-    const parents = this.menu.querySelectorAll(".category-list-parent a");
-    parents.forEach(item => {
-      item.addEventListener("click", e => {
+    this.parentCategoryContainer.forEach(item => {
+      const parent = item.querySelector(".category-list-parent");
+      const child = item.querySelector(".category-list-sub-items-group");
+
+      parent.addEventListener("click", e => {
         e.preventDefault();
-        const target = e.target;
-        const category = target.dataset.categoryId;
-
-        this.closeNavigationAnimation();
-
-        const targetCategory = this.getSubCategory(category);
-
-        if (targetCategory) {
-          this.openSubCategory(targetCategory);
-        }
+        this.toggleAll();
+        this.toggleSubCategory(child, parent);
       });
     });
   }
 
-  getSubCategory(id) {
+  toggleAll() {
+    let i;
+    const parents = this.parentCategoryContainer;
+    for (i = 0; i < parents.length; ++i) {
+      const parent = parents[i].querySelector(".category-list-parent");
+      const child = parents[i].querySelector(".category-list-sub-items-group");
+
+      if (parent.classList.contains("active") === true) {
+        parent.classList.remove("active");
+      }
+      if (child.classList.contains("active") === true) {
+        child.classList.remove("active");
+      }
+    }
+  }
+
+  toggleSubCategory(target, parent) {
+    const showSubCategory = KUTE.fromTo(
+      target,
+      {
+        maxHeight: 0,
+        opacity: 0
+      },
+      {
+        maxHeight: 500,
+        opacity: 1
+      },
+      {
+        duration: 150,
+        complete: () => {
+          target.classList.toggle("active");
+          parent.classList.toggle("active");
+          if (this.productGridContainer) {
+            const targetCategory = target.dataset.categoryId;
+            targetCategory
+              ? this.scrollFeaturedCategory(targetCategory)
+              : undefined;
+          }
+        }
+      }
+    );
+    showSubCategory.start();
+  }
+
+  scrollFeaturedCategory(id) {
     const targetCategory = id;
+    const target =
+      this.productGridContainer.querySelector(`#category-${id}`) || undefined;
 
-    const result = Array.from(this.subCategories).find(category => {
-      if (category.dataset.categoryId === targetCategory) {
-        return category;
-      }
-    });
-
-    return result;
-  }
-
-  openSubCategory(target) {
-    const revealAnimation = KUTE.fromTo(
-      target,
-      { translate3d: ["-150%", 0, 0], opacity: 0 },
-      { translate3d: [0, 0, 0], opacity: 1 },
-      {
-        duration: 150,
-        complete: () => {
-          target.classList.toggle("active");
-        }
-      }
-    );
-    revealAnimation.start();
-  }
-
-  closeSubCategory(target) {
-    const revealAnimation = KUTE.fromTo(
-      target,
-      { translate3d: [0, 0, 0], opacity: 1 },
-      { translate3d: ["-150%", 0, 0], opacity: 0 },
-      {
-        duration: 150,
-        complete: () => {
-          target.classList.toggle("active");
-        }
-      }
-    );
-    revealAnimation.start();
+    if (target) {
+      const position = target.getBoundingClientRect();
+      const absoluteElementTop = position.top + window.pageYOffset;
+      const middle = absoluteElementTop - window.innerHeight / 2 + 400;
+      KUTE.to(
+        "window",
+        { scroll: middle },
+        { easing: "easingCubicOut", duration: 500 }
+      ).start();
+    }
   }
 }

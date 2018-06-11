@@ -2,32 +2,32 @@ const categories = [
   {
     name: "Bath and Body",
     id: "123",
-    href: "?",
+    href: "/categories/123",
     subs: [
       {
         name: "All Bath and Body",
-        id: "",
-        href: "?"
+        id: "123",
+        href: "/categories/123"
       },
       {
         name: "Deodorants",
-        id: "",
-        href: "?"
+        id: "123",
+        href: "/categories/123"
       },
       {
         name: "Eye Care",
-        id: "",
-        href: "?"
+        id: "123",
+        href: "/categories/123"
       },
       {
         name: "Hair Care",
-        id: "",
-        href: "?"
+        id: "123",
+        href: "/categories/123"
       },
       {
         name: "Oral Care",
-        id: "",
-        href: "?"
+        id: "123",
+        href: "/categories/123"
       }
     ],
     featured: [
@@ -39,7 +39,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/123",
         price: "2.45"
       },
       {
@@ -50,7 +50,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/123",
         price: "2.45"
       },
       {
@@ -61,7 +61,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/123",
         price: "2.45"
       }
     ]
@@ -69,27 +69,27 @@ const categories = [
   {
     name: "Beauty & Grooming",
     id: "456",
-    href: "?",
+    href: "/categories/456",
     subs: [
       {
         name: "All Beauty & Grooming",
-        id: "",
-        href: "?"
+        id: "456",
+        href: "/categories/456"
       },
       {
         name: "Shaving",
-        id: "",
-        href: "?"
+        id: "456",
+        href: "/categories/456"
       },
       {
         name: "Skin Care",
-        id: "",
-        href: "?"
+        id: "456",
+        href: "/categories/456"
       },
       {
         name: "Makeup",
-        id: "",
-        href: "?"
+        id: "456",
+        href: "/categories/456"
       }
     ],
     featured: [
@@ -101,7 +101,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/456",
         price: "2.45"
       },
       {
@@ -112,7 +112,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/456",
         price: "2.45"
       },
       {
@@ -123,7 +123,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/456",
         price: "2.45"
       }
     ]
@@ -131,22 +131,22 @@ const categories = [
   {
     name: "Health",
     id: "789",
-    href: "?",
+    href: "/categories/789",
     subs: [
       {
         name: "All Health",
-        id: "",
-        href: "?"
+        id: "789",
+        href: "/categories/789"
       },
       {
         name: "Over the counter",
-        id: "",
-        href: "?"
+        id: "789",
+        href: "/categories/789"
       },
       {
         name: "Feminine Protection",
-        id: "",
-        href: "?"
+        id: "789",
+        href: "/categories/789"
       }
     ],
     featured: [
@@ -158,7 +158,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/789",
         price: "2.45"
       },
       {
@@ -169,7 +169,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/789",
         price: "2.45"
       },
       {
@@ -180,7 +180,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/789",
         price: "2.45"
       }
     ]
@@ -188,27 +188,27 @@ const categories = [
   {
     name: "Tools & Accessories",
     id: "321",
-    href: "?",
+    href: "/categories/321",
     subs: [
       {
         name: "Tools",
-        id: "",
-        href: "?"
+        id: "321",
+        href: "/categories/321"
       },
       {
         name: "Gum & Mints",
-        id: "",
-        href: "?"
+        id: "321",
+        href: "/categories/321"
       },
       {
         name: "Wipes & Sanitizers",
-        id: "",
-        href: "?"
+        id: "321",
+        href: "/categories/321"
       },
       {
         name: "Baby Care",
-        id: "",
-        href: "?"
+        id: "321",
+        href: "/categories/321"
       }
     ],
     featured: [
@@ -220,7 +220,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/qqqa",
         price: "2.45"
       },
       {
@@ -231,7 +231,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/qqqa",
         price: "2.45"
       },
       {
@@ -242,7 +242,7 @@ const categories = [
         image: "/images/product-example.png",
         description:
           "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        href: "/",
+        href: "/product/qqqa",
         price: "2.45"
       }
     ]

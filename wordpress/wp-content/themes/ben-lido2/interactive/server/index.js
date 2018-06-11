@@ -99,7 +99,7 @@ app.get("/kit-selected", (req, res) => {
   }
 });
 
-app.get("/categories", (req, res) => {
+app.get("/categories/:id", (req, res) => {
   res.render("pages/categories", {
     products: productData
   });

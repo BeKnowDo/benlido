@@ -1,4 +1,5 @@
 import { endpoints } from "../../../config/endpoints";
+import mojo from "mo-js";
 
 export class Cart {
   constructor() {
@@ -112,13 +113,44 @@ export class Cart {
   updateCount(items) {
     if (items.length > 0) {
       let count = 0;
-
       items.map(item => {
         if (item.count) {
           count = count + item.count;
         }
       });
+      const position = this.counter.getBoundingClientRect();
       this.counter.innerHTML = count;
+
+      // console.log(this.counter.parentElement);
+
+      const burst = new mojs.Burst({
+        parent: this.counter.parentElement,
+        top: position.y + 16,
+        left: position.x + 2,
+        radius: { 4: 19 },
+        angle: 45,
+        children: {
+          shape: "line",
+          radius: 6,
+          scale: 2,
+          stroke: "#195675",
+          strokeDasharray: "100%",
+          strokeDashoffset: { "-100%": "100%" },
+          duration: 400,
+          easing: "quad.out"
+        },
+        duration: 500,
+        onComplete() {}
+      });
+
+      burst.replay();
+
+      document.addEventListener("click", function(e) {
+        burst
+          .tune({ x: e.pageX, y: e.pageY })
+          .setSpeed(3)
+          .replay();
+      });
     } else {
       this.counter.innerHTML = 0;
     }
