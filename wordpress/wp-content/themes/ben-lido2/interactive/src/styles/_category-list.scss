@@ -38,7 +38,6 @@
 
   &-sub-items {
     @include knockout32(14px, 400);
-    display: none;
     li {
       display: block;
     }
@@ -48,8 +47,10 @@
     }
 
     &-group {
-      width: 100%;
       margin: 0;
+      width: 100%;
+      overflow: hidden;
+      height: 0;
       list-style-type: none;
     }
   }
