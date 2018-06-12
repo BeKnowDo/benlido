@@ -38462,21 +38462,16 @@ var Cart = exports.Cart = function () {
   _createClass(Cart, [{
     key: "init",
     value: function init() {
-      this.enable();
-    }
-  }, {
-    key: "enable",
-    value: function enable() {
       if (this.counter) {
         this.getCurrentItems();
       }
 
       if (this.addToCartButtons) {
         this.addItem();
-        this.removeItem();
       }
+
       if (this.removeFromCartButtons) {
-        this.removeTileItem();
+        this.removeItem();
       }
 
       if (this.swapFromCartButtons) {
@@ -38487,6 +38482,9 @@ var Cart = exports.Cart = function () {
         this.openCart();
       }
     }
+  }, {
+    key: "enable",
+    value: function enable() {}
   }, {
     key: "openCart",
     value: function openCart() {
@@ -38518,7 +38516,7 @@ var Cart = exports.Cart = function () {
         }).join("") + "\n        </ul>\n      ";
 
         if (this.listContainer) {
-          this.removeCartItem();
+          this.removeFromMiniCart();
         }
       } else {
         this.listContainer.innerHTML = "<h4 class=\"navbar-bag-empty\">Your cart is empty...</h4>";
@@ -38576,19 +38574,19 @@ var Cart = exports.Cart = function () {
         swaps.forEach(function (swap) {
           swap.addEventListener("click", function (e) {
             e.preventDefault();
-            console.log(e);
+            console.log("asdfasf");
           });
         });
       }
     }
   }, {
     key: "removeItemAPI",
-    value: function removeItemAPI(removeItem) {
+    value: function removeItemAPI(item) {
       var _this3 = this;
 
       fetch(_endpoints.endpoints.removeFromCart, {
         method: "POST",
-        body: JSON.stringify(removeItem),
+        body: JSON.stringify(item),
         headers: {
           "Content-Type": "application/json"
         }
@@ -38608,38 +38606,8 @@ var Cart = exports.Cart = function () {
     key: "updateTileQuantity",
     value: function updateTileQuantity(response) {}
   }, {
-    key: "removeTileItem",
-    value: function removeTileItem() {
-      var buttons = this.removeFromCartButtons;
-      if (buttons.length > 0) {
-        buttons.forEach(function (button) {
-          button.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log(e);
-
-            // fetch(endpoints.addToCart, {
-            //   method: "POST",
-            //   body: JSON.stringify(newItem),
-            //   headers: {
-            //     "Content-Type": "application/json"
-            //   }
-            // })
-            //   .then(res => res.json())
-            //   .catch(error => console.error("Error:", error))
-            //   .then(response => {
-            //     if (response.error) {
-            //     } else {
-            //       this.updateCount(response);
-            //       this.fillCart(response);
-            //     }
-            //   });
-          });
-        });
-      }
-    }
-  }, {
-    key: "removeCartItem",
-    value: function removeCartItem() {
+    key: "removeFromMiniCart",
+    value: function removeFromMiniCart() {
       var _this4 = this;
 
       var cartItems = this.listContainer.querySelectorAll(".navbar-remove-item");

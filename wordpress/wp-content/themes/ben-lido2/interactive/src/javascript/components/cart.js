@@ -18,20 +18,16 @@ export class Cart {
   }
 
   init() {
-    this.enable();
-  }
-
-  enable() {
     if (this.counter) {
       this.getCurrentItems();
     }
 
     if (this.addToCartButtons) {
       this.addItem();
-      this.removeItem();
     }
+
     if (this.removeFromCartButtons) {
-      this.removeTileItem();
+      this.removeItem();
     }
 
     if (this.swapFromCartButtons) {
@@ -42,6 +38,8 @@ export class Cart {
       this.openCart();
     }
   }
+
+  enable() {}
 
   openCart() {
     this.cart.addEventListener("click", e => {
@@ -103,7 +101,7 @@ export class Cart {
       `;
 
       if (this.listContainer) {
-        this.removeCartItem();
+        this.removeFromMiniCart();
       }
     } else {
       this.listContainer.innerHTML = `<h4 class="navbar-bag-empty">Your cart is empty...</h4>`;
@@ -162,16 +160,16 @@ export class Cart {
       swaps.forEach(swap => {
         swap.addEventListener("click", e => {
           e.preventDefault();
-          console.log(e);
+          console.log("asdfasf");
         });
       });
     }
   }
 
-  removeItemAPI(removeItem) {
+  removeItemAPI(item) {
     fetch(endpoints.removeFromCart, {
       method: "POST",
-      body: JSON.stringify(removeItem),
+      body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json"
       }
@@ -190,36 +188,7 @@ export class Cart {
 
   updateTileQuantity(response) {}
 
-  removeTileItem() {
-    const buttons = this.removeFromCartButtons;
-    if (buttons.length > 0) {
-      buttons.forEach(button => {
-        button.addEventListener("click", e => {
-          e.preventDefault();
-          console.log(e);
-
-          // fetch(endpoints.addToCart, {
-          //   method: "POST",
-          //   body: JSON.stringify(newItem),
-          //   headers: {
-          //     "Content-Type": "application/json"
-          //   }
-          // })
-          //   .then(res => res.json())
-          //   .catch(error => console.error("Error:", error))
-          //   .then(response => {
-          //     if (response.error) {
-          //     } else {
-          //       this.updateCount(response);
-          //       this.fillCart(response);
-          //     }
-          //   });
-        });
-      });
-    }
-  }
-
-  removeCartItem() {
+  removeFromMiniCart() {
     const cartItems = this.listContainer.querySelectorAll(
       ".navbar-remove-item"
     );
