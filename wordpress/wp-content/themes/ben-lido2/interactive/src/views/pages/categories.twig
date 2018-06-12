@@ -2,14 +2,6 @@
 
 {% block content %}
 
-  {% if not heroData %}
-    {% set heroData = [
-      {
-        header: 'Category name passed in from WordPress'
-      }
-  ]%}
-  {% endif %}
-
   {% if not stepNavigation %}
     {% set stepNavigation = [
       {

@@ -100,6 +100,14 @@ app.get("/kit-selected", (req, res) => {
 });
 
 app.get("/categories/:id", (req, res) => {
+  const requestedCategory = req.params.id ? req.params.id : undefined;
+
+  const heroData = categoryItems.filter(item => {
+    if (requestedCategory === item.id) {
+      return item;
+    }
+  })[0].name;
+
   const check = fs.existsSync(cartFile);
   // If cart JSON exists, store existing values
   if (check) {
@@ -125,14 +133,16 @@ app.get("/categories/:id", (req, res) => {
 
       res.render("pages/categories", {
         products: results,
-        customizeKit: true
+        customizeKit: true,
+        heroData: [{ header: heroData }]
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
 
       res.render("pages/categories", {
         products: originalProductData,
-        customizeKit: true
+        customizeKit: true,
+        heroData: [{ header: heroData }]
       });
     }
   } else {
@@ -140,7 +150,8 @@ app.get("/categories/:id", (req, res) => {
 
     res.render("pages/categories", {
       products: originalProductData,
-      customizeKit: true
+      customizeKit: true,
+      heroData: [{ header: heroData }]
     });
   }
 });
