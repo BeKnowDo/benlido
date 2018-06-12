@@ -29,11 +29,11 @@ export class CategoryMenu {
     if (this.parentCategoryContainer) {
       const breakpoint = window.matchMedia("(min-width:840px)");
       if (breakpoint.matches) {
-        console.log(breakpoint);
+        // console.log(breakpoint);
         this.attachCategoryToggles();
         this.stickyCategoryNav();
       }
-      console.log(this.categoryClone.innerHTML);
+      // console.log(this.categoryClone.innerHTML);
     }
   }
 

@@ -102,6 +102,11 @@
 
 .swap-from-cart {
   padding: 10px 6px;
+  color: $white;
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
   &:only-child {
     width: 100%;
   }

@@ -38438,6 +38438,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _endpoints = __webpack_require__(/*! ../../../config/endpoints */ "./config/endpoints.js");
 
+var _kute = __webpack_require__(/*! kute.js */ "./node_modules/kute.js/kute.js");
+
+var _kute2 = _interopRequireDefault(_kute);
+
 var _moJs = __webpack_require__(/*! mo-js */ "./node_modules/mo-js/build/mo.js");
 
 var _moJs2 = _interopRequireDefault(_moJs);
@@ -38453,7 +38457,8 @@ var Cart = exports.Cart = function () {
     this.counter = document.querySelector("#navbar-item-counter") || undefined;
     this.listContainer = document.querySelector("#navbar-bag-list") || undefined;
     this.addToCartButtons = document.querySelectorAll(".add-to-cart") || undefined;
-    this.removeFromCartButtons = document.querySelectorAll(".remove-from-cart") || undefined;
+    this.removeFromKitButtons = document.querySelectorAll(".remove-from-cart") || undefined;
+    this.removeIcons = document.querySelectorAll(".fa-minus-circle") || undefined;
     this.swapFromCartButtons = document.querySelectorAll(".swap-from-cart") || undefined;
     this.cart = document.querySelector("#benlido-cart") || undefined;
     this.cartContainer = document.querySelector("#navbar-bag-container") || undefined;
@@ -38470,8 +38475,12 @@ var Cart = exports.Cart = function () {
         this.addItem();
       }
 
-      if (this.removeFromCartButtons) {
+      if (this.removeIcons) {
         this.removeItem();
+      }
+
+      if (this.removeFromKitButtons) {
+        this.removeFromKit();
       }
 
       if (this.swapFromCartButtons) {
@@ -38482,9 +38491,6 @@ var Cart = exports.Cart = function () {
         this.openCart();
       }
     }
-  }, {
-    key: "enable",
-    value: function enable() {}
   }, {
     key: "openCart",
     value: function openCart() {
@@ -38535,9 +38541,7 @@ var Cart = exports.Cart = function () {
         var position = this.counter.getBoundingClientRect();
         this.counter.innerHTML = count;
 
-        // console.log(this.counter.parentElement);
-
-        var burst = new mojs.Burst({
+        var burst = new _moJs2.default.Burst({
           parent: this.counter.parentElement,
           top: position.y + 16,
           left: position.x + 2,
@@ -38567,6 +38571,50 @@ var Cart = exports.Cart = function () {
       }
     }
   }, {
+    key: "removeFromKit",
+    value: function removeFromKit() {
+      var _this3 = this;
+
+      var remove = this.removeFromKitButtons;
+      if (remove.length > 0) {
+        remove.forEach(function (swap) {
+          swap.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            if (e.target.dataset) {
+              var target = e.target.dataset;
+              var sku = target.sku ? target.sku : undefined;
+              var category = target.category ? target.category : undefined;
+
+              if (sku !== undefined && category !== undefined) {
+                var removeItem = {
+                  sku: sku,
+                  category: category
+                };
+
+                var parentNode = e.target.parentElement.parentElement.parentElement || undefined;
+                if (parentNode) {
+                  parentNode.style.overflow = "hidden";
+                  _kute2.default.to(parentNode, {
+                    width: 0,
+                    opacity: 0
+                  }, {
+                    easing: "easingCubicOut",
+                    duration: 300,
+                    complete: function complete() {
+                      parentNode.parentElement.removeChild(parentNode);
+                    }
+                  }).start();
+
+                  _this3.removeItemAPI(removeItem);
+                }
+              }
+            }
+          });
+        });
+      }
+    }
+  }, {
     key: "swapItem",
     value: function swapItem() {
       var swaps = this.swapFromCartButtons;
@@ -38574,7 +38622,8 @@ var Cart = exports.Cart = function () {
         swaps.forEach(function (swap) {
           swap.addEventListener("click", function (e) {
             e.preventDefault();
-            console.log("asdfasf");
+            // User sends the product they wish to swap out
+            // Then we direct them to the shop landing page
           });
         });
       }
@@ -38582,7 +38631,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeItemAPI",
     value: function removeItemAPI(item) {
-      var _this3 = this;
+      var _this4 = this;
 
       fetch(_endpoints.endpoints.removeFromCart, {
         method: "POST",
@@ -38596,9 +38645,9 @@ var Cart = exports.Cart = function () {
         return console.error("Error:", error);
       }).then(function (response) {
         if (response.error) {} else {
-          _this3.updateCount(response);
-          _this3.fillCart(response);
-          _this3.updateTileQuantity(response);
+          _this4.updateCount(response);
+          _this4.fillCart(response);
+          _this4.updateTileQuantity(response);
         }
       });
     }
@@ -38608,7 +38657,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeFromMiniCart",
     value: function removeFromMiniCart() {
-      var _this4 = this;
+      var _this5 = this;
 
       var cartItems = this.listContainer.querySelectorAll(".navbar-remove-item");
 
@@ -38627,7 +38676,7 @@ var Cart = exports.Cart = function () {
                 category: category
               };
 
-              _this4.removeItemAPI(removeItem);
+              _this5.removeItemAPI(removeItem);
             }
           }
         });
@@ -38636,7 +38685,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "addItem",
     value: function addItem() {
-      var _this5 = this;
+      var _this6 = this;
 
       if (this.addToCartButtons.length > 0) {
         this.addToCartButtons.forEach(function (button) {
@@ -38645,16 +38694,14 @@ var Cart = exports.Cart = function () {
           var text = button.querySelector(".add-to-cart-text");
           var inCartText = text.dataset.cartText;
 
-          button.addEventListener("click", function (e) {});
+          // button.addEventListener("click", e => {});
 
           addItemIcon.addEventListener("click", function (e) {
             e.preventDefault();
-            e.stopPropagation();
             var addIcon = e.target;
-            var button = addIcon.parentElement;
-            var sku = button.dataset.sku ? button.dataset.sku : undefined;
-            var category = button.dataset.category ? button.dataset.category : undefined;
-            var name = button.dataset.name ? button.dataset.name : undefined;
+            var sku = addIcon.dataset.sku ? addIcon.dataset.sku : undefined;
+            var category = addIcon.dataset.category ? addIcon.dataset.category : undefined;
+            var name = addIcon.dataset.name ? addIcon.dataset.name : undefined;
 
             if (sku !== undefined && category !== undefined) {
               var newItem = {
@@ -38675,8 +38722,8 @@ var Cart = exports.Cart = function () {
                 return console.error("Error:", error);
               }).then(function (response) {
                 if (response.error) {} else {
-                  _this5.updateCount(response);
-                  _this5.fillCart(response);
+                  _this6.updateCount(response);
+                  _this6.fillCart(response);
                   // TODO: DRY
                   var match = response.filter(function (item) {
                     return item.sku === sku && item.category === category;
@@ -38697,58 +38744,61 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeItem",
     value: function removeItem() {
-      var _this6 = this;
+      var _this7 = this;
 
-      if (this.addToCartButtons.length > 0) {
-        this.addToCartButtons.forEach(function (button) {
-          var removeItemIcon = button.querySelector(".fa-minus-circle");
-          var text = button.querySelector(".add-to-cart-text");
-          var inCartText = text.dataset.cartText;
-          var defaultText = text.dataset.defaultText;
-
-          removeItemIcon.addEventListener("click", function (e) {
+      var removeIcons = this.removeIcons;
+      if (removeIcons.length > 0) {
+        removeIcons.forEach(function (removeIcon) {
+          removeIcon.addEventListener("click", function (e) {
             e.preventDefault();
-            e.stopPropagation();
-            var addIcon = e.target;
-            var button = addIcon.parentElement;
-            var sku = button.dataset.sku ? button.dataset.sku : undefined;
-            var category = button.dataset.category ? button.dataset.category : undefined;
 
-            var removeItem = {
-              sku: sku,
-              category: category
-            };
+            if (e.target.dataset) {
+              var target = e.target.dataset;
+              var sku = target.sku ? target.sku : undefined;
+              var category = target.category ? target.category : undefined;
 
-            fetch(_endpoints.endpoints.removeFromCart, {
-              method: "POST",
-              body: JSON.stringify(removeItem),
-              headers: {
-                "Content-Type": "application/json"
-              }
-            }).then(function (res) {
-              return res.json();
-            }).catch(function (error) {
-              return console.error("Error:", error);
-            }).then(function (response) {
-              if (response.error) {} else {
-                _this6.updateCount(response);
-                _this6.fillCart(response);
-                // TODO: DRY
-                var match = response.filter(function (item) {
-                  return item.sku === sku && item.category === category;
+              if (sku !== undefined && category !== undefined) {
+                var button = e.target.parentElement;
+                var text = button.querySelector(".add-to-cart-text");
+                var inCartText = text.dataset.cartText;
+                var defaultText = text.dataset.defaultText;
+
+                var removeItem = {
+                  sku: sku,
+                  category: category
+                };
+                fetch(_endpoints.endpoints.removeFromCart, {
+                  method: "POST",
+                  body: JSON.stringify(removeItem),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).catch(function (error) {
+                  return console.error("Error:", error);
+                }).then(function (response) {
+                  if (response.error) {} else {
+                    _this7.updateCount(response);
+                    _this7.fillCart(response);
+                    // TODO: DRY
+                    var match = response.filter(function (item) {
+                      return item.sku === sku && item.category === category;
+                    });
+
+                    if (match.length > 0) {
+                      text.innerHTML = match[0].count + inCartText;
+                      button.classList.add("in-cart");
+                      removeIcon.classList.remove("hidden");
+                    } else {
+                      button.classList.remove("in-cart");
+                      text.innerHTML = defaultText;
+                      removeIcon.classList.add("hidden");
+                    }
+                  }
                 });
-
-                if (match.length > 0) {
-                  text.innerHTML = match[0].count + inCartText;
-                  button.classList.add("in-cart");
-                  removeItemIcon.classList.remove("hidden");
-                } else {
-                  button.classList.remove("in-cart");
-                  text.innerHTML = defaultText;
-                  removeItemIcon.classList.add("hidden");
-                }
               }
-            });
+            }
           });
         });
       }
@@ -38817,11 +38867,11 @@ var CategoryMenu = exports.CategoryMenu = function () {
       if (this.parentCategoryContainer) {
         var breakpoint = window.matchMedia("(min-width:840px)");
         if (breakpoint.matches) {
-          console.log(breakpoint);
+          // console.log(breakpoint);
           this.attachCategoryToggles();
           this.stickyCategoryNav();
         }
-        console.log(this.categoryClone.innerHTML);
+        // console.log(this.categoryClone.innerHTML);
       }
     }
   }, {
