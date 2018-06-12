@@ -1,0 +1,50 @@
+@media (min-width: $size-md) {
+  .category-list {
+    background-color: transparent;
+    margin-top: 10%;
+    &.nav-fixed {
+      .category-list-wrapper {
+        animation: 0.5s alternate fadeInFromTop;
+        position: fixed;
+        top: 10%;
+      }
+    }
+    &-wrapper {
+    }
+
+    &-breadcrumbs {
+      color: $blumine;
+      > span {
+      }
+
+      &:hover {
+      }
+    }
+
+    &-group {
+    }
+
+    &-parent {
+      a {
+        color: $blumine;
+      }
+    }
+
+    &-sub-items {
+      li {
+      }
+      a {
+      }
+
+      &-group {
+        &.active {
+        }
+      }
+    }
+
+    &-items {
+      .column {
+      }
+    }
+  }
+}

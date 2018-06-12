@@ -1,5 +1,6 @@
 import KUTE from "kute.js";
 import inView from "in-view";
+import { debounce } from "lodash";
 
 export class CategoryMenu {
   constructor() {
@@ -14,6 +15,9 @@ export class CategoryMenu {
       document.querySelectorAll(".category-list-sub-items-group") || undefined;
     this.productGridContainer =
       document.querySelector("#shop-landing-featured-products") || undefined;
+    this.categoryClone = this.categoryList
+      ? this.categoryList.cloneNode(true)
+      : undefined;
   }
   init() {
     if (this.menu) {
@@ -23,10 +27,17 @@ export class CategoryMenu {
 
   enable() {
     if (this.parentCategoryContainer) {
-      this.parentCategories();
-      this.stickyCategoryNav();
+      const breakpoint = window.matchMedia("(min-width:840px)");
+      if (breakpoint.matches) {
+        console.log(breakpoint);
+        this.attachCategoryToggles();
+        this.stickyCategoryNav();
+      }
+      console.log(this.categoryClone.innerHTML);
     }
   }
+
+  mobile() {}
 
   stickyCategoryNav() {
     const selector = `#${this.menu.id}`;
@@ -46,7 +57,7 @@ export class CategoryMenu {
       });
   }
 
-  parentCategories() {
+  attachCategoryToggles() {
     this.parentCategoryContainer.forEach(item => {
       const parent = item.querySelector(".category-list-parent");
       const child = item.querySelector(".category-list-sub-items-group");
@@ -111,7 +122,7 @@ export class CategoryMenu {
     if (target) {
       const position = target.getBoundingClientRect();
       const absoluteElementTop = position.top + window.pageYOffset;
-      const middle = absoluteElementTop - window.innerHeight / 2 + 400;
+      const middle = absoluteElementTop - window.innerHeight / 2 + 500;
       KUTE.to(
         "window",
         { scroll: middle },

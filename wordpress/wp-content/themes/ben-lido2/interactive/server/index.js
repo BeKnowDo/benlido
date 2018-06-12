@@ -100,9 +100,49 @@ app.get("/kit-selected", (req, res) => {
 });
 
 app.get("/categories/:id", (req, res) => {
-  res.render("pages/categories", {
-    products: productData
-  });
+  const check = fs.existsSync(cartFile);
+  // If cart JSON exists, store existing values
+  if (check) {
+    const cartItems = cartJson.read();
+    const results = productData;
+
+    if (cartItems.length > 0) {
+      log(`We have items in our cart so add counts for each matched product`);
+      results.map(item => {
+        let i;
+        for (i = 0; i < cartItems.length; i++) {
+          const prodSku = item.sku;
+          const prodCategory = item.categoryID;
+          const cartSku = cartItems[i].sku;
+          const cartCategory = cartItems[i].category;
+
+          if (prodSku === cartSku && prodCategory === cartCategory) {
+            const count = cartItems[i].count;
+            item.count = count;
+          }
+        }
+      });
+
+      res.render("pages/categories", {
+        products: results,
+        customizeKit: true
+      });
+    } else {
+      log(`We don't have items in our cart so just send product list`);
+
+      res.render("pages/categories", {
+        products: originalProductData,
+        customizeKit: true
+      });
+    }
+  } else {
+    log(`We don't have items in our cart so just send product list`);
+
+    res.render("pages/categories", {
+      products: originalProductData,
+      customizeKit: true
+    });
+  }
 });
 
 app.get("/shop-landing", (req, res) => {
@@ -133,7 +173,7 @@ app.get("/shop-landing", (req, res) => {
       });
       res.render("pages/shop-landing", {
         categoryItems: categoryItems,
-        buildAKit: true
+        customizeKit: true
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
@@ -157,14 +197,14 @@ app.get("/shop-landing", (req, res) => {
 
       res.render("pages/shop-landing", {
         categoryItems: categoryItems,
-        buildAKit: true
+        customizeKit: true
       });
     }
   } else {
     log(`We don't have items in our cart so just send product list`);
     res.render("pages/shop-landing", {
       categoryItems: categoryItems,
-      buildAKit: true
+      customizeKit: true
     });
   }
 });

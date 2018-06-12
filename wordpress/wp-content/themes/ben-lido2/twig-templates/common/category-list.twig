@@ -18,7 +18,7 @@
               <ul class="category-list-sub-items">
                 {% for item in category.subs %}
                   <li>
-                    <a href="{{ item.name }}" title="{{ item.href }}" data-category-id="{{category.id}}">
+                    <a href="{{ item.href }}" title="{{ item.name }}" data-category-id="{{category.id}}">
                       {{ item.name }}
                     </a>
                   </li>

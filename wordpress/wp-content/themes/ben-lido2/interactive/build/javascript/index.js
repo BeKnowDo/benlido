@@ -38605,6 +38605,9 @@ var Cart = exports.Cart = function () {
       });
     }
   }, {
+    key: "updateTileQuantity",
+    value: function updateTileQuantity(response) {}
+  }, {
     key: "removeTileItem",
     value: function removeTileItem() {
       var buttons = this.removeFromCartButtons;
@@ -38814,6 +38817,8 @@ var _inView = __webpack_require__(/*! in-view */ "./node_modules/in-view/dist/in
 
 var _inView2 = _interopRequireDefault(_inView);
 
+var _lodash = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38828,6 +38833,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
     this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
     this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
     this.productGridContainer = document.querySelector("#shop-landing-featured-products") || undefined;
+    this.categoryClone = this.categoryList ? this.categoryList.cloneNode(true) : undefined;
   }
 
   _createClass(CategoryMenu, [{
@@ -38841,10 +38847,18 @@ var CategoryMenu = exports.CategoryMenu = function () {
     key: "enable",
     value: function enable() {
       if (this.parentCategoryContainer) {
-        this.parentCategories();
-        this.stickyCategoryNav();
+        var breakpoint = window.matchMedia("(min-width:840px)");
+        if (breakpoint.matches) {
+          console.log(breakpoint);
+          this.attachCategoryToggles();
+          this.stickyCategoryNav();
+        }
+        console.log(this.categoryClone.innerHTML);
       }
     }
+  }, {
+    key: "mobile",
+    value: function mobile() {}
   }, {
     key: "stickyCategoryNav",
     value: function stickyCategoryNav() {
@@ -38861,8 +38875,8 @@ var CategoryMenu = exports.CategoryMenu = function () {
       });
     }
   }, {
-    key: "parentCategories",
-    value: function parentCategories() {
+    key: "attachCategoryToggles",
+    value: function attachCategoryToggles() {
       var _this = this;
 
       this.parentCategoryContainer.forEach(function (item) {
@@ -38926,7 +38940,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
       if (target) {
         var position = target.getBoundingClientRect();
         var absoluteElementTop = position.top + window.pageYOffset;
-        var middle = absoluteElementTop - window.innerHeight / 2 + 400;
+        var middle = absoluteElementTop - window.innerHeight / 2 + 500;
         _kute2.default.to("window", { scroll: middle }, { easing: "easingCubicOut", duration: 500 }).start();
       }
     }

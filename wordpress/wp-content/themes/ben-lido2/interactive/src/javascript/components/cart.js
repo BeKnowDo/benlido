@@ -188,6 +188,8 @@ export class Cart {
       });
   }
 
+  updateTileQuantity(response) {}
+
   removeTileItem() {
     const buttons = this.removeFromCartButtons;
     if (buttons.length > 0) {
