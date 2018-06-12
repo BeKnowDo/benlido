@@ -26,11 +26,11 @@
     <div class="max-width-xl shop-landing-featured">
 
       <div class="columns">
-        <div class="column col-xs-12 col-sm-4 col-3">
+        <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
           {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
         </div>
 
-        <div id="shop-landing-featured-products" class="column col-xs-12 col-sm-8 col-md-9 col-9 shop-landing-featured-products">
+        <div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">
 
           {% for category in categoryItems %}
             <div class="columns">
