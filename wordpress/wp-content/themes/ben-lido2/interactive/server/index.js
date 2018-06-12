@@ -246,7 +246,7 @@ const listening = function() {
       port: env.BROWSER_SYNC_PORT,
       proxy: "localhost:" + env.PROXY_PORT,
       ui: false,
-      dalay: 200
+      dalay: 400
     });
   }
 };

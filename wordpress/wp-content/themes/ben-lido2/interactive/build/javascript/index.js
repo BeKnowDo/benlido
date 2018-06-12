@@ -38544,12 +38544,12 @@ var Cart = exports.Cart = function () {
         var burst = new _moJs2.default.Burst({
           parent: this.counter.parentElement,
           top: position.y + 16,
-          left: position.x + 2,
-          radius: { 4: 19 },
+          left: position.x + 6,
+          radius: { 10: 19 },
           angle: 45,
           children: {
             shape: "line",
-            radius: 6,
+            radius: 4,
             scale: 2,
             stroke: "#195675",
             strokeDasharray: "100%",
