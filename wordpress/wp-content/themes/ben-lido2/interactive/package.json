@@ -32,7 +32,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/bkd-digital/bdk-benlido#readme",
   "devDependencies": {
-    "autoprefixer": "^8.6.0",
+    "autoprefixer": "^8.6.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -58,7 +58,7 @@
     "postcss": "^6.0.22",
     "standard": "*",
     "twig": "^1.12.0",
-    "webpack": "^4.9.1",
+    "webpack": "^4.12.0",
     "webpack-cli": "^2.1.4",
     "yargs": "^11.1.0"
   },
@@ -73,8 +73,8 @@
     "lodash": "^4.17.10",
     "mo-js": "^0.288.2",
     "selectivity": "^3.0.6",
-    "spectre.css": "^0.5.1",
-    "swiper": "^4.3.2",
+    "spectre.css": "^0.5.2",
+    "swiper": "^4.3.3",
     "whatwg-fetch": "^2.0.4"
   }
 }

@@ -96,6 +96,52 @@ function bl_process_acf_buttons($items) {
   return $results;
 }
 
+function bl_get_featured_categories() {
+  $results = array();
+  $key = 'bl_featured_cats';
+  // this is where we fetch data from cache
+  if (empty($results)) {
+    if (function_exists('get_field')) {
+      $categories = get_field('featured_categories', get_option( 'woocommerce_shop_page_id' ));
+      if (!empty($categories) && is_array($categories)) {
+        foreach ($categories as $category) {
+          //print_r ($category);
+          if (!empty($category) && isset($category['category'])) {
+            $cat_id = $category['category'];
+            $cat_obj = get_term_by('id',$cat_id,'product_cat');
+            $featured_products = $category['featured_products'];
+            //print_r ($cat_obj);
+            if (!empty($cat_obj) && is_object($cat_obj)) {
+              $name = $cat_obj->name;
+              $cat_url = get_term_link($cat_id,'product_cat'); 
+            }
+            $prods = array();
+            if (!empty($featured_products) && is_array($featured_products)) {
+              foreach ($featured_products as $prod_array) {
+                $prod = $prod_array['product'];
+                if (!empty($prod)) {
+                  $product_id = $prod->ID;
+                  $product = wc_get_product($product_id);
+                  $sku = $product->get_sku();
+                  $product_url = get_permalink( $product_id);
+                  $product_title = $prod->post_title;
+                  $prod_description = $prod->post_content;
+                  $image = wp_get_attachment_image_url( get_post_thumbnail_id( $product_id ), 'full' ); // NOTE: we should come up with a good size for the product tiles
+                  $price = $product->get_price();
+                  $product_taxonomy = $cat_id;
+                  $prods[] = array('id'=>$product_id,'href'=>$product_url,'name'=>esc_attr($product_title),'description'=>$product_title,'categoryTitle'=>$name,'price'=>$price,'productCategoryID'=>$cat_id,'image'=>$image);
+                }
+              } // end foreach
+              $results[] = array('id'=>$cat_id,'name'=>$name,'href'=>$cat_url,'featured'=>$prods);
+            }
+          }
+        }
+      }
+    } // end get_field
+  } // end no results
+  return $results;
+} // end bl_get_featured_categories()
+
 function bl_process_bags_list($items) {
   $results = array();
   $now = time();

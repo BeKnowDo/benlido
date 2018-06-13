@@ -32,7 +32,7 @@
     <p class="product-tile-description" itemprop="description">{{product.description}}</p>
   </div>
 
-  {% if removeSwap == false %}
+  {% if removeSwap == true %}
     <div class="btn btn-lg btn-block btn-primary btn-selected">
       <span class="btn-selected-remove remove-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Remove</span>
       <a class="btn-selected-swap swap-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Swap</a>
