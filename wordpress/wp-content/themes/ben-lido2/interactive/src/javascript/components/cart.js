@@ -51,6 +51,10 @@ export class Cart {
       e.preventDefault();
       this.cartContainer.classList.toggle("active");
     });
+    this.counter.addEventListener("click", e => {
+      e.preventDefault();
+      this.cartContainer.classList.toggle("active");
+    });
   }
 
   getCurrentItems() {
@@ -140,18 +144,9 @@ export class Cart {
           duration: 400,
           easing: "quad.out"
         },
-        duration: 500,
-        onComplete() {}
+        duration: 500
       });
-
       burst.replay();
-
-      document.addEventListener("click", function(e) {
-        burst
-          .tune({ x: e.pageX, y: e.pageY })
-          .setSpeed(3)
-          .replay();
-      });
     } else {
       this.counter.innerHTML = 0;
     }
@@ -315,6 +310,7 @@ export class Cart {
                     button.classList.add("in-cart");
                     removeItemIcon.classList.remove("hidden");
                   }
+                  this.cartContainer.classList.add("active");
                 }
               });
           }

@@ -42,9 +42,16 @@
     align-items: center;
     justify-content: center;
 
-    &-text {
-      width: 50%;
+    .add-to-cart-text {
       text-align: right;
+      width: 60%;
+    }
+
+    .fa-plus-circle {
+      width: 40%;
+      text-align: left;
+      font-size: 18px;
+      padding: 10px 6px;
     }
 
     .fa-minus-circle {
@@ -54,25 +61,18 @@
       padding: 10px 6px;
     }
 
-    .fa-plus-circle {
-      width: 40%;
-      text-align: left;
-      font-size: 18px;
-      padding: 10px 6px;
-    }
     .hidden {
       display: none;
     }
-    .add-to-cart-text {
-      text-align: right;
-      width: 60%;
-    }
+
     &.in-cart {
       background-color: $brown-grey;
+
       .add-to-cart-text {
         text-align: center;
         width: 28%;
       }
+
       .fa-plus-circle {
         text-align: left;
         width: 36%;

@@ -1,9 +1,9 @@
 <span class="navbar-toggle">
   <i id="navbar-trigger" class="fas fa-bars"></i>
-  <i class="fal fa-search"></i>
+  <i id="navbar-search" class="fal fa-search"></i>
 </span>
 {% if not socialMediaLinks %}
-{% set socialMediaLinks = [
+  {% set socialMediaLinks = [
   {
     href: '/whatever',
     title: 'Newsletter',
@@ -33,7 +33,7 @@
 {% endif %}
 
 {% if not logo %}
-{% set logo = '<a href="/"><img src="/images/ben-lido-header-logo.svg" /></a>'%}
+  {% set logo = '<a href="/"><img src="/images/ben-lido-header-logo.svg" /></a>'%}
 {% endif %}
 
 <div id="navbar-dropdown" class="navbar-dropdown">

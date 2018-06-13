@@ -1,20 +1,17 @@
-@media (min-width: $size-md) {
+@media (max-width: $size-md) {
   .category-list {
-    background-color: transparent;
-    margin-top: 10%;
-    &.nav-fixed {
-      .category-list-wrapper {
-        animation: 0.5s alternate fadeInFromTop;
-        position: fixed;
-        top: 10%;
-      }
-    }
+    background-color: $brown-grey;
+    border-radius: 4px;
+
     &-wrapper {
+      margin-top: 0;
     }
 
     &-breadcrumbs {
-      color: $blumine;
-      > span {
+      color: $white;
+
+      a {
+        color: $white;
       }
 
       &:hover {
@@ -26,7 +23,7 @@
 
     &-parent {
       a {
-        color: $blumine;
+        color: $white;
       }
     }
 

@@ -4,9 +4,14 @@ import { debounce } from "lodash";
 
 export class CategoryMenu {
   constructor() {
+    this.mobileNav = false;
+    this.desktopNav = false;
+
     this.openTrigger =
       document.querySelector("#category-list-all-header") || undefined;
     this.menu = document.querySelector("#category-list") || undefined;
+    this.menuCategoryHeader =
+      document.querySelector("#category-list-breadcrumbs") || undefined;
     this.categoryList =
       document.querySelector("#category-list-wrapper") || undefined;
     this.parentCategoryContainer =
@@ -27,34 +32,113 @@ export class CategoryMenu {
 
   enable() {
     if (this.parentCategoryContainer) {
-      const breakpoint = window.matchMedia("(min-width:840px)");
-      if (breakpoint.matches) {
-        // console.log(breakpoint);
-        this.attachCategoryToggles();
-        this.stickyCategoryNav();
-      }
-      // console.log(this.categoryClone.innerHTML);
+      this.checkBreakpoint();
+      this.attachCategoryToggles();
+      this.stickyCategoryNav();
+      this.mobile();
     }
   }
 
-  mobile() {}
+  mobile() {
+    if (
+      this.categoryList !== undefined &&
+      this.menuCategoryHeader !== undefined
+    ) {
+      const menu = this.menu;
+      const menuHeader = this.menuCategoryHeader;
+      const parentCategories = this.parentCategoryContainer;
+
+      parentCategories.forEach(item => {
+        const parent = item.querySelector(".category-list-parent");
+        const child = item.querySelector(".category-list-sub-items-group");
+
+        parent.addEventListener("click", e => {
+          if (this.mobileNav === true) {
+            e.preventDefault();
+            console.log(this.mobileNav);
+          }
+        });
+      });
+    }
+  }
+
+  mobileStickyNav() {
+    const breakpoint = window.matchMedia("(min-width:839px)");
+    if (breakpoint.matches) {
+      const selector = `#${this.menu.id}`;
+      const check = inView.is(this.categoryList);
+
+      check
+        ? this.menu.classList.remove("mobile-active")
+        : this.menu.classList.add("mobile-active");
+
+      inView(selector)
+        .on("enter", el => {
+          if (this.mobileNav === true) {
+            el.classList.remove("mobile-active");
+          }
+        })
+        .on("exit", el => {
+          if (this.mobileNav === true) {
+            const check = el.classList.contains("mobile-active");
+            !check ? el.classList.add("mobile-active") : undefined;
+          }
+        });
+    }
+  }
 
   stickyCategoryNav() {
-    const selector = `#${this.menu.id}`;
-    const check = inView.is(this.categoryList);
+    // This is strictly for desktop
+    const breakpoint = window.matchMedia("(min-width:839px)");
+    if (breakpoint.matches) {
+      const selector = `#${this.menu.id}`;
+      const check = inView.is(this.categoryList);
 
-    check
-      ? this.menu.classList.remove("nav-fixed")
-      : this.menu.classList.add("nav-fixed");
+      check
+        ? this.menu.classList.remove("nav-fixed")
+        : this.menu.classList.add("nav-fixed");
 
-    inView(selector)
-      .on("enter", el => {
-        el.classList.remove("nav-fixed");
-      })
-      .on("exit", el => {
-        const check = el.classList.contains("nav-fixed");
-        !check ? el.classList.add("nav-fixed") : undefined;
-      });
+      inView(selector)
+        .on("enter", el => {
+          if (this.desktopNav === true) {
+            el.classList.remove("nav-fixed");
+          }
+        })
+        .on("exit", el => {
+          if (this.desktopNav === true) {
+            const check = el.classList.contains("nav-fixed");
+            !check ? el.classList.add("nav-fixed") : undefined;
+          } else if (this.mobileNav === true) {
+            console.log("now in mobile nav");
+          }
+        });
+    }
+  }
+
+  checkBreakpoint() {
+    const breakpoint = window.matchMedia("(min-width:839px)");
+
+    const breakpointChecker = () => {
+      if (breakpoint.matches) {
+        console.log("in desktop");
+        // Desktop navigation version
+        this.desktopNav = true;
+        this.mobileNav = false;
+      } else if (!breakpoint.matches) {
+        console.log("in mobile");
+        // Mobile navigation version
+        this.mobileNav = true;
+        this.desktopNav = false;
+
+        // remove sticky if enabled
+        this.menu.classList.remove("nav-fixed");
+        this.toggleAll();
+      }
+    };
+
+    breakpoint.addListener(debounce(breakpointChecker));
+
+    breakpointChecker();
   }
 
   attachCategoryToggles() {
@@ -63,9 +147,12 @@ export class CategoryMenu {
       const child = item.querySelector(".category-list-sub-items-group");
 
       parent.addEventListener("click", e => {
-        e.preventDefault();
-        this.toggleAll();
-        this.toggleSubCategory(child, parent);
+        if (this.desktopNav === true) {
+          e.preventDefault();
+          this.toggleAll();
+          this.toggleSubCategory(child, parent);
+          console.log(e);
+        }
       });
     });
   }
