@@ -1,7 +1,9 @@
 {% if customizeKit is defined %}
-
-  {% set removeSwap = true %}
-
+  {% if customizeKit == true %}
+    {% set removeSwap = false %}
+  {% else %}
+    {% set removeSwap = true %}
+  {% endif %}
 {% else %}
   {% set removeSwap = false %}
 {% endif %}
