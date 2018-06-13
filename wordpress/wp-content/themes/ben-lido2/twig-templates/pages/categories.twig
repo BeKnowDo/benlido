@@ -16,12 +16,23 @@
 
   <div class="bg-grey">
     <div class="max-width-xl shop-landing-featured">
+
       <div class="columns">
-        {% for product in products %}
-          <div class="column col-xs-12 col-sm-6 col-md-4 col-lg-4 col-3 product-tile-column">
-            {% include 'common/product/product-tile.twig' %}
+        <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
+          {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
+        </div>
+
+        <div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">
+          <div class="columns">
+            {% for product in products %}
+              <div class="column col-xs-12 col-sm-6 col-4 product-tile-column">
+                {% include 'common/product/product-tile.twig', with {product: product } %}
+              </div>
+            {% endfor %}
+
           </div>
-        {% endfor %}
+        </div>
+
       </div>
 
     </div>

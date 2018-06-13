@@ -16,24 +16,25 @@
 
       <div class="columns">
 
+        <div class="column col-3"></div>
         <div class="column col-3">
-          <span class="product-information-price">{{product.price}}</span>
+          <span class="product-information-price">${{product.price}}</span>
         </div>
 
-        <div class="column col-3">
+        {# <div class="column col-3">
           <div class="product-quantity">
             <span class="product-quantity-value">
               1
             </span>
             <i class="fal fa-chevron-down"></i>
           </div>
-        </div>
+        </div> #}
 
         <div class="column col-3">
-          <div class="btn btn-lg btn-primary" data-sku="{{product.sku}}" data-category="{{product.category}}">
-            Add to kit
+          <a class="btn btn-lg btn-primary" href="" data-sku="{{product.sku}}" data-category="{{product.category}}">
+            Select bag
             <i class="fal fa-plus-circle"></i>
-          </div>
+          </a>
         </div>
 
       </div>
