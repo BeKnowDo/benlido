@@ -2,14 +2,6 @@
 
 {% block content %}
 
-  {% if not heroData %}
-    {% set heroData = [
-      {
-        header: 'Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc...'
-      }
-  ]%}
-  {% endif %}
-
   {% if not stepNavigation %}
     {% set stepNavigation = [
       {
@@ -34,10 +26,10 @@
 
           {% for category in categoryItems %}
             <div class="columns">
-              <h3 class="column col-12 shop-landing-featured-header" id="category-{{category.id}}">{{category.name}}</h3>
+              <h3 class="column col-12 shop-landing-featured-header product-tile-column" id="category-{{category.id}}">{{category.name}}</h3>
 
               {% for product in category.featured %}
-                <div class="column col-xs-12 col-sm-12 col-md-6 col-4">
+                <div class="column col-xs-12 col-sm-12 col-md-6 col-4 product-tile-column">
                   {% include 'common/product/product-tile.twig', with {product: product } %}
                 </div>
               {% endfor %}
