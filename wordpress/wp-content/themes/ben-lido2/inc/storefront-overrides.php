@@ -9,8 +9,8 @@ function bl_storefront_overrides() {
 	//add_action('storefront_before_content','storefront_primary_navigation',5);
 	//add_action('storefront_before_content','storefront_product_search',6);
 	if (is_woocommerce() || is_cart() || is_checkout()) {
-		add_action('storefront_before_content','bl_storefront_main_content_wrapper_start',10);
-		add_action('storefront_before_footer','bl_storefront_main_content_wrapper_end',99);
+		add_action('woocommerce_before_main_content','bl_storefront_main_content_wrapper_start',10);
+		add_action('woocommerce_after_main_content','bl_storefront_main_content_wrapper_end',99);
 	}
 
 
@@ -27,9 +27,28 @@ function bl_storefront_overrides() {
     remove_action('storefront_header','storefront_primary_navigation_wrapper_close',68);
 	remove_action('storefront_header','storefront_product_search',40);
 
+	remove_action( 'storefront_content_top','woocommerce_breadcrumb', 10, 0);
+	remove_action( 'woocommerce_after_shop_loop','storefront_sorting_wrapper', 9 );
+	remove_action( 'woocommerce_after_shop_loop', 'storefront_sorting_wrapper_close', 31 );
+	remove_action( 'woocommerce_before_shop_loop', 'storefront_sorting_wrapper', 9 );
+	remove_action( 'woocommerce_before_shop_loop', 'storefront_sorting_wrapper_close', 31 );
+	remove_action('woocommerce_before_shop_loop','woocommerce_catalog_ordering',30);
+	remove_action( 'woocommerce_after_shop_loop','woocommerce_catalog_ordering',10 );
+	remove_action( 'woocommerce_before_shop_loop','woocommerce_catalog_ordering',10 );
+	remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+	remove_action( 'woocommerce_after_shop_loop','woocommerce_result_count',20 );
+
+	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 30 );
+	remove_action( 'woocommerce_before_shop_loop', 'storefront_woocommerce_pagination', 30 );
+
 	// also removing all the storefront_footer actions as well
 	remove_action('storefront_footer','storefront_footer_widgets',10);
 	remove_action('storefront_footer','storefront_credit',20);
+
+	if (is_woocommerce()) {
+		add_action('woocommerce_before_main_content','bl_breadcrumb',4);
+		add_action('woocommerce_before_main_content','bl_header',5);
+	}
 }
 
 // for adding frequency to session
@@ -214,6 +233,42 @@ if ( ! function_exists( 'storefront_handheld_footer_bar' ) ) {
 }
 
 
+if ( ! function_exists( 'storefront_before_content' ) ) {
+	/**
+	 * Before Content
+	 * Wraps all WooCommerce content in wrappers which match the theme markup
+	 *
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	function storefront_before_content() {
+		?>
+		<div class="bg-grey">
+			<div class="max-width-xl shop-landing-featured">
+				<div class="columns">
+		<?php do_action( 'storefront_sidebar' );?>
+	<?php
+	}
+}
+
+if ( ! function_exists( 'storefront_after_content' ) ) {
+	/**
+	 * After Content
+	 * Closes the wrapping divs
+	 *
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	function storefront_after_content() {
+		?>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+}
+
+
 
 function bl_storefront_before_header () {
     echo '<div id="ui-cover"></div>';
@@ -228,10 +283,39 @@ function bl_storefront_search_button() {
 }
 
 function bl_storefront_main_content_wrapper_start() {
-	echo '<div class="max-width-xl">';
+	if (is_product()) {
+		echo '<div class="max-width-xl">';
+	} elseif (is_shop()) {
+		echo '<div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
+	} else {
+		echo '<div class="max-width-xl">';
+	}
+	
 }
+
+if ( ! function_exists( 'storefront_product_columns_wrapper' ) ) {
+	/**
+	 * Product columns wrapper
+	 *
+	 * @since   2.2.0
+	 * @return  void
+	 */
+	function storefront_product_columns_wrapper() {
+		$columns = storefront_loop_columns();
+		echo '<div class="columns">';
+	}
+}
+
 function bl_storefront_main_content_wrapper_end() {
 	echo '</div>';
+}
+
+function bl_header() {
+	get_template_part('template-parts/common/hero/hero-title','copy');
+}
+
+function bl_breadcrumb() {
+	get_template_part('template-parts/common/step','navigation');
 }
 
 function bl_footer_menus() {
