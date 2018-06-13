@@ -21,18 +21,19 @@
     }
 
     &-column {
-      margin-top: 12px;
+      margin-top: $unit-7;
     }
 
     &-image {
       transition: opacity 0.2s ease-in-out;
       display: block;
+      margin: 0 auto;
     }
 
     &-link {
       position: relative;
-      display: inline-block;
-      padding: 10px 0;
+      display: block;
+      margin: 0 auto;
     }
 
     &-hover {
@@ -51,8 +52,8 @@
     }
 
     &-header {
-      @include sentinel(18px, 400);
-      padding: 0;
+      @include sentinel(16px, 500);
+      margin: 0 0 $unit-4;
     }
 
     &-sub-header {
@@ -72,6 +73,7 @@
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
+      margin: 8px 0;
     }
 
     .btn {
@@ -89,10 +91,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 0 0 0;
 
-      .product-tile-sub-header {
-        padding-bottom: 60px;
+      .product-tile {
+        &-header {
+          @include sentinel(18px, 400);
+        }
+        &-sub-header {
+          @include knockout32(14px, 400);
+          padding-bottom: 30px;
+        }
+        &-link {
+          margin-top: 40px;
+        }
       }
 
       &-add {
@@ -102,7 +112,7 @@
       }
 
       .btn-primary {
-        padding: 22px 6px;
+        padding: 10px 6px;
         margin-top: auto;
         position: relative;
       }

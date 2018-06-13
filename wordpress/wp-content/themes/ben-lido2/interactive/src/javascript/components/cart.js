@@ -1,5 +1,6 @@
 import { endpoints } from "../../../config/endpoints";
-import mojo from "mo-js";
+import KUTE from "kute.js";
+import mojs from "mo-js";
 
 export class Cart {
   constructor() {
@@ -8,8 +9,10 @@ export class Cart {
       document.querySelector("#navbar-bag-list") || undefined;
     this.addToCartButtons =
       document.querySelectorAll(".add-to-cart") || undefined;
-    this.removeFromCartButtons =
+    this.removeFromKitButtons =
       document.querySelectorAll(".remove-from-cart") || undefined;
+    this.removeIcons =
+      document.querySelectorAll(".fa-minus-circle") || undefined;
     this.swapFromCartButtons =
       document.querySelectorAll(".swap-from-cart") || undefined;
     this.cart = document.querySelector("#benlido-cart") || undefined;
@@ -18,20 +21,20 @@ export class Cart {
   }
 
   init() {
-    this.enable();
-  }
-
-  enable() {
     if (this.counter) {
       this.getCurrentItems();
     }
 
     if (this.addToCartButtons) {
       this.addItem();
+    }
+
+    if (this.removeIcons) {
       this.removeItem();
     }
-    if (this.removeFromCartButtons) {
-      this.removeTileItem();
+
+    if (this.removeFromKitButtons) {
+      this.removeFromKit();
     }
 
     if (this.swapFromCartButtons) {
@@ -45,6 +48,10 @@ export class Cart {
 
   openCart() {
     this.cart.addEventListener("click", e => {
+      e.preventDefault();
+      this.cartContainer.classList.toggle("active");
+    });
+    this.counter.addEventListener("click", e => {
       e.preventDefault();
       this.cartContainer.classList.toggle("active");
     });
@@ -103,7 +110,7 @@ export class Cart {
       `;
 
       if (this.listContainer) {
-        this.removeCartItem();
+        this.removeFromMiniCart();
       }
     } else {
       this.listContainer.innerHTML = `<h4 class="navbar-bag-empty">Your cart is empty...</h4>`;
@@ -121,17 +128,15 @@ export class Cart {
       const position = this.counter.getBoundingClientRect();
       this.counter.innerHTML = count;
 
-      // console.log(this.counter.parentElement);
-
       const burst = new mojs.Burst({
         parent: this.counter.parentElement,
         top: position.y + 16,
-        left: position.x + 2,
-        radius: { 4: 19 },
+        left: position.x + 6,
+        radius: { 10: 19 },
         angle: 45,
         children: {
           shape: "line",
-          radius: 6,
+          radius: 4,
           scale: 2,
           stroke: "#195675",
           strokeDasharray: "100%",
@@ -139,20 +144,57 @@ export class Cart {
           duration: 400,
           easing: "quad.out"
         },
-        duration: 500,
-        onComplete() {}
+        duration: 500
       });
-
       burst.replay();
-
-      document.addEventListener("click", function(e) {
-        burst
-          .tune({ x: e.pageX, y: e.pageY })
-          .setSpeed(3)
-          .replay();
-      });
     } else {
       this.counter.innerHTML = 0;
+    }
+  }
+
+  removeFromKit() {
+    const remove = this.removeFromKitButtons;
+    if (remove.length > 0) {
+      remove.forEach(swap => {
+        swap.addEventListener("click", e => {
+          e.preventDefault();
+
+          if (e.target.dataset) {
+            const target = e.target.dataset;
+            const sku = target.sku ? target.sku : undefined;
+            const category = target.category ? target.category : undefined;
+
+            if (sku !== undefined && category !== undefined) {
+              const removeItem = {
+                sku,
+                category
+              };
+
+              let parentNode =
+                e.target.parentElement.parentElement.parentElement || undefined;
+              if (parentNode) {
+                parentNode.style.overflow = "hidden";
+                KUTE.to(
+                  parentNode,
+                  {
+                    width: 0,
+                    opacity: 0
+                  },
+                  {
+                    easing: "easingCubicOut",
+                    duration: 300,
+                    complete: () => {
+                      parentNode.parentElement.removeChild(parentNode);
+                    }
+                  }
+                ).start();
+
+                this.removeItemAPI(removeItem);
+              }
+            }
+          }
+        });
+      });
     }
   }
 
@@ -162,16 +204,17 @@ export class Cart {
       swaps.forEach(swap => {
         swap.addEventListener("click", e => {
           e.preventDefault();
-          console.log(e);
+          // User sends the product they wish to swap out
+          // Then we direct them to the shop landing page
         });
       });
     }
   }
 
-  removeItemAPI(removeItem) {
+  removeItemAPI(item) {
     fetch(endpoints.removeFromCart, {
       method: "POST",
-      body: JSON.stringify(removeItem),
+      body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json"
       }
@@ -190,36 +233,7 @@ export class Cart {
 
   updateTileQuantity(response) {}
 
-  removeTileItem() {
-    const buttons = this.removeFromCartButtons;
-    if (buttons.length > 0) {
-      buttons.forEach(button => {
-        button.addEventListener("click", e => {
-          e.preventDefault();
-          console.log(e);
-
-          // fetch(endpoints.addToCart, {
-          //   method: "POST",
-          //   body: JSON.stringify(newItem),
-          //   headers: {
-          //     "Content-Type": "application/json"
-          //   }
-          // })
-          //   .then(res => res.json())
-          //   .catch(error => console.error("Error:", error))
-          //   .then(response => {
-          //     if (response.error) {
-          //     } else {
-          //       this.updateCount(response);
-          //       this.fillCart(response);
-          //     }
-          //   });
-        });
-      });
-    }
-  }
-
-  removeCartItem() {
+  removeFromMiniCart() {
     const cartItems = this.listContainer.querySelectorAll(
       ".navbar-remove-item"
     );
@@ -254,18 +268,16 @@ export class Cart {
         const text = button.querySelector(".add-to-cart-text");
         const inCartText = text.dataset.cartText;
 
-        button.addEventListener("click", e => {});
+        // button.addEventListener("click", e => {});
 
         addItemIcon.addEventListener("click", e => {
           e.preventDefault();
-          e.stopPropagation();
           const addIcon = e.target;
-          const button = addIcon.parentElement;
-          const sku = button.dataset.sku ? button.dataset.sku : undefined;
-          const category = button.dataset.category
-            ? button.dataset.category
+          const sku = addIcon.dataset.sku ? addIcon.dataset.sku : undefined;
+          const category = addIcon.dataset.category
+            ? addIcon.dataset.category
             : undefined;
-          const name = button.dataset.name ? button.dataset.name : undefined;
+          const name = addIcon.dataset.name ? addIcon.dataset.name : undefined;
 
           if (sku !== undefined && category !== undefined) {
             const newItem = {
@@ -298,6 +310,7 @@ export class Cart {
                     button.classList.add("in-cart");
                     removeItemIcon.classList.remove("hidden");
                   }
+                  this.cartContainer.classList.add("active");
                 }
               });
           }
@@ -307,58 +320,59 @@ export class Cart {
   }
 
   removeItem() {
-    if (this.addToCartButtons.length > 0) {
-      this.addToCartButtons.forEach(button => {
-        const removeItemIcon = button.querySelector(".fa-minus-circle");
-        const text = button.querySelector(".add-to-cart-text");
-        const inCartText = text.dataset.cartText;
-        const defaultText = text.dataset.defaultText;
-
-        removeItemIcon.addEventListener("click", e => {
+    const removeIcons = this.removeIcons;
+    if (removeIcons.length > 0) {
+      removeIcons.forEach(removeIcon => {
+        removeIcon.addEventListener("click", e => {
           e.preventDefault();
-          e.stopPropagation();
-          const addIcon = e.target;
-          const button = addIcon.parentElement;
-          const sku = button.dataset.sku ? button.dataset.sku : undefined;
-          const category = button.dataset.category
-            ? button.dataset.category
-            : undefined;
 
-          const removeItem = {
-            sku,
-            category
-          };
+          if (e.target.dataset) {
+            const target = e.target.dataset;
+            const sku = target.sku ? target.sku : undefined;
+            const category = target.category ? target.category : undefined;
 
-          fetch(endpoints.removeFromCart, {
-            method: "POST",
-            body: JSON.stringify(removeItem),
-            headers: {
-              "Content-Type": "application/json"
-            }
-          })
-            .then(res => res.json())
-            .catch(error => console.error("Error:", error))
-            .then(response => {
-              if (response.error) {
-              } else {
-                this.updateCount(response);
-                this.fillCart(response);
-                // TODO: DRY
-                const match = response.filter(item => {
-                  return item.sku === sku && item.category === category;
-                });
+            if (sku !== undefined && category !== undefined) {
+              const button = e.target.parentElement;
+              const text = button.querySelector(".add-to-cart-text");
+              const inCartText = text.dataset.cartText;
+              const defaultText = text.dataset.defaultText;
 
-                if (match.length > 0) {
-                  text.innerHTML = match[0].count + inCartText;
-                  button.classList.add("in-cart");
-                  removeItemIcon.classList.remove("hidden");
-                } else {
-                  button.classList.remove("in-cart");
-                  text.innerHTML = defaultText;
-                  removeItemIcon.classList.add("hidden");
+              const removeItem = {
+                sku,
+                category
+              };
+              fetch(endpoints.removeFromCart, {
+                method: "POST",
+                body: JSON.stringify(removeItem),
+                headers: {
+                  "Content-Type": "application/json"
                 }
-              }
-            });
+              })
+                .then(res => res.json())
+                .catch(error => console.error("Error:", error))
+                .then(response => {
+                  if (response.error) {
+                  } else {
+                    this.updateCount(response);
+                    this.fillCart(response);
+                    // TODO: DRY
+                    const match = response.filter(item => {
+                      return item.sku === sku && item.category === category;
+                    });
+
+                    if (match.length > 0) {
+                      text.innerHTML = match[0].count + inCartText;
+                      button.classList.add("in-cart");
+                      removeIcon.classList.remove("hidden");
+                    } else {
+                      button.classList.remove("in-cart");
+                      text.innerHTML = defaultText;
+                      removeIcon.classList.add("hidden");
+                    }
+                  }
+                });
+            }
+          }
         });
       });
     }

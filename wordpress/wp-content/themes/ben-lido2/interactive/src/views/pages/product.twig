@@ -1,73 +1,4 @@
 {% extends "layout/document.twig" %}
-{% if not productInformation %}
-  {% set productInformation = [
-    {
-      category: '123',
-      sku: 'AC7808',
-      header: 'Aiden Travel Toiletry Bag By Kipling',
-      description: "Our recommendation: this case makes a perfect companion for your travel adventures. Finished with a special side snap tab to easily hook up to your backpack or suitcase, this lightweight travel kit is especially easy to tow on-the-go. Fill it up with makeup or shower essentials and go! Bonus: You can personalize this pouch with a custom monogram. Add a touch of flair with initials, emoji's, or a fun saying (up to 9 characters).",
-      price: '2.25',
-      dimensions: '11.25" L x 5.5" H x 4" D',
-      weight: '0.29 lbs.',
-      href: '/kit-selected',
-      image: '/images/product-image.png',
-      bagURL: '/product/123',
-      byLine: '( This item is free with the purchase of a Ben Lido Bag )'
-    }
-  ]%}
-{% endif %}
-
-{% if not associatedProducts %}
-  {% set associatedProducts = [
-    {
-      category: '123',
-      sku: 'AC7808a',
-      header: 'Bath &amp; Body',
-      price: '2.25',
-      description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-      image: '/images/product-example.png',
-      href: 'product/234'
-    },
-    {
-      category: '456',
-      sku: 'AC7808b',
-      header: 'Bath &amp; Body',
-      price: '3.45',
-      description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-      image: '/images/product-example.png',
-      href: 'product/234'
-    },
-    {
-      category: '123',
-      sku: 'AC7808c',
-      header: 'Bath &amp; Body',
-      price: '4.25',
-      description: "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-      image: '/images/product-example.png',
-      href: 'product/234'
-    },
-
-  ]%}
-{% endif %}
-
-{% if not productImages %}
-  {% set productImages = [
-   {
-     url: '/images/product-image-1.png',
-     altText: 'Product alt text'
-   },
-   {
-     url: '/images/product-image-2.png',
-     altText: 'Product alt text'
-   },
-   {
-     url: '/images/product-image-3.png',
-     altText: 'Product alt text'
-   }
-
- ] %}
-{% endif %}
-
 {% block content %}
 
   <div class="max-width-xl">
@@ -86,7 +17,7 @@
         <div class="col-6 col-xs-12 col-sm-12 col-mx-auto">
           {% include 'common/product/product-information.twig', with { productInformation: productInformation } %}
           {% include 'common/product/product-description.twig', with { productInformation: productInformation } %}
-          {% include 'common/product/product-additional-information.twig' %}
+          {# {% include 'common/product/product-additional-information.twig' %} #}
         </div>
 
       </div>

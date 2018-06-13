@@ -33,25 +33,20 @@
   </div>
 
   {% if removeSwap == false %}
-    <div class="product-selected">
-      <button class="btn btn-lg btn-block btn-primary btn-selected" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">
-        <span class="btn-selected-remove remove-from-cart">Remove</span>
-        <span class="btn-selected-swap swap-from-cart">Swap</span>
-      </button>
+    <div class="btn btn-lg btn-block btn-primary btn-selected">
+      <span class="btn-selected-remove remove-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Remove</span>
+      <a class="btn-selected-swap swap-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Swap</a>
     </div>
 
   {% else %}
-    <button class="btn
-      btn-lg
-      btn-block
-      btn-primary
-      add-to-cart
-      {{ product.count ? 'in-cart' : ' ' }}" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">
-      <i class="far fa-minus-circle {{ product.count ? ' ' : 'hidden'}}"></i>
+    <button class="btn btn-lg btn-block btn-primary add-to-cart
+    {{ product.count ? 'in-cart' : ' ' }}
+    ">
+      <i class="far fa-minus-circle {{ product.count ? ' ' : 'hidden'}}" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}"></i>
       <span class="add-to-cart-text" data-default-text="Add to kit" data-cart-text=" in kit">
         {{ product.count ? product.count ~ ' in kit' : 'Add to kit'}}
       </span>
-      <i class="fal fa-plus-circle"></i>
+      <i class="fal fa-plus-circle" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}"></i>
     </button>
   {% endif %}
 

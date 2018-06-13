@@ -1,20 +1,15 @@
-@media (min-width: $size-md) {
+@media (max-width: $size-md) {
   .category-list {
-    background-color: transparent;
-    margin-top: 10%;
-    &.nav-fixed {
-      .category-list-wrapper {
-        animation: 0.5s alternate fadeInFromTop;
-        position: fixed;
-        top: 10%;
-      }
-    }
     &-wrapper {
+      display: none;
+      margin-top: 0;
     }
 
     &-breadcrumbs {
-      color: $blumine;
-      > span {
+      color: $grey;
+
+      a {
+        color: $grey;
       }
 
       &:hover {
@@ -26,7 +21,7 @@
 
     &-parent {
       a {
-        color: $blumine;
+        color: $grey;
       }
     }
 
@@ -45,6 +40,61 @@
     &-items {
       .column {
       }
+    }
+  }
+
+  .mobile-navigation {
+    display: block;
+    background-color: #fff;
+    border-radius: 4px;
+    border: $grey-border;
+    padding: 10px 20px;
+    margin-top: 20px;
+
+    .category-list {
+      &-parent {
+        a {
+          color: $blumine;
+        }
+      }
+
+      &-breadcrumbs {
+        padding-top: 0;
+        display: block;
+      }
+
+      &-breadcrumbs {
+        padding: 0;
+        position: relative;
+
+        a {
+          display: block;
+        }
+
+        &:after {
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          padding: 0 0 0 5px;
+          font-family: "Font Awesome 5 Pro";
+          content: "\f078";
+        }
+      }
+    }
+
+    .category-list-parent-group {
+      display: none;
+    }
+  }
+
+  .show-categories {
+    .category-list-breadcrumbs {
+      padding: 10px 0 10px;
+    }
+    .category-list-parent-group {
+      display: block;
+      animation: 0.5s alternate fadeInFromTop;
     }
   }
 }

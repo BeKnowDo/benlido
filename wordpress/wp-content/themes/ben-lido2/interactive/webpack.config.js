@@ -18,7 +18,7 @@ module.exports = {
   },
   output: {
     path: destination,
-    chunkFilename: "[name].bundle.js",
+    filename: "[name].js",
     publicPath: "/",
     sourceMapFilename: "[name].map"
   },
