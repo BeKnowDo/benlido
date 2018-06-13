@@ -30,9 +30,9 @@ export class CategoryMenu {
   enable() {
     if (this.parentCategoryContainer) {
       this.mobile();
-      // this.checkBreakpoint();
-      // this.attachCategoryToggles();
-      // this.stickyCategoryNav();
+      this.checkBreakpoint();
+      this.attachCategoryToggles();
+      this.stickyCategoryNav();
     }
   }
 
@@ -41,9 +41,6 @@ export class CategoryMenu {
       this.categoryList !== undefined &&
       this.menuCategoryHeader !== undefined
     ) {
-      // this.categoryClone = this.categoryList
-      // ? this.categoryList.cloneNode(true)
-      // : undefined;
       const fragment = document.createDocumentFragment();
       const menu = this.menu;
       const mobileMenu = this.categoryList.cloneNode(true);
