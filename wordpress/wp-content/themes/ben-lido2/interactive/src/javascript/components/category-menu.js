@@ -20,9 +20,6 @@ export class CategoryMenu {
       document.querySelectorAll(".category-list-sub-items-group") || undefined;
     this.productGridContainer =
       document.querySelector("#shop-landing-featured-products") || undefined;
-    this.categoryClone = this.categoryList
-      ? this.categoryList.cloneNode(true)
-      : undefined;
   }
   init() {
     if (this.menu) {
@@ -33,9 +30,9 @@ export class CategoryMenu {
   enable() {
     if (this.parentCategoryContainer) {
       this.mobile();
-      this.checkBreakpoint();
-      this.attachCategoryToggles();
-      this.stickyCategoryNav();
+      // this.checkBreakpoint();
+      // this.attachCategoryToggles();
+      // this.stickyCategoryNav();
     }
   }
 
@@ -44,19 +41,19 @@ export class CategoryMenu {
       this.categoryList !== undefined &&
       this.menuCategoryHeader !== undefined
     ) {
+      // this.categoryClone = this.categoryList
+      // ? this.categoryList.cloneNode(true)
+      // : undefined;
+      const fragment = document.createDocumentFragment();
       const menu = this.menu;
-      const mobileMenu = this.categoryClone;
+      const mobileMenu = this.categoryList.cloneNode(true);
+      const menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
+      const categories = mobileMenu.querySelectorAll(".category-list-parent");
 
       mobileMenu.removeAttribute("class");
       mobileMenu.classList.add("mobile-navigation");
       mobileMenu.removeAttribute("id");
-
-      const menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-      const categories = mobileMenu.querySelectorAll(
-        ".category-list-parent-group"
-      );
       menuHeader.removeAttribute("id");
-      const parentCategories = this.parentCategoryContainer;
 
       // Toggle showing categories (parents)
       menuHeader.addEventListener("click", e => {
@@ -67,18 +64,20 @@ export class CategoryMenu {
       // Attach parent category toggle
       categories.forEach(category => {
         category.addEventListener("click", e => {
-          e.preventDefault();
           e.stopPropagation();
+          e.preventDefault();
+
           const target = e.target.parentElement.parentElement.querySelector(
             ".category-list-sub-items-group"
           );
 
-          this.toggleAll(categories);
+          this.toggleAll(category.parentNode);
           this.toggleSubCategory(target);
         });
       });
 
-      menu.appendChild(this.categoryClone);
+      fragment.appendChild(mobileMenu);
+      menu.appendChild(fragment);
     }
   }
 
@@ -124,7 +123,6 @@ export class CategoryMenu {
     };
 
     breakpoint.addListener(debounce(breakpointChecker));
-
     breakpointChecker();
   }
 
@@ -158,32 +156,34 @@ export class CategoryMenu {
   }
 
   toggleSubCategory(target) {
-    const showSubCategory = KUTE.fromTo(
-      target,
-      {
-        maxHeight: 0,
-        opacity: 0
-      },
-      {
-        maxHeight: 500,
-        opacity: 1
-      },
-      {
-        duration: 150,
-        complete: () => {
-          target.classList.toggle("active");
-          if (this.desktopNav === true) {
-            if (this.productGridContainer) {
-              const targetCategory = target.dataset.categoryId;
-              targetCategory
-                ? this.scrollFeaturedCategory(targetCategory)
-                : undefined;
+    if (target) {
+      const showSubCategory = KUTE.fromTo(
+        target,
+        {
+          maxHeight: 0,
+          opacity: 0
+        },
+        {
+          maxHeight: 500,
+          opacity: 1
+        },
+        {
+          duration: 150,
+          complete: () => {
+            target.classList.toggle("active");
+            if (this.desktopNav === true) {
+              if (this.productGridContainer) {
+                const targetCategory = target.dataset.categoryId;
+                targetCategory
+                  ? this.scrollFeaturedCategory(targetCategory)
+                  : undefined;
+              }
             }
           }
         }
-      }
-    );
-    showSubCategory.start();
+      );
+      showSubCategory.start();
+    }
   }
 
   scrollFeaturedCategory(id) {
