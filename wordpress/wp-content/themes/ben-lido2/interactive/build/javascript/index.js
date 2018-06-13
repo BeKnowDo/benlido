@@ -38849,8 +38849,8 @@ var CategoryMenu = exports.CategoryMenu = function () {
 
     this.openTrigger = document.querySelector("#category-list-all-header") || undefined;
     this.menu = document.querySelector("#category-list") || undefined;
-    this.menuCategoryHeader = document.querySelector("#category-list-breadcrumbs") || undefined;
     this.categoryList = document.querySelector("#category-list-wrapper") || undefined;
+    this.menuCategoryHeader = document.querySelector("#category-list-breadcrumbs") || undefined;
     this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
     this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
     this.productGridContainer = document.querySelector("#shop-landing-featured-products") || undefined;
@@ -38868,10 +38868,10 @@ var CategoryMenu = exports.CategoryMenu = function () {
     key: "enable",
     value: function enable() {
       if (this.parentCategoryContainer) {
+        this.mobile();
         this.checkBreakpoint();
         this.attachCategoryToggles();
         this.stickyCategoryNav();
-        this.mobile();
       }
     }
   }, {
@@ -38881,51 +38881,53 @@ var CategoryMenu = exports.CategoryMenu = function () {
 
       if (this.categoryList !== undefined && this.menuCategoryHeader !== undefined) {
         var menu = this.menu;
-        var menuHeader = this.menuCategoryHeader;
+        var mobileMenu = this.categoryClone;
+
+        mobileMenu.removeAttribute("class");
+        mobileMenu.classList.add("mobile-navigation");
+        mobileMenu.removeAttribute("id");
+
+        var menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
+        var categories = mobileMenu.querySelectorAll(".category-list-parent-group");
+        menuHeader.removeAttribute("id");
         var parentCategories = this.parentCategoryContainer;
 
-        parentCategories.forEach(function (item) {
-          var parent = item.querySelector(".category-list-parent");
-          var child = item.querySelector(".category-list-sub-items-group");
+        // Toggle showing categories (parents)
+        menuHeader.addEventListener("click", function (e) {
+          e.preventDefault();
+          mobileMenu.classList.toggle("show-categories");
+        });
 
-          parent.addEventListener("click", function (e) {
-            if (_this.mobileNav === true) {
-              e.preventDefault();
-              console.log(_this.mobileNav);
-            }
+        // Attach parent category toggle
+        categories.forEach(function (category) {
+          category.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var target = e.target.parentElement.parentElement.querySelector(".category-list-sub-items-group");
+
+            _this.toggleAll(categories);
+            _this.toggleSubCategory(target);
           });
         });
-      }
-    }
-  }, {
-    key: "mobileStickyNav",
-    value: function mobileStickyNav() {
-      var _this2 = this;
 
-      var breakpoint = window.matchMedia("(min-width:839px)");
-      if (breakpoint.matches) {
-        var selector = "#" + this.menu.id;
-        var check = _inView2.default.is(this.categoryList);
+        // parentCategories.forEach(item => {
+        //   const parent = item.querySelector(".category-list-parent");
+        //   const child = item.querySelector(".category-list-sub-items-group");
 
-        check ? this.menu.classList.remove("mobile-active") : this.menu.classList.add("mobile-active");
+        //   parent.addEventListener("click", e => {
+        //     if (this.mobileNav === true) {
+        //       e.preventDefault();
 
-        (0, _inView2.default)(selector).on("enter", function (el) {
-          if (_this2.mobileNav === true) {
-            el.classList.remove("mobile-active");
-          }
-        }).on("exit", function (el) {
-          if (_this2.mobileNav === true) {
-            var _check = el.classList.contains("mobile-active");
-            !_check ? el.classList.add("mobile-active") : undefined;
-          }
-        });
+        //     }
+        //   });
+        // });
+
+        menu.appendChild(this.categoryClone);
       }
     }
   }, {
     key: "stickyCategoryNav",
     value: function stickyCategoryNav() {
-      var _this3 = this;
-
       // This is strictly for desktop
       var breakpoint = window.matchMedia("(min-width:839px)");
       if (breakpoint.matches) {
@@ -38935,41 +38937,33 @@ var CategoryMenu = exports.CategoryMenu = function () {
         check ? this.menu.classList.remove("nav-fixed") : this.menu.classList.add("nav-fixed");
 
         (0, _inView2.default)(selector).on("enter", function (el) {
-          if (_this3.desktopNav === true) {
-            el.classList.remove("nav-fixed");
-          }
+          el.classList.remove("nav-fixed");
         }).on("exit", function (el) {
-          if (_this3.desktopNav === true) {
-            var _check2 = el.classList.contains("nav-fixed");
-            !_check2 ? el.classList.add("nav-fixed") : undefined;
-          } else if (_this3.mobileNav === true) {
-            console.log("now in mobile nav");
-          }
+          var check = el.classList.contains("nav-fixed");
+          !check ? el.classList.add("nav-fixed") : undefined;
         });
       }
     }
   }, {
     key: "checkBreakpoint",
     value: function checkBreakpoint() {
-      var _this4 = this;
+      var _this2 = this;
 
       var breakpoint = window.matchMedia("(min-width:839px)");
 
       var breakpointChecker = function breakpointChecker() {
         if (breakpoint.matches) {
-          console.log("in desktop");
           // Desktop navigation version
-          _this4.desktopNav = true;
-          _this4.mobileNav = false;
+          _this2.desktopNav = true;
+          _this2.mobileNav = false;
         } else if (!breakpoint.matches) {
-          console.log("in mobile");
           // Mobile navigation version
-          _this4.mobileNav = true;
-          _this4.desktopNav = false;
+          _this2.mobileNav = true;
+          _this2.desktopNav = false;
 
           // remove sticky if enabled
-          _this4.menu.classList.remove("nav-fixed");
-          _this4.toggleAll();
+          _this2.menu.classList.remove("nav-fixed");
+          _this2.toggleAll(_this2.parentCategoryContainer);
         }
       };
 
@@ -38980,27 +38974,24 @@ var CategoryMenu = exports.CategoryMenu = function () {
   }, {
     key: "attachCategoryToggles",
     value: function attachCategoryToggles() {
-      var _this5 = this;
+      var _this3 = this;
 
       this.parentCategoryContainer.forEach(function (item) {
         var parent = item.querySelector(".category-list-parent");
         var child = item.querySelector(".category-list-sub-items-group");
 
         parent.addEventListener("click", function (e) {
-          if (_this5.desktopNav === true) {
-            e.preventDefault();
-            _this5.toggleAll();
-            _this5.toggleSubCategory(child, parent);
-            console.log(e);
-          }
+          e.preventDefault();
+          _this3.toggleAll(_this3.parentCategoryContainer);
+          _this3.toggleSubCategory(child);
         });
       });
     }
   }, {
     key: "toggleAll",
-    value: function toggleAll() {
+    value: function toggleAll(parentContainer) {
       var i = void 0;
-      var parents = this.parentCategoryContainer;
+      var parents = parentContainer;
       for (i = 0; i < parents.length; ++i) {
         var parent = parents[i].querySelector(".category-list-parent");
         var child = parents[i].querySelector(".category-list-sub-items-group");
@@ -39015,8 +39006,8 @@ var CategoryMenu = exports.CategoryMenu = function () {
     }
   }, {
     key: "toggleSubCategory",
-    value: function toggleSubCategory(target, parent) {
-      var _this6 = this;
+    value: function toggleSubCategory(target) {
+      var _this4 = this;
 
       var showSubCategory = _kute2.default.fromTo(target, {
         maxHeight: 0,
@@ -39028,10 +39019,11 @@ var CategoryMenu = exports.CategoryMenu = function () {
         duration: 150,
         complete: function complete() {
           target.classList.toggle("active");
-          parent.classList.toggle("active");
-          if (_this6.productGridContainer) {
-            var targetCategory = target.dataset.categoryId;
-            targetCategory ? _this6.scrollFeaturedCategory(targetCategory) : undefined;
+          if (_this4.desktopNav === true) {
+            if (_this4.productGridContainer) {
+              var targetCategory = target.dataset.categoryId;
+              targetCategory ? _this4.scrollFeaturedCategory(targetCategory) : undefined;
+            }
           }
         }
       });

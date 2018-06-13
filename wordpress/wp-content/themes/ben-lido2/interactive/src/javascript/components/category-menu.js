@@ -10,10 +10,10 @@ export class CategoryMenu {
     this.openTrigger =
       document.querySelector("#category-list-all-header") || undefined;
     this.menu = document.querySelector("#category-list") || undefined;
-    this.menuCategoryHeader =
-      document.querySelector("#category-list-breadcrumbs") || undefined;
     this.categoryList =
       document.querySelector("#category-list-wrapper") || undefined;
+    this.menuCategoryHeader =
+      document.querySelector("#category-list-breadcrumbs") || undefined;
     this.parentCategoryContainer =
       document.querySelectorAll(".category-list-parent-group") || undefined;
     this.subCategories =
@@ -32,10 +32,10 @@ export class CategoryMenu {
 
   enable() {
     if (this.parentCategoryContainer) {
+      this.mobile();
       this.checkBreakpoint();
       this.attachCategoryToggles();
       this.stickyCategoryNav();
-      this.mobile();
     }
   }
 
@@ -45,45 +45,52 @@ export class CategoryMenu {
       this.menuCategoryHeader !== undefined
     ) {
       const menu = this.menu;
-      const menuHeader = this.menuCategoryHeader;
+      const mobileMenu = this.categoryClone;
+
+      mobileMenu.removeAttribute("class");
+      mobileMenu.classList.add("mobile-navigation");
+      mobileMenu.removeAttribute("id");
+
+      const menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
+      const categories = mobileMenu.querySelectorAll(
+        ".category-list-parent-group"
+      );
+      menuHeader.removeAttribute("id");
       const parentCategories = this.parentCategoryContainer;
 
-      parentCategories.forEach(item => {
-        const parent = item.querySelector(".category-list-parent");
-        const child = item.querySelector(".category-list-sub-items-group");
+      // Toggle showing categories (parents)
+      menuHeader.addEventListener("click", e => {
+        e.preventDefault();
+        mobileMenu.classList.toggle("show-categories");
+      });
 
-        parent.addEventListener("click", e => {
-          if (this.mobileNav === true) {
-            e.preventDefault();
-            console.log(this.mobileNav);
-          }
+      // Attach parent category toggle
+      categories.forEach(category => {
+        category.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
+          const target = e.target.parentElement.parentElement.querySelector(
+            ".category-list-sub-items-group"
+          );
+
+          this.toggleAll(categories);
+          this.toggleSubCategory(target);
         });
       });
-    }
-  }
 
-  mobileStickyNav() {
-    const breakpoint = window.matchMedia("(min-width:839px)");
-    if (breakpoint.matches) {
-      const selector = `#${this.menu.id}`;
-      const check = inView.is(this.categoryList);
+      // parentCategories.forEach(item => {
+      //   const parent = item.querySelector(".category-list-parent");
+      //   const child = item.querySelector(".category-list-sub-items-group");
 
-      check
-        ? this.menu.classList.remove("mobile-active")
-        : this.menu.classList.add("mobile-active");
+      //   parent.addEventListener("click", e => {
+      //     if (this.mobileNav === true) {
+      //       e.preventDefault();
 
-      inView(selector)
-        .on("enter", el => {
-          if (this.mobileNav === true) {
-            el.classList.remove("mobile-active");
-          }
-        })
-        .on("exit", el => {
-          if (this.mobileNav === true) {
-            const check = el.classList.contains("mobile-active");
-            !check ? el.classList.add("mobile-active") : undefined;
-          }
-        });
+      //     }
+      //   });
+      // });
+
+      menu.appendChild(this.categoryClone);
     }
   }
 
@@ -100,17 +107,11 @@ export class CategoryMenu {
 
       inView(selector)
         .on("enter", el => {
-          if (this.desktopNav === true) {
-            el.classList.remove("nav-fixed");
-          }
+          el.classList.remove("nav-fixed");
         })
         .on("exit", el => {
-          if (this.desktopNav === true) {
-            const check = el.classList.contains("nav-fixed");
-            !check ? el.classList.add("nav-fixed") : undefined;
-          } else if (this.mobileNav === true) {
-            console.log("now in mobile nav");
-          }
+          const check = el.classList.contains("nav-fixed");
+          !check ? el.classList.add("nav-fixed") : undefined;
         });
     }
   }
@@ -120,19 +121,17 @@ export class CategoryMenu {
 
     const breakpointChecker = () => {
       if (breakpoint.matches) {
-        console.log("in desktop");
         // Desktop navigation version
         this.desktopNav = true;
         this.mobileNav = false;
       } else if (!breakpoint.matches) {
-        console.log("in mobile");
         // Mobile navigation version
         this.mobileNav = true;
         this.desktopNav = false;
 
         // remove sticky if enabled
         this.menu.classList.remove("nav-fixed");
-        this.toggleAll();
+        this.toggleAll(this.parentCategoryContainer);
       }
     };
 
@@ -147,19 +146,16 @@ export class CategoryMenu {
       const child = item.querySelector(".category-list-sub-items-group");
 
       parent.addEventListener("click", e => {
-        if (this.desktopNav === true) {
-          e.preventDefault();
-          this.toggleAll();
-          this.toggleSubCategory(child, parent);
-          console.log(e);
-        }
+        e.preventDefault();
+        this.toggleAll(this.parentCategoryContainer);
+        this.toggleSubCategory(child);
       });
     });
   }
 
-  toggleAll() {
+  toggleAll(parentContainer) {
     let i;
-    const parents = this.parentCategoryContainer;
+    const parents = parentContainer;
     for (i = 0; i < parents.length; ++i) {
       const parent = parents[i].querySelector(".category-list-parent");
       const child = parents[i].querySelector(".category-list-sub-items-group");
@@ -173,7 +169,7 @@ export class CategoryMenu {
     }
   }
 
-  toggleSubCategory(target, parent) {
+  toggleSubCategory(target) {
     const showSubCategory = KUTE.fromTo(
       target,
       {
@@ -188,12 +184,13 @@ export class CategoryMenu {
         duration: 150,
         complete: () => {
           target.classList.toggle("active");
-          parent.classList.toggle("active");
-          if (this.productGridContainer) {
-            const targetCategory = target.dataset.categoryId;
-            targetCategory
-              ? this.scrollFeaturedCategory(targetCategory)
-              : undefined;
+          if (this.desktopNav === true) {
+            if (this.productGridContainer) {
+              const targetCategory = target.dataset.categoryId;
+              targetCategory
+                ? this.scrollFeaturedCategory(targetCategory)
+                : undefined;
+            }
           }
         }
       }
