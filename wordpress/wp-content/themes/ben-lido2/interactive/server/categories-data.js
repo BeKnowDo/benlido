@@ -107,7 +107,7 @@ const categories = [
       {
         categoryID: "456",
         categoryTitle: "Category Name 3",
-        sku: "mmma",
+        sku: "mmmb",
         name: "Product Name",
         image: "/images/product-example.png",
         description:
@@ -118,7 +118,7 @@ const categories = [
       {
         categoryID: "456",
         categoryTitle: "Category Name 3",
-        sku: "mmma",
+        sku: "mmmc",
         name: "Product Name",
         image: "/images/product-example.png",
         description:
@@ -164,7 +164,7 @@ const categories = [
       {
         categoryID: "789",
         categoryTitle: "Category Name 4",
-        sku: "nnna",
+        sku: "nnnb",
         name: "Product Name",
         image: "/images/product-example.png",
         description:
@@ -175,7 +175,7 @@ const categories = [
       {
         categoryID: "789",
         categoryTitle: "Category Name 4",
-        sku: "nnna",
+        sku: "nnnc",
         name: "Product Name",
         image: "/images/product-example.png",
         description:
@@ -226,7 +226,7 @@ const categories = [
       {
         categoryID: "321",
         categoryTitle: "Category Name 1",
-        sku: "qqqa",
+        sku: "qqqb",
         name: "Product Name",
         image: "/images/product-example.png",
         description:
@@ -237,7 +237,7 @@ const categories = [
       {
         categoryID: "321",
         categoryTitle: "Category Name 1",
-        sku: "qqqb",
+        sku: "qqqc",
         name: "Product Name",
         image: "/images/product-example.png",
         description:
