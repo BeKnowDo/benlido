@@ -78,18 +78,6 @@ export class CategoryMenu {
         });
       });
 
-      // parentCategories.forEach(item => {
-      //   const parent = item.querySelector(".category-list-parent");
-      //   const child = item.querySelector(".category-list-sub-items-group");
-
-      //   parent.addEventListener("click", e => {
-      //     if (this.mobileNav === true) {
-      //       e.preventDefault();
-
-      //     }
-      //   });
-      // });
-
       menu.appendChild(this.categoryClone);
     }
   }

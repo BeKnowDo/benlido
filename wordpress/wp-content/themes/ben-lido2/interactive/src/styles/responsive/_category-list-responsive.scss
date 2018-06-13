@@ -65,20 +65,20 @@
 
       &-breadcrumbs {
         padding: 0;
-        position: relative;
 
         a {
           display: block;
-        }
+          position: relative;
 
-        &:after {
-          display: inline-block;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          padding: 0 0 0 5px;
-          font-family: "Font Awesome 5 Pro";
-          content: "\f078";
+          &:after {
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 0 0 5px;
+            font-family: "Font Awesome 5 Pro";
+            content: "\f078";
+          }
         }
       }
     }

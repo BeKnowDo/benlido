@@ -268,10 +268,18 @@ export class Cart {
         const text = button.querySelector(".add-to-cart-text");
         const inCartText = text.dataset.cartText;
 
-        // button.addEventListener("click", e => {});
+        // button.addEventListener("click", e => {
+        //   e.preventDefault();
+        //   const target = e.target;
+        //   if (target.classList.contains("in-cart") === false) {
+        //     button.classList.add("in-cart");
+        //     addItemIcon.click();
+        //   }
+        // });
 
         addItemIcon.addEventListener("click", e => {
           e.preventDefault();
+
           const addIcon = e.target;
           const sku = addIcon.dataset.sku ? addIcon.dataset.sku : undefined;
           const category = addIcon.dataset.category
