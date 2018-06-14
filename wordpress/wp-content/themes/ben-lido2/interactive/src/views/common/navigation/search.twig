@@ -1,35 +1,38 @@
 <div id="benlido-search-container" class="benlido-search-container">
-<i id="search-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
+  <i id="search-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
 
-  <form action="" methodd="get" class="form-group">
+  <div class="container max-width-lg">
+    <form action="" methodd="get" class="form-group">
 
-    <div class="columns col-gapless">
+      <div class="columns col-gapless">
 
-      <div class="column col-12">
-        <label class="form-label benlido-search-label" for="benlido-search-input">Search</label>
-      </div>
+        <div class="column col-12">
+          <label class="form-label benlido-search-label" for="benlido-search-input">Search</label>
+        </div>
 
-      <div class="column">
+        <div class="column">
 
-        <div class="columns col-gapless">
+          <div class="columns col-gapless">
 
-          <div class="column col-11">
-            <input class="form-input benlido-search-input" type="search" aria-label="search text" id="benlido-search-input" name="search" placeholder="Search for products..."/>
-          </div>
+            <div class="column col-11">
+              <input class="form-input benlido-search-input" type="search" aria-label="search text" id="benlido-search-input" name="search" placeholder="Search for products..."/>
+            </div>
 
-          <div class="column col-1">
-            <button>
-              <i class="fal fa-search"></i>
-            </button>
+            <div class="column col-1">
+              <button>
+                <i class="fal fa-search"></i>
+              </button>
+            </div>
+
           </div>
 
         </div>
-
       </div>
-    </div>
 
-  </form>
+    </form>
 
-  {# {% include 'common/category-list.twig', with { categoryItems:categoryItems } %} #}
+    {% include 'common/parent-category-list.twig', with { categoryItems:categoryItems } %}
+
+  </div>
 
 </div>

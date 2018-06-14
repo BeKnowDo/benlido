@@ -1,0 +1,9 @@
+.parent-category-list {
+  &-header {
+    padding: 60px 0 20px;
+    @include sentinel(22px, 400);
+  }
+  &-item {
+    display: block;
+  }
+}
