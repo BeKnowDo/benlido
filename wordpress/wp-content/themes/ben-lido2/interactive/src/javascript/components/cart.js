@@ -226,12 +226,52 @@ export class Cart {
         } else {
           this.updateCount(response);
           this.fillCart(response);
-          this.updateTileQuantity(response);
+          this.updateTileQuantity(response, item);
         }
       });
   }
 
-  updateTileQuantity(response) {}
+  updateTileQuantity(response, item) {
+    const buttons = this.addToCartButtons;
+    let targetButton;
+    let i, o;
+    let count;
+
+    const sku = item.sku;
+    const category = item.category;
+
+    for (o = 0; o < response.length; o++) {
+      const scope = response[o];
+      if (sku === scope.sku && category === scope.category) {
+        count = scope.count;
+      }
+    }
+
+    for (i = 0; i < buttons.length; i++) {
+      const button = buttons[i];
+      const buttonSku = button.dataset.sku;
+      const buttonCategory = button.dataset.category;
+      if (sku === buttonSku && category === buttonCategory) {
+        targetButton = button;
+        break;
+      }
+    }
+
+    const removeIcon = targetButton.querySelector(".fa-minus-circle");
+    const buttonText = targetButton.querySelector(".add-to-cart-text");
+    const defaultText = buttonText.dataset.defaultText;
+    const cartText = buttonText.dataset.cartText;
+
+    if (count) {
+      buttonText.innerHTML = `${count} ${cartText}`;
+    } else {
+      buttonText.innerHTML = defaultText;
+      targetButton.classList.remove("in-cart");
+      removeIcon.classList.add("hidden");
+    }
+
+    //
+  }
 
   removeFromMiniCart() {
     const cartItems = this.listContainer.querySelectorAll(
@@ -268,18 +308,8 @@ export class Cart {
         const text = button.querySelector(".add-to-cart-text");
         const inCartText = text.dataset.cartText;
 
-        // button.addEventListener("click", e => {
-        //   e.preventDefault();
-        //   const target = e.target;
-        //   if (target.classList.contains("in-cart") === false) {
-        //     button.classList.add("in-cart");
-        //     addItemIcon.click();
-        //   }
-        // });
-
         addItemIcon.addEventListener("click", e => {
           e.preventDefault();
-
           const addIcon = e.target;
           const sku = addIcon.dataset.sku ? addIcon.dataset.sku : undefined;
           const category = addIcon.dataset.category
