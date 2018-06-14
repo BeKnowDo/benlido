@@ -4,3 +4,4 @@ export * from "./product-image-carousel";
 export * from "./product-quantity";
 export * from "./category-menu";
 export * from "./cart";
+export * from "./search";

@@ -54,7 +54,7 @@
     transform: translate3d(0, -110%, 0);
     box-shadow: 0 -20px 27px 20px rgba(3, 3, 3, 0.8);
 
-    box-sizing: content-box;
+    box-sizing: border-box;
     width: 100%;
     padding: 40px 40px 60px 60px;
     z-index: 100;

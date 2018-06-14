@@ -4,9 +4,9 @@ import mojs from "mo-js";
 
 export class Cart {
   constructor() {
-    this.counter = document.querySelector("#navbar-item-counter") || undefined;
+    this.counter = document.getElementById("navbar-item-counter") || undefined;
     this.listContainer =
-      document.querySelector("#navbar-bag-list") || undefined;
+      document.getElementById("navbar-bag-list") || undefined;
     this.addToCartButtons =
       document.querySelectorAll(".add-to-cart") || undefined;
     this.removeFromKitButtons =
@@ -15,9 +15,9 @@ export class Cart {
       document.querySelectorAll(".fa-minus-circle") || undefined;
     this.swapFromCartButtons =
       document.querySelectorAll(".swap-from-cart") || undefined;
-    this.cart = document.querySelector("#benlido-cart") || undefined;
+    this.cart = document.getElementById("benlido-cart") || undefined;
     this.cartContainer =
-      document.querySelector("#navbar-bag-container") || undefined;
+      document.getElementById("navbar-bag-container") || undefined;
   }
 
   init() {
@@ -338,6 +338,7 @@ export class Cart {
                 } else {
                   this.updateCount(response);
                   this.fillCart(response);
+
                   // TODO: DRY
                   const match = response.filter(item => {
                     return item.sku === sku && item.category === category;
@@ -348,7 +349,6 @@ export class Cart {
                     button.classList.add("in-cart");
                     removeItemIcon.classList.remove("hidden");
                   }
-                  this.cartContainer.classList.add("active");
                 }
               });
           }

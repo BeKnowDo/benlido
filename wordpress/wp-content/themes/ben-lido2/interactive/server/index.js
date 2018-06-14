@@ -5,7 +5,7 @@ const myConfiguration = require("../config/paths");
 const isProduction = "production" === process.env.NODE_ENV;
 const fs = require("fs");
 const express = require("express");
-const helmet = require("helmet");
+const nocache = require("nocache");
 const browserSync = require("browser-sync");
 const chalk = require("chalk");
 const Twig = require("twig");
@@ -31,7 +31,7 @@ const cartFile = `${myConfiguration.fakeData}/cart.json`;
 // Twig cache
 // Twig.cache(false);
 const app = express();
-app.use(helmet.noCache());
+app.use(nocache());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -48,7 +48,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/build-a-kit", (req, res) => {
-  res.render("pages/build-a-kit");
+  res.render("pages/build-a-kit", {
+    categoryItems: categoryItems
+  });
 });
 
 app.get("/pick-a-kit", (req, res) => {
@@ -80,20 +82,23 @@ app.get("/kit-selected", (req, res) => {
       });
 
       res.render("pages/kit-selected", {
-        products: results
+        products: results,
+        customizeKit: false
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
 
       res.render("pages/kit-selected", {
-        products: originalProductData
+        products: originalProductData,
+        customizeKit: false
       });
     }
   } else {
     log(`We don't have items in our cart so just send product list`);
 
     res.render("pages/kit-selected", {
-      products: originalProductData
+      products: originalProductData,
+      customizeKit: false
     });
   }
 });

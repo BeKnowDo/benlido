@@ -1,20 +1,28 @@
 import KUTE from "kute.js";
 
-export class Navigation {
+export class Search {
   constructor() {
-    this.openTrigger = document.getElementById("navbar-trigger") || undefined;
-    this.menu = document.getElementById("navbar-dropdown") || undefined;
-    this.closeTrigger = document.getElementById("navbar-exit") || undefined;
+    this.openTrigger = document.getElementById("navbar-search") || undefined;
     this.overlay = document.getElementById("dimmed-overlay") || undefined;
-  }
-  init() {
-    this.enable();
+    this.closeTrigger = document.getElementById("search-exit") || undefined;
+    this.searchBox = document.getElementById("benlido-search-container");
   }
 
-  enable() {
+  init() {
+    this.search();
+    this.handleOverlayClick();
     this.openNavigation();
     this.closeNavigation();
-    this.handleOverlayClick();
+  }
+
+  search() {
+    if (this.searchIcon) {
+      const button = this.searchIcon;
+
+      button.addEventListener("click", e => {
+        e.preventDefault();
+      });
+    }
   }
 
   openNavigation() {
@@ -26,17 +34,6 @@ export class Navigation {
       : undefined;
   }
 
-  openNavigationAnimation() {
-    const revealAnimation = KUTE.fromTo(
-      this.menu,
-      { translate3d: [0, "-100%", 0], opacity: 0 },
-      { translate3d: [0, 0, 0], opacity: 1 },
-      { duration: 150 }
-    );
-    revealAnimation.start();
-    this.toggleOverlay(this.overlay);
-  }
-
   closeNavigation() {
     this.closeTrigger
       ? (this.closeTrigger.onclick = () => {
@@ -45,9 +42,20 @@ export class Navigation {
       : undefined;
   }
 
+  openNavigationAnimation() {
+    const revealAnimation = KUTE.fromTo(
+      this.searchBox,
+      { translate3d: [0, "-100%", 0], opacity: 0 },
+      { translate3d: [0, 0, 0], opacity: 1 },
+      { duration: 150 }
+    );
+    revealAnimation.start();
+    this.toggleOverlay(this.overlay);
+  }
+
   closeAnimationAnimation() {
     const hideAnimation = KUTE.fromTo(
-      this.menu,
+      this.searchBox,
       { translate3d: [0, 0, 0], opacity: 1 },
       { translate3d: [0, "-100%", 0], opacity: 0 },
       { duration: 150 }

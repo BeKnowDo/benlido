@@ -8,18 +8,18 @@ export class CategoryMenu {
     this.desktopNav = false;
 
     this.openTrigger =
-      document.querySelector("#category-list-all-header") || undefined;
-    this.menu = document.querySelector("#category-list") || undefined;
+      document.getElementById("category-list-all-header") || undefined;
+    this.menu = document.getElementById("category-list") || undefined;
     this.categoryList =
-      document.querySelector("#category-list-wrapper") || undefined;
+      document.getElementById("category-list-wrapper") || undefined;
     this.menuCategoryHeader =
-      document.querySelector("#category-list-breadcrumbs") || undefined;
+      document.getElementById("category-list-breadcrumbs") || undefined;
     this.parentCategoryContainer =
       document.querySelectorAll(".category-list-parent-group") || undefined;
     this.subCategories =
       document.querySelectorAll(".category-list-sub-items-group") || undefined;
     this.productGridContainer =
-      document.querySelector("#shop-landing-featured-products") || undefined;
+      document.getElementById("shop-landing-featured-products") || undefined;
   }
   init() {
     if (this.menu) {

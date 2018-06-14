@@ -37,8 +37,6 @@ router.post("/add-to-cart", (req, res) => {
     count: 1
   };
 
-  log(newCartItem);
-
   // If cart JSON exists, store existing values
   if (check) {
     // Store existing values
@@ -123,7 +121,7 @@ router.post("/remove-from-cart", (req, res) => {
       const category = cartItems[i].category;
       if (sku === removeItem.sku && category === removeItem.category) {
         cartItems[i].count = parseInt(cartItems[i].count) - 1;
-        log(cartItems[i].count);
+
         if (cartItems[i].count <= 0) {
           cartItems.splice(i, 1);
         }
