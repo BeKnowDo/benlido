@@ -47,7 +47,10 @@ function bl_storefront_overrides() {
 
 	if (is_woocommerce()) {
 		add_action('woocommerce_before_main_content','bl_breadcrumb',4);
-		add_action('woocommerce_before_main_content','bl_header',5);
+		if (is_shop() || is_product_category() || is_product_tag()) {
+			add_action('woocommerce_before_main_content','bl_header',5);
+		}
+		
 	}
 }
 
@@ -242,12 +245,14 @@ if ( ! function_exists( 'storefront_before_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_before_content() {
+		if (is_shop() || is_product_category() || is_product_tag()):
 		?>
 		<div class="bg-grey">
 			<div class="max-width-xl shop-landing-featured">
 				<div class="columns">
-		<?php do_action( 'storefront_sidebar' );?>
+					<?php do_action( 'storefront_sidebar' );?>
 	<?php
+		endif;
 	}
 }
 
@@ -260,11 +265,13 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_after_content() {
+		if (is_shop() || is_product_category() || is_product_tag()):
 		?>
 				</div>
 			</div>
 		</div>
 		<?php
+		endif;
 	}
 }
 
