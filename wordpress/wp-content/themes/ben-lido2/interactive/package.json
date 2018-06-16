@@ -4,7 +4,7 @@
   "description": "Ben-Lido Frontend Template",
   "main": "index.js",
   "scripts": {
-    "json": "node scripts/json-seeder.js quiet=true --users=20",
+    "json": "node scripts/seeder.js quiet=true",
     "server": "nodemon -e js,twig server",
     "api": "concurrently \"yarn server\" \"yarn server\" \"yarn json\"",
     "fed": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn webpack\" \"yarn server\"",
@@ -47,6 +47,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "image-downloader": "^3.4.1",
     "imagemin": "^5.3.1",
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "^5.1.0",
@@ -57,11 +58,12 @@
     "onchange": "^4.0.0",
     "opn": "^5.3.0",
     "postcss": "^6.0.22",
+    "qs": "^6.5.2",
     "standard": "*",
     "twig": "^1.12.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^2.1.4",
-    "yargs": "^11.1.0"
+    "yargs": "^11.0.0"
   },
   "testURL": "http://localhost",
   "dependencies": {

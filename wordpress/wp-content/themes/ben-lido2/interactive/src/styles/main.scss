@@ -5,13 +5,15 @@
 
 // Variables and Mixins
 @import "./variables";
-@import "./spectre-overrides";
 @import "./mixins";
+@import "./spectre-overrides";
 
 // Libraries
 @import "node_modules/spectre.css/src/spectre";
 @import "node_modules/swiper/dist/css/swiper";
 @import "node_modules/selectivity/styles/selectivity";
+
+// Overrides
 @import "./swiper-overrides";
 
 // Globals
@@ -53,10 +55,12 @@
 @import "./category-list";
 @import "./parent-category-list";
 @import "./shop-landing-rows";
-@import "./search";
+@import "./search-navigation";
+@import "./search-in-page";
 
 // Page Specific
 @import "./pages/kit-selected";
+@import "./pages/search-results";
 
 // Responsive
 @import "./responsive";

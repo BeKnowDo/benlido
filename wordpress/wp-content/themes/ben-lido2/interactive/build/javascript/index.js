@@ -39013,14 +39013,16 @@ var CategoryMenu = exports.CategoryMenu = function () {
       var _this3 = this;
 
       this.parentCategoryContainer.forEach(function (item) {
-        var parent = item.querySelector(".category-list-parent");
-        var child = item.querySelector(".category-list-sub-items-group");
+        var parent = item.querySelector(".category-list-parent") || undefined;
+        var child = item.querySelector(".category-list-sub-items-group") || undefined;
 
-        parent.addEventListener("click", function (e) {
-          e.preventDefault();
-          _this3.toggleAll(_this3.parentCategoryContainer);
-          _this3.toggleSubCategory(child);
-        });
+        if (parent && child) {
+          parent.addEventListener("click", function (e) {
+            e.preventDefault();
+            _this3.toggleAll(_this3.parentCategoryContainer);
+            _this3.toggleSubCategory(child);
+          });
+        }
       });
     }
   }, {
@@ -39032,11 +39034,13 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var parent = parents[i].querySelector(".category-list-parent");
         var child = parents[i].querySelector(".category-list-sub-items-group");
 
-        if (parent.classList.contains("active") === true) {
-          parent.classList.remove("active");
-        }
-        if (child.classList.contains("active") === true) {
-          child.classList.remove("active");
+        if (parent && child) {
+          if (parent.classList.contains("active") === true) {
+            parent.classList.remove("active");
+          }
+          if (child.classList.contains("active") === true) {
+            child.classList.remove("active");
+          }
         }
       }
     }
@@ -39465,7 +39469,7 @@ var Search = exports.Search = function () {
     this.openTrigger = document.getElementById("navbar-search") || undefined;
     this.overlay = document.getElementById("dimmed-overlay") || undefined;
     this.closeTrigger = document.getElementById("search-exit") || undefined;
-    this.searchBox = document.getElementById("benlido-search-container");
+    this.searchBox = document.getElementById("benlido-search-container") || undefined;
   }
 
   _createClass(Search, [{
@@ -39509,16 +39513,20 @@ var Search = exports.Search = function () {
   }, {
     key: "openNavigationAnimation",
     value: function openNavigationAnimation() {
-      var revealAnimation = _kute2.default.fromTo(this.searchBox, { translate3d: [0, "-100%", 0], opacity: 0 }, { translate3d: [0, 0, 0], opacity: 1 }, { duration: 150 });
-      revealAnimation.start();
-      this.toggleOverlay(this.overlay);
+      if (this.searchBox) {
+        var revealAnimation = _kute2.default.fromTo(this.searchBox, { translate3d: [0, "-110%", 0], opacity: 0 }, { translate3d: [0, 0, 0], opacity: 1 }, { duration: 150 });
+        revealAnimation.start();
+        this.toggleOverlay(this.overlay);
+      }
     }
   }, {
     key: "closeAnimationAnimation",
     value: function closeAnimationAnimation() {
-      var hideAnimation = _kute2.default.fromTo(this.searchBox, { translate3d: [0, 0, 0], opacity: 1 }, { translate3d: [0, "-100%", 0], opacity: 0 }, { duration: 150 });
-      hideAnimation.start();
-      this.toggleOverlay(this.overlay);
+      if (this.searchBox) {
+        var hideAnimation = _kute2.default.fromTo(this.searchBox, { translate3d: [0, 0, 0], opacity: 1 }, { translate3d: [0, "-100%", 0], opacity: 0 }, { duration: 150 });
+        hideAnimation.start();
+        this.toggleOverlay(this.overlay);
+      }
     }
   }, {
     key: "toggleOverlay",

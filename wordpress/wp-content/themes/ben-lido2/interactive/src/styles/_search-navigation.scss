@@ -1,0 +1,62 @@
+.benlido-search {
+  &-container {
+    transform: translate3d(0, -110%, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    padding: 40px 10px 40px;
+    margin: 0;
+    background-color: $brown-grey;
+    box-sizing: border-box;
+
+    button {
+      background-color: transparent;
+      border: 0;
+    }
+
+    .fa-search {
+      color: $white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .search-in-page {
+      &-header {
+        color: $white;
+        margin: 0 auto 30px;
+      }
+      button {
+        max-width: none;
+        .fa-search {
+          font-size: 30px;
+        }
+      }
+    }
+
+    .parent-category-list {
+      padding-left: $unit-3;
+      padding-right: $unit-3;
+    }
+
+    .benlido-search-input {
+      @include knockout32(18px, 400);
+      border: 0;
+      border-bottom: 1px solid $white;
+      border-radius: 4px;
+      box-shadow: none;
+      display: block;
+      &:focus,
+      &:active {
+        box-shadow: none;
+      }
+    }
+  }
+  &-label {
+    @include sentinel(40px, 400);
+    margin-bottom: 40px;
+    color: $white;
+  }
+}

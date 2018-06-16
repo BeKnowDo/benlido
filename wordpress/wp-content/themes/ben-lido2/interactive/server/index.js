@@ -10,8 +10,7 @@ const browserSync = require("browser-sync");
 const chalk = require("chalk");
 const Twig = require("twig");
 const path = require("path");
-const opn = require("opn");
-const faker = require("faker");
+
 const bodyParser = require("body-parser");
 const logNotify = chalk.bgKeyword("white").keyword("red");
 const errorNotify = chalk.bgYellow.red;
@@ -20,9 +19,11 @@ const log = console.log;
 const categoriesAPI = require("./routes/categories-api");
 const cartAPI = require("./routes/cart-api");
 const productAPI = require("./routes/product-api");
-const productData = require("./product-data");
-const originalProductData = require("./product-data");
-const categoryItems = require("./categories-data");
+const productData = require("../fake-data/products.json");
+const productImages = require("./product-data");
+const associatedProducts = require("./product-data");
+const originalProductData = require("../fake-data/products.json");
+const categoryItems = require("../fake-data/categories.json");
 const cartJson = require("./read-json-file");
 
 // Dummy data for routes
@@ -44,7 +45,9 @@ app.use("/javascript", express.static(path.join(myConfiguration.jsPath)));
 app.use("/styles", express.static(path.join(myConfiguration.cssDestination)));
 
 app.get("/", (req, res) => {
-  res.render("pages/home");
+  res.render("pages/home", {
+    categoryItems: categoryItems
+  });
 });
 
 app.get("/build-a-kit", (req, res) => {
@@ -54,7 +57,9 @@ app.get("/build-a-kit", (req, res) => {
 });
 
 app.get("/pick-a-kit", (req, res) => {
-  res.render("pages/pick-a-kit");
+  res.render("pages/pick-a-kit", {
+    categoryItems: categoryItems
+  });
 });
 
 app.get("/kit-selected", (req, res) => {
@@ -83,13 +88,14 @@ app.get("/kit-selected", (req, res) => {
 
       res.render("pages/kit-selected", {
         products: results,
+        categoryItems: categoryItems,
         customizeKit: false
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
-
       res.render("pages/kit-selected", {
-        products: originalProductData,
+        products: originalProductData.products,
+        categoryItems: categoryItems,
         customizeKit: false
       });
     }
@@ -97,7 +103,7 @@ app.get("/kit-selected", (req, res) => {
     log(`We don't have items in our cart so just send product list`);
 
     res.render("pages/kit-selected", {
-      products: originalProductData,
+      products: originalProductData.products,
       customizeKit: false
     });
   }
@@ -107,16 +113,20 @@ app.get("/categories/:id", (req, res) => {
   const requestedCategory = req.params.id ? req.params.id : undefined;
 
   const heroData = categoryItems.filter(item => {
-    if (requestedCategory === item.id) {
+    if (requestedCategory === item.categoryID) {
       return item;
     }
-  })[0].name;
+  })[0].categoryTitle;
 
   const check = fs.existsSync(cartFile);
   // If cart JSON exists, store existing values
   if (check) {
     const cartItems = cartJson.read();
-    const results = productData;
+    let results = originalProductData.filter(item => {
+      if (item.categoryID === requestedCategory) {
+        return item;
+      }
+    });
 
     if (cartItems.length > 0) {
       log(`We have items in our cart so add counts for each matched product`);
@@ -171,7 +181,6 @@ app.get("/shop-landing", (req, res) => {
   // If cart JSON exists, store existing values
   if (check) {
     const cartItems = cartJson.read();
-    const results = productData;
 
     if (cartItems.length > 0) {
       log(`We have items in our cart so add counts for each matched product`);
@@ -204,24 +213,6 @@ app.get("/shop-landing", (req, res) => {
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
-
-      categoryItems.map(category => {
-        category.featured.map(item => {
-          let i;
-          for (i = 0; i < cartItems.length; i++) {
-            const prodSku = item.sku;
-            const prodCategory = item.categoryID;
-            const cartSku = cartItems[i].sku;
-            const cartCategory = cartItems[i].category;
-
-            if (prodSku === cartSku && prodCategory === cartCategory) {
-              const count = cartItems[i].count;
-              item.count = count;
-            }
-          }
-        });
-      });
-
       res.render("pages/shop-landing", {
         categoryItems: categoryItems,
         heroData: [
@@ -249,58 +240,17 @@ app.get("/shop-landing", (req, res) => {
 });
 
 app.get("/shipping-schedule", (req, res) => {
-  res.render("pages/shipping-schedule");
+  res.render("pages/shipping-schedule", {
+    categoryItems: categoryItems
+  });
 });
 
 app.get("/product/:id", (req, res) => {
   res.render("pages/product", {
     customizeKit: true,
-    associatedProducts: [
-      {
-        category: "123",
-        sku: "AC7808a",
-        header: "Bath &amp; Body",
-        price: "2.25",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        image: "/images/product-example.png",
-        href: "product/234"
-      },
-      {
-        category: "456",
-        sku: "AC7808b",
-        header: "Bath &amp; Body",
-        price: "3.45",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        image: "/images/product-example.png",
-        href: "product/234"
-      },
-      {
-        category: "123",
-        sku: "AC7808c",
-        header: "Bath &amp; Body",
-        price: "4.25",
-        description:
-          "Colgate Total Advanced Pro-sheild Mouthwash Peppermint...",
-        image: "/images/product-example.png",
-        href: "product/234"
-      }
-    ],
-    productImages: [
-      {
-        url: "/images/product-image-1.png",
-        altText: "Product alt text"
-      },
-      {
-        url: "/images/product-image-2.png",
-        altText: "Product alt text"
-      },
-      {
-        url: "/images/product-image-3.png",
-        altText: "Product alt text"
-      }
-    ],
+    associatedProducts: associatedProducts.associatedProducts,
+    productImages: productImages.productImages,
+    categoryItems: categoryItems,
     productInformation: [
       {
         category: "123",
@@ -320,13 +270,32 @@ app.get("/product/:id", (req, res) => {
   });
 });
 
+app.get("/search", (req, res) => {
+  const searchQuery = req.query;
+
+  const queryTerm = searchQuery.search;
+
+  const results = productData.filter(item => {
+    const test = item.name
+      .toString()
+      .toLowerCase()
+      .indexOf(queryTerm);
+    if (test !== -1) {
+      return item;
+    }
+  });
+
+  res.render("pages/search", {
+    categoryItems: categoryItems,
+    queryTerm,
+    products: results,
+    count: results.length
+  });
+});
+
 app.use("/json", categoriesAPI);
 app.use("/json", cartAPI);
 app.use("/json", productAPI);
-
-app.get("/search", (req, res) => {
-  return res.send("search page");
-});
 
 const listening = function() {
   if (!isProduction) {

@@ -1,7 +1,7 @@
 const fs = require("fs-extra");
 const express = require("express");
 const config = require("../../config/paths");
-const products = require("../product-data");
+const products = require("../../fake-data/products.json");
 const readJsonFile = require("../read-json-file");
 const log = console.log;
 const clearConsole = require("../clear-console");
@@ -21,6 +21,7 @@ router.get("/products", (req, res) => {
   if (check) {
     const cartItems = readJsonFile.read();
     const results = products;
+    console.log(results);
     results.map(item => {
       let i;
       for (i = 0; i < cartItems.length; i++) {

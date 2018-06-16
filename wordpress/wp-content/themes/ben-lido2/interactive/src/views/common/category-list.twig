@@ -9,17 +9,23 @@
       </h4>
 
       {% for category in categoryItems %}
-        <div class="category-list-parent-group" data-category-id="{{category.id}}">
+        <div class="category-list-parent-group" data-category-id="{{category.categoryID}}">
           <h4 class="category-list-parent">
-            <a href="{{ category.href }}" title="" data-category-id="{{category.id}}">{{ category.name }}</a>
+            <a href="{{ category.href }}" title="" data-category-id="{{category.categoryID}}">{{ category.categoryTitle }}</a>
           </h4>
           {% if category.subs %}
-            <div class="category-list-sub-items-group" data-category-id="{{category.id}}">
+            <div class="category-list-sub-items-group" data-category-id="{{category.categoryID}}">
               <ul class="category-list-sub-items">
+                <li>
+                  <a href="{{ category.href }}" title="{{ category.categoryTitle }}" data-category-id="{{category.categoryID}}">
+                    View all
+                    {{ category.categoryTitle }}
+                  </a>
+                </li>
                 {% for item in category.subs %}
                   <li>
-                    <a href="{{ item.href }}" title="{{ item.name }}" data-category-id="{{category.id}}">
-                      {{ item.name }}
+                    <a href="{{ item.href }}" title="{{ item.categoryTitle }}" data-category-id="{{category.categoryID}}">
+                      {{ item.categoryTitle }}
                     </a>
                   </li>
                 {% endfor %}

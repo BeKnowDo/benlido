@@ -1,28 +1,37 @@
-.max-width-xl {
+.max-width {
+  
+  &-xl {
   max-width: $size-xl;
-  padding: 0 10px;
   margin: 0 auto;
+  }
+  
+  &-lg {
+    max-width: $size-lg;
+    margin: 0 auto;
+  }
+  
+  &-md {
+    max-width: $size-md;
+    margin: 0 auto;
+  }
+
+  &-sm {
+    max-width: $size-sm;
+    margin: 0 auto;
+  }
+
 }
 
-.max-width-lg {
-  max-width: $size-lg;
-  padding: 0 10px;
-  margin: 0 auto;
+.bg {
+  &-white {
+    background-color: $white;
+  }
+  
+  &-grey {
+    background-color: $silver-white;
+  }
 }
 
-.max-width-md {
-  max-width: $size-md;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
-.bg-grey {
-  background-color: $silver-white;
-}
-
-.bg-white {
-  background-color: $white;
-}
 
 .triangle-background {
   background-image: url(/images/triangle.svg);
@@ -32,13 +41,15 @@
   background-size: 103%;
 }
 
-.border-top-grey {
-  border-top: $grey-border;
+.border{
+  &-top-grey {
+    border-top: $grey-border;
+  }
+  &-bottom-grey {
+    border-bottom: $grey-border;
+  }
 }
 
-.border-bottom-grey {
-  border-bottom: $grey-border;
-}
 
 .position-relative {
   position: relative;

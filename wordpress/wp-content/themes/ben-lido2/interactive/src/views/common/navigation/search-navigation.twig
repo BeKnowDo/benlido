@@ -1,0 +1,19 @@
+<div id="benlido-search-container" class="benlido-search-container">
+  <i id="search-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
+
+  <div class="container max-width-lg">
+    <form action="/search" methodd="get" class="form-group">
+
+      <div class="columns col-gapless">
+        <div class="column">
+          {% include 'common/navigation/search-in-page.twig' %}
+        </div>
+      </div>
+
+    </form>
+
+    {% include 'common/parent-category-list.twig', with { categoryItems:categoryItems } %}
+
+  </div>
+
+</div>

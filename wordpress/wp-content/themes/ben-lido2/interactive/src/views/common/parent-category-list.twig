@@ -10,8 +10,8 @@
     <div class="columns">
       <ul class="column col-xs-12 col-6 parent-category-list">
         {% for category in categoryItems %}
-          <li class="parent-category-list-item" data-category-id="{{category.id}}">
-            <a href="{{ category.href }}" title="" data-category-id="{{category.id}}">{{ category.name }}</a>
+          <li class="parent-category-list-item" data-category-id="{{category.categoryID}}">
+            <a href="{{ category.href }}" title="" data-category-id="{{category.categoryID}}">{{ category.categoryTitle }}</a>
           </li>
 
           {% if loop.index is divisibleby(3)and not loop.last %}

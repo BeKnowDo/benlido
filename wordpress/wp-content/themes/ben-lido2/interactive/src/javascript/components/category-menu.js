@@ -125,14 +125,17 @@ export class CategoryMenu {
 
   attachCategoryToggles() {
     this.parentCategoryContainer.forEach(item => {
-      const parent = item.querySelector(".category-list-parent");
-      const child = item.querySelector(".category-list-sub-items-group");
+      const parent = item.querySelector(".category-list-parent") || undefined;
+      const child =
+        item.querySelector(".category-list-sub-items-group") || undefined;
 
-      parent.addEventListener("click", e => {
-        e.preventDefault();
-        this.toggleAll(this.parentCategoryContainer);
-        this.toggleSubCategory(child);
-      });
+      if (parent && child) {
+        parent.addEventListener("click", e => {
+          e.preventDefault();
+          this.toggleAll(this.parentCategoryContainer);
+          this.toggleSubCategory(child);
+        });
+      }
     });
   }
 
@@ -143,11 +146,13 @@ export class CategoryMenu {
       const parent = parents[i].querySelector(".category-list-parent");
       const child = parents[i].querySelector(".category-list-sub-items-group");
 
-      if (parent.classList.contains("active") === true) {
-        parent.classList.remove("active");
-      }
-      if (child.classList.contains("active") === true) {
-        child.classList.remove("active");
+      if (parent && child) {
+        if (parent.classList.contains("active") === true) {
+          parent.classList.remove("active");
+        }
+        if (child.classList.contains("active") === true) {
+          child.classList.remove("active");
+        }
       }
     }
   }

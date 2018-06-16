@@ -1,0 +1,39 @@
+.search-in-page {
+  padding-left: $unit-3;
+  padding-right: $unit-3;
+
+  &-input {
+    @include sentinel(18px, 400);
+    background-color: $silver-white;
+    border: $grey-border;
+    border-radius: 4px 0 0 4px;
+    display: block;
+    height: 100%;
+    padding: 14px;
+    color: $grey;
+  }
+
+  &-header {
+    font-size: 75px;
+    margin: 44px auto;
+  }
+
+  &-results-header {
+    @include sentinel(20px, 400);
+    margin-bottom: 66px;
+    color: $medium-grey;
+    padding: 66px 0 0;
+  }
+
+  button {
+    background-color: $brown-grey;
+    border: 0;
+    border-radius: 0 4px 4px 0;
+    color: $white;
+    font-size: 24px;
+    display: block;
+    max-width: 60px;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,5 +1,5 @@
 .navbar {
-  padding: 10px 0;
+  padding: 10px;
   z-index: 100;
 
   &-product-name {
@@ -101,6 +101,8 @@
     &-cart {
       display: block;
       cursor: pointer;
+      position: relative;
+      z-index: 10;
     }
     &-account {
       color: $brown-grey;

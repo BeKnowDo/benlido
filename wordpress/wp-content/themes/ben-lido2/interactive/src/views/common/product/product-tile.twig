@@ -14,16 +14,16 @@
 
   <div class="text-center">
 
-    {% if product.header is defined %}
-      <h3 class="product-tile-header">{{product.header}}</h3>
+    {% if product.name is defined %}
+      <h3 class="product-tile-header">{{product.name}}</h3>
     {% endif %}
 
-    {% if product.categoryTitle is defined %}
+    {# {% if product.categoryTitle is defined %}
       <h3 class="product-tile-header">{{product.categoryTitle}}</h3>
-    {% endif %}
+    {% endif %} #}
 
-    <a class="product-tile-link" href="{{product.href}}" title="{{product.header}}">
-      <img class="product-tile-image" alt="{{product.header}}" itemprop="image" src="{{product.image}}"/>
+    <a class="product-tile-link" href="{{product.href}}" title="{{product.name}}">
+      <img class="product-tile-image" alt="{{product.name}}" itemprop="image" src="{{product.image}}"/>
       <span class="product-tile-hover">VIEW DETAILS</span>
     </a>
 
