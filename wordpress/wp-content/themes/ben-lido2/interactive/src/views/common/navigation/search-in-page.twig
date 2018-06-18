@@ -1,31 +1,31 @@
 {% if queryTerm is defined %}
-  {% set term = queryTerm %}
+    {% set term = queryTerm %}
 {% else %}
-  {% set term = '' %}
+    {% set term = '' %}
 {% endif %}
 
 <form action="/search" method="get" class="columns col-gapless search-in-page">
-  <div class="column col-10 col-mr-auto">
-    <h1 class="search-in-page-header text-center">SEARCH</h1>
-  </div>
-
-  <div class="column col-10">
-    <input value="{{term}}" class="form-input benlido-search-input search-in-page-input" type="search" aria-label="search text" id="benlido-search-input" name="search" placeholder="Search for products..."/>
-  </div>
-
-  <div class="column col-xs-2 col-sm-2 col-md-2 col-1">
-    <button>
-      <i class="fal fa-search"></i>
-    </button>
-  </div>
-
-  {% if products is defined %}
-
-    <div class="column col-12">
-      <h4 class="search-in-page-results-header text-center">{{count}}
-        Results for "{{queryTerm}}"</h4>
+    <div class="column col-12 col-mr-auto">
+        <h1 class="search-in-page-header text-center">SEARCH</h1>
     </div>
 
-  {% endif %}
+    <div class="column col-10">
+        <input value="{{term}}" class="form-input benlido-search-input search-in-page-input" type="search" aria-label="search text" id="benlido-search-input" name="search" placeholder="Search for products..."/>
+    </div>
+
+    <div class="column col-xs-2 col-sm-2 col-md-2 col-1">
+        <button>
+            <i class="fal fa-search"></i>
+        </button>
+    </div>
+
+    {% if products is defined %}
+
+        <div class="column col-12">
+            <h4 class="search-in-page-results-header text-center">{{count}}
+                Results for "{{queryTerm}}"</h4>
+        </div>
+
+    {% endif %}
 
 </form>

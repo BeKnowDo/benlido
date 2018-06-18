@@ -3,7 +3,6 @@ import KUTE from "kute.js";
 export class Search {
   constructor() {
     this.openTrigger = document.getElementById("navbar-search") || undefined;
-    this.overlay = document.getElementById("dimmed-overlay") || undefined;
     this.closeTrigger = document.getElementById("search-exit") || undefined;
     this.searchBox =
       document.getElementById("benlido-search-container") || undefined;
@@ -11,7 +10,6 @@ export class Search {
 
   init() {
     this.search();
-    this.handleOverlayClick();
     this.openNavigation();
     this.closeNavigation();
   }
@@ -52,7 +50,6 @@ export class Search {
         { duration: 150 }
       );
       revealAnimation.start();
-      this.toggleOverlay(this.overlay);
     }
   }
 
@@ -65,21 +62,6 @@ export class Search {
         { duration: 150 }
       );
       hideAnimation.start();
-      this.toggleOverlay(this.overlay);
     }
-  }
-
-  toggleOverlay() {
-    if (this.overlay) {
-      this.overlay.classList.toggle("active");
-    }
-  }
-
-  handleOverlayClick() {
-    this.overlay
-      ? (this.overlay.onclick = () => {
-          this.closeAnimationAnimation();
-        })
-      : undefined;
   }
 }

@@ -39283,9 +39283,9 @@ var Navigation = exports.Navigation = function () {
     value: function handleOverlayClick() {
       var _this3 = this;
 
-      this.overlay ? this.overlay.onclick = function () {
+      this.overlay ? this.overlay.addEventListener("click", function (e) {
         _this3.closeAnimationAnimation();
-      } : undefined;
+      }) : undefined;
     }
   }]);
 
@@ -39467,7 +39467,6 @@ var Search = exports.Search = function () {
     _classCallCheck(this, Search);
 
     this.openTrigger = document.getElementById("navbar-search") || undefined;
-    this.overlay = document.getElementById("dimmed-overlay") || undefined;
     this.closeTrigger = document.getElementById("search-exit") || undefined;
     this.searchBox = document.getElementById("benlido-search-container") || undefined;
   }
@@ -39476,7 +39475,6 @@ var Search = exports.Search = function () {
     key: "init",
     value: function init() {
       this.search();
-      this.handleOverlayClick();
       this.openNavigation();
       this.closeNavigation();
     }
@@ -39516,7 +39514,6 @@ var Search = exports.Search = function () {
       if (this.searchBox) {
         var revealAnimation = _kute2.default.fromTo(this.searchBox, { translate3d: [0, "-110%", 0], opacity: 0 }, { translate3d: [0, 0, 0], opacity: 1 }, { duration: 150 });
         revealAnimation.start();
-        this.toggleOverlay(this.overlay);
       }
     }
   }, {
@@ -39525,24 +39522,7 @@ var Search = exports.Search = function () {
       if (this.searchBox) {
         var hideAnimation = _kute2.default.fromTo(this.searchBox, { translate3d: [0, 0, 0], opacity: 1 }, { translate3d: [0, "-100%", 0], opacity: 0 }, { duration: 150 });
         hideAnimation.start();
-        this.toggleOverlay(this.overlay);
       }
-    }
-  }, {
-    key: "toggleOverlay",
-    value: function toggleOverlay() {
-      if (this.overlay) {
-        this.overlay.classList.toggle("active");
-      }
-    }
-  }, {
-    key: "handleOverlayClick",
-    value: function handleOverlayClick() {
-      var _this3 = this;
-
-      this.overlay ? this.overlay.onclick = function () {
-        _this3.closeAnimationAnimation();
-      } : undefined;
     }
   }]);
 

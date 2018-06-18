@@ -61,10 +61,9 @@ export class Navigation {
       this.overlay.classList.toggle("active");
     }
   }
-
   handleOverlayClick() {
     this.overlay
-      ? (this.overlay.onclick = () => {
+      ? this.overlay.addEventListener("click", e => {
           this.closeAnimationAnimation();
         })
       : undefined;
