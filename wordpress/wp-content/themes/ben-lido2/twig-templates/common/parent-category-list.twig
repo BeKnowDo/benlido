@@ -1,0 +1,32 @@
+{% if categoryItems is defined %}
+  {# DAVE: Line #17 can be set to any limit - set to 3 by default #}
+
+  <div class="parent-category-list">
+
+    <h4 class="parent-category-list-header">
+      <a href="/shop-landing" id="parent-category-list-all-header" class="parent-category-list-all-header">Categories:</a>
+    </h4>
+
+    <div class="columns">
+      <ul class="column col-xs-12 col-6 parent-category-list">
+        {% for category in categoryItems %}
+          <li class="parent-category-list-item" data-category-id="{{category.categoryID}}">
+            <a href="{{ category.href }}" title="" data-category-id="{{category.categoryID}}">{{ category.categoryTitle }}</a>
+          </li>
+
+          {% if loop.index is divisibleby(3)and not loop.last %}
+          </ul>
+
+          <ul class="column col-xs-12 col-6 parent-category-list">
+
+          {% endif %}
+
+        {% endfor %}
+
+      </ul>
+
+    </div>
+
+  </div>
+
+{% endif %}

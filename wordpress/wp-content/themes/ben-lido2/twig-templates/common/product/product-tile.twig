@@ -1,7 +1,9 @@
 {% if customizeKit is defined %}
-
-  {% set removeSwap = true %}
-
+  {% if customizeKit == true %}
+    {% set removeSwap = false %}
+  {% else %}
+    {% set removeSwap = true %}
+  {% endif %}
 {% else %}
   {% set removeSwap = false %}
 {% endif %}
@@ -12,16 +14,16 @@
 
   <div class="text-center">
 
-    {% if product.header is defined %}
-      <h3 class="product-tile-header">{{product.header}}</h3>
+    {% if product.name is defined %}
+      <h3 class="product-tile-header">{{product.name}}</h3>
     {% endif %}
 
-    {% if product.categoryTitle is defined %}
+    {# {% if product.categoryTitle is defined %}
       <h3 class="product-tile-header">{{product.categoryTitle}}</h3>
-    {% endif %}
+    {% endif %} #}
 
-    <a class="product-tile-link" href="{{product.href}}" title="{{product.header}}">
-      <img class="product-tile-image" alt="{{product.header}}" itemprop="image" src="{{product.image}}"/>
+    <a class="product-tile-link" href="{{product.href}}" title="{{product.name}}">
+      <img class="product-tile-image" alt="{{product.name}}" itemprop="image" src="{{product.image}}"/>
       <span class="product-tile-hover">VIEW DETAILS</span>
     </a>
 
@@ -33,15 +35,15 @@
   </div>
 
   {% if removeSwap == true %}
-    <div class="btn btn-lg btn-block btn-primary btn-selected">
+    <button class="btn btn-lg btn-block btn-primary btn-selected" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">
       <span class="btn-selected-remove remove-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Remove</span>
       <a class="btn-selected-swap swap-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Swap</a>
-    </div>
+    </button>
 
   {% else %}
     <button class="btn btn-lg btn-block btn-primary add-to-cart
     {{ product.count ? 'in-cart' : ' ' }}
-    ">
+    " data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">
       <i class="far fa-minus-circle {{ product.count ? ' ' : 'hidden'}}" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}"></i>
       <span class="add-to-cart-text" data-default-text="Add to kit" data-cart-text=" in kit">
         {{ product.count ? product.count ~ ' in kit' : 'Add to kit'}}

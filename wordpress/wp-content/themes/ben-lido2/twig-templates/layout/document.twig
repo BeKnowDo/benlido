@@ -25,15 +25,15 @@
   </head>
   <body>
 
-    {% include 'common/header.twig' %}
+    <div class="container">
+      {% include 'common/header.twig' %}
 
-    <div>
+      {% include 'common/navigation/search-navigation.twig' %}
       {% block content %}{% endblock %}
       <i id="dimmed-overlay" class="dimmed-overlay"></i>
+
+      {% include 'common/footer.twig' %}
     </div>
-
-    {% include 'common/footer.twig' %}
-
     <script type="text/javascript" src="/javascript/index.js"></script>
   </body>
 </html>
