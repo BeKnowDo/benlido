@@ -7,20 +7,26 @@ export class CategoryMenu {
     this.mobileNav = false;
     this.desktopNav = false;
 
+    this.menu = document.getElementById("category-list") || undefined;
+
     this.openTrigger =
       document.getElementById("category-list-all-header") || undefined;
-    this.menu = document.getElementById("category-list") || undefined;
+
     this.categoryList =
       document.getElementById("category-list-wrapper") || undefined;
+
     this.menuCategoryHeader =
       document.getElementById("category-list-breadcrumbs") || undefined;
+
     this.parentCategoryContainer =
-      document.querySelectorAll(".category-list-parent-group") || undefined;
-    this.subCategories =
-      document.querySelectorAll(".category-list-sub-items-group") || undefined;
+      document.querySelectorAll(".menu-item-has-children") || undefined;
+
+    // this.subCategories = document.querySelectorAll(".sub-menu") || undefined;
+
     this.productGridContainer =
       document.getElementById("shop-landing-featured-products") || undefined;
   }
+
   init() {
     if (this.menu) {
       this.enable();
@@ -125,26 +131,27 @@ export class CategoryMenu {
 
   attachCategoryToggles() {
     this.parentCategoryContainer.forEach(item => {
-      const parent = item.querySelector(".category-list-parent") || undefined;
-      const child =
-        item.querySelector(".category-list-sub-items-group") || undefined;
+      const parent = item.querySelector("a") || undefined;
+      const child = item.querySelector(".sub-menu") || undefined;
 
       if (parent && child) {
         parent.addEventListener("click", e => {
           e.preventDefault();
-          this.toggleAll(this.parentCategoryContainer);
+          e.stopPropagation();
+          this.toggleAll();
           this.toggleSubCategory(child);
         });
       }
     });
   }
 
-  toggleAll(parentContainer) {
+  toggleAll() {
     let i;
-    const parents = parentContainer;
-    for (i = 0; i < parents.length; ++i) {
-      const parent = parents[i].querySelector(".category-list-parent");
-      const child = parents[i].querySelector(".category-list-sub-items-group");
+    const parents = this.parentCategoryContainer;
+
+    parents.forEach(item => {
+      const parent = item;
+      const child = parent.querySelector(".sub-menu");
 
       if (parent && child) {
         if (parent.classList.contains("active") === true) {
@@ -154,7 +161,7 @@ export class CategoryMenu {
           child.classList.remove("active");
         }
       }
-    }
+    });
   }
 
   toggleSubCategory(target) {

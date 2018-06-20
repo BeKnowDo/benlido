@@ -10,6 +10,14 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 
-<div id="secondary" class="widget-area column col-xs-12 col-sm-12 col-md-12 col-3" role="complementary">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</div><!-- #secondary -->
+<div class="column col-xs-12 col-sm-12 col-md-12 col-3" role="complementary">
+	<div id="category-list" class="category-list ">
+		<div id="category-list-wrapper" class="category-list-wrapper">
+			<h4 id="category-list-breadcrumbs" class="category-list-breadcrumbs">
+				<a id="category-list-all-header" class="category-list-all-header">Shop All Categories:</a>
+			</h4>
+			<?php dynamic_sidebar( 'sidebar-1' ); ?>
+		</div>	
+	</div>
+</div>
+<!-- #secondary -->

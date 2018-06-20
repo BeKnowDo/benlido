@@ -38896,12 +38896,18 @@ var CategoryMenu = exports.CategoryMenu = function () {
     this.mobileNav = false;
     this.desktopNav = false;
 
-    this.openTrigger = document.getElementById("category-list-all-header") || undefined;
     this.menu = document.getElementById("category-list") || undefined;
+
+    this.openTrigger = document.getElementById("category-list-all-header") || undefined;
+
     this.categoryList = document.getElementById("category-list-wrapper") || undefined;
+
     this.menuCategoryHeader = document.getElementById("category-list-breadcrumbs") || undefined;
+
     this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
+
     this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
+
     this.productGridContainer = document.getElementById("shop-landing-featured-products") || undefined;
   }
 

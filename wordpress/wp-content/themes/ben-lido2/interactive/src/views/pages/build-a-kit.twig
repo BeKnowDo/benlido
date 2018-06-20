@@ -2,19 +2,19 @@
 
 {% block content %}
 
-  {% if not heroData %}
-    {% set heroData = [
+    {% if not heroData %}
+        {% set heroData = [
       {
         header: 'PICK YOUR TRAVEL COMPANION',
         copy: 'No shipping costs and all personal care items up to 75% free with bag purchase'
       }
   ]%}
-  {% endif %}
-  {% include 'common/step-navigation.twig' %}
-  {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
+    {% endif %}
+    {% include 'common/step-navigation.twig' %}
+    {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
 
-  {% if not items %}
-    {% set items = [
+    {% if not items %}
+        {% set items = [
       {
         feature: 'Includes $20 off all personal care items',
         logo: '/images/kipling.png',
@@ -58,14 +58,12 @@
       }
 
     ]%}
-  {% endif %}
+    {% endif %}
 
-  <div class="bg-grey">
     <div class="max-width-xl">
-      {% include 'common/hero/hero-product-list.twig', with { products: items } %}
+        {% include 'common/hero/hero-product-list.twig', with { products: items } %}
     </div>
-  </div>
 
-  {% include 'common/back-to-top.twig' %}
+    {% include 'common/back-to-top.twig' %}
 
 {% endblock %}
