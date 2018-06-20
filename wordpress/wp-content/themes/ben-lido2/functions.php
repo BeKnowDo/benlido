@@ -11,6 +11,7 @@ Timber::$dirname = array('twig-templates', 'views');
 
 // NOTE: woocommerce and storefront add_action and remove_action calls are in inc/storefront-overrides.php
 require_once 'inc/storefront-overrides.php'; // overriding the storefront parent theme
+require_once 'inc/product-overrides.php'; // overriding the product, product-detail, and category displays
 require_once 'inc/twig-template-pivots.php'; // the pivot file to modify variables from woocommerce to Twig
 require_once 'inc/template-functions.php'; // functions for displaying things: like navigation, etc.
 

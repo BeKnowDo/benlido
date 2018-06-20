@@ -1,5 +1,16 @@
 <?php
 $data = array();
+// this is the header area
+if (is_product_category()) {
+    $category = get_queried_object();
+    if (!empty($category) && isset($category->name)) {
+        $heroData = array(
+            array(
+                'header' => $category->name
+            )
+        );
+    }
+}
 if (empty($heroData)) {
     $heroData = array(array(
         'header'=> 'PICK YOUR TRAVEL COMPANION',
