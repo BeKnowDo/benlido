@@ -305,7 +305,7 @@ const listening = function() {
       open: false,
       notify: false,
       port: env.BROWSER_SYNC_PORT,
-      proxy: "localhost:" + env.PROXY_PORT,
+      proxy: env.LOCAL_HOST + env.PROXY_PORT,
       ui: false,
       dalay: 400
     });
