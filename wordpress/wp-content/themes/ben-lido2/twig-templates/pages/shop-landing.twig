@@ -12,14 +12,14 @@
     {% endif %}
 
     {% include 'common/step-navigation.twig' %}
-    {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
+    {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
 
     <div class="bg-grey">
         <div class="max-width-xl shop-landing-featured">
 
             <div class="columns">
                 <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
-                    {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
+                    {% include 'common/category-list.twig' with {categoryItems:categoryItems} %}
                 </div>
 
                 <div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">
@@ -30,7 +30,7 @@
 
                             {% for product in category.featured %}
                                 <div class="column col-xs-12 col-sm-12 col-md-6 col-4 product-tile-column">
-                                    {% include 'common/product/product-tile.twig', with {product: product } %}
+                                    {% include 'common/product/product-tile.twig' with {product: product } %}
                                 </div>
                             {% endfor %}
                         </div>

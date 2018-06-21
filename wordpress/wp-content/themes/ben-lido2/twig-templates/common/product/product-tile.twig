@@ -14,8 +14,8 @@
 
     <div class="text-center">
 
-        {% if product.name is defined %}
-            <h3 class="product-tile-header">{{product.name}}</h3>
+        {% if product.categoryTitle is defined %}
+            <h3 class="product-tile-header">{{product.categoryTitle}}</h3>
         {% endif %}
 
         {# {% if product.categoryTitle is defined %}
@@ -37,7 +37,7 @@
     {% if removeSwap == true %}
         <button class="btn btn-lg btn-block btn-primary btn-selected" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">
             <span class="btn-selected-remove remove-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Remove</span>
-            <a class="btn-selected-swap swap-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Swap</a>
+            <a href="/categories/{{product.categoryID}}" title="Swap out {{product.name}} for another product" class="btn-selected-swap swap-from-cart" data-name="{{product.name}}" data-sku="{{product.sku}}" data-category="{{product.categoryID}}">Swap</a>
         </button>
 
     {% else %}

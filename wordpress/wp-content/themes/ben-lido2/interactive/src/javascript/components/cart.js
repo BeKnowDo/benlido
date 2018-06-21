@@ -37,10 +37,6 @@ export class Cart {
       this.removeFromKit();
     }
 
-    if (this.swapFromCartButtons) {
-      this.swapItem();
-    }
-
     if (this.cart) {
       this.openCart();
     }

@@ -38493,10 +38493,6 @@ var Cart = exports.Cart = function () {
         this.removeFromKit();
       }
 
-      if (this.swapFromCartButtons) {
-        this.swapItem();
-      }
-
       if (this.cart) {
         this.openCart();
       }
@@ -38904,9 +38900,9 @@ var CategoryMenu = exports.CategoryMenu = function () {
 
     this.menuCategoryHeader = document.getElementById("category-list-breadcrumbs") || undefined;
 
-    this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
+    this.parentCategoryContainer = document.querySelectorAll(".menu-item-has-children") || undefined;
 
-    this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
+    // this.subCategories = document.querySelectorAll(".sub-menu") || undefined;
 
     this.productGridContainer = document.getElementById("shop-landing-featured-products") || undefined;
   }
@@ -39019,13 +39015,14 @@ var CategoryMenu = exports.CategoryMenu = function () {
       var _this3 = this;
 
       this.parentCategoryContainer.forEach(function (item) {
-        var parent = item.querySelector(".category-list-parent") || undefined;
-        var child = item.querySelector(".category-list-sub-items-group") || undefined;
+        var parent = item.querySelector("a") || undefined;
+        var child = item.querySelector(".sub-menu") || undefined;
 
         if (parent && child) {
           parent.addEventListener("click", function (e) {
             e.preventDefault();
-            _this3.toggleAll(_this3.parentCategoryContainer);
+            e.stopPropagation();
+            _this3.toggleAll();
             _this3.toggleSubCategory(child);
           });
         }
@@ -39033,12 +39030,13 @@ var CategoryMenu = exports.CategoryMenu = function () {
     }
   }, {
     key: "toggleAll",
-    value: function toggleAll(parentContainer) {
+    value: function toggleAll() {
       var i = void 0;
-      var parents = parentContainer;
-      for (i = 0; i < parents.length; ++i) {
-        var parent = parents[i].querySelector(".category-list-parent");
-        var child = parents[i].querySelector(".category-list-sub-items-group");
+      var parents = this.parentCategoryContainer;
+
+      parents.forEach(function (item) {
+        var parent = item;
+        var child = parent.querySelector(".sub-menu");
 
         if (parent && child) {
           if (parent.classList.contains("active") === true) {
@@ -39048,7 +39046,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
             child.classList.remove("active");
           }
         }
-      }
+      });
     }
   }, {
     key: "toggleSubCategory",
@@ -39143,18 +39141,6 @@ Object.keys(_productImageCarousel).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _productImageCarousel[key];
-    }
-  });
-});
-
-var _productQuantity = __webpack_require__(/*! ./product-quantity */ "./src/javascript/components/product-quantity.js");
-
-Object.keys(_productQuantity).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _productQuantity[key];
     }
   });
 });
@@ -39401,48 +39387,6 @@ var ProductImageCarousel = exports.ProductImageCarousel = function () {
 
 /***/ }),
 
-/***/ "./src/javascript/components/product-quantity.js":
-/*!*******************************************************!*\
-  !*** ./src/javascript/components/product-quantity.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ProductQuantity = exports.ProductQuantity = function () {
-  function ProductQuantity() {
-    _classCallCheck(this, ProductQuantity);
-
-    this.target = document.querySelector(".product-quantity") || undefined;
-  }
-
-  _createClass(ProductQuantity, [{
-    key: "init",
-    value: function init() {
-      if (this.target) {
-        this.enable();
-      }
-    }
-  }, {
-    key: "enable",
-    value: function enable() {}
-  }]);
-
-  return ProductQuantity;
-}();
-
-/***/ }),
-
 /***/ "./src/javascript/components/search.js":
 /*!*********************************************!*\
   !*** ./src/javascript/components/search.js ***!
@@ -39554,7 +39498,6 @@ var initializeNavigation = new _components.Navigation().init();
 var cart = new _components.Cart().init();
 var initializeScrollToTop = new _components.ScrollToTop().init();
 var productCarousels = new _components.ProductImageCarousel().init();
-var productQuantity = new _components.ProductQuantity().init();
 var categoryMenu = new _components.CategoryMenu().init();
 var search = new _components.Search().init();
 

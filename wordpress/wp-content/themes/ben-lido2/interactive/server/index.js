@@ -52,7 +52,14 @@ app.get("/", (req, res) => {
 
 app.get("/build-a-kit", (req, res) => {
   res.render("pages/build-a-kit", {
-    categoryItems: categoryItems
+    categoryItems: categoryItems,
+    stepNavigation: {
+      previousStep: "",
+      back: "Back",
+      current: "Pick a Kit",
+      nextStep: "/shop-landing",
+      next: "Next: Shop Products"
+    }
   });
 });
 
