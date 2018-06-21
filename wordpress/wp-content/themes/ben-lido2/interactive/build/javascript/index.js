@@ -38892,18 +38892,12 @@ var CategoryMenu = exports.CategoryMenu = function () {
     this.mobileNav = false;
     this.desktopNav = false;
 
-    this.menu = document.getElementById("category-list") || undefined;
-
     this.openTrigger = document.getElementById("category-list-all-header") || undefined;
-
+    this.menu = document.getElementById("category-list") || undefined;
     this.categoryList = document.getElementById("category-list-wrapper") || undefined;
-
     this.menuCategoryHeader = document.getElementById("category-list-breadcrumbs") || undefined;
-
-    this.parentCategoryContainer = document.querySelectorAll(".menu-item-has-children") || undefined;
-
-    // this.subCategories = document.querySelectorAll(".sub-menu") || undefined;
-
+    this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
+    this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
     this.productGridContainer = document.getElementById("shop-landing-featured-products") || undefined;
   }
 
@@ -39015,14 +39009,13 @@ var CategoryMenu = exports.CategoryMenu = function () {
       var _this3 = this;
 
       this.parentCategoryContainer.forEach(function (item) {
-        var parent = item.querySelector("a") || undefined;
-        var child = item.querySelector(".sub-menu") || undefined;
+        var parent = item.querySelector(".category-list-parent") || undefined;
+        var child = item.querySelector(".category-list-sub-items-group") || undefined;
 
         if (parent && child) {
           parent.addEventListener("click", function (e) {
             e.preventDefault();
-            e.stopPropagation();
-            _this3.toggleAll();
+            _this3.toggleAll(_this3.parentCategoryContainer);
             _this3.toggleSubCategory(child);
           });
         }
@@ -39030,13 +39023,12 @@ var CategoryMenu = exports.CategoryMenu = function () {
     }
   }, {
     key: "toggleAll",
-    value: function toggleAll() {
+    value: function toggleAll(parentContainer) {
       var i = void 0;
-      var parents = this.parentCategoryContainer;
-
-      parents.forEach(function (item) {
-        var parent = item;
-        var child = parent.querySelector(".sub-menu");
+      var parents = parentContainer;
+      for (i = 0; i < parents.length; ++i) {
+        var parent = parents[i].querySelector(".category-list-parent");
+        var child = parents[i].querySelector(".category-list-sub-items-group");
 
         if (parent && child) {
           if (parent.classList.contains("active") === true) {
@@ -39046,7 +39038,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
             child.classList.remove("active");
           }
         }
-      });
+      }
     }
   }, {
     key: "toggleSubCategory",
