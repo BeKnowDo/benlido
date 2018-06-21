@@ -218,3 +218,27 @@ function bl_process_bags_list($items) {
   }
   return $results;
 } // end bl_process_bags_list()
+
+// gets the name of this particular category, no matter it's from a category page, a shop landing page, or the primary category of the product
+function bl_get_this_category() {
+  if (is_product_category()) {
+      $category = get_queried_object();
+      if (!empty($category) && isset($category->name)) {
+        return $category;
+      }
+  }
+  global $product;
+  global $product_override;
+  if (!empty($product_override) && isset($product_override['id'])) {
+    $override_id = $product_override['id'];
+    if (!empty($product) && is_object($product)) {
+      $product_id = $product->get_id();
+    }
+    if ($override_id > 0 && $override_id == $product_id) {
+      if (isset($product_override['categoryTitle'])) {
+          $category = $product_override['categoryTitle'];
+          return $category; // just returning the category name
+      }
+    }
+  }
+}
