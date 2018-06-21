@@ -38904,9 +38904,9 @@ var CategoryMenu = exports.CategoryMenu = function () {
 
     this.menuCategoryHeader = document.getElementById("category-list-breadcrumbs") || undefined;
 
-    this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
+    this.parentCategoryContainer = document.querySelectorAll(".menu-item-has-children") || undefined;
 
-    this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
+    // this.subCategories = document.querySelectorAll(".sub-menu") || undefined;
 
     this.productGridContainer = document.getElementById("shop-landing-featured-products") || undefined;
   }
@@ -38938,7 +38938,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var menu = this.menu;
         var mobileMenu = this.categoryList.cloneNode(true);
         var menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-        var categories = mobileMenu.querySelectorAll(".category-list-parent");
+        var categories = mobileMenu.querySelectorAll(".menu-item-has-children > a");
 
         mobileMenu.removeAttribute("class");
         mobileMenu.classList.add("mobile-navigation");
@@ -38954,18 +38954,23 @@ var CategoryMenu = exports.CategoryMenu = function () {
         // Attach parent category toggle
         categories.forEach(function (category) {
           category.addEventListener("click", function (e) {
-            e.stopPropagation();
             e.preventDefault();
+            e.stopPropagation();
 
-            var target = e.target.parentElement.parentElement.querySelector(".category-list-sub-items-group");
+            var target = category.parentElement.querySelector(".sub-menu");
 
-            _this.toggleAll(category.parentNode);
+            _this.toggleAll();
             _this.toggleSubCategory(target);
           });
         });
 
         fragment.appendChild(mobileMenu);
         menu.appendChild(fragment);
+
+        // now that we've cloned the parent category list container and items,
+        // we'll need to reassign this.parentCategoryContainer to include both desktop and mobile items
+        // this way we can reuse toggleAll()
+        this.parentCategoryContainer = document.querySelectorAll(".menu-item-has-children");
       }
     }
   }, {
@@ -39019,13 +39024,15 @@ var CategoryMenu = exports.CategoryMenu = function () {
       var _this3 = this;
 
       this.parentCategoryContainer.forEach(function (item) {
-        var parent = item.querySelector(".category-list-parent") || undefined;
-        var child = item.querySelector(".category-list-sub-items-group") || undefined;
+        var parent = item.querySelector("a") || undefined;
+        var child = item.querySelector(".sub-menu") || undefined;
 
         if (parent && child) {
           parent.addEventListener("click", function (e) {
             e.preventDefault();
-            _this3.toggleAll(_this3.parentCategoryContainer);
+            e.stopPropagation();
+
+            _this3.toggleAll();
             _this3.toggleSubCategory(child);
           });
         }
@@ -39033,12 +39040,13 @@ var CategoryMenu = exports.CategoryMenu = function () {
     }
   }, {
     key: "toggleAll",
-    value: function toggleAll(parentContainer) {
+    value: function toggleAll() {
       var i = void 0;
-      var parents = parentContainer;
-      for (i = 0; i < parents.length; ++i) {
-        var parent = parents[i].querySelector(".category-list-parent");
-        var child = parents[i].querySelector(".category-list-sub-items-group");
+      var parents = this.parentCategoryContainer;
+
+      parents.forEach(function (item) {
+        var parent = item;
+        var child = parent.querySelector(".sub-menu");
 
         if (parent && child) {
           if (parent.classList.contains("active") === true) {
@@ -39048,7 +39056,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
             child.classList.remove("active");
           }
         }
-      }
+      });
     }
   }, {
     key: "toggleSubCategory",

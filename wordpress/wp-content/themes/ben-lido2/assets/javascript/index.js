@@ -38906,9 +38906,9 @@ var CategoryMenu = exports.CategoryMenu = function () {
 
     this.parentCategoryContainer = document.querySelectorAll(".menu-item-has-children") || undefined;
 
-    // this.subCategories = document.querySelectorAll(".sub-menu") || undefined;
-
     this.productGridContainer = document.getElementById("shop-landing-featured-products") || undefined;
+
+    this.mobileMenu = null;
   }
 
   _createClass(CategoryMenu, [{
@@ -38938,12 +38938,13 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var menu = this.menu;
         var mobileMenu = this.categoryList.cloneNode(true);
         var menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-        var categories = mobileMenu.querySelectorAll(".category-list-parent");
-
+        var categories = mobileMenu.querySelectorAll(".menu-item-has-children > a");
         mobileMenu.removeAttribute("class");
         mobileMenu.classList.add("mobile-navigation");
         mobileMenu.removeAttribute("id");
         menuHeader.removeAttribute("id");
+
+        this.mobileMenu = mobileMenu.querySelectorAll(".sub-menu");
 
         // Toggle showing categories (parents)
         menuHeader.addEventListener("click", function (e) {
@@ -38954,12 +38955,11 @@ var CategoryMenu = exports.CategoryMenu = function () {
         // Attach parent category toggle
         categories.forEach(function (category) {
           category.addEventListener("click", function (e) {
-            e.stopPropagation();
             e.preventDefault();
+            e.stopPropagation();
 
-            var target = e.target.parentElement.parentElement.querySelector(".category-list-sub-items-group");
-
-            _this.toggleAll(category.parentNode);
+            var target = category.parentElement.querySelector(".sub-menu");
+            _this.toggleAllMobile();
             _this.toggleSubCategory(target);
           });
         });
@@ -38969,21 +38969,16 @@ var CategoryMenu = exports.CategoryMenu = function () {
       }
     }
   }, {
-    key: "stickyCategoryNav",
-    value: function stickyCategoryNav() {
-      // This is strictly for desktop
-      var breakpoint = window.matchMedia("(min-width:839px)");
-      if (breakpoint.matches) {
-        var selector = "#" + this.menu.id;
-        var check = _inView2.default.is(this.categoryList);
+    key: "toggleAllMobile",
+    value: function toggleAllMobile() {
+      var i = void 0;
+      var parents = this.mobileMenu;
 
-        check ? this.menu.classList.remove("nav-fixed") : this.menu.classList.add("nav-fixed");
-
-        (0, _inView2.default)(selector).on("enter", function (el) {
-          el.classList.remove("nav-fixed");
-        }).on("exit", function (el) {
-          var check = el.classList.contains("nav-fixed");
-          !check ? el.classList.add("nav-fixed") : undefined;
+      if (parents.length > 0) {
+        parents.forEach(function (parent) {
+          if (parent.classList.contains("active") === true) {
+            parent.classList.remove("active");
+          }
         });
       }
     }
@@ -39036,19 +39031,11 @@ var CategoryMenu = exports.CategoryMenu = function () {
     key: "toggleAll",
     value: function toggleAll() {
       var i = void 0;
-      var parents = this.parentCategoryContainer;
+      var categories = this.parentCategoryContainer;
 
-      parents.forEach(function (item) {
-        var parent = item;
-        var child = parent.querySelector(".sub-menu");
-
-        if (parent && child) {
-          if (parent.classList.contains("active") === true) {
-            parent.classList.remove("active");
-          }
-          if (child.classList.contains("active") === true) {
-            child.classList.remove("active");
-          }
+      categories.forEach(function (item) {
+        if (item.classList.contains("active") === true) {
+          item.classList.remove("active");
         }
       });
     }
@@ -39090,6 +39077,25 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var absoluteElementTop = position.top + window.pageYOffset;
         var middle = absoluteElementTop - window.innerHeight / 2 + 500;
         _kute2.default.to("window", { scroll: middle }, { easing: "easingCubicOut", duration: 500 }).start();
+      }
+    }
+  }, {
+    key: "stickyCategoryNav",
+    value: function stickyCategoryNav() {
+      // This is strictly for desktop
+      var breakpoint = window.matchMedia("(min-width:839px)");
+      if (breakpoint.matches) {
+        var selector = "#" + this.menu.id;
+        var check = _inView2.default.is(this.categoryList);
+
+        check ? this.menu.classList.remove("nav-fixed") : this.menu.classList.add("nav-fixed");
+
+        (0, _inView2.default)(selector).on("enter", function (el) {
+          el.classList.remove("nav-fixed");
+        }).on("exit", function (el) {
+          var check = el.classList.contains("nav-fixed");
+          !check ? el.classList.add("nav-fixed") : undefined;
+        });
       }
     }
   }]);

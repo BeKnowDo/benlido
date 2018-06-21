@@ -21,10 +21,10 @@ export class CategoryMenu {
     this.parentCategoryContainer =
       document.querySelectorAll(".menu-item-has-children") || undefined;
 
-    // this.subCategories = document.querySelectorAll(".sub-menu") || undefined;
-
     this.productGridContainer =
       document.getElementById("shop-landing-featured-products") || undefined;
+
+    this.mobileMenu = null;
   }
 
   init() {
@@ -51,12 +51,15 @@ export class CategoryMenu {
       const menu = this.menu;
       const mobileMenu = this.categoryList.cloneNode(true);
       const menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-      const categories = mobileMenu.querySelectorAll(".menu-item-has-children");
-
+      const categories = mobileMenu.querySelectorAll(
+        ".menu-item-has-children > a"
+      );
       mobileMenu.removeAttribute("class");
       mobileMenu.classList.add("mobile-navigation");
       mobileMenu.removeAttribute("id");
       menuHeader.removeAttribute("id");
+
+      this.mobileMenu = mobileMenu.querySelectorAll(".sub-menu");
 
       // Toggle showing categories (parents)
       menuHeader.addEventListener("click", e => {
@@ -67,47 +70,30 @@ export class CategoryMenu {
       // Attach parent category toggle
       categories.forEach(category => {
         category.addEventListener("click", e => {
-          e.stopPropagation();
           e.preventDefault();
+          e.stopPropagation();
 
-          const target = category.querySelector(".sub-menu");
-
-          this.toggleAll();
+          const target = category.parentElement.querySelector(".sub-menu");
+          this.toggleAllMobile();
           this.toggleSubCategory(target);
         });
       });
 
       fragment.appendChild(mobileMenu);
       menu.appendChild(fragment);
-
-      // now that we've cloned the parent category list container and items,
-      // we'll need to reassign this.parentCategoryContainer to include both desktop and mobile items
-      // this way we can reuse toggleAll()
-      this.parentCategoryContainer = document.querySelectorAll(
-        ".menu-item-has-children"
-      );
     }
   }
 
-  stickyCategoryNav() {
-    // This is strictly for desktop
-    const breakpoint = window.matchMedia("(min-width:839px)");
-    if (breakpoint.matches) {
-      const selector = `#${this.menu.id}`;
-      const check = inView.is(this.categoryList);
+  toggleAllMobile() {
+    let i;
+    const parents = this.mobileMenu;
 
-      check
-        ? this.menu.classList.remove("nav-fixed")
-        : this.menu.classList.add("nav-fixed");
-
-      inView(selector)
-        .on("enter", el => {
-          el.classList.remove("nav-fixed");
-        })
-        .on("exit", el => {
-          const check = el.classList.contains("nav-fixed");
-          !check ? el.classList.add("nav-fixed") : undefined;
-        });
+    if (parents.length > 0) {
+      parents.forEach(parent => {
+        if (parent.classList.contains("active") === true) {
+          parent.classList.remove("active");
+        }
+      });
     }
   }
 
@@ -152,19 +138,11 @@ export class CategoryMenu {
 
   toggleAll() {
     let i;
-    const parents = this.parentCategoryContainer;
+    const categories = this.parentCategoryContainer;
 
-    parents.forEach(item => {
-      const parent = item;
-      const child = parent.querySelector(".sub-menu");
-
-      if (parent && child) {
-        if (parent.classList.contains("active") === true) {
-          parent.classList.remove("active");
-        }
-        if (child.classList.contains("active") === true) {
-          child.classList.remove("active");
-        }
+    categories.forEach(item => {
+      if (item.classList.contains("active") === true) {
+        item.classList.remove("active");
       }
     });
   }
@@ -214,6 +192,28 @@ export class CategoryMenu {
         { scroll: middle },
         { easing: "easingCubicOut", duration: 500 }
       ).start();
+    }
+  }
+
+  stickyCategoryNav() {
+    // This is strictly for desktop
+    const breakpoint = window.matchMedia("(min-width:839px)");
+    if (breakpoint.matches) {
+      const selector = `#${this.menu.id}`;
+      const check = inView.is(this.categoryList);
+
+      check
+        ? this.menu.classList.remove("nav-fixed")
+        : this.menu.classList.add("nav-fixed");
+
+      inView(selector)
+        .on("enter", el => {
+          el.classList.remove("nav-fixed");
+        })
+        .on("exit", el => {
+          const check = el.classList.contains("nav-fixed");
+          !check ? el.classList.add("nav-fixed") : undefined;
+        });
     }
   }
 }
