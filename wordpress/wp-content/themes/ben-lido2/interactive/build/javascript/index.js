@@ -205,7 +205,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scroll", function() { return scroll; });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/dist/ssr-window.esm.js");
 /**
- * Dom7 2.0.6
+ * Dom7 2.0.7
  * Minimalistic JavaScript library for DOM manipulation, with a jQuery-compatible API
  * http://framework7.io/docs/dom.html
  *
@@ -215,7 +215,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Licensed under MIT
  *
- * Released on: May 27, 2018
+ * Released on: June 14, 2018
  */
 
 
@@ -317,7 +317,7 @@ function addClass(className) {
   const classes = className.split(' ');
   for (let i = 0; i < classes.length; i += 1) {
     for (let j = 0; j < this.length; j += 1) {
-      if (typeof this[j].classList !== 'undefined') this[j].classList.add(classes[i]);
+      if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined') this[j].classList.add(classes[i]);
     }
   }
   return this;
@@ -326,7 +326,7 @@ function removeClass(className) {
   const classes = className.split(' ');
   for (let i = 0; i < classes.length; i += 1) {
     for (let j = 0; j < this.length; j += 1) {
-      if (typeof this[j].classList !== 'undefined') this[j].classList.remove(classes[i]);
+      if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined') this[j].classList.remove(classes[i]);
     }
   }
   return this;
@@ -339,7 +339,7 @@ function toggleClass(className) {
   const classes = className.split(' ');
   for (let i = 0; i < classes.length; i += 1) {
     for (let j = 0; j < this.length; j += 1) {
-      if (typeof this[j].classList !== 'undefined') this[j].classList.toggle(classes[i]);
+      if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined') this[j].classList.toggle(classes[i]);
     }
   }
   return this;
@@ -38892,13 +38892,19 @@ var CategoryMenu = exports.CategoryMenu = function () {
     this.mobileNav = false;
     this.desktopNav = false;
 
-    this.openTrigger = document.getElementById("category-list-all-header") || undefined;
     this.menu = document.getElementById("category-list") || undefined;
+
+    this.openTrigger = document.getElementById("category-list-all-header") || undefined;
+
     this.categoryList = document.getElementById("category-list-wrapper") || undefined;
+
     this.menuCategoryHeader = document.getElementById("category-list-breadcrumbs") || undefined;
-    this.parentCategoryContainer = document.querySelectorAll(".category-list-parent-group") || undefined;
-    this.subCategories = document.querySelectorAll(".category-list-sub-items-group") || undefined;
+
+    this.parentCategoryContainer = document.querySelectorAll(".menu-item-has-children") || undefined;
+
     this.productGridContainer = document.getElementById("shop-landing-featured-products") || undefined;
+
+    this.mobileMenu = null;
   }
 
   _createClass(CategoryMenu, [{
@@ -38928,12 +38934,13 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var menu = this.menu;
         var mobileMenu = this.categoryList.cloneNode(true);
         var menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-        var categories = mobileMenu.querySelectorAll(".category-list-parent");
-
+        var categories = mobileMenu.querySelectorAll(".menu-item-has-children > a");
         mobileMenu.removeAttribute("class");
         mobileMenu.classList.add("mobile-navigation");
         mobileMenu.removeAttribute("id");
         menuHeader.removeAttribute("id");
+
+        this.mobileMenu = mobileMenu.querySelectorAll(".sub-menu");
 
         // Toggle showing categories (parents)
         menuHeader.addEventListener("click", function (e) {
@@ -38944,12 +38951,11 @@ var CategoryMenu = exports.CategoryMenu = function () {
         // Attach parent category toggle
         categories.forEach(function (category) {
           category.addEventListener("click", function (e) {
-            e.stopPropagation();
             e.preventDefault();
+            e.stopPropagation();
 
-            var target = e.target.parentElement.parentElement.querySelector(".category-list-sub-items-group");
-
-            _this.toggleAll(category.parentNode);
+            var target = category.parentElement.querySelector(".sub-menu");
+            _this.toggleAllMobile();
             _this.toggleSubCategory(target);
           });
         });
@@ -38959,21 +38965,16 @@ var CategoryMenu = exports.CategoryMenu = function () {
       }
     }
   }, {
-    key: "stickyCategoryNav",
-    value: function stickyCategoryNav() {
-      // This is strictly for desktop
-      var breakpoint = window.matchMedia("(min-width:839px)");
-      if (breakpoint.matches) {
-        var selector = "#" + this.menu.id;
-        var check = _inView2.default.is(this.categoryList);
+    key: "toggleAllMobile",
+    value: function toggleAllMobile() {
+      var i = void 0;
+      var parents = this.mobileMenu;
 
-        check ? this.menu.classList.remove("nav-fixed") : this.menu.classList.add("nav-fixed");
-
-        (0, _inView2.default)(selector).on("enter", function (el) {
-          el.classList.remove("nav-fixed");
-        }).on("exit", function (el) {
-          var check = el.classList.contains("nav-fixed");
-          !check ? el.classList.add("nav-fixed") : undefined;
+      if (parents.length > 0) {
+        parents.forEach(function (parent) {
+          if (parent.classList.contains("active") === true) {
+            parent.classList.remove("active");
+          }
         });
       }
     }
@@ -39009,13 +39010,14 @@ var CategoryMenu = exports.CategoryMenu = function () {
       var _this3 = this;
 
       this.parentCategoryContainer.forEach(function (item) {
-        var parent = item.querySelector(".category-list-parent") || undefined;
-        var child = item.querySelector(".category-list-sub-items-group") || undefined;
+        var parent = item.querySelector("a") || undefined;
+        var child = item.querySelector(".sub-menu") || undefined;
 
         if (parent && child) {
           parent.addEventListener("click", function (e) {
             e.preventDefault();
-            _this3.toggleAll(_this3.parentCategoryContainer);
+            e.stopPropagation();
+            _this3.toggleAll();
             _this3.toggleSubCategory(child);
           });
         }
@@ -39023,22 +39025,15 @@ var CategoryMenu = exports.CategoryMenu = function () {
     }
   }, {
     key: "toggleAll",
-    value: function toggleAll(parentContainer) {
+    value: function toggleAll() {
       var i = void 0;
-      var parents = parentContainer;
-      for (i = 0; i < parents.length; ++i) {
-        var parent = parents[i].querySelector(".category-list-parent");
-        var child = parents[i].querySelector(".category-list-sub-items-group");
+      var categories = this.parentCategoryContainer;
 
-        if (parent && child) {
-          if (parent.classList.contains("active") === true) {
-            parent.classList.remove("active");
-          }
-          if (child.classList.contains("active") === true) {
-            child.classList.remove("active");
-          }
+      categories.forEach(function (item) {
+        if (item.classList.contains("active") === true) {
+          item.classList.remove("active");
         }
-      }
+      });
     }
   }, {
     key: "toggleSubCategory",
@@ -39078,6 +39073,25 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var absoluteElementTop = position.top + window.pageYOffset;
         var middle = absoluteElementTop - window.innerHeight / 2 + 500;
         _kute2.default.to("window", { scroll: middle }, { easing: "easingCubicOut", duration: 500 }).start();
+      }
+    }
+  }, {
+    key: "stickyCategoryNav",
+    value: function stickyCategoryNav() {
+      // This is strictly for desktop
+      var breakpoint = window.matchMedia("(min-width:839px)");
+      if (breakpoint.matches) {
+        var selector = "#" + this.menu.id;
+        var check = _inView2.default.is(this.categoryList);
+
+        check ? this.menu.classList.remove("nav-fixed") : this.menu.classList.add("nav-fixed");
+
+        (0, _inView2.default)(selector).on("enter", function (el) {
+          el.classList.remove("nav-fixed");
+        }).on("exit", function (el) {
+          var check = el.classList.contains("nav-fixed");
+          !check ? el.classList.add("nav-fixed") : undefined;
+        });
       }
     }
   }]);

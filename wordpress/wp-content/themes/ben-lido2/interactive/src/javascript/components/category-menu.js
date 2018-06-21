@@ -7,20 +7,26 @@ export class CategoryMenu {
     this.mobileNav = false;
     this.desktopNav = false;
 
+    this.menu = document.getElementById("category-list") || undefined;
+
     this.openTrigger =
       document.getElementById("category-list-all-header") || undefined;
-    this.menu = document.getElementById("category-list") || undefined;
+
     this.categoryList =
       document.getElementById("category-list-wrapper") || undefined;
+
     this.menuCategoryHeader =
       document.getElementById("category-list-breadcrumbs") || undefined;
+
     this.parentCategoryContainer =
-      document.querySelectorAll(".category-list-parent-group") || undefined;
-    this.subCategories =
-      document.querySelectorAll(".category-list-sub-items-group") || undefined;
+      document.querySelectorAll(".menu-item-has-children") || undefined;
+
     this.productGridContainer =
       document.getElementById("shop-landing-featured-products") || undefined;
+
+    this.mobileMenu = null;
   }
+
   init() {
     if (this.menu) {
       this.enable();
@@ -45,12 +51,15 @@ export class CategoryMenu {
       const menu = this.menu;
       const mobileMenu = this.categoryList.cloneNode(true);
       const menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-      const categories = mobileMenu.querySelectorAll(".category-list-parent");
-
+      const categories = mobileMenu.querySelectorAll(
+        ".menu-item-has-children > a"
+      );
       mobileMenu.removeAttribute("class");
       mobileMenu.classList.add("mobile-navigation");
       mobileMenu.removeAttribute("id");
       menuHeader.removeAttribute("id");
+
+      this.mobileMenu = mobileMenu.querySelectorAll(".sub-menu");
 
       // Toggle showing categories (parents)
       menuHeader.addEventListener("click", e => {
@@ -61,14 +70,11 @@ export class CategoryMenu {
       // Attach parent category toggle
       categories.forEach(category => {
         category.addEventListener("click", e => {
-          e.stopPropagation();
           e.preventDefault();
+          e.stopPropagation();
 
-          const target = e.target.parentElement.parentElement.querySelector(
-            ".category-list-sub-items-group"
-          );
-
-          this.toggleAll(category.parentNode);
+          const target = category.parentElement.querySelector(".sub-menu");
+          this.toggleAllMobile();
           this.toggleSubCategory(target);
         });
       });
@@ -78,25 +84,16 @@ export class CategoryMenu {
     }
   }
 
-  stickyCategoryNav() {
-    // This is strictly for desktop
-    const breakpoint = window.matchMedia("(min-width:839px)");
-    if (breakpoint.matches) {
-      const selector = `#${this.menu.id}`;
-      const check = inView.is(this.categoryList);
+  toggleAllMobile() {
+    let i;
+    const parents = this.mobileMenu;
 
-      check
-        ? this.menu.classList.remove("nav-fixed")
-        : this.menu.classList.add("nav-fixed");
-
-      inView(selector)
-        .on("enter", el => {
-          el.classList.remove("nav-fixed");
-        })
-        .on("exit", el => {
-          const check = el.classList.contains("nav-fixed");
-          !check ? el.classList.add("nav-fixed") : undefined;
-        });
+    if (parents.length > 0) {
+      parents.forEach(parent => {
+        if (parent.classList.contains("active") === true) {
+          parent.classList.remove("active");
+        }
+      });
     }
   }
 
@@ -125,36 +122,29 @@ export class CategoryMenu {
 
   attachCategoryToggles() {
     this.parentCategoryContainer.forEach(item => {
-      const parent = item.querySelector(".category-list-parent") || undefined;
-      const child =
-        item.querySelector(".category-list-sub-items-group") || undefined;
+      const parent = item.querySelector("a") || undefined;
+      const child = item.querySelector(".sub-menu") || undefined;
 
       if (parent && child) {
         parent.addEventListener("click", e => {
           e.preventDefault();
-          this.toggleAll(this.parentCategoryContainer);
+          e.stopPropagation();
+          this.toggleAll();
           this.toggleSubCategory(child);
         });
       }
     });
   }
 
-  toggleAll(parentContainer) {
+  toggleAll() {
     let i;
-    const parents = parentContainer;
-    for (i = 0; i < parents.length; ++i) {
-      const parent = parents[i].querySelector(".category-list-parent");
-      const child = parents[i].querySelector(".category-list-sub-items-group");
+    const categories = this.parentCategoryContainer;
 
-      if (parent && child) {
-        if (parent.classList.contains("active") === true) {
-          parent.classList.remove("active");
-        }
-        if (child.classList.contains("active") === true) {
-          child.classList.remove("active");
-        }
+    categories.forEach(item => {
+      if (item.classList.contains("active") === true) {
+        item.classList.remove("active");
       }
-    }
+    });
   }
 
   toggleSubCategory(target) {
@@ -202,6 +192,28 @@ export class CategoryMenu {
         { scroll: middle },
         { easing: "easingCubicOut", duration: 500 }
       ).start();
+    }
+  }
+
+  stickyCategoryNav() {
+    // This is strictly for desktop
+    const breakpoint = window.matchMedia("(min-width:839px)");
+    if (breakpoint.matches) {
+      const selector = `#${this.menu.id}`;
+      const check = inView.is(this.categoryList);
+
+      check
+        ? this.menu.classList.remove("nav-fixed")
+        : this.menu.classList.add("nav-fixed");
+
+      inView(selector)
+        .on("enter", el => {
+          el.classList.remove("nav-fixed");
+        })
+        .on("exit", el => {
+          const check = el.classList.contains("nav-fixed");
+          !check ? el.classList.add("nav-fixed") : undefined;
+        });
     }
   }
 }

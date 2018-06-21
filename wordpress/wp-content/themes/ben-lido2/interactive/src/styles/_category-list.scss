@@ -36,6 +36,21 @@
     }
   }
 
+  .menu-item-has-children {
+    > a {
+      position: relative;
+      // &:after {
+      //   display: inline-block;
+      //   position: absolute;
+      //   bottom: 4px;
+      //   padding: 0 0 0 12px;
+      //   font-family: "Font Awesome 5 Pro";
+      //   font-size: 12px;
+      //   content: "\f078";
+      // }
+    }
+  }
+
   .sub-menu {
     margin: 0;
     width: 100%;
@@ -138,5 +153,8 @@
 }
 
 .mobile-navigation {
+  animation: 0.5s alternate fadeIn;
+  margin-right: $unit-1;
+  margin-left: $unit-1;
   display: none;
 }
