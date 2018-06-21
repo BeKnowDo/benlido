@@ -51,7 +51,7 @@ export class CategoryMenu {
       const menu = this.menu;
       const mobileMenu = this.categoryList.cloneNode(true);
       const menuHeader = mobileMenu.querySelector(".category-list-breadcrumbs");
-      const categories = mobileMenu.querySelectorAll(".category-list-parent");
+      const categories = mobileMenu.querySelectorAll(".menu-item-has-children");
 
       mobileMenu.removeAttribute("class");
       mobileMenu.classList.add("mobile-navigation");
@@ -70,17 +70,22 @@ export class CategoryMenu {
           e.stopPropagation();
           e.preventDefault();
 
-          const target = e.target.parentElement.parentElement.querySelector(
-            ".category-list-sub-items-group"
-          );
+          const target = category.querySelector(".sub-menu");
 
-          this.toggleAll(category.parentNode);
+          this.toggleAll();
           this.toggleSubCategory(target);
         });
       });
 
       fragment.appendChild(mobileMenu);
       menu.appendChild(fragment);
+
+      // now that we've cloned the parent category list container and items,
+      // we'll need to reassign this.parentCategoryContainer to include both desktop and mobile items
+      // this way we can reuse toggleAll()
+      this.parentCategoryContainer = document.querySelectorAll(
+        ".menu-item-has-children"
+      );
     }
   }
 
