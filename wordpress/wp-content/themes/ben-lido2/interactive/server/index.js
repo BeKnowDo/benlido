@@ -54,7 +54,7 @@ app.get("/build-a-kit", (req, res) => {
   res.render("pages/build-a-kit", {
     categoryItems: categoryItems,
     stepNavigation: {
-      previousStep: "",
+      previousStep: "/",
       back: "Back",
       current: "Pick a Kit",
       nextStep: "/shop-landing",
@@ -67,7 +67,7 @@ app.get("/pick-a-kit", (req, res) => {
   res.render("pages/pick-a-kit", {
     categoryItems: categoryItems,
     stepNavigation: {
-      previousStep: "",
+      previousStep: "/",
       back: "Back",
       current: "Pick a Kit",
       nextStep: "/shop-landing",
@@ -230,7 +230,14 @@ app.get("/shop-landing", (req, res) => {
               "Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc..."
           }
         ],
-        customizeKit: true
+        customizeKit: true,
+        stepNavigation: {
+          previousStep: "/build-a-kit",
+          back: "Back",
+          current: "Pick a Kit",
+          nextStep: "/shipping-schedule",
+          next: "Next: Set Schedule"
+        }
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
@@ -242,7 +249,14 @@ app.get("/shop-landing", (req, res) => {
               "Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc..."
           }
         ],
-        customizeKit: true
+        customizeKit: true,
+        stepNavigation: {
+          previousStep: "/build-a-kit",
+          back: "Back",
+          current: "Pick a Kit",
+          nextStep: "/shipping-schedule",
+          next: "Next: Set Schedule"
+        }
       });
     }
   } else {
@@ -255,14 +269,28 @@ app.get("/shop-landing", (req, res) => {
             "Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc..."
         }
       ],
-      customizeKit: true
+      customizeKit: true,
+      stepNavigation: {
+        previousStep: "/build-a-kit",
+        back: "Back",
+        current: "Pick a Kit",
+        nextStep: "/shipping-schedule",
+        next: "Next: Set Schedule"
+      }
     });
   }
 });
 
 app.get("/shipping-schedule", (req, res) => {
   res.render("pages/shipping-schedule", {
-    categoryItems: categoryItems
+    categoryItems: categoryItems,
+    stepNavigation: {
+      previousStep: "/shop-landing",
+      back: "Back",
+      current: "Set Schedule",
+      nextStep: "?",
+      next: "Next: Review Your Kit"
+    }
   });
 });
 
@@ -321,12 +349,12 @@ app.use("/json", productAPI);
 const listening = function() {
   if (!isProduction) {
     browserSync({
-      files: ["interactive/**/*.{html,twig}", "build/**/*.{css, js}"],
+      files: ["**/*.{html,twig}", "build/**/*.{css, js}"],
       online: false,
       open: false,
       notify: false,
       port: env.BROWSER_SYNC_PORT,
-      proxy: env.LOCAL_HOST + env.PROXY_PORT,
+      proxy: `${env.LOCAL_HOST}:${env.PROXY_PORT}`,
       ui: false,
       dalay: 400
     });
