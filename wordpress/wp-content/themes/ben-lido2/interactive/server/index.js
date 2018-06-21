@@ -364,7 +364,7 @@ const listening = function() {
 // Let's listen on the imported PORT env variable
 app.listen(env.PROXY_PORT, () => {
   log(`Server's started on port ${env.PROXY_PORT}`);
-  listening();
+  // listening();
 });
 
 // Open a browser instance for convenience
