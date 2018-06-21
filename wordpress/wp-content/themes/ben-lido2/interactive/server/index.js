@@ -65,7 +65,14 @@ app.get("/build-a-kit", (req, res) => {
 
 app.get("/pick-a-kit", (req, res) => {
   res.render("pages/pick-a-kit", {
-    categoryItems: categoryItems
+    categoryItems: categoryItems,
+    stepNavigation: {
+      previousStep: "",
+      back: "Back",
+      current: "Pick a Kit",
+      nextStep: "/shop-landing",
+      next: "Next: Customize Kit"
+    }
   });
 });
 
@@ -95,8 +102,15 @@ app.get("/kit-selected", (req, res) => {
 
       res.render("pages/kit-selected", {
         products: results,
+        customizeKit: false,
         categoryItems: categoryItems,
-        customizeKit: false
+        stepNavigation: {
+          previousStep: "",
+          back: "Back",
+          current: "Pick a Kit",
+          nextStep: "/shipping-schedule",
+          next: "Next: Scheduler"
+        }
       });
     } else {
       log(`We don't have items in our cart so just send product list`);

@@ -1,19 +1,18 @@
 {% for product in productInformation %}
-  <div class="product-description">
-    <h3>Description</h3>
-    <h4 class="product-description-sku">Item#
-      {{product.sku}}
-    </h4>
-    <p class="product-description-copy">
-      {{product.description}}
-    </p>
-    <p class="product-description-dimensions">
-      Dimensions:
-      {{product.dimensions}}
-    </p>
-    <p class="product-description-weight">
-      Weight:
-      {{product.weight}}
-    </p>
-  </div>
+    <div class="product-description">
+        <h3 class="product-description-header">Description</h3>
+
+        <p class="product-description-copy">
+            {{product.sku}}
+            {{product.description}}
+        </p>
+        <p class="product-description-dimensions">
+            Dimensions:
+            {{product.dimensions}}
+        </p>
+        <p class="product-description-weight">
+            Weight:
+            {{product.weight}}
+        </p>
+    </div>
 {% endfor %}
