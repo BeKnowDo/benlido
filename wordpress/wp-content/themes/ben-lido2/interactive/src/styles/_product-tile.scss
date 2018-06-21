@@ -119,4 +119,32 @@
       }
     }
   }
+
+  .button {
+    @include knockout32(15px, 400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 34px;
+    background-color: $blue-shale;
+    color: $white;
+    border-radius: 4px;
+  }
+
+  .offers {
+  }
+  .price {
+    @include sentinel(22px, 400);
+    transition: opacity 0.2s ease-in-out;
+  }
+  .woocommerce-loop-product__title {
+    @include knockout32(14px, 400);
+    transition: opacity 0.2s ease-in-out;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 8px 0;
+    color: $grey;
+  }
 }
