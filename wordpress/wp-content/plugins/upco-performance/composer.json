@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/upco-performance",
+    "type": "wordpress-plugin",
+    "description": "Urban Pixels Performance Plugin",
+    "version":"0.0.2",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/upco-performance.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
