@@ -247,7 +247,7 @@ if ( ! function_exists( 'storefront_before_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_before_content() {
-		if (is_shop() || is_product_category() || is_product_tag()):
+		if (is_shop() || is_product_category() || is_product_tag() || is_cart() || is_checkout()):
 		?>
 		<div class="bg-grey">
 			<div class="max-width-xl shop-landing-featured">
@@ -267,7 +267,7 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_after_content() {
-		if (is_shop() || is_product_category() || is_product_tag()):
+		if (is_shop() || is_product_category() || is_product_tag() || is_cart() || is_checkout()):
 		?>
 				</div>
 			</div>
