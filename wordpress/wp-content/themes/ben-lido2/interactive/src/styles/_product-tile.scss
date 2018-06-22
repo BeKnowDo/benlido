@@ -4,6 +4,8 @@
     padding: 20px;
     border: $grey-border;
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
 
     &:hover {
       .product-tile-image,
@@ -37,11 +39,6 @@
       display: block;
       margin: 0 auto;
       width: auto;
-      max-height: 180px;
-
-      &[height] {
-        height: auto !important;
-      }
     }
 
     &-hover {
@@ -87,6 +84,7 @@
     .btn {
       @include knockout32(15px, 400);
       padding: 0;
+      margin-top: auto;
     }
 
     .fal {
@@ -124,36 +122,5 @@
         position: relative;
       }
     }
-  }
-
-  .button {
-    @include knockout32(15px, 400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 10px 34px;
-    background-color: $blue-shale;
-    color: $white;
-    border-radius: 4px;
-  }
-
-  .offers {
-  }
-  .price {
-    @include sentinel(22px, 400);
-    transition: opacity 0.2s ease-in-out;
-    display: block;
-    margin: 12px 0;
-  }
-  .woocommerce-loop-product__title {
-    @include knockout32(14px, 400);
-    transition: opacity 0.2s ease-in-out;
-    font-style: normal;
-    min-height: 70px;
-    font-weight: 400;
-    font-size: 14px;
-    margin: 8px 0;
-    color: $grey;
   }
 }

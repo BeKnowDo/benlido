@@ -1,0 +1,16 @@
+.product {
+  .woocommerce-tabs {
+    display: none;
+  }
+
+  .woocommerce-product-gallery {
+  }
+
+  .woocommerce-product-gallery__image {
+    > a {
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

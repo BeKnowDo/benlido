@@ -76,5 +76,11 @@
 @import "./pages/search-results";
 @import "./pages/checkout";
 
+// WooCommerce Overrides
+@import "./_woo_product-information";
+@import "./_woo_product-tile";
+@import "./_woo_product-row";
+@import "./_woo_product-detail";
+
 // Responsive
 @import "./responsive";
