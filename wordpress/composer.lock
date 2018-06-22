@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fab4aca9e7329f9c195510424b63813",
+    "content-hash": "c0589c188302a4488d981a6586af6909",
     "packages": [
         {
             "name": "composer/installers",
@@ -132,12 +132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro.git",
-                "reference": "bf302ce3bfdf4abd719eb06c1b23f882ea7988b5"
+                "reference": "fe2d74b78690783d0c1fc9d3a77852d929bf1b96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/get/bf302ce3bfdf4abd719eb06c1b23f882ea7988b5.zip",
-                "reference": "bf302ce3bfdf4abd719eb06c1b23f882ea7988b5",
+                "url": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/get/fe2d74b78690783d0c1fc9d3a77852d929bf1b96.zip",
+                "reference": "fe2d74b78690783d0c1fc9d3a77852d929bf1b96",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,40 @@
             "description": "Advanced Custom Fields Pro",
             "homepage": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro",
             "support": {
-                "source": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/src/bf302ce3bfdf4abd719eb06c1b23f882ea7988b5/?at=master"
+                "source": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/src/fe2d74b78690783d0c1fc9d3a77852d929bf1b96/?at=master"
             },
-            "time": "2018-01-22T16:17:28+00:00"
+            "time": "2018-06-04T21:34:32+00:00"
+        },
+        {
+            "name": "up-plugins/upco-performance",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/upco-performance.git",
+                "reference": "cae807bbb239ef93b8824faec1ba92fd820c418c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/upco-performance/get/cae807bbb239ef93b8824faec1ba92fd820c418c.zip",
+                "reference": "cae807bbb239ef93b8824faec1ba92fd820c418c",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "Urban Pixels Performance Plugin",
+            "homepage": "https://bitbucket.org/upcomposer/upco-performance",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/upco-performance/src/cae807bbb239ef93b8824faec1ba92fd820c418c/?at=master"
+            },
+            "time": "2018-06-22T13:40:45+00:00"
         },
         {
             "name": "up-plugins/woocommerce-brands",
@@ -275,22 +306,23 @@
                 }
             ],
             "description": "WooThemes Helper",
+            "homepage": "https://bitbucket.org/upcomposer/woothemes-updater",
             "support": {
                 "source": "https://bitbucket.org/upcomposer/woothemes-updater/src/5f8aa2a14ff9679e3cb50db066152279720a52f4/?at=master"
             },
-            "time": "2017-01-03T23:11:50+00:00"
+            "time": "2017-01-03T22:11:50+00:00"
         },
         {
             "name": "wpackagist-plugin/akismet",
-            "version": "4.0.7",
+            "version": "4.0.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/4.0.7"
+                "reference": "tags/4.0.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.4.0.7.zip",
+                "url": "https://downloads.wordpress.org/plugin/akismet.4.0.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -382,15 +414,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "7.0.6",
+            "version": "7.0.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/7.0.6"
+                "reference": "tags/7.0.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -462,15 +494,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "6.1.1",
+            "version": "6.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/6.1.1"
+                "reference": "tags/6.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.6.1.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.6.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -482,15 +514,15 @@
         },
         {
             "name": "wpackagist-plugin/mailchimp-for-wp",
-            "version": "4.2.2",
+            "version": "4.2.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/mailchimp-for-wp/",
-                "reference": "tags/4.2.2"
+                "reference": "tags/4.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -662,15 +694,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce",
-            "version": "3.4.1",
+            "version": "3.4.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.4.1"
+                "reference": "tags/3.4.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -702,15 +734,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "7.5.3",
+            "version": "7.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/7.5.3"
+                "reference": "tags/7.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.5.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.6.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -722,7 +754,7 @@
         },
         {
             "name": "wpackagist-plugin/wp-ses",
-            "version": "0.8",
+            "version": "0.8.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-ses/",
@@ -730,7 +762,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-ses.zip?timestamp=1514474597",
+                "url": "https://downloads.wordpress.org/plugin/wp-ses.zip?timestamp=1528324934",
                 "reference": null,
                 "shasum": null
             },
@@ -746,6 +778,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "up-plugins/advanced-custom-fields-pro": 20,
+        "up-plugins/upco-performance": 20,
         "up-plugins/woocommerce-brands": 20,
         "up-plugins/woocommerce-cost-of-goods": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
