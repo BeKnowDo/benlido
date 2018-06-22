@@ -26,16 +26,22 @@
       padding-right: $unit-3;
     }
 
-    &-image {
-      transition: opacity 0.2s ease-in-out;
-      display: block;
-      margin: 0 auto;
-    }
-
     &-link {
       position: relative;
       display: block;
       margin: 0 auto;
+    }
+
+    &-image {
+      transition: opacity 0.2s ease-in-out;
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      max-height: 180px;
+
+      &[height] {
+        height: auto !important;
+      }
     }
 
     &-hover {
@@ -137,11 +143,14 @@
   .price {
     @include sentinel(22px, 400);
     transition: opacity 0.2s ease-in-out;
+    display: block;
+    margin: 12px 0;
   }
   .woocommerce-loop-product__title {
     @include knockout32(14px, 400);
     transition: opacity 0.2s ease-in-out;
     font-style: normal;
+    min-height: 70px;
     font-weight: 400;
     font-size: 14px;
     margin: 8px 0;

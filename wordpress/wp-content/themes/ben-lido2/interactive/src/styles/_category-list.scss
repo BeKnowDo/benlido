@@ -1,4 +1,14 @@
 .category-list {
+  a {
+    color: $blumine;
+    &:visited,
+    &:hover,
+    &:focus {
+      color: $blumine;
+      background-color: transparent;
+    }
+  }
+
   &-wrapper {
     &.nav-fixed {
       animation: 0.5s alternate fadeInFromTop;
@@ -17,7 +27,6 @@
     margin: 0;
     padding: 0;
   }
-
   .menu-item {
     @include sentinel(14px, 400);
     list-style-type: none;
@@ -26,12 +35,9 @@
     &:before {
       display: none;
     }
-
-    a {
-      &:hover,
-      &:focus {
-        color: $blumine;
-        background-color: transparent;
+    &:last-child {
+      > a {
+        padding-bottom: 0;
       }
     }
   }
@@ -39,15 +45,6 @@
   .menu-item-has-children {
     > a {
       position: relative;
-      // &:after {
-      //   display: inline-block;
-      //   position: absolute;
-      //   bottom: 4px;
-      //   padding: 0 0 0 12px;
-      //   font-family: "Font Awesome 5 Pro";
-      //   font-size: 12px;
-      //   content: "\f078";
-      // }
     }
   }
 
