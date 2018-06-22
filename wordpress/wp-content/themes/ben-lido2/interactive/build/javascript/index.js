@@ -205,7 +205,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scroll", function() { return scroll; });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/dist/ssr-window.esm.js");
 /**
- * Dom7 2.0.7
+ * Dom7 2.0.6
  * Minimalistic JavaScript library for DOM manipulation, with a jQuery-compatible API
  * http://framework7.io/docs/dom.html
  *
@@ -215,7 +215,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Licensed under MIT
  *
- * Released on: June 14, 2018
+ * Released on: May 27, 2018
  */
 
 
@@ -317,7 +317,7 @@ function addClass(className) {
   const classes = className.split(' ');
   for (let i = 0; i < classes.length; i += 1) {
     for (let j = 0; j < this.length; j += 1) {
-      if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined') this[j].classList.add(classes[i]);
+      if (typeof this[j].classList !== 'undefined') this[j].classList.add(classes[i]);
     }
   }
   return this;
@@ -326,7 +326,7 @@ function removeClass(className) {
   const classes = className.split(' ');
   for (let i = 0; i < classes.length; i += 1) {
     for (let j = 0; j < this.length; j += 1) {
-      if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined') this[j].classList.remove(classes[i]);
+      if (typeof this[j].classList !== 'undefined') this[j].classList.remove(classes[i]);
     }
   }
   return this;
@@ -339,7 +339,7 @@ function toggleClass(className) {
   const classes = className.split(' ');
   for (let i = 0; i < classes.length; i += 1) {
     for (let j = 0; j < this.length; j += 1) {
-      if (typeof this[j] !== 'undefined' && typeof this[j].classList !== 'undefined') this[j].classList.toggle(classes[i]);
+      if (typeof this[j].classList !== 'undefined') this[j].classList.toggle(classes[i]);
     }
   }
   return this;
