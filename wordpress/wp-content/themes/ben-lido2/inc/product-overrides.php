@@ -46,9 +46,31 @@ function bl_loop_product_top() {
     // get the category header
     $category = '';
     if (!is_product_category()) {
-        if ($product->get_id() == $product_override['id']) {
+        $override_id = 0;
+        if (isset($product_override['id'])) {
+            $override_id = $product_override['id'];
+        }
+        if (isset($product_override['featured_product'])) {
+            $override_prod = $product_override['featured_product'];
+            if ($override_prod) {
+                $override_id = $override_prod->ID;
+            }
+            
+        }
+        
+        if ($product->get_id() == $override_id) {
             if (isset($product_override['categoryTitle'])) {
                 $category = $product_override['categoryTitle'];
+            }
+
+            if (empty($category) && isset($product_override['category'])) {
+                $cat_id = $product_override['category'];
+                if (is_numeric($cat_id) && $cat_id > 0) {
+                    $category = get_term($cat_id);
+                    if (!empty($category) && is_object($category) && isset($category->name)) {
+                        $category = $category->name;
+                    }
+                }
             }
         }
     }
@@ -88,6 +110,18 @@ function bl_product_loop_classes($classes, $class, $post_id) {
 
     return $classes;
 } // end bl_product_loop_classes()
+
+if ( ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
+
+	/**
+	 * Show the product title in the product loop. By default this is an H2.
+	 */
+	function woocommerce_template_loop_product_title() {
+        global $product;
+		echo '<h2 class="woocommerce-loop-product__title">' . $product->get_name() . '</h2>';
+	}
+}
+
 
 if ( ! function_exists( 'woocommerce_template_loop_product_link_open' ) ) {
     /**

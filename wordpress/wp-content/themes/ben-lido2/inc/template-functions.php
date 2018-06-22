@@ -176,6 +176,10 @@ function bl_process_bags_list($items) {
             }
             if (function_exists('get_field')) {
               // we need to get the kit page
+              $kitting_page = get_field('kitting_page','option');
+              if ($kitting_page) {
+                $href = get_permalink($kitting_page) . '?id=' . $item_id;
+              }
               
             }
           break;
@@ -225,7 +229,7 @@ function bl_process_bags_list($items) {
             'header'=>$title,
             'copy'=>$description,
             'price'=>$price,
-            'href'=>'#'.$item_id,
+            'href'=>$href,
             'button_copy'=>$button_copy,
             'image'=>$image,
             'image_retina'=>$image_retina,
@@ -240,6 +244,57 @@ function bl_process_bags_list($items) {
   }
   return $results;
 } // end bl_process_bags_list()
+
+function bl_process_kit_list($items) {
+
+  $results = array();
+  if (!empty($items) && is_array($items)) {
+    foreach ($items as $item) {
+      //print_r ($item);
+      $cat_id = $item['category'];
+      $category = get_term($cat_id);
+      if (!empty($category)) {
+        $category_name = $category->name;
+      }
+      $prod = $item['featured_product'];
+      if (!empty($prod)) {
+        $product = wc_get_product($prod);
+      }
+      if (!empty($product)) {
+
+      }
+
+    }
+  }
+  die;
+} // end bl_process_kit_list()
+
+function bl_process_kit_bag($item) {
+
+  $results = array();
+  // this is always an array of arrays
+  if (!empty($item) && is_object($item) && method_exists($item,'get_name')) {
+    $name = $item->get_name();
+    $logo = ''; // need to get the brand logo
+    $description = $item->get_description();
+    $href = get_permalink($item);
+    $image = wp_get_attachment_image_src(get_post_thumbnail_id($item->get_id()),'woocommerce_single');
+    if (!empty($image) && is_array($image)) {
+      $image = $image[0];
+    }
+  }
+  $results[] = array(
+        'triangleBackground' => true,
+        'logo' => $logo,
+        'header' => $name,
+        'copy' => $description,
+        'picked' => true,
+        'href' => $href,
+        'image' => $image,
+        'bagURL' => $href
+  );
+  return $results;
+}
 
 // gets the name of this particular category, no matter it's from a category page, a shop landing page, or the primary category of the product
 function bl_get_this_category() {

@@ -73,6 +73,25 @@ function bl_list_kits() {
 	);
 }
 
+function bl_get_kit_bag($id) {
+	$bag = null;
+	if (function_exists('get_field')) {
+		$bag = get_field('bag_for_this_kit',$id);
+	}
+	if (is_object($bag)) {
+		$bag = wc_get_product($bag);
+	}
+	return $bag;
+}
+
+function bl_get_kit_items($id) {
+	$items = array();
+	if (function_exists('get_field')) {
+		$items = get_field('product_categories',$id);
+	}
+	return $items;
+}
+
 function bl_override_category_default($cat_id,$product_id) {
 	$session = array();
 	$session = WC()->session->get( 'bl_kitting_overrides' );

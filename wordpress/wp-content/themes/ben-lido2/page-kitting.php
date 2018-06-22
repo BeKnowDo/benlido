@@ -2,7 +2,11 @@
 /**
  * Template Name: Ben Lido Kitting Page
  */
-
+    $kit_id = 0;
+    global $kit_id;
+    if ($_REQUEST['id']) {
+        $kit_id = $_REQUEST['id'];
+    }
     $selected_products = array();
     $delivery_frequency_page = '';
     if (function_exists('get_field')) {
@@ -62,7 +66,7 @@ get_header(); ?>
 
             do_action( 'storefront_page_before' );
 
-            get_template_part( 'template-parts/page/kitting');
+            get_template_part( 'template-parts/pages/kitting');
 
             /**
              * Functions hooked in to storefront_page_after action
