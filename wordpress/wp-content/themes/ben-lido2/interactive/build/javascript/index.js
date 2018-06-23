@@ -38516,7 +38516,10 @@ var Cart = exports.Cart = function () {
     value: function getCurrentItems() {
       var _this2 = this;
 
-      fetch(_endpoints.endpoints.getCartItems).then(function (response) {
+      fetch(_endpoints.endpoints.getCartItems, {
+        credentials: 'include',
+        method: "POST"
+      }).then(function (response) {
         return response.json();
       }).then(function (response) {
         _this2.updateCount(response);
@@ -38639,6 +38642,7 @@ var Cart = exports.Cart = function () {
 
       fetch(_endpoints.endpoints.removeFromCart, {
         method: "POST",
+        credentials: 'include',
         body: JSON.stringify(item),
         headers: {
           "Content-Type": "application/json"
@@ -38755,6 +38759,7 @@ var Cart = exports.Cart = function () {
 
               fetch(_endpoints.endpoints.addToCart, {
                 method: "POST",
+                credentials: 'include',
                 body: JSON.stringify(newItem),
                 headers: {
                   "Content-Type": "application/json"
@@ -38813,6 +38818,7 @@ var Cart = exports.Cart = function () {
                 };
                 fetch(_endpoints.endpoints.removeFromCart, {
                   method: "POST",
+                  credentials: 'include',
                   body: JSON.stringify(removeItem),
                   headers: {
                     "Content-Type": "application/json"

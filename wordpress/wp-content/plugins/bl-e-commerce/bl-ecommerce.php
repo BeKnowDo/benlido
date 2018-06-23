@@ -27,6 +27,48 @@ if (!function_exists('bl_add_frequency_to_session')) {
 // for adding frequency to session
 add_action( 'wp_loaded', 'bl_add_frequency_to_session', 100);
 
+// we will always have a category with the product added
+function bl_add_cart_item_category( $cart_item_data, $product_id, $variation_id ) {
+    $category_id = filter_input( INPUT_POST, 'category_id' );
+    if (empty($category_id)) {
+        // get the default category of this product using Yoast SEO
+        if (class_exists('WPSEO_Primary_Term')) {
+            $primary_term = new WPSEO_Primary_Term( 'product_cat', $product_id );
+            $category_id = $primary_term->get_primary_term();
+        }
+    }
+
+	if ( empty( $category_id ) ) {
+		return $cart_item_data;
+	}
+
+	$cart_item_data['category'] = $category_id;
+
+	return $cart_item_data;
+}
+
+add_filter( 'woocommerce_add_cart_item_data', 'bl_add_cart_item_category', 10, 3 );
+
+// this is to maintain the category value throughout the lifecycle of the shopping cart
+function bl_get_cart_item_from_session( $cart_item, $values ) {
+ 
+    if ( isset( $values['category'] ) ){
+        $cart_item['category'] = $values['category'];
+    }
+ 
+    return $cart_item;
+ 
+}
+add_filter( 'woocommerce_get_cart_item_from_session', 'bl_get_cart_item_from_session', 20, 2 );
+
+function bl_add_order_item_meta( $item_id, $values ) {
+ 
+    if ( ! empty( $values['category'] ) ) {
+        woocommerce_add_order_item_meta( $item_id, 'category', $values['category'] );           
+    }
+}
+add_action( 'woocommerce_add_order_item_meta', 'bl_add_order_item_meta', 10, 2 );
+
 // check to see if we have a frequency selected
 function bl_check_frequency() {
     $frequency = WC()->session->get( 'frequency' );
@@ -118,11 +160,39 @@ if (!function_exists(bl_get_cart)) {
     function bl_get_cart() {
         // this gets the shopping cart and displays in a format that the front end likes
         $cart = WC()->cart->get_cart();
+        $holder = array();
         if (!empty($cart) && is_array($cart)) {
-            foreach ($cart as $item) {
-                
+            foreach ($cart as $hash => $item) {
+                // just need sku, category, name, count, and image
+                if (isset($item['data'])) {
+                    //print_r ($item['data']);
+                    $id = $item['data']->get_id();
+                    $name = $item['data']->get_title();
+                    $sku = $item['data']->get_sku();
+                    //$image = $item['data']->get_image();
+                    $image_obj = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'single-post-thumbnail' );
+                    if (!empty($image_obj) && is_array($image_obj)) {
+                        $image = $image_obj[0];
+                    }
+                    $category_ids = $item['data']->get_category_ids();
+                    $quantity = $item['quantity'];
+                    if (is_array($category_ids) && !empty($category_ids)) {
+                        $cat = get_term($category_ids[0]);
+                        if (!empty($cat) && isset($cat->name)) {
+                            $category_name = $cat->name;
+                        }
+                    }
+                }
+                if (isset($item['meta_data']) && !empty($item['meta_data'])) {
+                    $category = $item['meta_data'];
+                }
+                if (empty($category) && !empty($category_name)) {
+                    $category = $category_name;
+                }
+                $holder[] = array('sku'=>$sku,'category'=>$category,'name'=>$name,'count'=>$quantity,'image'=>$image);
             }
         }
+        return $holder;
     }
 }
 
@@ -203,7 +273,10 @@ function bl_ecommerce_url_intercept() {
                 switch ($action) {
                     default:
                         // gets the cart
+                        header('Content-Type: application/json');
                         $cart = bl_get_cart();
+                        print_r (json_encode($cart));
+                        die;
                         break;
                 }
                 die;

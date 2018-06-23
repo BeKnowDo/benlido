@@ -54,7 +54,10 @@ export class Cart {
   }
 
   getCurrentItems() {
-    fetch(endpoints.getCartItems)
+    fetch(endpoints.getCartItems,{
+      credentials:'include',
+      method:"POST"
+    })
       .then(function(response) {
         return response.json();
       })
@@ -210,6 +213,7 @@ export class Cart {
   removeItemAPI(item) {
     fetch(endpoints.removeFromCart, {
       method: "POST",
+      credentials:'include',
       body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json"
@@ -322,6 +326,7 @@ export class Cart {
 
             fetch(endpoints.addToCart, {
               method: "POST",
+              credentials:'include',
               body: JSON.stringify(newItem),
               headers: {
                 "Content-Type": "application/json"
@@ -377,6 +382,7 @@ export class Cart {
               };
               fetch(endpoints.removeFromCart, {
                 method: "POST",
+                credentials:'include',
                 body: JSON.stringify(removeItem),
                 headers: {
                   "Content-Type": "application/json"
