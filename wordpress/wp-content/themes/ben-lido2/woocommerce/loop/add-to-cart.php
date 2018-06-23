@@ -22,6 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // literally, just change the version number to match the latest.. there is no way to really update this file.
 global $product;
+$is_swap = false;
+
+if (function_exists('bl_is_swap')) {
+    $is_swap = bl_is_swap();
+}
 $product_name = $product->get_name();
 $product_sku = $product->get_sku();
 $product_category = '';
@@ -38,6 +43,10 @@ $args['class'] = 'btn btn-lg btn-block btn-primary add-to-cart';
 $default_text = 'Add to kit';
 $cart_text = ' in kit';
 
+if ($is_swap == true) {
+    $args['class'] = 'btn btn-lg btn-block btn-primary';
+}
+
 /*
 <button class="btn btn-lg btn-block btn-primary add-to-cart
     in-cart
@@ -49,7 +58,30 @@ $cart_text = ' in kit';
             <i class="fal fa-plus-circle" data-name="Intelligent Soft Hat" data-sku="2f5ebca0-da29-413a-a87b-c58025047b84" data-category="3254ff94-10bd-4a17-9da5-1f0f7cbb6090"></i>
         </button>
 */
-
+// swap
+if ($is_swap == true) {
+    
+    echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+    sprintf( '<button class="btn btn-lg btn-block btn-primary btn-selected" data-name="%s" data-sku="%s" data-category="%s">
+    <span class="btn-selected-remove remove-from-cart" data-name="%s" data-sku="%s" data-category="%s">Remove</span>
+    <a href="%s" title="%s" class="btn-selected-swap swap-from-cart" data-name="%s" data-sku="%s" data-category="%s">Swap</a>
+</button>',
+        esc_html($product_name), // for data-name=
+        esc_html($product_sku), // for data-sku=
+        esc_html($product_category), // for data-category=
+        esc_html($product_name), // for data-name=
+        esc_html($product_sku), // for data-sku=
+        esc_html($product_category), // for data-category=
+        esc_url( $url ), // for href=
+        esc_html($title),
+        esc_html($product_name), // for data-name=
+        esc_html($product_sku), // for data-sku=
+        esc_html($product_category) // for data-category=
+	),
+    $product, $args );
+}
+else {
+// add to kit
 echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
     sprintf( '<button href="%s" data-quantity="%s" class="%s" %s>
     <i class="far fa-minus-circle  hidden" data-name="%s" data-sku="%s" data-category="%s"></i>
@@ -70,4 +102,5 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         esc_html($product_sku), // for data-sku=
         esc_html($product_category) // for data-category=
 	),
-$product, $args );
+    $product, $args );
+}

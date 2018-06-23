@@ -1,5 +1,5 @@
 export const endpoints = {
-  getCartItems: "/json/cart",
-  addToCart: "/json/add-to-cart",
-  removeFromCart: "/json/remove-from-cart"
+  getCartItems: "/bl-api/cart",
+  addToCart: "/bl-api/cart/add",
+  removeFromCart: "/bl-api/cart/remove"
 };

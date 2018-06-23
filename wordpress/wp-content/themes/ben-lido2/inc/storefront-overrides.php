@@ -56,8 +56,7 @@ function bl_storefront_overrides() {
 	}
 }
 
-// for adding frequency to session
-add_action( 'wp_loaded', 'bl_add_frequency_to_session', 100);
+
 add_action( 'wp', 'bl_storefront_overrides' );
 
 
@@ -373,18 +372,6 @@ function bl_footer_menus() {
 	<?php
 }
 
-if (!function_exists('bl_add_frequency_to_session')) {
-	function bl_add_frequency_to_session() {
-		if (isset($_POST['frequency'])) {
-			$frequency = intval($_POST['frequency']);
-			if( function_exists('WC')) {
-				WC()->session->set( 'frequency', $frequency);
-				global $woocommerce;
-				$cart_url = $woocommerce->cart->get_cart_url();
-				wp_redirect($cart_url);
-			}
-		}
-	 }
-}
+
 
 
