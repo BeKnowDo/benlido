@@ -20,7 +20,7 @@ get_header(); ?>
 
             do_action( 'storefront_page_before' );
 
-            get_template_part( 'template-parts/page/frequency');
+            get_template_part( 'template-parts/pages/frequency');
 
             /**
              * Functions hooked in to storefront_page_after action
