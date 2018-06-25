@@ -60,7 +60,8 @@
 @import "./product-row";
 @import "./product-information";
 @import "./product-additional-info";
-@import "./product-quantity";
+// Removing quantity for later phase
+// @import "./product-quantity";
 @import "./ratings";
 @import "./product-row";
 @import "./product-images";
@@ -76,11 +77,8 @@
 @import "./pages/search-results";
 @import "./pages/checkout";
 
-// WooCommerce Overrides
-@import "./_woo_product-information";
-@import "./_woo_product-tile";
-@import "./_woo_product-row";
-@import "./_woo_product-detail";
-
 // Responsive
 @import "./responsive";
+
+// WooCommerce Overrides
+@import "./woo/woo";
