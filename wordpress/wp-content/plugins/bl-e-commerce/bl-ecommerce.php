@@ -247,6 +247,11 @@ function bl_save_current_kit($id) {
 
 } // bl_save_current_kit()
 
+// removes the item from the kit
+function bl_remove_from_kit($kit_id,$product_id,$category_id) {
+
+}
+
 
 // this is the API endpoint parsing
 function bl_ecommerce_url_intercept() {
@@ -283,6 +288,23 @@ function bl_ecommerce_url_intercept() {
                 break;
             case 'kit':
                 switch ($action) {
+                    case 'remove':
+                        // removing an item from a kit
+                        // should have 3 IDs: Kit ID, product ID, category ID
+                        // /bl-api/kit/remove/{kit_id}/{product_id}/{category_id}
+                        if (isset($api_parts[5])) {
+                            $prod = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $cat = $api_parts[6];
+                        }
+                        if (!empty($id)) {
+                            bl_remove_from_kit($id,$prod,$cat);
+                        }
+                        header('Content-Type: application/json');
+                        print_r(json_encode(array('success'=>true))); // always return true
+                        die;
+                        break;
                     case 'set':
                         if (!empty($id)) {
                             $kit_id = bl_get_current_kit_id();

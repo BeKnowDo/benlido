@@ -38465,6 +38465,7 @@ var Cart = exports.Cart = function () {
     _classCallCheck(this, Cart);
 
     this.counter = document.getElementById("navbar-item-counter") || undefined;
+    this.kitID = document.getElementById("bl_kit_id") || undefined;
     this.listContainer = document.getElementById("navbar-bag-list") || undefined;
     this.addToCartButtons = document.querySelectorAll(".add-to-cart") || undefined;
     this.removeFromKitButtons = document.querySelectorAll(".remove-from-cart") || undefined;
@@ -38587,7 +38588,7 @@ var Cart = exports.Cart = function () {
         remove.forEach(function (swap) {
           swap.addEventListener("click", function (e) {
             e.preventDefault();
-
+            alert("HERE");
             if (e.target.dataset) {
               var target = e.target.dataset;
               var sku = target.sku ? target.sku : undefined;

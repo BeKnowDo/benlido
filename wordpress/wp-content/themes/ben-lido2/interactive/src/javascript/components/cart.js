@@ -5,6 +5,7 @@ import mojs from "mo-js";
 export class Cart {
   constructor() {
     this.counter = document.getElementById("navbar-item-counter") || undefined;
+    this.kitID = document.getElementById("bl_kit_id") || undefined;
     this.listContainer =
       document.getElementById("navbar-bag-list") || undefined;
     this.addToCartButtons =
@@ -157,7 +158,7 @@ export class Cart {
       remove.forEach(swap => {
         swap.addEventListener("click", e => {
           e.preventDefault();
-
+          alert("HERE");
           if (e.target.dataset) {
             const target = e.target.dataset;
             const sku = target.sku ? target.sku : undefined;

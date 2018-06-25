@@ -164,6 +164,11 @@
     ]%}
     {% endif %}
 
+    {% if not kitID %}
+      {% set kitID = 999 %}
+    {% endif %}
+
+    <input type="hidden" id="bl_kit_id" name="bl_kit_id" value="{{kitID}}" />
     <div class="bg-white">
         <div class="max-width-xl">
 

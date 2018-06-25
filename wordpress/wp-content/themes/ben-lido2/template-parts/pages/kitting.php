@@ -9,6 +9,7 @@ get_template_part( 'template-parts/common/step','navigation');
 $kit_products = bl_get_kit_items($kit_id);
 $product_count = count($kit_products);
 ?>
+<input type="hidden" id="bl_kit_id" name="bl_kit_id" value="<?php echo $kit_id;?>" />
 <div class="bg-white">
         <div class="max-width-xl">
             <?php get_template_part( 'template-parts/common/hero/hero-product','list'); ?>
