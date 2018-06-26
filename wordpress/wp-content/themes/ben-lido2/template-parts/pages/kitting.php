@@ -38,6 +38,9 @@ if (function_exists('bl_get_current_kit_items')) {
                     </div>
                 <?php endforeach;?>
                 <?php endif;?>
+                <div class="column col-xs-12 col-sm-6 col-md-6 col-3 product-tile-column">
+                        <?php get_template_part('template-parts/common/product/add-empty','product'); ?>
+                </div>
             </div>
         </div>
 </div>

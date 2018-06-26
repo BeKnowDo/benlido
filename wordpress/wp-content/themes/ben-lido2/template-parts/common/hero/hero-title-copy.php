@@ -11,6 +11,16 @@ if (is_product_category()) {
         );
     }
 }
+if (is_shop()) {
+    // let's see if it's a addition to a kit
+    $is_kit_add = false;
+    if (function_exists('bl_is_kit_add')) {
+    $is_kit_add = bl_is_kit_add();
+    }
+    if ($is_kit_add == true) {
+        
+    }
+}
 if (empty($heroData)) {
     $heroData = array(array(
         'header'=> 'PICK YOUR TRAVEL COMPANION',

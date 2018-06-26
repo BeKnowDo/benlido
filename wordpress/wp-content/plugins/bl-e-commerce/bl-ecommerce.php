@@ -94,6 +94,13 @@ if (!function_exists('bl_is_swap')) {
     }
 }
 
+if (!function_exists('bl_is_kit_add')) {
+    function bl_is_kit_add() {
+        $is_kit_add = WC()->session->get( 'is_kit_add' );
+        return $is_kit_add;
+    }
+}
+
 function bl_process_checkout_url($url) {
     $frequency = bl_check_frequency();
     if (empty($frequency) && function_exists('get_field')) {
@@ -157,6 +164,22 @@ if (!function_exists('bl_get_product_swap')) {
     function bl_get_product_swap() {
         $current_product_swap = WC()->session->get( 'current_product_swap' );
         return $current_product_swap;
+    }
+}
+
+if (!function_exists('bl_set_kit_add')) {
+    // sets whether we are adding to a kit or not
+    function bl_set_kit_add($kit_id,$active=1) {
+        // we also need to make sure we have a kit
+        $current_kit_id = bl_get_current_kit_id();
+        if ($current_kit_id < 1 && $active == 1 && $kit_id > 0) {
+            bl_save_current_kit($kit_id);
+        }
+        if ($active != 1) {
+            $active = 0;
+        }
+        WC()->session->set_customer_session_cookie(true);
+        WC()->session->set( 'is_kit_add', $active );
     }
 }
 
@@ -235,6 +258,17 @@ function bl_get_current_kit_id() {
         $kit_id = $kit_list['kit_id'];
     }
     return $kit_id;
+}
+
+function bl_get_kit_page_url($id) {
+    if (function_exists('get_field')) {
+        $kitting_page = get_field('kitting_page','option');
+    }
+    if (!empty($kitting_page) && is_object($kitting_page)) {
+        $kitting_page = get_permalink($kitting_page->ID);
+    }
+    $url = $kitting_page . '?id=' . $id;
+    return $url;
 }
 
 function bl_save_current_kit($id) {
@@ -367,6 +401,20 @@ function bl_ecommerce_url_intercept() {
                 break;
             case 'kit':
                 switch ($action) {
+                    case 'state':
+                        // sets whether we are adding an item to the kit, or are we done
+                        if (isset($api_parts[5])) {
+                            $state = $api_parts[5];
+                        }
+                        if (!empty($id) && !empty($state)) {
+                            bl_set_kit_add($id,$state);
+                        }
+                        header('Content-Type: application/json');
+                        // we always return success
+                        $resp = array('success'=>true);
+                        print_r (json_encode($resp));
+                        die;
+                        break;
                     case 'remove':
                         // removing an item from a kit
                         // should have 3 IDs: Kit ID, product ID, category ID

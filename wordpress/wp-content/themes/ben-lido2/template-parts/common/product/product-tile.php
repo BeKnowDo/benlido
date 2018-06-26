@@ -1,2 +1,2 @@
 <?php
-Timber::render( 'common/product/product/tile.twig', $data);
+Timber::render( 'common/product/tile.twig', $data);

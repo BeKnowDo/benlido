@@ -19,6 +19,8 @@ export class Cart {
     this.cart = document.getElementById("benlido-cart") || undefined;
     this.cartContainer =
       document.getElementById("navbar-bag-container") || undefined;
+      this.addEmptyProduct =
+      document.querySelectorAll(".bl-add-empty-product") || undefined;
   }
 
   init() {
@@ -42,6 +44,10 @@ export class Cart {
       this.swapItem();
     }
 
+    if (this.addEmptyProduct) {
+      this.emptyProductButtons();
+    }
+
     if (this.cart) {
       this.openCart();
     }
@@ -58,6 +64,18 @@ export class Cart {
     });
   }
 
+  // takes the URL and does an AJAX call to change state of add item to kit to true
+  emptyProductButtons() {
+    if (this.addEmptyProduct.length > 0) {
+      this.addEmptyProduct.forEach( el => {
+        el.addEventListener("click", e => {
+          e.preventDefault();
+          let kit_id = document.getElementById('bl_kit_id') || 0;
+          this.setKitStateAPI(kit_id.value,1,el.href);
+        });
+      });
+    }
+  }
   getCurrentItems() {
     fetch(endpoints.getCartItems, {
       credentials: "include",
@@ -202,6 +220,29 @@ export class Cart {
         });
       });
     }
+  }
+
+  // sets the session to be in the "add item to kit" state (or unset it)
+  setKitStateAPI(kitID, isAdd, redirectURL) {
+    let setKitStateURL = endpoints.setKitState + '/' + kitID + '/' + isAdd;
+    fetch(setKitStateURL, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .catch(error => console.error("Error:", error))
+    .then(response => {
+      if (response.error) {
+      } else {
+        // need to set timeoout here
+        setTimeout(function() {
+          document.location = redirectURL;
+        },100);
+      }
+    })
   }
 
   swapItem() {

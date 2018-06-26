@@ -2,6 +2,12 @@
 global $shop_landing_featured_product;
 global $shop_landing_category;
 
+$is_kit_add = false;
+if (function_exists('bl_is_kit_add')) {
+  $is_kit_add = bl_is_kit_add();
+}
+
+
 $featured_categories = array();
 if (function_exists('bl_get_featured_categories')) {
   $featured_categories = bl_get_featured_categories();
