@@ -55,30 +55,33 @@ export class Cart {
   }
 
   getCurrentItems() {
-    fetch(endpoints.getCartItems,{
-      credentials:'include',
-      method:"POST"
+    fetch(endpoints.getCartItems, {
+      credentials: "include",
+      method: "POST"
     })
       .then(function(response) {
         return response.json();
       })
       .then(response => {
         this.updateCount(response);
-        this.fillCart(response);
+        this.miniCart(response);
       });
   }
 
-  fillCart(items) {
+  miniCart(items) {
     if (items.length > 0) {
       this.listContainer.innerHTML = `
         <ul class="navbar-bag-list-container">
         ${items
           .map(item => {
-            return `<li class="navbar-bag-item columns col-gapless">
-
-              <p class="column col-7 navbar-product-name">${
+            return `
+            <li class="navbar-bag-item columns col-gapless">
+              <div class="column col-2 navbar-product-thumbnail">
+                <img src="${item.image}" alt="Product image of: ${item.name}" />
+              </div>
+              <p class="column col-5 navbar-product-name">${
                 item.count
-              }x &nbsp; ${item.name} ${item.sku}</p>
+              }x &nbsp; ${item.name}</p>
 
               <div class="column col-5 text-right">
                 
@@ -214,7 +217,7 @@ export class Cart {
   removeItemAPI(item) {
     fetch(endpoints.removeFromCart, {
       method: "POST",
-      credentials:'include',
+      credentials: "include",
       body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json"
@@ -226,7 +229,7 @@ export class Cart {
         if (response.error) {
         } else {
           this.updateCount(response);
-          this.fillCart(response);
+          this.miniCart(response);
           this.updateTileQuantity(response, item);
         }
       });
@@ -327,7 +330,7 @@ export class Cart {
 
             fetch(endpoints.addToCart, {
               method: "POST",
-              credentials:'include',
+              credentials: "include",
               body: JSON.stringify(newItem),
               headers: {
                 "Content-Type": "application/json"
@@ -339,7 +342,7 @@ export class Cart {
                 if (response.error) {
                 } else {
                   this.updateCount(response);
-                  this.fillCart(response);
+                  this.miniCart(response);
 
                   // TODO: DRY
                   const match = response.filter(item => {
@@ -383,7 +386,7 @@ export class Cart {
               };
               fetch(endpoints.removeFromCart, {
                 method: "POST",
-                credentials:'include',
+                credentials: "include",
                 body: JSON.stringify(removeItem),
                 headers: {
                   "Content-Type": "application/json"
@@ -395,7 +398,7 @@ export class Cart {
                   if (response.error) {
                   } else {
                     this.updateCount(response);
-                    this.fillCart(response);
+                    this.miniCart(response);
                     // TODO: DRY
                     const match = response.filter(item => {
                       return item.sku === sku && item.category === category;
