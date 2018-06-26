@@ -318,4 +318,12 @@ function bl_get_this_category() {
       }
     }
   }
+
+  if (!empty($product_override) && isset($product_override['category'])) {
+    $category = $product_override['category'];
+    if (is_numeric($category)) {
+      $category_obj = get_term($category);
+      return $category_obj;
+    }
+  }
 }

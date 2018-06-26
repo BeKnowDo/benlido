@@ -38,6 +38,10 @@ export class Cart {
       this.removeFromKit();
     }
 
+    if (this.swapFromCartButtons) {
+      this.swapItem();
+    }
+
     if (this.cart) {
       this.openCart();
     }
@@ -153,25 +157,24 @@ export class Cart {
   }
 
   removeFromKit() {
-    const remove = this.removeFromKitButtons;
-    if (remove.length > 0) {
-      remove.forEach(swap => {
-        swap.addEventListener("click", e => {
+    const removeGroup = this.removeFromKitButtons;
+    if (removeGroup.length > 0) {
+      removeGroup.forEach( el => {
+        el.addEventListener("click", e => {
           e.preventDefault();
-          alert("HERE");
-          if (e.target.dataset) {
-            const target = e.target.dataset;
-            const sku = target.sku ? target.sku : undefined;
-            const category = target.category ? target.category : undefined;
+          if (el.dataset) {
+            let target = el.dataset;
+            let product_id = target.product_id ? target.product_id : undefined;
+            let category_id = target.category_id ? target.category_id : undefined;
 
-            if (sku !== undefined && category !== undefined) {
-              const removeItem = {
-                sku,
-                category
+            if (product_id !== undefined && category_id !== undefined) {
+              let removeItem = {
+                'product_id':product_id,
+                'category_id':category_id
               };
 
               let parentNode =
-                e.target.parentElement.parentElement.parentElement || undefined;
+              el.parentElement.parentElement.parentElement.parentElement.parentElement || undefined;
               if (parentNode) {
                 parentNode.style.overflow = "hidden";
                 KUTE.to(
@@ -204,6 +207,7 @@ export class Cart {
       swaps.forEach(swap => {
         swap.addEventListener("click", e => {
           e.preventDefault();
+          alert("SWAP");
           // User sends the product they wish to swap out
           // Then we direct them to the shop landing page
         });
@@ -212,10 +216,21 @@ export class Cart {
   }
 
   removeItemAPI(item) {
-    fetch(endpoints.removeFromCart, {
+    let kit_id = document.getElementById('bl_kit_id');
+    if (kit_id && kit_id.value) {
+      kit_id = parseInt(kit_id.value);
+    }
+    let removeURL = endpoints.removeFromCart;
+    // if there is a kit ID, that means we're removing it from the kit. Otherwise, we are removing it from the cart
+    if (kit_id > 0 && item.product_id) {
+      removeURL = endpoints.removeFromKit+'/'+kit_id+'/'+item.product_id;
+      if (item.category_id) {
+        removeURL += '/'+item.category_id;
+      }
+    }
+    fetch(removeURL, {
       method: "POST",
       credentials:'include',
-      body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json"
       }
@@ -283,15 +298,15 @@ export class Cart {
       item.addEventListener("click", e => {
         e.preventDefault();
 
-        if (e.target.dataset) {
-          const target = e.target.dataset;
-          const sku = target.sku ? target.sku : undefined;
-          const category = target.category ? target.category : undefined;
+        if (this.target.dataset) {
+          let target = e.target.dataset;
+          let product_id = target.product_id ? target.product_id : undefined;
+          let category_id = target.category_id ? target.category_id : undefined;
 
-          if (sku !== undefined && category !== undefined) {
-            const removeItem = {
-              sku,
-              category
+          if (product_id !== undefined && category_id !== undefined) {
+            let removeItem = {
+              'product_id':product_id,
+              'category_id':category_id
             };
 
             this.removeItemAPI(removeItem);

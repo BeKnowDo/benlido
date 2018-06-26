@@ -15,6 +15,7 @@ if (!function_exists('bl_add_frequency_to_session')) {
 		if (isset($_POST['frequency'])) {
 			$frequency = intval($_POST['frequency']);
 			if( function_exists('WC')) {
+                WC()->session->set_customer_session_cookie(true);
 				WC()->session->set( 'frequency', $frequency);
 				global $woocommerce;
 				$checkout_url = $woocommerce->cart->get_checkout_url();
@@ -111,6 +112,7 @@ if (!function_exists('bl_set_purchase_flow')) {
     function bl_set_purchase_flow($flow=1) {
         // flow => 1 // create your own kit
         // flow => 2 // prebuilt kit
+        WC()->session->set_customer_session_cookie(true);
         WC()->session->set( 'purchase_flow', $flow);
     }
 }
@@ -131,6 +133,7 @@ if (!function_exists('bl_set_kit_list')) {
      */
     function bl_set_kit_list($kit_id,$bag,$items) {
         $kit = array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
+        WC()->session->set_customer_session_cookie(true);
         WC()->session->set( 'current_kit', $kit);
     }
 }
@@ -145,6 +148,7 @@ if (!function_exists('bl_get_kit_list')) {
 if (!function_exists('bl_set_product_swap')) {
     function bl_set_product_swap($kit_id,$category_id,$product_id) {
         $swapping = array('kit_id'=>$kit_id,'category_id'=>$category_id,'product_id'=>$product_id);
+        WC()->session->set_customer_session_cookie(true);
         WC()->session->set( 'current_product_swap', $swapping);
     }
 }
@@ -196,6 +200,32 @@ if (!function_exists(bl_get_cart)) {
     }
 }
 
+/** 
+ * this gets the current kit items, whether it's a new kit page, or if there is an existing kit in session
+ * @param int $kit the custom post type ID for travel_kit
+*/
+function bl_get_current_kit_items($kit) {
+    // see if we have the a kit in session
+    $kit_list = bl_get_kit_list();
+    $items = array();
+    if (!empty($kit_list) && isset($kit_list['kit_id']) && $kit == $kit_list['kit_id']) {
+        $items = $kit_list['items'];
+        $items_holder = array();
+        // we'll need to process this for the page.
+        if (!empty($items) && is_array($items)) {
+            foreach ($items as $item) {
+                //print_r ($item);
+                $tmp_category = $item['category'];
+                $tmp_product = $item['product'];
+                $items_holder[] = array('category'=>$tmp_category,'featured_product'=>get_post($tmp_product));
+            }
+            $items = $items_holder;
+        }
+    } else {
+        $items = bl_get_kit_items($kit);
+    }
+    return $items;
+}
 // some supporting functions
 // gets the current session kit ID
 function bl_get_current_kit_id() {
@@ -249,8 +279,57 @@ function bl_save_current_kit($id) {
 
 // removes the item from the kit
 function bl_remove_from_kit($kit_id,$product_id,$category_id) {
-
-}
+    // first see if we have a kit
+    $has_category_id = true;
+    $items_holder = array();
+    if (empty($kit_id) || empty($product_id)) {
+        return false;
+    }
+    if (empty($category_id)) {
+        $has_category_id = false;
+    }
+    $current_kit_id = bl_get_current_kit_id();
+    if (empty($current_kit_id)) {
+        bl_save_current_kit($kit_id);
+    }
+    $kit_list = bl_get_kit_list();
+    // first, match kit ID
+    //print_r ($kit_list);
+    if (!empty($kit_list)) {
+        if ($kit_list['kit_id'] != $kit_id) {
+            // this means that the person has navigated to a new kit
+            bl_save_current_kit($kit_id); // now, we are in a new kit
+            $kit_list = bl_get_kit_list();
+        }
+        // now, let's see which to remove
+        $items = $kit_list['items'];
+        if (!empty($items) && is_array($items)) {
+            foreach ($items as $item) {
+                if ($has_category_id == true) {
+                    if ($item['category'] == $category_id && $item['product'] == $product_id) {
+                        // this is how we remove
+                        // we might want to do something else here.
+                    } else {
+                        $items_holder[] = $item;
+                    }
+                } else {
+                    if ($item['product'] == $product_id) {
+                        // this is how we remove
+                        // we might want to do something else here.
+                    } else {
+                        $items_holder[] = $item;
+                    }
+                }
+                
+            }
+        }
+        bl_set_kit_list($kit_list['kit_id'],$kit_list['bag'],$items_holder);
+        $kit_list = bl_get_kit_list();
+        //print_r ($kit_list);
+        return true;
+    }
+    return false;
+} // end bl_remove_from_kit()
 
 
 // this is the API endpoint parsing
@@ -298,11 +377,19 @@ function bl_ecommerce_url_intercept() {
                         if (isset($api_parts[6])) {
                             $cat = $api_parts[6];
                         }
+                        // maybe it's from the body
+                        // TODO: need to finish this
+                        $contents = file_get_contents('php://input');
+                        if (!empty($contents)) {
+                            $res = json_decode($contents,TRUE);
+                        }
                         if (!empty($id)) {
-                            bl_remove_from_kit($id,$prod,$cat);
+                            $success = bl_remove_from_kit($id,$prod,$cat);
                         }
                         header('Content-Type: application/json');
-                        print_r(json_encode(array('success'=>true))); // always return true
+                        // we always return empty
+                        $cart = array();
+                        print_r (json_encode($cart));
                         die;
                         break;
                     case 'set':
