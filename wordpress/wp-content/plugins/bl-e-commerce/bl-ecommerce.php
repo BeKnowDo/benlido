@@ -172,9 +172,13 @@ if (!function_exists('bl_set_kit_add')) {
     function bl_set_kit_add($kit_id,$active=1) {
         // we also need to make sure we have a kit
         $current_kit_id = bl_get_current_kit_id();
+        if ($current_kit_id > 0 && $active == 1 && $kit_id > 0 && $current_kit_id != $kit_id) {
+            bl_save_current_kit($kit_id);
+        }
         if ($current_kit_id < 1 && $active == 1 && $kit_id > 0) {
             bl_save_current_kit($kit_id);
         }
+        
         if ($active != 1) {
             $active = 0;
         }
