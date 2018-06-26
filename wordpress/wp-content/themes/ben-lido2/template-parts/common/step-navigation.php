@@ -20,11 +20,17 @@ if (is_shop() || is_product_category()) {
     // if it is shop page, let's see if we're in a middle of adding or swapping
 
     $is_kit_add = false;
+    $is_swap = false;
     $kit_url = '';
     if (function_exists('bl_is_kit_add')) {
         $is_kit_add = bl_is_kit_add();
     }
-    if ($is_kit_add == true) {
+
+    if (function_exists('bl_is_swap')) {
+        $is_swap = bl_is_swap();
+    }
+
+    if ($is_kit_add == true || $is_swap == true) {
         if (function_exists('bl_get_current_kit_id')) {
             $kit_id = bl_get_current_kit_id();
         }

@@ -91,6 +91,10 @@ if (!function_exists('bl_is_swap')) {
                 return true;
             }
         }
+        $product_swap = bl_get_product_swap();
+        if (!empty($product_swap) && !empty($product_swap['kit_id']) && !empty($product_swap['product_id'])) {
+            return true;
+        }
     }
 }
 
@@ -154,9 +158,17 @@ if (!function_exists('bl_get_kit_list')) {
 
 if (!function_exists('bl_set_product_swap')) {
     function bl_set_product_swap($kit_id,$category_id,$product_id) {
-        $swapping = array('kit_id'=>$kit_id,'category_id'=>$category_id,'product_id'=>$product_id);
-        WC()->session->set_customer_session_cookie(true);
-        WC()->session->set( 'current_product_swap', $swapping);
+        $kit_id = intval(trim($kit_id));
+        $category_id = intval(trim($category_id));
+        $product_id = intval(trim($product_id));
+        if (is_numeric($kit_id) && is_numeric($product_id)) {
+            if (!empty($category_id)) {
+                $category_id = intval($category_id);
+            } 
+            $swapping = array('kit_id'=>$kit_id,'category_id'=>$category_id,'product_id'=>$product_id);
+            WC()->session->set_customer_session_cookie(true);
+            WC()->session->set( 'current_product_swap', $swapping);
+        }
     }
 }
 
@@ -167,9 +179,17 @@ if (!function_exists('bl_get_product_swap')) {
     }
 }
 
+if (!function_exists('bl_clear_product_swap')) {
+    function bl_clear_product_swap() {
+        WC()->session->set_customer_session_cookie(true);
+        WC()->session->set( 'current_product_swap',null );
+    }
+}
+
 if (!function_exists('bl_set_kit_add')) {
     // sets whether we are adding to a kit or not
     function bl_set_kit_add($kit_id,$active=1) {
+        $kit_id = intval(trim($kit_id));
         // we also need to make sure we have a kit
         $current_kit_id = bl_get_current_kit_id();
         if ($current_kit_id > 0 && $active == 1 && $kit_id > 0 && $current_kit_id != $kit_id) {
@@ -184,6 +204,61 @@ if (!function_exists('bl_set_kit_add')) {
         }
         WC()->session->set_customer_session_cookie(true);
         WC()->session->set( 'is_kit_add', $active );
+    }
+}
+
+if (!function_exists('bl_start_swap')) {
+    // starting the swap process. register the item that is being swapped, waiting for the new item to be chosen
+    function bl_start_swap($kit_id,$prod_id,$cat_id) {
+        $url = '';
+        bl_set_product_swap($kit_id,$cat_id,$prod_id);
+        // then, we will redirect to the category
+        if (!empty($cat_id) && is_numeric($cat_id)) {
+            $url = get_term_link(intval($cat_id),'product_cat');
+        }
+        if (empty($url) || is_wp_error( $url )) {
+            $url = get_permalink(woocommerce_get_page_id( 'shop' ));
+        }
+
+        return $url;
+    }
+}
+
+if (!function_exists('bl_select_item_as_swapped')) {
+    // this is to pick the item to swap with the one that was chosen before
+    function bl_select_item_as_swapped($kit_id,$prod_id,$cat_id) {
+        $kit_id = intval(trim($kit_id));
+        $prod_id = intval(trim($prod_id));
+        $cat_id = intval(trim($cat_id));
+        $orig = bl_get_product_swap();
+        $items = array();
+        $holder = array();
+        $kit_list = bl_get_kit_list();
+        if (!empty($kit_list)) {
+            $items = $kit_list['items'];
+        }
+        if (is_array($items)) {
+            foreach ($items as $item) {
+                //print_r ($orig);
+                if ($item['product'] == $orig['product_id']) {
+                    // not adding this product back
+                } else {
+                    $holder[] = $item;
+                }
+            }
+        }
+        if (!empty($holder) && is_array($holder) && !empty($prod_id)) {
+            $new = array('category'=>$cat_id,'product'=>$prod_id,'variation'=>null,'quantity'=>1);
+            array_unshift($holder,$new);
+        }
+        if (!empty($holder)) {
+            bl_set_kit_list($kit_id,$kit_list['bag'],$holder);
+            bl_clear_product_swap();
+            return true;
+        }
+
+        //print_r ($kit_list);
+        return false;
     }
 }
 
@@ -435,6 +510,24 @@ function bl_ecommerce_url_intercept() {
                 break;
             case 'kit':
                 switch ($action) {
+                    case 'select':
+                        // this is when you select a product for swapping
+                        //  /bl-api/kit/select/{kit_id}/{product_id}/{cat_id}
+                        if (isset($api_parts[5])) {
+                            $prod = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $cat = $api_parts[6];
+                        }
+                        $res = bl_select_item_as_swapped($id,$prod,$cat);
+                        if ($res == true) {
+                            // after we've swapped, we go back to the kit page
+                            $url = bl_get_kit_page_url($id);
+                            header('Content-Type: application/json');
+                            print_r (json_encode(array('url'=>$url)));
+                            die;
+                        }
+                        break;
                     case 'state':
                         // sets whether we are adding an item to the kit, or are we done
                         if (isset($api_parts[5])) {
@@ -495,6 +588,20 @@ function bl_ecommerce_url_intercept() {
                         $cart = array();
                         print_r (json_encode($cart));
                         die;
+                        break;
+                    case 'swap':
+                        //  /bl-api/kit/swap/{kit_id}/{product_id}/{cat_id}
+                        if (isset($api_parts[5])) {
+                            $prod = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $cat = $api_parts[6];
+                        }
+                        $resp = bl_start_swap($id,$prod,$cat);
+                        if (!empty($resp) && is_string($resp)) {
+                            header('Content-Type: application/json');
+                            print_r (json_encode(array('url'=>$resp)));
+                        }
                         break;
                     case 'set':
                         if (!empty($id)) {

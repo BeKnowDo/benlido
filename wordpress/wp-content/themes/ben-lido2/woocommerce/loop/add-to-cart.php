@@ -24,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 global $kit_id;
 $is_swap = false;
+$mid_swap = false;
 $is_kit_add = false;
 $kit_id = null;
 
@@ -34,7 +35,7 @@ if (function_exists('bl_is_kit_add')) {
     $is_kit_add = bl_is_kit_add();
 }
 
-if ($is_kit_add == true) {
+if ($is_kit_add == true || $is_swap == true) {
     // getting the kit ID so that we can add the item to the kit and then redirect back to the kit
     if (function_exists('bl_get_current_kit_id')) {
         $kit_id = bl_get_current_kit_id();
@@ -59,7 +60,17 @@ $default_text = 'Add to kit';
 $cart_text = ' in kit';
 
 if ($is_swap == true) {
-    $args['class'] = 'btn btn-lg btn-block btn-primary';
+    // if we're in the category or shop landing pages, then we are in mid swap
+    if (is_shop() || is_product_category()) {
+        $mid_swap = true;
+    } else {
+        $args['class'] = 'btn btn-lg btn-block btn-primary';
+    }
+    
+}
+
+if ($mid_swap == true) {
+    $default_text = 'Swap';
 }
 
 /*
@@ -74,12 +85,12 @@ if ($is_swap == true) {
         </button>
 */
 // swap
-if ($is_swap == true) {
+if ($is_swap == true && $mid_swap == false) {
     
     echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
     sprintf( '<span class="btn btn-lg btn-block btn-primary btn-selected" data-product_id="%s" data-name="%s" data-sku="%s" data-category="%s" data-category_id="%s">
     <span class="btn-selected-remove remove-from-cart" data-product_id="%s" data-name="%s" data-sku="%s" data-category="%s" data-category_id="%s">Remove</span>
-    <a href="%s" title="%s" class="btn-selected-swap swap-from-cart" data-name="%s" data-sku="%s" data-category="%s">Swap</a>
+    <a href="%s" title="%s" class="btn-selected-swap swap-from-cart" data-name="%s" data-sku="%s" data-category="%s" data-kit_id="%s" data-prod_id="%s" data-cat_id="%s">Swap</a>
 </span>',
         esc_html($product_id), // for data-product_id=
         esc_html($product_name), // for data-name=
@@ -95,7 +106,10 @@ if ($is_swap == true) {
         esc_html($title),
         esc_html($product_name), // for data-name=
         esc_html($product_sku), // for data-sku=
-        esc_html($product_category) // for data-category=
+        esc_html($product_category), // for data-category=
+        esc_html($kit_id), // for the data-kit_id=
+        esc_html($product_id), // for the data-prod_id=
+        esc_html($category_id) // for the data-cat_id=
 	),
     $product, $args );
 }
@@ -105,7 +119,7 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
     sprintf( '<span href="%s" data-quantity="%s" class="%s" %s>
     <i class="far fa-minus-circle  hidden" data-name="%s" data-sku="%s" data-category="%s"></i>
     <span class="add-to-cart-text" data-default-text="%s" data-cart-text="%s">%s</span>
-    <i class="fal fa-plus-circle" data-name="%s" data-sku="%s" data-category="%s" data-kit_id="%s" data-prod_id="%s" data-cat_id="%s"></i>
+    <i class="fal fa-plus-circle" data-name="%s" data-sku="%s" data-category="%s" data-kit_id="%s" data-prod_id="%s" data-cat_id="%s" data-swap="%s"></i>
     </span>',
 		esc_url( $product->add_to_cart_url() ), // for href=
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ), // for data-quantity=
@@ -122,7 +136,8 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         esc_html($product_category), // for data-category=
         esc_html($kit_id), // for the data-kit_id=
         esc_html($product_id), // for the data-prod_id=
-        esc_html($category_id) // for the data-cat_id=
+        esc_html($category_id), // for the data-cat_id=
+        esc_html($mid_swap) // for the data-swap=
 	),
     $product, $args );
 }

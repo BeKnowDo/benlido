@@ -251,9 +251,33 @@ export class Cart {
       swaps.forEach(swap => {
         swap.addEventListener("click", e => {
           e.preventDefault();
-          alert("SWAP");
-          // User sends the product they wish to swap out
-          // Then we direct them to the shop landing page
+          let el = swap.dataset;
+          let kit_id = el.kit_id ? el.kit_id : 0;
+          let cat_id = el.cat_id ? el.cat_id : 0;
+          let prod_id = el.prod_id ? el.prod_id : 0;
+
+          let swapURL = endpoints.swapItemFromKit;
+          // add to kit is: kit_id, product_id, cat_id
+          swapURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
+          fetch(swapURL, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+          .then(res => res.json())
+          .catch(error => console.error("Error:", error))
+          .then(response => {
+            if (response.error) {
+            } else {
+              if (response.url) {
+                setTimeout(function() {
+                  document.location.href = response.url;
+                },100);
+              }
+            }
+          });
         });
       });
     }
@@ -374,10 +398,14 @@ export class Cart {
           let kit_id = el.kit_id ? el.kit_id : 0;
           let cat_id = el.cat_id ? el.cat_id : 0;
           let prod_id = el.prod_id ? el.prod_id : 0;
+          let swap = el.swap ? el.swap : 0;
 
           let addURL = endpoints.addToCart;
           if (kit_id > 0) {
             addURL = endpoints.addToKit;
+          }
+          if (swap > 0 && kit_id > 0) {
+            addURL = endpoints.selectSwap;
           }
           // add to kit is: kit_id, product_id, cat_id
           addURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
