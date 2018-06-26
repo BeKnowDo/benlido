@@ -233,7 +233,7 @@ export class Cart {
     }
     fetch(removeURL, {
       method: "POST",
-      credentials: "include"
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       }
