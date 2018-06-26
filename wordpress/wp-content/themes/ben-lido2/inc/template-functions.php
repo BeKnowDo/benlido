@@ -306,15 +306,20 @@ function bl_get_this_category() {
   }
   global $product;
   global $product_override;
+  //print_r ($product_override);
   if (!empty($product_override) && isset($product_override['id'])) {
     $override_id = $product_override['id'];
     if (!empty($product) && is_object($product)) {
       $product_id = $product->get_id();
     }
     if ($override_id > 0 && $override_id == $product_id) {
-      if (isset($product_override['categoryTitle'])) {
-          $category = $product_override['categoryTitle'];
-          return $category; // just returning the category name
+      if (isset($product_override['categoryTitle']) || isset($product_override['productCategoryID'])) {
+        // returning the object
+        $cat_id = $product_override['productCategoryID'];
+        if (!empty($cat_id) && is_numeric($cat_id)) {
+          $category = get_term($cat_id);
+          return $category;
+        }
       }
     }
   }

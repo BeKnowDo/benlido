@@ -9,6 +9,12 @@
     }
     $selected_products = array();
     $delivery_frequency_page = '';
+
+    // when we come back to this page, we disable the is_adding_item_to_kit action
+    if (function_exists('bl_set_kit_add') && $kit_id > 0) {
+        bl_set_kit_add($kit_id,0);
+    }
+
     if (function_exists('get_field')) {
         $delivery_frequency_page = get_field('delivery_frequency_page','option');
     }

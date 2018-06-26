@@ -370,24 +370,21 @@ export class Cart {
 
         addItemIcon.addEventListener("click", e => {
           e.preventDefault();
-          const addIcon = e.target;
-          const sku = addIcon.dataset.sku ? addIcon.dataset.sku : undefined;
-          const category = addIcon.dataset.category
-            ? addIcon.dataset.category
-            : undefined;
-          const name = addIcon.dataset.name ? addIcon.dataset.name : undefined;
+          let el = addItemIcon.dataset;
+          let kit_id = el.kit_id ? el.kit_id : 0;
+          let cat_id = el.cat_id ? el.cat_id : 0;
+          let prod_id = el.prod_id ? el.prod_id : 0;
 
-          if (sku !== undefined && category !== undefined) {
-            const newItem = {
-              sku,
-              category,
-              name
-            };
+          let addURL = endpoints.addToCart;
+          if (kit_id > 0) {
+            addURL = endpoints.addToKit;
+          }
+          // add to kit is: kit_id, product_id, cat_id
+          addURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
 
-            fetch(endpoints.addToCart, {
+            fetch(addURL, {
               method: "POST",
               credentials: "include",
-              body: JSON.stringify(newItem),
               headers: {
                 "Content-Type": "application/json"
               }
@@ -397,23 +394,21 @@ export class Cart {
               .then(response => {
                 if (response.error) {
                 } else {
-                  this.updateCount(response);
-                  this.miniCart(response);
 
-                  // TODO: DRY
-                  const match = response.filter(item => {
-                    return item.sku === sku && item.category === category;
-                  });
-
-                  if (match.length > 0) {
-                    text.innerHTML = match[0].count + inCartText;
-                    button.classList.add("in-cart");
-                    removeItemIcon.classList.remove("hidden");
+                  if ( typeof response.items != 'undefined') {
+                    this.updateCount(response.items);
+                    this.miniCart(response.items);
+                  }
+                  if (typeof response.url != 'undefined') {
+                    // we will get a return URL
+                    setTimeout(function() {
+                      document.location.href = response.url;
+                    },100); // setTimeout to bust promise
+                    
                   }
                 }
               });
-          }
-        });
+          });
       });
     }
   }

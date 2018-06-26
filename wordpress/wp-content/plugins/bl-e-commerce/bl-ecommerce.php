@@ -183,7 +183,7 @@ if (!function_exists('bl_set_kit_add')) {
     }
 }
 
-if (!function_exists(bl_get_cart)) {
+if (!function_exists('bl_get_cart')) {
     function bl_get_cart() {
         // this gets the shopping cart and displays in a format that the front end likes
         $cart = WC()->cart->get_cart();
@@ -311,6 +311,36 @@ function bl_save_current_kit($id) {
 
 } // bl_save_current_kit()
 
+function bl_add_to_kit($kit_id,$product_id,$category_id) {
+    // array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
+    $kit_list = bl_get_kit_list();
+    $current_kit_id = $kit_list['kit_id'];
+    $holder = array();
+    $added = false;
+    if ($kit_id == $current_kit_id) {
+        $items = $kit_list['items'];
+        if (!empty($items) && is_array($items)) {
+            
+            foreach ($items as $item) {
+                // we're just going to use the existing category
+                if ($item['product'] == $product_id) {
+                    $item['quantity']++;
+                    $added = true;
+                }
+                $holder[] = $item;
+            }
+        }
+        if ($added == false) {
+            array_unshift($holder,array('category'=>$category_id,'product'=>$product_id,'variation'=>null,'quantity'=>1));
+        }
+    }
+    if (!empty($holder)) {
+        bl_set_kit_list($kit_id,$kit_list['bag'],$holder);
+        return true;
+    }
+    return false;
+}
+
 // removes the item from the kit
 function bl_remove_from_kit($kit_id,$product_id,$category_id) {
     // first see if we have a kit
@@ -413,6 +443,28 @@ function bl_ecommerce_url_intercept() {
                         // we always return success
                         $resp = array('success'=>true);
                         print_r (json_encode($resp));
+                        die;
+                        break;
+                    case 'add':
+                        //  /bl-api/kit/add/{kit_id}/{product_id}/{cat_id}
+                        if (isset($api_parts[5])) {
+                            $prod = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $cat = $api_parts[6];
+                        }
+                        $resp = bl_add_to_kit($id,$prod,$cat);
+                        if ($resp == true) {
+                            // because it's the kit, we will redirect people back there
+                            if (function_exists('bl_get_current_kit_id')) {
+                                $kit_id = bl_get_current_kit_id();
+                                bl_set_kit_add($kit_id,0); // reset add item to kit state
+                            }
+                            $url = bl_get_kit_page_url($kit_id);
+                            header('Content-Type: application/json');
+                            print_r (json_encode(array('url'=>$url)));
+                            die;
+                        }
                         die;
                         break;
                     case 'remove':

@@ -16,7 +16,7 @@ if (function_exists('get_field')) {
         'next' => $next_copy
     );
 }
-if (is_shop()) {
+if (is_shop() || is_product_category()) {
     // if it is shop page, let's see if we're in a middle of adding or swapping
 
     $is_kit_add = false;
