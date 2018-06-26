@@ -79,5 +79,10 @@ function bl_remove_widget_areas() {
     unregister_sidebar('footer-4');
 }
 
+function removebadsticky_woocommerce_scripts() {
+	wp_deregister_script( 'storefront-sticky-payment');
+}
+
+add_action( 'wp_enqueue_scripts', 'removebadsticky_woocommerce_scripts' , 90 );
 add_action('after_setup_theme','bl_after_theme_setup',0);
 //add_action('childtheme_sidebars','bl_remove_widget_areas');
