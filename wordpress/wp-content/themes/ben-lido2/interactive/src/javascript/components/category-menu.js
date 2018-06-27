@@ -38,7 +38,6 @@ export class CategoryMenu {
       this.mobile();
       this.checkBreakpoint();
       this.attachCategoryToggles();
-      this.stickyCategoryNav();
     }
   }
 
