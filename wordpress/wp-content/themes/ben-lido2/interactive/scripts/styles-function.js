@@ -32,7 +32,7 @@ const compileSass = () => {
   const sassOutput = sass.renderSync({
     file: paths.styles,
     precision: 6,
-    outputStyle: !isProduction ? "compressed" : "compressed",
+    outputStyle: !isProduction ? "compact" : "compressed",
     outFile: cssDestinationFile,
     sourceMap: true
   });
