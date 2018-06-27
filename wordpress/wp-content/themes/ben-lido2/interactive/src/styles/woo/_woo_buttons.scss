@@ -1,0 +1,12 @@
+.woocommerce {
+  .button {
+    border: none;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
