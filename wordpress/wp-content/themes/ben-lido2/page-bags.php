@@ -29,7 +29,7 @@ get_header(); ?>
             <?php get_template_part( 'template-parts/common/hero/hero-title','copy'); ?>
             <?php endif;?>
 
-            <div class="bg-gray">
+            <div class="bg-white">
                 <div class="max-width-xl">
                     <?php get_template_part( 'template-parts/common/hero/hero-product','list'); ?>
                 </div>

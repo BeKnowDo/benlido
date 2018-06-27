@@ -1,0 +1,7 @@
+.woocommerce-active {
+  .hero-product {
+    &:last-child {
+      border: none;
+    }
+  }
+}
