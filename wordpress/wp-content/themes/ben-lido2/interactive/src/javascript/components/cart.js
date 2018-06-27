@@ -5,6 +5,7 @@ import mojs from "mo-js";
 export class Cart {
   constructor() {
     this.counter = document.getElementById("navbar-item-counter") || undefined;
+    this.kitID = document.getElementById("bl_kit_id") || undefined;
     this.listContainer =
       document.getElementById("navbar-bag-list") || undefined;
     this.addToCartButtons =
@@ -18,6 +19,8 @@ export class Cart {
     this.cart = document.getElementById("benlido-cart") || undefined;
     this.cartContainer =
       document.getElementById("navbar-bag-container") || undefined;
+      this.addEmptyProduct =
+      document.querySelectorAll(".bl-add-empty-product") || undefined;
   }
 
   init() {
@@ -41,6 +44,10 @@ export class Cart {
       this.swapItem();
     }
 
+    if (this.addEmptyProduct) {
+      this.emptyProductButtons();
+    }
+
     if (this.cart) {
       this.openCart();
     }
@@ -57,28 +64,46 @@ export class Cart {
     });
   }
 
+  // takes the URL and does an AJAX call to change state of add item to kit to true
+  emptyProductButtons() {
+    if (this.addEmptyProduct.length > 0) {
+      this.addEmptyProduct.forEach( el => {
+        el.addEventListener("click", e => {
+          e.preventDefault();
+          let kit_id = document.getElementById('bl_kit_id') || 0;
+          this.setKitStateAPI(kit_id.value,1,el.href);
+        });
+      });
+    }
+  }
   getCurrentItems() {
-    fetch(endpoints.getCartItems)
+    fetch(endpoints.getCartItems, {
+      credentials: "include",
+      method: "POST"
+    })
       .then(function(response) {
         return response.json();
       })
       .then(response => {
         this.updateCount(response);
-        this.fillCart(response);
+        this.miniCart(response);
       });
   }
 
-  fillCart(items) {
+  miniCart(items) {
     if (items.length > 0) {
       this.listContainer.innerHTML = `
         <ul class="navbar-bag-list-container">
         ${items
           .map(item => {
-            return `<li class="navbar-bag-item columns col-gapless">
-
-              <p class="column col-7 navbar-product-name">${
+            return `
+            <li class="navbar-bag-item columns col-gapless">
+              <div class="column col-2 navbar-product-thumbnail">
+                <img src="${item.image}" alt="Product image of: ${item.name}" />
+              </div>
+              <p class="column col-5 navbar-product-name">${
                 item.count
-              }x &nbsp; ${item.name} ${item.sku}</p>
+              }x &nbsp; ${item.name}</p>
 
               <div class="column col-5 text-right">
                 
@@ -153,25 +178,24 @@ export class Cart {
   }
 
   removeFromKit() {
-    const remove = this.removeFromKitButtons;
-    if (remove.length > 0) {
-      remove.forEach(swap => {
-        swap.addEventListener("click", e => {
+    const removeGroup = this.removeFromKitButtons;
+    if (removeGroup.length > 0) {
+      removeGroup.forEach( el => {
+        el.addEventListener("click", e => {
           e.preventDefault();
+          if (el.dataset) {
+            let target = el.dataset;
+            let product_id = target.product_id ? target.product_id : undefined;
+            let category_id = target.category_id ? target.category_id : undefined;
 
-          if (e.target.dataset) {
-            const target = e.target.dataset;
-            const sku = target.sku ? target.sku : undefined;
-            const category = target.category ? target.category : undefined;
-
-            if (sku !== undefined && category !== undefined) {
-              const removeItem = {
-                sku,
-                category
+            if (product_id !== undefined && category_id !== undefined) {
+              let removeItem = {
+                'product_id':product_id,
+                'category_id':category_id
               };
 
               let parentNode =
-                e.target.parentElement.parentElement.parentElement || undefined;
+              el.parentElement.parentElement.parentElement.parentElement.parentElement || undefined;
               if (parentNode) {
                 parentNode.style.overflow = "hidden";
                 KUTE.to(
@@ -198,23 +222,83 @@ export class Cart {
     }
   }
 
+  // sets the session to be in the "add item to kit" state (or unset it)
+  setKitStateAPI(kitID, isAdd, redirectURL) {
+    let setKitStateURL = endpoints.setKitState + '/' + kitID + '/' + isAdd;
+    fetch(setKitStateURL, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .catch(error => console.error("Error:", error))
+    .then(response => {
+      if (response.error) {
+      } else {
+        // need to set timeoout here
+        setTimeout(function() {
+          document.location = redirectURL;
+        },100);
+      }
+    })
+  }
+
   swapItem() {
     const swaps = this.swapFromCartButtons;
     if (swaps.length > 0) {
       swaps.forEach(swap => {
         swap.addEventListener("click", e => {
           e.preventDefault();
-          // User sends the product they wish to swap out
-          // Then we direct them to the shop landing page
+          let el = swap.dataset;
+          let kit_id = el.kit_id ? el.kit_id : 0;
+          let cat_id = el.cat_id ? el.cat_id : 0;
+          let prod_id = el.prod_id ? el.prod_id : 0;
+
+          let swapURL = endpoints.swapItemFromKit;
+          // add to kit is: kit_id, product_id, cat_id
+          swapURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
+          fetch(swapURL, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+          .then(res => res.json())
+          .catch(error => console.error("Error:", error))
+          .then(response => {
+            if (response.error) {
+            } else {
+              if (response.url) {
+                setTimeout(function() {
+                  document.location.href = response.url;
+                },100);
+              }
+            }
+          });
         });
       });
     }
   }
 
   removeItemAPI(item) {
-    fetch(endpoints.removeFromCart, {
+    let kit_id = document.getElementById('bl_kit_id');
+    if (kit_id && kit_id.value) {
+      kit_id = parseInt(kit_id.value);
+    }
+    let removeURL = endpoints.removeFromCart;
+    // if there is a kit ID, that means we're removing it from the kit. Otherwise, we are removing it from the cart
+    if (kit_id > 0 && item.product_id) {
+      removeURL = endpoints.removeFromKit+'/'+kit_id+'/'+item.product_id;
+      if (item.category_id) {
+        removeURL += '/'+item.category_id;
+      }
+    }
+    fetch(removeURL, {
       method: "POST",
-      body: JSON.stringify(item),
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       }
@@ -225,7 +309,7 @@ export class Cart {
         if (response.error) {
         } else {
           this.updateCount(response);
-          this.fillCart(response);
+          this.miniCart(response);
           this.updateTileQuantity(response, item);
         }
       });
@@ -282,15 +366,15 @@ export class Cart {
       item.addEventListener("click", e => {
         e.preventDefault();
 
-        if (e.target.dataset) {
-          const target = e.target.dataset;
-          const sku = target.sku ? target.sku : undefined;
-          const category = target.category ? target.category : undefined;
+        if (this.target.dataset) {
+          let target = e.target.dataset;
+          let product_id = target.product_id ? target.product_id : undefined;
+          let category_id = target.category_id ? target.category_id : undefined;
 
-          if (sku !== undefined && category !== undefined) {
-            const removeItem = {
-              sku,
-              category
+          if (product_id !== undefined && category_id !== undefined) {
+            let removeItem = {
+              'product_id':product_id,
+              'category_id':category_id
             };
 
             this.removeItemAPI(removeItem);
@@ -310,23 +394,25 @@ export class Cart {
 
         addItemIcon.addEventListener("click", e => {
           e.preventDefault();
-          const addIcon = e.target;
-          const sku = addIcon.dataset.sku ? addIcon.dataset.sku : undefined;
-          const category = addIcon.dataset.category
-            ? addIcon.dataset.category
-            : undefined;
-          const name = addIcon.dataset.name ? addIcon.dataset.name : undefined;
+          let el = addItemIcon.dataset;
+          let kit_id = el.kit_id ? el.kit_id : 0;
+          let cat_id = el.cat_id ? el.cat_id : 0;
+          let prod_id = el.prod_id ? el.prod_id : 0;
+          let swap = el.swap ? el.swap : 0;
 
-          if (sku !== undefined && category !== undefined) {
-            const newItem = {
-              sku,
-              category,
-              name
-            };
+          let addURL = endpoints.addToCart;
+          if (kit_id > 0) {
+            addURL = endpoints.addToKit;
+          }
+          if (swap > 0 && kit_id > 0) {
+            addURL = endpoints.selectSwap;
+          }
+          // add to kit is: kit_id, product_id, cat_id
+          addURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
 
-            fetch(endpoints.addToCart, {
+            fetch(addURL, {
               method: "POST",
-              body: JSON.stringify(newItem),
+              credentials: "include",
               headers: {
                 "Content-Type": "application/json"
               }
@@ -336,23 +422,21 @@ export class Cart {
               .then(response => {
                 if (response.error) {
                 } else {
-                  this.updateCount(response);
-                  this.fillCart(response);
 
-                  // TODO: DRY
-                  const match = response.filter(item => {
-                    return item.sku === sku && item.category === category;
-                  });
-
-                  if (match.length > 0) {
-                    text.innerHTML = match[0].count + inCartText;
-                    button.classList.add("in-cart");
-                    removeItemIcon.classList.remove("hidden");
+                  if ( typeof response.items != 'undefined') {
+                    this.updateCount(response.items);
+                    this.miniCart(response.items);
+                  }
+                  if (typeof response.url != 'undefined') {
+                    // we will get a return URL
+                    setTimeout(function() {
+                      document.location.href = response.url;
+                    },100); // setTimeout to bust promise
+                    
                   }
                 }
               });
-          }
-        });
+          });
       });
     }
   }
@@ -381,6 +465,7 @@ export class Cart {
               };
               fetch(endpoints.removeFromCart, {
                 method: "POST",
+                credentials: "include",
                 body: JSON.stringify(removeItem),
                 headers: {
                   "Content-Type": "application/json"
@@ -392,7 +477,7 @@ export class Cart {
                   if (response.error) {
                   } else {
                     this.updateCount(response);
-                    this.fillCart(response);
+                    this.miniCart(response);
                     // TODO: DRY
                     const match = response.filter(item => {
                       return item.sku === sku && item.category === category;

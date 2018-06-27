@@ -73,6 +73,25 @@ function bl_list_kits() {
 	);
 }
 
+function bl_get_kit_bag($id) {
+	$bag = null;
+	if (function_exists('get_field')) {
+		$bag = get_field('bag_for_this_kit',$id);
+	}
+	if (is_object($bag)) {
+		$bag = wc_get_product($bag);
+	}
+	return $bag;
+}
+
+function bl_get_kit_items($id) {
+	$items = array();
+	if (function_exists('get_field')) {
+		$items = get_field('product_categories',$id);
+	}
+	return $items;
+}
+
 function bl_override_category_default($cat_id,$product_id) {
 	$session = array();
 	$session = WC()->session->get( 'bl_kitting_overrides' );
@@ -87,3 +106,40 @@ function bl_get_category_overrides() {
 	$session = WC()->session->get( 'bl_kitting_overrides' );
 	return $session;
 }
+
+function bl_get_kit_price($id) {
+	$price = 0;
+	if (!is_numeric($id) || empty($id)) {
+		return $price;
+	}
+	$key = 'bl-kit-price-total-' . $id;
+
+	// get cache
+	if (function_exists('upco_get_cache')) {
+		$price = upco_get_cache($key);
+	}
+	if (!empty($price)) {
+		return $price;
+	}
+	// get the price of the whole kit
+	if (function_exists('get_field')) {
+		$items = get_field('product_categories',$id);
+	}
+	if (!empty($items) && is_array($items)) {
+		foreach ($items as $item) {
+			$prod = $item['featured_product'];
+			if (!empty($prod) && is_object($prod)) {
+				$prod_id = $prod->ID;
+				$product = wc_get_product( $prod_id );
+			}
+			if (!empty($product)) {
+				$price += $product->get_price();
+			}
+		} // end foreach
+		if (function_exists('upco_set_cache')) {
+			$group = upco_cache_group();
+			upco_set_cache($key,$price,$group,60*60*24); // 24 hour cache
+		}
+	}
+	return $price;
+} // end bl_get_kit_price()

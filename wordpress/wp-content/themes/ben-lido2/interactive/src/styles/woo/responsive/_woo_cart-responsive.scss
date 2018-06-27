@@ -1,0 +1,91 @@
+@media (max-width: $woo-lg) {
+  .woocommerce-cart {
+    .shop_table {
+      thead {
+        tr {
+          display: flex;
+          flex-direction: row;
+        }
+        th {
+          display: block;
+          flex-grow: 1;
+        }
+      }
+
+      .cart_item {
+        width: 100%;
+        border-bottom: $grey-border;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        display: flex;
+        flex-grow: 1;
+        td {
+          text-align: center;
+          display: block;
+          &:before {
+            text-align: center;
+            width: 100%;
+            color: $blumine;
+          }
+        }
+        .product {
+          &-remove {
+            align-self: center;
+            .remove {
+              position: relative;
+              top: auto;
+              right: auto;
+              &:before {
+                line-height: normal;
+              }
+            }
+          }
+          &-thumbnail {
+            align-self: center;
+          }
+          &-name {
+            text-align: left;
+            &:before {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $size-sm) {
+  .woocommerce-cart {
+    .product {
+      &-remove {
+        width: 10%;
+      }
+      &-thumbnail {
+        width: 20%;
+        padding: $unit-4 0;
+        a {
+          img {
+          }
+        }
+      }
+
+      &-name {
+        width: 70%;
+      }
+      &-price {
+        width: 33%;
+      }
+      &-quantity {
+        width: 33%;
+        .input-text {
+          padding-left: $unit-5;
+          text-align: center;
+        }
+      }
+      &-subtotal {
+        width: 33%;
+      }
+    }
+  }
+}

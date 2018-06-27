@@ -2,35 +2,26 @@
 
 {% block content %}
 
-  {% if not stepNavigation %}
-    {% set stepNavigation = [
-      {
-        previousStep: '/pick-a-kit',
-        nextStep: '/shipping-schedule'
-      }
-    ] %}
-  {% endif %}
+    {% include 'common/step-navigation.twig' %}
 
-  {% include 'common/step-navigation.twig' %}
-
-  <div class="max-width-sm">
-    {% include 'common/navigation/search-in-page.twig', with {queryTerm} %}
-  </div>
-
-  <div class="bg-grey search-results-container">
-    <div class="max-width-xl">
-      <div class="columns">
-        {% for product in products %}
-          <div class="column col-xs-12 col-sm-6 col-md-6 col-lg-4 col-3 product-tile-column">
-            {% include 'common/product/product-tile.twig', with {product: product } %}
-          </div>
-        {% endfor %}
-      </div>
+    <div class="max-width-sm">
+        {% include 'common/navigation/search-in-page.twig' with {queryTerm} %}
     </div>
-  </div>
 
-  <div class="bg-grey">
-    {% include 'common/back-to-top.twig' %}
-  </div>
+    <div class="bg-grey search-results-container">
+        <div class="max-width-xl">
+            <div class="columns">
+                {% for product in products %}
+                    <div class="column col-xs-12 col-sm-6 col-md-6 col-lg-4 col-3 product-tile-column">
+                        {% include 'common/product/product-tile.twig' with {product: product } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-grey">
+        {% include 'common/back-to-top.twig' %}
+    </div>
 
 {% endblock %}

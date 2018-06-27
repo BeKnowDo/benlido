@@ -107,6 +107,14 @@
     &-account {
       color: $brown-grey;
     }
+    .columns {
+    }
+    .column {
+      padding: 0 14px;
+      &:last-child {
+        padding-left: 7px;
+      }
+    }
   }
   &-bag {
     user-select: none;

@@ -1,5 +1,10 @@
 export const endpoints = {
-  getCartItems: "/json/cart",
-  addToCart: "/json/add-to-cart",
-  removeFromCart: "/json/remove-from-cart"
+  getCartItems: "/bl-api/cart",
+  addToCart: "/bl-api/cart/add",
+  addToKit: "/bl-api/kit/add",
+  removeFromCart: "/bl-api/cart/remove",
+  removeFromKit: '/bl-api/kit/remove',
+  swapItemFromKit: '/bl-api/kit/swap',
+  selectSwap: '/bl-api/kit/select',
+  setKitState: '/bl-api/kit/state'
 };

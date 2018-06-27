@@ -4,6 +4,8 @@
     padding: 20px;
     border: $grey-border;
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
 
     &:hover {
       .product-tile-image,
@@ -26,16 +28,17 @@
       padding-right: $unit-3;
     }
 
-    &-image {
-      transition: opacity 0.2s ease-in-out;
-      display: block;
-      margin: 0 auto;
-    }
-
     &-link {
       position: relative;
       display: block;
       margin: 0 auto;
+    }
+
+    &-image {
+      transition: opacity 0.2s ease-in-out;
+      display: block;
+      margin: 0 auto;
+      width: auto;
     }
 
     &-hover {
@@ -81,6 +84,7 @@
     .btn {
       @include knockout32(15px, 400);
       padding: 0;
+      margin-top: auto;
     }
 
     .fal {

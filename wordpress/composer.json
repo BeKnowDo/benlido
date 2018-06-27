@@ -2,26 +2,30 @@
     "name": "urbanpixels/ben-lido",
     "description": "Ben Lido Website",
     "repositories":[
-	{
+        {
             "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/advanced-custom-fields-pro.git"
-    },
-    {
-        "type":"vcs",
-        "url":"https://bitbucket.org/upcomposer/woocommerce-brands.git"
-    },
-    {
-        "type":"vcs",
-        "url":"https://bitbucket.org/upcomposer/woocommerce-cost-of-goods.git"
-    },
-	{
+        },
+        {
+            "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/upco-performance.git"
+        },
+        {
+            "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-brands.git"
+        },
+        {
+            "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-cost-of-goods.git"
+        },
+        {
             "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping.git"
-	},
-	{
+        },
+        {
             "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woothemes-updater.git"
-	},
+        },
         {
             "type":"composer",
             "url":"https://wpackagist.org"
@@ -29,6 +33,7 @@
     ],
     "require": {
         "up-plugins/advanced-custom-fields-pro":"dev-master",
+        "up-plugins/upco-performance":"dev-master",
         "up-plugins/woocommerce-brands":"dev-master",
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",

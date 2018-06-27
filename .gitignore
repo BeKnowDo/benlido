@@ -10,7 +10,7 @@ Thumbs.db
 .project
 
 # git conflict orig files
-wordpress/*.orig
+wordpress/**/*.orig
 
 # wordpress specific
 #wordpress/wp-config.php

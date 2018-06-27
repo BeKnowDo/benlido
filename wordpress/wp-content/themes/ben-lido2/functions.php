@@ -11,6 +11,7 @@ Timber::$dirname = array('twig-templates', 'views');
 
 // NOTE: woocommerce and storefront add_action and remove_action calls are in inc/storefront-overrides.php
 require_once 'inc/storefront-overrides.php'; // overriding the storefront parent theme
+require_once 'inc/product-overrides.php'; // overriding the product, product-detail, and category displays
 require_once 'inc/twig-template-pivots.php'; // the pivot file to modify variables from woocommerce to Twig
 require_once 'inc/template-functions.php'; // functions for displaying things: like navigation, etc.
 
@@ -29,10 +30,10 @@ function bl_child_theme_init()
     wp_style_add_data( 'parent-storefront-woocommerce-style', 'rtl', 'replace' );
 
     wp_register_style('bl-fonts', '//cloud.typography.com/7086216/6631592/css/fonts.css', array(), $version, 'all');
-    wp_register_style('bl-style-libs', get_stylesheet_directory_uri() . '/css/bl.libs.css', array(), $version, 'all');
-    wp_register_style('bl-style', get_stylesheet_directory_uri() . '/assets/styles/styles.css', array('bl-style-libs','bl-fonts'), $version, 'all');
-    wp_enqueue_script('bl-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.libs.js', array('jquery'),$version);
-    wp_enqueue_script('bl-scripts', get_stylesheet_directory_uri() . '/assets/javascript/index.js', array('jquery'), $version,true);
+    //wp_register_style('bl-style-libs', get_stylesheet_directory_uri() . '/css/bl.libs.css', array(), $version, 'all');
+    wp_register_style('bl-style', get_stylesheet_directory_uri() . '/assets/styles/styles.css', array('bl-fonts'), $version, 'all');
+    //wp_enqueue_script('bl-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.libs.js', array('jquery'),$version);
+    wp_enqueue_script('bl-scripts', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array('jquery'), $version,true);
 
     // removing default storefront styles.. this may cause issues later on with inherited dropdowns, error messages, etc. We will need to investigate this.
     //wp_enqueue_style('parent-storefront-style');
@@ -78,5 +79,10 @@ function bl_remove_widget_areas() {
     unregister_sidebar('footer-4');
 }
 
+function removebadsticky_woocommerce_scripts() {
+	wp_deregister_script( 'storefront-sticky-payment');
+}
+
+add_action( 'wp_enqueue_scripts', 'removebadsticky_woocommerce_scripts' , 90 );
 add_action('after_setup_theme','bl_after_theme_setup',0);
 //add_action('childtheme_sidebars','bl_remove_widget_areas');

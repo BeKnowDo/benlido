@@ -1,53 +1,53 @@
 <header class="bg-white benlido-header">
-  <div class="max-width-xl">
-    <div class="navbar">
-      <div class="navbar-section">
-        {% include 'common/navigation/navbar.twig' with {
-          socialMediaLinks : socialMediaLinks,
-          className: className,
-          list: list,
-          logo: diamond_logo
-        } %}
-      </div>
-
-      <div class="navbar-center">
-        {% include 'common/logo.twig' with {
-          logo : logo
-        } %}
-      </div>
-
-      <div class="navbar-section">
-        <div class="columns">
-          <div class="column hide-xs">
-            <a class="navbar-section-account" href="/account" title="My Account">
-              <i class="fal fa-user-circle fa-2x"></i>
-            </a>
-          </div>
-          <div class="column">
-            <span id="benlido-cart" class="navbar-section-cart">
-              <i class="fal fa-suitcase"></i>
-            </span>
-          </div>
-          <div class="column">
-            <div class="navbar-item-wrapper">
-              <span id="navbar-item-counter" class="navbar-item-counter">0</span>
-              <div id="navbar-bag-container" class="navbar-bag-container position-relative">
-                <div class="navbar-bag">
-                  <div id="navbar-bag-list" class="navbar-bag-list"></div>
-                  <a class="btn btn-lg btn-block btn-primary" href="/cart" title="Go to my cart">
-                    View kit
-                  </a>
-                  <span class="navbar-login">
-                    <a href="/register" title="Register an account">Sign Up</a>
-                    or
-                    <a href="/login" title="Login to your account">Log in</a>
-                    to save your bag.
-                  </span>
-                </div>
-              </div>
+    <div class="max-width-xl">
+        <div class="navbar">
+            <div class="navbar-section">
+                {% include 'common/navigation/navbar.twig' with {
+                    socialMediaLinks : socialMediaLinks,
+                    className: className,
+                    list: list,
+                    logo: diamond_logo
+                } %}
             </div>
-          </div>
+
+            <div class="navbar-center">
+                {% include 'common/logo.twig' with {
+                    logo : logo
+                } %}
+            </div>
+
+            <div class="navbar-section">
+                <div class="columns">
+                    <div class="column text-right hide-xs">
+                        <a class="navbar-section-account" href="/account" title="My Account">
+                            <i class="fal fa-user-circle fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="column  text-right">
+                        <span id="benlido-cart" class="navbar-section-cart">
+                            <i class="fal fa-suitcase"></i>
+                        </span>
+                    </div>
+                    <div class="column  text-right">
+                        <div class="navbar-item-wrapper">
+                            <span id="navbar-item-counter" class="navbar-item-counter">0</span>
+                            <div id="navbar-bag-container" class="navbar-bag-container position-relative">
+                                <div class="navbar-bag">
+                                    <div id="navbar-bag-list" class="navbar-bag-list"></div>
+                                    <a class="btn btn-lg btn-block btn-primary" href="/cart" title="Go to my cart">
+                                        View kit
+                                    </a>
+                                    <span class="navbar-login">
+                                        <a href="/register" title="Register an account">Sign Up</a>
+                                        or
+                                        <a href="/login" title="Login to your account">Log in</a>
+                                        to save your bag.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>

@@ -10,8 +10,10 @@
       }
   ]%}
     {% endif %}
+
     {% include 'common/step-navigation.twig' %}
-    {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
+
+    {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
 
     {% if not items %}
         {% set items = [
@@ -24,7 +26,8 @@
         picked: true,
         href: '/shop-landing',
         image: '/images/product-image.png',
-        bagURL: '/product/123'
+        bagURL: '/product/123',
+        promo: 'Includes $20 off all personal care items'
       },
       {
         logo: '/images/kipling.png',
@@ -43,7 +46,7 @@
         href: '/shop-landing',
         image: '/images/product-image.png',
         bagURL: '/product/123',
-        coming_soon: 'Coming Soon!',
+        coming_soon: 'COMING SOON!',
         disabled: true
       },
       {
@@ -60,8 +63,10 @@
     ]%}
     {% endif %}
 
-    <div class="max-width-xl">
-        {% include 'common/hero/hero-product-list.twig', with { products: items } %}
+    <div class="bg-white">
+        <div class="max-width-xl">
+            {% include 'common/hero/hero-product-list.twig' with { products: items } %}
+        </div>
     </div>
 
     {% include 'common/back-to-top.twig' %}

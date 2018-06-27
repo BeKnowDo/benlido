@@ -142,6 +142,8 @@ function bl_get_featured_categories() {
   return $results;
 } // end bl_get_featured_categories()
 
+// this processes the list of things in the "bags" page template
+// we need to see if it's a product or a kit
 function bl_process_bags_list($items) {
   $results = array();
   $now = time();
@@ -151,6 +153,7 @@ function bl_process_bags_list($items) {
       $prod = null;
       $coming_soon = '';
       $skip = false;
+      $href = '#';
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -160,17 +163,40 @@ function bl_process_bags_list($items) {
           $title = $item->post_title;
           $description = $item->post_content;
           $status = $item->post_status;
+          $type = $item->post_type;
         }
         $coming_soon = $el['coming_soon_copy'];
         $button_copy = $el['button_copy'];
         
+        switch ($type) {
+          case 'travel_kit':
+            // the price of the kit is the total of all the products
+            if (function_exists('bl_get_kit_price')) {
+              $price = wc_price(bl_get_kit_price($item_id));
+            }
+            if (function_exists('get_field')) {
+              // we need to get the kit page
+              $kitting_page = get_field('kitting_page','option');
+              if ($kitting_page) {
+                $href = get_permalink($kitting_page) . '?id=' . $item_id;
+              }
+              
+            }
+          break;
+          default:
+
+            if (function_exists('wc_get_product')) {
+              $prod = wc_get_product($item_id);
+            }
+            if (!empty($prod)) {
+              $price = $prod->get_price_html();
+            }
+
+          break;
+        }
         $url = get_permalink($item_id);
-        if (function_exists('wc_get_product')) {
-          $prod = wc_get_product($item_id);
-        }
-        if (!empty($prod)) {
-          $price = $prod->get_price_html();
-        }
+
+        
         
         $disabled = false;
         if ($status == 'draft' || $status == 'future') {
@@ -203,7 +229,7 @@ function bl_process_bags_list($items) {
             'header'=>$title,
             'copy'=>$description,
             'price'=>$price,
-            'href'=>'#'.$item_id,
+            'href'=>$href,
             'button_copy'=>$button_copy,
             'image'=>$image,
             'image_retina'=>$image_retina,
@@ -218,3 +244,91 @@ function bl_process_bags_list($items) {
   }
   return $results;
 } // end bl_process_bags_list()
+
+function bl_process_kit_list($items) {
+
+  $results = array();
+  if (!empty($items) && is_array($items)) {
+    foreach ($items as $item) {
+      //print_r ($item);
+      $cat_id = $item['category'];
+      $category = get_term($cat_id);
+      if (!empty($category)) {
+        $category_name = $category->name;
+      }
+      $prod = $item['featured_product'];
+      if (!empty($prod)) {
+        $product = wc_get_product($prod);
+      }
+      if (!empty($product)) {
+
+      }
+
+    }
+  }
+  die;
+} // end bl_process_kit_list()
+
+function bl_process_kit_bag($item) {
+
+  $results = array();
+  // this is always an array of arrays
+  if (!empty($item) && is_object($item) && method_exists($item,'get_name')) {
+    $name = $item->get_name();
+    $logo = ''; // need to get the brand logo
+    $description = $item->get_description();
+    $href = get_permalink($item);
+    $image = wp_get_attachment_image_src(get_post_thumbnail_id($item->get_id()),'woocommerce_single');
+    if (!empty($image) && is_array($image)) {
+      $image = $image[0];
+    }
+  }
+  $results[] = array(
+        'triangleBackground' => true,
+        'logo' => $logo,
+        'header' => $name,
+        'copy' => $description,
+        'picked' => true,
+        'href' => $href,
+        'image' => $image,
+        'bagURL' => $href
+  );
+  return $results;
+}
+
+// gets the name of this particular category, no matter it's from a category page, a shop landing page, or the primary category of the product
+function bl_get_this_category() {
+  if (is_product_category()) {
+      $category = get_queried_object();
+      if (!empty($category) && isset($category->name)) {
+        return $category;
+      }
+  }
+  global $product;
+  global $product_override;
+  //print_r ($product_override);
+  if (!empty($product_override) && isset($product_override['id'])) {
+    $override_id = $product_override['id'];
+    if (!empty($product) && is_object($product)) {
+      $product_id = $product->get_id();
+    }
+    if ($override_id > 0 && $override_id == $product_id) {
+      if (isset($product_override['categoryTitle']) || isset($product_override['productCategoryID'])) {
+        // returning the object
+        $cat_id = $product_override['productCategoryID'];
+        if (!empty($cat_id) && is_numeric($cat_id)) {
+          $category = get_term($cat_id);
+          return $category;
+        }
+      }
+    }
+  }
+
+  if (!empty($product_override) && isset($product_override['category'])) {
+    $category = $product_override['category'];
+    if (is_numeric($category)) {
+      $category_obj = get_term($category);
+      return $category_obj;
+    }
+  }
+}

@@ -2,17 +2,17 @@
 
 {% block content %}
 
-  {% if not categoryHeader %}
-    {% set categoryHeader = [
+    {% if not categoryHeader %}
+        {% set categoryHeader = [
       {
         text: 'SET IT AND FORGET IT',
         subText: 'Tell us when and where you need to be restocked and never worry again'
       }
     ]%}
-  {% endif %}
+    {% endif %}
 
-  {% if not shippingTypes %}
-    {% set shippingTypes = [
+    {% if not shippingTypes %}
+        {% set shippingTypes = [
       {
         image: '/images/truck-shipping.png',
         header: 'ONE TIME TRIAL',
@@ -29,20 +29,24 @@
         copy: 'This is a two-line product title  description with full info and...'
       }
     ] %}
-  {% endif %}
-  <div class="bg-grey">
-    <div class="max-width-xl">
-      {% include 'common/category-header.twig', with { categoryHeader } %}
+    {% endif %}
+    <div class="bg-grey">
+        <div class="bg-white">
+            {% include 'common/step-navigation.twig' %}
+        </div>
+
+        <div class="max-width-xl">
+            {% include 'common/category-header.twig' with { categoryHeader } %}
+        </div>
+        <div class="max-width-md">
+            <div class="columns shipping-tile-container">
+                {% for item in shippingTypes%}
+                    <div class="column col-4 col-xs-12 col-sm-12">
+                        {% include 'common/shipping/shipping-tile.twig' with {shipping: item} %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <div class="max-width-md">
-      <div class="columns shipping-tile-container">
-        {% for item in shippingTypes%}
-          <div class="column col-4 col-xs-12 col-sm-12">
-            {% include 'common/shipping/shipping-tile.twig', with {shipping: item} %}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
 
 {% endblock %}

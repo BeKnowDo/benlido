@@ -45,6 +45,8 @@ function bl_storefront_overrides() {
 	remove_action('storefront_footer','storefront_footer_widgets',10);
 	remove_action('storefront_footer','storefront_credit',20);
 
+	remove_action('woocommerce_sidebar','woocommerce_get_sidebar',10);
+
 	if (is_woocommerce()) {
 		add_action('woocommerce_before_main_content','bl_breadcrumb',4);
 		if (is_shop() || is_product_category() || is_product_tag()) {
@@ -54,8 +56,7 @@ function bl_storefront_overrides() {
 	}
 }
 
-// for adding frequency to session
-add_action( 'wp_loaded', 'bl_add_frequency_to_session', 100);
+
 add_action( 'wp', 'bl_storefront_overrides' );
 
 
@@ -245,7 +246,7 @@ if ( ! function_exists( 'storefront_before_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_before_content() {
-		if (is_shop() || is_product_category() || is_product_tag()):
+		if (is_shop() || is_product_category() || is_product_tag() || is_cart() || is_checkout()):
 		?>
 		<div class="bg-grey">
 			<div class="max-width-xl shop-landing-featured">
@@ -265,7 +266,7 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_after_content() {
-		if (is_shop() || is_product_category() || is_product_tag()):
+		if (is_shop() || is_product_category() || is_product_tag() || is_cart() || is_checkout()):
 		?>
 				</div>
 			</div>
@@ -295,7 +296,7 @@ function bl_storefront_main_content_wrapper_start() {
 	} elseif (is_shop()) {
 		echo '<div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
 	} else {
-		echo '<div class="max-width-xl">';
+		echo '<div class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
 	}
 	
 }
@@ -371,18 +372,6 @@ function bl_footer_menus() {
 	<?php
 }
 
-if (!function_exists('bl_add_frequency_to_session')) {
-	function bl_add_frequency_to_session() {
-		if (isset($_POST['frequency'])) {
-			$frequency = intval($_POST['frequency']);
-			if( function_exists('WC')) {
-				WC()->session->set( 'frequency', $frequency);
-				global $woocommerce;
-				$cart_url = $woocommerce->cart->get_cart_url();
-				wp_redirect($cart_url);
-			}
-		}
-	 }
-}
+
 
 

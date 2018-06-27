@@ -1,0 +1,24 @@
+@media (min-width: $size-md) {
+  .woocommerce {
+    &-order {
+      .woocommerce {
+        &-order-overview {
+          display: flex;
+          flex-wrap: wrap;
+
+          li {
+            width: 50%;
+          }
+        }
+      }
+
+      &-details {
+        .woocommerce-table {
+        }
+      }
+    }
+
+    &-thankyou-order-received {
+    }
+  }
+}

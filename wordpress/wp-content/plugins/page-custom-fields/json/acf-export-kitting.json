@@ -32,67 +32,18 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "These are the fields required for the home page broken down by section.\r\nHero Section.\r\nKit Selection",
+                "message": "This page has only two lines that you can edit. The rest of the page is dynamically populated.\r\nThis is the section right above the list of products on the prebuilt kit page.\r\nThere are two key copy that you can change.",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
             {
-                "key": "field_5a9de2e83962e",
-                "label": "Show Hero Section?",
-                "name": "show_hero_section",
-                "type": "true_false",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "",
-                "default_value": 0,
-                "ui": 0,
-                "ui_on_text": "",
-                "ui_off_text": ""
-            },
-            {
-                "key": "field_5a9de34d39634",
-                "label": "Selected Kit",
-                "name": "selected_kit",
-                "type": "post_object",
-                "instructions": "Select the kit you want to show on this page",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "travel_kit"
-                ],
-                "taxonomy": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
-            },
-            {
-                "key": "field_5a9de2f53962f",
-                "label": "Hero Section",
+                "key": "field_5b2d4737ae111",
+                "label": "Middle Section",
                 "name": "",
                 "type": "tab",
                 "instructions": "",
                 "required": 0,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_5a9de2e83962e",
-                            "operator": "==",
-                            "value": "1"
-                        }
-                    ]
-                ],
+                "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
                     "class": "",
@@ -102,9 +53,9 @@
                 "endpoint": 0
             },
             {
-                "key": "field_5a9de30c39630",
-                "label": "Button Copy",
-                "name": "button_copy",
+                "key": "field_5b2d47b0ae113",
+                "label": "Middle Header",
+                "name": "middle_header",
                 "type": "text",
                 "instructions": "",
                 "required": 0,
@@ -114,17 +65,17 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
+                "default_value": "CUSTOMIZE YOUR KIT",
                 "placeholder": "",
                 "prepend": "",
                 "append": "",
                 "maxlength": ""
             },
             {
-                "key": "field_5a9de31239631",
-                "label": "Button URL",
-                "name": "button_url",
-                "type": "url",
+                "key": "field_5b2d47b7ae114",
+                "label": "Middle Subheader",
+                "name": "middle_subheader",
+                "type": "text",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -133,56 +84,11 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "placeholder": ""
-            },
-            {
-                "key": "field_5a9de32239632",
-                "label": "Hero Image",
-                "name": "hero_image",
-                "type": "image",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "return_format": "array",
-                "preview_size": "thumbnail",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": "",
-                "max_height": "",
-                "max_size": "",
-                "mime_types": ""
-            },
-            {
-                "key": "field_5a9de33039633",
-                "label": "Hero Image (Retina)",
-                "name": "hero_image_retina",
-                "type": "image",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "return_format": "array",
-                "preview_size": "thumbnail",
-                "library": "all",
-                "min_width": "",
-                "min_height": "",
-                "min_size": "",
-                "max_width": "",
-                "max_height": "",
-                "max_size": "",
-                "mime_types": ""
+                "default_value": "Remove or swap products to make this kit your own",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             }
         ],
         "location": [
@@ -199,7 +105,10 @@
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
-        "hide_on_screen": "",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt"
+        ],
         "active": 1,
         "description": ""
     }

@@ -1,17 +1,16 @@
-<div class="product-tile bg-white" itemscope="itemscope" itemtype="http://schema.org/ItemList">
-  <link itemprop="url" href=""/>
+<div class="product-tile bg-white">
 
-  <div class="text-center empty-product" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/Product">
-    <a class="product-tile-link" href="/products" title="Add more products">
-      <i class="fal empty-product-add fa-plus-circle fa-4x"></i>
-    </a>
-    <h3 class="product-tile-header">Forget something?</h3>
-    <h4 class="product-tile-sub-header">No problem. Let's get it added.</h4>
+    <div class="text-center empty-product">
+        <a class="product-tile-link bl-add-empty-product" href="{{url}}" title="{{link_title_esc}}">
+            <i class="fal empty-product-add fa-plus-circle fa-4x"></i>
+        </a>
+        <h3 class="product-tile-header">{{header}}</h3>
+        <h4 class="product-tile-sub-header">{{subheader}}</h4>
 
-    <button class="btn btn-lg btn-block btn-primary" data-sku="{{product.sku}}" data-category="{{product.category}}">
-      Shop by category
-    </button>
+        <a href="{{url}}" class="btn btn-lg btn-block btn-primary bl-add-empty-product">
+            {{link_title}}
+        </a>
 
-  </div>
+    </div>
 
 </div>

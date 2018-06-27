@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.5.0
+ * @version 3.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,8 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<form id="search-container" role="search" method="get" class="row no-margin mpush-1 no-margin-left hd-9 push-2" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-    <input id="search-field-button" class="column hd-1" type="image" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/icon-search.svg" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woocommerce' ); ?>" />
-	<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field column hd-11" placeholder="Enter item or brand name" value="<?php echo get_search_query(); ?>" name="s" />
+<form role="search" method="get" class="woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'woocommerce' ); ?></label>
+	<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'woocommerce' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+	<button type="submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woocommerce' ); ?>"><?php echo esc_html_x( 'Search', 'submit button', 'woocommerce' ); ?></button>
 	<input type="hidden" name="post_type" value="product" />
 </form>

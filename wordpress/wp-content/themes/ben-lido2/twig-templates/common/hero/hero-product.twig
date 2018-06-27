@@ -20,7 +20,7 @@
 
     {% if items.picked == true %}
         {% set picked = "hero-product-picked" %}
-        {% set pickedCopy = "Kit selected" %}
+        {% set pickedCopy = "Bag selected" %}
     {% else %}
         {% set picked = "" %}
         {% set pickedCopy = "Choose Kit" %}
@@ -54,6 +54,11 @@
             </div>
             <div class="column col-6 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
                 <a class="hero-product-bag-link" href="{{items.bagURL}}" title="{{items.header}}">
+                    {% if items.promo is defined %}
+                        <p class="hero-product-promo">
+                            <span>{{ items.promo }}</span>
+                        </p>
+                    {% endif %}
                     <img class="hero-product-bag-image" src="{{items.image}}"/>
                 </a>
             </div>

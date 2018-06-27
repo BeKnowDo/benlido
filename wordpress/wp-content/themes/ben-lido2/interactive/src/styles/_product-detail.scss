@@ -1,0 +1,9 @@
+.product {
+  &-description {
+    &-header {
+      @include sentinel(25px, 400);
+      color: $medium-grey;
+      margin: 0 auto 34px;
+    }
+  }
+}

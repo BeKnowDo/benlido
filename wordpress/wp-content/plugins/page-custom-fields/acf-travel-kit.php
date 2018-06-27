@@ -36,10 +36,35 @@ if( function_exists('acf_add_local_field_group') ):
                 ),
                 'message' => 'This is where you create kits.
     A kit is composed of a title, description, and featured image.
+    You will also need to choose a bag that is associated with this kit
     You will then add which category or subcategory of products each kit can contain as well as how many someone can choose.
     You can also select a featured product to show. If there is no featured product, then the first available product will be displayed.',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
+            ),
+            array(
+                'key' => 'field_5b2a5af67142c',
+                'label' => 'Bag for this Kit',
+                'name' => 'bag_for_this_kit',
+                'type' => 'post_object',
+                'instructions' => 'Select the bag that goes with this kit',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'product',
+                ),
+                'taxonomy' => array(
+                    0 => 'product_cat:bags',
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+                'return_format' => 'object',
+                'ui' => 1,
             ),
             array(
                 'key' => 'field_5a443bb9201f9',

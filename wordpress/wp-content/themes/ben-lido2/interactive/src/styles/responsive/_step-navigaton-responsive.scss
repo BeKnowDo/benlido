@@ -1,0 +1,31 @@
+@media (min-width: $size-sm) {
+  .step-navigation {
+    &-text {
+      &-back {
+      }
+      &-next {
+      }
+    }
+    &-current {
+    }
+
+    .btn {
+      &-no-border {
+        .step-navigation-text {
+        }
+      }
+      &-lg {
+      }
+      &-primary {
+        .step-navigation-text {
+        }
+      }
+    }
+
+    .fal {
+    }
+
+    .text-right {
+    }
+  }
+}

@@ -52,13 +52,27 @@ app.get("/", (req, res) => {
 
 app.get("/build-a-kit", (req, res) => {
   res.render("pages/build-a-kit", {
-    categoryItems: categoryItems
+    categoryItems: categoryItems,
+    stepNavigation: {
+      previousStep: "/",
+      back: "Back",
+      current: "Pick a Kit",
+      nextStep: "/shop-landing",
+      next: "Next: Shop Products"
+    }
   });
 });
 
 app.get("/pick-a-kit", (req, res) => {
   res.render("pages/pick-a-kit", {
-    categoryItems: categoryItems
+    categoryItems: categoryItems,
+    stepNavigation: {
+      previousStep: "/",
+      back: "Back",
+      current: "Pick a Kit",
+      nextStep: "/shop-landing",
+      next: "Next: Customize Kit"
+    }
   });
 });
 
@@ -88,15 +102,29 @@ app.get("/kit-selected", (req, res) => {
 
       res.render("pages/kit-selected", {
         products: results,
+        customizeKit: false,
         categoryItems: categoryItems,
-        customizeKit: false
+        stepNavigation: {
+          previousStep: "",
+          back: "Back",
+          current: "Customzie Your Kit",
+          nextStep: "/shipping-schedule",
+          next: "Next: Scheduler"
+        }
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
       res.render("pages/kit-selected", {
         products: originalProductData.products,
         categoryItems: categoryItems,
-        customizeKit: false
+        customizeKit: false,
+        stepNavigation: {
+          previousStep: "",
+          back: "Back",
+          current: "Customzie Your Kit",
+          nextStep: "/shipping-schedule",
+          next: "Next: Scheduler"
+        }
       });
     }
   } else {
@@ -104,7 +132,14 @@ app.get("/kit-selected", (req, res) => {
 
     res.render("pages/kit-selected", {
       products: originalProductData.products,
-      customizeKit: false
+      customizeKit: false,
+      stepNavigation: {
+        previousStep: "",
+        back: "Back",
+        current: "Customzie Your Kit",
+        nextStep: "/shipping-schedule",
+        next: "Next: Scheduler"
+      }
     });
   }
 });
@@ -150,7 +185,14 @@ app.get("/categories/:id", (req, res) => {
         customizeKit: true,
         hideCategory: true,
         categoryItems: categoryItems,
-        heroData: [{ header: heroData }]
+        heroData: [{ header: heroData }],
+        stepNavigation: {
+          previousStep: "/shop-landing",
+          back: "Back",
+          current: "Choose Products",
+          nextStep: "/shipping-schedule",
+          next: "Next: Set Schedule"
+        }
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
@@ -209,7 +251,14 @@ app.get("/shop-landing", (req, res) => {
               "Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc..."
           }
         ],
-        customizeKit: true
+        customizeKit: true,
+        stepNavigation: {
+          previousStep: "/build-a-kit",
+          back: "Back",
+          current: "Choose Products",
+          nextStep: "/shipping-schedule",
+          next: "Next: Set Schedule"
+        }
       });
     } else {
       log(`We don't have items in our cart so just send product list`);
@@ -221,7 +270,14 @@ app.get("/shop-landing", (req, res) => {
               "Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc..."
           }
         ],
-        customizeKit: true
+        customizeKit: true,
+        stepNavigation: {
+          previousStep: "/build-a-kit",
+          back: "Back",
+          current: "Choose Products",
+          nextStep: "/shipping-schedule",
+          next: "Next: Set Schedule"
+        }
       });
     }
   } else {
@@ -234,14 +290,28 @@ app.get("/shop-landing", (req, res) => {
             "Customize Your Kit <br/>Anything can go here. A hero. A simle header, etc..."
         }
       ],
-      customizeKit: true
+      customizeKit: true,
+      stepNavigation: {
+        previousStep: "/build-a-kit",
+        back: "Back",
+        current: "Choose Products",
+        nextStep: "/shipping-schedule",
+        next: "Next: Set Schedule"
+      }
     });
   }
 });
 
 app.get("/shipping-schedule", (req, res) => {
   res.render("pages/shipping-schedule", {
-    categoryItems: categoryItems
+    categoryItems: categoryItems,
+    stepNavigation: {
+      previousStep: "/shop-landing",
+      back: "Back",
+      current: "Set Schedule",
+      nextStep: "?",
+      next: "Next: Review Your Kit"
+    }
   });
 });
 
@@ -288,6 +358,13 @@ app.get("/search", (req, res) => {
   res.render("pages/search", {
     categoryItems: categoryItems,
     queryTerm,
+    stepNavigation: {
+      previousStep: "/shop-landing",
+      back: "Back",
+      current: "Search Results",
+      nextStep: "/shipping-schedule",
+      next: "Next: Scheduler"
+    },
     products: results,
     count: results.length
   });
@@ -300,12 +377,12 @@ app.use("/json", productAPI);
 const listening = function() {
   if (!isProduction) {
     browserSync({
-      files: ["interactive/**/*.{html,twig}", "build/**/*.{css, js}"],
+      files: ["**/*.{html,twig}", "build/**/*.{css, js}"],
       online: false,
       open: false,
       notify: false,
       port: env.BROWSER_SYNC_PORT,
-      proxy: env.LOCAL_HOST + env.PROXY_PORT,
+      proxy: `${env.LOCAL_HOST}:${env.PROXY_PORT}`,
       ui: false,
       dalay: 400
     });
@@ -315,7 +392,7 @@ const listening = function() {
 // Let's listen on the imported PORT env variable
 app.listen(env.PROXY_PORT, () => {
   log(`Server's started on port ${env.PROXY_PORT}`);
-  listening();
+  // listening();
 });
 
 // Open a browser instance for convenience

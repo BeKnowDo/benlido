@@ -2,19 +2,19 @@
 
 {% block content %}
 
-  {% if not stepNavigation %}
-    {% set stepNavigation =
+    {% if not stepNavigation %}
+        {% set stepNavigation =
       {
         previousStep: '/pick-a-kit',
         nextStep: '/shipping-schedule'
       }
     %}
-  {% endif %}
+    {% endif %}
 
-  {% include 'common/step-navigation.twig', with {stepNavigation: stepNavigation} %}
+    {% include 'common/step-navigation.twig' with {stepNavigation: stepNavigation} %}
 
-  {% if not heroProduct %}
-    {% set heroProduct = [
+    {% if not heroProduct %}
+        {% set heroProduct = [
       {
         triangleBackground: true,
         logo: '/images/kipling.png',
@@ -26,10 +26,10 @@
         bagURL: '/product/123'
       }
     ]%}
-  {% endif %}
+    {% endif %}
 
-  {% if not products %}
-    {% set products = [
+    {% if not products %}
+        {% set products = [
         {
           categoryID: '123',
           categoryTitle: 'Category Name 2',
@@ -153,42 +153,58 @@
           selected: true
         }
       ]%}
-  {% endif %}
+    {% endif %}
 
-  {% if not categoryHeader %}
-    {% set categoryHeader = [
+    {% if not categoryHeader %}
+        {% set categoryHeader = [
       {
         text: 'CUSTOMIZE YOUR KIT',
         subText: 'Remove or swap products to make this kit your own'
       }
     ]%}
-  {% endif %}
+    {% endif %}
 
-  <div class="bg-grey">
-    <div class="max-width-xl">
+    {% if not kitID %}
+      {% set kitID = 999 %}
+    {% endif %}
 
-      {% include 'common/hero/hero-product-list.twig', with { products: heroProduct } %}
-      {% include 'common/category-header.twig', with { categoryHeader } %}
+    <input type="hidden" id="bl_kit_id" name="bl_kit_id" value="{{kitID}}" />
+    <div class="bg-white">
+        <div class="max-width-xl">
 
-      {% if products is defined%}
-        <div class="columns">
+            {% include 'common/hero/hero-product-list.twig' with { products: heroProduct } %}
+            {% include 'common/category-header.twig' with { categoryHeader } %}
 
-          {% for product in products %}
-            <div class="column col-xs-12 col-sm-6 col-md-6 col-3 product-tile-column">
-              {% include 'common/product/product-tile.twig', with {product: product } %}
-            </div>
-          {% endfor %}
+            {% if products is defined%}
+                <div class="columns">
 
-          <div class="column col-xs-12 col-sm-6 col-md-6 col-3 product-tile-column">
-            {% include 'common/product/add-empty-product.twig', with {product: product } %}
-          </div>
+                    {% if products.length >= 16%}
+                        {% set productLimit = 16 %}
+                        {% for i in range(1, productLimit) %}
+                            <div class="column col-xs-12 col-sm-6 col-md-6 col-3 product-tile-column">
+                                {% include 'common/product/product-tile.twig' with {product: products[i] } %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+
+                        {% for product in products %}
+                            <div class="column col-xs-12 col-sm-6 col-md-6 col-3 product-tile-column">
+                                {% include 'common/product/product-tile.twig' with {product: product } %}
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+
+                    <div class="column col-xs-12 col-sm-6 col-md-6 col-3 product-tile-column">
+                        {% include 'common/product/add-empty-product.twig' with {product: product } %}
+                    </div>
+
+                </div>
+            {% endif %}
 
         </div>
-      {% endif %}
-
     </div>
-  </div>
 
-  {% include 'common/back-to-top.twig' %}
+    {% include 'common/back-to-top.twig' %}
 
 {% endblock %}

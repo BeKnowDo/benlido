@@ -13,9 +13,7 @@ log(chalk.black.bgWhite(destination));
 
 module.exports = {
   devtool: "source-map", // enhance debugging by adding meta info for the browser devtools
-  entry: {
-    index: path.join(paths.jsEntry)
-  },
+  entry: [require.resolve("./polyfills"), path.join(paths.jsEntry)],
   output: {
     path: destination,
     filename: "[name].js",

@@ -1,31 +1,21 @@
 <span class="navbar-toggle">
-  <i id="navbar-trigger" class="fas fa-bars"></i>
-  <i id="navbar-search" class="fal fa-search"></i>
+    <i id="navbar-trigger" class="fas fa-bars"></i>
+    <i id="navbar-search" class="fal fa-search"></i>
 </span>
 {% if not socialMediaLinks %}
-  {% set socialMediaLinks = [
+    {% set socialMediaLinks = [
   {
-    href: '/whatever',
-    title: 'Newsletter',
-    text: 'Newsletter'
-  },
-  {
-    href: '/whatever',
-    title: 'Google +',
-    text: 'Google +'
-  },
-  {
-    href: '/whatever',
+    href: '?',
     title: 'Instagram',
     text: 'Instagram'
   },
   {
-    href: '/whatever',
+    href: '?',
     title: 'Twitter',
     text: 'Twitter'
   },
   {
-    href: '/whatever',
+    href: '?',
     title: 'Facebook',
     text: 'Facebook'
   }
@@ -33,20 +23,20 @@
 {% endif %}
 
 {% if not logo %}
-  {% set logo = '<a href="/"><img src="/images/ben-lido-header-logo.svg" /></a>'%}
+    {% set logo = '<a href="/"><img src="/images/ben-lido-header-logo.svg" /></a>'%}
 {% endif %}
 
 <div id="navbar-dropdown" class="navbar-dropdown">
-  <div class="columns">
-    <div class="column col-3 col-xs-12 col-sm-12 col-md-4 col-ml-auto">
-      {% include 'common/navigation/navbar-dropdown.twig' with { className: className, list: list} %}
-    </div>
+    <div class="columns">
+        <div class="column col-3 col-xs-12 col-sm-12 col-md-4 col-ml-auto">
+            {% include 'common/navigation/navbar-dropdown.twig' %}
+        </div>
 
-    <div class="column col-3 col-xs-12 col-sm-12">
-      {% include 'common/social-media-links.twig' with { socialMediaLinks: socialMediaLinks } %}
+        <div class="column col-3 col-xs-12 col-sm-12">
+            {% include 'common/social-media-links.twig' with { socialMediaLinks: socialMediaLinks } %}
+        </div>
+        <div class="column col-3 col-xs-12 col-sm-12 col-mr-auto hide-sm">
+            {{logo}}
+        </div>
     </div>
-    <div class="column col-3 col-xs-12 col-sm-12 col-mr-auto hide-sm">
-      {{logo}}
-    </div>
-  </div>
 </div>

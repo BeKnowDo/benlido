@@ -1,34 +1,34 @@
 {% extends "layout/document.twig" %}
 {% block content %}
 
-  <div class="max-width-xl">
+    <div class="max-width-xl">
 
-    <div class="back-to-previous-page">
-      <i class="fal fa-chevron-circle-left fa-2x"></i>
-    </div>
-
-    <div class="max-width-lg">
-      <div class="columns">
-
-        <div class="col-5 col-xs-12 col-sm-12">
-          {% include 'common/product/product-images.twig', with { productImages: productImages } %}
+        <div class="back-to-previous-page">
+            <i class="fal fa-chevron-circle-left fa-2x"></i>
         </div>
 
-        <div class="col-6 col-xs-12 col-sm-12 col-mx-auto">
-          {% include 'common/product/product-information.twig', with { productInformation: productInformation } %}
-          {% include 'common/product/product-description.twig', with { productInformation: productInformation } %}
-          {# {% include 'common/product/product-additional-information.twig' %} #}
+        <div class="max-width-lg">
+            <div class="columns">
+
+                <div class="col-5 col-xs-12 col-sm-12">
+                    {% include 'common/product/product-images.twig' with { productImages: productImages } %}
+                </div>
+
+                <div class="col-6 col-xs-12 col-sm-12 col-mx-auto">
+                    {% include 'common/product/product-information.twig' with { productInformation: productInformation } %}
+                    {% include 'common/product/product-description.twig' with { productInformation: productInformation } %}
+                    {# {% include 'common/product/product-additional-information.twig' %} #}
+                </div>
+
+            </div>
         </div>
 
-      </div>
     </div>
 
-  </div>
+    <div class="bg-grey border-top-grey">
 
-  <div class="bg-grey border-top-grey">
+        {% include 'common/product/product-row.twig' with { associatedProducts: associatedProducts } %}
 
-    {% include 'common/product/product-row.twig', with { associatedProducts: associatedProducts } %}
-
-  </div>
+    </div>
 
 {% endblock %}

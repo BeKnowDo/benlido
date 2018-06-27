@@ -16,6 +16,41 @@ if (function_exists('get_field')) {
         'next' => $next_copy
     );
 }
+if (is_shop() || is_product_category()) {
+    // if it is shop page, let's see if we're in a middle of adding or swapping
+
+    $is_kit_add = false;
+    $is_swap = false;
+    $kit_url = '';
+    if (function_exists('bl_is_kit_add')) {
+        $is_kit_add = bl_is_kit_add();
+    }
+
+    if (function_exists('bl_is_swap')) {
+        $is_swap = bl_is_swap();
+    }
+
+    if ($is_kit_add == true || $is_swap == true) {
+        if (function_exists('bl_get_current_kit_id')) {
+            $kit_id = bl_get_current_kit_id();
+        }
+        if (!empty($kit_id) && function_exists('bl_get_kit_page_url')) {
+            $kit_url = bl_get_kit_page_url($kit_id);
+        }
+        $previousStep = $kit_url;
+        $back = 'Back to Kit Page';
+        $current = 'Add Item to Kit';
+        $nextStep = '#';
+        $bext = '';
+        $stepNavigation = array(
+            'previousStep' => $previousStep,
+            'back' => $back,
+            'current' => $current,
+            'nextStep' => $nextStep,
+            'nest' => $next
+        );
+    }
+}
 if (empty($stepNavigation)) {
     $stepNavigation = array(
         'previousStep' => '/',

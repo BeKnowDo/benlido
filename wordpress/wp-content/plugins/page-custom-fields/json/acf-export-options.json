@@ -32,7 +32,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "The main logo is in Appearance -> Customize area. We kept it there because that is the location for default assets.\r\nAny assets that need to be configured globally, and are unique to this site should be here.",
+                "message": "The main logo is in Appearance -> Customize area. We kept it there because that is the location for default assets.\r\nAny assets that need to be configured globally, and are unique to this site should be here.\r\nThe Add Item to Kit Section is where you would enter the copy for anything to do with the extra block that allows you to add more items to your pre-built kit.",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
@@ -215,6 +215,101 @@
                 "name": "category_page",
                 "type": "post_object",
                 "instructions": "The page that displays the Kitting \"Edit\" category",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b3241eef33b6",
+                "label": "Add Item to Kit Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b324262f33b7",
+                "label": "Add Item Block header",
+                "name": "add_item_block_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b32426ef33b8",
+                "label": "Add Item Block Subheader",
+                "name": "add_item_block_subheader",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b32427cf33b9",
+                "label": "Add Item Button Copy",
+                "name": "add_item_button_copy",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b324284f33ba",
+                "label": "Shop Page URL",
+                "name": "shop_page_url",
+                "type": "post_object",
+                "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {

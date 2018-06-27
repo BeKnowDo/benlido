@@ -2,43 +2,43 @@
 
 {% block content %}
 
-  {% if not stepNavigation %}
-    {% set stepNavigation = [
+    {% if not stepNavigation %}
+        {% set stepNavigation = [
       {
         previousStep: '/pick-a-kit',
         nextStep: '/shipping-schedule'
       }
     ] %}
-  {% endif %}
+    {% endif %}
 
-  {% include 'common/step-navigation.twig' %}
-  {% include 'common/hero/hero-title-copy.twig', with { heroData: heroData } %}
+    {% include 'common/step-navigation.twig' %}
+    {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
 
-  <div class="bg-grey">
-    <div class="max-width-xl shop-landing-featured">
+    <div class="bg-grey">
+        <div class="max-width-xl shop-landing-featured">
 
-      <div class="columns">
-        <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
-          {% include 'common/category-list.twig', with {categoryItems:categoryItems} %}
+            <div class="columns">
+                <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
+                    {% include 'common/category-list.twig' with {categoryItems:categoryItems} %}
+                </div>
+
+                <div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">
+                    <div class="columns">
+                        {% for product in products %}
+                            <div class="column col-xs-12 col-sm-6 col-4 product-tile-column">
+                                {% include 'common/product/product-tile.twig' with {product: product } %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-
-        <div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">
-          <div class="columns">
-            {% for product in products %}
-              <div class="column col-xs-12 col-sm-6 col-4 product-tile-column">
-                {% include 'common/product/product-tile.twig', with {product: product } %}
-              </div>
-            {% endfor %}
-
-          </div>
-        </div>
-
-      </div>
-
     </div>
-  </div>
-  <div class="bg-grey">
-    {% include 'common/back-to-top.twig' %}
-  </div>
+    <div class="bg-grey">
+        {% include 'common/back-to-top.twig' %}
+    </div>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 .product {
   &-information {
     &-header {
-      @include knockout(75px, 400);
+      @include knockout(70px, 400);
       text-transform: uppercase;
       text-align: center;
     }

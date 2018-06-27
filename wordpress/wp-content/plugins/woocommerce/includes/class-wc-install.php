@@ -105,6 +105,10 @@ class WC_Install {
 			'wc_update_340_last_active',
 			'wc_update_340_db_version',
 		),
+		'3.4.3' => array(
+			'wc_update_343_cleanup_foreign_keys',
+			'wc_update_343_db_version',
+		),
 	);
 
 	/**
@@ -544,8 +548,38 @@ class WC_Install {
 			$wpdb->query( "ALTER TABLE {$wpdb->comments} ADD INDEX woo_idx_comment_type (comment_type)" );
 		}
 
-		// Add constraint to download logs.
-		$wpdb->query( "ALTER TABLE {$wpdb->prefix}wc_download_log ADD FOREIGN KEY (permission_id) REFERENCES {$wpdb->prefix}woocommerce_downloadable_product_permissions(permission_id) ON DELETE CASCADE" );
+		// Get tables data types and check it matches before adding constraint.
+		$download_log_columns     = $wpdb->get_results( "SHOW COLUMNS FROM {$wpdb->prefix}wc_download_log WHERE Field = 'permission_id'", ARRAY_A );
+		$download_log_column_type = '';
+		if ( isset( $download_log_columns[0]['Type'] ) ) {
+			$download_log_column_type = $download_log_columns[0]['Type'];
+		}
+
+		$download_permissions_columns     = $wpdb->get_results( "SHOW COLUMNS FROM {$wpdb->prefix}woocommerce_downloadable_product_permissions WHERE Field = 'permission_id'", ARRAY_A );
+		$download_permissions_column_type = '';
+		if ( isset( $download_permissions_columns[0]['Type'] ) ) {
+			$download_permissions_column_type = $download_permissions_columns[0]['Type'];
+		}
+
+		// Add constraint to download logs if the columns matches.
+		if ( ! empty( $download_permissions_column_type ) && ! empty( $download_log_column_type ) && $download_permissions_column_type === $download_log_column_type ) {
+			$fk_result = $wpdb->get_row( "
+				SELECT COUNT(*) AS fk_count
+				FROM information_schema.TABLE_CONSTRAINTS
+				WHERE CONSTRAINT_SCHEMA = '{$wpdb->dbname}'
+				AND CONSTRAINT_NAME = 'fk_wc_download_log_permission_id'
+				AND CONSTRAINT_TYPE = 'FOREIGN KEY'
+				AND TABLE_NAME = '{$wpdb->prefix}wc_download_log'
+			" );
+			if ( 0 === (int) $fk_result->fk_count ) {
+				$wpdb->query( "
+					ALTER TABLE `{$wpdb->prefix}wc_download_log`
+					ADD CONSTRAINT `fk_wc_download_log_permission_id`
+					FOREIGN KEY (`permission_id`)
+					REFERENCES `{$wpdb->prefix}woocommerce_downloadable_product_permissions` (`permission_id`) ON DELETE CASCADE;
+				" );
+			}
+		}
 	}
 
 	/**
