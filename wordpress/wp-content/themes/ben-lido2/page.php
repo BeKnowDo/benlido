@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Ben Lido Home Page
+ * Default Page
  */
  
 get_header(); ?>
