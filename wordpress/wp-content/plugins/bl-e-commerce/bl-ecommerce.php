@@ -159,6 +159,7 @@ if (!function_exists('bl_get_kit_list')) {
 if (!function_exists('bl_set_product_swap')) {
     function bl_set_product_swap($kit_id,$category_id,$product_id) {
         $kit_id = intval(trim($kit_id));
+        bl_save_current_kit($kit_id);
         $category_id = intval(trim($category_id));
         $product_id = intval(trim($product_id));
         if (is_numeric($kit_id) && is_numeric($product_id)) {
@@ -332,9 +333,33 @@ function bl_get_current_kit_items($kit) {
 // gets the current session kit ID
 function bl_get_current_kit_id() {
     $kit_id = 0;
+    $current_page = get_page();
+    $current_page_id = 0;
+    $kitting_page_id = 0;
+    if (function_exists('get_field')) {
+        $kitting_page = get_field('kitting_page','option');
+        if (!empty($kitting_page) && is_array($kitting_page) && isset($kitting_page['id'])) {
+            $kitting_page_id = $kitting_page['id'];
+        }
+        if (!empty($kitting_page) && is_object($kitting_page) && isset($kitting_page->ID)) {
+            $kitting_page_id = $kitting_page->ID;
+        }
+    }
+    if (!empty($current_page) && is_object($current_page) && isset($current_page->ID)) {
+        $current_page_id = $current_page->ID;
+    }
+
+    if (isset($_REQUEST['id']) && $current_page_id > 0 && $current_page_id == $kitting_page_id) {
+        $kit_id = intval($_REQUEST['id']);
+    }
+    
     $kit_list = bl_get_kit_list();
-    if (!empty($kit_list)) {
+
+    if (!empty($kit_list) && $kit_id < 1) {
         $kit_id = $kit_list['kit_id'];
+    }
+    if (!is_numeric($kit_id)) {
+        $kit_id = 0;
     }
     return $kit_id;
 }
