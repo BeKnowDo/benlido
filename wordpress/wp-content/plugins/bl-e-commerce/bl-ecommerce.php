@@ -303,6 +303,45 @@ if (!function_exists('bl_get_cart')) {
     }
 }
 
+if (!function_exists('bl_add_current_kit_to_cart')) {
+    function bl_add_current_kit_to_cart() {
+        $kit_list = bl_get_kit_list();
+        // bag
+        $bag = $kit_list['bag'];
+
+        if (!empty($bag)) {
+            $bag_id = $bag['bag'];
+            if (function_exists('get_field')) {
+                $bag_cat_id = get_field('bag_category','option');
+            }
+            $meta = array('category'=>$bag_cat_id); 
+            $res = WC()->cart->add_to_cart($bag_id,1,0,array(),$meta);
+
+        }
+        $items = $kit_list['items'];
+        if (!empty($items) && is_array($items)) {
+            foreach ($items as $item) {
+                $product_id = $item['product'];
+                $variation_id = $item['variation'];
+                $category_id = $item['category'];
+                $quantity = $item['quantity'];
+                $meta = array('category'=>$category_id);
+                WC()->cart->add_to_cart($product_id,$quantity,$variation_id,array(),$meta);
+            }
+        }
+        if (function_exists('get_field')) {
+            $delivery_frequency_page = get_field('delivery_frequency_page','option');
+        }
+        if (!empty($delivery_frequency_page) && is_object($delivery_frequency_page)) {
+            $delivery_frequency_page_url = get_permalink($delivery_frequency_page);
+        }
+        if (!empty($delivery_frequency_page_url)) {
+            wp_redirect($delivery_frequency_page_url);
+        }
+        
+    }
+}
+
 /** 
  * this gets the current kit items, whether it's a new kit page, or if there is an existing kit in session
  * @param int $kit the custom post type ID for travel_kit

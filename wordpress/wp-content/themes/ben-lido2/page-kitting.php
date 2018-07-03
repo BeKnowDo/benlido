@@ -10,6 +10,9 @@
             if (function_exists('bl_get_current_kit_id')) {
                 $kit_id = bl_get_current_kit_id();
             }
+            if (!empty($kit_id) && $kit_id > 0) {
+                $success = bl_add_current_kit_to_cart();
+            }
         }
     }
     if ($_REQUEST['id']) {
