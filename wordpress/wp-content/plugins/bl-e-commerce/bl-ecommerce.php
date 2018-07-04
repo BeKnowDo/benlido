@@ -76,6 +76,19 @@ function bl_check_frequency() {
     return $frequency;
 }
 
+function bl_get_cart_item_meta($data, $cartItem) {
+    $bypass = true;
+    if ( isset( $cartItem['category'] )  && $bypass == false) {
+        $data[] = array(
+            'name' => 'Category',
+            'value' => $cartItem['category']
+        );
+    }
+    return $data;
+}
+
+add_filter( 'woocommerce_get_item_data', 'bl_get_cart_item_meta', 10, 2 );
+
 if (!function_exists('bl_is_swap')) {
     function bl_is_swap() {
         // if we're on the kitting page, then display the swap button instead
@@ -146,6 +159,16 @@ if (!function_exists('bl_set_kit_list')) {
         $kit = array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
         WC()->session->set_customer_session_cookie(true);
         WC()->session->set( 'current_kit', $kit);
+    }
+}
+
+if (!function_exists('bl_clear_all_kit_data')) {
+    function bl_clear_all_kit_data() {
+        WC()->session->set( 'current_kit', null);
+        WC()->session->set( 'current_product_swap', null);
+        WC()->session->set( 'purchase_flow', null);
+        WC()->session->set( 'frequency', null);
+        WC()->session->set( 'is_kit_add', null);
     }
 }
 
@@ -273,11 +296,15 @@ if (!function_exists('bl_get_cart')) {
                 // just need sku, category, name, count, and image
                 if (isset($item['data'])) {
                     //print_r ($item['data']);
+                    $mini_cart_max_num_words = 5;
+                    if (function_exists('get_field')) {
+                        $mini_cart_max_num_words = get_field('mini_cart_max_num_words','option');
+                    }
                     $id = $item['data']->get_id();
-                    $name = $item['data']->get_title();
+                    $name = wp_trim_words($item['data']->get_title(),$mini_cart_max_num_words);
                     $sku = $item['data']->get_sku();
                     //$image = $item['data']->get_image();
-                    $image_obj = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'single-post-thumbnail' );
+                    $image_obj = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'woocommerce_thumbnail' );
                     if (!empty($image_obj) && is_array($image_obj)) {
                         $image = $image_obj[0];
                     }
@@ -537,6 +564,160 @@ function bl_remove_from_kit($kit_id,$product_id,$category_id) {
     }
     return false;
 } // end bl_remove_from_kit()
+
+
+function bl_insert_user_acf($field_name,$field_value,$user_id) {
+    // for ACF if you are creating the field for the first, time you need to use the field key
+    // so, this looks for the field key and uses that to create the field
+    
+    $user_group = 'group_5a6b4aa83bd63';
+    // NOTE: there is a chance that the product gorup hash might change
+    if (function_exists('bl_get_product_acf_field_key')) {
+        //error_log('getting acf field object');
+        $key = bl_get_product_acf_field_key($field_name,$user_group);
+        if (!empty($key)) {
+            update_field($key,$field_value,'user_'.$user_id);
+        }
+    }
+
+}
+
+function bl_save_purchased_kit($kit_list,$frequency) {
+    $user_id = get_current_user_id();
+    $is_new = false;
+    $skip_add = false;
+    $kit_id = 0;
+    $recurring_name = 'Kit Order: ' . date('l F j, Y g:ia');
+    $items = array();
+    $hash_match_new = ''; // this is to match up the products to see if we shold save kit
+    $hash_match_existing = '';
+    $items_holder = array();
+    $bag = array();
+    $last_send_date = date('Ymd');
+    $bag_id = 0;
+    $bag_color_variation = 0;
+    if (empty($frequency) || !is_numeric($frequency)) {
+        $frequency = 0;
+    }
+    $next_send_date = date('Ymd',time() + ($frequency * 24 * 60 * 60));
+    $current_recurring = array();
+    //print_r($frequency);
+    //echo "Kit List";
+    //print_r ($kit_list);
+    if (is_array($kit_list) && isset($kit_list['kit_id'])) {
+        $kit_id = $kit_list['kit_id'];
+        $items_holder = $kit_list['items'];
+        $bag = $kit_list['bag'];
+        if (function_exists('get_field')) {
+            $recurring_orders = get_field('recurring_orders','user_'.$user_id);
+            //echo "Recurring Orders:";
+            //print_r ($recurring_orders);
+            //echo "<br />";
+        }
+        if (empty($recurring_orders)) {
+            $is_new = true;
+        }
+    }
+    if (!empty($bag) && isset($bag['bag'])) {
+        $bag_id = $bag['bag'];
+        $bag_color_variation = $bag['variation'];
+    }
+    if (!empty($items_holder) && is_array($items_holder)) {
+        foreach ($items_holder as $item) {
+            $category = $item['category'];
+            $product = $item['product'];
+            $variation = $item['variation'];
+            $quantity = $item['quantity'];
+            $items[] = array(
+                'category' => $category,
+                'product' => $product,
+                'product_variation' => $variation,
+                'quantity' => $quantity
+            );
+
+        }
+    }
+    $current_recurring = array(
+        'recurring_name' => $recurring_name,
+        'frequency' => $frequency,
+        'last_send_date' => $last_send_date,
+        'next_send_date' => $next_send_date,
+        'bag' => $bag_id,
+        'bag_color_variation' => $bag_color_variation,
+        'items' => $items
+    );
+    //echo "current recurring:";
+    //print_r ($current_recurring);
+    //echo "<br />";
+    if (!empty($recurring_orders) && is_array($recurring_orders)) {
+        // we're going to iterate through it to see if we have a of products. If so, we don't create a new one.
+        $hash_match_new = bl_process_items_for_hash_match($items);
+        
+        foreach ($recurring_orders as $recurring_order) {
+            $test_items_holder = array();
+            $test_items = $recurring_order['items'];
+            if (is_array($test_items)) {
+                foreach ($test_items as $test_item) {
+                    $test_category = $test_item['category'];
+                    $test_product = $test_item['product'];
+                    $test_product_variation = $test_item['product_variation'];
+                    $test_quantity = $test_item['quantity'];
+                    $test_items_holder[] = array(
+                        'category' => $test_category,
+                        'product' => $test_product,
+                        'product_variation' => $test_product_variation,
+                        'quantity' => $test_quantity
+                    );
+                }
+            }
+            
+        }
+
+        $hash_match_existing = bl_process_items_for_hash_match($test_items_holder);
+        if ($hash_match_existing == $hash_match_new) {
+            $skip_add = true;
+        }
+    }
+    if ($skip_add == false && $is_new == false) {
+        $recurring_orders[] = $current_recurring;
+    }
+    if ($skip_add == false && $is_new == true) {
+        $recurring_orders = array($current_recurring);
+    }
+    //print_r ($recurring_orders);
+    if ($skip_add == false) {
+        bl_insert_user_acf('recurring_orders',$recurring_orders,$user_id);
+    }
+    if (function_exists('bl_clear_all_kit_data')) {
+        bl_clear_all_kit_data();
+    }
+} // bl_save_purchased_kit()
+
+function bl_process_items_for_hash_match($items) {
+    // NOTE: eventually, we'll need to match more than just the products. This is in case the customer wants to have multiple of the same kit for their children
+    $holder = array();
+    foreach ($items as $item) {
+        $holder[] = $item['product'];
+    }
+    @sort($holder);
+    //echo "test hash:";
+    //print_r ($holder);
+    //echo "<br />";
+    return (md5(json_encode($holder)));
+}
+
+function bl_order_complete($order_id) {
+    // let's see about getting the kit
+    $kit_list = bl_get_kit_list();
+    $frequency =  bl_check_frequency();
+    if (!empty($kit_list) && $frequency > 0) {
+        bl_save_purchased_kit($kit_list,$frequency);
+    }
+
+    return $order_id;
+}
+
+add_action('woocommerce_thankyou', 'bl_order_complete', 10, 1);
 
 
 // this is the API endpoint parsing

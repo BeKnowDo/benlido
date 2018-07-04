@@ -6,5 +6,6 @@ export const endpoints = {
   removeFromKit: '/bl-api/kit/remove',
   swapItemFromKit: '/bl-api/kit/swap',
   selectSwap: '/bl-api/kit/select',
-  setKitState: '/bl-api/kit/state'
+  setKitState: '/bl-api/kit/state',
+  setKit: '/bl-api/kit/set'
 };

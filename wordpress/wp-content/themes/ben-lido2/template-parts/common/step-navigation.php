@@ -8,12 +8,15 @@ if (function_exists('get_field')) {
     $current_section_name = get_field('current_section_name');
     $next_url = get_field('next_url');
     $next_copy = get_field('next_copy');
+    $next_copy = get_field('next_copy');
+    $next_css_class = get_field('next_css_class');
     $stepNavigation = array(
         'previousStep' => $previous_url,
         'back' => $previous_copy,
         'current' => $current_section_name,
         'nextStep' => $next_url,
-        'next' => $next_copy
+        'next' => $next_copy,
+        'nextCss' => $next_css_class
     );
 }
 if (is_shop() || is_product_category()) {

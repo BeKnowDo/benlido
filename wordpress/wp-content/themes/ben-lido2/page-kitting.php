@@ -2,6 +2,7 @@
 /**
  * Template Name: Ben Lido Kitting Page
  */
+//print_r (get_intermediate_image_sizes());
     $kit_id = 0;
     global $kit_id;
     if ($_REQUEST['buy_kit']) {

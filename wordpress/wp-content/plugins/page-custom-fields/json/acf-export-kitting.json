@@ -142,6 +142,25 @@
                 "placeholder": ""
             },
             {
+                "key": "field_5b3d3b92d3057",
+                "label": "Next CSS Class",
+                "name": "next_css_class",
+                "type": "text",
+                "instructions": "Add in some CSS class to the next button so that we can target it in JavaScript",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
                 "key": "field_5b2d4737ae111",
                 "label": "Middle Section",
                 "name": "",

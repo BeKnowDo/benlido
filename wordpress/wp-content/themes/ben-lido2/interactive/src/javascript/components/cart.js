@@ -21,6 +21,11 @@ export class Cart {
       document.getElementById("navbar-bag-container") || undefined;
       this.addEmptyProduct =
       document.querySelectorAll(".bl-add-empty-product") || undefined;
+      this.addKitToCartButtons =
+      document.querySelectorAll(".add-kit-to-cart") || undefined;
+      if (this.kitID) {
+        this.kitID = this.kitID.value;
+      }
   }
 
   init() {
@@ -51,6 +56,11 @@ export class Cart {
     if (this.cart) {
       this.openCart();
     }
+
+    if (this.addKitToCartButtons) {
+      this.addKitToCart();
+    }
+
   }
 
   openCart() {
@@ -62,6 +72,30 @@ export class Cart {
       e.preventDefault();
       this.cartContainer.classList.toggle("active");
     });
+  }
+
+  addKitToCart() {
+    if (this.addKitToCartButtons.length > 0) {
+      let setKitUrl = endpoints.setKit + '/' + this.kitID;
+      this.addKitToCartButtons.forEach( el => {
+        el.addEventListener("click", e => {
+          e.preventDefault();
+          fetch(setKitUrl, {
+            credentials: "include",
+            method: "POST"
+          })
+            .then(function(response) {
+              return response.json();
+            })
+            .then(response => {
+              if (response.success == 1) {
+                document.location.href = el.href;
+              }
+              
+            });
+        });
+      });
+    }
   }
 
   // takes the URL and does an AJAX call to change state of add item to kit to true

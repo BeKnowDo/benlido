@@ -389,6 +389,27 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'id',
                 'multiple' => 0,
             ),
+            array(
+                'key' => 'field_5b3bb431b52a4',
+                'label' => 'Maximum number of words for products names in the mini cart',
+                'name' => 'mini_cart_max_num_words',
+                'type' => 'number',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => 5,
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'min' => 2,
+                'max' => 30,
+                'step' => '',
+            ),
         ),
         'location' => array(
             array(
