@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0589c188302a4488d981a6586af6909",
+    "content-hash": "0030b5d7cfc0b1875c66c32376d1503a",
     "packages": [
         {
             "name": "composer/installers",
@@ -282,6 +282,37 @@
             "time": "2018-01-02T14:36:10+00:00"
         },
         {
+            "name": "up-plugins/woocommerce-variation-swatches-and-photos",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos.git",
+                "reference": "9f7513406205c4aabad1ac6f429e8b34a2a63972"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos/get/9f7513406205c4aabad1ac6f429e8b34a2a63972.zip",
+                "reference": "9f7513406205c4aabad1ac6f429e8b34a2a63972",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Variation Swatches and Photos",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos/src/9f7513406205c4aabad1ac6f429e8b34a2a63972/?at=master"
+            },
+            "time": "2017-02-28T22:47:57+00:00"
+        },
+        {
             "name": "up-plugins/woothemes-updater",
             "version": "dev-master",
             "source": {
@@ -414,15 +445,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "7.0.8",
+            "version": "7.0.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/7.0.8"
+                "reference": "tags/7.0.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.8.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.0.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -454,15 +485,15 @@
         },
         {
             "name": "wpackagist-plugin/hyper-cache",
-            "version": "3.3.5",
+            "version": "3.3.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/hyper-cache/",
-                "reference": "tags/3.3.5"
+                "reference": "tags/3.3.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.3.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.3.6.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -494,15 +525,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "6.2.1",
+            "version": "6.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/6.2.1"
+                "reference": "tags/6.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.6.2.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.6.3.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -594,15 +625,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.2.1",
+            "version": "3.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.2.1"
+                "reference": "tags/3.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.2.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.3.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -734,15 +765,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "7.6.1",
+            "version": "7.7.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/7.6.1"
+                "reference": "tags/7.7.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.6.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.7.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -782,7 +813,8 @@
         "up-plugins/woocommerce-brands": 20,
         "up-plugins/woocommerce-cost-of-goods": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
-        "up-plugins/woothemes-updater": 20
+        "up-plugins/woothemes-updater": 20,
+        "up-plugins/woocommerce-variation-swatches-and-photos": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
