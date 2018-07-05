@@ -167,6 +167,7 @@ function bl_process_bags_list($items) {
         }
         $coming_soon = $el['coming_soon_copy'];
         $button_copy = $el['button_copy'];
+        $selected_copy = $el['selected_copy'];
         
         switch ($type) {
           case 'travel_kit':
@@ -184,7 +185,7 @@ function bl_process_bags_list($items) {
             }
           break;
           default:
-
+            $css = 'self-kit';
             if (function_exists('wc_get_product')) {
               $prod = wc_get_product($item_id);
             }
@@ -226,11 +227,13 @@ function bl_process_bags_list($items) {
           $results[] = array(
             'feature'=>$feature,
             'logo'=>$logo,
+            'css' => $css,
             'header'=>$title,
             'copy'=>$description,
             'price'=>$price,
             'href'=>$href,
             'button_copy'=>$button_copy,
+            'selected_copy'=>$selected_copy,
             'image'=>$image,
             'image_retina'=>$image_retina,
             'bagURL'=>$url,

@@ -20,10 +20,10 @@
 
     {% if items.picked == true %}
         {% set picked = "hero-product-picked" %}
-        {% set pickedCopy = "Bag selected" %}
+        {% set pickedCopy = items.selected_copy %}
     {% else %}
         {% set picked = "" %}
-        {% set pickedCopy = "Choose Kit" %}
+        {% set pickedCopy = items.button_copy %}
     {% endif %}
 
     <div class="hero-product bg-white {{ className }}">
@@ -47,8 +47,15 @@
                 {% if items.price %}
                     <p class="hero-product-price">{{items.price}}</p>
                 {% endif %}
-
-                <a class="btn btn-primary btn-lg {{picked}}" href="{{items.href}}" title="">
+                
+                {% if items.swatches %}
+                <div class="columns product-swatches">
+                    {% for swatch in items.swatches %}
+                    <a class="swatch-color" title="" data-variation_id="" href=""><img src="" /></a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <a class="btn btn-primary btn-lg {{items.css}} {{picked}}" href="{{items.href}}" title="">
                     {{pickedCopy}}
                 </a>
             </div>

@@ -12,6 +12,7 @@ if (function_exists('get_field')) {
         $bags = bl_process_bags_list($selectable_bags);
     }  
 }
+//print_r ($bags);
 
 if (empty($bags) && !empty($kit_id)) {
     if (function_exists('bl_get_kit_bag')) {
