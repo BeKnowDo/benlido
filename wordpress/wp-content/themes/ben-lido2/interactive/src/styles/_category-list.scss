@@ -56,6 +56,7 @@
     list-style-type: none;
     transition: max-height 0.3s ease-in-out;
     &.active {
+      margin: 10px 0 20px;
       max-height: 600px;
       transition: max-height 0.3s ease-in-out;
     }
@@ -66,7 +67,7 @@
     a {
       color: $medium-grey;
       display: block;
-      padding: 10px 0 10px 10px;
+      padding: 5px 0 5px 10px;
       margin: 0;
     }
   }
@@ -96,6 +97,7 @@
     @include sentinel(14px, 700);
     display: inline-block;
     color: $blumine;
+    margin: 0 0 10px;
 
     > a {
       display: inline-block;
