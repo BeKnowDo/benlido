@@ -23,10 +23,6 @@ if ($controls->is_action('save')) {
         }
     }
 
-    $controls->options['folder'] = trim($controls->options['folder']);
-    if (!empty($controls->options['folder']))
-        $controls->options['folder'] = untrailingslashit($controls->options['folder']);
-
     if (!is_numeric($controls->options['max_age'])) {
         $controls->options['max_age'] = 24;
     }
@@ -221,7 +217,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
     <?php if (!defined('WP_CACHE') || !WP_CACHE) { ?>
         <div class="error">
             <p>
-                <?php _e('You must add to the file wp-config.php (after the <code>&lt;php</code> first line) the line of code: <code>define("WP_CACHE", true);</code>', 'hyper-cache'); ?>
+                <?php _e('You must add to the file wp-config.php (after the <code>&lt;?php</code> first line) the line of code: <code>define("WP_CACHE", true);</code>', 'hyper-cache'); ?>
             </p>
         </div>
     <?php } ?>
@@ -451,12 +447,12 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                     <tr>
                         <th><?php _e('Cache folder', 'hyper-cache'); ?></th>
                         <td>
-                            <?php $controls->text('folder', 70); ?> path on disk
-                            <p class="description">
-                                <?php _e('Leave blank for default value.', 'hyper-cache'); ?>
-                                <?php _e('You can even evaluate to leave this blank and create a symbolic link <code>wp-content/cache/hyper-cache -&gt; [your folder]</code>.', 'hyper-cache'); ?>
-                                <?php _e('A wrong configuration can destroy your blog.', 'hyper-cache'); ?>
-                            </p>
+                            <?php if (defined('HYPER_CACHE_FOLDER')) { ?>
+                                <?php _e('A custom cache folder is deinfed in wp-config.php', 'hyper-cache'); ?>: <code><?php echo esc_html(HYPER_CACHE_FOLDER)?></code>
+                            <?php } else { ?>
+                                <?php _e('A custom cache folder can be defined in wp-config.php', 'hyper-cache'); ?>
+                                <code>define('HYPER_CACHE_FOLDER', '/path/to/cache/folder');</code>
+                            <?php } ?>
                         </td>
                     </tr>
                     <tr>

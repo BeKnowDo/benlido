@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-variation-swatches-and-photos",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Variation Swatches and Photos",
+    "version":"2.1.4",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

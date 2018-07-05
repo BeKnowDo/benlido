@@ -4,7 +4,7 @@
   Plugin Name: Hyper Cache
   Plugin URI: http://www.satollo.net/plugins/hyper-cache
   Description: A easy to configure and efficient cache to increase the speed of your blog.
-  Version: 3.3.5
+  Version: 3.3.6
   Author: Stefano Lissa
   Author URI: http://www.satollo.net
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -513,10 +513,11 @@ class HyperCache {
     }
 
     function get_folder() {
-        if (empty($this->options['folder']))
+        if (defined('HYPER_CACHE_FOLDER')) {
+            return HYPER_CACHE_FOLDER;
+        } else {
             return WP_CONTENT_DIR . '/cache/hyper-cache';
-        else
-            return $this->options['folder'];
+        }
     }
 
     function text_to_list($text) {

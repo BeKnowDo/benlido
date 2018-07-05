@@ -208,7 +208,7 @@ function hyper_cache_sanitize_uri($uri) {
 }
 
 function hyper_cache_sanitize_host($host) {
-    $host = preg_replace('|[^a-zA-Z0-9\.]+|', '', $host);
+    $host = preg_replace('|[^a-zA-Z0-9\.\-]+|', '', $host);
     return strtolower($host);
 }
 
