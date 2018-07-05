@@ -1,0 +1,30 @@
+body {
+    &.single-product {
+        form {
+            &.variations_form {
+                flex-wrap: wrap;
+                table {
+                    &.variations {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+div {
+    &.swatch-wrapper {
+        &.selected {
+            border: 2px solid $grey;
+        }
+    }
+}
+
+.bl-product-swatches {
+    justify-content: center;
+    .swatch-anchor {
+        width: 32px;
+        height: 32px;
+    }
+}

@@ -154,6 +154,7 @@ function bl_process_bags_list($items) {
       $coming_soon = '';
       $skip = false;
       $href = '#';
+      $swatches = array();
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -186,12 +187,10 @@ function bl_process_bags_list($items) {
           break;
           default:
             $css = 'self-kit';
-            if (function_exists('wc_get_product')) {
-              $prod = wc_get_product($item_id);
-            }
-            if (!empty($prod)) {
-              $price = $prod->get_price_html();
-            }
+            $prod = null;
+            $available_variations = null;
+            // note: if we have already picked a bag, we will have the variation ID
+            $swatches = bl_get_variable_product_swatches($item_id,$variation_id);
 
           break;
         }
@@ -232,6 +231,7 @@ function bl_process_bags_list($items) {
             'copy'=>$description,
             'price'=>$price,
             'href'=>$href,
+            'swatches'=>$swatches,
             'button_copy'=>$button_copy,
             'selected_copy'=>$selected_copy,
             'image'=>$image,
@@ -247,6 +247,79 @@ function bl_process_bags_list($items) {
   }
   return $results;
 } // end bl_process_bags_list()
+
+// NOTE: this method relies heavily on the woocommerce-variation-swatches-and-photos plugin. 
+function bl_get_variable_product_swatches($product_id,$selected_variation_id=null) {
+  $variations = array();
+    if (function_exists('wc_get_product')) {
+      $prod = wc_get_product($product_id);
+    }
+    if (!empty($prod)) {
+      $price = $prod->get_price_html();
+      $available_variations = $prod->get_available_variations();
+      //print_r ($available_variations);
+    }
+
+    if (!empty($available_variations) && is_array($available_variations)) {
+      $swatch_type_options = maybe_unserialize( get_post_meta( $product_id, '_swatch_type_options', true ) );
+      $available_color_swatches = array();
+      $term_color_hash = md5(sanitize_title('Custom Colors and images'));
+      //echo $term_color_hash;
+      foreach ($swatch_type_options as $key => $swatch_types) {
+        //if ($key == $term_color_hash) {
+          $available_color_swatches = $swatch_types['attributes'];
+        //}
+        break;
+      }
+      //print_r ($swatch_type_options);
+      foreach ($available_variations as $variation) {
+        // we need variation ID, attribute name, color swatch, image
+        //print_r ($variation);
+        $attributes = $variation['attributes'];
+        $swatch_obj = array();
+        $swatch_image = null;
+        $swatch_type = null;
+        $swatch_color = null;
+        $selected = false;
+        if (!empty($attributes) && is_array($attributes) && isset($attributes['attribute_pa_color'])) {
+          $color_slug = $attributes['attribute_pa_color'];
+          $color_hash = md5(sanitize_title($color_slug));
+        }
+        $variation_id = $variation['variation_id'];
+        $color = get_term_by('slug',$color_slug,'pa_color');
+        if (!empty($color) && is_object($color) && isset($color->name)) {
+          $color_name = $color->name;
+        }
+        //print_r ($available_color_swatches);
+        if (!empty($color_hash) && !empty($available_color_swatches)) {
+          $swatch_obj = $available_color_swatches[$color_hash];
+          //print_r ($swatch_obj);
+        }
+        if (!empty($swatch_obj) && is_array($swatch_obj) && isset($swatch_obj['type'])) {
+          $swatch_type = $swatch_obj['type'];
+        }
+        if (!empty($swatch_obj) && is_array($swatch_obj) && isset($swatch_obj['image'])) {
+          $swatch_image = wp_get_attachment_url($swatch_obj['image']);
+        }
+        if (!empty($swatch_obj) && is_array($swatch_obj) && isset($swatch_obj['color'])) {
+          $swatch_color = $swatch_obj['color'];
+        }
+        if ($variation_id == $selected_variation_id) {
+          $selected = true;
+        }
+        
+        $variations[] = array(
+          'title' => $color_name,
+          'id' => $variation_id,
+          'type' => $swatch_type,
+          'color' => $swatch_color,
+          'selected' => $selected,
+          'image' => $swatch_image
+        );
+      }
+    }
+    return $variations;
+} // end bl_get_variable_product_swatches()
 
 function bl_process_kit_list($items) {
 

@@ -49,9 +49,15 @@
                 {% endif %}
                 
                 {% if items.swatches %}
-                <div class="columns product-swatches">
+                <div class="columns bl-product-swatches">
                     {% for swatch in items.swatches %}
-                    <a class="swatch-color" title="" data-variation_id="" href=""><img src="" /></a>
+                    <div class="select-option swatch-wrapper">
+                    <a class="swatch-anchor swatch-color" title="" data-variation_id="{{swatch.id}}" href="{{swatch.name}}">
+                    {% if swatch.type == "image" %}
+                        <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" />
+                    {% endif %}
+                    </a>
+                    </div>
                     {% endfor %}
                 </div>
                 {% endif %}
