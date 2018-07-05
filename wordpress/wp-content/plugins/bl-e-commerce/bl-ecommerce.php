@@ -330,6 +330,12 @@ if (!function_exists('bl_get_cart')) {
     }
 }
 
+if (!function_exists('bl_remove_cart_items')) {
+    function bl_remove_cart_items() {
+        WC()->cart->empty_cart();
+    }
+}
+
 if (!function_exists('bl_add_current_kit_to_cart')) {
     function bl_add_current_kit_to_cart() {
         $kit_list = bl_get_kit_list();
@@ -477,6 +483,10 @@ function bl_save_current_kit($id) {
         }
         //$kit = array('kit_id'=>$id,'bag'=>$bag,'items'=>$items);
         bl_set_kit_list($id,$bag,$items);
+        if (function_exists('bl_remove_cart_items')) {
+            bl_remove_cart_items();
+        }   
+        
     } // if travel kit
 
 } // bl_save_current_kit()
@@ -852,6 +862,9 @@ function bl_ecommerce_url_intercept() {
                         if (!empty($id)) {
                             $kit_id = bl_get_current_kit_id();
                             if (empty($kit_id)) {
+                                bl_save_current_kit($id);
+                            }
+                            if (!empty($kit_id) && $kit_id != $id) {
                                 bl_save_current_kit($id);
                             }
                         }
