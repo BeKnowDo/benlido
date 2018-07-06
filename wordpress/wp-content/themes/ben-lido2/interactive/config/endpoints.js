@@ -7,5 +7,6 @@ export const endpoints = {
   swapItemFromKit: '/bl-api/kit/swap',
   selectSwap: '/bl-api/kit/select',
   setKitState: '/bl-api/kit/state',
-  setKit: '/bl-api/kit/set'
+  setKit: '/bl-api/kit/set',
+  getProductData: '/bl-api/product/get'
 };

@@ -375,6 +375,13 @@ if (!function_exists('bl_add_current_kit_to_cart')) {
     }
 }
 
+if (!function_exists('bl_add_to_cart')) {
+    function bl_add_to_cart($product_id,$category_id,$quantity=1,$variation_id=0) {
+        $meta = array('category'=>$category_id);
+        $res = WC()->cart->add_to_cart($product_id,$quantity,$variation_id,array(),$meta);
+    }
+} // end bl_add_to_cart()
+
 /** 
  * this gets the current kit items, whether it's a new kit page, or if there is an existing kit in session
  * @param int $kit the custom post type ID for travel_kit
@@ -729,6 +736,26 @@ function bl_order_complete($order_id) {
 
 add_action('woocommerce_thankyou', 'bl_order_complete', 10, 1);
 
+function bl_get_product_data($product_id,$variation_id) {
+    // for now, we just need the image
+    $res = array();
+    if (function_exists('wc_get_product')) {
+        $prod = wc_get_product($product_id);
+    }
+    if ($prod) {
+        $variations = $prod->get_available_variations();
+    }
+
+    if (!empty($variations) && is_array($variations)) {
+        foreach ($variations as $variation) {
+            if ($variation_id == $variation['variation_id']) {
+                $res = $variation;
+            }
+        }
+    }
+    return $res;
+}
+
 
 // this is the API endpoint parsing
 function bl_ecommerce_url_intercept() {
@@ -751,8 +778,43 @@ function bl_ecommerce_url_intercept() {
             }
         }
         switch ($section) {
+            case 'product':
+                switch ($action) {
+                    case 'get':
+                        // /bl-api/cart/get/{product_id}/{variation_id}
+                        if (isset($api_parts[5])) {
+                            $variation_id = $api_parts[5];
+                        }
+                        $prod = bl_get_product_data($id,$variation_id);
+                        header('Content-Type: application/json');
+                        print_r (json_encode($prod));
+                        
+                        break;
+                    default:
+                        header('Content-Type: application/json');
+                        print_r (json_encode(array()));
+                        break;
+                }
+                break;
             case 'cart':
                 switch ($action) {
+                    case 'add':
+                        // /bl-api/cart/add/{product_id}/{category_id}/{variation_id}/{qty}
+                        $category_id=$variation_id=0;
+                        if (isset($api_parts[5])) {
+                            $category_id = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $variation_id = $api_parts[6];
+                        }
+                        if (isset($api_parts[7])) {
+                            $quantity = $api_parts[7];
+                        }
+                        if (empty($quantity)) {
+                            $quantity = 1;
+                        }
+                        $res = bl_add_to_cart($product_id,$category_id,$quantity,$variation_id);
+                        break;
                     default:
                         // gets the cart
                         header('Content-Type: application/json');

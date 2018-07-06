@@ -23,6 +23,10 @@ export class Cart {
       document.querySelectorAll(".bl-add-empty-product") || undefined;
       this.addKitToCartButtons =
       document.querySelectorAll(".add-kit-to-cart") || undefined;
+      this.addBagProduct =
+      document.querySelectorAll(".bl-add-bag-product") || undefined;
+      this.swatchColor =
+      document.querySelectorAll(".swatch-color") || undefined;
       if (this.kitID) {
         this.kitID = this.kitID.value;
       }
@@ -61,6 +65,14 @@ export class Cart {
       this.addKitToCart();
     }
 
+    if (this.addBagProduct) {
+      this.addBagProductToCart();
+    }
+
+    if (this.swatchColor) {
+      this.setSwatchColor();
+    }
+
   }
 
   openCart() {
@@ -94,6 +106,34 @@ export class Cart {
               
             });
         });
+      });
+    }
+  }
+
+  addBagProductToCart() {
+    if (this.addBagProduct.length > 0) {
+      this.addBagProduct.forEach( el => {
+        // first, see if we have variations
+        if (el.classList.contains("has-variations")) {
+          // first, see if we are a bag or a kit
+          el.addEventListener("click", e => {
+            e.preventDefault();
+            if (el.dataset) {
+              
+              let variation_id = el.dataset.variation_id || "";
+              if (variation_id.length > 0) {
+                variation_id = parseInt(variation_id);
+              } else {
+                variation_id = 0;
+              }
+              if (variation_id > 0) {
+                
+              }
+            }
+          });
+        }
+        
+
       });
     }
   }
@@ -534,4 +574,52 @@ export class Cart {
       });
     }
   }
+
+  setSwatchColor() {
+    if (this.swatchColor.length > 0) {
+      this.swatchColor.forEach(el => {
+        el.addEventListener("click",e => {
+          e.preventDefault();
+          let data = el.dataset;
+          let product_id = data.product_id ? data.product_id : 0;
+          let index = data.index ? data.index : 0;
+          let variation_id = data.variation_id ? data.variation_id : 0;
+          if (variation_id > 0) {
+            let addButton = document.getElementById("button-"+index);
+            let div_id = 'hero-'+index;
+            if (addButton) {
+              addButton.setAttribute('data-variation_id', variation_id);
+              addButton.removeAttribute('disabled');
+              this.getProductData(div_id,product_id,variation_id);
+            }
+          }
+        });
+      });
+    }
+  }
+
+  getProductData(div_id,product_id,variation_id) {
+    // add to kit is: kit_id, product_id, cat_id
+    let productURL = endpoints.getProductData;
+    productURL +=  '/' + product_id + '/' + variation_id;
+    fetch(productURL, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if (response.error) {
+        } else {
+          if (response.image && response.image.url) {
+            document.getElementById(div_id).src = response.image.url;
+          }
+        }
+      })
+  }
+
+
 }

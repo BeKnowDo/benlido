@@ -47,21 +47,30 @@
                 {% if items.price %}
                     <p class="hero-product-price">{{items.price}}</p>
                 {% endif %}
-                
+
+                {% set selected_variation_id = 0 %}
+                {% set disabled = ' disabled="disabled"' %}
                 {% if items.swatches %}
                 <div class="columns bl-product-swatches">
                     {% for swatch in items.swatches %}
-                    <div class="select-option swatch-wrapper">
-                    <a class="swatch-anchor swatch-color" title="" data-variation_id="{{swatch.id}}" href="{{swatch.name}}">
-                    {% if swatch.type == "image" %}
-                        <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" />
-                    {% endif %}
-                    </a>
-                    </div>
+                        {% set selected = "" %}
+                        {% if swatch.selected == true %}
+                        {% set selected_variation_id = swatch.id %}
+                        {% set selected = " seleced" %}
+                        {% set disabled = "" %}
+                        {% endif %}
+                        <div class="select-option swatch-wrapper">
+                        <a class="swatch-anchor swatch-color {{selected}}" title="{{swatch.title}}" {{selected}} data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-index="{{items.index}}" href="#">
+                        {% if swatch.type == "image" %}
+                            <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" />
+                        {% endif %}
+                        </a>
+                        </div>
+                        
                     {% endfor %}
                 </div>
                 {% endif %}
-                <a class="btn btn-primary btn-lg {{items.css}} {{picked}}" href="{{items.href}}" title="">
+                <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="{{pickedCopy}}">
                     {{pickedCopy}}
                 </a>
             </div>
@@ -72,7 +81,7 @@
                             <span>{{ items.promo }}</span>
                         </p>
                     {% endif %}
-                    <img class="hero-product-bag-image" src="{{items.image}}"/>
+                    <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}"/>
                 </a>
             </div>
         </div>

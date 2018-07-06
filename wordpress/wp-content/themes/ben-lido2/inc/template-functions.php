@@ -147,6 +147,7 @@ function bl_get_featured_categories() {
 function bl_process_bags_list($items) {
   $results = array();
   $now = time();
+  $index = 0;
   if (!empty($items) && is_array($items)) {
     foreach ($items as $el) {
       $image = '';
@@ -155,6 +156,7 @@ function bl_process_bags_list($items) {
       $skip = false;
       $href = '#';
       $swatches = array();
+      $category_id = 0;
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -172,6 +174,7 @@ function bl_process_bags_list($items) {
         
         switch ($type) {
           case 'travel_kit':
+            $css = 'prebuilt-kit';
             // the price of the kit is the total of all the products
             if (function_exists('bl_get_kit_price')) {
               $price = wc_price(bl_get_kit_price($item_id));
@@ -179,6 +182,7 @@ function bl_process_bags_list($items) {
             if (function_exists('get_field')) {
               // we need to get the kit page
               $kitting_page = get_field('kitting_page','option');
+              // need the bag associated with the kit
               if ($kitting_page) {
                 $href = get_permalink($kitting_page) . '?id=' . $item_id;
               }
@@ -189,12 +193,27 @@ function bl_process_bags_list($items) {
             $css = 'self-kit';
             $prod = null;
             $available_variations = null;
+            $category_id = 0;
             // note: if we have already picked a bag, we will have the variation ID
-            $swatches = bl_get_variable_product_swatches($item_id,$variation_id);
-
+            $product_id = $item_id;
+            $product = wc_get_product($product_id);
+            
+            if (function_exists('bl_get_product_category')) {
+              $product_cat = bl_get_product_category($product_id);
+            }
+            if (!empty($product_cat) && is_object($product_cat) && isset($product_cat->term_id)) {
+              $category_id = $product_cat->term_id;
+            }
+            
+            $swatches = bl_get_variable_product_swatches($product_id,$variation_id);
+            if (!empty($swatches)) {
+              $css .= ' has-variations';
+            }
+            $url = get_permalink($product_id);
+            $href = get_permalink( woocommerce_get_page_id( 'shop' ) );
           break;
         }
-        $url = get_permalink($item_id);
+        
 
         
         
@@ -224,6 +243,7 @@ function bl_process_bags_list($items) {
         }
         if ($skip != true) {
           $results[] = array(
+            'index' => $index,
             'feature'=>$feature,
             'logo'=>$logo,
             'css' => $css,
@@ -231,6 +251,8 @@ function bl_process_bags_list($items) {
             'copy'=>$description,
             'price'=>$price,
             'href'=>$href,
+            'category_id'=>$category_id,
+            'product_id'=>$product_id,
             'swatches'=>$swatches,
             'button_copy'=>$button_copy,
             'selected_copy'=>$selected_copy,
@@ -241,9 +263,9 @@ function bl_process_bags_list($items) {
             'disabled'=>$disabled
           );
         }
-
+        $index++;
       } // end $item
-    }
+    } // end foreach
   }
   return $results;
 } // end bl_process_bags_list()
@@ -383,6 +405,7 @@ function bl_get_this_category() {
   global $product;
   global $product_override;
   //print_r ($product_override);
+  
   if (!empty($product_override) && isset($product_override['id'])) {
     $override_id = $product_override['id'];
     if (!empty($product) && is_object($product)) {
@@ -404,6 +427,29 @@ function bl_get_this_category() {
     $category = $product_override['category'];
     if (is_numeric($category)) {
       $category_obj = get_term($category);
+      return $category_obj;
+    }
+  }
+  $terms = get_the_terms( $product->get_id(), 'product_cat' );
+  foreach ($terms as $term) {
+      $product_cat_id = $term->term_id;
+      break;
+  }
+  if ($product_cat_id > 0) {
+    $category_obj = get_term($product_cat_id);
+    return $category_obj;
+  }
+}
+
+if (!function_exists('bl_get_product_category')) {
+  function bl_get_product_category($product_id) {
+    $terms = get_the_terms( $product_id, 'product_cat' );
+    foreach ($terms as $term) {
+        $product_cat_id = $term->term_id;
+        break;
+    }
+    if ($product_cat_id > 0) {
+      $category_obj = get_term($product_cat_id);
       return $category_obj;
     }
   }
