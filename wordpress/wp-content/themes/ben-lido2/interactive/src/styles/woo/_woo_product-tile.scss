@@ -4,7 +4,7 @@
       min-height: 182px;
     }
     &-image {
-      // max-height: 180px;
+      max-height: 180px;
       &[height] {
         height: auto !important;
       }
@@ -31,14 +31,19 @@
     display: block;
     margin: 12px 0;
   }
-  .woocommerce-loop-product__title {
-    @include knockout32(14px, 400);
-    transition: opacity 0.2s ease-in-out;
-    font-style: normal;
-    min-height: 84px;
-    font-weight: 400;
-    font-size: 14px;
-    margin: 8px 0;
-    color: $grey;
+  .woocommerce {
+    &-loop-product__title {
+      @include knockout32(14px, 400);
+      transition: opacity 0.2s ease-in-out;
+      font-style: normal;
+      min-height: 84px;
+      font-weight: 400;
+      font-size: 14px;
+      margin: 8px 0;
+      color: $grey;
+    }
+    &-placeholder {
+      max-height: 180px;
+    }
   }
 }

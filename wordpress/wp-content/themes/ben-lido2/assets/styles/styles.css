@@ -2153,7 +2153,7 @@ a, ins, u { text-decoration-skip: ink edges; }
 
 abbr[title] { border-bottom: 0.05rem dotted; cursor: help; text-decoration: none; }
 
-kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
+kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
 
 mark { background: #ffe9b3; color: #50596c; border-radius: 0.1rem; padding: .05rem; }
 
@@ -2333,7 +2333,7 @@ textarea.form-input { height: auto; }
 
 .has-icon-right .form-input { padding-right: 1.5rem; }
 
-.form-checkbox, .form-radio, .form-switch { display: block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
+.form-checkbox, .form-radio, .form-switch { display: inline-block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
 
 .form-checkbox input, .form-radio input, .form-switch input { clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; }
 
@@ -2411,8 +2411,6 @@ textarea.form-input { height: auto; }
 
 .has-error .form-checkbox input:focus + .form-icon, .form-checkbox.is-error input:focus + .form-icon, .has-error .form-radio input:focus + .form-icon, .form-radio.is-error input:focus + .form-icon, .has-error .form-switch input:focus + .form-icon, .form-switch.is-error input:focus + .form-icon { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); border-color: #e85600; }
 
-.has-error .form-checkbox input:indeterminate + .form-icon, .form-checkbox.is-error input:indeterminate + .form-icon { background: #e85600; border-color: #e85600; }
-
 .form-input:not(:placeholder-shown):invalid { border-color: #e85600; }
 
 .form-input:not(:placeholder-shown):invalid:focus { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); }
@@ -2431,9 +2429,7 @@ input:disabled + .form-icon, input.disabled + .form-icon { background: #f0f1f4; 
 
 .form-horizontal .form-group { display: flex; flex-wrap: wrap; }
 
-.form-inline { display: inline-block; }
-
-.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
+.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
 
 .label.label-rounded { border-radius: 5rem; padding-left: .4rem; padding-right: .4rem; }
 
@@ -2618,12 +2614,6 @@ a.text-gray:visited { color: #bbc1cd; }
 a.text-light:focus, a.text-light:hover { color: #f2f2f2; }
 
 a.text-light:visited { color: white; }
-
-.text-dark { color: #50596c; }
-
-a.text-dark:focus, a.text-dark:hover { color: #454d5d; }
-
-a.text-dark:visited { color: #5b657a; }
 
 .text-success { color: #32b643; }
 
@@ -2811,9 +2801,9 @@ a.text-error:visited { color: #ff6003; }
 
 .py-2 { padding-bottom: 0.8rem !important; padding-top: 0.8rem !important; }
 
-.s-rounded { border-radius: 0.1rem; }
+.rounded { border-radius: 0.1rem; }
 
-.s-circle { border-radius: 50%; }
+.circle { border-radius: 50%; }
 
 .text-left { text-align: left; }
 
@@ -2843,7 +2833,7 @@ a.text-error:visited { color: #ff6003; }
 
 .text-break { hyphens: auto; word-break: break-word; word-wrap: break-word; }
 
-/** Swiper 4.3.3 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 5, 2018 */
+/** Swiper 4.3.2 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 1, 2018 */
 .swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; /* Fix of Webkit flickering */ z-index: 1; }
 
 .swiper-container-no-flexbox .swiper-slide { float: left; }
@@ -3485,11 +3475,11 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .category-list .sub-menu { margin: 0; width: 100%; overflow: hidden; max-height: 0; list-style-type: none; transition: max-height 0.3s ease-in-out; }
 
-.category-list .sub-menu.active { max-height: 600px; transition: max-height 0.3s ease-in-out; }
+.category-list .sub-menu.active { margin: 10px 0 20px; max-height: 600px; transition: max-height 0.3s ease-in-out; }
 
 .category-list .sub-menu li { display: block; margin: 0; }
 
-.category-list .sub-menu a { color: #999999; display: block; padding: 10px 0 10px 10px; margin: 0; }
+.category-list .sub-menu a { color: #999999; display: block; padding: 5px 0 5px 10px; margin: 0; }
 
 .category-list.nav-fixed .category-list-wrapper { animation: 0.5s alternate fadeInFromTop; position: fixed; top: 10%; }
 
@@ -3497,7 +3487,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .category-list-wrapper { margin-top: 20px; padding: 10px; }
 
-.category-list-breadcrumbs { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 700; font-style: normal; display: inline-block; color: #195675; }
+.category-list-breadcrumbs { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 700; font-style: normal; display: inline-block; color: #195675; margin: 0 0 10px; }
 
 .category-list-breadcrumbs > a { display: inline-block; vertical-align: super; color: #195675; }
 
@@ -3592,7 +3582,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
   .mobile-navigation { display: block; background-color: #fff; border-radius: 4px; border: 1px solid #e4e4e4; margin-top: 20px; }
   .mobile-navigation .category-list-parent a { color: #195675; display: block; }
   .mobile-navigation .category-list-breadcrumbs { cursor: pointer; padding-top: 0; display: block; }
-  .mobile-navigation .category-list-breadcrumbs { padding: 0; }
+  .mobile-navigation .category-list-breadcrumbs { padding: 0; margin: 0; }
   .mobile-navigation .category-list-breadcrumbs a { display: block; position: relative; padding: 14px 16px; }
   .mobile-navigation .category-list-breadcrumbs a:after { display: inline-block; position: absolute; bottom: 10px; right: 16px; padding: 0 0 0 5px; font-family: "Font Awesome 5 Pro"; font-size: 18px; content: "\f078"; }
   .mobile-navigation .category-list-parent-group { display: none; padding: 0 20px 10px; } }
@@ -3624,6 +3614,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .product-tile-link { min-height: 182px; }
 
+.product-tile-image { max-height: 180px; }
+
 .product-tile-image[height] { height: auto !important; }
 
 .product .button { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px 34px; background-color: #bacdd4; color: #fff; border-radius: 4px; }
@@ -3631,6 +3623,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 .product .price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; display: block; margin: 12px 0; }
 
 .product .woocommerce-loop-product__title { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; min-height: 84px; font-weight: 400; font-size: 14px; margin: 8px 0; color: #979797; }
+
+.product .woocommerce-placeholder { max-height: 180px; }
 
 .products.related { display: flex; flex-direction: column; width: 100%; background-color: #f7f7f7; padding: 93px 10px 100px; }
 
@@ -3814,9 +3808,9 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .woocommerce-table { width: 100%; text-align: left; display: block; }
 
-.woocommerce-table .product-name { text-align: left; width: 70%; }
+.woocommerce-table .product-name { text-align: left; width: 80%; }
 
-.woocommerce-table .product-total { text-align: right; width: 30%; }
+.woocommerce-table .product-total { text-align: right; width: 20%; }
 
 .woocommerce-table tr { display: flex; flex-wrap: wrap; width: 100%; }
 
