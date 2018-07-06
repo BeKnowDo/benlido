@@ -4,11 +4,15 @@
   position: relative;
 
   a {
+    text-transform: uppercase;
     color: inherit;
+    position: relative;
   }
 
   &-header {
     color: $brown-grey;
+    line-height: 90%;
+    margin-bottom: $unit-2;
   }
 
   &-copy {
@@ -29,6 +33,20 @@
   }
 
   &-bag-image {
+    &[src=""] {
+      background-color: $light-grey;
+      height: 100%;
+      width: 100%;
+      &:after {
+        content: "IMAGE NOT AVAILABLE";
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 0;
+        width: 100%;
+      }
+    }
     margin: 0 auto;
     align-self: center;
     display: block;

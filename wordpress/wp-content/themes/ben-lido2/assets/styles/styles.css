@@ -3321,9 +3321,9 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
 
-.hero-product a { color: inherit; }
+.hero-product a { text-transform: uppercase; color: inherit; position: relative; }
 
-.hero-product-header { color: #393d5b; }
+.hero-product-header { color: #393d5b; line-height: 90%; margin-bottom: 0.8rem; }
 
 .hero-product-copy { color: #999999; }
 
@@ -3332,6 +3332,10 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 .hero-product-bag-link { display: flex; height: 100%; align-content: center; margin-top: 20px; position: relative; }
 
 .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
+
+.hero-product-bag-image[src=""] { background-color: #e4e4e4; height: 100%; width: 100%; }
+
+.hero-product-bag-image[src=""]:after { content: "IMAGE NOT AVAILABLE"; text-align: center; position: absolute; top: 50%; transform: translate(0, -50%); left: 0; width: 100%; }
 
 .hero-product-disabled { display: flex; justify-content: center; align-items: center; text-align: center; position: absolute; z-index: 1; top: 0; left: 0; width: 100%; height: 100%; }
 
@@ -3634,7 +3638,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .product .woocommerce-loop-product__title { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; min-height: 84px; font-weight: 400; font-size: 14px; margin: 8px 0; color: #979797; }
 
-.product .woocommerce-placeholder { max-height: 180px; }
+.product .woocommerce-placeholder { max-height: 175px; }
 
 .products.related { display: flex; flex-direction: column; width: 100%; background-color: #f7f7f7; padding: 93px 10px 100px; }
 
