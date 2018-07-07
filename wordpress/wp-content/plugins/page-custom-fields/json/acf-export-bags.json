@@ -382,7 +382,7 @@
                 "label": "Selectable Bags",
                 "name": "selectable_bags",
                 "type": "repeater",
-                "instructions": "This is where we add a bag, or a kit to the page.\r\nPlease make sure that you also include a call-to-action button copy.\r\nFor example, if you are creating a page with a list of bags, the call-to-action is \"Add Bag\".\r\nif you are creating a page with a list of kits, the call-to-action is \"Select Kit\"",
+                "instructions": "This is where we add a bag, or a kit to the page.\r\nPlease make sure that you also include a call-to-action button copy.\r\nFor example, if you are creating a page with a list of bags, the call-to-action is \"Add Bag\".\r\nif you are creating a page with a list of kits, the call-to-action is \"Select Kit\"\r\nIf you chose a bag as the product, use the Color Variation Overrides section to choose the different colors and images that you want so that it doesn't show the default product image, which is square.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -523,6 +523,97 @@
                         "prepend": "",
                         "append": "",
                         "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b3fe33486748",
+                        "label": "Color Variation Image Overrides",
+                        "name": "color_variation_image_overrides",
+                        "type": "repeater",
+                        "instructions": "This is so that we can display a different size image for the different colors of the bags.\r\nIf the product you have chosen above is a bag, add in the color variation images for each of the colors here",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "collapsed": "",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "button_label": "",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b3fe3b486749",
+                                "label": "Variation",
+                                "name": "variation",
+                                "type": "post_object",
+                                "instructions": "Select the color variation for your bag",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "post_type": [
+                                    "product_variation"
+                                ],
+                                "taxonomy": [],
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "return_format": "object",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_5b3fe3d28674a",
+                                "label": "Image Override",
+                                "name": "image_override",
+                                "type": "image",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "array",
+                                "preview_size": "thumbnail",
+                                "library": "all",
+                                "min_width": "",
+                                "min_height": "",
+                                "min_size": "",
+                                "max_width": "",
+                                "max_height": "",
+                                "max_size": "",
+                                "mime_types": ""
+                            },
+                            {
+                                "key": "field_5b3fe3e28674b",
+                                "label": "Image Override (Retina)",
+                                "name": "image_override_retina",
+                                "type": "image",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "array",
+                                "preview_size": "thumbnail",
+                                "library": "all",
+                                "min_width": "",
+                                "min_height": "",
+                                "min_size": "",
+                                "max_width": "",
+                                "max_height": "",
+                                "max_size": "",
+                                "mime_types": ""
+                            }
+                        ]
                     }
                 ]
             }

@@ -110,6 +110,7 @@ export class Cart {
     }
   }
 
+  // add the bag to either the cart or the kit
   addBagProductToCart() {
     if (this.addBagProduct.length > 0) {
       this.addBagProduct.forEach( el => {
@@ -121,13 +122,13 @@ export class Cart {
             if (el.dataset) {
               
               let variation_id = el.dataset.variation_id || "";
-              if (variation_id.length > 0) {
-                variation_id = parseInt(variation_id);
-              } else {
-                variation_id = 0;
-              }
-              if (variation_id > 0) {
-                
+              let product_id = el.dataset.product_id || "";
+              let category_id = el.dataset.category_id || "";
+              let returnURL = el.href;
+              if (variation_id.length > 0 && product_id.length > 0) {
+                if (el.classList.contains('self-kit')) {
+                  this.addItemToCart(product_id,category_id,variation_id,1,returnURL);
+                }
               }
             }
           });
@@ -584,13 +585,19 @@ export class Cart {
           let product_id = data.product_id ? data.product_id : 0;
           let index = data.index ? data.index : 0;
           let variation_id = data.variation_id ? data.variation_id : 0;
+          let hero_image = data.hero_image ? data.hero_image : '';
+          let hero_image_retina = data.hero_image_retina ? data.hero_image_retina : '';
+          if (hero_image_retina.length > 1) {
+            hero_image_retina += ' 2x';
+          }
           if (variation_id > 0) {
             let addButton = document.getElementById("button-"+index);
             let div_id = 'hero-'+index;
             if (addButton) {
               addButton.setAttribute('data-variation_id', variation_id);
               addButton.removeAttribute('disabled');
-              this.getProductData(div_id,product_id,variation_id);
+              document.getElementById(div_id).src = hero_image;
+              document.getElementById(div_id).setAttribute('srtset', hero_image_retina);
             }
           }
         });
@@ -598,6 +605,7 @@ export class Cart {
     }
   }
 
+  // NOTE: not being used right now
   getProductData(div_id,product_id,variation_id) {
     // add to kit is: kit_id, product_id, cat_id
     let productURL = endpoints.getProductData;
@@ -619,6 +627,32 @@ export class Cart {
           }
         }
       })
+  }
+
+  addItemToCart(product_id,category_id,variation_id,quantity,returnURL) {
+      let url = endpoints.addToCart+'/'+product_id+'/'+category_id+'/'+variation_id+'/'+quantity;
+      fetch(url, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if (response.error) {
+        } else {
+          if (returnURL.length > 1) {
+            document.location.href = returnURL;
+          } else {
+            this.updateCount(response);
+            this.miniCart(response);
+            this.updateTileQuantity(response, item);
+          }
+          
+        }
+      });
   }
 
 

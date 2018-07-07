@@ -205,7 +205,11 @@ function bl_process_bags_list($items) {
               $category_id = $product_cat->term_id;
             }
             
-            $swatches = bl_get_variable_product_swatches($product_id,$variation_id);
+            // NOTE: swatches come from the bags page because we need to have a custom image
+            //print_r ($el);
+            $color_variation_image_overrides = $el['color_variation_image_overrides'];
+            $swatches = bl_get_bag_product_swatch_overrides($product_id,$color_variation_image_overrides);
+            //$swatches = bl_get_variable_product_swatches($product_id,$variation_id);
             if (!empty($swatches)) {
               $css .= ' has-variations';
             }
@@ -269,6 +273,52 @@ function bl_process_bags_list($items) {
   }
   return $results;
 } // end bl_process_bags_list()
+
+// takes the ACF
+function bl_get_bag_product_swatch_overrides($product_id,$overrides,$selected_id=0) {
+  //print_r ($overrides);
+  $res = array();
+  $holder = array();
+  if (is_array($overrides)) {
+    foreach ($overrides as $override) {
+      // should have a variation and image override
+      //print_r ($override);
+      $title = $id = $type  = $image = $image_retina = null;
+      $variation = $override['variation'];
+      $image_override = $override['image_override'];
+      $image_override_retina = $override['image_override_retina'];
+      $type = 'image';
+      if (!empty($variation) && is_object($variation)) {
+        $id = $variation->ID;
+        $title = $variation->post_title;
+      }
+      if (!empty($image_override) && is_array($image_override)) {
+        $image = $image_override['url'];
+      }
+      if (!empty($image_override_retina) && is_array($image_override_retina)) {
+        $image_retina = $image_override_retina['url'];
+      }
+      $holder[] = array('id'=>$id,'title'=>$title,'type'=>$type,'hero_image'=>$image,'hero_image_retina'=>$image_retina);
+    } // end foreach
+  }
+  $swatches = bl_get_variable_product_swatches($product_id,$selected_id);
+  if (is_array($swatches) && is_array($holder)) {
+    foreach ($swatches as $swatch) {
+      $swatch_id = $swatch['id'];
+      foreach ($holder as $el) {
+        $test_id = $el['id'];
+        if ($swatch_id == $test_id) {
+          $swatch['hero_image'] = $el['hero_image'];
+          $swatch['hero_image_retina'] = $el['hero_image_retina'];
+        }
+      }
+
+      $res[] = $swatch;
+    }
+  }
+  
+  return $res;
+}
 
 // NOTE: this method relies heavily on the woocommerce-variation-swatches-and-photos plugin. 
 function bl_get_variable_product_swatches($product_id,$selected_variation_id=null) {

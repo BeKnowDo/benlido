@@ -379,6 +379,7 @@ if (!function_exists('bl_add_to_cart')) {
     function bl_add_to_cart($product_id,$category_id,$quantity=1,$variation_id=0) {
         $meta = array('category'=>$category_id);
         $res = WC()->cart->add_to_cart($product_id,$quantity,$variation_id,array(),$meta);
+        return $res;
     }
 } // end bl_add_to_cart()
 
@@ -814,6 +815,8 @@ function bl_ecommerce_url_intercept() {
                             $quantity = 1;
                         }
                         $res = bl_add_to_cart($product_id,$category_id,$quantity,$variation_id);
+                        header('Content-Type: application/json');
+                        print_r (json_encode($res));
                         break;
                     default:
                         // gets the cart

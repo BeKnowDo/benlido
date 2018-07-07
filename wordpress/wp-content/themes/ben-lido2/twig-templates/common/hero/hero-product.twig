@@ -60,7 +60,7 @@
                         {% set disabled = "" %}
                         {% endif %}
                         <div class="select-option swatch-wrapper">
-                        <a class="swatch-anchor swatch-color {{selected}}" title="{{swatch.title}}" {{selected}} data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-index="{{items.index}}" href="#">
+                        <a class="swatch-anchor swatch-color {{selected}}" title="{{swatch.title}}" {{selected}} data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
                         {% if swatch.type == "image" %}
                             <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" />
                         {% endif %}
@@ -70,7 +70,7 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="{{pickedCopy}}">
+                <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}"  title="{{pickedCopy}}">
                     {{pickedCopy}}
                 </a>
             </div>
