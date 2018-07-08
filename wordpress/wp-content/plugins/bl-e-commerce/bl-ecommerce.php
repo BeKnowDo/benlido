@@ -323,7 +323,7 @@ if (!function_exists('bl_get_cart')) {
                 if (empty($category) && !empty($category_name)) {
                     $category = $category_name;
                 }
-                $holder[] = array('sku'=>$sku,'category'=>$category,'name'=>$name,'count'=>$quantity,'image'=>$image);
+                $holder[] = array('id'=>$id,'sku'=>$sku,'category'=>$category,'name'=>$name,'count'=>$quantity,'image'=>$image);
             }
         }
         return $holder;
@@ -814,9 +814,13 @@ function bl_ecommerce_url_intercept() {
                         if (empty($quantity)) {
                             $quantity = 1;
                         }
-                        $res = bl_add_to_cart($product_id,$category_id,$quantity,$variation_id);
+                        $response = array();
+                        $res = bl_add_to_cart($id,$category_id,$quantity,$variation_id);
+                        if ($res) {
+                            $response['items'] = bl_get_cart();
+                        }
                         header('Content-Type: application/json');
-                        print_r (json_encode($res));
+                        print_r (json_encode($response));
                         break;
                     default:
                         // gets the cart

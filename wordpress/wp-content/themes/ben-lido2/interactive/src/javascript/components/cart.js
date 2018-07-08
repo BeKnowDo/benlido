@@ -162,6 +162,7 @@ export class Cart {
       .then(response => {
         this.updateCount(response);
         this.miniCart(response);
+        this.updateTileQuantity(response,null);
       });
   }
 
@@ -222,7 +223,7 @@ export class Cart {
       let count = 0;
       items.map(item => {
         if (item.count) {
-          count = count + item.count;
+          count = parseInt(count) + parseInt(item.count);
         }
       });
       const position = this.counter.getBoundingClientRect();
@@ -391,46 +392,72 @@ export class Cart {
   }
 
   updateTileQuantity(response, item) {
-    const buttons = this.addToCartButtons;
-    let targetButton;
-    let i, o;
-    let count;
+    //onsole.log(response.length);
+    //console.log(response);
+    if (Array.isArray(response)) {
+      response.forEach(item => {
+        //console.log(item);
+        let itemCount;
+        if (item) {
 
-    const sku = item.sku;
-    const category = item.category;
+          let html_id = '';
+          if (item.id) {
+            html_id = '.post-'+item.id;
+          }
+          console.log(html_id);
+          if (item.count) {
+            itemCount = item.count;
+          }
+          
+          let productBlocks = document.querySelectorAll(html_id);
+          //console.log(productBlocks);
+          //productBlocks = null;
+          if (productBlocks && productBlocks.length > 0) {
+            productBlocks.forEach( el => {
+              let defaultText;
+              let cartText;
+              let targetButton = el.querySelector('.add-to-cart') || undefined;
+              let removeIcon = el.querySelector(".fa-minus-circle")|| undefined;
+              let buttonText = el.querySelector(".add-to-cart-text")|| undefined;
+              if (typeof buttonText != 'undefined' && buttonText.dataset) {
+                defaultText = buttonText.dataset.defaultText || '';
+                cartText = buttonText.dataset.cartText || '';
+              }
+              console.log("HERE");
+              console.log(itemCount);
+              console.log(buttonText);
+              console.log(removeIcon);
+              console.log(buttonText);
+              //console.log(el);
+              
+              if (typeof itemCount != 'undefined' && typeof buttonText != 'undefined' && typeof removeIcon != 'undefined' && typeof targetButton != 'undefined') {
+                
+                buttonText.innerHTML = `${itemCount} ${cartText}`;
+                removeIcon.classList.remove("hidden");
+                targetButton.classList.add("in-cart");
+                
+                
+              } else {
+                
+                if (buttonText && targetButton && removeIcon) {
+                  buttonText.innerHTML = defaultText;
+                  targetButton.classList.remove("in-cart");
+                  removeIcon.classList.add("hidden");
+                }
+                
+    
+              }
+              
+            });
+          } // end if productBlocks
 
-    for (o = 0; o < response.length; o++) {
-      const scope = response[o];
-      if (sku === scope.sku && category === scope.category) {
-        count = scope.count;
-      }
-    }
+        }
 
-    for (i = 0; i < buttons.length; i++) {
-      const button = buttons[i];
-      const buttonSku = button.dataset.sku;
-      const buttonCategory = button.dataset.category;
-      if (sku === buttonSku && category === buttonCategory) {
-        targetButton = button;
-        break;
-      }
-    }
-
-    const removeIcon = targetButton.querySelector(".fa-minus-circle");
-    const buttonText = targetButton.querySelector(".add-to-cart-text");
-    const defaultText = buttonText.dataset.defaultText;
-    const cartText = buttonText.dataset.cartText;
-
-    if (count) {
-      buttonText.innerHTML = `${count} ${cartText}`;
-    } else {
-      buttonText.innerHTML = defaultText;
-      targetButton.classList.remove("in-cart");
-      removeIcon.classList.add("hidden");
-    }
+      });
+    } // end if isArray
 
     //
-  }
+  } // end updateTileQuantity()
 
   removeFromMiniCart() {
     const cartItems = this.listContainer.querySelectorAll(
@@ -473,7 +500,9 @@ export class Cart {
           let kit_id = el.kit_id ? el.kit_id : 0;
           let cat_id = el.cat_id ? el.cat_id : 0;
           let prod_id = el.prod_id ? el.prod_id : 0;
+          let var_id = el.var_id ? el.var_id : 0;
           let swap = el.swap ? el.swap : 0;
+          let quantity = 1;
 
           let addURL = endpoints.addToCart;
           if (kit_id > 0) {
@@ -483,7 +512,12 @@ export class Cart {
             addURL = endpoints.selectSwap;
           }
           // add to kit is: kit_id, product_id, cat_id
-          addURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
+          if (kit_id > 0) {
+            addURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
+          } else {
+            addURL += '/' + prod_id + '/' + cat_id + '/' + var_id + '/' + quantity;
+          }
+          
 
             fetch(addURL, {
               method: "POST",
@@ -501,6 +535,7 @@ export class Cart {
                   if ( typeof response.items != 'undefined') {
                     this.updateCount(response.items);
                     this.miniCart(response.items);
+                    this.updateTileQuantity(response.items, null);
                   }
                   if (typeof response.url != 'undefined') {
                     // we will get a return URL
@@ -648,7 +683,7 @@ export class Cart {
           } else {
             this.updateCount(response);
             this.miniCart(response);
-            this.updateTileQuantity(response, item);
+            this.updateTileQuantity(response.items, item);
           }
           
         }

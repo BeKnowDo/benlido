@@ -30,11 +30,14 @@ if (function_exists('bl_get_featured_categories')) {
                     <?php
                       //print_r ($featured_product);
                       global $product;
+                      global $post;
                       if ($featured_product['id']) {
                         $product = wc_get_product( $featured_product['id'] );
+                        $post = get_post($featured_product['id']);
                       }
                       global $product_override;
                       $product_override = $featured_product;
+                      
                     ?>
                     <?php $shop_landing_featured_product = $featured_product;?>
                     <?php //get_template_part('template-parts/product/product','tile');?>
