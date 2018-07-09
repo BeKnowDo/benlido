@@ -1,6 +1,7 @@
 body {
   position: relative;
   padding-top: 52px;
+  outline: none;
 }
 
 #content {
@@ -9,4 +10,10 @@ body {
   padding-left: $unit-1;
   padding-right: $unit-1;
   width: 100%;
+  outline: none;
+}
+
+#main,
+#primary {
+  outline: none;
 }
