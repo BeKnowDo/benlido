@@ -1,5 +1,10 @@
 .product {
   &-tile {
+    &-header {
+      // margin-bottom: $unit-8;
+      margin-bottom: 0;
+      min-height: 40px;
+    }
     &-link {
       min-height: 182px;
     }
@@ -29,17 +34,17 @@
     @include sentinel(22px, 400);
     transition: opacity 0.2s ease-in-out;
     display: block;
-    margin: 12px 0;
+    margin: $unit-2 0 $unit-3;
   }
   .woocommerce {
     &-loop-product__title {
       @include knockout32(14px, 400);
       transition: opacity 0.2s ease-in-out;
       font-style: normal;
-      min-height: 84px;
+      // min-height: 84px;
       font-weight: 400;
       font-size: 14px;
-      margin: 8px 0;
+      margin: $unit-8 0;
       color: $grey;
     }
     &-placeholder {
