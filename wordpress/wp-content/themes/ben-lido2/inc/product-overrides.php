@@ -123,7 +123,7 @@ if ( ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
 	 */
 	function woocommerce_template_loop_product_title() {
         global $product;
-		echo '<h2 class="woocommerce-loop-product__title">' . substr($product->get_name(), 0, 68)."..." . '</h2>';
+		echo '<h2 class="woocommerce-loop-product__title">' . substr($product->get_name(), 0, 22)."..." . '</h2>';
 	}
 }
 
