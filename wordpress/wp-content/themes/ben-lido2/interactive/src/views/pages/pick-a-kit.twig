@@ -2,19 +2,19 @@
 
 {% block content %}
 
-    {% if not heroData %}
-        {% set heroData = [
+  {% if not heroData %}
+    {% set heroData = [
       {
         header: 'Let Us Help You Get Started',
         copy: 'Choose a curated kit, customize it and make it your own. No shipping costs and all products up to 100% free with kit purchase.'
       }
   ]%}
-    {% endif %}
-    {% include 'common/step-navigation.twig' %}
-    {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
+  {% endif %}
+  {% include 'common/step-navigation.twig' %}
+  {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
 
-    {% if not items %}
-        {% set items = [
+  {% if not items %}
+    {% set items = [
       {
         logo: '/images/kipling.png',
         header: 'AIDEN BY KIPLING',
@@ -57,14 +57,14 @@
       }
 
     ]%}
-    {% endif %}
+  {% endif %}
 
-    <div class="bg-white">
-        <div class="max-width-xl">
-            {% include 'common/hero/hero-product-list.twig' with { products: items } %}
-        </div>
+  <div class="bg-white">
+    <div class="max-width-xl">
+      {% include 'common/hero/hero-product-list.twig' with { products: items } %}
     </div>
+  </div>
 
-    {% include 'common/back-to-top.twig' %}
+  {% include 'common/back-to-top.twig' %}
 
 {% endblock %}
