@@ -32,7 +32,7 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "This is where you create kits.\r\nA kit is composed of a title, description, and featured image.\r\nYou will also need to choose a bag that is associated with this kit\r\nYou will then add which category or subcategory of products each kit can contain as well as how many someone can choose.\r\nYou can also select a featured product to show. If there is no featured product, then the first available product will be displayed.",
+                "message": "This is where you create kits.\r\nA kit is composed of a title, description, and featured image.\r\nYou will also need to choose a bag that is associated with this kit.\r\nSince the Kits page shows a wide image, we need to override the square product images with these wide ones. Upload them here.\r\nYou will then add which category or subcategory of products each kit can contain as well as how many someone can choose.\r\nYou can also select a featured product to show. If there is no featured product, then the first available product will be displayed.",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
@@ -59,6 +59,97 @@
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
+            },
+            {
+                "key": "field_5b4507f9226fb",
+                "label": "Color Variation Image Overrides",
+                "name": "color_variation_image_overrides",
+                "type": "repeater",
+                "instructions": "This is so that we can display a different size image for the different colors of the bags.\r\nAdd in the color variation images for each of the colors here",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_5b450833226fc",
+                        "label": "Variation",
+                        "name": "variation",
+                        "type": "post_object",
+                        "instructions": "Select the color variation for your bag",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "product_variation"
+                        ],
+                        "taxonomy": [],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "return_format": "object",
+                        "ui": 1
+                    },
+                    {
+                        "key": "field_5b450859226fd",
+                        "label": "Image Override",
+                        "name": "image_override",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "thumbnail",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_5b450876226fe",
+                        "label": "Image Override (Retina)",
+                        "name": "image_override_retina",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "thumbnail",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    }
+                ]
             },
             {
                 "key": "field_5a443bb9201f9",

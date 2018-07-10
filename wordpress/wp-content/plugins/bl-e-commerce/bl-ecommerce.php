@@ -6,6 +6,10 @@ Description: provides custom e-commerce functionality for the site
 Version: 1.0
 */
 
+
+/**
+ * NOTE: if we want to see if the category is attached to the cart item, we can turin it on in here: bl_get_cart_item_meta()... set bypass to true
+ */
 global $bl_ecommerce_api_slug;
 $bl_ecommerce_api_slug = '/bl-api';
 
@@ -26,11 +30,17 @@ if (!function_exists('bl_add_frequency_to_session')) {
 }
 
 // for adding frequency to session
-add_action( 'wp_loaded', 'bl_add_frequency_to_session', 100);
+add_action( 'wp_loaded', 'bl_add_frequency_to_session', 500);
 
 // we will always have a category with the product added
 function bl_add_cart_item_category( $cart_item_data, $product_id, $variation_id ) {
-    $category_id = filter_input( INPUT_POST, 'category_id' );
+    if (isset($cart_item_data['category'])) {
+        $category_id = $cart_item_data['category'];
+    }
+    if (empty($category_id)) {
+        $category_id = filter_input( INPUT_POST, 'category_id' );
+    }
+    
     if (empty($category_id)) {
         // get the default category of this product using Yoast SEO
         if (class_exists('WPSEO_Primary_Term')) {
@@ -39,12 +49,13 @@ function bl_add_cart_item_category( $cart_item_data, $product_id, $variation_id 
         }
     }
 
+
+
 	if ( empty( $category_id ) ) {
 		return $cart_item_data;
 	}
 
 	$cart_item_data['category'] = $category_id;
-
 	return $cart_item_data;
 }
 
@@ -77,7 +88,7 @@ function bl_check_frequency() {
 }
 
 function bl_get_cart_item_meta($data, $cartItem) {
-    $bypass = true;
+    //$bypass = true;
     if ( isset( $cartItem['category'] )  && $bypass == false) {
         $data[] = array(
             'name' => 'Category',
@@ -294,6 +305,8 @@ if (!function_exists('bl_get_cart')) {
         if (!empty($cart) && is_array($cart)) {
             foreach ($cart as $hash => $item) {
                 // just need sku, category, name, count, and image
+                
+                //print_r ($test);
                 if (isset($item['data'])) {
                     //print_r ($item['data']);
                     $mini_cart_max_num_words = 5;
@@ -314,16 +327,32 @@ if (!function_exists('bl_get_cart')) {
                         $cat = get_term($category_ids[0]);
                         if (!empty($cat) && isset($cat->name)) {
                             $category_name = $cat->name;
+                            $category_id =$cat->term_id;
+                        }
+                    }
+                    $category = $category_name;
+                }
+                if (empty($category)) {
+                    $item_detail = WC()->cart->get_cart_item($hash);
+                    //print_r ($item_detail);
+                    if (!empty($item_detail) && isset($item_detail['category'])) {
+                        $category_id = $item_detail['category'];
+                    }
+                    if (!empty($category_id)) {
+                        $term = get_term($category_id);
+                        if (!empty($term)) {
+                            $category = $term->name;
                         }
                     }
                 }
-                if (isset($item['meta_data']) && !empty($item['meta_data'])) {
+                if (empty($category) && isset($item['meta_data']) && !empty($item['meta_data'])) {
                     $category = $item['meta_data'];
                 }
                 if (empty($category) && !empty($category_name)) {
                     $category = $category_name;
                 }
-                $holder[] = array('id'=>$id,'sku'=>$sku,'category'=>$category,'name'=>$name,'count'=>$quantity,'image'=>$image);
+
+                $holder[] = array('id'=>$id,'sku'=>$sku,'category'=>$category,'category_id'=>$category_id,'name'=>$name,'count'=>$quantity,'image'=>$image);
             }
         }
         return $holder;
@@ -378,6 +407,18 @@ if (!function_exists('bl_add_current_kit_to_cart')) {
 if (!function_exists('bl_add_to_cart')) {
     function bl_add_to_cart($product_id,$category_id,$quantity=1,$variation_id=0) {
         $meta = array('category'=>$category_id);
+        /*
+        echo "\n";
+        echo $product_id;
+        echo "\n";
+        echo $variation_id;
+        echo "\n";
+        echo $category_id;
+        echo "\n";
+        echo $quantity;
+        echo "\n";
+        print_r ($meta);
+        */
         $res = WC()->cart->add_to_cart($product_id,$quantity,$variation_id,array(),$meta);
         return $res;
     }
@@ -409,6 +450,25 @@ function bl_get_current_kit_items($kit) {
     }
     return $items;
 }
+
+// gets the product_id, the variation_id from the shopping cart so that we can populate the front end on which one is selected
+function bl_get_bag_from_cart() {
+    if (function_exists('get_field')) {
+        $bag_category = get_field('bag_category','option');
+    }
+    if ($bag_category > 0) {
+        $items = bl_get_cart();
+    }
+    if (!empty($items) && is_array($items)) {
+        foreach ($items as $item) {
+            if ($item['category_id'] == $bag_category) {
+                return $item;
+            }
+        }
+    }
+    return array();
+}
+
 // some supporting functions
 // gets the current session kit ID
 function bl_get_current_kit_id() {

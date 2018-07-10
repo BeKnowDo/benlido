@@ -175,6 +175,8 @@ function bl_process_bags_list($items) {
         switch ($type) {
           case 'travel_kit':
             $css = 'prebuilt-kit';
+            $disabled = false;
+            //print_r ($el);
             // the price of the kit is the total of all the products
             if (function_exists('bl_get_kit_price')) {
               $price = wc_price(bl_get_kit_price($item_id));
@@ -182,21 +184,56 @@ function bl_process_bags_list($items) {
             if (function_exists('get_field')) {
               // we need to get the kit page
               $kitting_page = get_field('kitting_page','option');
+              // get the bag for the kit
+              $bag_for_this_kit = get_field('bag_for_this_kit',$item_id);
+              $color_variation_image_overrides = get_field('color_variation_image_overrides',$item_id);
               // need the bag associated with the kit
               if ($kitting_page) {
                 $href = get_permalink($kitting_page) . '?id=' . $item_id;
               }
               
             }
+            if (!empty($bag_for_this_kit) && is_object($bag_for_this_kit) && isset($bag_for_this_kit->ID)) {
+                $product_id = $bag_for_this_kit->ID;
+                $product = wc_get_product($product_id);
+                // see if we have selected this same product
+                $bag_in_cart = bl_get_bag_from_cart();
+                if (function_exists('bl_get_product_category')) {
+                  $product_cat = bl_get_product_category($product_id);
+                }
+            }
+            if (!empty($product_id) && !empty($color_variation_image_overrides) && !empty($product_cat)) {
+              $swatches = bl_get_bag_product_swatch_overrides($product_id,$category_id,$color_variation_image_overrides);
+            }
+            if (!empty($swatches) && !empty($bag_in_cart)) {
+              $swatches_holder = array();
+              foreach ($swatches as $swatch) {
+                if ($swatch['id']==$bag_in_cart['id']) {
+                  $swatch['selected'] = true;
+                  $css .= ' hero-product-picked';
+                  $picked = true;
+                }
+                $swatches_holder[] = $swatch;
+              }
+              $swatches = $swatches_holder;
+            }
+            //$swatches = bl_get_variable_product_swatches($product_id,$variation_id);
+            if (!empty($swatches)) {
+              $css .= ' has-variations';
+            }
           break;
           default:
             $css = 'self-kit';
+            $disabled = false;
             $prod = null;
             $available_variations = null;
             $category_id = 0;
+            $picked = false;
             // note: if we have already picked a bag, we will have the variation ID
             $product_id = $item_id;
             $product = wc_get_product($product_id);
+            // see if we have selected this same product
+            $bag_in_cart = bl_get_bag_from_cart();
             
             if (function_exists('bl_get_product_category')) {
               $product_cat = bl_get_product_category($product_id);
@@ -208,7 +245,19 @@ function bl_process_bags_list($items) {
             // NOTE: swatches come from the bags page because we need to have a custom image
             //print_r ($el);
             $color_variation_image_overrides = $el['color_variation_image_overrides'];
-            $swatches = bl_get_bag_product_swatch_overrides($product_id,$color_variation_image_overrides);
+            $swatches = bl_get_bag_product_swatch_overrides($product_id,$category_id,$color_variation_image_overrides);
+            if (!empty($swatches) && !empty($bag_in_cart)) {
+              $swatches_holder = array();
+              foreach ($swatches as $swatch) {
+                if ($swatch['id']==$bag_in_cart['id']) {
+                  $swatch['selected'] = true;
+                  $css .= ' hero-product-picked';
+                  $picked = true;
+                }
+                $swatches_holder[] = $swatch;
+              }
+              $swatches = $swatches_holder;
+            }
             //$swatches = bl_get_variable_product_swatches($product_id,$variation_id);
             if (!empty($swatches)) {
               $css .= ' has-variations';
@@ -218,10 +267,6 @@ function bl_process_bags_list($items) {
           break;
         }
         
-
-        
-        
-        $disabled = false;
         if ($status == 'draft' || $status == 'future') {
           // see when it's available
           $post_date = $item->post_date;
@@ -260,6 +305,7 @@ function bl_process_bags_list($items) {
             'swatches'=>$swatches,
             'button_copy'=>$button_copy,
             'selected_copy'=>$selected_copy,
+            'picked'=>$picked,
             'image'=>$image,
             'image_retina'=>$image_retina,
             'bagURL'=>$url,
@@ -275,7 +321,7 @@ function bl_process_bags_list($items) {
 } // end bl_process_bags_list()
 
 // takes the ACF
-function bl_get_bag_product_swatch_overrides($product_id,$overrides,$selected_id=0) {
+function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides,$selected_id=0) {
   //print_r ($overrides);
   $res = array();
   $holder = array();
@@ -298,7 +344,7 @@ function bl_get_bag_product_swatch_overrides($product_id,$overrides,$selected_id
       if (!empty($image_override_retina) && is_array($image_override_retina)) {
         $image_retina = $image_override_retina['url'];
       }
-      $holder[] = array('id'=>$id,'title'=>$title,'type'=>$type,'hero_image'=>$image,'hero_image_retina'=>$image_retina);
+      $holder[] = array('id'=>$id,'category_id'=>$category_id,'title'=>$title,'type'=>$type,'hero_image'=>$image,'hero_image_retina'=>$image_retina);
     } // end foreach
   }
   $swatches = bl_get_variable_product_swatches($product_id,$selected_id);

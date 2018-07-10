@@ -119,6 +119,10 @@ export class Cart {
           // first, see if we are a bag or a kit
           el.addEventListener("click", e => {
             e.preventDefault();
+            if (el.classList.contains('hero-product-picked')) {
+              let returnURL = el.href;
+              document.location.href=returnURL;
+            }
             if (el.dataset) {
               
               let variation_id = el.dataset.variation_id || "";
@@ -126,7 +130,7 @@ export class Cart {
               let category_id = el.dataset.category_id || "";
               let returnURL = el.href;
               if (variation_id.length > 0 && product_id.length > 0) {
-                if (el.classList.contains('self-kit')) {
+                if (el.classList.contains('self-kit') || el.classList.contains('prebuilt-kit')) {
                   this.addItemToCart(product_id,category_id,variation_id,1,returnURL);
                 }
               }
