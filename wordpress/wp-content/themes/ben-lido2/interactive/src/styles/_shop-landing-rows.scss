@@ -1,4 +1,13 @@
 .shop-landing-featured {
+  &-products {
+    .columns {
+      ul {
+        &.columns {
+          width: 100%;
+        }
+      }
+    }
+  }
   &-header {
     @include sentinel(18px, 400);
     // text-align: center;
@@ -9,10 +18,14 @@
 
   &-view-all {
     border-bottom: $grey-border;
+    &:last-child {
+      border-bottom: 0;
+    }
     .btn {
       display: inline-block;
       margin-top: 30px;
       margin-bottom: 30px;
+      color: $primary-color;
     }
   }
 }

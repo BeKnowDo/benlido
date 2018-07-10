@@ -15,8 +15,10 @@ if (function_exists('bl_get_current_kit_items')) {
 <input type="hidden" id="bl_kit_id" name="bl_kit_id" value="<?php echo $kit_id;?>" />
 <div class="bg-white">
         <div class="max-width-xl">
-            <?php get_template_part( 'template-parts/common/hero/hero-product','list'); ?>
-            <?php get_template_part( 'template-parts/common/category','header'); ?>
+            <?php
+                get_template_part( 'template-parts/common/hero/hero-product','list');
+                get_template_part( 'template-parts/common/category','header');
+            ?>
             <div class="columns">
                 <?php if (!empty($kit_products) && is_array($kit_products)):?>
                 <?php foreach ($kit_products as $kit_product):?>

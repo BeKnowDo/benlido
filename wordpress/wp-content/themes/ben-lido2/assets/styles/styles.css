@@ -3363,7 +3363,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .back-to-top .fal { font-size: 22px; }
 
-.step-navigation { padding: 18px 0; border-bottom: 1px solid #e4e4e4; }
+.step-navigation { padding: 18px 0; }
 
 .step-navigation-text { vertical-align: super; color: #999999; }
 
@@ -3531,11 +3531,15 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .parent-category-list-item { display: block; }
 
+.shop-landing-featured-products .columns ul.columns { width: 100%; }
+
 .shop-landing-featured-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; color: #999999; margin-top: 30px; padding-bottom: 20px; }
 
 .shop-landing-featured-view-all { border-bottom: 1px solid #e4e4e4; }
 
-.shop-landing-featured-view-all .btn { display: inline-block; margin-top: 30px; margin-bottom: 30px; }
+.shop-landing-featured-view-all:last-child { border-bottom: 0; }
+
+.shop-landing-featured-view-all .btn { display: inline-block; margin-top: 30px; margin-bottom: 30px; color: #bacdd4; }
 
 .benlido-search-container { transform: translate3d(0, -110%, 0); position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 100; padding: 40px 10px 40px; margin: 0; background-color: #393d5b; box-sizing: border-box; }
 
@@ -3857,8 +3861,6 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 .woocommerce-message, .woocommerce-error { background-color: #bacdd4; }
 
 .woocommerce-active .hero-product:last-child { border: none; }
-
-.woocommerce-active .footer { margin-top: 2rem; }
 
 @media (max-width: 768px) { .woocommerce-cart .shop_table thead tr { display: flex; flex-direction: row; }
   .woocommerce-cart .shop_table thead th { display: block; flex-grow: 1; }
