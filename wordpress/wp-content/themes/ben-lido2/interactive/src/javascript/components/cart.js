@@ -30,6 +30,7 @@ export class Cart {
       if (this.kitID) {
         this.kitID = this.kitID.value;
       }
+      this.currentSwatch = null;
   }
 
   init() {
@@ -131,7 +132,12 @@ export class Cart {
               let returnURL = el.href;
               if (variation_id.length > 0 && product_id.length > 0) {
                 if (el.classList.contains('self-kit') || el.classList.contains('prebuilt-kit')) {
-                  this.addItemToCart(product_id,category_id,variation_id,1,returnURL);
+                  if (el.classList.contains('changed')) {
+                    this.addItemToCart(product_id,category_id,variation_id,1,returnURL);
+                  } else {
+                    document.location.href = returnURL;
+                  }
+                  
                 }
               }
             }
@@ -408,7 +414,7 @@ export class Cart {
           if (item.id) {
             html_id = '.post-'+item.id;
           }
-          console.log(html_id);
+          //console.log(html_id);
           if (item.count) {
             itemCount = item.count;
           }
@@ -427,11 +433,6 @@ export class Cart {
                 defaultText = buttonText.dataset.defaultText || '';
                 cartText = buttonText.dataset.cartText || '';
               }
-              console.log("HERE");
-              console.log(itemCount);
-              console.log(buttonText);
-              console.log(removeIcon);
-              console.log(buttonText);
               //console.log(el);
               
               if (typeof itemCount != 'undefined' && typeof buttonText != 'undefined' && typeof removeIcon != 'undefined' && typeof targetButton != 'undefined') {
@@ -618,25 +619,56 @@ export class Cart {
   setSwatchColor() {
     if (this.swatchColor.length > 0) {
       this.swatchColor.forEach(el => {
+        let parent = el.parentElement;
+        let parentHolder = parent.parentElement;
+        let swatchNodes = undefined;
+        let data = el.dataset;
+        let variation_id = data.variation_id ? data.variation_id : 0;
+        if (parent.classList.contains('selected')) {
+          this.currentSwatch = variation_id;
+        }
+        if (typeof parentHolder != 'undefined') {
+          swatchNodes = parentHolder.querySelectorAll('.select-option');
+        }
         el.addEventListener("click",e => {
           e.preventDefault();
-          let data = el.dataset;
+          let changed = false;
+          
           let product_id = data.product_id ? data.product_id : 0;
           let index = data.index ? data.index : 0;
-          let variation_id = data.variation_id ? data.variation_id : 0;
+          
           let hero_image = data.hero_image ? data.hero_image : '';
           let hero_image_retina = data.hero_image_retina ? data.hero_image_retina : '';
+          
           if (hero_image_retina.length > 1) {
             hero_image_retina += ' 2x';
           }
           if (variation_id > 0) {
+            if (swatchNodes.length > 0) {
+              //console.log(swatchNodes);
+              swatchNodes.forEach(listElement => {
+                listElement.classList.remove('selected');
+              });
+            }
+            
+            if (variation_id != this.currentSwatch) {
+              changed = true;
+            } else {
+              changed = false;
+            }
+            el.parentNode.classList.add('selected');
             let addButton = document.getElementById("button-"+index);
             let div_id = 'hero-'+index;
             if (addButton) {
               addButton.setAttribute('data-variation_id', variation_id);
               addButton.removeAttribute('disabled');
               document.getElementById(div_id).src = hero_image;
-              document.getElementById(div_id).setAttribute('srtset', hero_image_retina);
+              document.getElementById(div_id).setAttribute('srcset', hero_image_retina);
+              if (changed == false) {
+                addButton.classList.remove('changed');
+              } else {
+                addButton.classList.add('changed');
+              }
             }
           }
         });
