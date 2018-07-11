@@ -202,6 +202,9 @@ function bl_process_bags_list($items) {
                   $product_cat = bl_get_product_category($product_id);
                 }
             }
+            if (!empty($product_cat) && is_object($product_cat) && isset($product_cat->term_id)) {
+              $category_id = $product_cat->term_id;
+            }
             if (!empty($product_id) && !empty($color_variation_image_overrides) && !empty($product_cat)) {
               $swatches = bl_get_bag_product_swatch_overrides($product_id,$category_id,$color_variation_image_overrides);
             }
@@ -463,29 +466,78 @@ function bl_process_kit_list($items) {
   die;
 } // end bl_process_kit_list()
 
-function bl_process_kit_bag($item) {
+function bl_process_kit_bag($item,$kit_id=null) {
 
   $results = array();
+  $css = ' in-kit-detail ';
   // this is always an array of arrays
+  $product_id = 0;
+  if (function_exists('get_field')) {
+    $color_variation_image_overrides = get_field('color_variation_image_overrides',$kit_id);
+  }
   if (!empty($item) && is_object($item) && method_exists($item,'get_name')) {
+    $product_id = $item->get_id();
     $name = $item->get_name();
     $logo = ''; // need to get the brand logo
     $description = $item->get_description();
     $href = get_permalink($item);
+    if (function_exists('bl_get_product_category')) {
+      $product_cat = bl_get_product_category($product_id);
+    }
     $image = wp_get_attachment_image_src(get_post_thumbnail_id($item->get_id()),'woocommerce_single');
     if (!empty($image) && is_array($image)) {
       $image = $image[0];
     }
   }
+  if (!empty($kit_id)) {
+    $kit = get_post($kit_id);
+    if ($kit) {
+      $image = wp_get_attachment_image_src(get_post_thumbnail_id($kit_id),'full');
+      if (!empty($image) && is_array($image)) {
+        $image = $image[0];
+      }
+      $name = $kit->post_title;
+      $description = $kit->post_content;
+    }
+
+  }
+  if (!empty($product_cat) && is_object($product_cat) && isset($product_cat->term_id)) {
+    $category_id = $product_cat->term_id;
+  }
+  if (!empty($product_id) && !empty($color_variation_image_overrides) && !empty($product_cat)) {
+    $swatches = bl_get_bag_product_swatch_overrides($product_id,$category_id,$color_variation_image_overrides);
+  }
+  $bag_in_cart = bl_get_bag_from_cart();
+  if (!empty($swatches) && !empty($bag_in_cart)) {
+    $swatches_holder = array();
+    foreach ($swatches as $swatch) {
+      if ($swatch['id']==$bag_in_cart['id']) {
+        $swatch['selected'] = true;
+        $css .= ' hero-product-picked';
+        $picked = true;
+      }
+      $swatches_holder[] = $swatch;
+    }
+    $swatches = $swatches_holder;
+  }
+  //$swatches = bl_get_variable_product_swatches($product_id,$variation_id);
+  if (!empty($swatches)) {
+    $css .= ' has-variations';
+  }
   $results[] = array(
         'triangleBackground' => true,
+        'css' => $css,
         'logo' => $logo,
         'header' => $name,
         'copy' => $description,
         'picked' => true,
         'href' => $href,
         'image' => $image,
-        'bagURL' => $href
+        'bagURL' => $href,
+        'button_copy' => 'Change Bag',
+        'selected_copy' => 'Change Bag',
+        'disabled' => false,
+        'swatches' => $swatches
   );
   return $results;
 }

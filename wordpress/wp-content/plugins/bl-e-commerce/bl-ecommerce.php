@@ -88,7 +88,7 @@ function bl_check_frequency() {
 }
 
 function bl_get_cart_item_meta($data, $cartItem) {
-    //$bypass = true;
+    $bypass = true;
     if ( isset( $cartItem['category'] )  && $bypass == false) {
         $data[] = array(
             'name' => 'Category',
@@ -361,7 +361,17 @@ if (!function_exists('bl_get_cart')) {
 
 if (!function_exists('bl_remove_cart_items')) {
     function bl_remove_cart_items() {
+        // NOTE: when we clear cart items, we always leave the bag
+        // first, get the bag, then clear the cart, then add the bag back
+        $bag = bl_get_bag_from_cart();
         WC()->cart->empty_cart();
+        if ($bag) {
+            $product_id = $bag['id'];
+            $category_id = $bag['category_id'];
+            $quantity = $bag['count'];
+            $variation_id = null; // NOTE: the product_id is the variation ID
+            bl_add_to_cart($product_id,$category_id,$quantity,$variation_id);
+        }
     }
 }
 
@@ -519,6 +529,8 @@ function bl_save_current_kit($id) {
     // first, get the products of the kit
     if (get_post_type($id) == 'travel_kit') {
         $bag = null;
+        // see if we have a bag already in cart
+        $test_bag = bl_get_bag_from_cart();
         $product_categories = array();
         $items = array();
         if (function_exists('get_field')) {
