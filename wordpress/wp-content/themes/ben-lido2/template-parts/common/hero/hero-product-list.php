@@ -23,6 +23,20 @@ if (empty($bags) && !empty($kit_id)) {
         $bags = bl_process_kit_bag($bags,$kit_id);
     }
 }
+if (empty($bags) && empty(bl_get_product_swap()) && bl_is_kit_add() == false) {
+    $bag = bl_get_bag_from_cart();
+    if (!empty($bag) && isset($bag['id'])) {
+        $item = wc_get_product( $bag['id'] );
+        if (get_class($item) == 'WC_Product_Variation') {
+            $parent_id = $item->get_parent_id();
+        }
+        if ($parent_id > 0) {
+            $item = wc_get_product($parent_id);
+        }
+        $bags = bl_process_kit_bag($item);
+    }
+    // actually, because this bag is from the bags
+}
 
 $data = array('products'=>$bags);
 //print_r ($data);

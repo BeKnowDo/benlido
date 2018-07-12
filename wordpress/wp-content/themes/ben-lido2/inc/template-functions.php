@@ -472,6 +472,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
   $css = ' in-kit-detail ';
   // this is always an array of arrays
   $product_id = 0;
+//print_r ($item);
   if (function_exists('get_field')) {
     $color_variation_image_overrides = get_field('color_variation_image_overrides',$kit_id);
   }
@@ -500,6 +501,18 @@ function bl_process_kit_bag($item,$kit_id=null) {
       $description = $kit->post_content;
     }
 
+  }
+  if (empty($kit_id) && empty($color_variation_image_overrides) && !empty($product_id) && function_exists('get_field')) {
+    $color_variation_image_overrides = get_field('color_variation_image_overrides',$product_id);
+    //print_r($color_variation_image_overrides) ;
+    // we're also going to replace the featured image with the first color one.
+    if (!empty($color_variation_image_overrides) && is_array($color_variation_image_overrides)) {
+      $first_item = $color_variation_image_overrides[0];
+      //print_r ($first_item);
+      if (!empty($first_item) && is_array($first_item) && isset($first_item['image_override'])) {
+        $image = $first_item['image_override']['url'];
+      }
+    }
   }
   if (!empty($product_cat) && is_object($product_cat) && isset($product_cat->term_id)) {
     $category_id = $product_cat->term_id;

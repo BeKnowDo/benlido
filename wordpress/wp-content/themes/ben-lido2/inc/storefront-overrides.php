@@ -49,6 +49,9 @@ function bl_storefront_overrides() {
 
 	if (is_woocommerce()) {
 		add_action('woocommerce_before_main_content','bl_breadcrumb',4);
+		if (is_shop() ) {
+			add_action('woocommerce_before_main_content','bl_bag_hero',5);
+		}
 		if (is_shop() || is_product_category() || is_product_tag()) {
 			add_action('woocommerce_before_main_content','bl_header',5);
 		}
@@ -316,6 +319,10 @@ if ( ! function_exists( 'storefront_product_columns_wrapper' ) ) {
 
 function bl_storefront_main_content_wrapper_end() {
 	echo '</div>';
+}
+
+function bl_bag_hero() {
+	get_template_part('template-parts/common/hero/hero-product','list');
 }
 
 function bl_header() {
