@@ -50,7 +50,30 @@ if (is_shop() || is_product_category()) {
             'back' => $back,
             'current' => $current,
             'nextStep' => $nextStep,
-            'nest' => $next
+            'next' => $next
+        );
+    }
+    else {
+        // else, we assume you are building your own kit, and just go back to the bags page or go to the frequency page
+        if (function_exists('get_field')) {
+            $delivery_frequency_page = get_field('delivery_frequency_page','option');
+            $bags_page = get_field('bags_page','option');
+        }
+        if (!empty($delivery_frequency_page) && is_object($delivery_frequency_page)) {
+            $nextStep = get_permalink($delivery_frequency_page);
+        }
+        if (!empty($bags_page) && is_object($bags_page)) {
+            $previousStep = get_permalink($bags_page);
+        }
+        $back = 'Back to Bags';
+        $current = 'Add Item to Kit';
+        $next = 'Delivery Frequency';
+        $stepNavigation = array(
+            'previousStep' => $previousStep,
+            'back' => $back,
+            'current' => $current,
+            'nextStep' => $nextStep,
+            'next' => $next
         );
     }
 }
