@@ -328,6 +328,9 @@ function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides
   //print_r ($overrides);
   $res = array();
   $holder = array();
+  if (empty($overrides)) {
+    $overrides = get_field('color_variation_image_overrides',$product_id);
+  }
   if (is_array($overrides)) {
     foreach ($overrides as $override) {
       // should have a variation and image override
