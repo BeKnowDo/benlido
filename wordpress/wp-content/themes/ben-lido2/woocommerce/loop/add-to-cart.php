@@ -79,6 +79,7 @@ if (get_class($product) == 'WC_Product_Variable') {
     // NOTE: everything changes here.
     $default_text = 'View Product Detail';
     $args['class'] = 'btn btn-lg btn-block btn-primary add-to-cart has-variations';
+    $variation_id = 0;
 }
 
 /*

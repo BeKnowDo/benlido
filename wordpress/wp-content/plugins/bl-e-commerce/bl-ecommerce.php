@@ -465,7 +465,14 @@ if (!function_exists('bl_remove_from_cart')) {
         }
         if (!empty($match_key) && $match_quantity > 0) {
             // we're just going to remove that whole line for now
-            $response = WC()->cart->remove_cart_item($match_key);
+            
+            $final_quantity = intval($match_quantity) - 1;
+            if ($final_quantity > 0) {
+                $response = WC()->cart->set_quantity($match_key, $final_quantity);
+            } else {
+                $response = WC()->cart->remove_cart_item($match_key);
+            }
+            
         }
         return $response;
     }
@@ -944,8 +951,10 @@ function bl_ecommerce_url_intercept() {
                         $res = bl_remove_from_cart($id,$variation_id,$quantity);
                         if (!empty($res)) {
                             header('Content-Type: application/json');
+                            $response = array();
                             $cart = bl_get_cart();
-                            print_r (json_encode($cart));
+                            $response['items'] = $cart;
+                            print_r (json_encode($response));
                         }
                         break;
                     default:

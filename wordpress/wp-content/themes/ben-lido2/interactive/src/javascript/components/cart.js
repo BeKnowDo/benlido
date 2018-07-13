@@ -404,8 +404,26 @@ export class Cart {
       });
   }
 
+  resetButtonCopy() {
+    // first, we clear everything
+    document.querySelectorAll('a.in-cart').forEach( el => {
+      el.classList.remove('in-cart');
+      el.querySelectorAll('.add-to-cart-text').forEach( c => {
+        if (c.dataset) {
+          c.innerHTML = c.dataset.defaultText || 'Add to kit';
+        }
+      });
+      el.querySelectorAll('.fa-minus-circle').forEach( f => {
+        if (!f.classList.contains('hidden')) {
+          f.classList.add('hidden');
+        }
+      });
+    });
+  }
+
   updateTileQuantity(response, item) {
-    //onsole.log(response.length);
+    this.resetButtonCopy();
+    //console.log(response.length);
     //console.log(response);
     if (Array.isArray(response)) {
       response.forEach(item => {
@@ -565,31 +583,25 @@ export class Cart {
   }
 
   removeItem() {
-    const removeIcons = this.removeIcons;
-    if (removeIcons.length > 0) {
-      removeIcons.forEach(removeIcon => {
+    if (this.removeIcons.length > 0) {
+      this.removeIcons.forEach(removeIcon => {
         removeIcon.addEventListener("click", e => {
           e.preventDefault();
+          if (removeIcon.dataset) {
+            let target = removeIcon.dataset;
+            let product_id = target.product_id ? target.product_id : undefined;
+            let variation_id = target.variation_id ? target.variation_id : 0;
 
-          if (e.target.dataset) {
-            const target = e.target.dataset;
-            const sku = target.sku ? target.sku : undefined;
-            const category = target.category ? target.category : undefined;
+            if (product_id !== undefined) {
+              let button = e.target.parentElement;
+              let text = button.querySelector(".add-to-cart-text");
+              let inCartText = text.dataset.cartText;
+              let defaultText = text.dataset.defaultText;
 
-            if (sku !== undefined && category !== undefined) {
-              const button = e.target.parentElement;
-              const text = button.querySelector(".add-to-cart-text");
-              const inCartText = text.dataset.cartText;
-              const defaultText = text.dataset.defaultText;
-
-              const removeItem = {
-                sku,
-                category
-              };
-              fetch(endpoints.removeFromCart, {
+              let removeURL = endpoints.removeFromCart +'/'+product_id+'/'+variation_id;
+              fetch(removeURL, {
                 method: "POST",
                 credentials: "include",
-                body: JSON.stringify(removeItem),
                 headers: {
                   "Content-Type": "application/json"
                 }
@@ -599,22 +611,19 @@ export class Cart {
                 .then(response => {
                   if (response.error) {
                   } else {
-                    this.updateCount(response);
-                    this.miniCart(response);
-                    // TODO: DRY
-                    const match = response.filter(item => {
-                      return item.sku === sku && item.category === category;
-                    });
-
-                    if (match.length > 0) {
-                      text.innerHTML = match[0].count + inCartText;
-                      button.classList.add("in-cart");
-                      removeIcon.classList.remove("hidden");
-                    } else {
-                      button.classList.remove("in-cart");
-                      text.innerHTML = defaultText;
-                      removeIcon.classList.add("hidden");
+                    if ( typeof response.items != 'undefined') {
+                      this.updateCount(response.items);
+                      this.miniCart(response.items);
+                      this.updateTileQuantity(response.items, null);
                     }
+                    if (typeof response.url != 'undefined') {
+                      // we will get a return URL
+                      setTimeout(function() {
+                        document.location.href = response.url;
+                      },100); // setTimeout to bust promise
+                      
+                    }
+
                   }
                 });
             }
