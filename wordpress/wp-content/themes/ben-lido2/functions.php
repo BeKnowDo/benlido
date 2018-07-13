@@ -19,7 +19,7 @@ require_once 'inc/template-functions.php'; // functions for displaying things: l
 function bl_child_theme_init()
 {
     global $storefront_version;
-    $version = '1.1';
+    $version = '1.2';
     wp_dequeue_style( 'storefront-style' );
     wp_dequeue_style( 'storefront-woocommerce-style' );
     wp_dequeue_style( 'storefront-woocommerce-brands-style' );

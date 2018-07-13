@@ -196,6 +196,8 @@ export class Cart {
                 <a
                   href="/cart"
                   class="navbar-edit-item"
+                  data-product_id="${item.id}"
+                  data-variation_id="${item.variation_id}"
                   data-sku="${item.sku}"
                   data-name="${item.name}"
                   data-category="${item.category}"
@@ -203,13 +205,8 @@ export class Cart {
                   <i class="fal fa-edit"></i>
                 </a>
                 
-                <span class="navbar-remove-item">
-                  <i
-                    class="fal fa-times"
-                    data-sku="${item.sku}"
-                    data-name="${item.name}"
-                    data-category="${item.category}"
-                  ></i>
+                <span class="navbar-remove-item" data-product_id="${item.id}" data-variation_id="${item.variation_id}">
+                  <i class="fal fa-times"></i>
                 </span>
 
               </div>
@@ -371,12 +368,18 @@ export class Cart {
 
   removeItemAPI(item) {
     let kit_id = document.getElementById('bl_kit_id');
+    let fromCart = item.from_cart ? item.from_cart : false;
     if (kit_id && kit_id.value) {
       kit_id = parseInt(kit_id.value);
     }
     let removeURL = endpoints.removeFromCart;
     // if there is a kit ID, that means we're removing it from the kit. Otherwise, we are removing it from the cart
-    if (kit_id > 0 && item.product_id) {
+    if (fromCart == true) {
+      var product_id = item.product_id ? item.product_id : 0;
+      var variation_id = item.variation_id ? item.variation_id : 0;
+      removeURL = endpoints.removeFromCart + '/' + product_id + '/' + variation_id
+    }
+    if (kit_id > 0 && item.product_id && fromCart == false) {
       removeURL = endpoints.removeFromKit+'/'+kit_id+'/'+item.product_id;
       if (item.category_id) {
         removeURL += '/'+item.category_id;
@@ -472,16 +475,16 @@ export class Cart {
     cartItems.forEach(item => {
       item.addEventListener("click", e => {
         e.preventDefault();
-
-        if (this.target.dataset) {
-          let target = e.target.dataset;
+        if (item.dataset) {
+          let target = item.dataset;
           let product_id = target.product_id ? target.product_id : undefined;
-          let category_id = target.category_id ? target.category_id : undefined;
+          let variation_id = target.variation_id ? target.variation_id : undefined;
 
-          if (product_id !== undefined && category_id !== undefined) {
+          if (product_id !== undefined && variation_id !== undefined) {
             let removeItem = {
               'product_id':product_id,
-              'category_id':category_id
+              'variation_id':variation_id,
+              'from_cart':true
             };
 
             this.removeItemAPI(removeItem);
@@ -626,6 +629,17 @@ export class Cart {
         let variation_id = data.variation_id ? data.variation_id : 0;
         if (parent.classList.contains('selected')) {
           this.currentSwatch = variation_id;
+          let primary_image = data.hero_image ? data.hero_image : '';
+          let primary_image_retina = data.hero_image_retina ? data.hero_image_retina : '';
+          let index = data.index ? data.index : 0;
+          if (primary_image.length > 0) {
+            let div_id = 'hero-'+index;
+            if (primary_image_retina.length > 1) {
+              primary_image_retina += ' 2x';
+            }
+            document.getElementById(div_id).src = primary_image;
+            document.getElementById(div_id).setAttribute('srcset', primary_image_retina);
+          }
         }
         if (typeof parentHolder != 'undefined') {
           swatchNodes = parentHolder.querySelectorAll('.select-option');

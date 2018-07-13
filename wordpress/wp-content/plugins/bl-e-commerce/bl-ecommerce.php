@@ -307,6 +307,7 @@ if (!function_exists('bl_get_cart')) {
                 // just need sku, category, name, count, and image
                 
                 //print_r ($test);
+                $variation_id = 0;
                 if (isset($item['data'])) {
                     //print_r ($item['data']);
                     $mini_cart_max_num_words = 5;
@@ -323,6 +324,9 @@ if (!function_exists('bl_get_cart')) {
                     }
                     $category_ids = $item['data']->get_category_ids();
                     $quantity = $item['quantity'];
+                    if (isset($item['variation_id'])) {
+                        $variation_id = $item['variation_id'];
+                    }
                     if (is_array($category_ids) && !empty($category_ids)) {
                         $cat = get_term($category_ids[0]);
                         if (!empty($cat) && isset($cat->name)) {
@@ -352,7 +356,7 @@ if (!function_exists('bl_get_cart')) {
                     $category = $category_name;
                 }
 
-                $holder[] = array('id'=>$id,'sku'=>$sku,'category'=>$category,'category_id'=>$category_id,'name'=>$name,'count'=>$quantity,'image'=>$image);
+                $holder[] = array('id'=>$id,'variation_id'=>$variation_id,'sku'=>$sku,'category'=>$category,'category_id'=>$category_id,'name'=>$name,'count'=>$quantity,'image'=>$image);
             }
         }
         return $holder;
@@ -433,6 +437,39 @@ if (!function_exists('bl_add_to_cart')) {
         return $res;
     }
 } // end bl_add_to_cart()
+
+if (!function_exists('bl_remove_from_cart')) {
+    function bl_remove_from_cart($product_id,$variation_id=0,$quantity=1) {
+        // NOTE: sometimes, the product_id is the same as variation ID because some products returns the variation_id as the product_id as well.
+        //       so, we need to work from trying to get 
+        $response = false;
+        $cart = WC()->cart->get_cart();
+        $holder = array();
+        $match_key = '';
+        $match_quantity = 0;
+        if (!empty($cart) && is_array($cart)) {
+            foreach ($cart as $hash => $item) {
+                $temp_product_id = $item['product_id'];
+                $temp_variation_id = $item['variation_id'];
+                $temp_quantity = $item['quantity'];
+                if ($product_id == $temp_product_id && $product_id != $variation_id) {
+                    $match_key = $hash;
+                    $match_quantity = $temp_quantity;
+                }
+                if ($variation_id > 0 && $variation_id == $temp_variation_id) {
+                    $match_key = $hash;
+                    $match_quantity = $temp_quantity;
+                }
+                
+            }
+        }
+        if (!empty($match_key) && $match_quantity > 0) {
+            // we're just going to remove that whole line for now
+            $response = WC()->cart->remove_cart_item($match_key);
+        }
+        return $response;
+    }
+}
 
 /** 
  * this gets the current kit items, whether it's a new kit page, or if there is an existing kit in session
@@ -893,6 +930,23 @@ function bl_ecommerce_url_intercept() {
                         }
                         header('Content-Type: application/json');
                         print_r (json_encode($response));
+                        break;
+                    case 'remove':
+                        // /bl-api/cart/remove/{product_id}/{variation_id}/{qty}
+                        $variation_id = 0;
+                        $quantity = 1;
+                        if (isset($api_parts[5])) {
+                            $variation_id = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $quantity = $api_parts[6];
+                        }
+                        $res = bl_remove_from_cart($id,$variation_id,$quantity);
+                        if (!empty($res)) {
+                            header('Content-Type: application/json');
+                            $cart = bl_get_cart();
+                            print_r (json_encode($cart));
+                        }
                         break;
                     default:
                         // gets the cart
