@@ -19,7 +19,7 @@
             <div class="navbar-section">
                 <div class="columns">
                     <div class="column text-right hide-xs">
-                        <a class="navbar-section-account" href="/account" title="My Account">
+                        <a class="navbar-section-account" href="{{my_account_url}}" title="{{my_account_title}}">
                             <i class="fal fa-user-circle fa-2x"></i>
                         </a>
                     </div>
@@ -34,14 +34,18 @@
                             <div id="navbar-bag-container" class="navbar-bag-container position-relative">
                                 <div class="navbar-bag">
                                     <div id="navbar-bag-list" class="navbar-bag-list"></div>
-                                    <a class="btn btn-lg btn-block btn-primary" href="/cart" title="Go to my cart">
+                                    <a class="btn btn-lg btn-block btn-primary" href="{{cart_url}}" title="Shopping cart">
                                         View kit
                                     </a>
                                     <span class="navbar-login">
-                                        <a href="/register" title="Register an account">Sign Up</a>
-                                        or
-                                        <a href="/login" title="Login to your account">Log in</a>
-                                        to save your bag.
+                                        {% if user_is_logged_in == true %}
+                                            <a href="{{logout_url}}" title="Log Out">Log out</a>
+                                        {% else %}
+                                            <a href="{{register_url}}" title="Register an account">Sign Up</a>
+                                            or
+                                            <a href="{{login_url}}" title="Login to your account">Log in</a>
+                                            to save your bag.
+                                        {% endif %}
                                     </span>
                                 </div>
                             </div>
