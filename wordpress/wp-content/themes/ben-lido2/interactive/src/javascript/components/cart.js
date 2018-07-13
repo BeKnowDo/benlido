@@ -511,6 +511,11 @@ export class Cart {
           let var_id = el.var_id ? el.var_id : 0;
           let swap = el.swap ? el.swap : 0;
           let quantity = 1;
+          var product_url = button.href ? button.href : '';
+          if (button.classList.contains('has-variations')) {
+            document.location.href = product_url;
+            return true;
+          }
 
           let addURL = endpoints.addToCart;
           if (kit_id > 0) {

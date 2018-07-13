@@ -41,7 +41,9 @@ if ($is_kit_add == true || $is_swap == true) {
         $kit_id = bl_get_current_kit_id();
     }
 }
+
 $product_id = $product->get_id();
+
 $product_name = $product->get_name();
 $product_sku = $product->get_sku();
 $product_category = '';
@@ -71,6 +73,12 @@ if ($is_swap == true) {
 
 if ($mid_swap == true) {
     $default_text = 'Swap';
+}
+
+if (get_class($product) == 'WC_Product_Variable') {
+    // NOTE: everything changes here.
+    $default_text = 'View Product Detail';
+    $args['class'] = 'btn btn-lg btn-block btn-primary add-to-cart has-variations';
 }
 
 /*
@@ -116,11 +124,11 @@ if ($is_swap == true && $mid_swap == false) {
 else {
 // add to kit
 echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
-    sprintf( '<span href="%s" data-quantity="%s" class="%s" %s>
-    <i class="far fa-minus-circle  hidden" data-name="%s" data-sku="%s" data-category="%s"></i>
+    sprintf( '<a href="%s" data-quantity="%s" class="%s" %s>
+    <i class="far fa-minus-circle  hidden" data-name="%s" data-sku="%s" data-category="%s" data-product_id="%s" data-variation_id="%s"></i>
     <span class="add-to-cart-text" data-default-text="%s" data-cart-text="%s">%s</span>
     <i class="fal fa-plus-circle" data-name="%s" data-sku="%s" data-category="%s" data-kit_id="%s" data-prod_id="%s" data-cat_id="%s" data-swap="%s"></i>
-    </span>',
+    </a>',
 		esc_url( $product->add_to_cart_url() ), // for href=
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ), // for data-quantity=
 		esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ), // for class=
@@ -128,6 +136,8 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         esc_html($product_name), // for data-name=
         esc_html($product_sku), // for data-sku=
         esc_html($product_category), // for data-category=
+        esc_attr($product_id), // for data-product_id=
+        esc_attr($variation_id), // for data_variation_id=
         esc_html( $default_text), // for data-default-text=
         esc_html($cart_text), // for data-cart-text=
         $default_text, // for span text
