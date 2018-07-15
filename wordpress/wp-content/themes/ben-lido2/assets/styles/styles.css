@@ -3658,6 +3658,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .product .woocommerce-product-gallery__image > a { text-align: center; display: block; margin: 0 auto; }
 
+.woocommerce-account .button { padding: 10px 34px; height: auto; margin-bottom: 0.8rem; background-color: #bacdd4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; }
+
 .woocommerce-cart { background-color: #f7f7f7; }
 
 .woocommerce-cart .entry-title { text-align: center; padding: 2rem 0; }
