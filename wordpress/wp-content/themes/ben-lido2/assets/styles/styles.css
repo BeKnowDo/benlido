@@ -3209,7 +3209,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .navbar .fa-suitcase:before { font-size: 30px; }
 
-.footer { padding: 34px 34px 34px 48px; border-top: 1px solid #e4e4e4; background-color: #fff; }
+.footer { padding: 34px 34px 34px 48px; border-top: 1px solid #e4e4e4; background-color: #fff; clear: both; }
 
 .footer .social-media-links { padding-top: 0; }
 
