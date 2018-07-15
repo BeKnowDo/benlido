@@ -149,6 +149,26 @@ if( function_exists('acf_add_local_field_group') ):
                         'first_day' => 1,
                     ),
                     array(
+                        'key' => 'field_5b4b685c0e308',
+                        'label' => 'Order ID',
+                        'name' => 'order_id',
+                        'type' => 'text',
+                        'instructions' => 'This is the Order ID that the customer purchased for this recurring order.
+    We keep it as a text instead of a number in case we use a custom order ID plugin',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => '',
+                    ),
+                    array(
                         'key' => 'field_5b3bcf5a08ea3',
                         'label' => 'Bag',
                         'name' => 'bag',

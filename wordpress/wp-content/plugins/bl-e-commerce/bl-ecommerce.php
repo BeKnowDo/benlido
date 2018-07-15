@@ -716,7 +716,13 @@ function bl_insert_user_acf($field_name,$field_value,$user_id) {
 
 }
 
-function bl_save_purchased_kit($kit_list,$frequency) {
+function bl_save_purchased_kit($kit_list,$frequency,$order_id=0) {
+    // set the right timezone
+    $timezone = date_default_timezone_get();
+    if ($timezone == 'UTC') {
+        // setting as East coase
+        date_default_timezone_set('America/New_York');
+    }
     $user_id = get_current_user_id();
     $is_new = false;
     $skip_add = false;
@@ -774,6 +780,7 @@ function bl_save_purchased_kit($kit_list,$frequency) {
     $current_recurring = array(
         'recurring_name' => $recurring_name,
         'frequency' => $frequency,
+        'order_id' => $order_id,
         'last_send_date' => $last_send_date,
         'next_send_date' => $next_send_date,
         'bag' => $bag_id,
@@ -844,10 +851,56 @@ function bl_order_complete($order_id) {
     // let's see about getting the kit
     $kit_list = bl_get_kit_list();
     $frequency =  bl_check_frequency();
+    $bag = array();
+    
     if (!empty($kit_list) && $frequency > 0) {
-        bl_save_purchased_kit($kit_list,$frequency);
+        bl_save_purchased_kit($kit_list,$frequency,$order_id);
+    } else {
+        $items = array();
+        $order = wc_get_order($order_id);
+        // we're going to generate a kit list and save it
+        if ($order && is_object($order) && get_class($order) == 'WC_Order') {
+            $items = $order->get_items();
+            $bag_cat_id = 0;
+            if (function_exists('get_field')) {
+                $bag_cat_id = get_field('bag_category','option');
+            }
+            
+        }
+        if (!empty($items) && is_array($items)) {
+            $purchased_items = array();
+            foreach ($items as $item_id => $item) {
+                $category_id = $product_id = $variation_id = $quantity = 0;
+                
+                if (is_object($item)) {
+                    $category_id = wc_get_order_item_meta($item_id,'category');
+                }
+                $item_data = $item->get_data();
+                //print_r ($item_data);
+                if (is_array($item_data)) {
+                    $product_id = $item_data['product_id'];
+                    $variation_id = $item_data['variation_id'];
+                    $quantity = $item_data['quantity'];
+                }
+                if (is_numeric($category_id) && $category_id > 0 && $bag_cat_id == $category_id && $product_id > 0) {
+                    // get the bag item if there is
+                    $bag['bag'] = $product_id;
+                    $bag['variation'] = $variation_id;
+                }
+                elseif (is_numeric($product_id) && $product_id > 0 && $quantity > 0) {
+                    $purchased_items[] = array('category'=>$category_id, 'product'=>$product_id, 'variation'=>$variation_id, 'quantity'=>$quantity);
+                }
+                
+            }
+            if (!empty($purchased_items)) {
+                $kit_list = array('kit_id'=>0,'bag'=>$bag,'items'=>$purchased_items);
+                bl_save_purchased_kit($kit_list,$frequency,$order_id);
+            }
+        }
+        
     }
-
+    // we're going to clear all session data no matter what
+    bl_clear_all_kit_data();
     return $order_id;
 }
 
