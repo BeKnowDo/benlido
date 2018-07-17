@@ -2,12 +2,15 @@
   padding: 20px;
   border-top: $grey-border;
   border-bottom: $grey-border;
+
   &-header {
     text-transform: uppercase;
   }
+
   &-copy {
     font-family: $sentinel;
     font-style: normal;
     font-weight: 400;
+    margin: 0;
   }
 }

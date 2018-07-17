@@ -7,13 +7,14 @@
     color: $white;
     margin: 0;
   }
+
   &-remove-item {
     cursor: pointer;
     position: relative;
     bottom: 2px;
     > i {
       font-size: 22px;
-      color: red;
+      color: $red;
     }
   }
 
@@ -47,6 +48,7 @@
       }
     }
   }
+
   &-dropdown {
     animation-duration: 0.3s;
     animation-fill-mode: both;
@@ -61,10 +63,18 @@
     position: absolute;
     top: 0;
     left: 0;
+
+    .column {
+      > a {
+        display: inline-block;
+      }
+    }
+
     &.active {
       animation-name: fadeInDown;
       display: block;
     }
+
     &-exit {
       cursor: pointer;
       position: absolute;
@@ -78,16 +88,23 @@
         color: $white;
       }
     }
+
     &-primary-items {
       margin-bottom: 30px;
       font-size: 50px;
       font-family: $knockout;
       text-transform: uppercase;
+
       a {
         color: $white;
+        &:hover {
+          text-decoration: none;
+          color: $blue-shale;
+        }
       }
     }
   }
+
   &-item-counter {
     position: relative;
     z-index: 1;
@@ -97,6 +114,7 @@
       cursor: pointer;
     }
   }
+
   &-section {
     &-cart {
       display: block;
@@ -116,6 +134,7 @@
       }
     }
   }
+
   &-bag {
     user-select: none;
     border-radius: 4px;
@@ -169,15 +188,14 @@
       padding: 18px 10px 12px 0;
     }
   }
+
   &-login {
     @include knockout32(14px, 400);
     display: inline-block;
     padding: 20px 0 0;
     color: $grey;
-    > a {
-      text-decoration: underline;
-    }
   }
+
   .fa-suitcase {
     &:before {
       font-size: 30px;

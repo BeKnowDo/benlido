@@ -9,14 +9,28 @@ h4,
 h5,
 h6 {
   @include knockout(50px, 400);
+  letter-spacing: 1.5px;
+  line-height: 90%;
   margin: 0;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 h1 {
-  letter-spacing: 1.5px;
   font-size: 75px;
 }
 
 p {
   color: $medium-grey;
+}
+
+a {
+  transition: color 0.2s ease-in;
+  &:hover {
+    text-decoration: none;
+    transition: color 0.2s ease-in;
+  }
 }

@@ -16,21 +16,20 @@ export class Cart {
       document.querySelectorAll(".fa-minus-circle") || undefined;
     this.swapFromCartButtons =
       document.querySelectorAll(".swap-from-cart") || undefined;
-    this.cart = document.getElementById("benlido-cart") || undefined;
+    // this.cart = document.getElementById("benlido-cart") || undefined;
     this.cartContainer =
       document.getElementById("navbar-bag-container") || undefined;
-      this.addEmptyProduct =
+    this.addEmptyProduct =
       document.querySelectorAll(".bl-add-empty-product") || undefined;
-      this.addKitToCartButtons =
+    this.addKitToCartButtons =
       document.querySelectorAll(".add-kit-to-cart") || undefined;
-      this.addBagProduct =
+    this.addBagProduct =
       document.querySelectorAll(".bl-add-bag-product") || undefined;
-      this.swatchColor =
-      document.querySelectorAll(".swatch-color") || undefined;
-      if (this.kitID) {
-        this.kitID = this.kitID.value;
-      }
-      this.currentSwatch = null;
+    this.swatchColor = document.querySelectorAll(".swatch-color") || undefined;
+    if (this.kitID) {
+      this.kitID = this.kitID.value;
+    }
+    this.currentSwatch = null;
   }
 
   init() {
@@ -58,9 +57,9 @@ export class Cart {
       this.emptyProductButtons();
     }
 
-    if (this.cart) {
-      this.openCart();
-    }
+    // if (this.cart) {
+    //   this.openCart();
+    // }
 
     if (this.addKitToCartButtons) {
       this.addKitToCart();
@@ -73,7 +72,6 @@ export class Cart {
     if (this.swatchColor) {
       this.setSwatchColor();
     }
-
   }
 
   openCart() {
@@ -89,8 +87,8 @@ export class Cart {
 
   addKitToCart() {
     if (this.addKitToCartButtons.length > 0) {
-      let setKitUrl = endpoints.setKit + '/' + this.kitID;
-      this.addKitToCartButtons.forEach( el => {
+      let setKitUrl = endpoints.setKit + "/" + this.kitID;
+      this.addKitToCartButtons.forEach(el => {
         el.addEventListener("click", e => {
           e.preventDefault();
           fetch(setKitUrl, {
@@ -104,7 +102,6 @@ export class Cart {
               if (response.success == 1) {
                 document.location.href = el.href;
               }
-              
             });
         });
       });
@@ -114,37 +111,42 @@ export class Cart {
   // add the bag to either the cart or the kit
   addBagProductToCart() {
     if (this.addBagProduct.length > 0) {
-      this.addBagProduct.forEach( el => {
+      this.addBagProduct.forEach(el => {
         // first, see if we have variations
         if (el.classList.contains("has-variations")) {
           // first, see if we are a bag or a kit
           el.addEventListener("click", e => {
             e.preventDefault();
-            if (el.classList.contains('hero-product-picked')) {
+            if (el.classList.contains("hero-product-picked")) {
               let returnURL = el.href;
-              document.location.href=returnURL;
+              document.location.href = returnURL;
             }
             if (el.dataset) {
-              
               let variation_id = el.dataset.variation_id || "";
               let product_id = el.dataset.product_id || "";
               let category_id = el.dataset.category_id || "";
               let returnURL = el.href;
               if (variation_id.length > 0 && product_id.length > 0) {
-                if (el.classList.contains('self-kit') || el.classList.contains('prebuilt-kit')) {
-                  if (el.classList.contains('changed')) {
-                    this.addItemToCart(product_id,category_id,variation_id,1,returnURL);
+                if (
+                  el.classList.contains("self-kit") ||
+                  el.classList.contains("prebuilt-kit")
+                ) {
+                  if (el.classList.contains("changed")) {
+                    this.addItemToCart(
+                      product_id,
+                      category_id,
+                      variation_id,
+                      1,
+                      returnURL
+                    );
                   } else {
                     document.location.href = returnURL;
                   }
-                  
                 }
               }
             }
           });
         }
-        
-
       });
     }
   }
@@ -152,11 +154,11 @@ export class Cart {
   // takes the URL and does an AJAX call to change state of add item to kit to true
   emptyProductButtons() {
     if (this.addEmptyProduct.length > 0) {
-      this.addEmptyProduct.forEach( el => {
+      this.addEmptyProduct.forEach(el => {
         el.addEventListener("click", e => {
           e.preventDefault();
-          let kit_id = document.getElementById('bl_kit_id') || 0;
-          this.setKitStateAPI(kit_id.value,1,el.href);
+          let kit_id = document.getElementById("bl_kit_id") || 0;
+          this.setKitStateAPI(kit_id.value, 1, el.href);
         });
       });
     }
@@ -172,7 +174,7 @@ export class Cart {
       .then(response => {
         this.updateCount(response);
         this.miniCart(response);
-        this.updateTileQuantity(response,null);
+        this.updateTileQuantity(response, null);
       });
   }
 
@@ -205,7 +207,9 @@ export class Cart {
                   <i class="fal fa-edit"></i>
                 </a>
                 
-                <span class="navbar-remove-item" data-product_id="${item.id}" data-variation_id="${item.variation_id}">
+                <span class="navbar-remove-item" data-product_id="${
+                  item.id
+                }" data-variation_id="${item.variation_id}">
                   <i class="fal fa-times"></i>
                 </span>
 
@@ -263,22 +267,25 @@ export class Cart {
   removeFromKit() {
     const removeGroup = this.removeFromKitButtons;
     if (removeGroup.length > 0) {
-      removeGroup.forEach( el => {
+      removeGroup.forEach(el => {
         el.addEventListener("click", e => {
           e.preventDefault();
           if (el.dataset) {
             let target = el.dataset;
             let product_id = target.product_id ? target.product_id : undefined;
-            let category_id = target.category_id ? target.category_id : undefined;
+            let category_id = target.category_id
+              ? target.category_id
+              : undefined;
 
             if (product_id !== undefined && category_id !== undefined) {
               let removeItem = {
-                'product_id':product_id,
-                'category_id':category_id
+                product_id: product_id,
+                category_id: category_id
               };
 
               let parentNode =
-              el.parentElement.parentElement.parentElement.parentElement.parentElement || undefined;
+                el.parentElement.parentElement.parentElement.parentElement
+                  .parentElement || undefined;
               if (parentNode) {
                 parentNode.style.overflow = "hidden";
                 KUTE.to(
@@ -307,7 +314,7 @@ export class Cart {
 
   // sets the session to be in the "add item to kit" state (or unset it)
   setKitStateAPI(kitID, isAdd, redirectURL) {
-    let setKitStateURL = endpoints.setKitState + '/' + kitID + '/' + isAdd;
+    let setKitStateURL = endpoints.setKitState + "/" + kitID + "/" + isAdd;
     fetch(setKitStateURL, {
       method: "POST",
       credentials: "include",
@@ -315,17 +322,17 @@ export class Cart {
         "Content-Type": "application/json"
       }
     })
-    .then(res => res.json())
-    .catch(error => console.error("Error:", error))
-    .then(response => {
-      if (response.error) {
-      } else {
-        // need to set timeoout here
-        setTimeout(function() {
-          document.location = redirectURL;
-        },100);
-      }
-    })
+      .then(res => res.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if (response.error) {
+        } else {
+          // need to set timeoout here
+          setTimeout(function() {
+            document.location = redirectURL;
+          }, 100);
+        }
+      });
   }
 
   swapItem() {
@@ -341,7 +348,7 @@ export class Cart {
 
           let swapURL = endpoints.swapItemFromKit;
           // add to kit is: kit_id, product_id, cat_id
-          swapURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
+          swapURL += "/" + kit_id + "/" + prod_id + "/" + cat_id;
           fetch(swapURL, {
             method: "POST",
             credentials: "include",
@@ -349,25 +356,25 @@ export class Cart {
               "Content-Type": "application/json"
             }
           })
-          .then(res => res.json())
-          .catch(error => console.error("Error:", error))
-          .then(response => {
-            if (response.error) {
-            } else {
-              if (response.url) {
-                setTimeout(function() {
-                  document.location.href = response.url;
-                },100);
+            .then(res => res.json())
+            .catch(error => console.error("Error:", error))
+            .then(response => {
+              if (response.error) {
+              } else {
+                if (response.url) {
+                  setTimeout(function() {
+                    document.location.href = response.url;
+                  }, 100);
+                }
               }
-            }
-          });
+            });
         });
       });
     }
   }
 
   removeItemAPI(item) {
-    let kit_id = document.getElementById('bl_kit_id');
+    let kit_id = document.getElementById("bl_kit_id");
     let fromCart = item.from_cart ? item.from_cart : false;
     if (kit_id && kit_id.value) {
       kit_id = parseInt(kit_id.value);
@@ -377,12 +384,14 @@ export class Cart {
     if (fromCart == true) {
       var product_id = item.product_id ? item.product_id : 0;
       var variation_id = item.variation_id ? item.variation_id : 0;
-      removeURL = endpoints.removeFromCart + '/' + product_id + '/' + variation_id
+      removeURL =
+        endpoints.removeFromCart + "/" + product_id + "/" + variation_id;
     }
     if (kit_id > 0 && item.product_id && fromCart == false) {
-      removeURL = endpoints.removeFromKit+'/'+kit_id+'/'+item.product_id;
+      removeURL =
+        endpoints.removeFromKit + "/" + kit_id + "/" + item.product_id;
       if (item.category_id) {
-        removeURL += '/'+item.category_id;
+        removeURL += "/" + item.category_id;
       }
     }
     fetch(removeURL, {
@@ -406,16 +415,16 @@ export class Cart {
 
   resetButtonCopy() {
     // first, we clear everything
-    document.querySelectorAll('a.in-cart').forEach( el => {
-      el.classList.remove('in-cart');
-      el.querySelectorAll('.add-to-cart-text').forEach( c => {
+    document.querySelectorAll("a.in-cart").forEach(el => {
+      el.classList.remove("in-cart");
+      el.querySelectorAll(".add-to-cart-text").forEach(c => {
         if (c.dataset) {
-          c.innerHTML = c.dataset.defaultText || 'Add to kit';
+          c.innerHTML = c.dataset.defaultText || "Add to kit";
         }
       });
-      el.querySelectorAll('.fa-minus-circle').forEach( f => {
-        if (!f.classList.contains('hidden')) {
-          f.classList.add('hidden');
+      el.querySelectorAll(".fa-minus-circle").forEach(f => {
+        if (!f.classList.contains("hidden")) {
+          f.classList.add("hidden");
         }
       });
     });
@@ -430,55 +439,52 @@ export class Cart {
         //console.log(item);
         let itemCount;
         if (item) {
-
-          let html_id = '';
+          let html_id = "";
           if (item.id) {
-            html_id = '.post-'+item.id;
+            html_id = ".post-" + item.id;
           }
           //console.log(html_id);
           if (item.count) {
             itemCount = item.count;
           }
-          
+
           let productBlocks = document.querySelectorAll(html_id);
           //console.log(productBlocks);
           //productBlocks = null;
           if (productBlocks && productBlocks.length > 0) {
-            productBlocks.forEach( el => {
+            productBlocks.forEach(el => {
               let defaultText;
               let cartText;
-              let targetButton = el.querySelector('.add-to-cart') || undefined;
-              let removeIcon = el.querySelector(".fa-minus-circle")|| undefined;
-              let buttonText = el.querySelector(".add-to-cart-text")|| undefined;
-              if (typeof buttonText != 'undefined' && buttonText.dataset) {
-                defaultText = buttonText.dataset.defaultText || '';
-                cartText = buttonText.dataset.cartText || '';
+              let targetButton = el.querySelector(".add-to-cart") || undefined;
+              let removeIcon =
+                el.querySelector(".fa-minus-circle") || undefined;
+              let buttonText =
+                el.querySelector(".add-to-cart-text") || undefined;
+              if (typeof buttonText != "undefined" && buttonText.dataset) {
+                defaultText = buttonText.dataset.defaultText || "";
+                cartText = buttonText.dataset.cartText || "";
               }
               //console.log(el);
-              
-              if (typeof itemCount != 'undefined' && typeof buttonText != 'undefined' && typeof removeIcon != 'undefined' && typeof targetButton != 'undefined') {
-                
+
+              if (
+                typeof itemCount != "undefined" &&
+                typeof buttonText != "undefined" &&
+                typeof removeIcon != "undefined" &&
+                typeof targetButton != "undefined"
+              ) {
                 buttonText.innerHTML = `${itemCount} ${cartText}`;
                 removeIcon.classList.remove("hidden");
                 targetButton.classList.add("in-cart");
-                
-                
               } else {
-                
                 if (buttonText && targetButton && removeIcon) {
                   buttonText.innerHTML = defaultText;
                   targetButton.classList.remove("in-cart");
                   removeIcon.classList.add("hidden");
                 }
-                
-    
               }
-              
             });
           } // end if productBlocks
-
         }
-
       });
     } // end if isArray
 
@@ -496,13 +502,15 @@ export class Cart {
         if (item.dataset) {
           let target = item.dataset;
           let product_id = target.product_id ? target.product_id : undefined;
-          let variation_id = target.variation_id ? target.variation_id : undefined;
+          let variation_id = target.variation_id
+            ? target.variation_id
+            : undefined;
 
           if (product_id !== undefined && variation_id !== undefined) {
             let removeItem = {
-              'product_id':product_id,
-              'variation_id':variation_id,
-              'from_cart':true
+              product_id: product_id,
+              variation_id: variation_id,
+              from_cart: true
             };
 
             this.removeItemAPI(removeItem);
@@ -529,8 +537,8 @@ export class Cart {
           let var_id = el.var_id ? el.var_id : 0;
           let swap = el.swap ? el.swap : 0;
           let quantity = 1;
-          var product_url = button.href ? button.href : '';
-          if (button.classList.contains('has-variations')) {
+          var product_url = button.href ? button.href : "";
+          if (button.classList.contains("has-variations")) {
             document.location.href = product_url;
             return true;
           }
@@ -544,40 +552,38 @@ export class Cart {
           }
           // add to kit is: kit_id, product_id, cat_id
           if (kit_id > 0) {
-            addURL += '/' + kit_id + '/' + prod_id + '/' + cat_id;
+            addURL += "/" + kit_id + "/" + prod_id + "/" + cat_id;
           } else {
-            addURL += '/' + prod_id + '/' + cat_id + '/' + var_id + '/' + quantity;
+            addURL +=
+              "/" + prod_id + "/" + cat_id + "/" + var_id + "/" + quantity;
           }
-          
 
-            fetch(addURL, {
-              method: "POST",
-              credentials: "include",
-              headers: {
-                "Content-Type": "application/json"
-              }
-            })
-              .then(res => res.json())
-              .catch(error => console.error("Error:", error))
-              .then(response => {
-                if (response.error) {
-                } else {
-
-                  if ( typeof response.items != 'undefined') {
-                    this.updateCount(response.items);
-                    this.miniCart(response.items);
-                    this.updateTileQuantity(response.items, null);
-                  }
-                  if (typeof response.url != 'undefined') {
-                    // we will get a return URL
-                    setTimeout(function() {
-                      document.location.href = response.url;
-                    },100); // setTimeout to bust promise
-                    
-                  }
+          fetch(addURL, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(res => res.json())
+            .catch(error => console.error("Error:", error))
+            .then(response => {
+              if (response.error) {
+              } else {
+                if (typeof response.items != "undefined") {
+                  this.updateCount(response.items);
+                  this.miniCart(response.items);
+                  this.updateTileQuantity(response.items, null);
                 }
-              });
-          });
+                if (typeof response.url != "undefined") {
+                  // we will get a return URL
+                  setTimeout(function() {
+                    document.location.href = response.url;
+                  }, 100); // setTimeout to bust promise
+                }
+              }
+            });
+        });
       });
     }
   }
@@ -598,7 +604,12 @@ export class Cart {
               let inCartText = text.dataset.cartText;
               let defaultText = text.dataset.defaultText;
 
-              let removeURL = endpoints.removeFromCart +'/'+product_id+'/'+variation_id;
+              let removeURL =
+                endpoints.removeFromCart +
+                "/" +
+                product_id +
+                "/" +
+                variation_id;
               fetch(removeURL, {
                 method: "POST",
                 credentials: "include",
@@ -611,19 +622,17 @@ export class Cart {
                 .then(response => {
                   if (response.error) {
                   } else {
-                    if ( typeof response.items != 'undefined') {
+                    if (typeof response.items != "undefined") {
                       this.updateCount(response.items);
                       this.miniCart(response.items);
                       this.updateTileQuantity(response.items, null);
                     }
-                    if (typeof response.url != 'undefined') {
+                    if (typeof response.url != "undefined") {
                       // we will get a return URL
                       setTimeout(function() {
                         document.location.href = response.url;
-                      },100); // setTimeout to bust promise
-                      
+                      }, 100); // setTimeout to bust promise
                     }
-
                   }
                 });
             }
@@ -641,61 +650,69 @@ export class Cart {
         let swatchNodes = undefined;
         let data = el.dataset;
         let variation_id = data.variation_id ? data.variation_id : 0;
-        if (parent.classList.contains('selected')) {
+        if (parent.classList.contains("selected")) {
           this.currentSwatch = variation_id;
-          let primary_image = data.hero_image ? data.hero_image : '';
-          let primary_image_retina = data.hero_image_retina ? data.hero_image_retina : '';
+          let primary_image = data.hero_image ? data.hero_image : "";
+          let primary_image_retina = data.hero_image_retina
+            ? data.hero_image_retina
+            : "";
           let index = data.index ? data.index : 0;
           if (primary_image.length > 0) {
-            let div_id = 'hero-'+index;
+            let div_id = "hero-" + index;
             if (primary_image_retina.length > 1) {
-              primary_image_retina += ' 2x';
+              primary_image_retina += " 2x";
             }
             document.getElementById(div_id).src = primary_image;
-            document.getElementById(div_id).setAttribute('srcset', primary_image_retina);
+            document
+              .getElementById(div_id)
+              .setAttribute("srcset", primary_image_retina);
           }
         }
-        if (typeof parentHolder != 'undefined') {
-          swatchNodes = parentHolder.querySelectorAll('.select-option');
+        if (typeof parentHolder != "undefined") {
+          swatchNodes = parentHolder.querySelectorAll(".select-option");
         }
-        el.addEventListener("click",e => {
+        el.addEventListener("click", e => {
           e.preventDefault();
           let changed = false;
-          
+
           let product_id = data.product_id ? data.product_id : 0;
           let index = data.index ? data.index : 0;
-          
-          let hero_image = data.hero_image ? data.hero_image : '';
-          let hero_image_retina = data.hero_image_retina ? data.hero_image_retina : '';
-          
+
+          let hero_image = data.hero_image ? data.hero_image : "";
+          let hero_image_retina = data.hero_image_retina
+            ? data.hero_image_retina
+            : "";
+
           if (hero_image_retina.length > 1) {
-            hero_image_retina += ' 2x';
+            hero_image_retina += " 2x";
           }
           if (variation_id > 0) {
             if (swatchNodes.length > 0) {
               //console.log(swatchNodes);
               swatchNodes.forEach(listElement => {
-                listElement.classList.remove('selected');
+                listElement.classList.remove("selected");
               });
             }
-            
+
             if (variation_id != this.currentSwatch) {
               changed = true;
             } else {
               changed = false;
             }
-            el.parentNode.classList.add('selected');
-            let addButton = document.getElementById("button-"+index);
-            let div_id = 'hero-'+index;
+            el.parentNode.classList.add("selected");
+            let addButton = document.getElementById("button-" + index);
+            let div_id = "hero-" + index;
             if (addButton) {
-              addButton.setAttribute('data-variation_id', variation_id);
-              addButton.removeAttribute('disabled');
+              addButton.setAttribute("data-variation_id", variation_id);
+              addButton.removeAttribute("disabled");
               document.getElementById(div_id).src = hero_image;
-              document.getElementById(div_id).setAttribute('srcset', hero_image_retina);
+              document
+                .getElementById(div_id)
+                .setAttribute("srcset", hero_image_retina);
               if (changed == false) {
-                addButton.classList.remove('changed');
+                addButton.classList.remove("changed");
               } else {
-                addButton.classList.add('changed');
+                addButton.classList.add("changed");
               }
             }
           }
@@ -705,10 +722,10 @@ export class Cart {
   }
 
   // NOTE: not being used right now
-  getProductData(div_id,product_id,variation_id) {
+  getProductData(div_id, product_id, variation_id) {
     // add to kit is: kit_id, product_id, cat_id
     let productURL = endpoints.getProductData;
-    productURL +=  '/' + product_id + '/' + variation_id;
+    productURL += "/" + product_id + "/" + variation_id;
     fetch(productURL, {
       method: "GET",
       credentials: "include",
@@ -725,18 +742,27 @@ export class Cart {
             document.getElementById(div_id).src = response.image.url;
           }
         }
-      })
+      });
   }
 
-  addItemToCart(product_id,category_id,variation_id,quantity,returnURL) {
-      let url = endpoints.addToCart+'/'+product_id+'/'+category_id+'/'+variation_id+'/'+quantity;
-      fetch(url, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
+  addItemToCart(product_id, category_id, variation_id, quantity, returnURL) {
+    let url =
+      endpoints.addToCart +
+      "/" +
+      product_id +
+      "/" +
+      category_id +
+      "/" +
+      variation_id +
+      "/" +
+      quantity;
+    fetch(url, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
       .then(response => {
@@ -749,10 +775,7 @@ export class Cart {
             this.miniCart(response);
             this.updateTileQuantity(response.items, item);
           }
-          
         }
       });
   }
-
-
 }

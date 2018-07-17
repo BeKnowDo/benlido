@@ -2153,7 +2153,7 @@ a, ins, u { text-decoration-skip: ink edges; }
 
 abbr[title] { border-bottom: 0.05rem dotted; cursor: help; text-decoration: none; }
 
-kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
+kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
 
 mark { background: #ffe9b3; color: #50596c; border-radius: 0.1rem; padding: .05rem; }
 
@@ -2333,7 +2333,7 @@ textarea.form-input { height: auto; }
 
 .has-icon-right .form-input { padding-right: 1.5rem; }
 
-.form-checkbox, .form-radio, .form-switch { display: block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
+.form-checkbox, .form-radio, .form-switch { display: inline-block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
 
 .form-checkbox input, .form-radio input, .form-switch input { clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; }
 
@@ -2411,8 +2411,6 @@ textarea.form-input { height: auto; }
 
 .has-error .form-checkbox input:focus + .form-icon, .form-checkbox.is-error input:focus + .form-icon, .has-error .form-radio input:focus + .form-icon, .form-radio.is-error input:focus + .form-icon, .has-error .form-switch input:focus + .form-icon, .form-switch.is-error input:focus + .form-icon { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); border-color: #e85600; }
 
-.has-error .form-checkbox input:indeterminate + .form-icon, .form-checkbox.is-error input:indeterminate + .form-icon { background: #e85600; border-color: #e85600; }
-
 .form-input:not(:placeholder-shown):invalid { border-color: #e85600; }
 
 .form-input:not(:placeholder-shown):invalid:focus { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); }
@@ -2431,9 +2429,7 @@ input:disabled + .form-icon, input.disabled + .form-icon { background: #f0f1f4; 
 
 .form-horizontal .form-group { display: flex; flex-wrap: wrap; }
 
-.form-inline { display: inline-block; }
-
-.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
+.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
 
 .label.label-rounded { border-radius: 5rem; padding-left: .4rem; padding-right: .4rem; }
 
@@ -2618,12 +2614,6 @@ a.text-gray:visited { color: #bbc1cd; }
 a.text-light:focus, a.text-light:hover { color: #f2f2f2; }
 
 a.text-light:visited { color: white; }
-
-.text-dark { color: #50596c; }
-
-a.text-dark:focus, a.text-dark:hover { color: #454d5d; }
-
-a.text-dark:visited { color: #5b657a; }
 
 .text-success { color: #32b643; }
 
@@ -2811,9 +2801,9 @@ a.text-error:visited { color: #ff6003; }
 
 .py-2 { padding-bottom: 0.8rem !important; padding-top: 0.8rem !important; }
 
-.s-rounded { border-radius: 0.1rem; }
+.rounded { border-radius: 0.1rem; }
 
-.s-circle { border-radius: 50%; }
+.circle { border-radius: 50%; }
 
 .text-left { text-align: left; }
 
@@ -2843,7 +2833,7 @@ a.text-error:visited { color: #ff6003; }
 
 .text-break { hyphens: auto; word-break: break-word; word-wrap: break-word; }
 
-/** Swiper 4.3.3 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 5, 2018 */
+/** Swiper 4.3.2 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 1, 2018 */
 .swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; /* Fix of Webkit flickering */ z-index: 1; }
 
 .swiper-container-no-flexbox .swiper-slide { float: left; }
@@ -3091,11 +3081,17 @@ button.swiper-pagination-bullet { border: none; margin: 0; padding: 0; -webkit-b
 
 html, body { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; }
 
-h1, h2, h3, h4, h5, h6 { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; margin: 0; }
+h1, h2, h3, h4, h5, h6 { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; letter-spacing: 1.5px; line-height: 90%; margin: 0; }
 
-h1 { letter-spacing: 1.5px; font-size: 75px; }
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { text-decoration: none; }
+
+h1 { font-size: 75px; }
 
 p { color: #999999; }
+
+a { transition: color 0.2s ease-in; }
+
+a:hover { text-decoration: none; transition: color 0.2s ease-in; }
 
 ul { list-style-type: none; margin: 0; padding: 0; }
 
@@ -3143,7 +3139,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .bl-product-swatches .swatch-anchor { width: 32px; height: 32px; }
 
-.benlido-header { border-bottom: 1px solid #e4e4e4; box-shadow: 0 0 2px 0 rgba(3, 3, 3, 0.2); position: fixed; z-index: 2; top: 0; left: 0; width: 100%; }
+.benlido-header { border-bottom: 1px solid #e4e4e4; position: fixed; z-index: 2; top: 0; left: 0; width: 100%; }
 
 .navbar { padding: 10px; z-index: 100; }
 
@@ -3151,7 +3147,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .navbar-remove-item { cursor: pointer; position: relative; bottom: 2px; }
 
-.navbar-remove-item > i { font-size: 22px; color: red; }
+.navbar-remove-item > i { font-size: 22px; color: #e10600; }
 
 .navbar-edit-item { cursor: pointer; position: relative; bottom: 4px; margin-right: 26px; }
 
@@ -3167,6 +3163,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .navbar-dropdown { animation-duration: 0.3s; animation-fill-mode: both; background-color: #393d5b; transform: translate3d(0, -110%, 0); box-shadow: 0 -20px 27px 20px rgba(3, 3, 3, 0.8); box-sizing: border-box; width: 100%; padding: 40px 40px 60px 60px; z-index: 100; position: absolute; top: 0; left: 0; }
 
+.navbar-dropdown .column > a { display: inline-block; }
+
 .navbar-dropdown.active { animation-name: fadeInDown; display: block; }
 
 .navbar-dropdown-exit { cursor: pointer; position: absolute; left: 10px; top: 10px; padding: 10px; color: #fff; }
@@ -3176,6 +3174,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 .navbar-dropdown-primary-items { margin-bottom: 30px; font-size: 50px; font-family: "Knockout 47 A", "Knockout 47 B"; text-transform: uppercase; }
 
 .navbar-dropdown-primary-items a { color: #fff; }
+
+.navbar-dropdown-primary-items a:hover { text-decoration: none; color: #bacdd4; }
 
 .navbar-item-counter { position: relative; z-index: 1; display: inline-block; font-size: 20px; }
 
@@ -3205,8 +3205,6 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .navbar-login { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; display: inline-block; padding: 20px 0 0; color: #979797; }
 
-.navbar-login > a { text-decoration: underline; }
-
 .navbar .fa-suitcase:before { font-size: 30px; }
 
 .footer { padding: 34px 34px 34px 48px; border-top: 1px solid #e4e4e4; background-color: #fff; clear: both; }
@@ -3222,6 +3220,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 .footer-contact-links { list-style-type: none; padding: 0; }
 
 .social-media-links { padding-top: 14px; }
+
+.social-media-links a:hover { color: #fff; }
 
 .copyright { text-align: center; color: #979797; padding: 60px 0 0; }
 
@@ -3319,13 +3319,13 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .hero-title-copy-header { text-transform: uppercase; }
 
-.hero-title-copy-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; }
+.hero-title-copy-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; margin: 0; }
 
 .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
 
 .hero-product a { text-transform: uppercase; color: inherit; position: relative; }
 
-.hero-product-header { color: #393d5b; line-height: 90%; margin-bottom: 0.8rem; }
+.hero-product-header { color: #393d5b; margin-bottom: 0.8rem; }
 
 .hero-product-copy { color: #999999; }
 
