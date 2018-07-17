@@ -14,7 +14,9 @@ h6 {
   margin: 0;
   a {
     &:hover {
+      color: $blue-shale;
       text-decoration: none;
+      text-shadow: $text-shadow;
     }
   }
 }
@@ -28,9 +30,9 @@ p {
 }
 
 a {
-  transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in, text-shadow 0.2s ease-in;
   &:hover {
     text-decoration: none;
-    transition: color 0.2s ease-in;
+    transition: color 0.2s ease-in, text-shadow 0.2s ease-in;
   }
 }

@@ -3083,15 +3083,15 @@ html, body { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; fon
 
 h1, h2, h3, h4, h5, h6 { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; letter-spacing: 1.5px; line-height: 90%; margin: 0; }
 
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { text-decoration: none; }
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: #bacdd4; text-decoration: none; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6); }
 
 h1 { font-size: 75px; }
 
 p { color: #999999; }
 
-a { transition: color 0.2s ease-in; }
+a { transition: color 0.2s ease-in, text-shadow 0.2s ease-in; }
 
-a:hover { text-decoration: none; transition: color 0.2s ease-in; }
+a:hover { text-decoration: none; transition: color 0.2s ease-in, text-shadow 0.2s ease-in; }
 
 ul { list-style-type: none; margin: 0; padding: 0; }
 
@@ -3207,7 +3207,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .navbar .fa-suitcase:before { font-size: 30px; }
 
-.footer { padding: 34px 34px 34px 48px; border-top: 1px solid #e4e4e4; background-color: #fff; clear: both; }
+.footer { padding: 50px 34px; border-top: 1px solid #e4e4e4; background-color: #fff; clear: both; }
 
 .footer .social-media-links { padding-top: 0; }
 
@@ -3269,6 +3269,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .btn.add-to-cart.in-cart .fa-plus-circle:before { visibility: visible; display: block; }
 
+.btn.btn-separator { padding-left: 0; padding-right: 0; border: 0; }
+
 .remove-from-cart { padding: 10px 6px; position: relative; width: 50%; }
 
 .remove-from-cart:after { content: ""; position: absolute; right: 0; width: 2px; height: 14px; border-right: 2px solid #fff; }
@@ -3287,7 +3289,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .category-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; padding: 10px 0; color: #999999; }
 
-.hero { text-align: center; color: #979797; padding: 42px 20px 20px; }
+.hero { text-align: center; color: #979797; padding: 50px 20px; }
 
 .hero-header { color: #404953; text-transform: uppercase; }
 
@@ -3307,9 +3309,7 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 
 .hero-action-buttons { padding-top: 42px; }
 
-.hero-action-buttons .btn { max-width: 192px; display: inline-block; margin: auto; }
-
-.hero-action-buttons .btn:first-child { margin: 0 0 20px; }
+.hero-action-buttons .btn { max-width: 192px; display: inline-block; margin: auto; padding-left: 0; padding-right: 0; }
 
 .hero-home .hero-image-container { padding-top: 82px; }
 
@@ -3326,6 +3326,8 @@ div.swatch-wrapper.selected { border: 2px solid #979797; }
 .hero-product a { text-transform: uppercase; color: inherit; position: relative; }
 
 .hero-product-header { color: #393d5b; margin-bottom: 0.8rem; }
+
+.hero-product-header a { display: inline-block; }
 
 .hero-product-copy { color: #999999; }
 

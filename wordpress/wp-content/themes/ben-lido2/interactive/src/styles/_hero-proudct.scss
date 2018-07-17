@@ -12,6 +12,9 @@
   &-header {
     color: $brown-grey;
     margin-bottom: $unit-2;
+    a {
+      display: inline-block;
+    }
   }
 
   &-copy {
