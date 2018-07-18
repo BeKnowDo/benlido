@@ -71,6 +71,7 @@
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "body-scroll-lock": "^2.4.6",
+    "element-closest": "^2.0.2",
     "in-view": "^0.6.1",
     "kute.js": "^1.6.5",
     "lodash": "^4.17.10",

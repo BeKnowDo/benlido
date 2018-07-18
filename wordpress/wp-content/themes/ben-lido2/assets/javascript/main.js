@@ -1792,6 +1792,50 @@ function scroll(...args) {
 
 /***/ }),
 
+/***/ "./node_modules/element-closest/element-closest.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/element-closest/element-closest.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// element-closest | CC0-1.0 | github.com/jonathantneal/closest
+
+(function (ElementProto) {
+	if (typeof ElementProto.matches !== 'function') {
+		ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
+			var element = this;
+			var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+			var index = 0;
+
+			while (elements[index] && elements[index] !== element) {
+				++index;
+			}
+
+			return Boolean(elements[index]);
+		};
+	}
+
+	if (typeof ElementProto.closest !== 'function') {
+		ElementProto.closest = function closest(selector) {
+			var element = this;
+
+			while (element && element.nodeType === 1) {
+				if (element.matches(selector)) {
+					return element;
+				}
+
+				element = element.parentNode;
+			}
+
+			return null;
+		};
+	}
+})(window.Element.prototype);
+
+
+/***/ }),
+
 /***/ "./node_modules/in-view/dist/in-view.min.js":
 /*!**************************************************!*\
   !*** ./node_modules/in-view/dist/in-view.min.js ***!
@@ -31803,16 +31847,16 @@ function Promise(fn) {
   if (typeof fn !== 'function') {
     throw new TypeError('Promise constructor\'s argument is not a function');
   }
-  this._40 = 0;
-  this._65 = 0;
-  this._55 = null;
-  this._72 = null;
+  this._75 = 0;
+  this._83 = 0;
+  this._18 = null;
+  this._38 = null;
   if (fn === noop) return;
   doResolve(fn, this);
 }
-Promise._37 = null;
-Promise._87 = null;
-Promise._61 = noop;
+Promise._47 = null;
+Promise._71 = null;
+Promise._44 = noop;
 
 Promise.prototype.then = function(onFulfilled, onRejected) {
   if (this.constructor !== Promise) {
@@ -31831,24 +31875,24 @@ function safeThen(self, onFulfilled, onRejected) {
   });
 }
 function handle(self, deferred) {
-  while (self._65 === 3) {
-    self = self._55;
+  while (self._83 === 3) {
+    self = self._18;
   }
-  if (Promise._37) {
-    Promise._37(self);
+  if (Promise._47) {
+    Promise._47(self);
   }
-  if (self._65 === 0) {
-    if (self._40 === 0) {
-      self._40 = 1;
-      self._72 = deferred;
+  if (self._83 === 0) {
+    if (self._75 === 0) {
+      self._75 = 1;
+      self._38 = deferred;
       return;
     }
-    if (self._40 === 1) {
-      self._40 = 2;
-      self._72 = [self._72, deferred];
+    if (self._75 === 1) {
+      self._75 = 2;
+      self._38 = [self._38, deferred];
       return;
     }
-    self._72.push(deferred);
+    self._38.push(deferred);
     return;
   }
   handleResolved(self, deferred);
@@ -31856,16 +31900,16 @@ function handle(self, deferred) {
 
 function handleResolved(self, deferred) {
   asap(function() {
-    var cb = self._65 === 1 ? deferred.onFulfilled : deferred.onRejected;
+    var cb = self._83 === 1 ? deferred.onFulfilled : deferred.onRejected;
     if (cb === null) {
-      if (self._65 === 1) {
-        resolve(deferred.promise, self._55);
+      if (self._83 === 1) {
+        resolve(deferred.promise, self._18);
       } else {
-        reject(deferred.promise, self._55);
+        reject(deferred.promise, self._18);
       }
       return;
     }
-    var ret = tryCallOne(cb, self._55);
+    var ret = tryCallOne(cb, self._18);
     if (ret === IS_ERROR) {
       reject(deferred.promise, LAST_ERROR);
     } else {
@@ -31893,8 +31937,8 @@ function resolve(self, newValue) {
       then === self.then &&
       newValue instanceof Promise
     ) {
-      self._65 = 3;
-      self._55 = newValue;
+      self._83 = 3;
+      self._18 = newValue;
       finale(self);
       return;
     } else if (typeof then === 'function') {
@@ -31902,29 +31946,29 @@ function resolve(self, newValue) {
       return;
     }
   }
-  self._65 = 1;
-  self._55 = newValue;
+  self._83 = 1;
+  self._18 = newValue;
   finale(self);
 }
 
 function reject(self, newValue) {
-  self._65 = 2;
-  self._55 = newValue;
-  if (Promise._87) {
-    Promise._87(self, newValue);
+  self._83 = 2;
+  self._18 = newValue;
+  if (Promise._71) {
+    Promise._71(self, newValue);
   }
   finale(self);
 }
 function finale(self) {
-  if (self._40 === 1) {
-    handle(self, self._72);
-    self._72 = null;
+  if (self._75 === 1) {
+    handle(self, self._38);
+    self._38 = null;
   }
-  if (self._40 === 2) {
-    for (var i = 0; i < self._72.length; i++) {
-      handle(self, self._72[i]);
+  if (self._75 === 2) {
+    for (var i = 0; i < self._38.length; i++) {
+      handle(self, self._38[i]);
     }
-    self._72 = null;
+    self._38 = null;
   }
 }
 
@@ -31986,9 +32030,9 @@ var ZERO = valuePromise(0);
 var EMPTYSTRING = valuePromise('');
 
 function valuePromise(value) {
-  var p = new Promise(Promise._61);
-  p._65 = 1;
-  p._55 = value;
+  var p = new Promise(Promise._44);
+  p._83 = 1;
+  p._18 = value;
   return p;
 }
 Promise.resolve = function (value) {
@@ -32025,11 +32069,11 @@ Promise.all = function (arr) {
     function res(i, val) {
       if (val && (typeof val === 'object' || typeof val === 'function')) {
         if (val instanceof Promise && val.then === Promise.prototype.then) {
-          while (val._65 === 3) {
-            val = val._55;
+          while (val._83 === 3) {
+            val = val._18;
           }
-          if (val._65 === 1) return res(i, val._55);
-          if (val._65 === 2) reject(val._55);
+          if (val._83 === 1) return res(i, val._18);
+          if (val._83 === 2) reject(val._18);
           val.then(function (val) {
             res(i, val);
           }, reject);
@@ -32101,8 +32145,8 @@ var enabled = false;
 exports.disable = disable;
 function disable() {
   enabled = false;
-  Promise._37 = null;
-  Promise._87 = null;
+  Promise._47 = null;
+  Promise._71 = null;
 }
 
 exports.enable = enable;
@@ -32113,27 +32157,27 @@ function enable(options) {
   var id = 0;
   var displayId = 0;
   var rejections = {};
-  Promise._37 = function (promise) {
+  Promise._47 = function (promise) {
     if (
-      promise._65 === 2 && // IS REJECTED
-      rejections[promise._51]
+      promise._83 === 2 && // IS REJECTED
+      rejections[promise._56]
     ) {
-      if (rejections[promise._51].logged) {
-        onHandled(promise._51);
+      if (rejections[promise._56].logged) {
+        onHandled(promise._56);
       } else {
-        clearTimeout(rejections[promise._51].timeout);
+        clearTimeout(rejections[promise._56].timeout);
       }
-      delete rejections[promise._51];
+      delete rejections[promise._56];
     }
   };
-  Promise._87 = function (promise, err) {
-    if (promise._40 === 0) { // not yet handled
-      promise._51 = id++;
-      rejections[promise._51] = {
+  Promise._71 = function (promise, err) {
+    if (promise._75 === 0) { // not yet handled
+      promise._56 = id++;
+      rejections[promise._56] = {
         displayId: null,
         error: err,
         timeout: setTimeout(
-          onUnhandled.bind(null, promise._51),
+          onUnhandled.bind(null, promise._56),
           // For reference errors and type errors, this almost always
           // means the programmer made a mistake, so log them after just
           // 100ms
@@ -39676,22 +39720,30 @@ var Cart = exports.Cart = function () {
     _classCallCheck(this, Cart);
 
     this.counter = document.getElementById("navbar-item-counter") || undefined;
+
     this.kitID = document.getElementById("bl_kit_id") || undefined;
+
     this.listContainer = document.getElementById("navbar-bag-list") || undefined;
+
     this.addToCartButtons = document.querySelectorAll(".add-to-cart") || undefined;
+
     this.removeFromKitButtons = document.querySelectorAll(".remove-from-cart") || undefined;
+
     this.removeIcons = document.querySelectorAll(".fa-minus-circle") || undefined;
+
     this.swapFromCartButtons = document.querySelectorAll(".swap-from-cart") || undefined;
+
     // this.cart = document.getElementById("benlido-cart") || undefined;
+
     this.cartContainer = document.getElementById("navbar-bag-container") || undefined;
+
     this.addEmptyProduct = document.querySelectorAll(".bl-add-empty-product") || undefined;
+
     this.addKitToCartButtons = document.querySelectorAll(".add-kit-to-cart") || undefined;
-    this.addBagProduct = document.querySelectorAll(".bl-add-bag-product") || undefined;
-    this.swatchColor = document.querySelectorAll(".swatch-color") || undefined;
+
     if (this.kitID) {
       this.kitID = this.kitID.value;
     }
-    this.currentSwatch = null;
   }
 
   _createClass(Cart, [{
@@ -39732,10 +39784,6 @@ var Cart = exports.Cart = function () {
       if (this.addBagProduct) {
         this.addBagProductToCart();
       }
-
-      if (this.swatchColor) {
-        this.setSwatchColor();
-      }
     }
   }, {
     key: "openCart",
@@ -39774,58 +39822,19 @@ var Cart = exports.Cart = function () {
       }
     }
 
-    // add the bag to either the cart or the kit
-
-  }, {
-    key: "addBagProductToCart",
-    value: function addBagProductToCart() {
-      var _this2 = this;
-
-      if (this.addBagProduct.length > 0) {
-        this.addBagProduct.forEach(function (el) {
-          // first, see if we have variations
-          if (el.classList.contains("has-variations")) {
-            // first, see if we are a bag or a kit
-            el.addEventListener("click", function (e) {
-              e.preventDefault();
-              if (el.classList.contains("hero-product-picked")) {
-                var returnURL = el.href;
-                document.location.href = returnURL;
-              }
-              if (el.dataset) {
-                var variation_id = el.dataset.variation_id || "";
-                var product_id = el.dataset.product_id || "";
-                var category_id = el.dataset.category_id || "";
-                var _returnURL = el.href;
-                if (variation_id.length > 0 && product_id.length > 0) {
-                  if (el.classList.contains("self-kit") || el.classList.contains("prebuilt-kit")) {
-                    if (el.classList.contains("changed")) {
-                      _this2.addItemToCart(product_id, category_id, variation_id, 1, _returnURL);
-                    } else {
-                      document.location.href = _returnURL;
-                    }
-                  }
-                }
-              }
-            });
-          }
-        });
-      }
-    }
-
     // takes the URL and does an AJAX call to change state of add item to kit to true
 
   }, {
     key: "emptyProductButtons",
     value: function emptyProductButtons() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.addEmptyProduct.length > 0) {
         this.addEmptyProduct.forEach(function (el) {
           el.addEventListener("click", function (e) {
             e.preventDefault();
             var kit_id = document.getElementById("bl_kit_id") || 0;
-            _this3.setKitStateAPI(kit_id.value, 1, el.href);
+            _this2.setKitStateAPI(kit_id.value, 1, el.href);
           });
         });
       }
@@ -39833,7 +39842,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "getCurrentItems",
     value: function getCurrentItems() {
-      var _this4 = this;
+      var _this3 = this;
 
       fetch(_endpoints.endpoints.getCartItems, {
         credentials: "include",
@@ -39841,9 +39850,9 @@ var Cart = exports.Cart = function () {
       }).then(function (response) {
         return response.json();
       }).then(function (response) {
-        _this4.updateCount(response);
-        _this4.miniCart(response);
-        _this4.updateTileQuantity(response, null);
+        _this3.updateCount(response);
+        _this3.miniCart(response);
+        _this3.updateTileQuantity(response, null);
       });
     }
   }, {
@@ -39900,7 +39909,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeFromKit",
     value: function removeFromKit() {
-      var _this5 = this;
+      var _this4 = this;
 
       var removeGroup = this.removeFromKitButtons;
       if (removeGroup.length > 0) {
@@ -39932,7 +39941,7 @@ var Cart = exports.Cart = function () {
                     }
                   }).start();
 
-                  _this5.removeItemAPI(removeItem);
+                  _this4.removeItemAPI(removeItem);
                 }
               }
             }
@@ -40008,7 +40017,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeItemAPI",
     value: function removeItemAPI(item) {
-      var _this6 = this;
+      var _this5 = this;
 
       var kit_id = document.getElementById("bl_kit_id");
       var fromCart = item.from_cart ? item.from_cart : false;
@@ -40040,9 +40049,9 @@ var Cart = exports.Cart = function () {
         return console.error("Error:", error);
       }).then(function (response) {
         if (response.error) {} else {
-          _this6.updateCount(response);
-          _this6.miniCart(response);
-          _this6.updateTileQuantity(response, item);
+          _this5.updateCount(response);
+          _this5.miniCart(response);
+          _this5.updateTileQuantity(response, item);
         }
       });
     }
@@ -40123,7 +40132,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeFromMiniCart",
     value: function removeFromMiniCart() {
-      var _this7 = this;
+      var _this6 = this;
 
       var cartItems = this.listContainer.querySelectorAll(".navbar-remove-item");
 
@@ -40142,7 +40151,7 @@ var Cart = exports.Cart = function () {
                 from_cart: true
               };
 
-              _this7.removeItemAPI(removeItem);
+              _this6.removeItemAPI(removeItem);
             }
           }
         });
@@ -40151,7 +40160,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "addItem",
     value: function addItem() {
-      var _this8 = this;
+      var _this7 = this;
 
       if (this.addToCartButtons.length > 0) {
         this.addToCartButtons.forEach(function (button) {
@@ -40202,9 +40211,9 @@ var Cart = exports.Cart = function () {
             }).then(function (response) {
               if (response.error) {} else {
                 if (typeof response.items != "undefined") {
-                  _this8.updateCount(response.items);
-                  _this8.miniCart(response.items);
-                  _this8.updateTileQuantity(response.items, null);
+                  _this7.updateCount(response.items);
+                  _this7.miniCart(response.items);
+                  _this7.updateTileQuantity(response.items, null);
                 }
                 if (typeof response.url != "undefined") {
                   // we will get a return URL
@@ -40221,7 +40230,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "removeItem",
     value: function removeItem() {
-      var _this9 = this;
+      var _this8 = this;
 
       if (this.removeIcons.length > 0) {
         this.removeIcons.forEach(function (removeIcon) {
@@ -40252,9 +40261,9 @@ var Cart = exports.Cart = function () {
                 }).then(function (response) {
                   if (response.error) {} else {
                     if (typeof response.items != "undefined") {
-                      _this9.updateCount(response.items);
-                      _this9.miniCart(response.items);
-                      _this9.updateTileQuantity(response.items, null);
+                      _this8.updateCount(response.items);
+                      _this8.miniCart(response.items);
+                      _this8.updateTileQuantity(response.items, null);
                     }
                     if (typeof response.url != "undefined") {
                       // we will get a return URL
@@ -40264,80 +40273,6 @@ var Cart = exports.Cart = function () {
                     }
                   }
                 });
-              }
-            }
-          });
-        });
-      }
-    }
-  }, {
-    key: "setSwatchColor",
-    value: function setSwatchColor() {
-      var _this10 = this;
-
-      if (this.swatchColor.length > 0) {
-        this.swatchColor.forEach(function (el) {
-          var parent = el.parentElement;
-          var parentHolder = parent.parentElement;
-          var swatchNodes = undefined;
-          var data = el.dataset;
-          var variation_id = data.variation_id ? data.variation_id : 0;
-          if (parent.classList.contains("selected")) {
-            _this10.currentSwatch = variation_id;
-            var primary_image = data.hero_image ? data.hero_image : "";
-            var primary_image_retina = data.hero_image_retina ? data.hero_image_retina : "";
-            var index = data.index ? data.index : 0;
-            if (primary_image.length > 0) {
-              var div_id = "hero-" + index;
-              if (primary_image_retina.length > 1) {
-                primary_image_retina += " 2x";
-              }
-              document.getElementById(div_id).src = primary_image;
-              document.getElementById(div_id).setAttribute("srcset", primary_image_retina);
-            }
-          }
-          if (typeof parentHolder != "undefined") {
-            swatchNodes = parentHolder.querySelectorAll(".select-option");
-          }
-          el.addEventListener("click", function (e) {
-            e.preventDefault();
-            var changed = false;
-
-            var product_id = data.product_id ? data.product_id : 0;
-            var index = data.index ? data.index : 0;
-
-            var hero_image = data.hero_image ? data.hero_image : "";
-            var hero_image_retina = data.hero_image_retina ? data.hero_image_retina : "";
-
-            if (hero_image_retina.length > 1) {
-              hero_image_retina += " 2x";
-            }
-            if (variation_id > 0) {
-              if (swatchNodes.length > 0) {
-                //console.log(swatchNodes);
-                swatchNodes.forEach(function (listElement) {
-                  listElement.classList.remove("selected");
-                });
-              }
-
-              if (variation_id != _this10.currentSwatch) {
-                changed = true;
-              } else {
-                changed = false;
-              }
-              el.parentNode.classList.add("selected");
-              var addButton = document.getElementById("button-" + index);
-              var _div_id = "hero-" + index;
-              if (addButton) {
-                addButton.setAttribute("data-variation_id", variation_id);
-                addButton.removeAttribute("disabled");
-                document.getElementById(_div_id).src = hero_image;
-                document.getElementById(_div_id).setAttribute("srcset", hero_image_retina);
-                if (changed == false) {
-                  addButton.classList.remove("changed");
-                } else {
-                  addButton.classList.add("changed");
-                }
               }
             }
           });
@@ -40374,7 +40309,7 @@ var Cart = exports.Cart = function () {
   }, {
     key: "addItemToCart",
     value: function addItemToCart(product_id, category_id, variation_id, quantity, returnURL) {
-      var _this11 = this;
+      var _this9 = this;
 
       var url = _endpoints.endpoints.addToCart + "/" + product_id + "/" + category_id + "/" + variation_id + "/" + quantity;
       fetch(url, {
@@ -40392,9 +40327,9 @@ var Cart = exports.Cart = function () {
           if (returnURL.length > 1) {
             document.location.href = returnURL;
           } else {
-            _this11.updateCount(response);
-            _this11.miniCart(response);
-            _this11.updateTileQuantity(response.items, item);
+            _this9.updateCount(response);
+            _this9.miniCart(response);
+            _this9.updateTileQuantity(response.items, item);
           }
         }
       });
@@ -40738,6 +40673,18 @@ Object.keys(_search).forEach(function (key) {
   });
 });
 
+var _swatches = __webpack_require__(/*! ./swatches */ "./src/javascript/components/swatches.js");
+
+Object.keys(_swatches).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _swatches[key];
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./src/javascript/components/navigation.js":
@@ -41038,6 +40985,236 @@ var Search = exports.Search = function () {
 
 /***/ }),
 
+/***/ "./src/javascript/components/swatches.js":
+/*!***********************************************!*\
+  !*** ./src/javascript/components/swatches.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Swatches = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _elementClosest = __webpack_require__(/*! element-closest */ "./node_modules/element-closest/element-closest.js");
+
+var _elementClosest2 = _interopRequireDefault(_elementClosest);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Swatches = exports.Swatches = function () {
+  function Swatches() {
+    _classCallCheck(this, Swatches);
+
+    this.swatches = document.querySelectorAll(".bl-product-swatches") || undefined;
+
+    this.currentSwatch = null;
+
+    this.addBagProduct = document.querySelectorAll(".bl-add-bag-product") || undefined;
+  }
+
+  _createClass(Swatches, [{
+    key: "init",
+    value: function init() {
+      if (this.swatches) {
+        this.attachSwatchSwap();
+      }
+    }
+  }, {
+    key: "attachSwatchSwap",
+    value: function attachSwatchSwap() {
+      var _this = this;
+
+      var swatches = this.swatches;
+
+      swatches.forEach(function (item) {
+        var colors = item.querySelectorAll(".swatch-color");
+
+        colors.forEach(function (color) {
+          color.onclick = function (e) {
+            colors.forEach(function (color) {
+              color.classList.remove("selected");
+            });
+            _this.swapImage(color);
+          };
+        });
+      });
+    }
+  }, {
+    key: "swapImage",
+    value: function swapImage(color) {
+      var parent = color.closest(".hero-product");
+      var addToBagButton = parent.querySelector(".bl-add-bag-product");
+      var productImage = parent.querySelector(".hero-product-bag-image");
+
+      productImage.removeAttribute("src");
+      productImage.removeAttribute("srcset");
+
+      var product = {
+        id: color.getAttribute("data-product-id"),
+        variation: color.getAttribute("data-variation-id"),
+        index: color.getAttribute("data-index"),
+        image: color.getAttribute("data-hero-image"),
+        retina: color.getAttribute("data-hero-image-retina") !== "" ? color.getAttribute("data-hero-image-retina") : undefined
+      };
+
+      addToBagButton.setAttribute("data-product-id", product.id);
+      addToBagButton.setAttribute("data-variation-id", product.variation);
+
+      // update product image both sd and hd (retina)
+      if (product.image) {
+        productImage.setAttribute("src", product.image);
+      }
+
+      if (product.retina) {
+        productImage.setAttribute("srcset", product.retina);
+      }
+
+      addToBagButton.classList.add("changed");
+      color.classList.add("selected");
+      addToBagButton.removeAttribute("disabled");
+
+      this.selectBag(addToBagButton);
+    }
+  }, {
+    key: "selectBag",
+    value: function selectBag(button) {
+      button.onclick = function (e) {
+        e.preventDefault();
+        console.log(button);
+      };
+    }
+  }, {
+    key: "setSwatchColor",
+    value: function setSwatchColor() {
+      var _this2 = this;
+
+      if (this.swatchColor.length > 0) {
+        this.swatchColor.forEach(function (el) {
+          var parent = el.parentElement;
+          var parentHolder = parent.parentElement;
+          var swatchNodes = undefined;
+          var data = el.dataset;
+          var variation_id = data.variation_id ? data.variation_id : 0;
+
+          if (parent.classList.contains("selected")) {
+            _this2.currentSwatch = variation_id;
+            var primary_image = data.hero_image ? data.hero_image : "";
+            var primary_image_retina = data.hero_image_retina ? data.hero_image_retina : "";
+            var index = data.index ? data.index : 0;
+            if (primary_image.length > 0) {
+              var div_id = "hero-" + index;
+              if (primary_image_retina.length > 1) {
+                primary_image_retina += " 2x";
+              }
+              document.getElementById(div_id).src = primary_image;
+              document.getElementById(div_id).setAttribute("srcset", primary_image_retina);
+            }
+          }
+
+          if (typeof parentHolder != "undefined") {
+            swatchNodes = parentHolder.querySelectorAll(".select-option");
+          }
+
+          el.addEventListener("click", function (e) {
+            e.preventDefault();
+            var changed = false;
+
+            var product_id = data.product_id ? data.product_id : 0;
+            var index = data.index ? data.index : 0;
+
+            var hero_image = data.hero_image ? data.hero_image : "";
+            var hero_image_retina = data.hero_image_retina ? data.hero_image_retina : "";
+
+            if (hero_image_retina.length > 1) {
+              hero_image_retina += " 2x";
+            }
+            if (variation_id > 0) {
+              if (swatchNodes.length > 0) {
+                //console.log(swatchNodes);
+                swatchNodes.forEach(function (listElement) {
+                  listElement.classList.remove("selected");
+                });
+              }
+
+              if (variation_id != _this2.currentSwatch) {
+                changed = true;
+              } else {
+                changed = false;
+              }
+              el.parentNode.classList.add("selected");
+              var addButton = document.getElementById("button-" + index);
+              var _div_id = "hero-" + index;
+              if (addButton) {
+                addButton.setAttribute("data-variation_id", variation_id);
+                addButton.removeAttribute("disabled");
+                document.getElementById(_div_id).src = hero_image;
+                document.getElementById(_div_id).setAttribute("srcset", hero_image_retina);
+                if (changed == false) {
+                  addButton.classList.remove("changed");
+                } else {
+                  addButton.classList.add("changed");
+                }
+              }
+            }
+          });
+        });
+      }
+    }
+
+    // add the bag to either the cart or the kit
+
+  }, {
+    key: "addBagProductToCart",
+    value: function addBagProductToCart() {
+      var _this3 = this;
+
+      if (this.addBagProduct.length > 0) {
+        this.addBagProduct.forEach(function (el) {
+          // first, see if we have variations
+          if (el.classList.contains("has-variations")) {
+            // first, see if we are a bag or a kit
+            el.addEventListener("click", function (e) {
+              e.preventDefault();
+              if (el.classList.contains("hero-product-picked")) {
+                var returnURL = el.href;
+                document.location.href = returnURL;
+              }
+              if (el.dataset) {
+                var variation_id = el.dataset.variation_id || "";
+                var product_id = el.dataset.product_id || "";
+                var category_id = el.dataset.category_id || "";
+                var _returnURL = el.href;
+                if (variation_id.length > 0 && product_id.length > 0) {
+                  if (el.classList.contains("self-kit") || el.classList.contains("prebuilt-kit")) {
+                    if (el.classList.contains("changed")) {
+                      _this3.addItemToCart(product_id, category_id, variation_id, 1, _returnURL);
+                    } else {
+                      document.location.href = _returnURL;
+                    }
+                  }
+                }
+              }
+            });
+          }
+        });
+      }
+    }
+  }]);
+
+  return Swatches;
+}();
+
+/***/ }),
+
 /***/ "./src/javascript/index.js":
 /*!*********************************!*\
   !*** ./src/javascript/index.js ***!
@@ -41057,6 +41234,7 @@ var initializeScrollToTop = new _components.ScrollToTop().init();
 var productCarousels = new _components.ProductImageCarousel().init();
 var categoryMenu = new _components.CategoryMenu().init();
 var search = new _components.Search().init();
+var swatches = new _components.Swatches().init();
 
 /***/ }),
 

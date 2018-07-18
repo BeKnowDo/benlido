@@ -30,9 +30,11 @@ p {
 }
 
 a {
-  transition: color 0.2s ease-in, text-shadow 0.2s ease-in;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
   &:hover {
     text-decoration: none;
-    transition: color 0.2s ease-in, text-shadow 0.2s ease-in;
+    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out,
+      background-color 0.2s ease-in-out;
   }
 }

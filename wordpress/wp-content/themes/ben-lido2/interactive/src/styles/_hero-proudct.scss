@@ -7,6 +7,13 @@
     text-transform: uppercase;
     color: inherit;
     position: relative;
+    &[disabled="disabled"] {
+      cursor: not-allowed;
+      pointer-events: auto;
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
   }
 
   &-header {
@@ -24,6 +31,7 @@
   &-price {
     color: $brown-grey;
     @include sentinel(22px, 400);
+    margin: 0;
   }
 
   &-bag-link {

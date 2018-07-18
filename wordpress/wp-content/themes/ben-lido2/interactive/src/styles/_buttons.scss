@@ -1,6 +1,7 @@
 .btn {
   border-radius: 4px;
   // pointer-events: none;
+  text-shadow: $text-shadow;
   &.btn-lg {
     padding: 10px 34px;
     height: auto;
@@ -49,6 +50,7 @@
       // text-align: right;
       width: 100%;
       position: relative;
+
       &:after {
         position: relative;
         top: 2px;
@@ -113,6 +115,7 @@
   }
 
   &.btn-separator {
+    text-shadow: none;
     padding-left: 0;
     padding-right: 0;
     border: 0;
@@ -123,14 +126,16 @@
   padding: 10px 6px;
   position: relative;
   width: 50%;
+
   &:after {
     content: "";
     position: absolute;
     right: 0;
     width: 2px;
     height: 14px;
-    border-right: 2px solid $white;
+    border-right: $white-border;
   }
+
   &:only-child {
     border-right: none;
     text-align: center;
