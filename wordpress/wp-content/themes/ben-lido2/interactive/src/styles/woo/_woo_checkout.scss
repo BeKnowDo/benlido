@@ -5,13 +5,14 @@
     }
 
     .woocommerce-error {
-      background-color: $brick-red;
+      background-color: $brown-grey;
     }
     .required {
       @include knockout(44px, 400);
       position: absolute;
-      color: $brick-red;
+      color: $brown-grey;
       top: -12px;
+      left: 0;
     }
 
     .entry-title {
@@ -52,7 +53,10 @@
       .place-order {
         padding: 0;
         .button {
-          @include knockout32(15px, 400);
+          @include knockout32(18px, 400);
+          text-transform: uppercase;
+          text-shadow: $text-shadow;
+          letter-spacing: 1.5px;
         }
       }
     }
@@ -151,9 +155,9 @@
     }
 
     #order_review_heading {
-      @include sentinel(22px, 400);
-      padding: $unit-6 0 $unit-10;
-      color: $medium-grey;
+      @include sentinel(32px, 400);
+      padding: 0 0 $unit-10;
+      color: $medium-grey-2;
     }
 
     .woocommerce-additional-fields {
@@ -163,6 +167,11 @@
     }
 
     .woocommerce-billing-fields {
+      h3 {
+        @include sentinel(32px, 400);
+        margin-bottom: $unit-7;
+        color: $medium-grey-2;
+      }
       .input-text,
       .select2 {
         background-color: $silver-white;
@@ -172,6 +181,7 @@
     .form-row {
       label {
         padding-bottom: $unit-1;
+        padding-left: $unit-5;
         position: relative;
       }
     }
@@ -221,6 +231,10 @@
       color: $white;
       border: 0;
       box-shadow: none;
+      text-transform: uppercase;
+      text-shadow: $text-shadow;
+      letter-spacing: 1.5px;
+      font-size: 16px;
     }
   }
 
@@ -269,9 +283,10 @@
 
   &-info {
     border-radius: 4px;
-    background-color: $silver-white;
+    background-color: $brown-grey;
     border: $grey-border;
-    color: $medium-grey;
+    color: $white;
+    margin-bottom: $unit-4;
     a {
       color: $primary-color;
       text-decoration: underline;

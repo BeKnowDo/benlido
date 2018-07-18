@@ -1,18 +1,24 @@
 .woocommerce {
   &-order-received {
     .entry-content {
+      background-color: transparent;
+      border: 0;
       margin: $unit-4;
     }
+    .wc-item-meta {
+      display: none;
+    }
   }
+
   &-order {
     .woocommerce {
       &-order-overview {
         li {
           @include knockout32(15px, 400);
-          padding: $unit-5 $unit-1;
+          padding: $unit-4 $unit-2;
 
-          &:first-child {
-            padding: $unit-5 $unit-1;
+          &:last-child {
+            padding: $unit-4 $unit-2;
           }
 
           > strong {
@@ -20,13 +26,18 @@
           }
         }
       }
+
       &-thankyou-order-details {
-        margin: 0;
+        border: $grey-border;
+        border-radius: 4px;
+        background-color: $white;
+        padding: 0 $unit-2;
+        margin: 0 0 $unit-4;
       }
     }
 
     &-details {
-      padding: $unit-10 0 0;
+      padding: 0;
 
       &__title {
         @include sentinel(25px, 400);
@@ -42,11 +53,19 @@
     text-align: left;
     display: block;
 
+    border: $grey-border;
+    border-radius: 4px;
+    background-color: $white;
+    padding: $unit-1 $unit-8;
+    margin: 0 0 $unit-4;
+
     .product {
       &-name {
         text-align: left;
         width: 80%;
+        padding-right: 10%;
       }
+
       &-total {
         text-align: right;
         width: 20%;
@@ -56,21 +75,26 @@
       display: flex;
       flex-wrap: wrap;
       width: 100%;
+
       th,
       td {
         width: 50%;
+        padding: $unit-2 0;
       }
+
       td {
         text-align: right;
       }
     }
+
     a {
-      color: $primary-color;
+      color: $medium-grey-2;
       opacity: 1;
     }
 
     thead {
       display: block;
+
       th {
         padding-bottom: $unit-4;
       }
@@ -82,11 +106,12 @@
 
     tfoot {
       display: block;
-      padding: $unit-7;
-      margin: $unit-7 0 0;
-      background-color: $silver-white;
-      border: $grey-border;
-      border-radius: 4px;
+      border-top: $grey-border;
+      padding-top: $unit-7;
+      margin-top: $unit-7;
+
+      // background-color: $silver-white;
+      // border-radius: 4px;
     }
   }
 
@@ -95,5 +120,14 @@
     text-align: center;
     padding: $unit-6;
     margin: 0;
+  }
+
+  &-customer-details {
+    .addresses {
+      float: none;
+      clear: both;
+      overflow: hidden;
+      margin: $unit-8 0 0;
+    }
   }
 }

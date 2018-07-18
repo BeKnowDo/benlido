@@ -7,42 +7,47 @@
   }
 }
 
+.bl-add-bag-product {
+  &.changed {
+    background-color: $brown-grey;
+
+    &:hover {
+      background-color: $blue-shale;
+    }
+  }
+}
+
 .bl-product-swatches {
   padding: 0;
   margin: 20px auto;
   max-width: 150px;
-}
 
-.bl-add-bag-product {
-  &.selected {
-    background-color: $blumine;
-    &:hover {
-      background-color: $blumine;
+  .swatch {
+    &-wrapper {
+      max-width: 50px;
+      border: none;
+      float: none;
+      margin: 0;
+      padding: 8px;
+      transition: padding 0.1s ease-in-out;
+
+      &.selected {
+        transition: padding 0.1s ease-in-out;
+        padding: 4px;
+        border: 0;
+      }
     }
-  }
-}
 
-.swatch {
-  &-wrapper {
-    max-width: 70px;
-    border: none;
-    float: none;
-    margin: 0;
-
-    &.selected {
-      background-color: #000;
+    &-color {
+      display: block;
     }
-  }
-
-  &-color {
-    display: block;
   }
 }
 
 .swatch-anchor {
   border: $grey-border;
   border-radius: 50%;
-  padding: 6px;
+  padding: 4px;
   transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
 
   &:hover,

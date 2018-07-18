@@ -16,6 +16,13 @@
     }
   }
 
+  .btn {
+    &-link {
+      text-shadow: none;
+      margin-top: $unit-2;
+    }
+  }
+
   &-header {
     color: $brown-grey;
     margin-bottom: $unit-2;

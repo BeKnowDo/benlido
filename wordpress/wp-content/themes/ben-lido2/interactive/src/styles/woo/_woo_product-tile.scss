@@ -34,22 +34,29 @@
   .price {
     @include sentinel(22px, 400);
     transition: opacity 0.2s ease-in-out;
+    margin: $unit-1 0 0;
     display: block;
-    margin: $unit-2 0 $unit-3;
+
+    .amount {
+      display: block;
+    }
   }
   .woocommerce {
     &-loop-product__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       @include knockout32(14px, 400);
       transition: opacity 0.2s ease-in-out;
       font-style: normal;
-      // min-height: 84px;
       font-weight: 400;
       font-size: 14px;
       letter-spacing: normal;
       line-height: normal;
-      margin: $unit-8 0;
+      margin: $unit-6 0;
       color: $grey;
     }
+
     &-placeholder {
       max-height: 175px;
     }

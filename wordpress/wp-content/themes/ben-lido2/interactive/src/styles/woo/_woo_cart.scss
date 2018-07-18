@@ -15,6 +15,8 @@
   }
 
   .shop_table {
+    width: 100%;
+
     thead {
       th {
         padding: $unit-4 $unit-2 0;
@@ -23,9 +25,16 @@
     }
     tbody {
       td {
-        padding: $unit-4 $unit-2;
-        color: $medium-grey;
         border: 0;
+      }
+
+      .cart_item {
+        td {
+          padding: $unit-4 $unit-2;
+          color: $medium-grey;
+          border: 0;
+          border-bottom: 1px solid $light-grey;
+        }
       }
     }
     .screen-reader-text {
@@ -41,32 +50,38 @@
     &-remove {
       width: 5%;
     }
+
     &-thumbnail {
-      width: 10%;
+      width: 30%;
       a {
         display: block;
         img {
+          display: block;
           max-width: 100%;
         }
       }
     }
+
     &-name {
-      width: 40%;
+      width: 30%;
       text-align: left;
       a {
         color: $medium-grey;
       }
     }
+
     &-price {
-      width: 12%;
+      width: 10%;
       text-align: center;
     }
+
     &-quantity {
-      width: 12%;
-      text-align: left;
+      width: 10%;
+      text-align: center;
     }
+
     &-subtotal {
-      width: 12%;
+      width: 10%;
       text-align: center;
     }
   }
@@ -74,6 +89,8 @@
   .cart {
     width: 100%;
     table-layout: fixed;
+    margin-bottom: $unit-8;
+
     [name="update_cart"] {
       background-color: $silver-white;
       display: inline-block;
@@ -84,6 +101,7 @@
     }
 
     .actions {
+      padding-top: $unit-8;
       .coupon {
         display: flex;
 
@@ -94,6 +112,7 @@
           background-color: $primary-color;
           padding: $unit-2 $unit-10;
           border-radius: 0 4px 4px 0;
+          text-shadow: $text-shadow;
           border: 0;
         }
 
@@ -121,7 +140,7 @@
           &:before {
             font-size: 25px;
             font-family: "Font Awesome 5 Pro";
-            color: $brick-red;
+            color: $brown-grey;
             content: "\f056";
           }
         }
@@ -130,12 +149,40 @@
   }
 
   .cart_totals {
+    float: none;
+    width: 100%;
+
+    .input-text {
+      border-radius: 4px 0 0 4px;
+      border: $grey-border;
+      padding: $unit-2;
+      margin: 0;
+    }
+
     h2 {
       @include knockout(35px, 400);
       text-transform: uppercase;
       display: block;
       padding: $unit-2;
+      letter-spacing: 2px;
     }
+
+    .select2-selection {
+      &__rendered {
+        font-size: 18px;
+      }
+    }
+
+    button[name="calc_shipping"] {
+      border-radius: 4px;
+      background-color: $primary-color;
+      text-shadow: $text-shadow;
+      color: $white;
+      @include knockout32(18px, 400);
+      padding: $unit-4 $unit-8;
+      border: 0;
+    }
+
     .shop_table {
       @include sentinel(22px, 400);
       background-color: $silver-white;
@@ -144,12 +191,16 @@
       border-radius: 4px;
       color: $medium-grey;
       width: 100%;
+
       tr {
         th,
         td {
           text-align: left;
           border-bottom: $grey-border;
           padding: $unit-2;
+        }
+        th {
+          letter-spacing: 2px;
         }
         td {
           text-align: right;
@@ -165,10 +216,12 @@
       .woocommerce-Price-amount {
         color: $blumine;
       }
+
       .order-total {
         th {
           color: $blumine;
         }
+
         .woocommerce-Price-amount {
           color: $blumine;
         }
@@ -176,13 +229,19 @@
     }
 
     .checkout-button {
-      @include knockout32(14px, 400);
-      margin-top: $unit-5;
-      width: auto;
+      @include knockout32(18px, 400);
+      text-transform: uppercase;
       background-color: $primary-color;
       color: $white;
-      border-radius: 4px;
+      margin-top: $unit-5;
+      width: auto;
       padding: $unit-4 $unit-9;
+      border-radius: 4px;
+      text-shadow: $text-shadow;
     }
+  }
+
+  .cart-collaterals {
+    width: 100%;
   }
 }

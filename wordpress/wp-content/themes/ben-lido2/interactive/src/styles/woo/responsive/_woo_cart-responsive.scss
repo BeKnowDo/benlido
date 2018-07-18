@@ -12,41 +12,50 @@
         }
       }
 
-      .cart_item {
-        width: 100%;
-        border-bottom: $grey-border;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        display: flex;
-        flex-grow: 1;
-        td {
-          text-align: center;
-          display: block;
-          &:before {
+      tbody {
+        .cart_item {
+          width: 100%;
+          border-bottom: $grey-border;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          display: flex;
+          flex-grow: 1;
+
+          td {
+            border-bottom: none;
             text-align: center;
-            width: 100%;
-            color: $blumine;
-          }
-        }
-        .product {
-          &-remove {
-            align-self: center;
-            .remove {
-              position: relative;
-              top: auto;
-              right: auto;
-              &:before {
-                line-height: normal;
-              }
+            display: block;
+
+            &:before {
+              text-align: center;
+              width: 100%;
+              color: $blumine;
             }
           }
-          &-thumbnail {
-            align-self: center;
-          }
-          &-name {
-            text-align: left;
-            &:before {
+
+          .product {
+            &-remove {
+              align-self: center;
+              .remove {
+                position: relative;
+                top: auto;
+                right: auto;
+                &:before {
+                  line-height: normal;
+                }
+              }
+            }
+            &-thumbnail {
+              align-self: center;
+              width: 20%;
+            }
+            &-name {
               text-align: left;
+              width: 25%;
+
+              &:before {
+                text-align: left;
+              }
             }
           }
         }
@@ -57,34 +66,52 @@
 
 @media (max-width: $size-sm) {
   .woocommerce-cart {
-    .product {
-      &-remove {
-        width: 10%;
-      }
-      &-thumbnail {
-        width: 20%;
-        padding: $unit-4 0;
-        a {
-          img {
+    .shop_table {
+      tbody {
+        .cart_item {
+          position: relative;
+
+          .product {
+            &-remove {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 10%;
+            }
+            &-thumbnail {
+              width: 100%;
+              padding: $unit-4 0;
+
+              img {
+                max-width: 120px;
+              }
+            }
+
+            &-name {
+              width: 100%;
+            }
+
+            &-price {
+              text-align: left;
+              width: 20%;
+              &:before {
+                text-align: left;
+              }
+            }
+
+            &-quantity {
+              width: 20%;
+              .input-text {
+                padding-left: $unit-5;
+                text-align: center;
+              }
+            }
+
+            &-subtotal {
+              width: 20%;
+            }
           }
         }
-      }
-
-      &-name {
-        width: 70%;
-      }
-      &-price {
-        width: 33%;
-      }
-      &-quantity {
-        width: 33%;
-        .input-text {
-          padding-left: $unit-5;
-          text-align: center;
-        }
-      }
-      &-subtotal {
-        width: 33%;
       }
     }
   }
