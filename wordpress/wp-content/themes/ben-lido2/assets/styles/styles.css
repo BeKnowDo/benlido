@@ -3489,7 +3489,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .shipping-tile .fa-calendar { margin-left: 10px; }
 
-.category-list a { color: #195675; }
+.category-list a { color: #195675; letter-spacing: normal; }
 
 .category-list a:visited, .category-list a:hover, .category-list a:focus { color: #195675; background-color: transparent; }
 
@@ -3650,7 +3650,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product .cart { width: 75%; display: flex; align-items: center; order: 2; }
 
-.product-tile-header { margin-bottom: 0; min-height: 40px; }
+.product-tile-header { display: none; }
 
 .product-tile-link { min-height: 182px; }
 
@@ -3662,7 +3662,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product .price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; display: block; margin: 0.8rem 0 0.6rem; }
 
-.product .woocommerce-loop-product__title { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; font-weight: 400; font-size: 14px; margin: 1.6rem 0; color: #979797; }
+.product .woocommerce-loop-product__title { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; font-weight: 400; font-size: 14px; letter-spacing: normal; line-height: normal; margin: 1.6rem 0; color: #979797; }
 
 .product .woocommerce-placeholder { max-height: 175px; }
 
