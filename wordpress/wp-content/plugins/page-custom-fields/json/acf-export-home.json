@@ -32,9 +32,28 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "These are the fields required for the home page broken down by section.\r\nHero Section.\r\nHow It Works.\r\nBrands You Love.\r\nBottom Tout",
+                "message": "The Pre Header is the copy that above the page title\r\nThese are the fields required for the home page broken down by section.\r\nHero Section.\r\nHow It Works.\r\nBrands You Love.\r\nBottom Tout",
                 "new_lines": "wpautop",
                 "esc_html": 0
+            },
+            {
+                "key": "field_5b50fdc47b12e",
+                "label": "Pre Header",
+                "name": "pre_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             },
             {
                 "key": "field_5a8b5186e1f9f",

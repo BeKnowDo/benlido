@@ -5,6 +5,7 @@ $copy = get_the_content();
 $triangleBackground = true;
 if (function_exists('get_field')) {
     $hero_image = get_field('hero_image');
+    $pre_header = get_field('pre_header');
     $hero_call_to_action_buttons = get_field('hero_call_to_action_buttons');
     if (!empty($hero_image) && isset($hero_image['url'])) {
         $image = $hero_image['url'];
@@ -16,6 +17,7 @@ if (function_exists('bl_process_acf_buttons')) {
 }
 $homePageHero = array(
     'triangleBackground' => $triangleBackground,
+    'preheader' => $pre_header,
     'header' => $header,
     'copy'=>$copy,
     'image'=>$image,

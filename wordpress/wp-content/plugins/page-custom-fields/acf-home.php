@@ -34,13 +34,33 @@ if( function_exists('acf_add_local_field_group') ):
                     'class' => '',
                     'id' => '',
                 ),
-                'message' => 'These are the fields required for the home page broken down by section.
+                'message' => 'The Pre Header is the copy that above the page title
+    These are the fields required for the home page broken down by section.
     Hero Section.
     How It Works.
     Brands You Love.
     Bottom Tout',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
+            ),
+            array(
+                'key' => 'field_5b50fdc47b12e',
+                'label' => 'Pre Header',
+                'name' => 'pre_header',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
             ),
             array(
                 'key' => 'field_5a8b5186e1f9f',
