@@ -1,5 +1,5 @@
 .hero-title-copy {
-  padding: 20px;
+  padding: $unit-12 20px;
   border-top: $grey-border;
   border-bottom: $grey-border;
 
@@ -11,6 +11,6 @@
     font-family: $sentinel;
     font-style: normal;
     font-weight: 400;
-    margin: 0;
+    margin: $unit-5 0 0;
   }
 }

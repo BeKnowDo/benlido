@@ -21,7 +21,7 @@
   }
   &-current {
     color: $medium-grey;
-    padding: 8px 0;
+    padding: 0;
     vertical-align: super;
     @include sentinel(24px, 400);
   }

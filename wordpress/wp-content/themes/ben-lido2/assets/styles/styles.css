@@ -3243,7 +3243,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .copyright-logo img { margin: auto; max-width: 165px; }
 
-.copyright-text { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 17px; margin: 30px 0 0; font-weight: 400; }
+.copyright-text { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 17px; margin: 30px 0 0; font-weight: 400; letter-spacing: normal; }
 
 .btn { border-radius: 4px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
 
@@ -3331,11 +3331,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-home .hero-image { margin: 0 0 0 auto; }
 
-.hero-title-copy { padding: 20px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; }
+.hero-title-copy { padding: 2.4rem 20px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; }
 
 .hero-title-copy-header { text-transform: uppercase; }
 
-.hero-title-copy-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; margin: 0; }
+.hero-title-copy-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; margin: 1rem 0 0; }
 
 .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
 
@@ -3397,7 +3397,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .step-navigation-text-next { position: relative; bottom: 4px; padding-right: 12px; }
 
-.step-navigation-current { color: #999999; padding: 8px 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; }
+.step-navigation-current { color: #999999; padding: 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; }
 
 .step-navigation .btn-no-border { text-shadow: none; position: relative; }
 
@@ -3700,7 +3700,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .entry-title { text-align: center; padding: 2rem 0; }
 
-.woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 1rem; }
+.woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 120px; }
 
 .woocommerce-cart .shop_table { width: 100%; }
 
@@ -3750,11 +3750,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .cart .product-remove .remove:before { font-size: 25px; font-family: "Font Awesome 5 Pro"; color: #393d5b; content: "\f056"; }
 
-.woocommerce-cart .cart_totals { float: none; width: 100%; }
+.woocommerce-cart .cart_totals { float: none; width: 100%; border-top: 1px solid #e4e4e4; }
 
 .woocommerce-cart .cart_totals .input-text { border-radius: 4px 0 0 4px; border: 1px solid #e4e4e4; padding: 0.8rem; margin: 0; }
 
-.woocommerce-cart .cart_totals h2 { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 35px; font-weight: 400; font-style: normal; text-transform: uppercase; display: block; padding: 0.8rem; letter-spacing: 2px; }
+.woocommerce-cart .cart_totals h2 { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 35px; font-weight: 400; font-style: normal; text-transform: uppercase; display: block; padding: 1.6rem 0.8rem; letter-spacing: 1.5px; }
 
 .woocommerce-cart .cart_totals .select2-selection__rendered { font-size: 18px; }
 
@@ -3762,9 +3762,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .cart_totals .shop_table { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-bottom: 0; border-radius: 4px; color: #999999; width: 100%; }
 
-.woocommerce-cart .cart_totals .shop_table tr th, .woocommerce-cart .cart_totals .shop_table tr td { text-align: left; border-bottom: 1px solid #e4e4e4; padding: 0.8rem; }
+.woocommerce-cart .cart_totals .shop_table tr th, .woocommerce-cart .cart_totals .shop_table tr td { text-align: left; border-bottom: 1px solid #e4e4e4; padding: 1.6rem; }
 
-.woocommerce-cart .cart_totals .shop_table tr th { letter-spacing: 2px; }
+.woocommerce-cart .cart_totals .shop_table tr th { letter-spacing: normal; }
 
 .woocommerce-cart .cart_totals .shop_table tr td { text-align: right; }
 
@@ -3776,7 +3776,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .cart_totals .shop_table .order-total .woocommerce-Price-amount { color: #195675; }
 
-.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 18px; font-weight: 400; font-style: normal; text-transform: uppercase; background-color: #bacdd4; color: #fff; margin-top: 1rem; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
+.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 22px; font-weight: 400; font-style: normal; background-color: #bacdd4; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
+
+.woocommerce-cart .cart_totals .wc-proceed-to-checkout { margin-bottom: 0; }
 
 .woocommerce-cart .cart-collaterals { width: 100%; }
 
@@ -3872,23 +3874,25 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-info a:hover { color: #bacdd4; }
 
-.woocommerce-order-received .entry-content { background-color: transparent; border: 0; margin: 0.8rem; }
+.woocommerce-order-received .entry-content { background-color: transparent; border: 0; margin: 0 0.8rem 0.8rem; padding-top: 0; }
 
 .woocommerce-order-received .wc-item-meta { display: none; }
 
-.woocommerce-order .woocommerce-order-overview li { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; padding: 0.8rem 0.8rem; }
+.woocommerce-order-received .entry-title { margin-top: 1.2rem; margin-bottom: 0; padding-bottom: 0; }
+
+.woocommerce-order .woocommerce-order-overview li { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; padding: 1.2rem 0.8rem; }
 
 .woocommerce-order .woocommerce-order-overview li:last-child { padding: 0.8rem 0.8rem; }
 
 .woocommerce-order .woocommerce-order-overview li > strong { font-size: 22px; }
 
-.woocommerce-order .woocommerce-thankyou-order-details { border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; padding: 0 0.8rem; margin: 0 0 0.8rem; }
+.woocommerce-order .woocommerce-thankyou-order-details { border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; padding: 0.8rem 1.6rem; margin: 1.6rem 0 1.2rem; }
 
-.woocommerce-order-details { padding: 0; }
+.woocommerce-order-details { border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; padding: 1.6rem 2.4rem; }
 
-.woocommerce-order-details__title { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; color: #999999; text-align: center; padding: 0.8rem 0 1.6rem; }
+.woocommerce-order-details__title { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; color: #999999; text-align: center; padding: 1.2rem 0 2.4rem; margin: 0 0 1.2rem; letter-spacing: normal; border-bottom: 1px solid #e4e4e4; }
 
-.woocommerce-table { width: 100%; text-align: left; display: block; border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; padding: 0.2rem 1.6rem; margin: 0 0 0.8rem; }
+.woocommerce-table { width: 100%; text-align: left; display: block; margin: 0 0 0.8rem; }
 
 .woocommerce-table .product-name { text-align: left; width: 80%; padding-right: 10%; }
 
@@ -3908,7 +3912,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-table tbody { display: block; }
 
-.woocommerce-table tfoot { display: block; border-top: 1px solid #e4e4e4; padding-top: 1.4rem; margin-top: 1.4rem; }
+.woocommerce-table tfoot { display: block; border: 1px solid #e4e4e4; padding: 0.6rem 1.4rem; margin-top: 1.4rem; background-color: #f7f7f7; border-radius: 4px; }
 
 .woocommerce-thankyou-order-received { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; text-align: center; padding: 1.2rem; margin: 0; }
 
@@ -3926,7 +3930,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (max-width: 768px) { .woocommerce-cart .shop_table thead tr { display: flex; flex-direction: row; }
   .woocommerce-cart .shop_table thead th { display: block; flex-grow: 1; }
-  .woocommerce-cart .shop_table tbody .cart_item { width: 100%; border-bottom: 1px solid #e4e4e4; justify-content: space-between; flex-wrap: wrap; display: flex; flex-grow: 1; }
+  .woocommerce-cart .shop_table tbody .cart_item { width: 100%; border-bottom: 1px solid #e4e4e4; justify-content: space-between; flex-wrap: wrap; display: flex; flex-grow: 1; padding: 2rem 0; }
   .woocommerce-cart .shop_table tbody .cart_item td { border-bottom: none; text-align: center; display: block; }
   .woocommerce-cart .shop_table tbody .cart_item td:before { text-align: center; width: 100%; color: #195675; }
   .woocommerce-cart .shop_table tbody .cart_item .product-remove { align-self: center; }
@@ -3937,7 +3941,7 @@ body { position: relative; padding-top: 52px; outline: none; }
   .woocommerce-cart .shop_table tbody .cart_item .product-name:before { text-align: left; } }
 
 @media (max-width: 600px) { .woocommerce-cart .shop_table tbody .cart_item { position: relative; }
-  .woocommerce-cart .shop_table tbody .cart_item .product-remove { position: absolute; top: 0; left: 0; width: 10%; }
+  .woocommerce-cart .shop_table tbody .cart_item .product-remove { position: absolute; top: 20px; left: 0; width: 10%; }
   .woocommerce-cart .shop_table tbody .cart_item .product-thumbnail { width: 100%; padding: 0.8rem 0; }
   .woocommerce-cart .shop_table tbody .cart_item .product-thumbnail img { max-width: 120px; }
   .woocommerce-cart .shop_table tbody .cart_item .product-name { width: 100%; }

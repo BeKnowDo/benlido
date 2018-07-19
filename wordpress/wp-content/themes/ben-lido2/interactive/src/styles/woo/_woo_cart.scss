@@ -11,7 +11,7 @@
     border: $grey-border;
     border-radius: 4px;
     padding: $unit-5;
-    margin-bottom: $unit-5;
+    margin-bottom: 120px;
   }
 
   .shop_table {
@@ -151,6 +151,7 @@
   .cart_totals {
     float: none;
     width: 100%;
+    border-top: $grey-border;
 
     .input-text {
       border-radius: 4px 0 0 4px;
@@ -163,8 +164,8 @@
       @include knockout(35px, 400);
       text-transform: uppercase;
       display: block;
-      padding: $unit-2;
-      letter-spacing: 2px;
+      padding: $unit-8 $unit-2;
+      letter-spacing: 1.5px;
     }
 
     .select2-selection {
@@ -197,10 +198,10 @@
         td {
           text-align: left;
           border-bottom: $grey-border;
-          padding: $unit-2;
+          padding: $unit-8;
         }
         th {
-          letter-spacing: 2px;
+          letter-spacing: normal;
         }
         td {
           text-align: right;
@@ -229,15 +230,18 @@
     }
 
     .checkout-button {
-      @include knockout32(18px, 400);
-      text-transform: uppercase;
+      @include knockout32(22px, 400);
       background-color: $primary-color;
       color: $white;
       margin-top: $unit-5;
+      margin-bottom: 0;
       width: auto;
       padding: $unit-4 $unit-9;
       border-radius: 4px;
       text-shadow: $text-shadow;
+    }
+    .wc-proceed-to-checkout {
+      margin-bottom: 0;
     }
   }
 

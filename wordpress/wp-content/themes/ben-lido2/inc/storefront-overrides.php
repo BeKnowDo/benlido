@@ -329,7 +329,7 @@ add_filter( 'the_title', 'bl_order_received_title', 10, 2 );
 function bl_order_received_title( $title, $id ) {
 	if ( function_exists( 'is_order_received_page' ) && 
 	     is_order_received_page() && get_the_ID() === $id ) {
-		$title = "Welcome to the Club!";
+		$title = "Welcome to the Club";
 	}
 	return $title;
 }
