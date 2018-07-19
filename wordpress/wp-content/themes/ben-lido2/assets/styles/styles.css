@@ -3199,6 +3199,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar-section-account { color: #393d5b; }
 
+.navbar-section-account:visited { color: #393d5b; }
+
 .navbar-section .column { padding: 0 14px; }
 
 .navbar-section .column:last-child { padding-left: 7px; }
@@ -3381,6 +3383,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .back-to-top .btn { padding: 10px 14px 10px 10px; }
 
+.back-to-top .btn:not(.btn-primary) { text-shadow: none; }
+
 .back-to-top .btn > span { padding: 0 20px 3px 10px; vertical-align: text-bottom; display: inline-block; }
 
 .back-to-top .fal { font-size: 22px; }
@@ -3395,7 +3399,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .step-navigation-current { color: #999999; padding: 8px 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; }
 
-.step-navigation .btn-no-border { position: relative; }
+.step-navigation .btn-no-border { text-shadow: none; position: relative; }
 
 .step-navigation .btn-no-border .step-navigation-text { font-size: 16px; }
 

@@ -30,6 +30,7 @@
 
   .btn {
     &-no-border {
+      text-shadow: none;
       position: relative;
       .step-navigation-text {
         font-size: 16px;

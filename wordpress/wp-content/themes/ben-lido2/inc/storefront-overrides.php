@@ -24,7 +24,7 @@ function bl_storefront_overrides() {
 	remove_action('storefront_header','storefront_secondary_navigation ',30);
 	remove_action('storefront_header','storefront_primary_navigation',50);
 	remove_action('storefront_header','storefront_header_cart',60);
-    remove_action('storefront_header','storefront_primary_navigation_wrapper_close',68);
+	remove_action('storefront_header','storefront_primary_navigation_wrapper_close',68);
 	remove_action('storefront_header','storefront_product_search',40);
 
 	remove_action( 'storefront_content_top','woocommerce_breadcrumb', 10, 0);
@@ -49,16 +49,22 @@ function bl_storefront_overrides() {
 
 	if (is_woocommerce()) {
 		add_action('woocommerce_before_main_content','bl_breadcrumb',4);
+		
 		if (is_shop() ) {
 			add_action('woocommerce_before_main_content','bl_bag_hero',5);
 		}
+
 		if (is_shop() || is_product_category() || is_product_tag()) {
 			add_action('woocommerce_before_main_content','bl_header',5);
+		}
+
+		if(is_product_category() || is_shop) {
+			add_action('woocommerce_sidebar', 'bl_back_to_top', 50);
+			// the int is the order of where it's placed
 		}
 		
 	}
 }
-
 
 add_action( 'wp', 'bl_storefront_overrides' );
 
@@ -73,7 +79,6 @@ function bl_login_redirect( $redirect, $user ) {
  
     return wc_get_page_permalink( 'shop' );
 }
-
 
 add_filter( 'woocommerce_login_redirect', 'bl_login_redirect' );
 
@@ -254,7 +259,6 @@ if ( ! function_exists( 'storefront_handheld_footer_bar' ) ) {
 	}
 }
 
-
 if ( ! function_exists( 'storefront_before_content' ) ) {
 	/**
 	 * Before Content
@@ -286,6 +290,7 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	function storefront_after_content() {
 		if (is_shop() || is_product_category() || is_product_tag() || is_cart() || is_checkout()):
 		?>
+
 				</div>
 			</div>
 		</div>
@@ -294,6 +299,15 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	}
 }
 
+
+function bl_back_to_top () {
+	// get_template_part('template-parts/common/product/add-empty','product');
+	get_template_part('template-parts/common/back-to','top');
+}
+
+function bl_breadcrumb() {
+	get_template_part('template-parts/common/step','navigation');
+}
 
 
 function bl_storefront_before_header () {
@@ -342,10 +356,6 @@ function bl_bag_hero() {
 
 function bl_header() {
 	get_template_part('template-parts/common/hero/hero-title','copy');
-}
-
-function bl_breadcrumb() {
-	get_template_part('template-parts/common/step','navigation');
 }
 
 function bl_footer_menus() {

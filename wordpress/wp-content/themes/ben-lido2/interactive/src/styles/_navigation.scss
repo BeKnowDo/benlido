@@ -121,12 +121,16 @@
       cursor: pointer;
       display: block;
       z-index: 10;
+
       .fa-suitcase {
         color: $brown-grey;
       }
     }
     &-account {
       color: $brown-grey;
+      &:visited {
+        color: $brown-grey;
+      }
     }
     .columns {
     }
