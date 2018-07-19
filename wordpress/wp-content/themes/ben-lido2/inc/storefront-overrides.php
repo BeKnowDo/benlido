@@ -41,6 +41,12 @@ function bl_storefront_overrides() {
 	remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 30 );
 	remove_action( 'woocommerce_before_shop_loop', 'storefront_woocommerce_pagination', 30 );
 
+	remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); // moving related products down
+	if (!is_product_category()) {
+		add_action('woocommerce_after_main_content', 'woocommerce_output_related_products', 100); // moving related products down
+	}
+	
+
 	// also removing all the storefront_footer actions as well
 	remove_action('storefront_footer','storefront_footer_widgets',10);
 	remove_action('storefront_footer','storefront_credit',20);
