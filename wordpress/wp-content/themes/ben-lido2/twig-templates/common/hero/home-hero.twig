@@ -19,28 +19,19 @@
 
           <div class="hero-action-buttons columns">
             {% for button in hero.hero_call_to_action_buttons %}
-              <div class="column col-sm-12 col-5 col-mx-auto">
-                <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ? 'rel="noopener noferrer" target="_blank"' }}>{{button.title}}</a>
-              </div>
-              {% if loop.index == 1 %}
-                <div class="column col-sm-12 col-1">
-                  <span class="btn btn-lg btn-separator">
-                    Or
-                  </span>
-                </div>
-              {% endif %}
+            <div class="column col-sm-12">
+              <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ? 'rel="noopener noferrer" target="_blank"' }} >{{button.title}}</a>
+            </div>
             {% endfor %}
           </div>
 
         </div>
 
-        {% if hero.image %}
-          <div class="column col-5 col-md-12 col-xl-5 col-ml-auto">
-            <div class="hero-image-container">
-              <img class="hero-image hero-image" src="{{hero.image}}" alt="{{hero.altText}}"/>
-            </div>
+        <div class="column col-5 col-md-12 col-xl-5 col-ml-auto">
+          <div class="hero-image-container">
+            <img class="hero-image hero-image" src="{{hero.image}}" alt="{{hero.altText}}"/>
           </div>
-        {% endif %}
+        </div>
       </div>
 
     </div>
