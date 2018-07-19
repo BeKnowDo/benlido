@@ -34,9 +34,13 @@
     {% endif %}
     <div class="columns text-center">
       <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
-        <a href="{{items.href}}" title="">
-          <img class="hero-product-logo" src="{{ items.logo }}" alt=""/>
-        </a>
+
+        {% if items.logo %}
+          <a href="{{items.href}}" title="">
+            <img class="hero-product-logo" src="{{ items.logo }}" alt=""/>
+          </a>
+        {% endif %}
+
         <h1 class="hero-product-header">
           <a href="{{items.href}}" title="">
             {{items.header}}
