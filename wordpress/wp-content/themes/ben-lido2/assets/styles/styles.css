@@ -3561,7 +3561,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .shop-landing-featured-products .columns ul.columns { width: 100%; }
 
-.shop-landing-featured-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; color: #999999; margin-top: 30px; padding-bottom: 20px; }
+.shop-landing-featured-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; letter-spacing: normal; color: #999999; margin-top: 30px; padding-bottom: 20px; }
 
 .shop-landing-featured-view-all { border-bottom: 1px solid #e4e4e4; }
 
@@ -3668,11 +3668,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product .cart { width: 75%; display: flex; align-items: center; order: 2; }
 
-.product-tile-header { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
+.product-tile-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
 
 .product-tile-link { min-height: 182px; }
-
-.product-tile-image { max-height: 180px; }
 
 .product-tile-image[height] { height: auto !important; }
 
@@ -3682,7 +3680,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product .price .amount { display: block; }
 
-.product .woocommerce-loop-product__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; font-weight: 400; font-size: 14px; letter-spacing: normal; line-height: normal; margin: 1.2rem 0; color: #979797; }
+.product .woocommerce-loop-product__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; font-weight: 400; font-size: 14px; letter-spacing: normal; line-height: normal; margin: 0.2rem 0 1.2rem; color: #979797; }
 
 .product .woocommerce-placeholder { max-height: 175px; }
 
