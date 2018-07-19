@@ -23,9 +23,7 @@
     color: $medium-grey;
     padding: 8px 0;
     vertical-align: super;
-    font-family: $sentinel;
-    font-style: normal;
-    font-weight: 400;
+    @include sentinel(24px, 400);
   }
 
   .btn {

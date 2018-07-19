@@ -3397,7 +3397,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .step-navigation-text-next { position: relative; bottom: 4px; padding-right: 12px; }
 
-.step-navigation-current { color: #999999; padding: 8px 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; }
+.step-navigation-current { color: #999999; padding: 8px 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; }
 
 .step-navigation .btn-no-border { text-shadow: none; position: relative; }
 
