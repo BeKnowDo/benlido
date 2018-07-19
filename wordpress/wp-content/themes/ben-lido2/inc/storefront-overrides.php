@@ -77,6 +77,15 @@ function bl_storefront_overrides() {
 
 add_action( 'wp', 'bl_storefront_overrides' );
 
+function bl_remove_product_page_skus( $enabled ) {
+    if ( ! is_admin() && is_product() ) {
+        return false;
+    }
+
+    return $enabled;
+}
+add_filter( 'wc_product_sku_enabled', 'bl_remove_product_page_skus' );
+
 
 function bl_login_redirect( $redirect, $user ) {
     $redirect_page_id = url_to_postid( $redirect );
