@@ -100,7 +100,6 @@
       .product-tile {
         &-header {
           display: block;
-          text-transform: uppercase;
           letter-spacing: normal;
           @include sentinel(16px, 400);
         }

@@ -3443,7 +3443,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-tile .empty-product { display: flex; flex-direction: column; align-items: center; height: 100%; }
 
-.product-tile .empty-product .product-tile-header { display: block; text-transform: uppercase; letter-spacing: normal; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; }
+.product-tile .empty-product .product-tile-header { display: block; letter-spacing: normal; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; }
 
 .product-tile .empty-product .product-tile-sub-header { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; padding-bottom: 30px; }
 

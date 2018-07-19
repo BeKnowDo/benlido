@@ -299,6 +299,15 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	}
 }
 
+add_filter( 'the_title', 'bl_order_received_title', 10, 2 );
+function bl_order_received_title( $title, $id ) {
+	if ( function_exists( 'is_order_received_page' ) && 
+	     is_order_received_page() && get_the_ID() === $id ) {
+		$title = "Welcome to the Club!";
+	}
+	return $title;
+}
+
 
 function bl_back_to_top () {
 	get_template_part('template-parts/common/back-to','top');
