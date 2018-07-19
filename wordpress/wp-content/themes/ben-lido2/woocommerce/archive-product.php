@@ -34,7 +34,12 @@ do_action( 'woocommerce_before_main_content' );
 
 <?php
 if (is_shop()): // if it's the shop landing page
-	get_template_part( 'template-parts/pages/shop','landing');
+	if (is_search()) {
+		get_template_part( 'template-parts/pages/shop','search');
+	} else {
+		get_template_part( 'template-parts/pages/shop','landing');
+	}
+	
 else:
 if ( woocommerce_product_loop() ) {
 

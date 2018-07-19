@@ -104,7 +104,12 @@ function bl_product_loop_classes($classes, $class, $post_id) {
     global $woocommerce_loop;
     if (get_post_type($post_id) == 'product') {
         if (is_shop() || is_product_category()) {
-            $product_loop = array('column', 'col-xs-12', 'col-sm-12', 'col-md-6', 'col-4', 'product-tile-column');
+            if (is_search()) {
+                $product_loop = array('column', 'col-xs-12', 'col-sm-12', 'col-md-6', 'col-3', 'product-tile-column');
+            } else {
+                $product_loop = array('column', 'col-xs-12', 'col-sm-12', 'col-md-6', 'col-4', 'product-tile-column');
+            }
+            
             $classes = array_merge($classes,$product_loop);
         }
         if (is_product() && $woocommerce_loop['name'] == 'related' ) {

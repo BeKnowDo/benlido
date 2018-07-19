@@ -20,6 +20,14 @@ if (is_shop()) {
     if ($is_kit_add == true) {
         
     }
+    if (is_search()) {
+        $heroData = array(
+            array(
+                'header'=> 'Seach Results for: ' .  get_search_query(),
+                'copy' => ''
+            )
+        );
+    }
 }
 if (empty($heroData) && function_exists('get_field')) {
     $hero_title_header = get_field('hero_title_header');

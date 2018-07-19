@@ -48,19 +48,28 @@ function bl_storefront_overrides() {
 	remove_action('woocommerce_sidebar','woocommerce_get_sidebar',10);
 
 	if (is_woocommerce()) {
-		add_action('woocommerce_before_main_content','bl_breadcrumb',4);
+		if (!is_search()) {
+			add_action('woocommerce_before_main_content','bl_breadcrumb',4);
+		}
 		
-		if (is_shop() ) {
+		
+		if (is_shop() && !is_search() ) {
 			add_action('woocommerce_before_main_content','bl_bag_hero',5);
 		}
 
 		if (is_shop() || is_product_category() || is_product_tag()) {
-			add_action('woocommerce_before_main_content','bl_header',5);
+			//if (!is_search()) {
+				add_action('woocommerce_before_main_content','bl_header',5);
+			//}
+			
 		}
 
 		if(is_product_category() || is_shop()) {
-			add_action('woocommerce_sidebar', 'bl_back_to_top', 50);
+			if (!is_search()) {
+				add_action('woocommerce_sidebar', 'bl_back_to_top', 50);
 			// the int is the order of where it's placed
+			}
+			
 		}
 		
 	}
@@ -273,7 +282,9 @@ if ( ! function_exists( 'storefront_before_content' ) ) {
 		<div class="bg-grey">
 			<div class="max-width-xl shop-landing-featured">
 				<div class="columns">
-					<?php do_action( 'storefront_sidebar' );?>
+					<?php if (!is_search()):?>
+						<?php do_action( 'storefront_sidebar' );?>
+					<?php endif;?>
 	<?php
 		endif;
 	}
@@ -334,7 +345,12 @@ function bl_storefront_main_content_wrapper_start() {
 	if (is_product()) {
 		echo '<div class="max-width-xl">';
 	} elseif (is_shop()) {
-		echo '<div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
+		if (is_search()) {
+			echo '<div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 shop-landing-featured-products">';
+		} else {
+			echo '<div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
+		}
+		
 	} else {
 		echo '<div class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
 	}
