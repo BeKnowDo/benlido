@@ -7,6 +7,7 @@ $show_hero_section = false;
 if (function_exists('get_field')) {
     $show_hero_section = get_field('show_hero_section');
     $show_step_navigation = get_field('show_step_navigation');
+    $show_hero_title_section = get_field('show_hero_title_section');
 }
 get_header(); ?>
 
@@ -21,13 +22,16 @@ get_header(); ?>
                 <?php get_template_part( 'template-parts/common/step','navigation'); ?>
             <?php endif;?>
 
+            <?php if ($show_hero_title_section):?>
+            <?php get_template_part( 'template-parts/common/hero/hero-title','copy'); ?>
+            <?php endif;?>
+            
             <?php if ($show_hero_section == true):?>
                 <div class="max-width-xl">
                     <?php get_template_part( 'template-parts/common/hero/home','hero'); ?>
                 </div>
-            <?php else:?>
-            <?php get_template_part( 'template-parts/common/hero/hero-title','copy'); ?>
             <?php endif;?>
+
 
             <div class="bg-white">
                 <div class="max-width-xl">

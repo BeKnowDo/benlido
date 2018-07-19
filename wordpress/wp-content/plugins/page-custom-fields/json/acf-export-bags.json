@@ -56,6 +56,25 @@
                 "ui_off_text": ""
             },
             {
+                "key": "field_5b50eaa238003",
+                "label": "Show Hero Title Section?",
+                "name": "show_hero_title_section",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
                 "key": "field_5b1da465b29a1",
                 "label": "Show Step Navigation?",
                 "name": "show_step_navigation",
@@ -247,6 +266,68 @@
                         "maxlength": ""
                     }
                 ]
+            },
+            {
+                "key": "field_5b50d2ac38000",
+                "label": "Hero Title Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5b50eaa238003",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b50ea5338001",
+                "label": "Hero Title Header",
+                "name": "hero_title_header",
+                "type": "text",
+                "instructions": "The header in the gray area at the top of the page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "PICK YOUR TRAVEL COMPANION",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b50ea7d38002",
+                "label": "Hero Title Copy",
+                "name": "hero_title_copy",
+                "type": "text",
+                "instructions": "The copy below the header",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             },
             {
                 "key": "field_5b1da44cb29a0",

@@ -21,6 +21,18 @@ if (is_shop()) {
         
     }
 }
+if (empty($heroData) && function_exists('get_field')) {
+    $hero_title_header = get_field('hero_title_header');
+    $hero_title_copy = get_field('hero_title_copy');
+    if (!empty($hero_title_header) || !empty($hero_title_copy)) {
+        $heroData = array(
+            array(
+                'header'=>$hero_title_header,
+                'copy'=>$hero_title_copy
+            )
+        );
+    }
+}
 if (empty($heroData)) {
     $heroData = array(array(
         'header'=> 'PICK YOUR TRAVEL COMPANION',
