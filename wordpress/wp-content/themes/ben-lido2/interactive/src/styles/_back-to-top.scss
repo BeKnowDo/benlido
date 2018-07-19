@@ -1,5 +1,6 @@
 .back-to-top {
   padding: 20px 10px;
+  border-top: $grey-border;
 
   .column {
     &:nth-child(1) {
@@ -9,9 +10,12 @@
 
   .btn {
     padding: 10px 14px 10px 10px;
+    min-width: 200px;
+
     &:not(.btn-primary) {
       text-shadow: none;
     }
+
     > span {
       padding: 0 20px 3px 10px;
       vertical-align: text-bottom;
