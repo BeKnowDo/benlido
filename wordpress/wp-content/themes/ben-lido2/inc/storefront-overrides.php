@@ -58,7 +58,7 @@ function bl_storefront_overrides() {
 			add_action('woocommerce_before_main_content','bl_header',5);
 		}
 
-		if(is_product_category() || is_shop) {
+		if(is_product_category() || is_shop()) {
 			add_action('woocommerce_sidebar', 'bl_back_to_top', 50);
 			// the int is the order of where it's placed
 		}
