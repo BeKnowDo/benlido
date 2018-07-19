@@ -4,7 +4,8 @@
       // margin-bottom: $unit-8;
       // margin-bottom: 0;
       // min-height: 40px;
-      display: none;
+      // display: none;
+      @include knockout32(16px, 400);
     }
     &-link {
       min-height: 182px;
