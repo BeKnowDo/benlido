@@ -100,10 +100,13 @@
       .product-tile {
         &-header {
           display: block;
-          @include sentinel(18px, 400);
+          text-transform: uppercase;
+          letter-spacing: normal;
+          @include sentinel(16px, 400);
         }
         &-sub-header {
           @include knockout32(14px, 400);
+          letter-spacing: normal;
           padding-bottom: 30px;
         }
         &-link {
