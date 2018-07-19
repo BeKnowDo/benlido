@@ -3607,6 +3607,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .search-results-container { padding-top: 58px; padding-bottom: 38px; border-bottom: 1px solid #e4e4e4; }
 
+.kitting-page { padding-bottom: 30px; }
+
 @media (min-width: 600px) { .hero-action-buttons .btn { max-width: none; } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }

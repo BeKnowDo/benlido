@@ -301,7 +301,6 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 
 
 function bl_back_to_top () {
-	// get_template_part('template-parts/common/product/add-empty','product');
 	get_template_part('template-parts/common/back-to','top');
 }
 

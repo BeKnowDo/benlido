@@ -61,8 +61,10 @@
 @import "./product-row";
 @import "./product-information";
 @import "./product-additional-info";
+
 // Removing quantity for later phase
 // @import "./product-quantity";
+
 @import "./ratings";
 @import "./product-row";
 @import "./product-images";
@@ -73,9 +75,11 @@
 @import "./search-navigation";
 @import "./search-in-page";
 @import "./no-bag-needed";
+
 // Page Specific
 @import "./pages/kit-selected";
 @import "./pages/search-results";
+@import "./pages/kitting";
 
 // Responsive
 @import "./responsive";

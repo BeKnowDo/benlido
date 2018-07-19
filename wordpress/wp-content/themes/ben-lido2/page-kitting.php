@@ -86,6 +86,8 @@ get_header(); ?>
 
             get_template_part( 'template-parts/pages/kitting');
 
+            get_template_part( 'template-parts/common/back-to','top' );
+
             /**
              * Functions hooked in to storefront_page_after action
              *
