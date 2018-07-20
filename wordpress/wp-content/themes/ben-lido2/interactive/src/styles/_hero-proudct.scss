@@ -9,7 +9,7 @@
     position: relative;
     &[disabled="disabled"] {
       cursor: not-allowed;
-      pointer-events: auto;
+      pointer-events: none;
       opacity: 1;
       &:hover {
         background-color: $primary-color;

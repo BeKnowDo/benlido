@@ -1,11 +1,12 @@
 .hero {
   text-align: center;
   color: $grey;
-  padding: 50px 20px;
+  padding: 100px 20px 200px;
 
   &-header {
     color: $dark-grey;
     text-transform: uppercase;
+    @include knockout(50px, 400);
   }
 
   &-copy {

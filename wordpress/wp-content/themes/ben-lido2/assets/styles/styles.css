@@ -3315,9 +3315,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .category-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; padding: 10px 0; color: #999999; }
 
-.hero { text-align: center; color: #979797; padding: 50px 20px; }
+.hero { text-align: center; color: #979797; padding: 100px 20px 200px; }
 
-.hero-header { color: #404953; text-transform: uppercase; }
+.hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; }
 
 .hero-copy { padding: 20px 0 0; margin: 0; }
 
@@ -3343,6 +3343,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-home[style*="background-image"] .hero-image-container { padding-top: 82px; }
 
+.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 75px; font-weight: 400; font-style: normal; }
+
 .hero-home .hero-image { margin: 0 0 0 auto; }
 
 .hero-title-copy { padding: 2.4rem 20px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; }
@@ -3355,7 +3357,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product a { text-transform: uppercase; color: inherit; position: relative; }
 
-.hero-product a[disabled="disabled"] { cursor: not-allowed; pointer-events: auto; opacity: 1; }
+.hero-product a[disabled="disabled"] { cursor: not-allowed; pointer-events: none; opacity: 1; }
 
 .hero-product a[disabled="disabled"]:hover { background-color: #bacdd4; }
 

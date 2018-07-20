@@ -19,7 +19,7 @@
 
           <div class="hero-action-buttons columns">
             {% for button in hero.hero_call_to_action_buttons %}
-              <div class="column col-sm-12 col-5 col-mx-auto">
+              <div class="column col-sm-12 col-5">
                 <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ? 'rel="noopener noferrer" target="_blank"' }}>{{button.title}}</a>
               </div>
               {% if loop.index == 1 %}
