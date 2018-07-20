@@ -17,6 +17,10 @@
       }
     }
 
+    .hero-header {
+      @include knockout(75px, 400);
+    }
+
     .hero-image {
       margin: 0 0 0 auto;
     }
