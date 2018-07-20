@@ -1,5 +1,11 @@
-<div>
+<div class="bg-grey search-results-container">
+
+    
+
     <?php if ( have_posts() ) :?>
+    <div class="max-width-sm">
+        
+    </div>
         <ul class="columns">
             <?php while ( have_posts() ) : the_post();?>
             <?php
@@ -13,7 +19,14 @@
             ?>
             <?php endwhile;?>
         </ul>
+    <?php
+        get_template_part( 'template-parts/common/back-to','top' );
+    ?>
     <?php else:?>
     <h3>No Results.</h3>
-    <?php endif;?>
+    
+    <?php
+        endif
+    ;?> 
+    
 </div>

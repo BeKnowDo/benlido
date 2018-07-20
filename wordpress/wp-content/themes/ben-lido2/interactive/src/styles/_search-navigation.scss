@@ -30,6 +30,9 @@
       }
       button {
         max-width: none;
+        display: inline-flex;
+        padding: 0 20px;
+
         .fa-search {
           font-size: 30px;
         }

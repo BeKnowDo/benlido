@@ -1833,7 +1833,7 @@ if ( ! function_exists( 'woocommerce_related_products' ) ) {
 		wc_set_loop_prop( 'name', 'related' );
 		wc_set_loop_prop( 'columns', apply_filters( 'woocommerce_related_products_columns', $args['columns'] ) );
 
-		wc_get_template( 'single-product/related.php', $args );
+		// wc_get_template( 'single-product/related.php', $args );
 	}
 }
 

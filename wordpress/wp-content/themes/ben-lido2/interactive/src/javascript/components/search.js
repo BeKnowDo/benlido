@@ -6,20 +6,59 @@ export class Search {
     this.closeTrigger = document.getElementById("search-exit") || undefined;
     this.searchBox =
       document.getElementById("benlido-search-container") || undefined;
+    this.searchButton =
+      document.getElementById("navbar-search-button") || undefined;
+
+    this.searchForm =
+      document.getElementById("navbar-search-form") || undefined;
+    this.searchInput =
+      document.getElementById("benlido-search-input") || undefined;
+
+    this.searchUrl = "?s=";
+    this.keyword = null;
   }
 
   init() {
-    this.search();
     this.openNavigation();
     this.closeNavigation();
+    this.updateUrl();
+    this.submitForm();
+  }
+
+  submitForm() {
+    if (this.searchForm) {
+      this.searchForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const url = e.target.getAttribute("action");
+        window.location.href = url;
+      });
+    }
   }
 
   search() {
-    if (this.searchIcon) {
-      const button = this.searchIcon;
+    if (this.searchButton) {
+      const button = this.searchButton;
 
       button.addEventListener("click", e => {
-        e.preventDefault();
+        console.log(this.keyword);
+        if (this.keyword !== null) {
+          return true;
+        } else {
+          e.preventDefault();
+        }
+      });
+    }
+  }
+
+  updateUrl() {
+    if (this.searchInput) {
+      let finalUrl;
+
+      this.searchInput.addEventListener("keyup", e => {
+        // console.log(e.target.value);
+        this.keyword = e.target.value;
+        finalUrl = `${this.searchUrl}${this.keyword}&post_type=product`;
+        this.searchForm.setAttribute("action", finalUrl);
       });
     }
   }
