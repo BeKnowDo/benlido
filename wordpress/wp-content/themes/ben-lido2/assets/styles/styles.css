@@ -3083,7 +3083,7 @@ html, body { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; fon
 
 h1, h2, h3, h4, h5, h6 { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; letter-spacing: 1.5px; line-height: 90%; margin: 0; }
 
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: #bacdd4; text-decoration: none; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: #bacdd4; text-decoration: none; }
 
 h1 { font-size: 75px; }
 
@@ -3285,7 +3285,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .btn.add-to-cart.in-cart .fa-plus-circle:before { visibility: visible; display: block; }
 
-.btn.btn-separator { text-shadow: none; padding-left: 0; padding-right: 0; border: 0; }
+.btn.btn-separator { background-color: transparent; text-shadow: none; padding-left: 0; padding-right: 0; border: 0; }
 
 .remove-from-cart { padding: 10px 6px; position: relative; width: 50%; }
 
@@ -3327,7 +3327,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-action-buttons .btn { max-width: 192px; display: inline-block; margin: auto; padding-left: 0; padding-right: 0; }
 
-.hero-home .hero-image-container { padding-top: 82px; }
+.hero-home[style*="background-image"] { background-size: 66%; background-position: right bottom; padding-top: 80px; }
+
+.hero-home[style*="background-image"] img { visibility: hidden; }
+
+.hero-home[style*="background-image"] .hero-image-container { padding-top: 82px; }
 
 .hero-home .hero-image { margin: 0 0 0 auto; }
 
@@ -3341,7 +3345,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product a { text-transform: uppercase; color: inherit; position: relative; }
 
-.hero-product a[disabled="disabled"] { cursor: not-allowed; pointer-events: auto; }
+.hero-product a[disabled="disabled"] { cursor: not-allowed; pointer-events: auto; opacity: 1; }
 
 .hero-product a[disabled="disabled"]:hover { background-color: #bacdd4; }
 
@@ -3611,6 +3615,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (min-width: 600px) { .hero-action-buttons .btn { max-width: none; } }
 
+@media (max-width: 840px) { .hero-home[style*="background-image"] { background-size: 100%; }
+  .hero-home[style*="background-image"] .hero-image-container { padding-top: 0; }
+  .hero-home .hero-image { margin: 0 0 0 auto; } }
+
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
 @media (min-width: 840px) { .copyright { text-align: left; } }
@@ -3621,8 +3629,6 @@ body { position: relative; padding-top: 52px; outline: none; }
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
 @media (min-width: 840px) { .copyright { text-align: left; } }
-
-@media (min-width: 600px) { .triangle-background { background-position: 98% bottom; background-size: 38%; } }
 
 @media (max-width: 840px) { .back-to-top .column { text-align: center; }
   .back-to-top .column.back-to-top-column { margin-top: 20px; }

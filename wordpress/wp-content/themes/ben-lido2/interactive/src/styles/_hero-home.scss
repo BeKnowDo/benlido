@@ -1,7 +1,20 @@
 .hero {
   &-home {
-    .hero-image-container {
-      padding-top: 82px;
+    &[style*="background-image"] {
+      background-size: 66%;
+      background-position: right bottom;
+      padding-top: 80px;
+
+      img {
+        visibility: hidden;
+      }
+
+      .hero-image-container {
+        padding-top: 82px;
+
+        img {
+        }
+      }
     }
 
     .hero-image {

@@ -1,4 +1,25 @@
-@media (min-width: $size-md) {
+@media (max-width: $size-md) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        // background: none !important;
+        background-size: 100%;
+        img {
+          // visibility: visible;
+        }
+        .hero-image-container {
+          padding-top: 0;
+
+          img {
+          }
+        }
+      }
+
+      .hero-image {
+        margin: 0 0 0 auto;
+      }
+    }
+  }
 }
 @media (min-width: $size-sm) {
 }

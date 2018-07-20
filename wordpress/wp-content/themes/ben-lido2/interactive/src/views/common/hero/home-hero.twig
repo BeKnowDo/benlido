@@ -8,7 +8,7 @@
       {% set backgroundClassname = ''%}
     {% endif %}
 
-    <div class="hero hero-home {{ backgroundClassname }}">
+    <div class="hero hero-home {{ backgroundClassname }}" {% if hero.image %} style="background-image: url({{hero.image}})" {% endif %}>
 
       <div class="columns">
 
