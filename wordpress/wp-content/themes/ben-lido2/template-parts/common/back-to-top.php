@@ -59,15 +59,18 @@ if (is_shop() || is_product_category()) {
             $delivery_frequency_page = get_field('delivery_frequency_page','option');
             $bags_page = get_field('bags_page','option');
         }
+        /*
         if (!empty($delivery_frequency_page) && is_object($delivery_frequency_page)) {
             $nextStep = get_permalink($delivery_frequency_page);
         }
+        */
+        $nextStep = wc_get_cart_url();
         if (!empty($bags_page) && is_object($bags_page)) {
             $previousStep = get_permalink($bags_page);
         }
         $back = 'Back to Bags';
         $current = 'Add Item to Kit';
-        $next = 'Delivery Frequency';
+        $next = 'View Kit';
         $stepNavigation = array(
             'previousStep' => $previousStep,
             'back' => $back,

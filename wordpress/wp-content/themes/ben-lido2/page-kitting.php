@@ -5,6 +5,7 @@
 //print_r (get_intermediate_image_sizes());
     $kit_id = 0;
     global $kit_id;
+    $success = false;
     if ($_REQUEST['buy_kit']) {
         $buy_kit = $_REQUEST['buy_kit'];
         if ($buy_kit == 'true') {

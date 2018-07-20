@@ -141,7 +141,7 @@ function bl_process_checkout_url($url) {
     return $url;
 }
 
-add_filter( 'woocommerce_get_checkout_url', 'bl_process_checkout_url', 50 );
+//add_filter( 'woocommerce_get_checkout_url', 'bl_process_checkout_url', 50 );
 
 if (!function_exists('bl_set_purchase_flow')) {
     function bl_set_purchase_flow($flow=1) {
@@ -391,7 +391,7 @@ if (!function_exists('bl_add_current_kit_to_cart')) {
                 $bag_cat_id = get_field('bag_category','option');
             }
             $meta = array('category'=>$bag_cat_id); 
-            $res = WC()->cart->add_to_cart($bag_id,1,0,array(),$meta);
+            //$res = WC()->cart->add_to_cart($bag_id,1,0,array(),$meta);
 
         }
         $items = $kit_list['items'];
@@ -405,6 +405,9 @@ if (!function_exists('bl_add_current_kit_to_cart')) {
                 WC()->cart->add_to_cart($product_id,$quantity,$variation_id,array(),$meta);
             }
         }
+        //print_r ($items);
+        //die;
+        /*
         if (function_exists('get_field')) {
             $delivery_frequency_page = get_field('delivery_frequency_page','option');
         }
@@ -414,6 +417,11 @@ if (!function_exists('bl_add_current_kit_to_cart')) {
         if (!empty($delivery_frequency_page_url)) {
             wp_redirect($delivery_frequency_page_url);
         }
+        */
+        // redirect to the cart page
+        wp_redirect(wc_get_cart_url());
+        exit;
+        //return true;
         
     }
 }
