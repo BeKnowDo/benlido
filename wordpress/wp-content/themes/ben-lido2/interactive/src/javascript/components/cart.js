@@ -129,8 +129,12 @@ export class Cart {
               if (variation_id.length > 0 && product_id.length > 0) {
                 if (
                   el.classList.contains("self-kit") ||
-                  el.classList.contains("prebuilt-kit")
+                  el.classList.contains("prebuilt-kit") ||
+                  el.classList.contains("in-kit-detail")
                 ) {
+                  if (el.classList.contains("in-kit")) {
+                    returnURL = 'in-kit';
+                  }
                   if (el.classList.contains("changed")) {
                     this.addItemToCart(
                       product_id,
@@ -768,7 +772,7 @@ export class Cart {
       .then(response => {
         if (response.error) {
         } else {
-          if (returnURL.length > 1) {
+          if (returnURL.length > 0 && returnURL != 'in-cart') {
             document.location.href = returnURL;
           } else {
             this.updateCount(response);

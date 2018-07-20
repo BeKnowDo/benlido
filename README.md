@@ -28,6 +28,7 @@ wp core install --url="benlido.urbanpixels.localhost" --admin_user="admin" --adm
 ```
 wp db import wordpress_sql_file.sql
 wp search-replace benlido.urbanpixels.localhost your-hostname.urbanpixels.localhost
+wp option set woocommerce_force_ssl_checkout 'no'
 wp check-update
 ```
 

@@ -433,6 +433,25 @@ if (!function_exists('bl_add_to_cart')) {
         echo "\n";
         print_r ($meta);
         */
+        // if it is a bag, we'll switch with another one
+        $bag_category = '';
+        if (function_exists('get_field')) {
+            $bag_category = get_field('bag_category','option');
+            //print_r($bag_category);
+        }
+        if ($bag_category == $category_id) {
+            $bag = bl_get_bag_from_cart();
+            // we're going to remove the existing bag before adding the new one.
+            if ($bag) {
+                $bag_product_id = $bag['id'];
+                $bag_category_id = $bag['category_id'];
+                $bag_quantity = $bag['count'];
+                $bag_variation_id = null; // NOTE: the product_id is the variation ID
+                if (function_exists('WC') && !empty(WC()->cart)) {
+                    bl_remove_from_cart($bag_product_id,$bag_variation_id,$bag_quantity);
+                }
+            }
+        }
         $res = WC()->cart->add_to_cart($product_id,$quantity,$variation_id,array(),$meta);
         return $res;
     }
@@ -460,13 +479,18 @@ if (!function_exists('bl_remove_from_cart')) {
                     $match_key = $hash;
                     $match_quantity = $temp_quantity;
                 }
+                // maybe product_id is the variation ID
+                if ($temp_variation_id == $product_id && $variation_id == 0) {
+                    $match_key = $hash;
+                    $match_quantity = $temp_quantity;
+                }
                 
             }
         }
         if (!empty($match_key) && $match_quantity > 0) {
             // we're just going to remove that whole line for now
             
-            $final_quantity = intval($match_quantity) - 1;
+            $final_quantity = intval($match_quantity) - $quantity;
             if ($final_quantity > 0) {
                 $response = WC()->cart->set_quantity($match_key, $final_quantity);
             } else {
