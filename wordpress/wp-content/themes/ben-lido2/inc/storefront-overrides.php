@@ -59,7 +59,6 @@ function bl_storefront_overrides() {
 			add_action('woocommerce_before_main_content','bl_breadcrumb',4);
 		}
 		
-		
 		if (is_shop() && !is_search() ) {
 			add_action('woocommerce_before_main_content','bl_bag_hero',5);
 		}
@@ -80,6 +79,7 @@ function bl_storefront_overrides() {
 		}
 		
 	}
+
 }
 
 add_action( 'wp', 'bl_storefront_overrides' );
@@ -333,6 +333,11 @@ function bl_order_received_title( $title, $id ) {
 		$title = "Welcome to the Club";
 	}
 	return $title;
+}
+
+
+function bl_in_page_search_form() {
+	get_template_part('template-parts/common/navigation/search-in','page');
 }
 
 

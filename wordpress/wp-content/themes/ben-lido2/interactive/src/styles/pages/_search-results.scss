@@ -1,4 +1,12 @@
 .search-results {
+  #content {
+    background-color: $white;
+  }
+
+  .hero-title-copy {
+    background-color: $white;
+  }
+
   &-container {
     padding-top: 58px;
   }

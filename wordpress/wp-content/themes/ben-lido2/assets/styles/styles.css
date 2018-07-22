@@ -3611,6 +3611,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .no-bag-needed { display: block; }
 
+.search-results #content { background-color: #fff; }
+
+.search-results .hero-title-copy { background-color: #fff; }
+
 .search-results-container { padding-top: 58px; }
 
 .search-results .back-to-top { border: 0; }
