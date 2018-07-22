@@ -2,13 +2,14 @@
   <i id="search-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
 
   <div class="container max-width-lg">
-    <form id="navbar-search-form" action="/?s=" method="get" class="columns col-gapless search-in-page">
+    <form id="navbar-search-form" action="/" method="get" class="columns col-gapless search-in-page">
       <div class="column col-12">
         <h1 class="search-in-page-header text-center">SEARCH</h1>
       </div>
 
       <div class="column col-xs-10 col-sm-10 col-11">
-        <input required value="{{term}}" class="form-input benlido-search-input search-in-page-input" type="search" aria-label="search text" id="benlido-search-input" name="search" placeholder="Search for products..."/>
+        <input required value="{{term}}" class="form-input benlido-search-input search-in-page-input" type="search" aria-label="search text" id="benlido-search-input" name="s" placeholder="Search for products..."/>
+        <input type="hidden" name="post_type" value="product" />
       </div>
 
       <div class="column col-xs-2 col-sm-2 col-md-1 col-1">

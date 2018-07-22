@@ -64,9 +64,9 @@ function bl_storefront_overrides() {
 		}
 
 		if (is_shop() || is_product_category() || is_product_tag()) {
-			//if (!is_search()) {
+			if (!is_search()) {
 				add_action('woocommerce_before_main_content','bl_header',5);
-			//}
+			}
 			
 		}
 
@@ -296,6 +296,9 @@ if ( ! function_exists( 'storefront_before_content' ) ) {
 		if (is_shop() || is_product_category() || is_product_tag() || is_cart() || is_checkout()):
 		?>
 		<div class="bg-grey">
+			<?php if (is_search()):?>
+				<?php get_template_part( 'template-parts/common/navigation/search-in','page' );?>
+			<?php endif;?>
 			<div class="max-width-xl shop-landing-featured">
 				<div class="columns">
 					<?php if (!is_search()):?>

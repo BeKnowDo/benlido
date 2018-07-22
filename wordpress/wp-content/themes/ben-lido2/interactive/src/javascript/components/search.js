@@ -21,7 +21,7 @@ export class Search {
   init() {
     this.openNavigation();
     this.closeNavigation();
-    this.updateUrl();
+    //this.updateUrl();
     this.submitForm();
   }
 
@@ -50,6 +50,7 @@ export class Search {
     }
   }
 
+  // not being used
   updateUrl() {
     if (this.searchInput) {
       let finalUrl;

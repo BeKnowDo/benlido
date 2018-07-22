@@ -1,6 +1,9 @@
 <?php
-    get_template_part( 'template-parts/common/navigation/search-in','page' );
+    // this is now in storefront-overrides.php
+    //get_template_part( 'template-parts/common/navigation/search-in','page' );
+
 ?>
+
 
 <div class="bg-grey search-results-container">
 
@@ -23,11 +26,11 @@
     <?php
         get_template_part( 'template-parts/common/back-to','top' );
     ?>
-    <?php else:?>
+<?php else:?>
     <h3>No Results.</h3>
-    
-    <?php
-        endif
-    ;?> 
+
+<?php
+    endif
+;?> 
     
 </div>
