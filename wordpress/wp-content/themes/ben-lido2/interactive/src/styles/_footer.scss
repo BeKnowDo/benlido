@@ -6,6 +6,10 @@
 
   .social-media-links {
     padding-top: 0;
+    a {
+      &:hover {
+      }
+    }
   }
 
   &-primary-items {
@@ -22,6 +26,9 @@
       color: $grey;
       display: inline-block;
       font-size: 15px;
+      &:hover {
+        color: $blue-shale;
+      }
     }
   }
 }

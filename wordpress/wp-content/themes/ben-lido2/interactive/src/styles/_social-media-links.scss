@@ -1,8 +1,14 @@
 .social-media-links {
   padding-top: 14px;
+
+  li {
+    letter-spacing: 1px;
+  }
+
   a {
+    color: $white;
     &:hover {
-      color: $white;
+      color: $blue-shale;
     }
   }
 }

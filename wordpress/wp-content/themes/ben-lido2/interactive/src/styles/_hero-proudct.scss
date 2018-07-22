@@ -2,9 +2,11 @@
   padding: 44px 20px;
   border-bottom: $grey-border;
   position: relative;
+  &-info-column {
+    align-self: center;
+  }
 
   a {
-    text-transform: uppercase;
     color: inherit;
     position: relative;
     &[disabled="disabled"] {
@@ -34,6 +36,7 @@
 
   &-copy {
     color: $medium-grey;
+    line-height: 140%;
   }
 
   &-price {

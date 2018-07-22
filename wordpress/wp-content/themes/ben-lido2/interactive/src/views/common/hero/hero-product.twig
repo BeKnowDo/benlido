@@ -27,13 +27,15 @@
   {% endif %}
 
   <div class="hero-product bg-white {{ className }}">
+
     {% if items.disabled == true %}
       <div class="hero-product-disabled">
         <h1 class="hero-product-disabled-header">{{ items.coming_soon }}</h1>
       </div>
     {% endif %}
+
     <div class="columns text-center">
-      <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
+      <div class="column col-4 col-xs-12 col-sm-12 col-md-12 col-mx-auto hero-product-info-column">
 
         {% if items.logo %}
           <a href="{{items.href}}" title="">
@@ -42,10 +44,13 @@
         {% endif %}
 
         <h1 class="hero-product-header">
+
           <a href="{{items.href}}" title="">
             {{items.header}}
           </a>
+
         </h1>
+
         <p class="hero-product-copy">{{items.copy}}</p>
 
         {% if items.price %}
@@ -56,6 +61,7 @@
 
         {% if items.swatches %}
           {% set disabled = ' disabled="disabled"' %}
+
           <div class="columns bl-product-swatches">
             {% for swatch in items.swatches %}
               {% set selected = "" %}
@@ -71,15 +77,16 @@
                   {% endif %}
                 </a>
               </div>
-
             {% endfor %}
           </div>
+
         {% endif %}
         <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="{{pickedCopy}}">
           {{pickedCopy}}
         </a>
       </div>
-      <div class="column col-6 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
+
+      <div class="column col-7 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
         <a class="hero-product-bag-link" href="{{items.bagURL}}" title="{{items.header}}">
           {% if items.promo is defined %}
             <p class="hero-product-promo">
@@ -89,6 +96,7 @@
           <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}" srcset="{{items.srcset}}"/>
         </a>
       </div>
+
     </div>
   </div>
 
