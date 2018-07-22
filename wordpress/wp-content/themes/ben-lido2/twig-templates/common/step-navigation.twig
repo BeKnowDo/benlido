@@ -15,7 +15,7 @@
         </div>
         <div class="column col-4 text-right">
 
-          {% if stepNavigation.next != '' %}
+          {% if stepNavigation.next is defined %}
 
             <a class="btn btn-primary btn-lg hide-md {{stepNavigation.nextCss}}" href="{{stepNavigation.nextStep}}" title="{{stepNavigation.next}}">
               <span class="step-navigation-text-next">

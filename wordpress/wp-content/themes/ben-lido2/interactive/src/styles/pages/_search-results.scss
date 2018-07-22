@@ -3,12 +3,18 @@
     background-color: $white;
   }
 
+  .related {
+    &.products {
+      display: none;
+    }
+  }
+
   .hero-title-copy {
     background-color: $white;
   }
 
   &-container {
-    padding-top: 58px;
+    padding-top: 14px;
   }
 
   .back-to-top {
