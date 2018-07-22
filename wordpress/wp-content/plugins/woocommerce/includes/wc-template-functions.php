@@ -1783,22 +1783,22 @@ if ( ! function_exists( 'woocommerce_review_display_comment_text' ) ) {
 	}
 }
 
-// if ( ! function_exists( 'woocommerce_output_related_products' ) ) {
+if ( ! function_exists( 'woocommerce_output_related_products' ) ) {
 
-// 	/**
-// 	 * Output the related products.
-// 	 */
-// 	function woocommerce_output_related_products() {
+	/**
+	 * Output the related products.
+	 */
+	function woocommerce_output_related_products() {
 
-// 		$args = array(
-// 			'posts_per_page' => 4,
-// 			'columns'        => 4,
-// 			'orderby'        => 'rand', // @codingStandardsIgnoreLine.
-// 		);
+		$args = array(
+			'posts_per_page' => 4,
+			'columns'        => 4,
+			'orderby'        => 'rand', // @codingStandardsIgnoreLine.
+		);
 
-// 		woocommerce_related_products( apply_filters( 'woocommerce_output_related_products_args', $args ) );
-// 	}
-// }
+		woocommerce_related_products( apply_filters( 'woocommerce_output_related_products_args', $args ) );
+	}
+}
 
 if ( ! function_exists( 'woocommerce_related_products' ) ) {
 

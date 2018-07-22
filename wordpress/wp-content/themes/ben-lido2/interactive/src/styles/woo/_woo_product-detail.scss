@@ -4,6 +4,10 @@
   }
 
   .woocommerce-product-gallery {
+    img {
+      height: auto;
+      width: auto;
+    }
   }
 
   .woocommerce-product-gallery__image {
