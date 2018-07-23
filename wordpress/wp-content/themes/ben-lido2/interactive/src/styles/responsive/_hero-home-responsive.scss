@@ -2,16 +2,14 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        // background: none !important;
-        background-size: 100%;
+        background-size: 110%;
+
         img {
-          // visibility: visible;
+          max-height: 360px;
         }
+
         .hero-image-container {
           padding-top: 0;
-
-          img {
-          }
         }
       }
 
@@ -21,5 +19,31 @@
     }
   }
 }
-@media (min-width: $size-sm) {
+
+@media (max-width: $size-sm) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        background-size: 120%;
+
+        img {
+          max-height: 200px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $size-xs) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        background-size: 120%;
+
+        img {
+          max-height: 100px;
+        }
+      }
+    }
+  }
 }

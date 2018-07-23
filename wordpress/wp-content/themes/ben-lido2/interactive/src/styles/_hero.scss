@@ -9,6 +9,12 @@
     @include knockout(50px, 400);
   }
 
+  &-sub-header {
+    @include sentinel(16px, 400);
+    letter-spacing: normal;
+    padding: 0 0 $unit-2;
+  }
+
   &-copy {
     padding: 20px 0 0;
     margin: 0;

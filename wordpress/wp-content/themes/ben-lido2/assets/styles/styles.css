@@ -3315,6 +3315,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; }
 
+.hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: normal; padding: 0 0 0.8rem; }
+
 .hero-copy { padding: 20px 0 0; margin: 0; }
 
 .hero-shape { display: block; }
@@ -3635,9 +3637,16 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (min-width: 600px) { .hero-action-buttons .btn { max-width: none; } }
 
-@media (max-width: 840px) { .hero-home[style*="background-image"] { background-size: 100%; }
+@media (max-width: 840px) { .hero-home[style*="background-image"] { background-size: 110%; }
+  .hero-home[style*="background-image"] img { max-height: 360px; }
   .hero-home[style*="background-image"] .hero-image-container { padding-top: 0; }
   .hero-home .hero-image { margin: 0 0 0 auto; } }
+
+@media (max-width: 600px) { .hero-home[style*="background-image"] { background-size: 120%; }
+  .hero-home[style*="background-image"] img { max-height: 200px; } }
+
+@media (max-width: 480px) { .hero-home[style*="background-image"] { background-size: 120%; }
+  .hero-home[style*="background-image"] img { max-height: 100px; } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
