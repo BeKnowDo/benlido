@@ -6,16 +6,10 @@ export class Search {
     this.closeTrigger = document.getElementById("search-exit") || undefined;
     this.searchBox =
       document.getElementById("benlido-search-container") || undefined;
-    this.searchButton =
-      document.getElementById("navbar-search-button") || undefined;
 
-    this.searchForm =
-      document.getElementById("navbar-search-form") || undefined;
-    this.searchInput =
-      document.getElementById("benlido-search-input") || undefined;
+    this.searchForms =
+      document.querySelectorAll(".search-in-page") || undefined;
 
-    this.searchUrl = "?s=";
-    this.keyword = null;
   }
 
   init() {
@@ -26,43 +20,26 @@ export class Search {
   }
 
   submitForm() {
-    if (this.searchForm) {
-      this.searchForm.addEventListener("submit", e => {
-        e.preventDefault();
-        const url = e.target.getAttribute("action");
-        window.location.href = url;
-      });
-    }
-  }
-
-  search() {
-    if (this.searchButton) {
-      const button = this.searchButton;
-
-      button.addEventListener("click", e => {
-        console.log(this.keyword);
-        if (this.keyword !== null) {
-          return true;
-        } else {
+    if (this.searchForms) {
+      this.searchForms.forEach( el => {
+        el.addEventListener("submit", e => {
           e.preventDefault();
-        }
+          var passed = false;
+          el.querySelectorAll(".search-in-page-input").forEach(textbox => {
+            if (textbox.value.length > 0) {
+              passed = true;
+            }
+          });
+          if (passed == true) {
+            el.submit();
+          } else {
+            
+          }
+        });
       });
     }
   }
 
-  // not being used
-  updateUrl() {
-    if (this.searchInput) {
-      let finalUrl;
-
-      this.searchInput.addEventListener("keyup", e => {
-        // console.log(e.target.value);
-        this.keyword = e.target.value;
-        finalUrl = `${this.searchUrl}${this.keyword}&post_type=product`;
-        this.searchForm.setAttribute("action", finalUrl);
-      });
-    }
-  }
 
   openNavigation() {
     // add toggling event to target
