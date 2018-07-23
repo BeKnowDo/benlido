@@ -1,0 +1,5 @@
+.hero-product {
+  & ~ .hero-title-copy {
+    border-top: 0;
+  }
+}

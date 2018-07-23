@@ -4,14 +4,12 @@
     flex-direction: column;
     width: 100%;
     background-color: $silver-white;
-    padding: 93px 10px 100px;
+    border-top: $grey-border;
+    padding: 50px 10px;
 
     .columns {
       max-width: 850px;
       margin: 0 auto;
-    }
-
-    .product {
     }
   }
 
@@ -19,9 +17,12 @@
     @include sentinel(25px, 400);
     letter-spacing: normal;
     color: $grey;
-    padding: 0 0 60px;
+    padding: 0 0 25px;
     max-width: 850px;
-    margin: 0 auto;
+    margin: 0 auto 0;
     text-align: center;
+    &:first-child {
+      margin-bottom: 0;
+    }
   }
 }

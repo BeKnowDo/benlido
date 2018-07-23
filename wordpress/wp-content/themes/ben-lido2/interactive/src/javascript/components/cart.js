@@ -133,7 +133,7 @@ export class Cart {
                   el.classList.contains("in-kit-detail")
                 ) {
                   if (el.classList.contains("in-kit")) {
-                    returnURL = 'in-kit';
+                    returnURL = "in-kit";
                   }
                   if (el.classList.contains("changed")) {
                     this.addItemToCart(
@@ -464,11 +464,16 @@ export class Cart {
                 el.querySelector(".fa-minus-circle") || undefined;
               let buttonText =
                 el.querySelector(".add-to-cart-text") || undefined;
+
               if (typeof buttonText != "undefined" && buttonText.dataset) {
                 defaultText = buttonText.dataset.defaultText || "";
                 cartText = buttonText.dataset.cartText || "";
               }
-              //console.log(el);
+
+              // prevent native clicks on 'add-to-cart' anchors
+              targetButton.addEventListener("click", e => {
+                e.preventDefault();
+              });
 
               if (
                 typeof itemCount != "undefined" &&
@@ -527,10 +532,10 @@ export class Cart {
   addItem() {
     if (this.addToCartButtons.length > 0) {
       this.addToCartButtons.forEach(button => {
-        const removeItemIcon = button.querySelector(".fa-minus-circle");
+        // const removeItemIcon = button.querySelector(".fa-minus-circle");
         const addItemIcon = button.querySelector(".fa-plus-circle");
         const text = button.querySelector(".add-to-cart-text");
-        const inCartText = text.dataset.cartText;
+        // const inCartText = text.dataset.cartText;
 
         addItemIcon.addEventListener("click", e => {
           e.preventDefault();
@@ -772,7 +777,7 @@ export class Cart {
       .then(response => {
         if (response.error) {
         } else {
-          if (returnURL.length > 0 && returnURL != 'in-cart') {
+          if (returnURL.length > 0 && returnURL != "in-cart") {
             document.location.href = returnURL;
           } else {
             this.updateCount(response);
