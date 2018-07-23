@@ -168,5 +168,3 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>
 
-
-<?php get_template_part( 'template-parts/common/back-to','top' ); ?>
