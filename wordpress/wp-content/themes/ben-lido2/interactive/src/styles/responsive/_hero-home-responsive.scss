@@ -24,7 +24,7 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        background-size: 120%;
+        background-size: 100%;
 
         img {
           max-height: 200px;
@@ -38,7 +38,7 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        background-size: 120%;
+        background-size: 100%;
 
         img {
           max-height: 100px;

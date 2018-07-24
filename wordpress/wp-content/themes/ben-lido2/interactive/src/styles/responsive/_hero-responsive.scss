@@ -21,6 +21,7 @@
 
 @media (max-width: $size-xs) {
   .hero {
+    padding-bottom: 0;
     &-header {
       font-size: 75px;
     }
