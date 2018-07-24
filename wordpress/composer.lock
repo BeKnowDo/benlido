@@ -545,15 +545,15 @@
         },
         {
             "name": "wpackagist-plugin/mailchimp-for-wp",
-            "version": "4.2.3",
+            "version": "4.2.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/mailchimp-for-wp/",
-                "reference": "tags/4.2.3"
+                "reference": "tags/4.2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -605,15 +605,15 @@
         },
         {
             "name": "wpackagist-plugin/post-types-order",
-            "version": "1.9.3.6",
+            "version": "1.9.3.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/post-types-order/",
-                "reference": "tags/1.9.3.6"
+                "reference": "tags/1.9.3.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-types-order.1.9.3.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/post-types-order.1.9.3.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -625,15 +625,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.3.1",
+            "version": "3.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.3.1"
+                "reference": "tags/3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.3.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -765,15 +765,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "7.7.3",
+            "version": "7.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/7.7.3"
+                "reference": "tags/7.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.7.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.8.zip",
                 "reference": null,
                 "shasum": null
             },

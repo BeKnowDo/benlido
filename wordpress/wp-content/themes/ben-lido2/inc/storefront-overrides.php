@@ -13,6 +13,11 @@ function bl_storefront_overrides() {
 		add_action('woocommerce_after_main_content','bl_storefront_main_content_wrapper_end',99);
 	}
 
+	if (is_cart()) {
+		add_action('storefront_page','bl_add_back_to_top',100);
+	}
+	
+
 
 	//add_action('storefront_footer','bl_footer_menus',10);
 
@@ -106,6 +111,10 @@ function bl_login_redirect( $redirect, $user ) {
 }
 
 add_filter( 'woocommerce_login_redirect', 'bl_login_redirect' );
+
+function bl_add_back_to_top() {
+	get_template_part( 'template-parts/common/back-to','top' );
+}
 
 
 if ( ! function_exists( 'storefront_product_search' ) ) {
