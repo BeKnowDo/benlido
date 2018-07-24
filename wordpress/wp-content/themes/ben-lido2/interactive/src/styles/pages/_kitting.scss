@@ -1,3 +1,14 @@
 .kitting-page {
   padding-bottom: 30px;
+
+  .hero {
+    &-product {
+      &.bg-white {
+        background-color: transparent;
+      }
+      &-copy {
+        display: none;
+      }
+    }
+  }
 }

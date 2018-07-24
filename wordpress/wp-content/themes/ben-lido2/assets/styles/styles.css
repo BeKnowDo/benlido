@@ -3639,6 +3639,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .kitting-page { padding-bottom: 30px; }
 
+.kitting-page .hero-product.bg-white { background-color: transparent; }
+
+.kitting-page .hero-product-copy { display: none; }
+
 .hero-product ~ .hero-title-copy { border-top: 0; }
 
 @media (min-width: 600px) { .hero-action-buttons .btn { max-width: none; } }
