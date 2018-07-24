@@ -1,7 +1,8 @@
 @media (max-width: $size-md) {
   .hero {
+    padding: 100px 20px;
     &-header {
-      font-size: 42px;
+      // font-size: 42px;
     }
   }
 }
@@ -9,7 +10,7 @@
 @media (max-width: $size-sm) {
   .hero {
     &-header {
-      font-size: 32px;
+      font-size: 75px;
     }
     &-action-buttons {
       .btn {
@@ -23,7 +24,6 @@
   .hero {
     padding-bottom: 0;
     &-header {
-      font-size: 75px;
     }
   }
 }

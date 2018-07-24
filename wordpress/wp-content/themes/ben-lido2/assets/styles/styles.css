@@ -3321,9 +3321,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .category-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; padding: 10px 0; color: #999999; }
 
-.hero { text-align: center; color: #979797; padding: 100px 20px 200px; }
+.hero { text-align: center; color: #979797; padding: 150px 20px; }
 
-.hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; }
+.hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 68px; font-weight: 400; font-style: normal; }
 
 .hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: normal; padding: 0; }
 
@@ -3651,25 +3651,24 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product ~ .hero-title-copy { border-top: 0; }
 
-@media (max-width: 840px) { .hero-header { font-size: 42px; } }
+@media (max-width: 840px) { .hero { padding: 100px 20px; } }
 
-@media (max-width: 600px) { .hero-header { font-size: 32px; }
+@media (max-width: 600px) { .hero-header { font-size: 75px; }
   .hero-action-buttons .btn { max-width: none; } }
 
-@media (max-width: 480px) { .hero { padding-bottom: 0; }
-  .hero-header { font-size: 75px; } }
+@media (max-width: 480px) { .hero { padding-bottom: 0; } }
 
 @media (max-width: 840px) { .navbar-dropdown-primary-items { font-size: 34px; } }
 
 @media (max-width: 840px) { .hero-home[style*="background-image"] { background-size: 110%; }
-  .hero-home[style*="background-image"] img { max-height: 360px; }
+  .hero-home[style*="background-image"] img { max-height: 660px; }
   .hero-home[style*="background-image"] .hero-image-container { padding-top: 0; }
   .hero-home .hero-image { margin: 0 0 0 auto; } }
 
-@media (max-width: 600px) { .hero-home[style*="background-image"] { background-size: 100%; }
+@media (max-width: 600px) { .hero-home { padding-bottom: 250px; }
   .hero-home[style*="background-image"] img { max-height: 200px; } }
 
-@media (max-width: 480px) { .hero-home[style*="background-image"] { background-size: 100%; }
+@media (max-width: 480px) { .hero-home[style*="background-image"] { background-size: 112%; }
   .hero-home[style*="background-image"] img { max-height: 100px; } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
@@ -3701,6 +3700,15 @@ body { position: relative; padding-top: 52px; outline: none; }
   .mobile-navigation .category-list-breadcrumbs a { display: block; position: relative; padding: 14px 16px; }
   .mobile-navigation .category-list-breadcrumbs a:after { display: inline-block; position: absolute; bottom: 10px; right: 16px; padding: 0 0 0 5px; font-family: "Font Awesome 5 Pro"; font-size: 18px; content: "\f078"; }
   .mobile-navigation .category-list-parent-group { display: none; padding: 0 20px 10px; } }
+
+@media (max-width: 840px) { h1 { font-size: 60px; } }
+
+@media (max-width: 600px) { h1 { font-size: 50px; } }
+
+@media (max-width: 840px) { .bl-home-page .hero-row .column:last-child { border-top: 1px solid #e4e4e4; }
+  .bl-home-page .hero-row h1 { font-size: 45px; } }
+
+@media (max-width: 600px) { .bl-home-page .hero-row h1 { font-size: 75px; } }
 
 .product-tile-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
 

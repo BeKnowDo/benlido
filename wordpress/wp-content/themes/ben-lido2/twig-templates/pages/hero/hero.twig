@@ -1,13 +1,13 @@
 <div class="columns">
-    {% for hero in homePageHeros %}
-        <div class="column col-6 col-xs-12">
-            <div class="hero">
-                <h1 class="hero-header">{{hero.header}}</h1>
-                <p class="hero-copy">{{hero.copy}}</p>
-                <div class="hero-image-container">
-                    <img class="hero-image" src="{{hero.image}}" alt="{{hero.header}}"/>
-                </div>
-            </div>
+  {% for hero in homePageHeros %}
+    <div class="column col-6 col-xs-12 col-sm-12">
+      <div class="hero">
+        <h1 class="hero-header">{{hero.header}}</h1>
+        <p class="hero-copy">{{hero.copy}}</p>
+        <div class="hero-image-container">
+          <img class="hero-image" src="{{hero.image}}" alt="{{hero.header}}"/>
         </div>
-    {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
 </div>

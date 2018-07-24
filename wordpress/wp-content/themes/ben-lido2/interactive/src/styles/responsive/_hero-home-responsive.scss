@@ -5,7 +5,7 @@
         background-size: 110%;
 
         img {
-          max-height: 360px;
+          max-height: 660px;
         }
 
         .hero-image-container {
@@ -23,8 +23,9 @@
 @media (max-width: $size-sm) {
   .hero {
     &-home {
+      padding-bottom: 250px;
       &[style*="background-image"] {
-        background-size: 100%;
+        // background-size: 100%;
 
         img {
           max-height: 200px;
@@ -38,7 +39,7 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        background-size: 100%;
+        background-size: 112%;
 
         img {
           max-height: 100px;
