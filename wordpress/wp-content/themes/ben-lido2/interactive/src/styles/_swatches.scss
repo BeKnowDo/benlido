@@ -20,11 +20,11 @@
 .bl-product-swatches {
   padding: 0;
   margin: 20px auto;
-  max-width: 150px;
+  max-width: 160px;
 
   .swatch {
     &-wrapper {
-      max-width: 50px;
+      width: 33%;
       border: none;
       float: none;
       margin: 0;
@@ -61,5 +61,22 @@
   img {
     border-radius: 50%;
     display: block;
+  }
+}
+
+.swatch-control {
+  justify-content: center;
+  display: flex;
+  max-width: 300px;
+  margin: 0 auto;
+
+  .select-option {
+    text-align: center;
+    width: 33%;
+    border: 0;
+  }
+
+  .swatch-anchor {
+    display: inline-block;
   }
 }
