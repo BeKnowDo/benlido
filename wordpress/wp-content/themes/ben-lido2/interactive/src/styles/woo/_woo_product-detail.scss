@@ -1,9 +1,4 @@
 .product {
-  &.type-product {
-    display: flex;
-    flex-direction: row;
-  }
-
   .summary {
     &.entry-summary {
       // display: flex;
@@ -112,6 +107,9 @@
 .single-product {
   .product {
     &.type-product {
+      display: flex;
+      flex-direction: row;
+
       .woocommerce-product-gallery {
         float: none;
         width: 40%;
