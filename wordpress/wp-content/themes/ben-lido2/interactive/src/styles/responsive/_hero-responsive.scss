@@ -1,9 +1,28 @@
-@media (min-width: $size-sm) {
+@media (max-width: $size-md) {
   .hero {
+    &-header {
+      font-size: 42px;
+    }
+  }
+}
+
+@media (max-width: $size-sm) {
+  .hero {
+    &-header {
+      font-size: 32px;
+    }
     &-action-buttons {
       .btn {
         max-width: none;
       }
+    }
+  }
+}
+
+@media (max-width: $size-xs) {
+  .hero {
+    &-header {
+      font-size: 75px;
     }
   }
 }

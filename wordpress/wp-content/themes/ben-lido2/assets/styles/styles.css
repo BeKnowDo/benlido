@@ -2833,7 +2833,7 @@ a.text-error:visited { color: #ff6003; }
 
 .text-break { hyphens: auto; word-break: break-word; word-wrap: break-word; }
 
-/** Swiper 4.3.3 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 5, 2018 */
+/** Swiper 4.3.2 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 1, 2018 */
 .swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; /* Fix of Webkit flickering */ z-index: 1; }
 
 .swiper-container-no-flexbox .swiper-slide { float: left; }
@@ -3321,7 +3321,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 50px; font-weight: 400; font-style: normal; }
 
-.hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: normal; padding: 0 0 0.8rem; }
+.hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: normal; padding: 0; }
 
 .hero-copy { padding: 20px 0 0; margin: 0; }
 
@@ -3645,7 +3645,14 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product ~ .hero-title-copy { border-top: 0; }
 
-@media (min-width: 600px) { .hero-action-buttons .btn { max-width: none; } }
+@media (max-width: 840px) { .hero-header { font-size: 42px; } }
+
+@media (max-width: 600px) { .hero-header { font-size: 32px; }
+  .hero-action-buttons .btn { max-width: none; } }
+
+@media (max-width: 480px) { .hero-header { font-size: 75px; } }
+
+@media (max-width: 840px) { .navbar-dropdown-primary-items { font-size: 34px; } }
 
 @media (max-width: 840px) { .hero-home[style*="background-image"] { background-size: 110%; }
   .hero-home[style*="background-image"] img { max-height: 360px; }
@@ -3687,25 +3694,6 @@ body { position: relative; padding-top: 52px; outline: none; }
   .mobile-navigation .category-list-breadcrumbs a { display: block; position: relative; padding: 14px 16px; }
   .mobile-navigation .category-list-breadcrumbs a:after { display: inline-block; position: absolute; bottom: 10px; right: 16px; padding: 0 0 0 5px; font-family: "Font Awesome 5 Pro"; font-size: 18px; content: "\f078"; }
   .mobile-navigation .category-list-parent-group { display: none; padding: 0 20px 10px; } }
-
-@media (max-width: 600px) { .product .quantity .screen-reader-text { padding-right: 0.8rem; }
-  .product .qty { max-width: 80px; }
-  .single-product #content .product.type-product { flex-direction: column; }
-  .single-product #content .product.type-product .woocommerce-product-gallery { width: 100%; }
-  .single-product #content .product.type-product .entry-summary { width: 100%; } }
-
-@media (max-width: 600px) { .product .quantity .screen-reader-text { padding-right: 0.8rem; }
-  .product .qty { max-width: 80px; }
-  .single-product #content .product.type-product { flex-direction: column; }
-  .single-product #content .product.type-product .woocommerce-product-gallery { width: 100%; }
-  .single-product #content .product.type-product .entry-summary { width: 100%; } }
-
-@media (max-width: 840px) { .product .summary.entry-summary .price { width: 35%; text-align: right; padding-right: 20px; }
-  .product .cart { width: 50%; } }
-
-@media (max-width: 600px) { .product .summary.entry-summary .price { width: 25%; text-align: right; padding-right: 20px; }
-  .product .summary.entry-summary .button { width: 100%; }
-  .product .cart { width: 65%; } }
 
 .product-tile-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
 
@@ -4034,5 +4022,24 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (min-width: 840px) { .woocommerce-order .woocommerce-order-overview { display: flex; flex-wrap: wrap; }
   .woocommerce-order .woocommerce-order-overview li { width: 50%; } }
+
+@media (max-width: 600px) { .product .quantity .screen-reader-text { padding-right: 0.8rem; }
+  .product .qty { max-width: 80px; }
+  .single-product #content .product.type-product { flex-direction: column; }
+  .single-product #content .product.type-product .woocommerce-product-gallery { width: 100%; }
+  .single-product #content .product.type-product .entry-summary { width: 100%; } }
+
+@media (max-width: 600px) { .product .quantity .screen-reader-text { padding-right: 0.8rem; }
+  .product .qty { max-width: 80px; }
+  .single-product #content .product.type-product { flex-direction: column; }
+  .single-product #content .product.type-product .woocommerce-product-gallery { width: 100%; }
+  .single-product #content .product.type-product .entry-summary { width: 100%; } }
+
+@media (max-width: 840px) { .product .summary.entry-summary .price { width: 35%; text-align: right; padding-right: 20px; }
+  .product .cart { width: 50%; } }
+
+@media (max-width: 600px) { .product .summary.entry-summary .price { width: 25%; text-align: right; padding-right: 20px; }
+  .product .summary.entry-summary .button { width: 100%; }
+  .product .cart { width: 65%; } }
 
 /*# sourceMappingURL=styles.css.map */
