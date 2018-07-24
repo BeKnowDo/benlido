@@ -1,14 +1,15 @@
-@import "./_woo_product-tile";
-@import "./_woo_product-row";
-@import "./_woo_product-detail";
-@import "./_woo_my-account";
-@import "./_woo_cart";
-@import "./_woo_checkout";
-@import "./_woo_order-received";
-@import "./_woo_buttons";
-@import "./_woo_notifications";
-@import "./_woo_bags";
-@import "./_woo_footer";
+@import "./woo_product-tile";
+@import "./woo_product-row";
+@import "./woo_product-detail";
+@import "./woo_my-account";
+@import "./woo_cart";
+@import "./woo_checkout";
+@import "./woo_order-received";
+@import "./woo_buttons";
+@import "./woo_notifications";
+@import "./woo_bags";
+@import "./woo_footer";
+@import "./woo_related-products";
 
 // Responsive WooCommerce Overrides
-@import "./responsive/_woo_responsive";
+@import "./responsive/woo_responsive";

@@ -18,6 +18,7 @@ function bl_storefront_overrides() {
 	}
 	
 
+	add_action('bl_thank_you','bl_add_frequency_to_thankyou',10);
 
 	//add_action('storefront_footer','bl_footer_menus',10);
 
@@ -459,6 +460,12 @@ function bl_footer_menus() {
 		</div>
 	</div>
 	<?php
+}
+
+function bl_add_frequency_to_thankyou($order) {
+	global $current_order;
+	$current_order = $order;
+	get_template_part( 'template-parts/pages/thankyou/frequency');
 }
 
 

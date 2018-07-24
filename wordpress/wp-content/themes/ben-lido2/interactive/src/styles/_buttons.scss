@@ -1,10 +1,17 @@
 .btn {
   border-radius: 4px;
+  font-size: 15px;
   // pointer-events: none;
-  text-shadow: $text-shadow;
+  // text-shadow: $text-shadow;
+
   &.btn-lg {
+    font-size: 15px;
     padding: 10px 34px;
     height: auto;
+  }
+
+  &.btn-md {
+    font-size: 15px;
   }
 
   &-no-border {
@@ -12,6 +19,8 @@
   }
 
   &.btn-primary {
+    background-color: #9fb9c4;
+
     &:hover {
       background-color: $brown-grey;
     }

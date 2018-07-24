@@ -1,6 +1,9 @@
 // Responsive size overrides
 $woo-lg: 768px;
 
-@import "./_woo_cart-responsive";
-@import "./_woo_checkout-responsive";
-@import "./_woo_order-received-responsive";
+@import "./woo_cart-responsive";
+@import "./woo_checkout-responsive";
+@import "./woo_order-received-responsive";
+@import "./woo_product-detail-responsive";
+@import "./woo_product-detail-responsive";
+@import "./woo_product-tile-responsive";

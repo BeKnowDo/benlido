@@ -3,6 +3,10 @@
 
   .hero {
     &-product {
+      &-bag-image {
+        max-width: 400px;
+        margin: 0 0 0 auto;
+      }
       &.bg-white {
         background-color: transparent;
       }

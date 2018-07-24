@@ -1,4 +1,11 @@
 .woocommerce {
+  &-shipping-fields {
+    h3 {
+      @include sentinel(32px, 400);
+      letter-spacing: normal;
+    }
+  }
+
   &-checkout {
     background-color: $silver-white;
     .site-main {
@@ -156,7 +163,9 @@
 
     #order_review_heading {
       @include sentinel(32px, 400);
-      padding: 0 0 $unit-10;
+      letter-spacing: normal;
+
+      padding: $unit-6 0 $unit-10;
       color: $medium-grey-2;
     }
 
@@ -169,7 +178,9 @@
     .woocommerce-billing-fields {
       h3 {
         @include sentinel(32px, 400);
+        letter-spacing: normal;
         margin-bottom: $unit-7;
+        padding: $unit-8 0 $unit-4;
         color: $medium-grey-2;
       }
       .input-text,

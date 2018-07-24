@@ -1,0 +1,10 @@
+.bl-home-page {
+  .hero-row {
+    .column {
+      &:last-child {
+        .hero {
+        }
+      }
+    }
+  }
+}

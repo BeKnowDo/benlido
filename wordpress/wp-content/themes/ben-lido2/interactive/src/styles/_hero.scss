@@ -1,18 +1,18 @@
 .hero {
   text-align: center;
   color: $grey;
-  padding: 100px 20px 200px;
+  padding: 150px 20px;
 
   &-header {
     color: $dark-grey;
     text-transform: uppercase;
-    @include knockout(50px, 400);
+    @include knockout(68px, 400);
   }
 
   &-sub-header {
     @include sentinel(16px, 400);
     letter-spacing: normal;
-    padding: 0 0 $unit-2;
+    padding: 0;
   }
 
   &-copy {

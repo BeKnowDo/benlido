@@ -175,11 +175,11 @@
     }
 
     button[name="calc_shipping"] {
+      @include knockout32(18px, 400);
       border-radius: 4px;
       background-color: $primary-color;
       text-shadow: $text-shadow;
       color: $white;
-      @include knockout32(18px, 400);
       padding: $unit-4 $unit-8;
       border: 0;
     }

@@ -559,7 +559,11 @@ function bl_get_bag_from_cart() {
 // gets the current session kit ID
 function bl_get_current_kit_id() {
     $kit_id = 0;
-    $current_page = get_page();
+    $current_page = get_post();
+    $type = '';
+    if (!empty($current_page) && is_object($current_page)) {
+        $type = get_post_type($current_page);
+    }
     $current_page_id = 0;
     $kitting_page_id = 0;
     if (function_exists('get_field')) {
@@ -571,7 +575,7 @@ function bl_get_current_kit_id() {
             $kitting_page_id = $kitting_page->ID;
         }
     }
-    if (!empty($current_page) && is_object($current_page) && isset($current_page->ID)) {
+    if (!empty($current_page) && is_object($current_page) && isset($current_page->ID) && type == 'page') {
         $current_page_id = $current_page->ID;
     }
 
