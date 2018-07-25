@@ -575,7 +575,7 @@ function bl_get_current_kit_id() {
             $kitting_page_id = $kitting_page->ID;
         }
     }
-    if (!empty($current_page) && is_object($current_page) && isset($current_page->ID) && type == 'page') {
+    if (!empty($current_page) && is_object($current_page) && isset($current_page->ID) && $type == 'page') {
         $current_page_id = $current_page->ID;
     }
 
