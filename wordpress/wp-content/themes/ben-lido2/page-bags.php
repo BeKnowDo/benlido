@@ -40,6 +40,10 @@ get_header(); ?>
             </div>
 
             <?php
+                get_template_part( 'template-parts/common/hero/hero-no','bag');
+            ?>
+
+            <?php
             /**
              * Functions hooked in to storefront_page_after action
              *

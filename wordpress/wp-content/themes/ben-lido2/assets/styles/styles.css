@@ -3403,6 +3403,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product-promo > span { color: #fff; max-width: 89px; display: block; }
 
+.hero-no-bag { padding: 100px 20px; }
+
+.hero-no-bag .btn { margin-top: 40px; padding-left: 60px; padding-right: 60px; }
+
 .back-to-top { padding: 30px 10px 10px; border-top: 1px solid #e4e4e4; }
 
 .back-to-top .column:nth-child(1) { margin-bottom: 20px; }
@@ -3670,6 +3674,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (max-width: 480px) { .hero-home[style*="background-image"] { background-size: 112%; }
   .hero-home[style*="background-image"] img { max-height: 100px; } }
+
+@media (max-width: 480px) { .hero-no-bag { padding: 100px 20px; } }
+
+@media (max-width: 600px) { .hero-no-bag { padding: 100px 20px; } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
