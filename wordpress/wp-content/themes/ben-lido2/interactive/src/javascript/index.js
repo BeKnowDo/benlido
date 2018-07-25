@@ -4,7 +4,8 @@ import {
   ProductImageCarousel,
   CategoryMenu,
   Cart,
-  Search
+  Search,
+  Frequency
 } from "./components";
 
 const initializeNavigation = new Navigation().init();
@@ -14,3 +15,4 @@ const initializeScrollToTop = new ScrollToTop().init();
 const productCarousels = new ProductImageCarousel().init();
 const categoryMenu = new CategoryMenu().init();
 const search = new Search().init();
+const frequency = new Frequency().init();

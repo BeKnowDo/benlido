@@ -8,5 +8,6 @@ export const endpoints = {
   selectSwap: '/bl-api/kit/select',
   setKitState: '/bl-api/kit/state',
   setKit: '/bl-api/kit/set',
-  getProductData: '/bl-api/product/get'
+  getProductData: '/bl-api/product/get',
+  setFrequency: '/bl-api/frequency/set'
 };
