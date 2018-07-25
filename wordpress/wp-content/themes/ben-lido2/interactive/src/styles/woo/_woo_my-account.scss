@@ -1,13 +1,130 @@
 .woocommerce-account {
-    // using .btn-lg styles for this
-    .button {
-        padding: 10px 34px;
-        height: auto;
-        margin-bottom: $unit-2;
-        background-color: $primary-color;
-        border-radius: 4px;
-        color: $white;
-        border: 0;
-        box-shadow: none;
+  #content {
+    background-color: $silver-white;
+  }
+  .entry {
+    &-header {
+      text-align: center;
+      padding: $unit-8 $unit-2;
     }
+  }
+
+  .button {
+    padding: 10px 34px;
+    height: auto;
+    margin-bottom: $unit-2;
+    background-color: $primary-color;
+    border-radius: 4px;
+    color: $white;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.bl {
+  &-form-container {
+    .required {
+      color: $blumine;
+    }
+    > .column {
+      background-color: $white;
+      border: $grey-border;
+      border-radius: 4px;
+      padding: $unit-6;
+      margin: 0 0 $unit-6;
+
+      h2 {
+        margin: 0 0 $unit-4;
+      }
+
+      label {
+        margin: 0 0 $unit-4;
+      }
+
+      .form-input {
+        margin: 0 0 $unit-8;
+      }
+    }
+  }
+
+  &-remember-me {
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    .form-label {
+      margin-bottom: 0;
+      padding-bottom: 0;
+
+      input {
+        &.form-input {
+          text-align: center;
+          padding-left: $unit-6;
+
+          max-width: 46px;
+          height: 20px;
+          position: relative;
+          margin-bottom: 0;
+          cursor: pointer;
+
+          &:focus,
+          &:active {
+            outline: thin dotted;
+            box-shadow: none;
+          }
+
+          &:after {
+            position: absolute;
+            z-index: 1;
+            left: -4px;
+            top: -2px;
+
+            content: "";
+            background-color: $silver-white;
+            border: $grey-border;
+            border-radius: 25px;
+            display: block;
+            width: 100%;
+            height: 22px;
+          }
+
+          &:before {
+            transition: left 0.2s ease-in-out, right 0.2s ease-in-out,
+              background-color 0.2s ease-in-out;
+            content: "";
+            position: absolute;
+            z-index: 2;
+            top: -2px;
+            left: -4px;
+            background-color: $grey;
+            border: $grey-border;
+            border-radius: 50%;
+            overflow: hidden;
+
+            width: 22px;
+            height: 22px;
+          }
+
+          &:checked {
+            &:before {
+              background-color: $primary-color;
+              transition: left 0.2s ease-in-out, right 0.2s ease-in-out,
+                background-color 0.2s ease-in-out;
+              left: 18px;
+            }
+          }
+        }
+      }
+      > span {
+        padding-top: 5px;
+      }
+    }
+
+    input {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+  &-login-container {
+    padding: $unit-4;
+  }
 }

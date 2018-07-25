@@ -2153,7 +2153,7 @@ a, ins, u { text-decoration-skip: ink edges; }
 
 abbr[title] { border-bottom: 0.05rem dotted; cursor: help; text-decoration: none; }
 
-kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
+kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
 
 mark { background: #ffe9b3; color: #50596c; border-radius: 0.1rem; padding: .05rem; }
 
@@ -2333,7 +2333,7 @@ textarea.form-input { height: auto; }
 
 .has-icon-right .form-input { padding-right: 1.5rem; }
 
-.form-checkbox, .form-radio, .form-switch { display: block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
+.form-checkbox, .form-radio, .form-switch { display: inline-block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
 
 .form-checkbox input, .form-radio input, .form-switch input { clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; }
 
@@ -2411,8 +2411,6 @@ textarea.form-input { height: auto; }
 
 .has-error .form-checkbox input:focus + .form-icon, .form-checkbox.is-error input:focus + .form-icon, .has-error .form-radio input:focus + .form-icon, .form-radio.is-error input:focus + .form-icon, .has-error .form-switch input:focus + .form-icon, .form-switch.is-error input:focus + .form-icon { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); border-color: #e85600; }
 
-.has-error .form-checkbox input:indeterminate + .form-icon, .form-checkbox.is-error input:indeterminate + .form-icon { background: #e85600; border-color: #e85600; }
-
 .form-input:not(:placeholder-shown):invalid { border-color: #e85600; }
 
 .form-input:not(:placeholder-shown):invalid:focus { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); }
@@ -2431,9 +2429,7 @@ input:disabled + .form-icon, input.disabled + .form-icon { background: #f0f1f4; 
 
 .form-horizontal .form-group { display: flex; flex-wrap: wrap; }
 
-.form-inline { display: inline-block; }
-
-.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
+.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
 
 .label.label-rounded { border-radius: 5rem; padding-left: .4rem; padding-right: .4rem; }
 
@@ -2618,12 +2614,6 @@ a.text-gray:visited { color: #bbc1cd; }
 a.text-light:focus, a.text-light:hover { color: #f2f2f2; }
 
 a.text-light:visited { color: white; }
-
-.text-dark { color: #50596c; }
-
-a.text-dark:focus, a.text-dark:hover { color: #454d5d; }
-
-a.text-dark:visited { color: #5b657a; }
 
 .text-success { color: #32b643; }
 
@@ -2811,9 +2801,9 @@ a.text-error:visited { color: #ff6003; }
 
 .py-2 { padding-bottom: 0.8rem !important; padding-top: 0.8rem !important; }
 
-.s-rounded { border-radius: 0.1rem; }
+.rounded { border-radius: 0.1rem; }
 
-.s-circle { border-radius: 50%; }
+.circle { border-radius: 50%; }
 
 .text-left { text-align: left; }
 
@@ -2843,7 +2833,7 @@ a.text-error:visited { color: #ff6003; }
 
 .text-break { hyphens: auto; word-break: break-word; word-wrap: break-word; }
 
-/** Swiper 4.3.3 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 5, 2018 */
+/** Swiper 4.3.2 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 1, 2018 */
 .swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; /* Fix of Webkit flickering */ z-index: 1; }
 
 .swiper-container-no-flexbox .swiper-slide { float: left; }
@@ -3138,6 +3128,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 .dimmed-overlay { display: none; opacity: 0; transition: background-color 0.8s ease-in; }
 
 .dimmed-overlay.active { transition: background-color 0.8s ease-out; background-color: rgba(3, 3, 3, 0.8); position: absolute; bottom: 0; left: 0; height: 100%; width: 100%; z-index: 1; display: block; opacity: 1; }
+
+.form-input { padding: 1.6rem 0.8rem; border-radius: 4px; }
 
 .single-product .variations_form { flex-wrap: wrap; }
 
@@ -3794,7 +3786,41 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product .product.type-product .cart { padding: 1.8rem 0 1.2rem; }
 
+.woocommerce-account #content { background-color: #f7f7f7; }
+
+.woocommerce-account .entry-header { text-align: center; padding: 1.6rem 0.8rem; }
+
 .woocommerce-account .button { padding: 10px 34px; height: auto; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; }
+
+.bl-form-container .required { color: #195675; }
+
+.bl-form-container > .column { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1.2rem; margin: 0 0 1.2rem; }
+
+.bl-form-container > .column h2 { margin: 0 0 0.8rem; }
+
+.bl-form-container > .column label { margin: 0 0 0.8rem; }
+
+.bl-form-container > .column .form-input { margin: 0 0 1.6rem; }
+
+.bl-remember-me { margin-bottom: 0; padding-bottom: 0; }
+
+.bl-remember-me .form-label { margin-bottom: 0; padding-bottom: 0; }
+
+.bl-remember-me .form-label input.form-input { text-align: center; padding-left: 1.2rem; max-width: 46px; height: 20px; position: relative; margin-bottom: 0; cursor: pointer; }
+
+.bl-remember-me .form-label input.form-input:focus, .bl-remember-me .form-label input.form-input:active { outline: thin dotted; box-shadow: none; }
+
+.bl-remember-me .form-label input.form-input:after { position: absolute; z-index: 1; left: -4px; top: -2px; content: ""; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-radius: 25px; display: block; width: 100%; height: 22px; }
+
+.bl-remember-me .form-label input.form-input:before { transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; content: ""; position: absolute; z-index: 2; top: -2px; left: -4px; background-color: #979797; border: 1px solid #e4e4e4; border-radius: 50%; overflow: hidden; width: 22px; height: 22px; }
+
+.bl-remember-me .form-label input.form-input:checked:before { background-color: #9fb9c4; transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; left: 18px; }
+
+.bl-remember-me .form-label > span { padding-top: 5px; }
+
+.bl-remember-me input { margin-bottom: 0; padding-bottom: 0; }
+
+.bl-login-container { padding: 0.8rem; }
 
 .woocommerce-cart { background-color: #f7f7f7; }
 
@@ -4026,7 +4052,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce .button:hover { cursor: pointer; }
 
-.woocommerce-message, .woocommerce-error { background-color: #393d5b; }
+.woocommerce-message, .woocommerce-error { margin: 1rem 0; background-color: #393d5b; box-sizing: border-box; }
 
 .woocommerce-active .hero-product:last-child { border: none; }
 
@@ -4076,5 +4102,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 @media (max-width: 600px) { .product .summary.entry-summary .price { width: 25%; text-align: right; padding-right: 20px; }
   .product .summary.entry-summary .button { width: 100%; }
   .product .cart { width: 65%; } }
+
+@media (max-width: 840px) { .bl-form-container .button { width: 100%; } }
+
+@media (max-width: 840px) { .bl-form-container .button { width: 100%; } }
 
 /*# sourceMappingURL=styles.css.map */

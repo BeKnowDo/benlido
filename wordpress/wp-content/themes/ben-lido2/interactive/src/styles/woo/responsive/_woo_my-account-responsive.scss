@@ -1,0 +1,12 @@
+@media (max-width: $size-md) {
+  .bl {
+    &-form-container {
+      .button {
+        width: 100%;
+      }
+    }
+
+    &-login-container {
+    }
+  }
+}

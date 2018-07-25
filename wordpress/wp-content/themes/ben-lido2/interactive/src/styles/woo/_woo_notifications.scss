@@ -1,6 +1,8 @@
 .woocommerce {
   &-message,
   &-error {
+    margin: $unit-5 0;
     background-color: $brown-grey;
+    box-sizing: border-box;
   }
 }
