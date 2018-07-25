@@ -3788,9 +3788,25 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-account #content { background-color: #f7f7f7; }
 
+.woocommerce-account .entry-content { margin: 0.8rem 0.8rem 0; padding-bottom: 1.6rem; }
+
+.woocommerce-account .entry-content > .woocommerce { border-radius: 4px; border: 1px solid #e4e4e4; background-color: #fff; display: flex; }
+
 .woocommerce-account .entry-header { text-align: center; padding: 1.6rem 0.8rem; }
 
 .woocommerce-account .button { padding: 10px 34px; height: auto; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; }
+
+.woocommerce-account .woocommerce-MyAccount-content { padding: 1.2rem; }
+
+.woocommerce-account .woocommerce-MyAccount-content .edit:before { font-size: 22px; color: #195675; }
+
+.woocommerce-account .woocommerce-address-fields .form-row label { padding: 0.8rem 0; }
+
+.woocommerce-account .woocommerce-address-fields .input-text { padding: 0.8rem; border: 1px solid #e4e4e4; border-radius: 4px; }
+
+.bl-edit-account-details label { margin-bottom: 0.2rem; }
+
+.bl-edit-account-details input { margin-bottom: 1.2rem; }
 
 .bl-form-container .required { color: #195675; }
 
@@ -3826,7 +3842,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .entry-title { text-align: center; padding: 2rem 0; }
 
-.woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 120px; }
+.woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 100px; }
 
 .woocommerce-cart .shop_table { width: 100%; }
 
@@ -3918,7 +3934,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-checkout .entry-title { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 75px; font-weight: 400; font-style: normal; text-transform: uppercase; text-align: center; padding: 2rem; }
 
-.woocommerce-checkout .entry-content { border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; position: relative; padding: 0.8rem; margin: 0; }
+.woocommerce-checkout .entry-content { border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; position: relative; padding: 0.8rem; margin: 0 0.8rem 3.2rem; }
 
 .woocommerce-checkout .entry-content .checkout { background-color: #fff; }
 
@@ -4057,6 +4073,32 @@ body { position: relative; padding-top: 52px; outline: none; }
 .woocommerce-active .hero-product:last-child { border: none; }
 
 .products.related .columns .product { display: block; }
+
+.bl-account-navigation { padding: 0; border-right: 1px solid #e4e4e4; margin: 0 0.8rem 0 0; }
+
+.bl-account-navigation li { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; padding: 1.2rem 2rem; border-bottom: 1px solid #e4e4e4; transition: background-color .2s ease-in-out; }
+
+.bl-account-navigation li:hover { cursor: pointer; transition: background-color .2s ease-in-out; background-color: #9fb9c4; }
+
+.bl-account-navigation li:hover a { color: #fff; }
+
+.bl-account-navigation li:last-child { border: 0; }
+
+.bl-account-navigation a { color: #195675; }
+
+.woocommerce-account .woocommerce-orders-table { border-collapse: collapse; border: 1px solid #e4e4e4; border-radius: 4px; width: 100%; height: 100%; }
+
+.woocommerce-account .woocommerce-orders-table thead th { background-color: #f7f7f7; padding: 0.8rem; }
+
+.woocommerce-account .woocommerce-orders-table tbody tr:nth-child(2) td { background-color: #f7f7f7; }
+
+.woocommerce-account .woocommerce-orders-table tbody td { text-align: center; padding: 0.8rem; font-size: 14px; }
+
+.woocommerce-account .woocommerce-orders-table tbody td > span { text-align: center; display: inline-block; width: 100%; }
+
+.woocommerce-account .woocommerce-orders-table tbody .view { text-align: center; background: none; color: #9fb9c4; display: block; width: 100%; margin: 0; padding: 0; }
+
+.woocommerce-account .woocommerce-orders-table tbody .view:after { display: none !important; }
 
 @media (max-width: 768px) { .woocommerce-cart .shop_table thead tr { display: flex; flex-direction: row; }
   .woocommerce-cart .shop_table thead th { display: block; flex-grow: 1; }

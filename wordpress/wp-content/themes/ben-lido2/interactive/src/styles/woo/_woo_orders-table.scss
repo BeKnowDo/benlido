@@ -1,0 +1,49 @@
+.woocommerce {
+  &-account {
+    .woocommerce-orders-table {
+      border-collapse: collapse;
+      border: $grey-border;
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+      thead {
+        th {
+          background-color: $silver-white;
+          padding: $unit-2;
+        }
+      }
+
+      tbody {
+        tr {
+          &:nth-child(2) {
+            td {
+              background-color: $silver-white;
+            }
+          }
+        }
+        td {
+          text-align: center;
+          padding: $unit-2;
+          font-size: 14px;
+          > span {
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+          }
+        }
+        .view {
+          text-align: center;
+          background: none;
+          color: $blue-shale;
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          &:after {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}

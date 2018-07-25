@@ -2,7 +2,20 @@
   #content {
     background-color: $silver-white;
   }
+
   .entry {
+    &-content {
+      margin: $unit-4 $unit-4 0;
+      padding-bottom: $unit-8;
+
+      > .woocommerce {
+        border-radius: 4px;
+        border: $grey-border;
+        background-color: $white;
+        display: flex;
+      }
+    }
+
     &-header {
       text-align: center;
       padding: $unit-8 $unit-2;
@@ -19,9 +32,48 @@
     border: 0;
     box-shadow: none;
   }
+
+  .woocommerce {
+    &-MyAccount-content {
+      padding: $unit-6;
+
+      .edit {
+        &:before {
+          font-size: 22px;
+          color: $blumine;
+        }
+      }
+    }
+
+    &-address-fields {
+      .form-row {
+        label {
+          padding: $unit-2 0;
+        }
+      }
+
+      .input-text {
+        padding: $unit-2;
+        border: $grey-border;
+        border-radius: 4px;
+      }
+    }
+  }
 }
 
 .bl {
+  &-edit-account-details {
+    label {
+      margin-bottom: $unit-1;
+    }
+
+    input {
+      margin-bottom: $unit-6;
+    }
+  }
+  &-action-buttons {
+  }
+
   &-form-container {
     .required {
       color: $blumine;
@@ -124,6 +176,7 @@
       padding-bottom: 0;
     }
   }
+
   &-login-container {
     padding: $unit-4;
   }
