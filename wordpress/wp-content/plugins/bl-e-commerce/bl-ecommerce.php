@@ -98,6 +98,31 @@ function bl_get_cart_item_meta($data, $cartItem) {
     return $data;
 }
 
+function bl_set_frequency($user_id,$order_id,$frequency=0) {
+    $kits = array();
+    $holder = array();
+    if (function_exists('get_field')) {
+        $kits = get_field('recurring_orders','user_'.$user_id);
+    }
+    if (!empty($kits) && is_array($kits)) {
+        foreach ($kits as $kit) {
+            if ($kit['order_id'] == $order_id) {
+                $kit['frequency'] = $frequency;
+                // calculate next shipment
+                $last_send_date_string = $kit['last_send_date'];
+                $last_send_date = strtotime($last_send_date_string);
+                $next_send_date = $last_send_date + ( intval($frequency) * 24 * 60 * 60 );
+                $kit['next_send_date'] = date('Ymd',$next_send_date);
+            }
+            $holder[] = $kit;
+        }
+    }
+    if (function_exists('update_field')) {
+        update_field('recurring_orders',$holder,'user_'.$user_id);
+    }
+    return true;
+}
+
 add_filter( 'woocommerce_get_item_data', 'bl_get_cart_item_meta', 10, 2 );
 
 if (!function_exists('bl_is_swap')) {
@@ -984,6 +1009,24 @@ function bl_ecommerce_url_intercept() {
             }
         }
         switch ($section) {
+            case 'frequency':
+                switch ($action) {
+                    case 'set':
+                        if (isset($api_parts[5])) {
+                            $frequency = $api_parts[5];
+                        }
+                        // get the current user id
+                        $user_id = get_current_user_id();
+                        $res = bl_set_frequency($user_id,$id,$frequency);
+                        if ($res == true) {
+                            $response = array('success'=>true,'frequency'=>$frequency);
+                            header('Content-Type: application/json');
+                            print_r (json_encode($response));
+                            die;
+                        }
+                        break;
+                }
+                break;
             case 'product':
                 switch ($action) {
                     case 'get':
