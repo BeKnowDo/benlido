@@ -1,10 +1,10 @@
 [
     {
-        "key": "group_5a443a1b01966",
-        "title": "Travel Kit Custom Fields",
+        "key": "group_5a9de29c3bc8a",
+        "title": "Kitting Page Custom Fields",
         "fields": [
             {
-                "key": "field_5a443a2a201f7",
+                "key": "field_5a9de2aa3962c",
                 "label": "General",
                 "name": "",
                 "type": "tab",
@@ -20,7 +20,7 @@
                 "endpoint": 0
             },
             {
-                "key": "field_5a443a36201f8",
+                "key": "field_5a9de2b93962d",
                 "label": "Instructions",
                 "name": "",
                 "type": "message",
@@ -32,147 +32,13 @@
                     "class": "",
                     "id": ""
                 },
-                "message": "This is where you create kits.\r\nA kit is composed of a title, description, and featured image.\r\nYou will also need to choose a bag that is associated with this kit.\r\nSince the Kits page shows a wide image, we need to override the square product images with these wide ones. Upload them here.\r\nYou will then add which category or subcategory of products each kit can contain as well as how many someone can choose.\r\nYou can also select a featured product to show. If there is no featured product, then the first available product will be displayed.",
+                "message": "This page has only two sections that you can edit. The rest of the page is dynamically populated.\r\nThe Step Navigation Section is the breadcrumb area that has the next and previous buttons\r\nThe Hero Title section has a header and a subheader which must be completed\r\nThe Middle Section right above the list of products on the prebuilt kit page.",
                 "new_lines": "wpautop",
                 "esc_html": 0
             },
             {
-                "key": "field_5b58b63c3f950",
-                "label": "Pre Header",
-                "name": "pre_header",
-                "type": "text",
-                "instructions": "This is the small header before the name of the kit",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_5b2a5af67142c",
-                "label": "Bag for this Kit",
-                "name": "bag_for_this_kit",
-                "type": "post_object",
-                "instructions": "Select the bag that goes with this kit",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "product"
-                ],
-                "taxonomy": [
-                    "product_cat:bags"
-                ],
-                "allow_null": 0,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
-            },
-            {
-                "key": "field_5b4507f9226fb",
-                "label": "Color Variation Image Overrides",
-                "name": "color_variation_image_overrides",
-                "type": "repeater",
-                "instructions": "This is so that we can display a different size image for the different colors of the bags.\r\nAdd in the color variation images for each of the colors here",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "collapsed": "",
-                "min": 0,
-                "max": 0,
-                "layout": "table",
-                "button_label": "",
-                "sub_fields": [
-                    {
-                        "key": "field_5b450833226fc",
-                        "label": "Variation",
-                        "name": "variation",
-                        "type": "post_object",
-                        "instructions": "Select the color variation for your bag",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "post_type": [
-                            "product_variation"
-                        ],
-                        "taxonomy": [],
-                        "allow_null": 0,
-                        "multiple": 0,
-                        "return_format": "object",
-                        "ui": 1
-                    },
-                    {
-                        "key": "field_5b450859226fd",
-                        "label": "Image Override",
-                        "name": "image_override",
-                        "type": "image",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "return_format": "array",
-                        "preview_size": "thumbnail",
-                        "library": "all",
-                        "min_width": "",
-                        "min_height": "",
-                        "min_size": "",
-                        "max_width": "",
-                        "max_height": "",
-                        "max_size": "",
-                        "mime_types": ""
-                    },
-                    {
-                        "key": "field_5b450876226fe",
-                        "label": "Image Override (Retina)",
-                        "name": "image_override_retina",
-                        "type": "image",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "return_format": "array",
-                        "preview_size": "thumbnail",
-                        "library": "all",
-                        "min_width": "",
-                        "min_height": "",
-                        "min_size": "",
-                        "max_width": "",
-                        "max_height": "",
-                        "max_size": "",
-                        "mime_types": ""
-                    }
-                ]
-            },
-            {
-                "key": "field_5a443bb9201f9",
-                "label": "Product Category Section",
+                "key": "field_5b361b3e91ace",
+                "label": "Step Navigation Section",
                 "name": "",
                 "type": "tab",
                 "instructions": "",
@@ -187,10 +53,10 @@
                 "endpoint": 0
             },
             {
-                "key": "field_5a443bc9201fa",
-                "label": "Product Categories",
-                "name": "product_categories",
-                "type": "repeater",
+                "key": "field_5b361bd291ad1",
+                "label": "Current Section Name",
+                "name": "current_section_name",
+                "type": "text",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -199,86 +65,216 @@
                     "class": "",
                     "id": ""
                 },
-                "collapsed": "",
-                "min": 0,
-                "max": 0,
-                "layout": "block",
-                "button_label": "Add Product Category",
-                "sub_fields": [
-                    {
-                        "key": "field_5a443bdc201fb",
-                        "label": "Category",
-                        "name": "category",
-                        "type": "taxonomy",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "taxonomy": "product_cat",
-                        "field_type": "select",
-                        "allow_null": 0,
-                        "add_term": 1,
-                        "save_terms": 0,
-                        "load_terms": 0,
-                        "return_format": "id",
-                        "multiple": 0
-                    },
-                    {
-                        "key": "field_5a443c00201fc",
-                        "label": "Maximum number of items in this category",
-                        "name": "maximum_number_of_items_in_this_category",
-                        "type": "number",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "default_value": 1,
-                        "placeholder": 1,
-                        "prepend": "",
-                        "append": "",
-                        "min": "",
-                        "max": "",
-                        "step": ""
-                    },
-                    {
-                        "key": "field_5a6b444e0b99a",
-                        "label": "Featured Product",
-                        "name": "featured_product",
-                        "type": "post_object",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "post_type": [
-                            "product"
-                        ],
-                        "taxonomy": [],
-                        "allow_null": 0,
-                        "multiple": 0,
-                        "return_format": "object",
-                        "ui": 1
-                    }
-                ]
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b361ba791acf",
+                "label": "Previous Copy",
+                "name": "previous_copy",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b361bbb91ad0",
+                "label": "Previous URL",
+                "name": "previous_url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_5b361bdc91ad2",
+                "label": "Next Copy",
+                "name": "next_copy",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b361bea91ad3",
+                "label": "Next URL",
+                "name": "next_url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_5b3d3b92d3057",
+                "label": "Next CSS Class",
+                "name": "next_css_class",
+                "type": "text",
+                "instructions": "Add in some CSS class to the next button so that we can target it in JavaScript",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b58be4db5685",
+                "label": "Hero Title Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b58be6cb5686",
+                "label": "Hero Title Header",
+                "name": "hero_title_header",
+                "type": "text",
+                "instructions": "The header in the gray area at the top of the page",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b58be83b5687",
+                "label": "Hero Title Copy",
+                "name": "hero_title_copy",
+                "type": "text",
+                "instructions": "The copy below the header",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b2d4737ae111",
+                "label": "Middle Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b2d47b0ae113",
+                "label": "Middle Header",
+                "name": "middle_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "CUSTOMIZE YOUR KIT",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b2d47b7ae114",
+                "label": "Middle Subheader",
+                "name": "middle_subheader",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Remove or swap products to make this kit your own",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             }
         ],
         "location": [
             [
                 {
-                    "param": "post_type",
+                    "param": "post_template",
                     "operator": "==",
-                    "value": "travel_kit"
+                    "value": "page-kitting.php"
                 }
             ]
         ],
@@ -287,7 +283,10 @@
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
-        "hide_on_screen": "",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt"
+        ],
         "active": 1,
         "description": ""
     }
