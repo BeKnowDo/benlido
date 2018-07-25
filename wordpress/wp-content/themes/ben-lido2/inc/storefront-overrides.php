@@ -19,6 +19,7 @@ function bl_storefront_overrides() {
 	
 
 	add_action('bl_thank_you','bl_add_frequency_to_thankyou',10);
+	add_action( 'wp_print_scripts', 'bl_remove_password_strength', 10 ); // remove strong password check
 
 	//add_action('storefront_footer','bl_footer_menus',10);
 
@@ -466,6 +467,11 @@ function bl_add_frequency_to_thankyou($order) {
 	global $current_order;
 	$current_order = $order;
 	get_template_part( 'template-parts/pages/thankyou/frequency');
+}
+
+
+function bl_remove_password_strength() {
+    wp_dequeue_script( 'wc-password-strength-meter' );
 }
 
 

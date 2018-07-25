@@ -73,6 +73,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</li>
 				<?php endif; ?>
 
+					<!-- MODIFICATION: this is not part of the standard template -->
+					<li class="wwoocommerce-order-overview__total total">
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="btn btn-primary btn-lg btn-block ">View Account</a>
+					</li>
+					<!-- MODIFICATION: this is not part of the standard template -->
+
 			</ul>
 
 		<?php endif; ?>
