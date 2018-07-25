@@ -476,6 +476,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
   // this is always an array of arrays
   $product_id = 0;
   $index = 0;
+  $pre_header = '';
 //print_r ($item);
   if (function_exists('get_field')) {
     $color_variation_image_overrides = get_field('color_variation_image_overrides',$kit_id);
@@ -503,6 +504,10 @@ function bl_process_kit_bag($item,$kit_id=null) {
       }
       $name = $kit->post_title;
       $description = $kit->post_content;
+      if (function_exists('get_field')) {
+        // we need the pre header
+        $pre_header = get_field('pre_header',$kit_id);
+      }
     }
 
   }
@@ -543,6 +548,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
     $css .= ' has-variations';
   }
   $results[] = array(
+        'preHeader' => $pre_header,
         'index' => $index,
         'product_id'=>$product_id,
         'category_id'=>$category_id,

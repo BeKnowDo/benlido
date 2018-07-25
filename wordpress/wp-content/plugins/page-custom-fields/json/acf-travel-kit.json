@@ -37,6 +37,25 @@
                 "esc_html": 0
             },
             {
+                "key": "field_5b58b63c3f950",
+                "label": "Pre Header",
+                "name": "pre_header",
+                "type": "text",
+                "instructions": "This is the small header before the name of the kit",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
                 "key": "field_5b2a5af67142c",
                 "label": "Bag for this Kit",
                 "name": "bag_for_this_kit",

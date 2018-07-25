@@ -14,15 +14,9 @@ if (function_exists('bl_get_current_kit_items')) {
 }
 ?>
 
-<input type="hidden" id="bl_kit_id" name="bl_kit_id" value="<?php echo $kit_id;?>" />
+<?php get_template_part('template-parts/common/hero/hero-title','copy');?>
 
-<div class="bg-gray">
-    <div class="max-width-xl kitting-page">
-        <?php
-            get_template_part( 'template-parts/common/hero/hero-product','list');
-        ?>
-    </div>
-</div>
+<input type="hidden" id="bl_kit_id" name="bl_kit_id" value="<?php echo $kit_id;?>" />
 
 <div class="bg-white">
   <div class="max-width-xl kitting-page">
@@ -65,4 +59,12 @@ if (function_exists('bl_get_current_kit_items')) {
 
       </div>
   </div>
+</div>
+
+<div class="bg-gray">
+    <div class="max-width-xl kitting-page">
+        <?php
+            get_template_part( 'template-parts/common/hero/hero-product','list');
+        ?>
+    </div>
 </div>
