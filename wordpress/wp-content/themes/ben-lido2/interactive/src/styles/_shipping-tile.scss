@@ -31,6 +31,17 @@
       text-align:center;
     }
   }
+  .chosen {
+    display:none;
+    &.show {
+      display: inline-block;
+    }
+  }
+  .choose {
+    &.hide {
+      display:none;
+    }
+  }
 
   .fa-calendar {
     margin-left: 10px;

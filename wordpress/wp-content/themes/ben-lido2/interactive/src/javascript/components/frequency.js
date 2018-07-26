@@ -5,7 +5,7 @@ export class Frequency {
         this.frequencyForm =
       document.getElementById("shipping-frequency") || undefined;
       if (this.frequencyForm) {
-        this.frequencyButtons = this.frequencyForm.querySelectorAll("button") || undefined;
+        this.frequencyButtons = this.frequencyForm.querySelectorAll("button.choose") || undefined;
       }
         
     }
@@ -59,10 +59,22 @@ export class Frequency {
                                 if (this.frequencyButtons.length > 0) {
                                     this.frequencyButtons.forEach(el => {
                                         let freq = el.value;
+                                        let parent = el.parentNode;
+                                        let chosenButton = parent.querySelectorAll('.chosen') || undefined;
                                         if (freq == response.frequency) {
-                                            el.classList.add("hero-product-picked");
+                                            el.classList.add("hide");
+                                            if (chosenButton) {
+                                                chosenButton.forEach(b => {
+                                                    b.classList.add("show");
+                                                });
+                                            }
                                         } else {
-                                            el.classList.remove("hero-product-picked");
+                                            el.classList.remove("hide");
+                                            if (chosenButton) {
+                                                chosenButton.forEach(b => {
+                                                    b.classList.remove("show");
+                                                });
+                                            }
                                         }
                                     });
                                 }

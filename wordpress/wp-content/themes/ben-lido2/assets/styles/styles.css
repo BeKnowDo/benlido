@@ -3543,6 +3543,12 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .shipping-tile-copy p { text-align: center; }
 
+.shipping-tile .chosen { display: none; }
+
+.shipping-tile .chosen.show { display: inline-block; }
+
+.shipping-tile .choose.hide { display: none; }
+
 .shipping-tile .fa-calendar { margin-left: 10px; }
 
 .category-list a { color: #195675; letter-spacing: normal; }
