@@ -27,6 +27,9 @@
     @include knockout32(14px, 400);
     padding: 0 0 20px;
     color: $medium-grey;
+    p {
+      text-align:center;
+    }
   }
 
   .fa-calendar {

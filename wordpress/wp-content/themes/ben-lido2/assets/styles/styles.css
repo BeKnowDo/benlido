@@ -3541,6 +3541,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .shipping-tile-copy { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; padding: 0 0 20px; color: #999999; }
 
+.shipping-tile-copy p { text-align: center; }
+
 .shipping-tile .fa-calendar { margin-left: 10px; }
 
 .category-list a { color: #195675; letter-spacing: normal; }
