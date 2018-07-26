@@ -178,6 +178,10 @@
   }
 
   &-login-container {
+    width: 100%;
     padding: $unit-4;
+    .column {
+      border: 0;
+    }
   }
 }

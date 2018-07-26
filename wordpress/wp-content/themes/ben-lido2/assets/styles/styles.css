@@ -3836,7 +3836,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-remember-me input { margin-bottom: 0; padding-bottom: 0; }
 
-.bl-login-container { padding: 0.8rem; }
+.bl-login-container { width: 100%; padding: 0.8rem; }
+
+.bl-login-container .column { border: 0; }
 
 .woocommerce-cart { background-color: #f7f7f7; }
 
