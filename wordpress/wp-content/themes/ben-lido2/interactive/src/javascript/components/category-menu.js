@@ -25,6 +25,8 @@ export class CategoryMenu {
       document.getElementById("shop-landing-featured-products") || undefined;
 
     this.mobileMenu = null;
+
+    this.wooActiveCategory = "current-menu-parent";
   }
 
   init() {
@@ -123,6 +125,10 @@ export class CategoryMenu {
     this.parentCategoryContainer.forEach(item => {
       const parent = item.querySelector("a") || undefined;
       const child = item.querySelector(".sub-menu") || undefined;
+
+      if (item.classList.contains(this.wooActiveCategory)) {
+        this.toggleSubCategory(child);
+      }
 
       if (parent && child) {
         parent.addEventListener("click", e => {

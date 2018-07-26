@@ -46,15 +46,18 @@
         {% if items.preHeader %}
           <h2>{{items.preHeader}}</h2>
         {% endif %}
-        <h1 class="hero-product-header">
 
-          <a href="{{items.href}}" title="">
-            {{items.header}}
-          </a>
+        {% if items.href %}
+          <h1 class="hero-product-header">
+            <a href="{{items.href}}" title="">
+              {{items.header}}
+            </a>
+          </h1>
+        {% endif %}
 
-        </h1>
-
-        <p class="hero-product-copy">{{items.copy}}</p>
+        {% if items.copy %}
+          <p class="hero-product-copy">{{items.copy}}</p>
+        {% endif %}
 
         {% if items.price %}
           <p class="hero-product-price">{{items.price}}</p>
@@ -84,12 +87,15 @@
           </div>
 
         {% endif %}
+
         <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="{{pickedCopy}}">
           {{pickedCopy}}
         </a>
+
         <a class="btn btn-primary btn-lg bl-remove-bag-product {{items.removecss}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="Remove Bag">
           Remove Bag
         </a>
+
       </div>
 
       <div class="column col-7 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
