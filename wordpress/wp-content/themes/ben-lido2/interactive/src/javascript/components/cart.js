@@ -25,6 +25,8 @@ export class Cart {
       document.querySelectorAll(".add-kit-to-cart") || undefined;
     this.addBagProduct =
       document.querySelectorAll(".bl-add-bag-product") || undefined;
+      this.removeBagProduct =
+      document.querySelectorAll(".bl-remove-bag-product") || undefined;
     this.swatchColor = document.querySelectorAll(".swatch-color") || undefined;
     if (this.kitID) {
       this.kitID = this.kitID.value;
@@ -55,6 +57,10 @@ export class Cart {
 
     if (this.addEmptyProduct) {
       this.emptyProductButtons();
+    }
+
+    if (this.removeBagProduct) {
+      this.removeBagFromCart();
     }
 
     // if (this.cart) {
@@ -610,8 +616,8 @@ export class Cart {
             if (product_id !== undefined) {
               let button = e.target.parentElement;
               let text = button.querySelector(".add-to-cart-text");
-              let inCartText = text.dataset.cartText;
-              let defaultText = text.dataset.defaultText;
+              //let inCartText = text.dataset.cartText;
+              //let defaultText = text.dataset.defaultText;
 
               let removeURL =
                 endpoints.removeFromCart +
@@ -641,6 +647,56 @@ export class Cart {
                       setTimeout(function() {
                         document.location.href = response.url;
                       }, 100); // setTimeout to bust promise
+                    }
+                  }
+                });
+            }
+          }
+        });
+      });
+    }
+  }
+
+  removeBagFromCart() {
+    if (this.removeBagProduct.length > 0) {
+      this.removeBagProduct.forEach(removeBagProduct => {
+        removeBagProduct.addEventListener("click", e => {
+          e.preventDefault();
+          if (removeBagProduct.dataset) {
+            let target = removeBagProduct.dataset;
+            let product_id = target.product_id ? target.product_id : undefined;
+            let variation_id = target.variation_id ? target.variation_id : 0;
+
+            if (product_id !== undefined) {
+              let button = e.target.parentElement;
+              let text = button.querySelector(".add-to-cart-text");
+
+              let removeURL =
+                endpoints.removeFromCart +
+                "/" +
+                product_id +
+                "/" +
+                variation_id;
+              fetch(removeURL, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              })
+                .then(res => res.json())
+                .catch(error => console.error("Error:", error))
+                .then(response => {
+                  if (response.error) {
+                  } else {
+                    if (typeof response.items != "undefined") {
+                      removeBagProduct.classList.remove("show");
+                      this.updateCount(response.items);
+                      this.miniCart(response.items);
+                      this.updateTileQuantity(response.items, null);
+                    }
+                    if (typeof response.url != "undefined") {
+                      // we will get a return URL
                     }
                   }
                 });

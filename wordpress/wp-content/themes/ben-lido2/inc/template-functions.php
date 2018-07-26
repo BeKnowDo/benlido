@@ -537,6 +537,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
       if ($swatch['id']==$bag_in_cart['id']) {
         $swatch['selected'] = true;
         $css .= ' hero-product-picked';
+        $removecss = 'show';
         $picked = true;
       }
       $swatches_holder[] = $swatch;
@@ -553,6 +554,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
         'product_id'=>$product_id,
         'category_id'=>$category_id,
         'triangleBackground' => true,
+        'removecss' => $removecss,
         'css' => $css,
         'logo' => $logo,
         'header' => $name,

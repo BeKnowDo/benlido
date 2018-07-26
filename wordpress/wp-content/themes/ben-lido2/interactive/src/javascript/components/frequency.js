@@ -16,7 +16,7 @@ export class Frequency {
     }
 
     clickSubmit() {
-        if (this.frequencyButtons.length > 0) {
+        if (this.frequencyButtons) {
             this.frequencyButtons.forEach(el => {
                 el.addEventListener('click', e => {
                     //e.preventDefault();
