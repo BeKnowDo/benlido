@@ -1,0 +1,32 @@
+{# parent PHP file is at template-parts/pages/my-account/dashboard #}
+{# tiles for the my accounts dashboard #}
+<div class="shipping-tile">
+
+  <div class="default-display">
+  <a href="#"><i class="far fa-edit"></i></a>
+    <h2 class="shipping-tile-header">{{header}}</h2>
+    <div class="shipping-tile-copy">{{copy}}</div>
+
+    <div class="default-buttons">
+        <button class="btn btn-block btn-lg btn-primary" name="skip_shipping" value="skip">Skip shipment</button>
+        <button class="btn btn-block btn-lg btn-primary" name="skip_shipping" value="skip">Adjust kit frequency</button>
+    </div>
+    <div class="skip-buttons hide">
+        <button class="btn btn-block btn-lg btn-primary" name="skip_shipping" value="skip">Nevermind</button>
+        <button class="btn btn-block btn-lg btn-primary" name="skip_shipping" value="skip">Yep, let's skip it</button>
+    </div>
+    <div class="frequency-buttons">
+        {% for button in frequency %}
+            <button class="btn btn-block btn-lg btn-primary" name="frequency" value="{{button.frequency}}">{{button.title}}</button>
+        {% endfor %}
+    </div>
+  </div>
+
+  <div class="edit-display hide">
+    <input type="text" name="kit_name" value="{{header}}" />
+    <p>Make this kit yours.<br />
+    Give'er a new name.</p> 
+    <button class="btn btn-block btn-lg btn-primary" name="update_kit_name" value="save">Save</button>
+  </div>
+
+</div>

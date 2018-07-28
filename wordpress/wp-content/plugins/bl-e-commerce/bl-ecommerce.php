@@ -987,6 +987,21 @@ function bl_get_product_data($product_id,$variation_id) {
     return $res;
 }
 
+// uses an array of kits to see which ones have future shipping dates
+function bl_get_kit_future_shippings($kits) {
+    $time = time(); // so maybe we only allow the editing of recurring with a few days of buffer
+    $today = date('Ymd');
+    $future_kits = array();
+    if (!empty($kits) && is_array($kits)) {
+        foreach ($kits as $kit) {
+            if ($kit['next_send_date'] >= $today) {
+                $future_kits[] = $kit;
+            }
+        }
+    }
+    return $future_kits;
+}
+
 
 // this is the API endpoint parsing
 function bl_ecommerce_url_intercept() {
