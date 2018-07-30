@@ -1,24 +1,45 @@
-@media (min-width: $size-md) {
+@media (max-width: 760px) {
   .woocommerce {
-    &-order {
+    &-orders {
       .woocommerce {
-        &-order-overview {
-          display: flex;
-          flex-wrap: wrap;
+        &-orders-table {
 
-          li {
-            width: 50%;
+          tbody {
+
+            tr {
+              display: block;
+              border-bottom: $grey-border;
+              &:last-child {
+                border-bottom: 0;
+              }
+            }
+            
+            td {
+              text-align: left;
+            }
+
+            .view {
+              text-align: left;
+              display: inline;
+              width: auto;
+            }
+
           }
+
+          &__cell {
+            &:before {
+              padding-right: 20px;
+            }
+          }
+
+          .amount {
+            display: inline;
+          }
+
         }
       }
 
-      &-details {
-        .woocommerce-table {
-        }
-      }
     }
 
-    &-thankyou-order-received {
-    }
   }
 }

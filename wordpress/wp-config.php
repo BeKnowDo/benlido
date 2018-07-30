@@ -42,10 +42,10 @@ switch(SERVER_ENVIRONMENT) {
         break;
 
     case "LOCAL":
-        define('DB_HOST', '127.0.0.1');
-        define('DB_NAME', 'ben_lido');
-        define('DB_USER', 'root');
-        define('DB_PASSWORD', '');
+        define('DB_HOST', 'localhost');
+        define('DB_NAME', 'benlido');
+        define('DB_USER', 'bkd');
+        define('DB_PASSWORD', 'jake');
         define( 'WP_DEBUG', false );
         define( 'WP_DEBUG_DISPLAY', false );
         define( 'WP_DEBUG_LOG', true );

@@ -1,5 +1,14 @@
 .woocommerce-account {
     .woocommerce-MyAccount-content {
+        .woocommerce-Message {
+          background-color: transparent;
+          color: $black;
+
+          .button {
+            margin: 0;
+          }
+        }
+
         .shipping-tile-container {
             .shipping-tile {
                 .default-display {

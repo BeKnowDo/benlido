@@ -32,7 +32,10 @@ p {
 a {
   transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out,
     background-color 0.2s ease-in-out;
-  &:hover {
+    &:visited {
+      color: $blue-shale ;
+    }
+    &:hover {
     text-decoration: none;
     transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out,
       background-color 0.2s ease-in-out;

@@ -1,0 +1,15 @@
+@media (min-width: $size-md) {
+    .woocommerce {
+      &-account {
+
+        .woocommerce {
+          &-orders-table__row {
+            .amount {
+              display: inline;
+            }
+          }
+        }
+      }
+    
+    }
+}
