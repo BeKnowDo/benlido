@@ -4,39 +4,44 @@
 <div class="hero hero-home {{ backgroundClassname }}" {% if hero.image %} style="background-image: url({{hero.image}})" {%
   endif %}>
 
-  <div class="columns">
+  <div class="max-width-xl">
 
-    <div class="column col-5 col-sm-12 col-md-9 col-xl-7 col-mx-auto">
+    <div class="columns">
 
-      <p class="hero-sub-header">{{hero.preheader}}</p>
-      <h1 class="hero-header">{{hero.header}}</h1>
-      <p class="hero-copy">{{hero.copy}}</p>
+      <div class="column col-5 col-sm-12 col-md-9 col-xl-7 col-mx-auto">
 
-      <div class="hero-action-buttons columns">
-        {% for button in hero.hero_call_to_action_buttons %}
-        <div class="column col-sm-12 col-5">
-          <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ?
-            'rel="noopener noferrer" target="_blank"' }}>{{button.title}}</a>
+        <p class="hero-sub-header">{{hero.preheader}}</p>
+        <h1 class="hero-header">{{hero.header}}</h1>
+        <p class="hero-copy">{{hero.copy}}</p>
+
+        <div class="hero-action-buttons columns">
+          {% for button in hero.hero_call_to_action_buttons %}
+          <div class="column col-sm-12 col-6">
+            <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ?
+              'rel="noopener noferrer" target="_blank"' }}>{{button.title}}</a>
+          </div>
+
+          {# {% if loop.index == 1 %}
+          <div class="column col-sm-12 col-1">
+            <span class="btn btn-lg btn-separator">
+              OR
+            </span>
+          </div>
+          {% endif %} #} {% endfor %}
         </div>
 
-        {# {% if loop.index == 1 %}
-        <div class="column col-sm-12 col-1">
-          <span class="btn btn-lg btn-separator">
-            OR
-          </span>
-        </div>
-        {% endif %} #} {% endfor %}
       </div>
+
+      {% if hero.image %}
+      <div class="column col-5 col-md-12 col-xl-5 col-ml-auto">
+        <div class="hero-image-container">
+          <img class="hero-image hero-image" src="{{hero.image}}" alt="{{hero.altText}}" />
+        </div>
+      </div>
+      {% endif %}
 
     </div>
 
-    {% if hero.image %}
-    <div class="column col-5 col-md-12 col-xl-5 col-ml-auto">
-      <div class="hero-image-container">
-        <img class="hero-image hero-image" src="{{hero.image}}" alt="{{hero.altText}}" />
-      </div>
-    </div>
-    {% endif %}
   </div>
 
 </div>
