@@ -8,7 +8,7 @@
 
     <div class="max-width-md">
         <form id="shipping-frequency" method="post">
-        <div class="columns shipping-tile-container">
+        <div class="columns delivery-frequency-tile">
         <?php
             $frequencies = array();
             if (function_exists('get_field')) {

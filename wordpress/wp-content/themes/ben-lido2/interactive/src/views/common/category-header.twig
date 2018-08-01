@@ -1,6 +1,23 @@
-{% for header in categoryHeader %}
-  <div class="category-header-container">
-    <h1 class="category-header text-center">{{ header.text }}</h1>
-    <h4 class="category-sub-header text-center">{{ header.subText }}</h4>
-  </div>
-{% endfor %}
+{% if categoryHeader %}
+
+  {% for header in categoryHeader %}
+
+    {% if header.text != '' or header.subText != ''%}
+
+      <div class="category-header-container">
+
+        {% if header.text != '' %}
+          <h1 class="category-header text-center">{{ header.text }}</h1>
+        {% endif %}
+
+        {% if header.subText != '' %}
+          <h4 class="category-sub-header text-center">{{ header.subText }}</h4>
+        {% endif %}
+
+      </div>
+
+    {% endif %}
+
+  {% endfor %}
+
+{% endif %}

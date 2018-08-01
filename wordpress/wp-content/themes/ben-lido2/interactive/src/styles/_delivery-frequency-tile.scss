@@ -1,0 +1,110 @@
+.delivery-frequency-tile {
+    padding: $unit-8 $unit-6 $unit-6;
+    border: $grey-border;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    min-height: 300px;
+    
+    &-header {
+        @include knockout(32px, 400);
+        padding: $unit-2 0 $unit-8;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    &-container {
+        div[id] {
+            display: none;
+            opacity: 0;
+
+            &.active {
+                display: block;
+            }
+        }
+
+        .delivery-frequency-tile-header {
+            @include knockout(50px, 400);
+            padding: $unit-10 0;
+        }
+    }
+
+    &-main {
+        opacity: 1;
+        &.hide {
+            display: none;
+        }
+        .delivery-frequency-tile-header {
+            font-size: 32px;    
+        }
+    }
+
+    &-edit {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        right: 4px;
+        top: -8px;
+        font-size: 22px;
+        font-weight: 300;
+    }
+    
+
+    &-copy {
+        font-size: 14px;
+        padding: $unit-4 0;
+    }
+
+    &-actions {
+        button {
+            margin-top: $unit-2;
+            &.btn-link {
+                border: $grey-border;
+            }
+        }
+        
+        .btn {
+            padding: 10px;
+            &:hover {
+                background-color: $blumine;
+                color: $white;
+            }
+        }
+
+        .delivery-frequency-tile-header {
+            font-size: 32px;
+            input {
+                text-align: center;
+                width: 100%;
+                border: $grey-border;
+                border-radius: 4px;
+            }
+        }
+
+        &-default {
+
+        }
+
+        &-skip {
+            // display: none;
+        }
+
+        &-frequency {
+            // display: none;
+        }
+
+        &-edit-view {
+            // display: none;
+        }
+
+        > i {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    }
+}

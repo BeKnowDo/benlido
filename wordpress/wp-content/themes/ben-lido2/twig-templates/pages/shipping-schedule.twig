@@ -39,7 +39,7 @@
             {% include 'common/category-header.twig' with { categoryHeader } %}
         </div>
         <div class="max-width-md">
-            <div class="columns shipping-tile-container">
+            <div class="columns delivery-frequency-tile-container">
                 {% for item in shippingTypes%}
                     <div class="column col-4 col-xs-12 col-sm-12">
                         {% include 'common/shipping/shipping-tile.twig' with {shipping: item} %}

@@ -40,6 +40,21 @@
         background-color: $white;
         padding: $unit-2 $unit-8;
         margin: $unit-8 0 $unit-6;
+        display: flex;
+        flex-wrap: wrap;
+        > li {
+          width: 50%;
+          > strong {
+            font-size: 18px;
+          }
+          &:last-child {
+            width: 100%;
+            > .btn {
+              max-width: 400px;
+              margin: 0 auto;
+            }
+          }
+        }
       }
     }
 
@@ -132,9 +147,14 @@
     text-align: center;
     padding: $unit-6;
     margin: 0;
+
   }
 
   &-customer-details {
+    .woocommerce-column__title {
+      @include sentinel(24px, 400);
+      margin: $unit-10 0 $unit-2;
+    }
     .addresses {
       float: none;
       clear: both;

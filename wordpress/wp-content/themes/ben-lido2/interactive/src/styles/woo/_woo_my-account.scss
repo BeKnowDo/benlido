@@ -5,7 +5,7 @@
 
   .entry {
     &-content {
-      margin: $unit-4 $unit-4 0;
+      margin: 0 $unit-4 0;
       padding-bottom: $unit-8;
 
       > .woocommerce {
@@ -59,10 +59,30 @@
         border-radius: 4px;
       }
     }
+
+    &-customer-details {
+      padding: $unit-6 $unit-1 0;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .column {
+        margin-bottom: $unit-6;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+      }
+
+    }
   }
+  
 }
 
 .bl {
+
   &-edit-account-details {
     label {
       margin-bottom: $unit-1;
@@ -72,6 +92,7 @@
       margin-bottom: $unit-6;
     }
   }
+  
   &-action-buttons {
   }
 
