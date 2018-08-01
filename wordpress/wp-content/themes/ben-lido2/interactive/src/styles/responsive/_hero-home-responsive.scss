@@ -84,7 +84,7 @@
     &-home {
       &[style*="background-image"] {
         padding-bottom: 480px;
-        background-size: 120%;
+        background-size: contain;
         background-position-x: 54%;
         background-position-y: bottom;
       }
@@ -97,7 +97,7 @@
     &-home {
       &[style*="background-image"] {
         padding-bottom: 540px;
-        background-size: cover;
+        background-size: contain;
         background-position-x: 50%;
         background-position-y: bottom;
       }
@@ -110,9 +110,23 @@
     &-home {
       &[style*="background-image"] {
         padding-bottom: 540px;
-        background-size: cover;
+        background-size: contain;
         background-position-x: right;
         background-position-y: center;
+      }
+    }
+  }
+}
+
+@media (min-width: $size-xxxxl) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        // padding-top: 280px;
+        padding-bottom: 860px;
+        background-size: contain;
+        background-position-x: right;
+        background-position-y: bottom;
       }
     }
   }

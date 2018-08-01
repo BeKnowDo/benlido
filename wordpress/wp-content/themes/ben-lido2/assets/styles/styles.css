@@ -3719,11 +3719,13 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (max-width: 1200px) and (min-width: 961px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: 110%; background-position-x: 30%; background-position-y: 115%; } }
 
-@media (min-width: 1200px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: 120%; background-position-x: 54%; background-position-y: bottom; } }
+@media (min-width: 1200px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: contain; background-position-x: 54%; background-position-y: bottom; } }
 
-@media (min-width: 1450px) { .hero-home[style*="background-image"] { padding-bottom: 540px; background-size: cover; background-position-x: 50%; background-position-y: bottom; } }
+@media (min-width: 1450px) { .hero-home[style*="background-image"] { padding-bottom: 540px; background-size: contain; background-position-x: 50%; background-position-y: bottom; } }
 
-@media (min-width: 1600px) { .hero-home[style*="background-image"] { padding-bottom: 540px; background-size: cover; background-position-x: right; background-position-y: center; } }
+@media (min-width: 1600px) { .hero-home[style*="background-image"] { padding-bottom: 540px; background-size: contain; background-position-x: right; background-position-y: center; } }
+
+@media (min-width: 2000px) { .hero-home[style*="background-image"] { padding-bottom: 860px; background-size: contain; background-position-x: right; background-position-y: bottom; } }
 
 @media (max-width: 480px) { .hero-no-bag { padding: 100px 20px; } }
 
