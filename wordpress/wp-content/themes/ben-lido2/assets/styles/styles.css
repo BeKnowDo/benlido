@@ -3365,7 +3365,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-action-buttons .btn { max-width: 192px; display: inline-block; margin: auto; padding-left: 0; padding-right: 0; }
 
-.hero-home[style*="background-image"] { background-size: 66%; background-position: right bottom; padding-top: 80px; }
+.hero-home[style*="background-image"] { background-size: 100%; background-position: right bottom; padding-top: 80px; }
 
 .hero-home[style*="background-image"] img { visibility: hidden; }
 
@@ -3700,7 +3700,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 @media (max-width: 840px) { .hero { padding: 100px 20px; } }
 
 @media (max-width: 600px) { .hero-header { font-size: 75px; }
-  .hero-action-buttons .btn { max-width: none; } }
+  .hero-action-buttons .btn { max-width: none; }
+  .hero-action-buttons .btn:last-child { margin-top: 0.8rem; } }
 
 @media (max-width: 480px) { .hero { padding-bottom: 0; } }
 
