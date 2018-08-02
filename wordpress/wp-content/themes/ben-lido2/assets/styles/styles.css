@@ -3757,7 +3757,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (max-width: 480px) { .hero { padding-bottom: 0; } }
 
-@media (max-width: 840px) { .navbar-dropdown-primary-items { font-size: 34px; } }
+@media (max-width: 840px) { .navbar-dropdown-primary-items { font-size: 34px; }
+  .navbar .custom-logo { max-width: 100px; } }
 
 @media (max-width: 480px) { .hero-home[style*="background-image"] { background-size: 130%; background-position-x: 60%; }
   .hero-home[style*="background-image"] .hero-image-container { padding-top: 90px; } }
