@@ -1,5 +1,26 @@
 .woocommerce-account {
     .woocommerce-MyAccount-content {
+
+        .woocommerce-Address-title {
+            margin: $unit-2 0;
+        }
+
+        .edit {
+            background-color: $blue-shale;
+            color: $white;
+
+            display: inline-block;
+            border: $grey-border;
+            border-radius: 4px;
+            margin: $unit-2 0 0;
+            padding: $unit-2;
+            min-width: 100px;
+            text-align: center;
+            &:hover {
+                background-color: $blumine;
+            }
+        }
+
         .woocommerce-Message {
           background-color: transparent;
           color: $black;

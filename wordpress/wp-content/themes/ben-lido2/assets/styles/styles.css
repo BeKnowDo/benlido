@@ -3259,7 +3259,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar .custom-logo { display: block; max-width: 120px; min-height: 28px; width: 100%; }
 
-.footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; }
+.footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; background-color: #fff; }
 
 .footer .max-width-xl.columns { margin-top: 90px; background-color: #fff; }
 
@@ -3967,6 +3967,12 @@ body { position: relative; padding-top: 52px; outline: none; }
 .bl-login-container { width: 100%; padding: 0.8rem; }
 
 .bl-login-container .column { border: 0; }
+
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Address-title { margin: 0.8rem 0; }
+
+.woocommerce-account .woocommerce-MyAccount-content .edit { background-color: #9fb9c4; color: #fff; display: inline-block; border: 1px solid #e4e4e4; border-radius: 4px; margin: 0.8rem 0 0; padding: 0.8rem; min-width: 100px; text-align: center; }
+
+.woocommerce-account .woocommerce-MyAccount-content .edit:hover { background-color: #195675; }
 
 .woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message { background-color: transparent; color: #000; border: 0; }
 
