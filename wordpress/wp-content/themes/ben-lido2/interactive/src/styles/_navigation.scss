@@ -209,8 +209,14 @@
     }
   }
 
+  .custom-logo-link {
+    display: block;
+  }
+
   .custom-logo {
     display: block;
+    max-width: 120px;
+    width: 100%;
   }
 
 }

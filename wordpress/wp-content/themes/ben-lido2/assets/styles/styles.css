@@ -3251,7 +3251,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar .fa-suitcase:before { font-size: 30px; }
 
-.navbar .custom-logo { display: block; }
+.navbar .custom-logo-link { display: block; }
+
+.navbar .custom-logo { display: block; max-width: 120px; width: 100%; }
 
 .footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; }
 
