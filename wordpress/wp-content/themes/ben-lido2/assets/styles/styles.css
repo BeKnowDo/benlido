@@ -3153,7 +3153,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-add-bag-product.changed:hover { background-color: #9fb9c4; }
 
-.bl-product-swatches { padding: 0; margin: 20px auto; max-width: 160px; }
+.bl-product-swatches { margin: 20px auto; max-width: 160px; justify-content: center; padding: 0; }
 
 .bl-product-swatches .swatch-wrapper { background-color: transparent; width: 33%; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
 
