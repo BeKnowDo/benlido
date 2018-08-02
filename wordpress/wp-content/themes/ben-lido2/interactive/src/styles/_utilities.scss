@@ -1,15 +1,15 @@
 .max-width {
-  
+
   &-xl {
   max-width: $size-xl;
   margin: 0 auto;
   }
-  
+
   &-lg {
     max-width: $size-lg;
     margin: 0 auto;
   }
-  
+
   &-md {
     max-width: $size-md;
     margin: 0 auto;
@@ -26,7 +26,7 @@
   &-white {
     background-color: $white;
   }
-  
+
   &-grey {
     background-color: $silver-white;
   }

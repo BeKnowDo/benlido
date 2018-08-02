@@ -6,7 +6,8 @@ import {
   Cart,
   Search,
   Frequency,
-  MyAccount
+  MyAccount,
+  StepNavigation
 } from './components'
 
 new Navigation().init()
@@ -17,3 +18,4 @@ new CategoryMenu().init()
 new Search().init()
 new Frequency().init()
 new MyAccount().init()
+new StepNavigation().init()

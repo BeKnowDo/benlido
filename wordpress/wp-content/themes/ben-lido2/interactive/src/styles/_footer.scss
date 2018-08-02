@@ -1,27 +1,28 @@
 .footer {
-  padding: 50px 34px;
-  margin-top: 90px;
-  border-top: 1px solid $light-grey;
-  background-color: $white;
   clear: both;
+  padding: 0 34px 50px;
+  border-top: $grey-border;
+
+  .max-width-xl {
+    &.columns {
+      margin-top: 90px;
+      background-color: $white;
+    }
+  }
 
   .social-media-links {
     padding-top: 0;
     a {
-      &:hover {
-      }
+      &:hover {}
     }
   }
-
   &-primary-items {
     margin: 0;
     padding: 0;
   }
-
   .col-3 {
     margin-bottom: 30px;
   }
-
   li {
     a {
       color: $grey;

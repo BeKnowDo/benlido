@@ -1,0 +1,10 @@
+@media (max-width: $size-xs) {
+  .products {
+    &.related {
+      .columns {
+        margin: 0;
+      }
+    }
+
+  }
+}

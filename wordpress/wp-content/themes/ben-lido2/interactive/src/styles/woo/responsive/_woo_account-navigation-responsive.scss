@@ -1,114 +1,91 @@
 @media (max-width: 760px) {
-    .woocommerce {
-      &-account {
-
-        .entry-content {
-          > .woocommerce {
-            flex-direction: column;
-          }
+  .woocommerce {
+    &-account {
+      .entry-content {
+        >.woocommerce {
+          flex-direction: column;
         }
-
-        .bl {
-            &-account-navigation {
+      }
+      .bl {
+        &-account-navigation {
+          border-right: 0;
+          margin: 0 0;
+          width: 100%;
+          >ul {
+            display: flex;
+          }
+          li {
+            border-right: $grey-border;
+            flex: 1;
+            a {
+              padding: $unit-2 0;
+            }
+            &:last-child {
               border-right: 0;
-              margin: 0 0;
-              width: 100%;
-
-              > ul {
-                display: flex;
-              }
-          
-              li {
-                border-right: $grey-border;
-                flex: 1;
-
-                a {
-                  padding: $unit-2 0;
-                }
-
-                &:last-child {
-                  border-right: 0;
-                  border-bottom: $grey-border;
-                }
-          
-                &[class*="dashboard"] {
-                  .bl-account-navigation-icon {
-                    &:after {
-                      position: relative;
-                      // font-size: 18px;
-                      content: '\f015';
-                    }
-                  }
-                }
-          
-                &[class*="orders"] {
-                  .bl-account-navigation-icon {
-                    &:after {
-                      position: relative;
-                      // font-size: 18px;
-                      content: '\f290';
-                    }
-                  }
-                }
-          
-                &[class*="downloads"] {
-                  .bl-account-navigation-icon {
-                    &:after {
-                      position: relative;
-                      // font-size: 18px;
-                      content: '\f0ed';
-                    }
-                  }
-                }
-          
-                &[class*="edit-address"] {
-                  .bl-account-navigation-icon {
-                    &:after {
-                      position: relative;
-                      // font-size: 18px;
-                      content: '\f2bb';
-                    }
-                  }
-                }
-          
-                &[class*="edit-account"] {
-                  .bl-account-navigation-icon {
-                    &:after {
-                      position: relative;
-                      // font-size: 18px;
-                      content: '\f007';
-                    }
-                  }
-                }
-          
-                &[class*="customer-logout"] {
-                  .bl-account-navigation-icon {
-                    &:after {
-                      position: relative;
-                      // font-size: 18px;
-                      content: '\f2f5';
-                    }
-                  }
-                }
-          
-              }
-
-              .bl-account-navigation {
-                &-icon {
-                  &:after {
-                    display: block;
-                    font-size: 18px;
-                  }
-                }
-                &-text {
-                  display: none;
-                  // text-align: center;
+              border-bottom: $grey-border;
+            }
+            &[class*="dashboard"] {
+              .bl-account-navigation-icon {
+                &:after {
+                  position: relative; // font-size: 18px;
+                  content: '\f015';
                 }
               }
             }
+            &[class*="orders"] {
+              .bl-account-navigation-icon {
+                &:after {
+                  position: relative; // font-size: 18px;
+                  content: '\f290';
+                }
+              }
+            }
+            &[class*="downloads"] {
+              .bl-account-navigation-icon {
+                &:after {
+                  position: relative; // font-size: 18px;
+                  content: '\f0ed';
+                }
+              }
+            }
+            &[class*="edit-address"] {
+              .bl-account-navigation-icon {
+                &:after {
+                  position: relative; // font-size: 18px;
+                  content: '\f2bb';
+                }
+              }
+            }
+            &[class*="edit-account"] {
+              .bl-account-navigation-icon {
+                &:after {
+                  position: relative; // font-size: 18px;
+                  content: '\f007';
+                }
+              }
+            }
+            &[class*="customer-logout"] {
+              .bl-account-navigation-icon {
+                &:after {
+                  position: relative; // font-size: 18px;
+                  content: '\f2f5';
+                }
+              }
+            }
+          }
+          .bl-account-navigation {
+            &-icon {
+              &:after {
+                display: block;
+                font-size: 18px;
+              }
+            }
+            &-text {
+              display: none; // text-align: center;
+            }
+          }
         }
-          
       }
-    
     }
+  }
 }
