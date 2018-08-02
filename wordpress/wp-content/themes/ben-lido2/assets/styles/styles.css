@@ -3251,6 +3251,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar .fa-suitcase:before { font-size: 30px; }
 
+.navbar .custom-logo { display: block; }
+
 .footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; }
 
 .footer .max-width-xl.columns { margin-top: 90px; background-color: #fff; }
@@ -3723,7 +3725,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .product.product_cat-bags .single_variation_wrap { width: 100%; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart { display: flex; width: 100%; padding: 0 0.8rem 1rem; margin: 0; }
+.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart { display: flex; width: 100%; padding: 0 0 1rem; margin: 0; }
 
 .single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .button { width: 80%; }
 

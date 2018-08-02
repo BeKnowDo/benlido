@@ -2,11 +2,13 @@
   &.single {
 
     .product {
+
       &.product_cat-bags {
         width: 100%;
         flex-direction: column;
 
         .entry-summary {
+
           &.summary {
             margin: 0;
           }
@@ -30,11 +32,13 @@
 
           .swatch-wrapper {
             padding-left: 0;
+
             &.selected {
               padding: 4px;
               padding-left: 0;
               padding-right: 8px;
             }
+
           }
 
           .variations {
@@ -69,7 +73,7 @@
         .woocommerce-variation-add-to-cart {
           display: flex;
           width: 100%;
-          padding: 0 $unit-2 $unit-5;
+          padding: 0 0 $unit-5;
           margin: 0;
 
           .button {
@@ -94,12 +98,14 @@
 
     .product_meta {
       padding: $unit-2 $unit-2 0;
+
       .posted_in {
         margin-bottom: $unit-2;
         a {
           margin-left: $unit-2;
         }
       }
+
     }
 
     .wc-tabs {
@@ -112,6 +118,7 @@
     }
 
     .woocommerce-Tabs-panel--description {
+
       h2 {
         @include knockout(45px, 400);
         margin: 0 0 $unit-2;
