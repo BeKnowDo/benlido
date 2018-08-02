@@ -12,8 +12,7 @@
       margin: 0 auto;
     }
   }
-
-  > h2 {
+  >h2 {
     @include sentinel(25px, 400);
     letter-spacing: normal;
     color: $grey;

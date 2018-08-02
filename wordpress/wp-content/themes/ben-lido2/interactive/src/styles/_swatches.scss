@@ -62,22 +62,48 @@
   img {
     border-radius: 50%;
     display: block;
+    width: auto;
+    height: auto;
   }
 }
 
 .swatch-control {
   justify-content: center;
   display: flex;
-  max-width: 300px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 160px;
 
   .select-option {
     text-align: center;
     width: 33%;
     border: 0;
+    &.selected {
+      border: 0;
+      padding: 0;
+    }
   }
 
-  .swatch-anchor {
-    display: inline-block;
+  .swatch {
+    &-anchor {
+      display: inline-block;
+      width: auto !important;
+      height: auto !important;
+    }
+    &-wrapper {
+      background-color: transparent;
+      width: 33%;
+      border: none;
+      float: none;
+      margin: 0;
+      padding: 8px;
+      transition: padding 0.1s ease-in-out;
+
+      &.selected {
+        transition: padding 0.1s ease-in-out;
+        padding: 4px;
+        border: 0;
+      }
+    }
   }
 }

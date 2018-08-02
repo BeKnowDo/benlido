@@ -40967,6 +40967,18 @@ Object.keys(_myAccount).forEach(function (key) {
   });
 });
 
+var _stepNavigation = __webpack_require__(/*! ./step-navigation */ "./src/javascript/components/step-navigation.js");
+
+Object.keys(_stepNavigation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _stepNavigation[key];
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./src/javascript/components/my-account.js":
@@ -41419,6 +41431,58 @@ var Search = exports.Search = function () {
 
 /***/ }),
 
+/***/ "./src/javascript/components/step-navigation.js":
+/*!******************************************************!*\
+  !*** ./src/javascript/components/step-navigation.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var StepNavigation = exports.StepNavigation = function () {
+  function StepNavigation() {
+    _classCallCheck(this, StepNavigation);
+
+    this.isProductPage = document.querySelector('body.single-product') || undefined;
+    this.stepNavigation = this.isProductPage ? this.isProductPage.querySelector('.step-navigation') : undefined;
+  }
+
+  _createClass(StepNavigation, [{
+    key: 'init',
+    value: function init() {
+      if (this.isProductPage !== undefined) {
+        this.productBackButton();
+      }
+    }
+  }, {
+    key: 'productBackButton',
+    value: function productBackButton() {
+      var backButton = this.stepNavigation.querySelector('.fa-chevron-circle-left') || undefined;
+      if (backButton !== undefined) {
+        backButton.onclick = function (e) {
+          e.preventDefault();
+          var history = window.history;
+          history.back();
+        };
+      }
+    }
+  }]);
+
+  return StepNavigation;
+}();
+
+/***/ }),
+
 /***/ "./src/javascript/index.js":
 /*!*********************************!*\
   !*** ./src/javascript/index.js ***!
@@ -41439,6 +41503,7 @@ new _components.CategoryMenu().init();
 new _components.Search().init();
 new _components.Frequency().init();
 new _components.MyAccount().init();
+new _components.StepNavigation().init();
 
 /***/ }),
 
