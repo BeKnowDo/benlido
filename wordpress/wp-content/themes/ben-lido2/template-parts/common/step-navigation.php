@@ -42,7 +42,7 @@ if (is_shop() || is_product_category()) {
         }
         $previousStep = $kit_url;
         $back = 'Back to Kit Page';
-        $current = 'Add Item to Kit';
+        $current = '';
         $nextStep = '#';
         $bext = '';
         $stepNavigation = array(
@@ -68,8 +68,9 @@ if (is_shop() || is_product_category()) {
         if (!empty($bags_page) && is_object($bags_page)) {
             $previousStep = get_permalink($bags_page);
         }
+
         $back = 'Back to Bags';
-        $current = 'Add Item to Kit';
+        $current = '';
         $next = 'View Kit';
         $stepNavigation = array(
             'previousStep' => $previousStep,
