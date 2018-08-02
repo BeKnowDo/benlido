@@ -51,7 +51,7 @@ function bl_storefront_overrides() {
 
 	remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); // moving related products down
 	
-	if (!is_product_category()) {
+	if (!is_product_category() && !is_shop()) {
 		add_action('woocommerce_after_main_content', 'woocommerce_output_related_products', 100); // moving related products down
 	}
 	
@@ -91,6 +91,34 @@ function bl_storefront_overrides() {
 }
 
 add_action( 'wp', 'bl_storefront_overrides' );
+
+// adding my accounts kits menu and subpage
+function bl_add_my_account_endpoints() {
+	add_rewrite_endpoint( 'mykits', EP_PAGES );
+}
+add_action( 'init', 'bl_add_my_account_endpoints' );
+
+include_once (get_stylesheet_directory(). '/inc/my-account/kits.php');
+add_action( 'woocommerce_account_mykits_endpoint','bl_account_mykits_endpoint');
+
+// adding it to the my accounts menu
+add_filter( 'woocommerce_account_menu_items', 'bl_account_menu_items');
+
+function bl_account_menu_items( $items ) {
+	// adding kits to 2nd position
+	//print_r ($items);
+	$kits_menu = array('kits'=>'Kits');
+	$holder = array();
+	$k=0;
+	foreach ($items as $key => $item) {
+		if ($k == 2) {
+			$holder['mykits'] = 'Kits';
+		}
+		$k++;
+		$holder[$key] = $item;
+	}
+	return $holder;
+}
 
 function bl_remove_product_page_skus( $enabled ) {
     if ( ! is_admin() && is_product() ) {
