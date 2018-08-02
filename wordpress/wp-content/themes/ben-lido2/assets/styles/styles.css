@@ -3153,9 +3153,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-add-bag-product.changed:hover { background-color: #9fb9c4; }
 
-.bl-product-swatches { margin: 20px auto; max-width: 160px; justify-content: center; padding: 0; }
+.bl-product-swatches { margin: 20px auto; justify-content: center; padding: 0; }
 
-.bl-product-swatches .swatch-wrapper { background-color: transparent; width: 33%; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
+.bl-product-swatches .swatch-wrapper { background-color: transparent; width: 33%; max-width: 50px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
 
 .bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
 
@@ -3257,7 +3257,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar .custom-logo-link { display: block; }
 
-.navbar .custom-logo { display: block; max-width: 120px; width: 100%; }
+.navbar .custom-logo { display: block; max-width: 120px; min-height: 28px; width: 100%; }
 
 .footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; }
 
@@ -3725,7 +3725,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .product.product_cat-bags .entry-summary .variations-header { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 45px; font-weight: 400; font-style: normal; margin: 0.8rem 0 0; padding: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .reset_variations { font-size: 18px; padding: 0; margin: 0; position: absolute; top: -20px; right: 0; }
+.single-product.single .product.product_cat-bags .entry-summary .reset_variations { display: none !important; font-size: 18px; padding: 0; margin: 0; position: absolute; top: -20px; right: 0; }
 
 .single-product.single .product.product_cat-bags .entry-summary .value { position: relative; }
 
@@ -3737,9 +3737,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { width: 20%; margin-right: 0.8rem; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity > label { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 45px; font-weight: 400; font-style: normal; display: block; }
+.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
 
-.single-product.single .product_meta { padding: 0.8rem 0.8rem 0; }
+.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { text-align: left; }
+
+.single-product.single .product_meta { padding: 0.8rem 0.8rem 0 0; }
 
 .single-product.single .product_meta .posted_in { margin-bottom: 0.8rem; }
 

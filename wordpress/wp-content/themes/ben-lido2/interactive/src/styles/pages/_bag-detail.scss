@@ -52,6 +52,7 @@
           }
 
           .reset_variations {
+            display: none !important;
             font-size: 18px;
             padding: 0;
             margin: 0;
@@ -85,10 +86,16 @@
             margin-right: $unit-2;
 
             > label {
-              @include knockout(45px, 400);
+              @include sentinel(24px, 400);
+              padding-bottom: $unit-2;
+              color: $grey;
               display: block;
             }
 
+          }
+
+          .quantity {
+            text-align: left;
           }
 
         }
@@ -97,7 +104,7 @@
     }
 
     .product_meta {
-      padding: $unit-2 $unit-2 0;
+      padding: $unit-2 $unit-2 0 0;
 
       .posted_in {
         margin-bottom: $unit-2;
