@@ -8,7 +8,7 @@
     "server": "nodemon -e js,twig server",
     "api": "concurrently \"yarn server\" \"yarn server\" \"yarn json\"",
     "fed": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn webpack\" \"yarn server\"",
-    "wp-fed": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"yarn styles:watch --wordpress\" \"yarn webpack --wordpress\"",
+    "wp-fed": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"yarn styles:watch --wordpress\" \"yarn webpack --wordpress\" \"yarn twig:watch\"",
     "dev": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn twig:watch\" \"yarn webpack\" \"yarn server\" \"yarn wordpress:watch\"",
     "styles": "node scripts/styles.js",
     "styles:watch": "onchange 'src/styles/**/*.scss' -- yarn styles",

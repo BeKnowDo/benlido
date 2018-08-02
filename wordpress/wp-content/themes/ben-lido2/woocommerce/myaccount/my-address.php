@@ -42,7 +42,7 @@ $col    = 1;
 </p>
 
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
-	<div class="u-columns woocommerce-Addresses col2-set addresses">
+	<div class="columns">
 <?php endif; ?>
 
 <?php foreach ( $get_addresses as $name => $title ) : ?>

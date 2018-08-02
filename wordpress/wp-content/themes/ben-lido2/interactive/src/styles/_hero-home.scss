@@ -1,8 +1,9 @@
 .hero {
   &-home {
     &[style*="background-image"] {
-      background-size: 66%;
-      background-position: right bottom;
+      background-size: 100%;
+      background-position-x: 50%;
+      background-position-y: bottom;
       padding-top: 80px;
 
       img {
@@ -10,7 +11,7 @@
       }
 
       .hero-image-container {
-        padding-top: 82px;
+        // padding-top: 0;
       }
     }
 

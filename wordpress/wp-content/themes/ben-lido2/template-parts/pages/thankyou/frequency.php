@@ -24,7 +24,7 @@ if (function_exists('get_field')) {
         <input id="freq" type="hidden" name="freq" value="" />
         <header class="entry-header"><h1 class="entry-title"><?php echo $header;?></h1></header>
         <div class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo $blurb;?></div>
-        <div class="columns shipping-tile-container">
+        <div class="columns delivery-frequency-tile">
             
             <?php if (!empty($frequencies) && is_array($frequencies)):?>
                 

@@ -1,5 +1,16 @@
 @media (max-width: 760px) {
   .woocommerce {
+    
+    &-order {
+      .woocommerce {
+        &-thankyou-order-details {
+          > li {
+            width: 100%;
+          }
+        }
+      }
+    }
+
     &-orders {
       .woocommerce {
         &-orders-table {

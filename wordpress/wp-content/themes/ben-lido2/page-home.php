@@ -21,7 +21,7 @@ get_header(); ?>
             ?>
 
             <?php if ($show_hero_section == true):?>
-                <div class="max-width-xl">
+                <div>
                     <?php get_template_part( 'template-parts/common/hero/home','hero'); ?>
                 </div>
             <?php endif;?>

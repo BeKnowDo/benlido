@@ -15,6 +15,9 @@
     &-action-buttons {
       .btn {
         max-width: none;
+        &:last-child {
+          margin-top: $unit-2;
+        }
       }
     }
   }

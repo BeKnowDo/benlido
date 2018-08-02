@@ -5,14 +5,15 @@ import {
   CategoryMenu,
   Cart,
   Search,
-  Frequency
-} from "./components";
+  Frequency,
+  MyAccount
+} from './components'
 
-const initializeNavigation = new Navigation().init();
-
-const cart = new Cart().init();
-const initializeScrollToTop = new ScrollToTop().init();
-const productCarousels = new ProductImageCarousel().init();
-const categoryMenu = new CategoryMenu().init();
-const search = new Search().init();
-const frequency = new Frequency().init();
+new Navigation().init()
+new Cart().init()
+new ScrollToTop().init()
+new ProductImageCarousel().init()
+new CategoryMenu().init()
+new Search().init()
+new Frequency().init()
+new MyAccount().init()
