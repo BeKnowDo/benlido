@@ -49,6 +49,7 @@
     }
   }
 
+
   &-dropdown {
     animation-duration: 0.3s;
     animation-fill-mode: both;
@@ -107,8 +108,9 @@
 
   &-item-counter {
     position: relative;
-    z-index: 1;
+    top: 2px;
     display: inline-block;
+    z-index: 1;
     font-size: 20px;
     &:hover {
       cursor: pointer;
@@ -118,6 +120,7 @@
   &-section {
     &-cart {
       position: relative;
+      top: 3px;
       cursor: pointer;
       display: block;
       z-index: 10;
@@ -135,9 +138,9 @@
     .columns {
     }
     .column {
-      padding: 0 14px;
+      padding: 0 6px;
       &:last-child {
-        padding-left: 7px;
+        padding-left: 4px;
       }
     }
   }
@@ -205,7 +208,14 @@
 
   .fa-suitcase {
     &:before {
-      font-size: 30px;
+      font-size: 25px;
+    }
+  }
+  .fa-user-circle {
+    position: relative;
+    bottom: 1.5px;
+    &:before {
+      font-size: 24px;
     }
   }
 

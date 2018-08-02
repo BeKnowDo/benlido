@@ -3217,11 +3217,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar-dropdown-primary-items a:hover { text-decoration: none; color: #9fb9c4; }
 
-.navbar-item-counter { position: relative; z-index: 1; display: inline-block; font-size: 20px; }
+.navbar-item-counter { position: relative; top: 2px; display: inline-block; z-index: 1; font-size: 20px; }
 
 .navbar-item-counter:hover { cursor: pointer; }
 
-.navbar-section-cart { position: relative; cursor: pointer; display: block; z-index: 10; }
+.navbar-section-cart { position: relative; top: 3px; cursor: pointer; display: block; z-index: 10; }
 
 .navbar-section-cart .fa-suitcase { color: #393d5b; }
 
@@ -3229,9 +3229,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar-section-account:visited { color: #393d5b; }
 
-.navbar-section .column { padding: 0 14px; }
+.navbar-section .column { padding: 0 6px; }
 
-.navbar-section .column:last-child { padding-left: 7px; }
+.navbar-section .column:last-child { padding-left: 4px; }
 
 .navbar-bag { user-select: none; border-radius: 4px; background-color: #393d5b; padding: 20px; position: absolute; top: 30px; right: 0; width: 312px; color: #fff; }
 
@@ -3249,7 +3249,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar-login { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; display: inline-block; padding: 20px 0 0; color: #979797; }
 
-.navbar .fa-suitcase:before { font-size: 30px; }
+.navbar .fa-suitcase:before { font-size: 25px; }
+
+.navbar .fa-user-circle { position: relative; bottom: 1.5px; }
+
+.navbar .fa-user-circle:before { font-size: 24px; }
 
 .navbar .custom-logo-link { display: block; }
 
