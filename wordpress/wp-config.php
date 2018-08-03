@@ -14,6 +14,10 @@ switch($_SERVER['HTTP_HOST'])
     case 'ip-172-31-39-199':
         define('SERVER_ENVIRONMENT','PROD');
         break;
+    case 'benlido.urbanpixels.localhost':
+    case 'macminis-Mac-mini.local':
+	define('SERVER_ENVIRONMENT','DAVE');
+	break;
     case 'dev.benlido.com':
     case 'ip-172-31-45-93':
         define('SERVER_ENVIRONMENT','DEV');
@@ -39,6 +43,16 @@ switch(SERVER_ENVIRONMENT) {
         define('DB_NAME', 'ben_lido_dev');
         define('DB_USER', 'benlido');
         define('DB_PASSWORD', 'benlido');
+        break;
+
+    case "DAVE":
+        define('DB_HOST', '127.0.0.1');
+        define('DB_NAME', 'ben_lido');
+        define('DB_USER', 'root');
+        define('DB_PASSWORD', '');
+        define( 'WP_DEBUG', false );
+        define( 'WP_DEBUG_DISPLAY', false );
+        define( 'WP_DEBUG_LOG', true );
         break;
 
     case "LOCAL":

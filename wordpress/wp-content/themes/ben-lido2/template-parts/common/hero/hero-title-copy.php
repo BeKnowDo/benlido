@@ -20,6 +20,17 @@ if (is_shop()) {
     if ($is_kit_add == true) {
         
     }
+    $shop_page_id = wc_get_page_id('shop');
+    //echo $shop_page_id;
+    if (function_exists('get_field')) {
+        $hero_title_header = get_field('hero_title_header',$shop_page_id);
+        $hero_title_copy = get_field('hero_title_copy',$shop_page_id);
+        if (!empty($hero_title_header) || !empty($hero_title_copy)) {
+            $heroData = array(array('header'=>$hero_title_header,'copy'=>$hero_title_copy));
+        }
+        
+        //print_r ($heroData);
+    }
     if (is_search()) {
         $heroData = array(
             array(
@@ -29,6 +40,7 @@ if (is_shop()) {
         );
     }
 }
+
 if (empty($heroData) && function_exists('get_field')) {
     $hero_title_header = get_field('hero_title_header');
     $hero_title_copy = get_field('hero_title_copy');

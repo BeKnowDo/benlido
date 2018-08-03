@@ -68,7 +68,7 @@ function bl_storefront_overrides() {
 		}
 		
 		if (is_shop() && !is_search() ) {
-			add_action('woocommerce_before_main_content','bl_bag_hero',5);
+			//add_action('woocommerce_before_main_content','bl_bag_hero',5);
 		}
 
 		if (is_shop() || is_product_category() || is_product_tag()) {

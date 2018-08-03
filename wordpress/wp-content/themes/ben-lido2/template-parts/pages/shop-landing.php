@@ -1,4 +1,3 @@
-
 <?php
 global $shop_landing_featured_product;
 global $shop_landing_category;

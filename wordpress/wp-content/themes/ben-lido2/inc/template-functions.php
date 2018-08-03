@@ -512,6 +512,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
 
   }
   if (empty($kit_id) && empty($color_variation_image_overrides) && !empty($product_id) && function_exists('get_field')) {
+
     $color_variation_image_overrides = get_field('color_variation_image_overrides',$product_id);
     //print_r($color_variation_image_overrides) ;
     // we're also going to replace the featured image with the first color one.
@@ -531,6 +532,10 @@ function bl_process_kit_bag($item,$kit_id=null) {
     $swatches = bl_get_bag_product_swatch_overrides($product_id,$category_id,$color_variation_image_overrides);
   }
   $bag_in_cart = bl_get_bag_from_cart();
+  if(!empty($bag_in_cart) && is_array($bag_in_cart)) {
+    $bag_id = $bag_in_cart['id'];
+    $href = get_permalink($bag_id);
+  }
   if (!empty($swatches) && !empty($bag_in_cart)) {
     $swatches_holder = array();
     foreach ($swatches as $swatch) {
