@@ -3755,6 +3755,20 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .woocommerce-Tabs-panel--description p { margin: 0; }
 
+.bl-about-us .hero-title-copy { padding: 100px 0; }
+
+.bl-about-us .hero-title-copy[style*="background-image"] { padding: 300px 0; background-size: cover; background-position: center; }
+
+.bl-about-us .hero-title-copy[style*="background-image"] * { color: #fff; }
+
+.bl-about-us .hero-title-copy[style*="background-image"] .columns { align-items: center; justify-content: center; }
+
+.bl-about-us .hero-title-copy[style*="background-image"] .column { max-width: 480px; }
+
+.bl-about-us .hero-title-copy-quote { font-size: 28px; }
+
+.bl-about-us .hero-title-copy-quote .columns .column { max-width: 780px; }
+
 @media (max-width: 840px) { .hero { padding: 100px 20px; } }
 
 @media (max-width: 600px) { .hero-header { font-size: 75px; }

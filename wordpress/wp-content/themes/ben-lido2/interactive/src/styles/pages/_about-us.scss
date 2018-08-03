@@ -1,0 +1,42 @@
+.bl-about-us {
+  .hero{
+      &-title {
+
+        &-copy {
+          padding: 100px 0;
+
+          &[style*="background-image"] {
+            padding: 300px 0;
+            background-size: cover;
+            background-position: center;
+
+            * {
+              color: $white;
+            }
+
+            .columns {
+              align-items: center;
+              justify-content: center;
+            }
+
+            .column {
+              max-width: 480px;
+            }
+
+          }
+
+          &-quote {
+            font-size: 28px;
+
+            .columns {
+              .column {
+                max-width: 780px;
+              }
+
+            }
+          }
+
+        }
+      }
+    }
+}

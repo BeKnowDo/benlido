@@ -1,7 +1,18 @@
 {% for item in heroData %}
-  <div class="hero-title-copy bg-gray text-center">
+
+  {% if item.backgroundImage %}
+  <div class="hero-title-copy text-center {% if item.overrideBackgroundClass %} {{item.overrideBackgroundClass}} {% else %} bg-gray {% endif %} {% if item.quote %} hero-title-copy-quote {% endif %}" style="background-image: url({{item.backgroundImage}})">
+  {% else %}
+  <div class="hero-title-copy text-center {% if item.overrideBackgroundClass %} {{item.overrideBackgroundClass}} {% else %} bg-gray {% endif %} {% if item.quote %} hero-title-copy-quote {% endif %}">
+  {% endif %}
+
     <div class="columns">
       <div class="column col-xs-12 col-sm-12 col-10 col-mx-auto">
+
+        {% if item.preHeaderText %}
+          <p class="hero-sub-header">{{item.preHeaderText}}</p>
+        {% endif %}
+
         {% if item.header %}
           <h1 class="hero-title-copy-header">{{item.header}}</h1>
         {% endif %}
@@ -10,7 +21,16 @@
           <p class="hero-title-copy-copy">{{item.copy}}</p>
         {% endif %}
 
+        {% if item.inlineImage %}
+          <img class="hero-title-copy-inline-image" src="{{item.inlineImage}}" />
+        {% endif %}
+
+        {% if item.quote %}
+          <p class="hero-title-quote">{{item.quote}}</p>
+        {% endif %}
+
       </div>
     </div>
   </div>
-{% endfor %}
+
+  {% endfor %}

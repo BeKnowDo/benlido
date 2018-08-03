@@ -2,7 +2,7 @@
 /**
  * Template Name: Ben Lido Home Page
  */
- 
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -35,7 +35,7 @@ get_header(); ?>
             <?php endif;?>
 
             <?php if ($show_bottom_section == true):?>
-                
+
             <?php endif;?>
 
             <?php
