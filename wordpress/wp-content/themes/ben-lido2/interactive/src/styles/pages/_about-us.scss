@@ -3,10 +3,24 @@
       &-title {
 
         &-copy {
-          padding: 100px 0;
+          padding: 40px $unit-10;
+          text-align: left;
+
+          .hero-title-copy-copy {
+            line-height: 140%;
+          }
+
+          &-inline-image {
+            padding: 3rem 0 $unit-2;
+          }
+
+          .hero-title-copy-header {
+            padding-bottom: $unit-6;
+          }
 
           &[style*="background-image"] {
-            padding: 300px 0;
+            text-align: center;
+            padding: 200px $unit-10;
             background-size: cover;
             background-position: center;
 
@@ -26,7 +40,21 @@
           }
 
           &-quote {
-            font-size: 28px;
+            font-size: 20px;
+
+            &[style*="background-image"] {
+              text-align: left;
+              line-height: 130%;
+              padding-top: 50px;
+              padding-bottom: 50px;
+            }
+
+            .hero-title-quote {
+              padding: 0 $unit-6 $unit-2;
+              &:last-child {
+                padding-top: 0;
+              }
+            }
 
             .columns {
               .column {
@@ -34,6 +62,10 @@
               }
 
             }
+          }
+
+          &:last-child {
+            text-align: center;
           }
 
         }

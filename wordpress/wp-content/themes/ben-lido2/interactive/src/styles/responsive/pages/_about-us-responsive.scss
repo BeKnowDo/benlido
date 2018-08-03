@@ -1,0 +1,218 @@
+/*
+Laptop double padding on hero
+padding 90px on last hero
+center header and copy
+
+last hero paragraph 800px margin-lfet/right auto
+
+
+quote hero - font-size 24
+quote hero - linehight 140%
+
+
+
+1440 wanderwell
+
+
+tablet wander well
+top-padding: 90px;
+
+MAKE SURE TO CALCULATE 90 PX TOTAL!!!
+
+WANDER WELL 40PX ON MOBILE
+http://drops.cavscout.us/ShWtlsj
+
+
+
+
+
+*/
+
+@media (min-width: $size-sm) {
+  .bl-about-us {
+    .hero{
+        &-title {
+
+          &-copy {
+
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            &-inline-image {
+            }
+
+            .hero-title-copy-header {
+            }
+
+            &[style*="background-image"] {
+
+              * {
+              }
+
+              .columns {
+              }
+
+              .column {
+              }
+
+            }
+
+            &-quote {
+
+              &[style*="background-image"] {
+                padding-top: 200px;
+                padding-bottom: 200px;
+              }
+
+              .hero-title-quote {
+                &:last-child {
+                }
+              }
+
+              .columns {
+                .column {
+                }
+              }
+
+            }
+
+            &:last-child {
+              padding-top: 90px;
+              padding-bottom: 90px;
+            }
+
+          }
+        }
+      }
+  }
+}
+
+@media (min-width: $size-md) {
+  .bl-about-us {
+    .hero{
+        &-title {
+
+          &-copy {
+
+            padding-top: 90px;
+            padding-bottom: 90px;
+
+            &-inline-image {
+            }
+
+            .hero-title-copy-header {
+            }
+
+            &[style*="background-image"] {
+
+              * {
+              }
+
+              .columns {
+              }
+
+              .column {
+              }
+
+            }
+
+            &-quote {
+
+              &[style*="background-image"] {
+                padding-top: 200px;
+                padding-bottom: 200px;
+              }
+
+              .hero-title-quote {
+                &:last-child {
+                }
+              }
+
+              .columns {
+                .column {
+                }
+              }
+
+            }
+
+            &:last-child {
+              padding-top: 90px;
+              padding-bottom: 90px;
+            }
+
+          }
+        }
+      }
+  }
+}
+
+@media (min-width: $size-lg) {
+  .bl-about-us {
+    .hero{
+        &-title {
+
+          &-copy {
+
+            padding-top: 90px;
+            padding-bottom: 90px;
+
+            .hero-title-copy-copy {
+              line-height: 140%;
+              font-size: 18px;
+            }
+
+            &-inline-image {
+            }
+
+            .hero-title-copy-header {
+            }
+
+            &[style*="background-image"] {
+              padding-top: 400px;
+              padding-bottom: 400px;
+
+              * {
+              }
+
+              .columns {
+              }
+
+              .column {
+              }
+
+            }
+
+            &-quote {
+
+              &[style*="background-image"] {
+                padding-top: 200px;
+                padding-bottom: 200px;
+              }
+
+              .hero-title-quote {
+                font-size: 24px;
+                line-height: 140%;
+
+                &:last-child {
+                }
+              }
+
+              .columns {
+                .column {
+                  max-width: 840px;
+                }
+              }
+
+            }
+
+            &:last-child {
+              font-size: 20px;
+              padding-top: 90px;
+              padding-bottom: 90px;
+            }
+
+          }
+        }
+      }
+  }
+}

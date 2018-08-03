@@ -3755,9 +3755,15 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .woocommerce-Tabs-panel--description p { margin: 0; }
 
-.bl-about-us .hero-title-copy { padding: 100px 0; }
+.bl-about-us .hero-title-copy { padding: 40px 2rem; text-align: left; }
 
-.bl-about-us .hero-title-copy[style*="background-image"] { padding: 300px 0; background-size: cover; background-position: center; }
+.bl-about-us .hero-title-copy .hero-title-copy-copy { line-height: 140%; }
+
+.bl-about-us .hero-title-copy-inline-image { padding: 3rem 0 0.8rem; }
+
+.bl-about-us .hero-title-copy .hero-title-copy-header { padding-bottom: 1.2rem; }
+
+.bl-about-us .hero-title-copy[style*="background-image"] { text-align: center; padding: 200px 2rem; background-size: cover; background-position: center; }
 
 .bl-about-us .hero-title-copy[style*="background-image"] * { color: #fff; }
 
@@ -3765,9 +3771,17 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-about-us .hero-title-copy[style*="background-image"] .column { max-width: 480px; }
 
-.bl-about-us .hero-title-copy-quote { font-size: 28px; }
+.bl-about-us .hero-title-copy-quote { font-size: 20px; }
+
+.bl-about-us .hero-title-copy-quote[style*="background-image"] { text-align: left; line-height: 130%; padding-top: 50px; padding-bottom: 50px; }
+
+.bl-about-us .hero-title-copy-quote .hero-title-quote { padding: 0 1.2rem 0.8rem; }
+
+.bl-about-us .hero-title-copy-quote .hero-title-quote:last-child { padding-top: 0; }
 
 .bl-about-us .hero-title-copy-quote .columns .column { max-width: 780px; }
+
+.bl-about-us .hero-title-copy:last-child { text-align: center; }
 
 @media (max-width: 840px) { .hero { padding: 100px 20px; } }
 
@@ -3853,6 +3867,51 @@ body { position: relative; padding-top: 52px; outline: none; }
   .single-product.single .product.product_cat-bags .entry-summary.summary { width: 50%; } }
 
 @media (min-width: 840px) { .single-product.single .product_cat-bags .entry-summary.summary { width: 100%; } }
+
+/*
+Laptop double padding on hero
+padding 90px on last hero
+center header and copy
+
+last hero paragraph 800px margin-lfet/right auto
+
+
+quote hero - font-size 24
+quote hero - linehight 140%
+
+
+
+1440 wanderwell
+
+
+tablet wander well
+top-padding: 90px;
+
+MAKE SURE TO CALCULATE 90 PX TOTAL!!!
+
+WANDER WELL 40PX ON MOBILE
+http://drops.cavscout.us/ShWtlsj
+
+
+
+
+
+*/
+@media (min-width: 600px) { .bl-about-us .hero-title-copy { padding-top: 50px; padding-bottom: 50px; }
+  .bl-about-us .hero-title-copy-quote[style*="background-image"] { padding-top: 200px; padding-bottom: 200px; }
+  .bl-about-us .hero-title-copy:last-child { padding-top: 90px; padding-bottom: 90px; } }
+
+@media (min-width: 840px) { .bl-about-us .hero-title-copy { padding-top: 90px; padding-bottom: 90px; }
+  .bl-about-us .hero-title-copy-quote[style*="background-image"] { padding-top: 200px; padding-bottom: 200px; }
+  .bl-about-us .hero-title-copy:last-child { padding-top: 90px; padding-bottom: 90px; } }
+
+@media (min-width: 960px) { .bl-about-us .hero-title-copy { padding-top: 90px; padding-bottom: 90px; }
+  .bl-about-us .hero-title-copy .hero-title-copy-copy { line-height: 140%; font-size: 18px; }
+  .bl-about-us .hero-title-copy[style*="background-image"] { padding-top: 400px; padding-bottom: 400px; }
+  .bl-about-us .hero-title-copy-quote[style*="background-image"] { padding-top: 200px; padding-bottom: 200px; }
+  .bl-about-us .hero-title-copy-quote .hero-title-quote { font-size: 24px; line-height: 140%; }
+  .bl-about-us .hero-title-copy-quote .columns .column { max-width: 840px; }
+  .bl-about-us .hero-title-copy:last-child { font-size: 20px; padding-top: 90px; padding-bottom: 90px; } }
 
 .product-tile-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
 
@@ -4012,11 +4071,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .product-remove { width: 5%; }
 
-.woocommerce-cart .product-thumbnail { width: 30%; }
+.woocommerce-cart .product-thumbnail { width: 20%; }
 
 .woocommerce-cart .product-thumbnail a { display: block; }
 
-.woocommerce-cart .product-thumbnail a img { display: block; max-width: 100%; }
+.woocommerce-cart .product-thumbnail a img { display: block; max-width: 60%; }
 
 .woocommerce-cart .product-name { width: 30%; text-align: left; }
 
@@ -4283,11 +4342,11 @@ body { position: relative; padding-top: 52px; outline: none; }
   .woocommerce-cart .shop_table tbody .cart_item .product-thumbnail { width: 100%; padding: 0.8rem 0; }
   .woocommerce-cart .shop_table tbody .cart_item .product-thumbnail img { max-width: 120px; }
   .woocommerce-cart .shop_table tbody .cart_item .product-name { width: 100%; }
-  .woocommerce-cart .shop_table tbody .cart_item .product-price { text-align: left; width: 20%; }
+  .woocommerce-cart .shop_table tbody .cart_item .product-price { text-align: left; width: 33%; }
   .woocommerce-cart .shop_table tbody .cart_item .product-price:before { text-align: left; }
-  .woocommerce-cart .shop_table tbody .cart_item .product-quantity { width: 20%; }
+  .woocommerce-cart .shop_table tbody .cart_item .product-quantity { width: 33%; }
   .woocommerce-cart .shop_table tbody .cart_item .product-quantity .input-text { padding-left: 1rem; text-align: center; }
-  .woocommerce-cart .shop_table tbody .cart_item .product-subtotal { width: 20%; } }
+  .woocommerce-cart .shop_table tbody .cart_item .product-subtotal { width: 33%; } }
 
 @media (max-width: 760px) { .woocommerce-account .entry-content > .woocommerce { flex-direction: column; }
   .woocommerce-account .bl-account-navigation { border-right: 0; margin: 0 0; width: 100%; }

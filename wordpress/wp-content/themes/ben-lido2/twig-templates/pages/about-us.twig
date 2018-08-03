@@ -2,8 +2,8 @@
 
 {# {% block content %} #}
 
-  {% if not heroData %}
-    {% set heroData = [
+{% if not heroData %}
+  {% set heroData = [
       {
         preHeaderText: 'About Ben Lido',
         header: 'ADVENTURE IS CALLING, WE KEEP YOU READY',
@@ -27,17 +27,12 @@
   ]%}
 {% endif %}
 
-<div class="bl-about-us">
+<div
+  class="bl-about-us">
 
   {% include 'common/step-navigation.twig' %}
 
   {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
-
-  <div class="bg-white">
-    <div class="max-width-xl">
-      {% include 'common/hero/hero-product-list.twig' with { products: items } %}
-    </div>
-  </div>
 
 </div>
 
