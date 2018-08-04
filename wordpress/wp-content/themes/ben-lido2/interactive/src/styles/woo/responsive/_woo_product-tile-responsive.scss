@@ -1,5 +1,45 @@
 @media (max-width: $size-md) {
+
   .product {
+
+    &-tile {
+      border: 0;
+      border-bottom: $grey-border;
+      border-radius: 0;
+      padding: $unit-10 $unit-2;
+
+      text-align: center;
+
+      &:hover {
+        .product-tile-hover {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &-link {
+        display: inline-block;
+        min-height: 0;
+      }
+
+      &-empty-product {
+        .product-tile {
+          border-bottom: $grey-border;
+        }
+      }
+
+      &-column {
+        margin-top: 0;
+
+        &:nth-last-child(-n+2) {
+          .product-tile {
+            border: 0;
+          }
+        }
+
+      }
+
+    }
+
     .summary {
       &.entry-summary {
         .price {

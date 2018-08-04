@@ -1,0 +1,39 @@
+@media (max-width: $size-sm) {
+  .btn {
+    &-selected {
+      flex-direction: column;
+
+      &.btn {
+        background-color: transparent;
+        border: 0;
+      }
+
+
+      .remove-from-cart {
+        background-color: transparent;
+        border: 1px solid $brown-grey;
+        border-radius: 4px;
+        color: $brown-grey;
+        margin-bottom: $unit-2;
+        width: 100%;
+
+        &:after {
+          display: none;
+        }
+
+      }
+
+      &-swap {
+
+        &.swap-from-cart {
+          border-radius: 4px;
+          background-color: $brown-grey;
+          color: $white;
+          width: 100%;
+        }
+      }
+
+    }
+  }
+
+}

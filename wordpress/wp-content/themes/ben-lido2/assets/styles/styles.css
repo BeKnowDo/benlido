@@ -3155,6 +3155,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-product-swatches { margin: 20px auto; justify-content: center; padding: 0; }
 
+.bl-product-swatches:before { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 400; font-style: normal; margin: 0 0 0.8rem; content: 'Choose a color'; display: block; width: 100%; }
+
 .bl-product-swatches .swatch-wrapper { background-color: transparent; width: 33%; max-width: 50px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
 
 .bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
@@ -3505,21 +3507,21 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-tile-description { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; font-weight: 400; font-size: 14px; margin: 8px 0; }
 
+.product-tile-empty-product-add { color: #999999; padding: 0 0 10px; }
+
+.product-tile-empty-product-add .fal { font-size: 102px; }
+
+.product-tile-empty-product .product-tile { justify-content: center; border: 0; }
+
+.product-tile-empty-product .product-tile-link { min-height: 0; }
+
+.product-tile-empty-product .product-tile-header { display: block; letter-spacing: normal; line-height: 140%; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; }
+
+.product-tile-empty-product .product-tile-sub-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; padding-bottom: 30px; }
+
+.product-tile-empty-product .btn-primary { padding: 10px 6px; margin-top: auto; position: relative; }
+
 .product-tile .btn { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; padding: 0; margin-top: auto; }
-
-.product-tile .fal { font-size: 14px; }
-
-.product-tile .empty-product { display: flex; flex-direction: column; align-items: center; height: 100%; }
-
-.product-tile .empty-product .product-tile-header { display: block; letter-spacing: normal; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; }
-
-.product-tile .empty-product .product-tile-sub-header { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; padding-bottom: 30px; }
-
-.product-tile .empty-product .product-tile-link { margin-top: 20px; min-height: 0; }
-
-.product-tile .empty-product-add { color: #999999; font-size: 102px; padding: 0 0 40px; }
-
-.product-tile .empty-product .btn-primary { padding: 10px 6px; margin-top: auto; position: relative; }
 
 .product-row { max-width: 850px; margin: 0 auto; padding: 93px 10px 100px; }
 
@@ -3793,6 +3795,12 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-about-us .hero-title-copy:last-child { text-align: center; }
 
+@media (max-width: 600px) { .btn-selected { flex-direction: column; }
+  .btn-selected.btn { background-color: transparent; border: 0; }
+  .btn-selected .remove-from-cart { background-color: transparent; border: 1px solid #393d5b; border-radius: 4px; color: #393d5b; margin-bottom: 0.8rem; width: 100%; }
+  .btn-selected .remove-from-cart:after { display: none; }
+  .btn-selected-swap.swap-from-cart { border-radius: 4px; background-color: #393d5b; color: #fff; width: 100%; } }
+
 @media (max-width: 840px) { .hero { padding: 50px 20px; } }
 
 @media (max-width: 600px) { .hero-header { font-size: 75px; }
@@ -3927,9 +3935,9 @@ http://drops.cavscout.us/ShWtlsj
 
 .product-tile-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
 
-.product-tile-link { min-height: 182px; }
+.product-tile-link { min-height: 182px; z-index: 0; }
 
-.product-tile-image[height] { height: auto !important; }
+.product-tile-image[height] { height: auto !important; position: relative; z-index: 0; }
 
 .product .button { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px 34px; background-color: #9fb9c4; color: #fff; border-radius: 4px; }
 
@@ -4389,7 +4397,13 @@ http://drops.cavscout.us/ShWtlsj
   .single-product #content .product.type-product .woocommerce-product-gallery { width: 100%; }
   .single-product #content .product.type-product .entry-summary { width: 100%; } }
 
-@media (max-width: 840px) { .product .summary.entry-summary .price { width: 35%; padding-right: 20px; }
+@media (max-width: 840px) { .product-tile { border: 0; border-bottom: 1px solid #e4e4e4; border-radius: 0; padding: 2rem 0.8rem; text-align: center; }
+  .product-tile:hover .product-tile-hover { transform: translate3d(0, 0, 0); }
+  .product-tile-link { display: inline-block; min-height: 0; }
+  .product-tile-empty-product .product-tile { border-bottom: 1px solid #e4e4e4; }
+  .product-tile-column { margin-top: 0; }
+  .product-tile-column:nth-last-child(-n+2) .product-tile { border: 0; }
+  .product .summary.entry-summary .price { width: 35%; padding-right: 20px; }
   .product .cart { width: 50%; } }
 
 @media (max-width: 600px) { .product .summary.entry-summary .price { width: 25%; padding-right: 20px; }

@@ -39764,7 +39764,7 @@ var BenLidoAnimations = exports.BenLidoAnimations = function () {
       var countUp = true;
       var loopCount = 0;
 
-      var intervalID = window.setInterval(animate, 250);
+      var intervalID = window.setInterval(animate, interval);
 
       function animate() {
         imageTag.src = path + '/BL__' + i + '.jpg';

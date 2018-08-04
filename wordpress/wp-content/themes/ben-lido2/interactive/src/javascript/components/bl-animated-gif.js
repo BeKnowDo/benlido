@@ -27,7 +27,7 @@ export class BenLidoAnimations {
     let countUp = true
     let loopCount = 0
 
-    let intervalID = window.setInterval(animate, 250)
+    let intervalID = window.setInterval(animate, interval)
 
     function animate () {
       imageTag.src = `${path}/BL__${i}.jpg`

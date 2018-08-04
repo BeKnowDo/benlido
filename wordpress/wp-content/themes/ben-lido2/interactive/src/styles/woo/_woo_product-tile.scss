@@ -9,11 +9,14 @@
     }
     &-link {
       min-height: 182px;
+      z-index: 0;
     }
     &-image {
       // max-height: 180px;
       &[height] {
         height: auto !important;
+        position: relative;
+        z-index: 0;
       }
     }
   }
