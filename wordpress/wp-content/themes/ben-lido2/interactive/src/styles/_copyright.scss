@@ -11,8 +11,8 @@
   }
 
   &-text {
-    @include knockout32(17px, 400);
-    letter-spacing: 0;
+    @include knockout32(14px, 400);
+    letter-spacing: normal;
     margin: 30px 0 0;
     font-weight: 400;
   }

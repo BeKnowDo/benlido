@@ -1,3 +1,11 @@
+.page-template-page-about {
+  padding-top: 0;
+
+  .footer {
+    border: 0;
+  }
+}
+
 .bl-about-us {
   .hero{
       &-title {
@@ -19,8 +27,11 @@
           }
 
           &[style*="background-image"] {
+            border: 0;
             text-align: center;
-            padding: 200px $unit-10;
+            padding: 0 $unit-10;
+            height: 100vh;
+            display: flex;
             background-size: cover;
             background-position: center;
 
@@ -31,6 +42,7 @@
             .columns {
               align-items: center;
               justify-content: center;
+              width: 100%;
             }
 
             .column {

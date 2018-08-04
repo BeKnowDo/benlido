@@ -7,7 +7,10 @@ import {
   Search,
   Frequency,
   MyAccount,
-  StepNavigation
+  StepNavigation,
+  Parallax,
+  BenLidoAnimations
+
 } from './components'
 
 new Navigation().init()
@@ -19,3 +22,5 @@ new Search().init()
 new Frequency().init()
 new MyAccount().init()
 new StepNavigation().init()
+new Parallax().init()
+new BenLidoAnimations().init()

@@ -3285,7 +3285,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .copyright-logo img { margin: auto; max-width: 165px; }
 
-.copyright-text { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 17px; font-weight: 400; font-style: normal; letter-spacing: 0; margin: 30px 0 0; font-weight: 400; }
+.copyright-text { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; margin: 30px 0 0; font-weight: 400; }
 
 .btn { border-radius: 4px; font-size: 15px; }
 
@@ -3755,6 +3755,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .woocommerce-Tabs-panel--description p { margin: 0; }
 
+.page-template-page-about { padding-top: 0; }
+
+.page-template-page-about .footer { border: 0; }
+
 .bl-about-us .hero-title-copy { padding: 40px 2rem; text-align: left; }
 
 .bl-about-us .hero-title-copy .hero-title-copy-copy { line-height: 140%; }
@@ -3763,11 +3767,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-about-us .hero-title-copy .hero-title-copy-header { padding-bottom: 1.2rem; }
 
-.bl-about-us .hero-title-copy[style*="background-image"] { text-align: center; padding: 200px 2rem; background-size: cover; background-position: center; }
+.bl-about-us .hero-title-copy[style*="background-image"] { border: 0; text-align: center; padding: 0 2rem; height: 100vh; display: flex; background-size: cover; background-position: center; }
 
 .bl-about-us .hero-title-copy[style*="background-image"] * { color: #fff; }
 
-.bl-about-us .hero-title-copy[style*="background-image"] .columns { align-items: center; justify-content: center; }
+.bl-about-us .hero-title-copy[style*="background-image"] .columns { align-items: center; justify-content: center; width: 100%; }
 
 .bl-about-us .hero-title-copy[style*="background-image"] .column { max-width: 480px; }
 
