@@ -39754,10 +39754,6 @@ var BenLidoAnimations = exports.BenLidoAnimations = function () {
       var documentFragment = document.createDocumentFragment();
       var imageTag = document.createElement('img');
 
-      var closestImage = this.destination.closest('img');
-
-      console.log(closestImage);
-
       documentFragment.appendChild(imageTag);
       this.destination.appendChild(documentFragment);
 

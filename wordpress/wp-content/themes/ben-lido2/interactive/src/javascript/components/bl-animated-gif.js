@@ -17,10 +17,6 @@ export class BenLidoAnimations {
     const documentFragment = document.createDocumentFragment()
     const imageTag = document.createElement('img')
 
-    const closestImage = this.destination.closest('img')
-
-    console.log(closestImage)
-
     documentFragment.appendChild(imageTag)
     this.destination.appendChild(documentFragment)
 
