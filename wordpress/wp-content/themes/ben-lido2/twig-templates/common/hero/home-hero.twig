@@ -1,48 +1,76 @@
-{% if homePageHero is defined %} {% for hero in homePageHero%} {% if hero.triangleBackground %} {% set backgroundClassname
-= 'triangle-background'%} {% else %} {% set backgroundClassname = ''%} {% endif %}
+{% if homePageHero is defined %}
+  {% for hero in homePageHero%}
+    {% if hero.triangleBackground %}
+      {% set backgroundClassname
+= 'triangle-background'%}
+    {% else %}
+      {% set backgroundClassname = ''%}
+    {% endif %}
 
-<div class="hero hero-home {{ backgroundClassname }}" {% if hero.image %} style="background-image: url({{hero.image}})" {%
+    <div
+      class="hero hero-home {{ backgroundClassname }}"
+      {% if hero.image %}
+      style="background-image: url({{hero.image}})"
+      {%
   endif %}>
 
-  <div class="max-width-xl">
+      <div
+        class="max-width-xl">
 
-    <div class="columns">
+        <div
+          class="columns">
 
-      <div class="column col-5 col-sm-12 col-md-8 col-xl-5 col-mx-auto">
+          <div
+            class="column col-5 col-sm-12 col-md-8 col-xl-5 col-mx-auto">
 
-        <p class="hero-sub-header">{{hero.preheader}}</p>
-        <h1 class="hero-header">{{hero.header}}</h1>
-        <p class="hero-copy">{{hero.copy}}</p>
+            <p
+              class="hero-sub-header">{{hero.preheader}}</p>
+            <h1
+              class="hero-header">{{hero.header}}</h1>
+            <p
+              class="hero-copy">{{hero.copy}}</p>
 
-        <div class="hero-action-buttons columns">
-          {% for button in hero.hero_call_to_action_buttons %}
-          <div class="column col-sm-12 col-6">
-            <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ?
+            <div
+              class="hero-action-buttons columns">
+              {% for button in hero.hero_call_to_action_buttons %}
+                <div
+                  class="column col-xs-5 col-mx-auto col-sm-12 col-6">
+                  <a
+                    href="{{button.url}}"
+                    class="btn btn-primary btn-lg btn-block {{button.classes}}"
+                    {{ button.target ?
               'rel="noopener noferrer" target="_blank"' }}>{{button.title}}</a>
-          </div>
+                </div>
 
-          {# {% if loop.index == 1 %}
+                {# {% if loop.index == 1 %}
           <div class="column col-sm-12 col-1">
             <span class="btn btn-lg btn-separator">
               OR
             </span>
           </div>
-          {% endif %} #} {% endfor %}
+          {% endif %} #}
+              {% endfor %}
+            </div>
+
+          </div>
+
+          {% if hero.image %}
+            <div
+              class="column col-5 col-md-12 col-xl-5 col-ml-auto">
+              <div
+                class="hero-image-container">
+                <img
+                  class="hero-image hero-image"
+                  src="{{hero.image}}"
+                  alt="{{hero.altText}}"/>
+              </div>
+            </div>
+          {% endif %}
+
         </div>
 
       </div>
-
-      {% if hero.image %}
-      <div class="column col-5 col-md-12 col-xl-5 col-ml-auto">
-        <div class="hero-image-container">
-          <img class="hero-image hero-image" src="{{hero.image}}" alt="{{hero.altText}}" />
-        </div>
-      </div>
-      {% endif %}
 
     </div>
-
-  </div>
-
-</div>
-{% endfor %} {% endif %}
+  {% endfor %}
+{% endif %}
