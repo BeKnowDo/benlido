@@ -6,7 +6,7 @@
       border: 0;
       border-bottom: $grey-border;
       border-radius: 0;
-      padding: $unit-10 $unit-2;
+      padding: $unit-5 $unit-2;
 
       text-align: center;
 
@@ -28,8 +28,7 @@
       }
 
       &-column {
-        margin-top: 0;
-
+        // margin-bottom: $unit-5;
         &:nth-last-child(-n+2) {
           .product-tile {
             border: 0;

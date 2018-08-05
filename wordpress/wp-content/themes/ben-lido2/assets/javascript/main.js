@@ -41652,7 +41652,7 @@ var StepNavigation = exports.StepNavigation = function () {
   _createClass(StepNavigation, [{
     key: 'init',
     value: function init() {
-      if (this.isProductPage !== undefined) {
+      if (this.isProductPage && this.stepNavigation) {
         this.productBackButton();
       }
     }

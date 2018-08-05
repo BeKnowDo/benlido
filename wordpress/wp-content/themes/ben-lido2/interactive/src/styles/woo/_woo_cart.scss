@@ -11,7 +11,7 @@
     border: $grey-border;
     border-radius: 4px;
     padding: $unit-5;
-    margin-bottom: 100px;
+    margin-bottom: 75px;
   }
 
   .shop_table {
@@ -102,8 +102,12 @@
 
     .actions {
       padding-top: $unit-8;
+
       .coupon {
         display: flex;
+        padding-top: 0;
+        padding-bottom: $unit-7;
+        margin-bottom: $unit-7;
 
         button {
           @include knockout32(15px, 400);
@@ -130,18 +134,22 @@
     .product {
       &-remove {
         position: static;
-        text-align: center;
         max-width: 30px;
         padding: 0;
 
         .remove {
           text-align: center;
-          margin: 0 auto;
+          margin: -4px auto 0;
+          &:after {
+            content: 'Remove?';
+            display: block;
+            color: $blumine;
+          }
           &:before {
-            font-size: 25px;
+            font-size: 22px;
             font-family: "Font Awesome 5 Pro";
-            color: $brown-grey;
-            content: "\f056";
+            color: $red;
+            content: "\f2ed";
           }
         }
       }
@@ -248,4 +256,10 @@
   .cart-collaterals {
     width: 100%;
   }
+
+  .shipping-calculator-button {
+    padding: $unit-2 0 0;
+    display: block;
+  }
+
 }

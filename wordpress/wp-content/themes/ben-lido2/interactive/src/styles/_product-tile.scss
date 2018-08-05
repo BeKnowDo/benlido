@@ -26,9 +26,14 @@
     }
 
     &-column {
+      // margin-bottom: $unit-6;
+      padding-left: $unit-1;
+      padding-right: $unit-1;
       margin-top: $unit-6;
-      padding-left: $unit-3;
-      padding-right: $unit-3;
+
+      &:first-child {
+      }
+
     }
 
     &-link {

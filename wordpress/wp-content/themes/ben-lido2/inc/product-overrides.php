@@ -42,7 +42,7 @@ function bl_loop_product_top() {
     // the beginning of the product loop
     global $product;
     global $product_override;
-    
+
     // get the category header
     $category = '';
     if (!is_product_category()) {
@@ -55,9 +55,9 @@ function bl_loop_product_top() {
             if ($override_prod) {
                 $override_id = $override_prod->ID;
             }
-            
+
         }
-        
+
         if ($product->get_id() == $override_id) {
             if (isset($product_override['categoryTitle'])) {
                 $category = $product_override['categoryTitle'];
@@ -105,11 +105,11 @@ function bl_product_loop_classes($classes, $class, $post_id) {
     if (get_post_type($post_id) == 'product') {
         if (is_shop() || is_product_category()) {
             if (is_search()) {
-                $product_loop = array('column', 'col-xs-12', 'col-sm-12', 'col-md-6', 'col-3', 'product-tile-column');
+                $product_loop = array('column', 'col-xs-6', 'col-sm-6', 'col-md-6', 'col-3', 'product-tile-column');
             } else {
-                $product_loop = array('column', 'col-xs-12', 'col-sm-12', 'col-md-6', 'col-4', 'product-tile-column');
+                $product_loop = array('column', 'col-xs-6', 'col-sm-6', 'col-md-6', 'col-4', 'product-tile-column');
             }
-            
+
             $classes = array_merge($classes,$product_loop);
         }
         if (is_product() && $woocommerce_loop['name'] == 'related' ) {

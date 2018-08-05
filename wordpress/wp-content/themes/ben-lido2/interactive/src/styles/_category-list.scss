@@ -94,6 +94,7 @@
     background-color: $brown-grey;
     color: $grey;
     border-radius: 4px;
+
     &:after {
     }
   }
@@ -163,7 +164,7 @@
 
 .mobile-navigation {
   animation: 0.5s alternate fadeIn;
-  margin-right: $unit-1;
-  margin-left: $unit-1;
+  margin-right: $unit-3;
+  margin-left: $unit-3;
   display: none;
 }

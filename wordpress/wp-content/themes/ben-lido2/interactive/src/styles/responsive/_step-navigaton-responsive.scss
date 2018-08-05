@@ -1,28 +1,46 @@
-@media (min-width: $size-sm) {
+@media (max-width: $size-xs) {
   .step-navigation {
+
     &-text {
+
       &-back {
       }
+
       &-next {
+        padding-right: 4px;
       }
     }
+
     &-current {
     }
 
     .btn {
+
       &-no-border {
         .step-navigation-text {
         }
       }
+
       &-lg {
+        padding-left: 0;
+        padding-right: 0;
       }
+
       &-primary {
+
         .step-navigation-text {
+
         }
+
       }
+
     }
 
     .fal {
+      &.fa-chevron-circle-right{
+        // position: relative;
+        // right: 10px;
+      }
     }
 
     .text-right {

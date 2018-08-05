@@ -68,7 +68,7 @@ if ($is_swap == true) {
     } else {
         $args['class'] = 'btn btn-lg btn-block btn-primary';
     }
-    
+
 }
 
 if ($mid_swap == true) {
@@ -90,12 +90,12 @@ if (get_class($product) == 'WC_Product_Variable') {
             <span class="add-to-cart-text" data-default-text="Add to kit" data-cart-text=" in kit">
                 1 in kit
             </span>
-            <i class="fal fa-plus-circle" data-name="Intelligent Soft Hat" data-sku="2f5ebca0-da29-413a-a87b-c58025047b84" data-category="3254ff94-10bd-4a17-9da5-1f0f7cbb6090"></i>
+            <i class="far fa-plus-circle" data-name="Intelligent Soft Hat" data-sku="2f5ebca0-da29-413a-a87b-c58025047b84" data-category="3254ff94-10bd-4a17-9da5-1f0f7cbb6090"></i>
         </button>
 */
 // swap
 if ($is_swap == true && $mid_swap == false) {
-    
+
     echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
     sprintf( '<span class="btn btn-lg btn-block btn-primary btn-selected" data-product_id="%s" data-name="%s" data-sku="%s" data-category="%s" data-category_id="%s">
     <span class="btn-selected-remove remove-from-cart" data-product_id="%s" data-name="%s" data-sku="%s" data-category="%s" data-category_id="%s">Remove</span>
@@ -128,7 +128,7 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
     sprintf( '<a href="%s" data-quantity="%s" class="%s" %s>
     <i class="far fa-minus-circle  hidden" data-name="%s" data-sku="%s" data-category="%s" data-product_id="%s" data-variation_id="%s"></i>
     <span class="add-to-cart-text" data-default-text="%s" data-cart-text="%s">%s</span>
-    <i class="fal fa-plus-circle" data-name="%s" data-sku="%s" data-category="%s" data-kit_id="%s" data-prod_id="%s" data-cat_id="%s" data-swap="%s"></i>
+    <i class="far fa-plus-circle" data-name="%s" data-sku="%s" data-category="%s" data-kit_id="%s" data-prod_id="%s" data-cat_id="%s" data-swap="%s"></i>
     </a>',
 		esc_url( $product->add_to_cart_url() ), // for href=
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ), // for data-quantity=

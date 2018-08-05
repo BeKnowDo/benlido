@@ -6,7 +6,7 @@ export class StepNavigation {
   }
 
   init () {
-    if (this.isProductPage !== undefined) {
+    if (this.isProductPage && this.stepNavigation) {
       this.productBackButton()
     }
   }

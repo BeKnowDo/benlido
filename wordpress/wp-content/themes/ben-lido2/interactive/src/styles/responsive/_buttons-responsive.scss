@@ -1,11 +1,48 @@
 @media (max-width: $size-sm) {
   .btn {
+
+    &.add-to-cart {
+      &.in-cart {
+        background-color: transparent;
+        color: $brown-grey;
+        // border: 0;
+
+        .add-to-cart-text {
+          width: 60%;
+        }
+
+        .fa {
+
+          &-minus-circle {
+            padding-left: 8px;
+            padding-right: 0;
+            text-align: center;
+            color: $red;
+            width: 20%;
+          }
+
+          &-plus-circle {
+            padding-left: 0;
+            padding-right: 8px;
+            text-align: center;
+            width: 20%;
+          }
+
+        }
+      }
+    }
+
     &-selected {
       flex-direction: column;
 
       &.btn {
         background-color: transparent;
         border: 0;
+
+        &:hover {
+          background-color: transparent;
+        }
+
       }
 
 
