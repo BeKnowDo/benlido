@@ -39770,20 +39770,21 @@ var BenLidoAnimations = exports.BenLidoAnimations = function () {
         imageTag.src = path + '/BL__' + i + '.jpg';
 
         if (countUp) {
-          ++i;
+          i++;
           if (i >= endRange) {
             countUp = false;
+            loopCount++;
           }
         } else {
-          --i;
+          i--;
           if (i <= startRange) {
             countUp = true;
           }
         }
-      }
 
-      if (loopCount > 4) {
-        window.clearInterval(intervalID);
+        if (loopCount > 4) {
+          window.clearInterval(intervalID);
+        }
       }
     }
   }]);

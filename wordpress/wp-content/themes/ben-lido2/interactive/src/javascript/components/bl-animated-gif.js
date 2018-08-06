@@ -33,16 +33,21 @@ export class BenLidoAnimations {
       imageTag.src = `${path}/BL__${i}.jpg`
 
       if (countUp) {
-        ++i
-        if (i >= endRange) { countUp = false }
+        i++
+        if (i >= endRange) {
+          countUp = false
+          loopCount++
+        }
       } else {
-        --i
-        if (i <= startRange) { countUp = true }
+        i--
+        if (i <= startRange) {
+          countUp = true
+        }
       }
-    }
 
-    if (loopCount > 4) {
-      window.clearInterval(intervalID)
+      if (loopCount > 4) {
+        window.clearInterval(intervalID)
+      }
     }
   }
 }
