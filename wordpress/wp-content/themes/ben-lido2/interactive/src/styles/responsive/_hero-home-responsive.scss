@@ -1,5 +1,26 @@
 @media (max-width: $size-xs) {
   .hero {
+    padding-top: 50px;
+
+    &-help {
+      padding-top: 0;
+      padding-bottom: 50px;
+
+      &-header  {
+      }
+
+      &-copy {
+      }
+
+      &-list {
+
+        li {
+        }
+
+      }
+
+    }
+
     &-home {
 
       &[style*="background-image"] {
@@ -67,6 +88,25 @@
 @media (max-width: $size-md) and (min-width: $size-sm + 1px) {
   .hero {
     padding-top: 50px;
+
+    &-help {
+      padding-top: 0;
+      padding-bottom: 50px;
+
+      &-header  {
+      }
+
+      &-copy {
+      }
+
+      &-list {
+
+        li {
+        }
+
+      }
+
+    }
 
     &-home {
       &[style*="background-image"] {

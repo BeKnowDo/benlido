@@ -1,8 +1,8 @@
 {% extends "../layout/document.twig" %}
 
 {% block content %}
-    {% if not homePageHero %}
-        {% set homePageHero = [
+  {% if not homePageHero %}
+    {% set homePageHero = [
     {
       triangleBackground: true,
       header: 'Wander Well',
@@ -13,14 +13,14 @@
     }
   ]%}
 
-    {% endif %}
+  {% endif %}
 
-    <div class="max-width-xl">
-        {% include 'common/hero/home-hero.twig' %}
-    </div>
+  <div class="max-width-xl">
+    {% include 'common/hero/home-hero.twig' %}
+  </div>
 
-    {% if not homePageHeroes %}
-        {% set homePageHeroes = [
+  {% if not homePageHeroes %}
+    {% set homePageHeroes = [
         {
             header: 'How it Works',
             copy: "Premium, personalized bags packed with the products you love, delivered anywhere, with easy subscription reorders.",
@@ -32,11 +32,11 @@
         }
       ]
     %}
-    {% endif %}
-    <div class="bg-grey">
-        <div class="max-width-xl">
-            {% include 'common/hero/hero.twig' with { homePageHeroes: homePageHeroes }%}
-        </div>
+  {% endif %}
+  <div class="bg-grey">
+    <div class="max-width-xl">
+      {% include 'common/hero/hero.twig' with { homePageHeroes: homePageHeroes }%}
     </div>
+  </div>
 
 {% endblock %}

@@ -1,23 +1,29 @@
 @media (max-width: $size-md) {
   .hero {
     padding: 50px 20px;
+
     &-header {
       // font-size: 42px;
     }
+
   }
 }
 
 @media (max-width: $size-sm) {
   .hero {
+
     &-header {
       font-size: 75px;
     }
+
     &-action-buttons {
       .btn {
         max-width: none;
+
         &:last-child {
           margin-top: $unit-2;
         }
+
       }
     }
   }
@@ -26,6 +32,7 @@
 @media (max-width: $size-xs) {
   .hero {
     padding-bottom: 0;
+
     &-header {
     }
   }

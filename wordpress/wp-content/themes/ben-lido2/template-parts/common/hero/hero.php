@@ -24,6 +24,7 @@ if (!empty($left_feature_card)) {
         $left_feature_card['header'] = $left_feature_card['title'];
     }
 }
+
 if (!empty($right_feature_card)) {
     if (isset($right_feature_card['image'])) {
         $right_feature_card['image'] = $right_feature_card['image']['url'];
@@ -32,9 +33,21 @@ if (!empty($right_feature_card)) {
         $right_feature_card['header'] = $right_feature_card['title'];
     }
 }
+
 $homePageHeroes = array( $left_feature_card,$right_feature_card);
+// echo '<br/><br/><pre>' . var_export($right_feature_card['title'], true) . '</pre>';
+
 if (!empty($homePageHeroes)) {
     $data['homePageHeroes'] = $homePageHeroes;
+
+    if($right_feature_card['title'] == NULL || $left_feature_card['title'] == NULL) {
+        $data['homePageHeroes']['singleColumn'] = true;
+    } else {
+        $data['homePageHeroes']['singleColumn'] = false;
+    }
+
+    // echo '<br/><br/><pre>' . var_export($data, true) . '</pre>';
+
 }
 
 if (empty($data)) {
@@ -44,13 +57,13 @@ if (empty($data)) {
                 'header' => 'How it Works',
                 'copy' => "Premium, personalized bags packed with the products you love, delivered anywhere, with easy subscription reorders.",
                 'image' => '/images/hero-1.png'
-            ),   
+            ),
             array(
                 'header'=> 'The Brands You Love',
                 'copy'=> "Unlike the aisle at your local retailer, if you want it, we'll have it - and we'll deliver it - right to your doorstep.",
                 'image'=> '/images/hero-2.png'
             )
-    
+
         )
     );
 }

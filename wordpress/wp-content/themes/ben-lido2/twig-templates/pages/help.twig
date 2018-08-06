@@ -1,0 +1,137 @@
+{# {% extends "../layout/document.twig" %} #}
+
+{# {% block content %} #}
+
+{% if not homePageHero %}
+  {% set homePageHero = [{
+    triangleBackground: true,
+    backgroundStatic: true,
+    header: 'HERE TO HELP',
+    image: '/wp-content/themes/ben-lido2/assets/images/help_hero.jpg',
+    hero_call_to_action_buttons: [{
+      "title":"Questions",
+      "url":"/build-a-kit",
+      "classes":"",
+      "target":false
+    },
+    {
+      "title":"Business Inquiries",
+      "url":"/pick-a-kit",
+      "classes":"",
+      "target":false
+    }]
+  }
+]%}
+
+{% endif %}
+
+<div class="bl-help">
+
+  {% include 'common/step-navigation.twig' %}
+
+  <div class="max-width-xl">
+    {% include 'common/hero/home-hero.twig' %}
+  </div>
+
+  <div class="max-width-lg">
+
+    <div class="container bl-help-container">
+
+      <div class="columns">
+
+        <div class="column col-xs-12 col-sm-12 col-md-7 col-lg-8 col-8">
+
+          <div class="columns">
+
+            <div class="column col-xs-12 col-sm-12 col-11">
+              <div class="hero hero-help">
+                <h1 class="hero-help-header">KITS</h1>
+                <p class="hero-help-copy">Ben Lido ahs two simple and convenient ways to order. You can:</p>
+                <ul class="hero-help-list">
+                  <li>
+                    01. Build a kit form scratch, to create a kit that's exactly what you want.
+                  </li>
+                  <li>
+                    02. Choose a pre-built kit and customize it by adding, swapping or deleting items to make it exactly what you want.
+                  </li>
+                  <li>
+                    * Also, you can buy just a bag, or not buy a bag and get just the toiletries. The Ben Lido system is completely flexible and controlled by you.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="column col-xs-12 col-sm-12 col-11">
+              <div class="hero hero-help">
+                <h1 class="hero-help-header">KITS</h1>
+                <p class="hero-help-copy">Ben Lido has two simple and convenient ways to order. You can:</p>
+                <ul class="hero-help-list">
+                  <li>
+                    01. Build a kit form scratch, to create a kit that's exactly what you want.
+                  </li>
+                  <li>
+                    02. Choose a pre-built kit and customize it by adding, swapping or deleting items to make it exactly what you want.
+                  </li>
+                  <li>
+                    * Also, you can buy just a bag, or not buy a bag and get just the toiletries. The Ben Lido system is completely flexible and controlled by you.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="column col-xs-12 col-sm-12 col-11">
+              <div class="hero hero-help">
+                <h1 class="hero-help-header">SHIPPING</h1>
+              </div>
+            </div>
+
+            <div class="column col-xs-12 col-sm-12 col-11">
+              <div class="hero hero-help">
+                <h1 class="hero-help-header">RETURNS</h1>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-4">
+          <div class="bg-grey">
+            <div class="bl-hours">
+              <h1 class="bl-hours-header">HOURS</h1>
+              <ul class="bl-hours-list">
+                <li>
+                  Monday - Friday 10a - 6p EST
+                </li>
+                <li>
+                  Saturday - Sunday 12p - 4p EST
+                </li>
+              </ul>
+
+              <ul class="bl-contact-list">
+                <li>
+                  If you have any questions please email us at:
+                  <a href="mailto:help@benlido.com">help@benlido.com</a>
+                </li>
+                <li>
+                  For business inquiries please email us at:
+                  <a href="mailto:handshake@benlido.com">handshake@benlido.com</a>
+                </li>
+                <li>
+                  And as always, please share your adventures with us at:
+                  <a href="mailto:wanderwell@benlido.com">wanderwell@benlido.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{# {% endblock %} #}
