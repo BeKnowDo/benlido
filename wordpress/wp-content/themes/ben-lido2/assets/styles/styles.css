@@ -3709,6 +3709,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .delivery-frequency-tile-actions > i { position: absolute; right: 10px; top: 10px; }
 
+.bl-animated-gif { padding-top: 2rem; display: block; }
+
 .search-results #content { background-color: #fff; }
 
 .search-results .related.products { display: none; }
@@ -3777,6 +3779,10 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .page-template-page-about .footer { border: 0; }
 
+.bl-about-us { border-top: 1px solid #e4e4e4; }
+
+.bl-about-us:last-child { border-bottom: 0; }
+
 .bl-about-us .hero-title-copy { padding: 40px 2rem; text-align: left; }
 
 .bl-about-us .hero-title-copy .hero-title-copy-copy { line-height: 140%; }
@@ -3804,6 +3810,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 .bl-about-us .hero-title-copy-quote .columns .column { max-width: 780px; }
 
 .bl-about-us .hero-title-copy:last-child { text-align: center; }
+
+.bl-about-us .hero-title-copy:last-child:only-child { text-align: left; }
 
 @media (max-width: 600px) { .btn.add-to-cart.in-cart { background-color: transparent; color: #393d5b; }
   .btn.add-to-cart.in-cart .add-to-cart-text { width: 60%; }
@@ -3911,35 +3919,6 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (min-width: 840px) { .single-product.single .product_cat-bags .entry-summary.summary { width: 100%; } }
 
-/*
-Laptop double padding on hero
-padding 90px on last hero
-center header and copy
-
-last hero paragraph 800px margin-lfet/right auto
-
-
-quote hero - font-size 24
-quote hero - linehight 140%
-
-
-
-1440 wanderwell
-
-
-tablet wander well
-top-padding: 90px;
-
-MAKE SURE TO CALCULATE 90 PX TOTAL!!!
-
-WANDER WELL 40PX ON MOBILE
-http://drops.cavscout.us/ShWtlsj
-
-
-
-
-
-*/
 @media (min-width: 600px) { .bl-about-us .hero-title-copy { padding-top: 50px; padding-bottom: 50px; }
   .bl-about-us .hero-title-copy-quote[style*="background-image"] { padding-top: 200px; padding-bottom: 200px; }
   .bl-about-us .hero-title-copy:last-child { padding-top: 90px; padding-bottom: 90px; } }

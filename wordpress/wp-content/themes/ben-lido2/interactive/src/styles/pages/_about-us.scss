@@ -7,6 +7,12 @@
 }
 
 .bl-about-us {
+  border-top: $grey-border;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
   .hero{
       &-title {
 
@@ -78,6 +84,11 @@
 
           &:last-child {
             text-align: center;
+
+            &:only-child {
+              text-align: left;
+            }
+
           }
 
         }

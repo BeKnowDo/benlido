@@ -38,6 +38,10 @@ get_header(); ?>
 
             <?php endif;?>
 
+            <div class="bl-about-us">
+                <?php get_template_part( 'template-parts/common/bag','animation'); ?>
+            </div>
+
             <?php
             /**
              * Functions hooked in to storefront_page_after action
