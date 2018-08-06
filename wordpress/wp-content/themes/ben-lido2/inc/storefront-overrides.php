@@ -120,6 +120,19 @@ function bl_account_menu_items( $items ) {
 	return $holder;
 }
 
+/**
+ * Change number of products that are displayed per page (shop page)
+ */
+add_filter( 'loop_shop_per_page', 'bl_loop_shop_per_page', 20 );
+
+function bl_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options -> Reading
+  // Return the number of products you wanna show per page.
+  $cols = 30;
+  return $cols;
+}
+
+
 function bl_remove_product_page_skus( $enabled ) {
     if ( ! is_admin() && is_product() ) {
         return false;

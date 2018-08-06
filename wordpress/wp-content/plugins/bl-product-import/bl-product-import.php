@@ -22,6 +22,7 @@ function bl_product_import_settings() {
     @ini_set('display_errors', false); 
     if (!empty($_POST)) {
         $data = array();
+        $spreadsheet_type = $_POST['spreadsheet_type'];
         $tmp_name = $_FILES['bl_inv_import']['tmp_name'];
         if (!empty($tmp_name)) {
             if (function_exists('bl_parse_csv')) {
@@ -43,11 +44,14 @@ function bl_product_import_settings() {
             //print_r ($data_string);
             //die;
             update_option($bl_stored_product_array,$data,false);
+            $post_data = array('type'=>$spreadsheet_type);
+
             $script = '<script>
                 function bl_ajax_import_item() {
 
                     jQuery.post(
-                        "' . $bl_product_import_api_slug . '",
+                        "' . $bl_product_import_api_slug . '",' .
+                        json_encode($post_data) . ', 
                         function(res) {
                             var message = res.message + " : " + res.name;
                             jQuery("ul.line-results").append("<li>"+message+"</li>");
@@ -72,12 +76,19 @@ function bl_product_import_settings() {
 ?>
     <form method="post" enctype="multipart/form-data" action="admin.php?page=<?php echo $bl_product_import_admin_slug?>">
     <h3><span>Product Import</span></h3>
+    
     <div class="postbox">
       <div class="inside">
         <?php echo $message ?>
         <p>NOTE: 
             Please use the "Save as" functionality in Excel, and save the spreadsheet as a "csv". If the spreadsheet is not saved as a "csv", the import will not work.
         </p>
+        <label for="spreadsheet_type">Select Spreadsheet Type</label><br />
+        <select name="spreadsheet_type">
+            <option value="default">Original Spreadsheet as provided April, 2018</option>
+            <option value="upc-price">Spreadsheet with accurate UPC and price fields</option>
+            <option value="title-and-category">Spreadsheet with accurate product name and categories</option>
+        </select><br />
         <label for="blush_inv_import">Import Products:</label><br />
         <input type="file" id="bl_inv_import" name="bl_inv_import" /><br />
         <input type="submit" name="upload" value="Import" />
@@ -126,8 +137,12 @@ function bl_parse_csv($csv)
 
                         $num = count($data);
 
-                        if (empty($data[0]))
-                                continue;
+                        /*
+                        if (empty($data[0])) {
+                            continue;
+                        }
+                        */
+                                
 
                         $rowData = array();
                         for ($c = 0; $c < $num; $c++) {
@@ -153,6 +168,257 @@ function bl_remove_utf8_bom($text)
 
 } // end if not function_exists
 
+function bl_update_product_title_category($data) {
+    $res = array('success'=>false,'product_id'=>0,'message'=>'Error');
+    $upc = trim($data['upc_a']);
+    $categories = trim($data['category']);
+    $product_name = trim($data['product_name']);
+    $description = $data['description'];
+    $prod_id = 0;
+    $message = '';
+    if (empty($upc)) {
+        return array('success' => true,'missed'=> true, 'message' => 'no SKU');
+    } else {
+        $prod_id = bl_get_product_by_upc($upc);
+        //print_r ($data);
+    }
+
+    // we only update in this model right now, as the categories don't conform to Drew's category hierarchy
+    if ($prod_id > 0) {
+        $res['product_id'] = $prod_id;
+        $res['name'] = $product_name;
+        $sku = get_post_meta($prod_id,'_sku',TRUE);
+        if (!empty($categories)) {
+            $categories = bl_category_hierarchy_string_to_array($categories);
+            $term_id = 0;
+            $cat_name = '';
+            if (!empty($categories) && is_array($categories)) {
+                foreach ($categories as $category) {
+                    $obj = get_term_by('name', trim($category), 'product_cat');
+                    if (empty($obj)) {
+                    } else {
+                        $term_id = $obj->term_id;
+                        $cat_name = $obj->name;
+                    }
+                }
+            } // end foreach $categories
+            // we should have the lowest level of category that we can find
+            if ($term_id > 0) {
+                wp_set_object_terms($prod_id, $term_id, 'product_cat',true);
+                $message .= ' UPDATED Product Category to: ' . $cat_name . '<br />';
+            }
+        }
+        if (!empty($product_name)) {
+            $args = array('ID'=>$prod_id,'post_title'=>$product_name);
+            wp_update_post($args);
+            $message .= ' UPDATED Product Name: '. $product_name . '<br />';
+        }
+        if (!empty($description)) {
+            $args = array('ID'=>$prod_id,'post_content'=>$description);
+            wp_update_post($args);
+            $message .= ' UPDATED Product Description <br />';
+        }
+
+        $has_image = get_the_post_thumbnail_url($prod_id);
+        if ($has_image == false) {
+            
+            $image_url = $data['image_url_1'];
+            if (!empty($image_url) && !empty($sku)) {
+                $id = bl_import_image($sku,$image_url,$prod_id,true);
+            }
+            
+                     
+            $res['image_id'] = $id;
+            //$res['name'] = $name;
+        }
+
+        $res['error'] = $message;
+        
+    } else {
+        $res['missed'] = true;
+        $res['error'] = 'Product NOT IN DATABASE';
+        $res['name'] = $product_name;
+    }
+    return $res;
+
+}
+function bl_create_product_sku_price($data) {
+    $ben_lido_bin = $data['ben_lido_bin'];
+    $upc = trim($data['upc']);
+    $title = trim($data['title']);
+    $price = trim($data['price']);
+    $result = array();
+    if (!empty($upc)) {
+        $result = bl_lookup_upc($upc);
+    }
+    if (!empty($result)) {
+        $result = bl_distill_lookup($result,$ben_lido_bin,$upc,$price);
+    }
+    if (!empty($result)) {
+        // finally, we will try to import or update the product
+        //print_r ($result);
+        bl_create_product($result);
+    }
+    //print_r ($result);
+}
+
+function bl_distill_lookup($result,$ben_lido_bin,$upc,$price) {
+    $final_result = array();
+    $items = array();
+    $item = array();
+    $images = array();
+    $image_url = '';
+    $title = '';
+    $sku = $ben_lido_bin . '-' . $upc;
+    $offers = array();
+    if (!empty($result) && is_array($result)) {
+        $items = $result['items'];
+    }
+    if (!empty($items) && is_array($items)) {
+        $item = $items[0]; // just taking the first one
+    }
+    if (!empty($item)) {
+        $title = $item['title'];
+        $description = $item['description'];
+        $brand = $item['brand'];
+        $size = $item['size'];
+        $weight = $item['weight'];
+        $images = $item['images'];
+        $offers = $item['offers'];
+        $upc = $item['upc'];
+    }
+    if (!empty($images) && is_array($images)) {
+        $max_size = 0;
+        foreach ($images as $image) {
+            $file_size = bl_retrieve_remote_file_size($image);
+            error_log("file size: " . $file_size);
+            if ($max_size < $file_size) {
+                $max_size = $file_size;
+                $image_url = $image;
+            }
+        }
+    }
+    // attempt to get the shortest name
+    if (strlen($title)> 3 && !empty($offers) && is_array($offers)) {
+        $best_title = $title;
+        $min_match = 50;
+        foreach ($offers as $offer) {
+            similar_text($title,$offer['title'],$match);
+            if ($match > $min_match && strlen($best_title) > strlen($offer['title'])) {
+                $best_title = $offer['title'];
+            }
+        }
+    }
+    if (!empty($best_title)) {
+        $title = $best_title;
+    }
+    if (!empty($item['asin'])) {
+        $asin = $item['asin'];
+    }
+
+    // putting it all together
+    $final_result = array(
+        'display_name' => $title,
+        'description' => $description,
+        'brand' => $brand,
+        'size' => $size,
+        'weight' => $weight,
+        'images' => array($image_url), // it needs to be multiple, even if there is only 1
+        'sku' => $sku,
+        'upc' => $upc,
+        'ben_lido_sku' => $ben_lido_bin,
+        'upc_a' => $upc,
+        'asin' => $asin,
+        'price' => $price,
+        'unit_sell_price' => $price,
+        'features' => '',
+        'product_type' => 'simple'
+    );
+    return $final_result;
+}
+
+function bl_retrieve_remote_file_size($url){
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_HEADER, TRUE);
+    curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+    curl_setopt($ch, CURLOPT_TIMEOUT,10);
+
+    $data = curl_exec($ch);
+    $size = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+    $size = intval($size);
+    curl_close($ch);
+    return $size;
+}
+
+function bl_lookup_upc($upc) {
+    $result = array();
+    $url = "https://api.upcitemdb.com/prod/v1/lookup?upc=";
+    if ($upc) {
+        $url = $url . $upc;
+        //$headers = array('user_key: 1518a3e0adaf76a427025d69a0c68053','key_type: 3scale','Accept: application/json');
+        $headers = array('user_key' => '1518a3e0adaf76a427025d69a0c68053','key_type' =>'3scale','Accept' => 'application/json');
+        $args = array('headers'=>$headers,'method'=>'GET');
+        $response = wp_remote_get($url, $args);
+        //$response = wp_remote_request( $url, $args );
+        $body = $response['body'];
+        //$headers = wp_remote_retrieve_headers( $response );
+
+        //$body = bl_remote_get($upc);
+
+        if (!is_array($body)) {
+            $result = json_decode($body,true);
+        } else {
+            $result = $body;
+        }
+        
+        error_log(json_encode($response));
+        
+    }
+    // need to sleep for 1 second to help with rate limit
+    sleep(1);
+    return $result;
+}
+
+function bl_remote_get($upc) {
+    $result = array();
+    $url = "https://api.upcitemdb.com/prod/v1/lookup?upc=";
+    if ($upc) {
+        $url = $url . $upc;
+        $uch = curl_init($url);
+        curl_setopt($uch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($uch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($uch, CURLOPT_HTTPHEADER, array("Content-Type: text/json", "Accept: application/json", "user_key: 1518a3e0adaf76a427025d69a0c68053", "key_type: 3scale"));
+        curl_setopt($uch, CURLOPT_HEADER, 1);
+        curl_setopt($uch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($uch, CURLINFO_HEADER_OUT, true);
+
+        
+
+        
+        $response = curl_exec($uch);
+
+        $header_size = curl_getinfo($uch, CURLINFO_HEADER_SIZE);
+        $header = substr($response, 0, $header_size);
+        $body = substr($response, $header_size);
+
+        //$header = curl_getinfo($uch);
+        curl_close($uch);
+        error_log('REQUEST HEADERS:' . json_encode($header));
+        error_log('GET REQUEST: ' . json_encode($url));
+        //error_log('GET RESPONSE: ' . json_encode($response));
+    }
+    if ($body) {
+        return json_decode($body,TRUE);
+    }
+    if ($response) {
+        return json_decode($response,TRUE);
+    }
+    
+}
+
 function bl_create_product($data) {
     require_once(ABSPATH . "wp-admin" . '/includes/file.php');
     // NOTE: new format from Drew
@@ -171,7 +437,11 @@ function bl_create_product($data) {
     $upc_code = bl_distill_upc($upc_code);
 
     // see if there are images for this product
-    $images = bl_fetch_local_product_images($upc_code);
+    $images = $data['images'];
+    if (empty($images)) {
+        $images = bl_fetch_local_product_images($upc_code);
+    }
+    
     $amazon_asin = trim($data['asin']);
     $name = trim($data['product_name']);
     if (!empty($data['display_name'])) {
@@ -273,10 +543,15 @@ function bl_create_product($data) {
         $categories[] = $alternate_descriptor;
     }
 
+    // let's see if UPC exists
+    if (!empty($upc_code)) {
+        $test_prod = bl_get_product_by_upc($upc_code);
+
+    }
     
     //$sku = $data['sku'];
     // let's see if the SKU exists
-    if (!empty($sku)) {
+    if (!empty($sku) && empty($test_prod)) {
         $test_prod = wc_get_product_id_by_sku($sku);
         //error_log ("tested: " . $sku . 'and got: ' . $test_prod);
     }
@@ -330,6 +605,18 @@ function bl_create_product($data) {
             $res['success'] = false;
         }
         if ($product_type == 'simple' && $should_proceed !== false) {
+            /*
+            echo "ERER";
+            echo "\n";
+            echo $name;
+            echo "\n";
+            echo $sku;
+            echo "\n";
+            echo $price;
+            echo "\n";
+            echo $description;
+            echo "\n";
+            */
             $product_id = bl_create_simple_product($name,$sku,$price,$description,$short_description);
             $res['product_id'] = $product_id;
             $res['name'] = $name;
@@ -369,7 +656,11 @@ function bl_create_product($data) {
                 // we're going to image all the images, but only hook up the first one.
                 foreach ($images as $image) {
                     if ($k==0) {
-                        $id = bl_import_image($sku,$image,$product_id,false);
+                        $is_url = false;
+                        if (filter_var($image, FILTER_VALIDATE_URL)) {
+                            $is_url = true;
+                        }
+                        $id = bl_import_image($sku,$image,$product_id,$is_url);
                     }
                     $k++;
                 }
@@ -443,6 +734,17 @@ function bl_create_product($data) {
     return $res;
 } // end bl_create_product()
 
+function bl_get_product_by_upc($upc) {
+    global $wpdb;
+    $product_id = 0;
+    $query = 'SELECT post_id FROM ' . $wpdb->prefix . 'postmeta WHERE meta_key="upc_code" AND meta_value="' . $upc . '"';
+    $result = $wpdb->get_row($query);
+    if (!empty($result) && is_object($result)) {
+        $product_id = $result->post_id;
+    }
+    return $product_id;
+}
+
 function bl_insert_product_acf($field_name,$field_value,$product_id) {
     // for ACF if you are creating the field for the first, time you need to use the field key
     // so, this looks for the field key and uses that to create the field
@@ -491,8 +793,8 @@ function bl_create_simple_product($name,$sku,$price,$description,$short_descript
         ); 
         //print_r ($args);
         // Create a simple WooCommerce product
-        $post_id = wp_insert_post( $args );
-        if (!$post_id) {
+        $post_id = wp_insert_post( $args , TRUE);
+        if (is_wp_error($post_id)) {
             return 0;
         }
         update_post_meta($post_id,'_sku',$sku);
@@ -507,6 +809,8 @@ function bl_create_simple_product($name,$sku,$price,$description,$short_descript
 
     return $post_id;
 }
+
+
 
 function bl_product_update_tsa_compliant($term,$product_id) {
     $obj = get_term_by('name', $term, 'tsa_compliant');
@@ -875,6 +1179,7 @@ function bl_product_import_url_intercept()
     if (strlen(@stristr($_SERVER['REQUEST_URI'], $bl_product_import_api_slug)) > 0) {
 
         if (isset($_POST)) {
+            $type = $_POST['type'];
             $resp = array('success'=>false,'has_more'=>false,'message'=>'','name'=>'');
             //error_log('POST');
             //echo $bl_stored_product_array;
@@ -887,8 +1192,23 @@ function bl_product_import_url_intercept()
             }
             if (!empty($row)) {
                 //sleep(0.5);
-                $resp = bl_create_product($row);
-                $resp['name'] = $row['name'];
+                if ($type == 'default') {
+                    $resp = bl_create_product($row);
+                    $resp['name'] = $row['name'];
+                }
+                if ($type == 'upc-price') {
+                    $resp = bl_create_product_sku_price($row);
+                    $resp['name'] = $row['name'];
+                    if (!empty($row['title'])) {
+                        $resp['name'] = $row['title'];
+                    }
+                }
+                if ($type == 'title-and-category') {
+                    // in this spreadsheet, we don't have a SKU
+                    // we can technically try to create a SKU, but really, we just want to update the product title and other info
+                    $resp = bl_update_product_title_category($row);
+                }
+                
             }
             if (!empty($data)) {
                 $resp['has_more'] = true;
@@ -915,3 +1235,296 @@ function bl_product_import_url_intercept()
 }
 
 add_action('parse_request', 'bl_product_import_url_intercept');
+
+// breaks out the category in the spreadsheet as level1 > level2 > etc into an array
+function bl_category_hierarchy_string_to_array($string) {
+    $array = explode('>',$string);
+    $holder = array();
+    if (!empty($array) && is_array($array)) {
+        foreach ($array as $item) {
+            $item = trim($item);
+            if (!empty($item)) {
+                $holder[] = trim($item);
+            }
+        }
+    }
+    return $holder;
+}
+function bl_category_hierarchy_to_bl_code($string) {
+    $categories = bl_return_category_hierarchy();
+    foreach ($categories as $category) {
+
+    }
+} // end bl_category_hierarchy_to_bl_code()
+
+function bl_return_category_hierarchy() {
+    // break down the strings to the next
+    $categories = array(
+        'personal care' => array(
+            'id' => '001',
+            'children' => array(
+                'hair care' => array(
+                    'id' => '001',
+                    'children' => array(
+                        'shampoo' => array(
+                            'id' => '01'
+                        ),
+                        'conditioner' => array(
+                            'id' => '02'
+                        ),
+                        'spray & styling' => array(
+                            'id' => '03'
+                        ),
+                        'comb & brush' => array(
+                            'id' => '04'
+                        )
+                    )
+                ),
+                'oral care' => array(
+                    'id' => '002',
+                    'children' => array(
+                        'toothbrush' => array(
+                            'id' => '01'
+                        ),
+                        'toothpaste' => array(
+                            'id' => '02'
+                        ),
+                        'dental floss' => array(
+                            'id' => '03'
+                        ),
+                        'mouthwash' => array(
+                            'id' => '04'
+                        )
+                    )
+                ),
+                'skin care' => array(
+                    'id' => '003',
+                    'children' => array(
+                        'lotions & moisturizers' => array(
+                            'id' => '01'
+                        ),
+                        'face' => array(
+                            'id' => '02'
+                        ),
+                        'hands & feet' => array(
+                            'id' => '03'
+                        ),
+                        'lip care' => array(
+                            'id' => '04'
+                        )
+                    )
+                ),
+                'eye care' => array(
+                    'id' => '004',
+                    'children' => array(
+                        'contact lens storage' => array(
+                            'id' => '01'
+                        ),
+                        'drops & lens solutions' => array(
+                            'id' => '02'
+                        )
+                    )
+                ),
+                'bath & body' => array(
+                    'id' => '005',
+                    'children' => array(
+                        'soaps & body wash' => array(
+                            'id' => '01'
+                        )
+                    )
+                ),
+                'shave & grooming' => array(
+                    'id' => '006',
+                    'children' => array(
+                        'razor' => array(
+                            'id' => '01'
+                        ),
+                        'shave cream & lotions' => array(
+                            'id' => '02'
+                        )
+                    )
+                ),
+                'deoderant & antiperspirant' => array(
+                    'id' => '007',
+                    'children' => array(
+                        'deodorants' => array(
+                            'id' => '01'
+                        ),
+                        'baby powder' => array(
+                            'id' => '02'
+                        )
+                    )
+                ),
+                'gum & breath mints' => array(
+                    'id' => '008',
+                    'children' => array(
+                        'gum' => array(
+                            'id' => '01'
+                        ),
+                        'breath mints' => array(
+                            'id' => '02'
+                        )
+                    )
+                ),
+                'accessories' => array(
+                    'id' => '009',
+                    'children' => array(
+                        'tweezers' => array(
+                            'id' => '01'
+                        ),
+                        'stain removal' => array(
+                            'id' => '02'
+                        ),
+                        'sewing kit' => array(
+                            'id' => '03'
+                        ),
+                        '3oz blank bottles' => array(
+                            'id' => '04'
+                        ),
+                        'nail clipper' => array(
+                            'id' => '05'
+                        ),
+                        'cotton swabs' => array(
+                            'id' => '06'
+                        ),
+                        'soap dish' => array(
+                            'id' => '07'
+                        ),
+                        'thermometer' => array(
+                            'id' => '08'
+                        ),
+                        'emory board' => array(
+                            'id' => '09'
+                        ),
+                        'for men' => array(
+                            'id' => '10'
+                        ),
+                        'for women' => array(
+                            'id' => '11'
+                        ),
+                        'laundry' => array(
+                            'id' => '12'
+                        )
+                    )
+                )
+            )
+        ),
+        'health & beauty' => array(
+            'id' => '002',
+            'children' => array(
+                'medicine' => array(
+                    'id' => '010',
+                    'children' => array(
+                        'band aids' => array(
+                            'id' => '01'
+                        ),
+                        'antacids & laxatives' => array(
+                            'id' => '02'
+                        ),
+                        'pain relief' => array(
+                            'id' => '03'
+                        ),
+                        'ointments for skin' => array(
+                            'id' => '04'
+                        ),
+                        'allergy & sinus relief' => array(
+                            'id' => '05'
+                        ),
+                        'insect repellant' => array(
+                            'id' => '06'
+                        ),
+                        'cold & flu' => array(
+                            'id' => '07'
+                        ),
+                        'travel & sleep Aids' => array(
+                            'id' => '08'
+                        ),
+                        'itch & insect bite relief' => array(
+                            'id' => '09'
+                        )
+                    )
+                ),
+                'seasonal travel' => array(
+                    'id' => '011',
+                    'children' => array(
+                        'sunscreen' => array(
+                            'id' => '01'
+                        ),
+                        'lip balm' => array(
+                            'id' => '02'
+                        ),
+                        'insect repellant' => array(
+                            'id' => '03'
+                        ),
+                        'sunburn relief' => array(
+                            'id' => '04'
+                        ),
+                        'itch & insect bite relief' => array(
+                            'id' => '05'
+                        )
+                    )
+                ),
+                'wipes & sanitizers' => array(
+                    'id' => '012',
+                    'children' => array(
+                        'face wipes' => array(
+                            'id' => '01'
+                        ),
+                        'hand sanitizer' => array(
+                            'id' => '02'
+                        ),
+                        'flushables' => array(
+                            'id' => '03'
+                        ),
+                        'sprays' => array(
+                            'id' => '04'
+                        )
+                    )
+                ),
+                'makeup' => array(
+                    'id' => '013',
+                    'children' => array(
+                        'makeup remover pads' => array(
+                            'id' => '01'
+                        ),
+                        'concealer' => array(
+                            'id' => '02'
+                        )
+                    )
+
+                ),
+                'feminine products' => array(
+                    'id' => '014',
+                    'children' => array(
+                        'tampons' => array(
+                            'id' => '01'
+                        )
+                    )
+                )
+            )
+        ),
+        'travel gear' => array(
+            'id' => '003',
+            'children' => array(
+                'bags' => array(
+                    'id' => '015',
+                    'children' => array(
+                        'ben lido classic' => array(
+                            'id' => '01'
+                        ),
+                        'kipling aiden' => array(
+                            'id' => '02'
+                        ),
+                        'tsa clear 311 bag' => array(
+                            'id' => '03'
+                        ),
+                        'ziptop refills' => array(
+                            'id' => '04'
+                        )
+                    )
+                )
+            )
+        )
+    );
+    return $categories;
+} // bl_return_category_hierarchy()

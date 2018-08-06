@@ -38,6 +38,8 @@ if (empty($bags) && empty(bl_get_product_swap()) && bl_is_kit_add() == false) {
     // actually, because this bag is from the bags
 }
 //print_r ($bags);
+// override message
+// if we are in the 
 
 $data = array('products'=>$bags);
 //print_r ($data);
