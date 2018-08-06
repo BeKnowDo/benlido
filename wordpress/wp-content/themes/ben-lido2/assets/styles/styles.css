@@ -3964,6 +3964,15 @@ body { position: relative; padding-top: 52px; outline: none; }
   .bl-about-us .hero-title-copy-quote .columns .column { max-width: 840px; }
   .bl-about-us .hero-title-copy:last-child { font-size: 20px; padding-top: 90px; padding-bottom: 90px; } }
 
+@media (max-width: 840px) { .bl-help-container { padding: 3.2rem 0.8rem; }
+  .bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+  .bl-help .hero-home[style*="background-image"].full-background .hero-header { color: #fff; }
+  .bl-help .hero-image { display: none; }
+  .bl-hours { padding: 2.4rem; }
+  .bl-hours-list { padding: 1.6rem 0 0; }
+  .bl-contact-list { padding: 2.4rem 0 0; }
+  .bl-contact-list li { padding: 1.6rem 0 0; } }
+
 .product-tile-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 16px; font-weight: 400; font-style: normal; }
 
 .product-tile-link { min-height: 182px; z-index: 0; }
@@ -4352,7 +4361,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-bags-page .hero-product:last-child { border-top: 0; }
 
-.products.related .columns .product { margin-bottom: 1.2rem; }
+.products.related .columns .product { max-width: 33%; display: block; margin-bottom: 1.2rem; }
 
 .bl-account-navigation { padding: 0; border-right: 1px solid #e4e4e4; margin: 0; width: 20%; }
 
@@ -4453,6 +4462,10 @@ body { position: relative; padding-top: 52px; outline: none; }
   .woocommerce-account .woocommerce-MyAccount-content { width: 100%; } }
 
 @media (min-width: 840px) { .woocommerce-account .woocommerce-orders-table__row .amount { display: inline; } }
+
+@media (max-width: 840px) { .products.related .columns .product { max-width: 100%; display: block; } }
+
+@media (min-width: 840px) { .products.related .columns .product { max-width: 33%; display: block; } }
 
 @media (max-width: 480px) { .products.related { padding: 50px 10px 70px; }
   .products.related .columns { margin: 0; } }

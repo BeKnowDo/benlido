@@ -1,10 +1,23 @@
-@media (min-width: $size-xs) {
+@media (max-width: $size-md) {
   .products {
     &.related {
       .columns {
         .product {
-          // max-width: 33%;
-          // display: block;
+          max-width: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $size-md) {
+  .products {
+    &.related {
+      .columns {
+        .product {
+          max-width: 33%;
+          display: block;
         }
       }
     }
