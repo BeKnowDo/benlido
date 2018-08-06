@@ -1793,6 +1793,50 @@ function scroll(...args) {
 
 /***/ }),
 
+/***/ "./node_modules/element-closest/element-closest.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/element-closest/element-closest.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// element-closest | CC0-1.0 | github.com/jonathantneal/closest
+
+(function (ElementProto) {
+	if (typeof ElementProto.matches !== 'function') {
+		ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
+			var element = this;
+			var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+			var index = 0;
+
+			while (elements[index] && elements[index] !== element) {
+				++index;
+			}
+
+			return Boolean(elements[index]);
+		};
+	}
+
+	if (typeof ElementProto.closest !== 'function') {
+		ElementProto.closest = function closest(selector) {
+			var element = this;
+
+			while (element && element.nodeType === 1) {
+				if (element.matches(selector)) {
+					return element;
+				}
+
+				element = element.parentNode;
+			}
+
+			return null;
+		};
+	}
+})(window.Element.prototype);
+
+
+/***/ }),
+
 /***/ "./node_modules/in-view/dist/in-view.min.js":
 /*!**************************************************!*\
   !*** ./node_modules/in-view/dist/in-view.min.js ***!
@@ -39662,6 +39706,94 @@ var ScrollToTop = exports.ScrollToTop = function () {
 
 /***/ }),
 
+/***/ "./src/javascript/components/bl-animated-gif.js":
+/*!******************************************************!*\
+  !*** ./src/javascript/components/bl-animated-gif.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BenLidoAnimations = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _elementClosest = __webpack_require__(/*! element-closest */ "./node_modules/element-closest/element-closest.js");
+
+var _elementClosest2 = _interopRequireDefault(_elementClosest);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BenLidoAnimations = exports.BenLidoAnimations = function () {
+  function BenLidoAnimations() {
+    _classCallCheck(this, BenLidoAnimations);
+
+    this.destination = document.querySelector('#bl-animated-gif') || undefined;
+  }
+
+  _createClass(BenLidoAnimations, [{
+    key: 'init',
+    value: function init() {
+      if (this.destination !== undefined) {
+        this.callAnimation();
+      }
+    }
+  }, {
+    key: 'callAnimation',
+    value: function callAnimation() {
+      var interval = 250;
+
+      var path = '/wp-content/themes/ben-lido2/assets/images/bag-animation';
+      var documentFragment = document.createDocumentFragment();
+      var imageTag = document.createElement('img');
+
+      documentFragment.appendChild(imageTag);
+      this.destination.appendChild(documentFragment);
+
+      var startRange = 1;
+      var endRange = 19;
+
+      var i = startRange;
+      var countUp = true;
+      var loopCount = 0;
+
+      var intervalID = window.setInterval(animate, interval);
+
+      function animate() {
+        imageTag.src = path + '/BL__' + i + '.jpg';
+
+        if (countUp) {
+          i++;
+          if (i >= endRange) {
+            countUp = false;
+            loopCount++;
+          }
+        } else {
+          i--;
+          if (i <= startRange) {
+            countUp = true;
+          }
+        }
+
+        if (loopCount > 4) {
+          window.clearInterval(intervalID);
+        }
+      }
+    }
+  }]);
+
+  return BenLidoAnimations;
+}();
+
+/***/ }),
+
 /***/ "./src/javascript/components/cart.js":
 /*!*******************************************!*\
   !*** ./src/javascript/components/cart.js ***!
@@ -40979,6 +41111,30 @@ Object.keys(_stepNavigation).forEach(function (key) {
   });
 });
 
+var _parallax = __webpack_require__(/*! ./parallax */ "./src/javascript/components/parallax.js");
+
+Object.keys(_parallax).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _parallax[key];
+    }
+  });
+});
+
+var _blAnimatedGif = __webpack_require__(/*! ./bl-animated-gif */ "./src/javascript/components/bl-animated-gif.js");
+
+Object.keys(_blAnimatedGif).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _blAnimatedGif[key];
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./src/javascript/components/my-account.js":
@@ -41224,6 +41380,43 @@ var Navigation = exports.Navigation = function () {
 
 /***/ }),
 
+/***/ "./src/javascript/components/parallax.js":
+/*!***********************************************!*\
+  !*** ./src/javascript/components/parallax.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Parallax = exports.Parallax = function () {
+  function Parallax() {
+    _classCallCheck(this, Parallax);
+
+    this.images = document.querySelector('#bl-parallax-images');
+  }
+
+  _createClass(Parallax, [{
+    key: 'init',
+    value: function init() {
+      // console.log('here')
+    }
+  }]);
+
+  return Parallax;
+}();
+
+/***/ }),
+
 /***/ "./src/javascript/components/product-image-carousel.js":
 /*!*************************************************************!*\
   !*** ./src/javascript/components/product-image-carousel.js ***!
@@ -41460,7 +41653,7 @@ var StepNavigation = exports.StepNavigation = function () {
   _createClass(StepNavigation, [{
     key: 'init',
     value: function init() {
-      if (this.isProductPage !== undefined) {
+      if (this.isProductPage && this.stepNavigation) {
         this.productBackButton();
       }
     }
@@ -41504,6 +41697,8 @@ new _components.Search().init();
 new _components.Frequency().init();
 new _components.MyAccount().init();
 new _components.StepNavigation().init();
+new _components.Parallax().init();
+new _components.BenLidoAnimations().init();
 
 /***/ }),
 

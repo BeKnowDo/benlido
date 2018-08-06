@@ -36,7 +36,7 @@ if (function_exists('bl_get_featured_categories')) {
               }
               global $product_override;
               $product_override = $featured_product;
-              
+
             ?>
             <?php $shop_landing_featured_product = $featured_product;?>
             <?php //get_template_part('template-parts/product/product','tile');?>

@@ -1,6 +1,7 @@
 @media (max-width: $size-xs) {
   .products {
     &.related {
+      padding: 50px 10px 70px;
       .columns {
         margin: 0;
       }

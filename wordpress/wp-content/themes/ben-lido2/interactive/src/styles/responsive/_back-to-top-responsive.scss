@@ -1,9 +1,18 @@
 @media (max-width: $size-md) {
   .back-to-top {
+    padding-top: 45px;
+    padding-bottom: 25px;
+
     .column {
       text-align: center;
+
       &.back-to-top-column {
-        margin-top: 20px;
+        margin-top: 30px;
+
+        &:only-child {
+          margin-top: 0;
+        }
+
       }
       &.next-step-column {
         order: -1;

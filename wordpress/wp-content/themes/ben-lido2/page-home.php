@@ -2,7 +2,7 @@
 /**
  * Template Name: Ben Lido Home Page
  */
- 
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -35,8 +35,12 @@ get_header(); ?>
             <?php endif;?>
 
             <?php if ($show_bottom_section == true):?>
-                
+
             <?php endif;?>
+
+            <div class="bl-about-us">
+                <?php get_template_part( 'template-parts/common/bag','animation'); ?>
+            </div>
 
             <?php
             /**

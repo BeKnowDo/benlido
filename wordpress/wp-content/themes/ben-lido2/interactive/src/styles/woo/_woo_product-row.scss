@@ -11,6 +11,13 @@
       max-width: 850px;
       margin: 0 auto;
     }
+
+    li {
+      .product-tile {
+        border: $grey-border;
+        border-radius: 4px;
+      }
+    }
   }
   >h2 {
     @include sentinel(25px, 400);
@@ -20,8 +27,10 @@
     max-width: 850px;
     margin: 0 auto 0;
     text-align: center;
+
     &:first-child {
-      margin-bottom: 0;
+      // margin-bottom: 0;
     }
+
   }
 }

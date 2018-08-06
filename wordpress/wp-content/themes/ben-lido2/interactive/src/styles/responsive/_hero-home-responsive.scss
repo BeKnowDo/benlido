@@ -1,14 +1,39 @@
 @media (max-width: $size-xs) {
   .hero {
     &-home {
-      &[style*="background-image"] {
-        background-size: 130%;
-        background-position-x: 60%;
 
-        .hero-image-container {
-          padding-top: 90px;
+      &[style*="background-image"] {
+        padding-top: 40px;
+        background-size: 148%;
+        background-position-x: right;
+        background-position-y: calc(100% + 50px);
+
+
+        .hero {
+          &-header {
+            font-size: 55px;
+          }
+
+          &-image-container {
+            padding-top: 90px;
+          }
+        }
+      }
+
+      .hero{
+        &-action-buttons {
+          padding-top: 20px;
+          .column {
+            padding: 0;
+          }
         }
 
+        &-sub-header {
+          max-width: 260px;
+          margin-right: auto;
+          margin-left: auto;
+          padding-bottom: $unit-1;
+        }
       }
     }
   }
@@ -16,11 +41,18 @@
 
 @media (max-width: $size-sm) and (min-width: $size-xs + 1px) {
   .hero {
+
+    &-action-buttons {
+      padding-top: 20px;
+    }
+
     &-home {
       padding-bottom: 250px;
+
       &[style*="background-image"] {
         background-size: 130%;
-        background-position-x: 60%;
+        background-position-x: right;
+        background-position-y: calc(100% + 30px);
         img {
           display: none;
         }
@@ -34,11 +66,13 @@
 
 @media (max-width: $size-md) and (min-width: $size-sm + 1px) {
   .hero {
+    padding-top: 50px;
+
     &-home {
       &[style*="background-image"] {
         background-size: 130%;
-        background-position-x: 64%;
-
+        background-position-x: right;
+        background-position-y: calc(100% + 60px);
       }
 
       .hero-image {
@@ -52,10 +86,10 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        padding-bottom: 480px;
-        background-size: 115%;
-        background-position-x: 50%;
-        background-position-y: 115%;
+        padding-bottom: 180px;
+        background-size: 105%;
+        background-position-x: calc(100% + 30px);
+        background-position-y: calc(100% + 60px);
 
       }
 
@@ -70,10 +104,10 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        padding-bottom: 480px;
-        background-size: 110%;
-        background-position-x: 30%;
-        background-position-y: 115%;
+        padding-bottom: 280px;
+        background-size: 105%;
+        background-position-x: calc(100% + 30px);
+        background-position-y: calc(100% + 70px);
       }
     }
   }
@@ -83,10 +117,10 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        padding-bottom: 480px;
-        background-size: contain;
-        background-position-x: 54%;
-        background-position-y: bottom;
+        padding-bottom: 280px;
+        background-size: 105%;
+        background-position-x: calc(100% + 30px);
+        background-position-y: calc(100% + 140px);
       }
     }
   }
@@ -96,10 +130,10 @@
   .hero {
     &-home {
       &[style*="background-image"] {
-        padding-bottom: 540px;
-        background-size: contain;
-        background-position-x: 50%;
-        background-position-y: bottom;
+        padding-bottom: 340px;
+        background-size: 100%;
+        background-position-x: right;
+        background-position-y: calc(100% + 140px);
       }
     }
   }
@@ -110,9 +144,9 @@
     &-home {
       &[style*="background-image"] {
         padding-bottom: 460px;
-        background-size: contain;
+        background-size: 100%;
         background-position-x: right;
-        background-position-y: center;
+        background-position-y: calc(100% + 180px);
       }
     }
   }
@@ -123,10 +157,10 @@
     &-home {
       &[style*="background-image"] {
         // padding-top: 280px;
-        padding-bottom: 860px;
-        background-size: contain;
+        padding-bottom: 480px;
+        background-size: 85%;
         background-position-x: right;
-        background-position-y: bottom;
+        background-position-y: calc(100% + 180px);
       }
     }
   }

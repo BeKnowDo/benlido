@@ -1,0 +1,97 @@
+.page-template-page-about {
+  padding-top: 0;
+
+  .footer {
+    border: 0;
+  }
+}
+
+.bl-about-us {
+  border-top: $grey-border;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .hero{
+      &-title {
+
+        &-copy {
+          padding: 40px $unit-10;
+          text-align: left;
+
+          .hero-title-copy-copy {
+            line-height: 140%;
+          }
+
+          &-inline-image {
+            padding: 3rem 0 $unit-2;
+          }
+
+          .hero-title-copy-header {
+            padding-bottom: $unit-6;
+          }
+
+          &[style*="background-image"] {
+            border: 0;
+            text-align: center;
+            padding: 0 $unit-10;
+            height: 100vh;
+            display: flex;
+            background-size: cover;
+            background-position: center;
+
+            * {
+              color: $white;
+            }
+
+            .columns {
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+            }
+
+            .column {
+              max-width: 480px;
+            }
+
+          }
+
+          &-quote {
+            font-size: 20px;
+
+            &[style*="background-image"] {
+              text-align: left;
+              line-height: 130%;
+              padding-top: 50px;
+              padding-bottom: 50px;
+            }
+
+            .hero-title-quote {
+              padding: 0 $unit-6 $unit-2;
+              &:last-child {
+                padding-top: 0;
+              }
+            }
+
+            .columns {
+              .column {
+                max-width: 780px;
+              }
+
+            }
+          }
+
+          &:last-child {
+            text-align: center;
+
+            &:only-child {
+              text-align: left;
+            }
+
+          }
+
+        }
+      }
+    }
+}

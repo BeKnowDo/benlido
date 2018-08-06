@@ -1,27 +1,27 @@
 {% for product in productInformation %}
-  <div class="product-information">
+    <div class="product-information">
 
-    <h1 class="product-information-header">{{product.header}}</h1>
+        <h1 class="product-information-header">{{product.header}}</h1>
 
-    <div class="product-information-colors">
-      <ul class="product-information-colors-options">
-        <li>
-          <i class="product-information-colors-option"></i>
-          <i class="product-information-colors-option"></i>
-        </li>
-      </ul>
-    </div>
-
-    <div class="product-information-cart">
-
-      <div class="columns">
-
-        <div class="column col-3"></div>
-        <div class="column col-3">
-          <span class="product-information-price">${{product.price}}</span>
+        <div class="product-information-colors">
+            <ul class="product-information-colors-options">
+                <li>
+                    <i class="product-information-colors-option"></i>
+                    <i class="product-information-colors-option"></i>
+                </li>
+            </ul>
         </div>
 
-        {# <div class="column col-3">
+        <div class="product-information-cart">
+
+            <div class="columns">
+
+                <div class="column col-3"></div>
+                <div class="column col-3">
+                    <span class="product-information-price">${{product.price}}</span>
+                </div>
+
+                {# <div class="column col-3">
           <div class="product-quantity">
             <span class="product-quantity-value">
               1
@@ -30,22 +30,22 @@
           </div>
         </div> #}
 
-        <div class="column col-3">
-          <a class="btn btn-lg btn-primary" href="" data-sku="{{product.sku}}" data-category="{{product.category}}">
-            Select bag
-            <i class="fal fa-plus-circle"></i>
-          </a>
+                <div class="column col-3">
+                    <a class="btn btn-lg btn-primary" href="" data-sku="{{product.sku}}" data-category="{{product.category}}">
+                        Select bag
+                        <i class="far fa-plus-circle"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <h5 class="product-information-byline border-bottom-grey">
+                {{product.byLine}}
+            </h5>
+
         </div>
 
-      </div>
-
-      <h5 class="product-information-byline border-bottom-grey">
-        {{product.byLine}}
-      </h5>
+        {% include 'common/product/product-ratings.twig' %}
 
     </div>
-
-    {% include 'common/product/product-ratings.twig' %}
-
-  </div>
 {% endfor %}

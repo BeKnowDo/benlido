@@ -2,7 +2,7 @@
 /**
  * Template Name: Ben Lido Bags Page
  */
- 
+
 $show_hero_section = false;
 if (function_exists('get_field')) {
     $show_hero_section = get_field('show_hero_section');
@@ -11,7 +11,7 @@ if (function_exists('get_field')) {
 }
 get_header(); ?>
 
-<div id="primary" class="content-area">
+<div id="primary" class="content-area bl-bags-page">
     <main id="main" class="site-main" role="main">
 
         <?php while ( have_posts() ) : the_post(); ?>
@@ -25,7 +25,7 @@ get_header(); ?>
             <?php if ($show_hero_title_section):?>
             <?php get_template_part( 'template-parts/common/hero/hero-title','copy'); ?>
             <?php endif;?>
-            
+
             <?php if ($show_hero_section == true):?>
                 <div class="max-width-xl">
                     <?php get_template_part( 'template-parts/common/hero/home','hero'); ?>

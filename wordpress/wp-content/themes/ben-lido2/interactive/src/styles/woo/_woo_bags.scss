@@ -2,6 +2,15 @@
   .hero-product {
     &:last-child {
       border: none;
+      border-top: $grey-border;
+    }
+  }
+}
+
+.bl-bags-page {
+  .hero-product {
+    &:last-child {
+      border-top :0;
     }
   }
 }

@@ -5,7 +5,7 @@ function bl_storefront_overrides() {
     //add_action('storefront_before_header','bl_storefront_before_header',10); // adding custom header cover
     //add_action('storefront_header','bl_storefront_burger',10); // adding menu burger
 	//add_action('storefront_header','bl_storefront_search_button',10); // adding search button
-	
+
 	//add_action('storefront_before_content','storefront_primary_navigation',5);
 	//add_action('storefront_before_content','storefront_product_search',6);
 	if (is_woocommerce() || is_cart() || is_checkout()) {
@@ -16,7 +16,7 @@ function bl_storefront_overrides() {
 	if (is_cart()) {
 		add_action('storefront_page','bl_add_back_to_top',100);
 	}
-	
+
 
 	add_action('bl_thank_you','bl_add_frequency_to_thankyou',10);
 	add_action( 'wp_print_scripts', 'bl_remove_password_strength', 10 ); // remove strong password check
@@ -50,11 +50,11 @@ function bl_storefront_overrides() {
 	remove_action( 'woocommerce_before_shop_loop', 'storefront_woocommerce_pagination', 30 );
 
 	remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); // moving related products down
-	
+
 	if (!is_product_category() && !is_shop()) {
 		add_action('woocommerce_after_main_content', 'woocommerce_output_related_products', 100); // moving related products down
 	}
-	
+
 
 	// also removing all the storefront_footer actions as well
 	remove_action('storefront_footer','storefront_footer_widgets',10);
@@ -66,7 +66,7 @@ function bl_storefront_overrides() {
 		if (!is_search()) {
 			add_action('woocommerce_before_main_content','bl_breadcrumb',4);
 		}
-		
+
 		if (is_shop() && !is_search() ) {
 			//add_action('woocommerce_before_main_content','bl_bag_hero',5);
 		}
@@ -75,7 +75,7 @@ function bl_storefront_overrides() {
 			if (!is_search()) {
 				add_action('woocommerce_before_main_content','bl_header',5);
 			}
-			
+
 		}
 
 		if(is_product_category() || is_shop()) {
@@ -83,9 +83,9 @@ function bl_storefront_overrides() {
 				add_action('woocommerce_sidebar', 'bl_back_to_top', 50);
 			// the int is the order of where it's placed
 			}
-			
+
 		}
-		
+
 	}
 
 }
@@ -146,11 +146,11 @@ add_filter( 'wc_product_sku_enabled', 'bl_remove_product_page_skus' );
 function bl_login_redirect( $redirect, $user ) {
     $redirect_page_id = url_to_postid( $redirect );
     $checkout_page_id = wc_get_page_id( 'checkout' );
-    
+
     if( $redirect_page_id == $checkout_page_id ) {
         return $redirect;
     }
- 
+
     return wc_get_page_permalink( 'shop' );
 }
 
@@ -384,7 +384,7 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 
 add_filter( 'the_title', 'bl_order_received_title', 10, 2 );
 function bl_order_received_title( $title, $id ) {
-	if ( function_exists( 'is_order_received_page' ) && 
+	if ( function_exists( 'is_order_received_page' ) &&
 	     is_order_received_page() && get_the_ID() === $id ) {
 		$title = "Welcome to the Club";
 	}
@@ -427,11 +427,11 @@ function bl_storefront_main_content_wrapper_start() {
 		} else {
 			echo '<div id="shop-landing-featured-products" class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
 		}
-		
+
 	} else {
 		echo '<div class="column col-xs-12 col-sm-12 col-md-12 col-9 shop-landing-featured-products">';
 	}
-	
+
 }
 
 if ( ! function_exists( 'storefront_product_columns_wrapper' ) ) {
@@ -443,7 +443,7 @@ if ( ! function_exists( 'storefront_product_columns_wrapper' ) ) {
 	 */
 	function storefront_product_columns_wrapper() {
 		$columns = storefront_loop_columns();
-		echo '<div class="columns">';
+		echo '<div class="">';
 	}
 }
 
