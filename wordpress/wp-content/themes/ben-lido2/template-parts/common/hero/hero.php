@@ -16,6 +16,17 @@ if (!empty($right_feature_cards) && is_array($right_feature_cards)) {
 }
 
 //print_r ($right_feature_card);
+
+
+if($right_feature_card['title'] == NULL || $left_feature_card['title'] == NULL) {
+    $left_feature_card['singleColumn'] = 'true';
+    $right_feature_card['singleColumn'] = 'true';
+} else {
+    $left_feature_card['singleColumn'] = 'false';
+    $right_feature_card['singleColumn'] = 'false';
+}
+
+
 if (!empty($left_feature_card)) {
     if (isset($left_feature_card['image'])) {
         $left_feature_card['image'] = $left_feature_card['image']['url'];
@@ -34,20 +45,12 @@ if (!empty($right_feature_card)) {
     }
 }
 
-$homePageHeroes = array( $left_feature_card,$right_feature_card);
+$homePageHeroes = array( $left_feature_card, $right_feature_card);
 // echo '<br/><br/><pre>' . var_export($right_feature_card['title'], true) . '</pre>';
 
 if (!empty($homePageHeroes)) {
     $data['homePageHeroes'] = $homePageHeroes;
-
-    if($right_feature_card['title'] == NULL || $left_feature_card['title'] == NULL) {
-        $data['homePageHeroes']['singleColumn'] = true;
-    } else {
-        $data['homePageHeroes']['singleColumn'] = false;
-    }
-
     // echo '<br/><br/><pre>' . var_export($data, true) . '</pre>';
-
 }
 
 if (empty($data)) {
