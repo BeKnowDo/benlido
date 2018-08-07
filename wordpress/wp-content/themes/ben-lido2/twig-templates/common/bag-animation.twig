@@ -1,12 +1,8 @@
-{% if not heroData %}
-    {% set heroData = [
-  {
-    header: 'WANDER WELL',
-    copy: 'We live in the air. On the road. And in line. We are all wanderers, from busy moms to business executives, and we all share a common experience: the night before we travel, we find ourselves scrambling to find the supplies we need, and wasting time taking trips to stores only to find we can’t get what we want. Learning from countless times of inconvenience, we wanted to dig deeper into what travelers want and need. So, we launched the first subscription-based kit for you, and everyone like us. Our kits keep your ready: Your favorite brands, in the sizes you need, at the best prices, backed by 20 years of know-how, delivered straight to your door (or wherever you adventures take you). Welcome to Ben Lido. Wander well.',
-    inlineImage: true,
-    overrideBackgroundClass: 'bg-white'
-  }
-]%}
-{% endif %}
-
-{% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
+{% if not heroData %} {% set heroData = [ { header: 'WANDER WELL', copy: 'We live in the air. On the road. And in line. We
+are all wanderers, from soccer moms to business executives, and we share a common experience: the night before we travel,
+we find ourselves scrambling to find the supplies we need. We waste time taking trips to stores, only to find empty limited
+choices and empty shelves. We learned from inconvenience, and launched the first subscription-based travel kit for wanderers
+just like us. Our kits keep your forever-ready: All your favorite brands, in the sizes you need, at the best prices, backed
+by 20 years of know-how, delivered straight to your door (or wherever you adventures take you). Welcome to Ben Lido. Wander
+Well.', inlineImage: true, overrideBackgroundClass: 'bg-white' } ]%} {% endif %} {% include 'common/hero/hero-title-copy.twig'
+with { heroData: heroData } %}
