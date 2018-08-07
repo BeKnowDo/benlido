@@ -1,21 +1,40 @@
-{# {% extends "../layout/document.twig" %} #} {# {% block content %} #} {% if not heroData %} {% set heroData = [ { preHeaderText:
-'About Ben Lido', header: 'ADVENTURE IS CALLING, WE KEEP YOU READY', backgroundImage: '/wp-content/themes/ben-lido2/assets/images/BL__about_hero_1920.jpg'
-}, { header: 'WANDER WELL', copy: 'We live in the air. On the road. And in line. We are all wanderers, from soccer moms to
-business executives, and we share a common experience: the night before we travel, we find ourselves scrambling to find the
-supplies we need. We waste time taking trips to stores, only to find empty limited choices and empty shelves. We learned
-from inconvenience, and launched the first subscription-based travel kit for wanderers just like us. Our kits keep your forever-ready:
-All your favorite brands, in the sizes you need, at the best prices, backed by 20 years of know-how, delivered straight to
-your door (or wherever you adventures take you). Welcome to Ben Lido. Wander Well.', inlineImage: true, overrideBackgroundClass:
-'bg-white' }, { quote: 'We’re here to stimulate your spirit of adventure. To seduce your instinct for exploration. To be
-that constant whisper in your ear saying: “let’s do this”... and when you’re ready to go, we make sure you’re prepared.',
-author: '— Drew Rayman, CEO', backgroundImage: '/wp-content/themes/ben-lido2/assets/images/BL__about_hero02_1920.jpg' },
-{ header: 'SINCE 1984', copy: 'We are our namesake. Real people, creating real change. There is a Ben Lido, and an Autumn
-Lido too (his sister). Since 1984, the Lido’s have sold millions of travel kits to wanderers. This is our heritage: keeping
-wanderers stocked with travel essentials at a fair price.' } ]%} {% endif %}
+{# {% extends "../layout/document.twig" %} #}
+{# {% block content %} #}
+{% if not heroData %}
+  {% set heroData = [
+    {
+      preHeaderText: 'About Ben Lido',
+      header: 'ADVENTURE IS CALLING, WE KEEP YOU READY',
+      backgroundImage: '/wp-content/themes/ben-lido2/assets/images/BL__about_hero_1920.jpg'
+    },
+    {
+      header: 'WANDER WELL',
+      copy: 'We live in the air. On the road. And in line. We are all wanderers, from soccer moms to business executives we share a common experience:
+      the night before we travel, we find ourselves scrambling to find the supplies we need. We waste time taking trips to stores,
+      only to find limited choices and empty shelves. We learned from inconvenience, and launched the first subscription-based
+      travel kit for wanderers just like us. Our kits keep your forever-ready: All your favorite brands, in the sizes you need,
+      at the best prices, backed by 20 years of know-how, delivered straight to your door (or wherever you adventures take you).
+      Welcome to Ben Lido. Wander Well.',
+      inlineImage: true,
+      overrideBackgroundClass: 'bg-white'
+    },
+    {
+      quote: 'We’re here to stimulate your spirit of adventure. To seduce your instinct for exploration. To be that constant whisper in your ear saying: “let’s do this”... and when you’re ready to go, to make sure you’re prepared.',
+      author: '- Drew Rayman, Co-founder',
+      backgroundImage: '/wp-content/themes/ben-lido2/assets/images/BL__about_hero02_1920.jpg'
+    },
+    {
+      header: 'SINCE 1984',
+      copy: 'We are our namesake. There really is a Ben Lido, and an Autumn Lido too (his sister). Since 1984, the Lido’s have sold millions of travel kits to wanderers. This is our heritage: keeping wanderers stocked with travel essentials at a fair price.'
+    }
+  ]
+%}
+{% endif %}
 
 <div class="bl-about-us">
 
-  {% include 'common/step-navigation.twig' %} {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
+  {% include 'common/step-navigation.twig' %}
+  {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
 
 </div>
 
