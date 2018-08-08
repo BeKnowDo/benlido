@@ -22,6 +22,10 @@ function bl_storefront_overrides() {
 	add_action( 'wp_print_scripts', 'bl_remove_password_strength', 10 ); // remove strong password check
 	add_action('woocommerce_account_dashboard', 'bl_my_account_dashboard',10);
 
+	add_action('woocommerce_product_tabs','bl_remove_product_tabs',99);
+
+	add_action( 'woocommerce_single_product_summary', 'bl_product_detail_description', 80 );
+
 	//add_action('storefront_footer','bl_footer_menus',10);
 
 	// basically removed all the storefront_header action because we are removing it from the template itself to accommodate for how Cesar is building the template
@@ -518,6 +522,24 @@ function bl_remove_password_strength() {
 
 function bl_my_account_dashboard() {
 	get_template_part( 'template-parts/pages/my-account/dashboard');
+}
+
+function bl_remove_product_tabs() {
+	return array();
+}
+
+function bl_product_detail_description() {
+	global $post;
+	echo '<div class="description">';
+	if (is_object($post)) {
+		echo $post->post_content;
+	}
+	
+
+	echo '</div>';
+	// disclaimer
+	$disclaimer = '<div class="disclaimer"><strong>Disclaimer:</strong> While we work to ensure that product information is correct, on occasion manufacturers may alter their ingredient lists. Actual product packaging and materials may contain more and/or different information than that shown on our Web site. We recommend that you do not solely rely on the information presented and that you always read labels, warnings, and directions before using or consuming a product. For additional information about a product, please contact the manufacturer. Content on this site is for reference purposes and is not intended to substitute for advice given by a physician, pharmacist, or other licensed health-care professional. You should not use this information as self-diagnosis or for treating a health problem or disease. Contact your health-care provider immediately if you suspect that you have a medical problem. Information and statements regarding dietary supplements have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure, or prevent any disease or health condition. BenLido.com assumes no liability for inaccuracies or misstatements about products.</div>';
+	echo $disclaimer;
 }
 
 

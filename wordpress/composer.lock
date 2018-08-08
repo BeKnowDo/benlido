@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0030b5d7cfc0b1875c66c32376d1503a",
+    "content-hash": "0343de7751d3dcb602f2e01e935d73ee",
     "packages": [
         {
             "name": "composer/installers",
@@ -465,15 +465,15 @@
         },
         {
             "name": "wpackagist-plugin/hide-admin-bar",
-            "version": "0.3.9.2",
+            "version": "0.3.9.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/hide-admin-bar/",
-                "reference": "tags/0.3.9.2"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/hide-admin-bar.0.3.9.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/hide-admin-bar.zip?timestamp=1533307453",
                 "reference": null,
                 "shasum": null
             },
@@ -525,15 +525,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "6.3.2",
+            "version": "6.3.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/6.3.2"
+                "reference": "tags/6.3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.6.3.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.6.3.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -725,15 +725,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce",
-            "version": "3.4.3",
+            "version": "3.4.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.4.3"
+                "reference": "tags/3.4.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -764,16 +764,36 @@
             "homepage": "https://wordpress.org/plugins/woocommerce-google-analytics-integration/"
         },
         {
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "7.8",
+            "name": "wpackagist-plugin/woocommerce-products-without-featured-images",
+            "version": "0.1",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/7.8"
+                "url": "https://plugins.svn.wordpress.org/woocommerce-products-without-featured-images/",
+                "reference": "tags/0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.8.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-products-without-featured-images.0.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/woocommerce-products-without-featured-images/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "7.9.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/7.9.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.9.1.zip",
                 "reference": null,
                 "shasum": null
             },
