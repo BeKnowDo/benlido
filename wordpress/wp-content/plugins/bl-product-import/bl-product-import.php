@@ -21,6 +21,9 @@ function bl_product_import_settings() {
     $script = '';
     @ini_set('display_errors', false); 
     if (!empty($_POST)) {
+        if ($_POST['spreadsheet_type'] == 'process-bad-images') {
+            bl_fix_image_quality();
+        }
         $data = array();
         $spreadsheet_type = $_POST['spreadsheet_type'];
         $tmp_name = $_FILES['bl_inv_import']['tmp_name'];
@@ -88,6 +91,7 @@ function bl_product_import_settings() {
             <option value="default">Original Spreadsheet as provided April, 2018</option>
             <option value="upc-price">Spreadsheet with accurate UPC and price fields</option>
             <option value="title-and-category">Spreadsheet with accurate product name and categories</option>
+            <option value="process-bad-images">Process missing or bad product images</option>
         </select><br />
         <label for="blush_inv_import">Import Products:</label><br />
         <input type="file" id="bl_inv_import" name="bl_inv_import" /><br />
@@ -168,6 +172,77 @@ function bl_remove_utf8_bom($text)
 
 } // end if not function_exists
 
+function bl_fix_image_quality() {
+    // we are going to get all the products
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1 
+    );
+    $products = get_posts($args);
+    // iterate through and see if we have image
+    foreach ($products as $product) {
+        $prod_id = $product->ID;
+        $asin = '';
+        $sku = '';
+        $should_fetch_image = false;
+        if ($prod_id) {
+            $has_image = get_the_post_thumbnail_url($prod_id);
+            $sku = get_post_meta($prod_id,'_sku',TRUE);
+        }
+        echo "product ID:" . $prod_id;
+        echo "<br />\n";
+        if (function_exists('get_field')) {
+            $asin = get_field('amazon_asin',$prod_id);
+        }
+        echo "has image: " . $has_image;
+        echo "<br />\n";
+        if ($has_image == false) {
+            $should_fetch_image = true;
+        } else {
+            $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $prod_id ), "full" );
+            //print_r ($image_data);
+            $width = 0;
+            $height = 0;
+            if (!empty($image_data) && is_array($image_data)) {
+                $width = $image_data[1];
+                $height = $image_data[2];
+            }
+            if ($width < 500) {
+                echo "Not wide enough <br />\n";
+                $should_fetch_image = true;
+            }
+            if ($height < 500) {
+                echo "Not tall enough <br />\n";
+                $should_fetch_image = true;
+            }
+            //die;
+        }
+
+        if ($should_fetch_image == true && !empty($asin)) {
+            $aws_prod = bl_search_aws_by_asin($asin);
+            print_r ($aws_prod);
+            die;
+        }
+        if ($should_fetch_image == true && empty($asin)) {
+            echo "NO ASIN";
+            echo "<br />\n";
+            $upc = get_field('upc_code',$prod_id);
+            if (!empty($upc)) {
+                $aws_prod = bl_search_aws_by_upc($upc);
+                $image = $aws_prod['image'];
+                if (!empty($image)) {
+                    if (!empty($image) && !empty($sku)) {
+                        $id = bl_import_image($sku,$image,$prod_id,true);
+                        echo  'IMPORTING IMAGE: ' . $id;
+                        echo "<br />\n";
+                    }
+                }
+
+            }
+        }
+        echo "<br />\n";
+    } // end foreach
+}
 function bl_update_product_title_category($data) {
     $res = array('success'=>false,'product_id'=>0,'message'=>'Error');
     $upc = trim($data['upc_a']);
@@ -199,14 +274,15 @@ function bl_update_product_title_category($data) {
                     } else {
                         $term_id = $obj->term_id;
                         $cat_name = $obj->name;
+                        // we should have the lowest level of category that we can find
+                        if ($term_id > 0) {
+                            wp_set_object_terms($prod_id, $term_id, 'product_cat',true);
+                            $message .= ' UPDATED Product Category to: ' . $cat_name . '<br />';
+                        }
                     }
                 }
             } // end foreach $categories
-            // we should have the lowest level of category that we can find
-            if ($term_id > 0) {
-                wp_set_object_terms($prod_id, $term_id, 'product_cat',true);
-                $message .= ' UPDATED Product Category to: ' . $cat_name . '<br />';
-            }
+            
         }
         if (!empty($product_name)) {
             $args = array('ID'=>$prod_id,'post_title'=>$product_name);
@@ -225,12 +301,25 @@ function bl_update_product_title_category($data) {
             $image_url = $data['image_url_1'];
             if (!empty($image_url) && !empty($sku)) {
                 $id = bl_import_image($sku,$image_url,$prod_id,true);
+                $message .= 'IMPORTING IMAGE: ' . $id;
             }
             
                      
             $res['image_id'] = $id;
             //$res['name'] = $name;
         }
+
+        $has_image = get_the_post_thumbnail_url($prod_id);
+        if ($has_image == false && function_exists('get_field')) {
+            $asin = get_field('amazon_asin',$prod_id);
+
+            if (!empty($asin)) {
+                $aws_prod = bl_search_aws_by_asin($asin);
+                print_r ($aws_prod);
+                die;
+            }
+        }
+
 
         $res['error'] = $message;
         
@@ -1009,8 +1098,8 @@ function bl_distill_aws_product($prod) {
     $asin = $prod['ASIN'];
     $image = $prod['LargeImage'];
     $amazon_url = $prod['DetailPageURL'];
-    if (!empty($prod['ImageSets']['ImageSet']['HiResImage'])) {
-        $image = $prod['ImageSets']['ImageSet']['HiResImage'];
+    if (!empty($prod['ImageSets']['ImageSet'][0]['HiResImage'])) {
+        $image = $prod['ImageSets']['ImageSet'][0]['HiResImage'];
     }
     if (!empty($image['URL'])) {
         $image = $image['URL'];
@@ -1244,7 +1333,20 @@ function bl_category_hierarchy_string_to_array($string) {
         foreach ($array as $item) {
             $item = trim($item);
             if (!empty($item)) {
-                $holder[] = trim($item);
+                if (strlen(stristr($item, ' and ')) > 0) {
+                    $double = explode(' and ',$item);
+                    if (is_array($double)) {
+                        foreach ($double as $single) {
+                            $single = trim($single);
+                            if (!empty($single)) {
+                                $holder[] = $single;
+                            }
+                        }
+                    }
+                } else {
+                    $holder[] = trim($item);
+                }
+                
             }
         }
     }
