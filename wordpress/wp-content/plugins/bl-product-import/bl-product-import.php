@@ -95,6 +95,7 @@ function bl_product_import_settings() {
         <select name="spreadsheet_type">
             <option value="default">Original Spreadsheet as provided April, 2018</option>
             <option value="upc-price">Spreadsheet with accurate UPC and price fields</option>
+            <option value="upc-cost">Update Autumn's price as cost of goods</option>
             <option value="title-and-category">Spreadsheet with accurate product name and categories</option>
             <option value="process-bad-images">Process missing or bad product images</option>
             <option value="list-bad-images-categories">List products with missing or bad product images, no category, or no price</option>
@@ -430,6 +431,20 @@ function bl_update_product_title_category($data) {
     return $res;
 
 }
+
+function bl_update_cost($data) {
+    $ben_lido_bin = $data['ben_lido_bin'];
+    $upc = trim($data['upc']);
+    $title = trim($data['title']);
+    $price = trim($data['price']);
+    $prod_id = bl_get_product_by_upc($upc);
+    if ($prod_id > 0) {
+        update_post_meta( $prod_id, '_wc_cog_cost', $price);
+    }
+    $result = array('name'=>$title,'title'=>$title,'error'=>'updated COGS');
+    return $result;
+}
+
 function bl_create_product_sku_price($data) {
     $ben_lido_bin = $data['ben_lido_bin'];
     $upc = trim($data['upc']);
@@ -1386,6 +1401,13 @@ function bl_product_import_url_intercept()
                 }
                 if ($type == 'upc-price') {
                     $resp = bl_create_product_sku_price($row);
+                    $resp['name'] = $row['name'];
+                    if (!empty($row['title'])) {
+                        $resp['name'] = $row['title'];
+                    }
+                }
+                if ($type == 'upc-cost') {
+                    $resp = bl_update_cost($row);
                     $resp['name'] = $row['name'];
                     if (!empty($row['title'])) {
                         $resp['name'] = $row['title'];
