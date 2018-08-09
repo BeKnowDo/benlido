@@ -115,7 +115,7 @@ function bl_product_import_settings() {
 <?php if ($item['has_price'] == false):?> No Price <br /><?php endif;?>
                 <?php if ($item['has_categories'] == false):?> No Category attached to product <br /><?php endif;?>
                 <?php if ($item['has_image'] == false):?> No Image <br />
-                <?php elseif ($item['width'] != $item['height']) :?>
+                <?php elseif ($item['width'] != $item['height'] || $item['width'] < 500 || $item['height'] < 500) :?>
                     Image Dimensions not appropriate: 
                     Width: <?php echo $item['width'];?> 
                     Height: <?php echo $item['height'];?> 
