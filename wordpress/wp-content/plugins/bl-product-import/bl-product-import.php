@@ -19,11 +19,16 @@ function bl_product_import_settings() {
     global $bl_stored_product_array;
     $message = '';
     $script = '';
+    $list = array();
     @ini_set('display_errors', false); 
     if (!empty($_POST)) {
         if ($_POST['spreadsheet_type'] == 'process-bad-images') {
             bl_fix_image_quality();
         }
+        if ($_POST['spreadsheet_type'] == 'list-bad-images-categories') {
+            $list = bl_list_bad_products();
+        }
+        
         $data = array();
         $spreadsheet_type = $_POST['spreadsheet_type'];
         $tmp_name = $_FILES['bl_inv_import']['tmp_name'];
@@ -92,6 +97,7 @@ function bl_product_import_settings() {
             <option value="upc-price">Spreadsheet with accurate UPC and price fields</option>
             <option value="title-and-category">Spreadsheet with accurate product name and categories</option>
             <option value="process-bad-images">Process missing or bad product images</option>
+            <option value="list-bad-images-categories">List products with missing or bad product images, no category, or no price</option>
         </select><br />
         <label for="blush_inv_import">Import Products:</label><br />
         <input type="file" id="bl_inv_import" name="bl_inv_import" /><br />
@@ -101,6 +107,24 @@ function bl_product_import_settings() {
     <div class="postbox">
         <div class="inside">
         <ul class="line-results">
+        <?php if (!empty($list)):?>
+        <p>Total: <?php echo count($list);?></p>
+        <?php foreach ($list as $item):?>
+            <li>
+                <a href="/wp-admin/post.php?post=<?php echo $item['id'];?>&action=edit"><?php echo $item['title'];?></a><br />
+<?php if ($item['has_price'] == false):?> No Price <br /><?php endif;?>
+                <?php if ($item['has_categories'] == false):?> No Category attached to product <br /><?php endif;?>
+                <?php if ($item['has_image'] == false):?> No Image <br />
+                <?php elseif ($item['width'] != $item['height']) :?>
+                    Image Dimensions not appropriate: 
+                    Width: <?php echo $item['width'];?> 
+                    Height: <?php echo $item['height'];?> 
+                    <br />
+                <?php endif;?>
+
+            </li>
+        <?php endforeach;?>
+        <?php endif;?>
         </ul>
         </div>
     </div>
@@ -171,6 +195,81 @@ function bl_remove_utf8_bom($text)
 }
 
 } // end if not function_exists
+
+function bl_list_bad_products() {
+    $holder = array();
+    // we are going to get all the products
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1 
+    );
+    $products = get_posts($args);
+    // iterate through and see if we have image
+    foreach ($products as $product) {
+        $should_report = false;
+        $prod_id = $product->ID;
+        $title = $product->post_title;
+        $width = 0;
+        $height = 0;
+        $asin = '';
+        $sku = '';
+        $price = 0;
+        $terms = array();
+        $should_fetch_image = false;
+        $has_categories = false;
+        $has_price = true;
+        if ($prod_id) {
+            $has_image = get_the_post_thumbnail_url($prod_id);
+            $sku = get_post_meta($prod_id,'_sku',TRUE);
+            $price = get_post_meta($prod_id,'_price',TRUE);
+
+            $terms = get_the_terms( $prod_id, 'product_cat' );
+            if (!empty($terms)) {
+                $has_categories = true;
+            }
+
+        }
+
+        if (function_exists('get_field')) {
+            $asin = get_field('amazon_asin',$prod_id);
+        }
+        if ($has_image == false) {
+            $should_report = true;
+        } else {
+            $image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $prod_id ), "full" );
+            //print_r ($image_data);
+            $width = 0;
+            $height = 0;
+            if (!empty($image_data) && is_array($image_data)) {
+                $width = intval($image_data[1]);
+                $height = intval($image_data[2]);
+            }
+            if ($width < 500) {
+                $should_report = true;
+            }
+            if ($height < 500) {
+                $should_report = true;
+            }
+            //die;
+        }
+
+        if ($price <= 0) {
+            $should_report = true;
+            $has_price = false;
+        }
+
+        if (empty($terms)) {
+            $should_report = true;
+            $has_categories = false;
+        }
+        
+        if ($should_report == true) {
+            $holder[] = array('id'=>$prod_id,'title'=>$title,'width'=>$width,'height'=>$height,'has_image'=>$has_image,'has_categories'=>$has_categories,'has_price'=>$has_price);
+        }
+    }
+    return $holder;
+} // end bl_list_bad_products()
+
 
 function bl_fix_image_quality() {
     // we are going to get all the products
