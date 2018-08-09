@@ -10,6 +10,11 @@
 
 .single-product {
   .summary {
+    .description {
+      ul {
+        list-style: disc inside;
+      }
+    }
     .disclaimer {
       font-size: 12px;
       margin-top:50px;
