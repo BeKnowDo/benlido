@@ -47,7 +47,7 @@ function bl_child_theme_init()
     // This theme uses wp_nav_menu() in one location.
 
     remove_theme_support( 'wc-product-gallery-zoom' );
-    remove_theme_support( 'wc-product-gallery-lightbox' );
+    //remove_theme_support( 'wc-product-gallery-lightbox' );
     remove_theme_support( 'wc-product-gallery-slider' );
 
 
