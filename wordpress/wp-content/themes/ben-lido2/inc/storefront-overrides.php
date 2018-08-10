@@ -537,9 +537,27 @@ function bl_product_detail_description() {
 	
 
 	echo '</div>';
+	$dont_show = false;
 	// disclaimer
+	// exception is the bag
+	if (function_exists('get_field')) {
+		$bag_category = get_field('bag_category','option');
+	}
+	if (function_exists('bl_get_product_category')) {
+		$cat = bl_get_product_category($post->ID);
+	}
+	if (!empty($bag_category) && !empty($cat) && is_object($cat)) {
+		if ($bag_category == $cat->term_id) {
+			$dont_show = true;
+		}
+	}
+	
 	$disclaimer = '<div class="disclaimer"><strong>Disclaimer:</strong> While we work to ensure that product information is correct, on occasion manufacturers may alter their ingredient lists. Actual product packaging and materials may contain more and/or different information than that shown on our Web site. We recommend that you do not solely rely on the information presented and that you always read labels, warnings, and directions before using or consuming a product. For additional information about a product, please contact the manufacturer. Content on this site is for reference purposes and is not intended to substitute for advice given by a physician, pharmacist, or other licensed health-care professional. You should not use this information as self-diagnosis or for treating a health problem or disease. Contact your health-care provider immediately if you suspect that you have a medical problem. Information and statements regarding dietary supplements have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure, or prevent any disease or health condition. BenLido.com assumes no liability for inaccuracies or misstatements about products.</div>';
-	echo $disclaimer;
+
+	if ($dont_show == false) {
+		echo $disclaimer;
+	}
+	
 }
 
 
