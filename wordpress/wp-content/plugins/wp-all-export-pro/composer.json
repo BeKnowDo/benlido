@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/wp-all-export-pro",
+    "type": "wordpress-plugin",
+    "description": "WP All Export Pro",
+    "version":"1.4.7",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/wp-all-export-pro.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

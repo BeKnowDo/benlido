@@ -31,6 +31,10 @@
             "url":"https://bitbucket.org/upcomposer/woothemes-updater.git"
         },
         {
+            "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/wp-all-export-pro.git"
+        },
+        {
             "type":"composer",
             "url":"https://wpackagist.org"
         }
@@ -42,6 +46,7 @@
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",
+        "up-plugins/wp-all-export-pro":"dev-master",
         "up-plugins/woocommerce-variation-swatches-and-photos":"dev-master",
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/categories-images":"*",
