@@ -3155,7 +3155,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-product-swatches { margin: 20px auto; justify-content: center; padding: 0; }
 
-.bl-product-swatches:before { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 400; font-style: normal; margin: 0 0 0.8rem; content: 'Choose a color'; display: block; width: 100%; }
+.bl-product-swatches:before { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 300; font-style: normal; margin: 0 0 0.8rem; content: "Choose a color"; display: block; width: 100%; }
 
 .bl-product-swatches .swatch-wrapper { background-color: transparent; width: 33%; max-width: 50px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
 
@@ -3357,7 +3357,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .category-header-container { padding: 46px 10px; }
 
-.category-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; padding: 10px 0; color: #999999; }
+.category-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 300; font-style: normal; padding: 10px 0; color: #999999; }
 
 .hero { text-align: center; color: #979797; padding: 150px 20px; }
 
@@ -3393,7 +3393,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-action-buttons .btn { max-width: 192px; display: inline-block; margin: auto; padding-left: 0; padding-right: 0; }
 
-.hero-home[style*="background-image"] { background-size: 100%; background-position-x: 50%; background-position-y: bottom; padding-top: 80px; }
+.hero-home[style*="background-image"] { background-size: 100%; background-position-x: 50%; background-position-y: bottom; padding-top: 80px; transition: background-position .2s ease-in-out; }
 
 .hero-home[style*="background-image"] img { visibility: hidden; }
 
@@ -3401,15 +3401,13 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-home .hero-image { margin: 0 0 0 auto; }
 
-.hero-row .hero { padding-bottom: 50px; }
-
 .hero-title-copy { padding: 2.4rem 20px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; }
 
 .hero-title-copy:first-child { border-top: 0; }
 
 .hero-title-copy-header { text-transform: uppercase; }
 
-.hero-title-copy-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 400; margin: 1rem 0 0; }
+.hero-title-copy-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-style: normal; font-weight: 300; margin: 1rem 0 0; }
 
 .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
 
@@ -3519,7 +3517,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-tile-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 500; font-style: normal; margin: 0 0 0.8rem; }
 
-.product-tile-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 400; font-style: normal; color: #999999; padding: 10px 0 0; }
+.product-tile-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 300; font-style: normal; color: #999999; padding: 10px 0 0; }
 
 .product-tile-price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; }
 
@@ -3549,7 +3547,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-information-header { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 70px; font-weight: 400; font-style: normal; text-transform: uppercase; text-align: center; }
 
-.product-information-price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; text-align: center; align-items: center; display: inline-flex; width: 100%; height: 100%; }
+.product-information-price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 300; font-style: normal; text-align: center; align-items: center; display: inline-flex; width: 100%; height: 100%; }
 
 .product-information-byline { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; text-align: center; padding: 30px 0 24px; color: #999999; }
 
@@ -3581,7 +3579,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .category-list .menu { background-color: transparent; box-shadow: none; margin: 0; padding: 0; }
 
-.category-list .menu-item { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 400; font-style: normal; list-style-type: none; margin: 0 0 10px; padding: 0; }
+.category-list .menu-item { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 300; font-style: normal; list-style-type: none; margin: 0 0 10px; padding: 0; }
 
 .category-list .menu-item:before { display: none; }
 
@@ -3611,11 +3609,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .category-list-group { margin-bottom: 10px; }
 
-.category-list-parent { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 400; font-style: normal; }
+.category-list-parent { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 300; font-style: normal; }
 
 .category-list-parent a { display: inline-block; padding: 10px 0; color: #195675; }
 
-.category-list-sub-items { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 400; font-style: normal; }
+.category-list-sub-items { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 300; font-style: normal; }
 
 .category-list-sub-items li { display: block; }
 
@@ -3641,11 +3639,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .shop-landing-featured-products .product-tile { border: 1px solid #e4e4e4; border-radius: 4px; }
 
-.shop-landing-featured-products .product-tile-column:nth-last-child(-n+2) .product-tile { border: 1px solid #e4e4e4; border-radius: 4px; }
+.shop-landing-featured-products .product-tile-column:nth-last-child(-n + 2) .product-tile { border: 1px solid #e4e4e4; border-radius: 4px; }
 
 .shop-landing-featured-products .columns ul.columns { width: 100%; }
 
-.shop-landing-featured-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; letter-spacing: normal; color: #999999; text-align: center; padding: 1.6rem 0 0.2rem; }
+.shop-landing-featured-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 300; font-style: normal; letter-spacing: normal; color: #999999; text-align: center; padding: 1.6rem 0 0.2rem; }
 
 .shop-landing-featured-view-all { border-bottom: 1px solid #e4e4e4; }
 
@@ -3679,7 +3677,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .search-in-page { padding-left: 0.6rem; padding-right: 0.6rem; }
 
-.search-in-page-input { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-radius: 4px 0 0 4px; display: block; height: 100%; padding: 14px; color: #979797; }
+.search-in-page-input { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 300; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-radius: 4px 0 0 4px; display: block; height: 100%; padding: 14px; color: #979797; }
 
 .search-in-page-header { font-size: 75px; margin: 44px auto; }
 
@@ -3894,9 +3892,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (min-width: 1450px) { .hero-home[style*="background-image"] { padding-bottom: 340px; background-size: 100%; background-position-x: right; background-position-y: calc(100% + 140px); } }
 
-@media (min-width: 1600px) { .hero-home[style*="background-image"] { padding-bottom: 460px; background-size: 100%; background-position-x: right; background-position-y: calc(100% + 180px); } }
+@media (min-width: 1600px) { .hero-home[style*="background-image"] { padding-bottom: 460px; background-size: 90%; background-position-x: right; background-position-y: calc(100% + 180px); } }
 
-@media (min-width: 2000px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: 85%; background-position-x: right; background-position-y: calc(100% + 180px); } }
+@media (min-width: 2000px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: 78%; background-position-x: right; background-position-y: calc(100% + 226px); } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
@@ -3961,7 +3959,7 @@ body { position: relative; padding-top: 52px; outline: none; }
   .bl-about-us .hero-title-copy:last-child { padding-top: 90px; padding-bottom: 90px; } }
 
 @media (min-width: 960px) { .bl-about-us .hero-title-copy { padding-top: 90px; padding-bottom: 90px; }
-  .bl-about-us .hero-title-copy .hero-title-copy-copy { line-height: 140%; font-size: 18px; }
+  .bl-about-us .hero-title-copy .hero-title-copy-copy { line-height: 160%; font-size: 18px; }
   .bl-about-us .hero-title-copy[style*="background-image"] { padding-top: 400px; padding-bottom: 400px; }
   .bl-about-us .hero-title-copy-quote[style*="background-image"] { padding-top: 200px; padding-bottom: 200px; }
   .bl-about-us .hero-title-copy-quote .hero-title-quote { font-size: 24px; line-height: 140%; }
@@ -4371,9 +4369,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-account-navigation-icon:after { display: none; padding: 0; text-align: center; display: inline-block; width: 100%; font-family: "Font Awesome 5 Pro"; font-weight: 400; -webkit-font-smoothing: antialiased; font-style: normal; font-variant: normal; text-rendering: auto; }
 
-.bl-account-navigation li { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 400; font-style: normal; padding: 0; border-bottom: 1px solid #e4e4e4; transition: background-color .2s ease-in-out; }
+.bl-account-navigation li { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 300; font-style: normal; padding: 0; border-bottom: 1px solid #e4e4e4; transition: background-color 0.2s ease-in-out; }
 
-.bl-account-navigation li:hover { cursor: pointer; transition: background-color .2s ease-in-out; background-color: #9fb9c4; }
+.bl-account-navigation li:hover { cursor: pointer; transition: background-color 0.2s ease-in-out; background-color: #9fb9c4; }
 
 .bl-account-navigation li:hover a { color: #fff; }
 

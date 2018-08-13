@@ -1,5 +1,4 @@
 .product {
-
   &-tile {
     height: 100%;
     padding: 20px;
@@ -22,7 +21,6 @@
         opacity: 1;
         transform: translate3d(0, -50%, 0);
       }
-
     }
 
     &-column {
@@ -33,7 +31,6 @@
 
       &:first-child {
       }
-
     }
 
     &-link {
@@ -68,7 +65,7 @@
     }
 
     &-sub-header {
-      @include sentinel(14px, 400);
+      @include sentinel(14px, 300);
       color: $medium-grey;
       padding: 10px 0 0;
     }
@@ -88,7 +85,6 @@
     }
 
     &-empty-product {
-
       &-add {
         color: $medium-grey;
         padding: 0 0 10px;
@@ -119,7 +115,6 @@
           letter-spacing: normal;
           padding-bottom: 30px;
         }
-
       }
 
       .btn-primary {
@@ -127,7 +122,6 @@
         margin-top: auto;
         position: relative;
       }
-
     }
 
     .btn {
@@ -135,6 +129,5 @@
       padding: 0;
       margin-top: auto;
     }
-
   }
 }

@@ -23,9 +23,9 @@
   padding: 0;
 
   &:before {
-    @include sentinel(14px, 400);
+    @include sentinel(14px, 300);
     margin: 0 0 $unit-2;
-    content: 'Choose a color';
+    content: "Choose a color";
     display: block;
     width: 100%;
   }
