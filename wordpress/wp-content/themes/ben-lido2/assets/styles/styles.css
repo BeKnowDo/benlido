@@ -2153,7 +2153,7 @@ a, ins, u { text-decoration-skip: ink edges; }
 
 abbr[title] { border-bottom: 0.05rem dotted; cursor: help; text-decoration: none; }
 
-kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
+kbd { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #454d5d; color: #fff; font-size: 0.7rem; }
 
 mark { background: #ffe9b3; color: #50596c; border-radius: 0.1rem; padding: .05rem; }
 
@@ -2333,7 +2333,7 @@ textarea.form-input { height: auto; }
 
 .has-icon-right .form-input { padding-right: 1.5rem; }
 
-.form-checkbox, .form-radio, .form-switch { display: inline-block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
+.form-checkbox, .form-radio, .form-switch { display: block; line-height: 1rem; margin: 0.2rem 0; min-height: 1.2rem; padding: 0.2rem 0.8rem 0.2rem 1.6rem; position: relative; }
 
 .form-checkbox input, .form-radio input, .form-switch input { clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; }
 
@@ -2411,6 +2411,8 @@ textarea.form-input { height: auto; }
 
 .has-error .form-checkbox input:focus + .form-icon, .form-checkbox.is-error input:focus + .form-icon, .has-error .form-radio input:focus + .form-icon, .form-radio.is-error input:focus + .form-icon, .has-error .form-switch input:focus + .form-icon, .form-switch.is-error input:focus + .form-icon { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); border-color: #e85600; }
 
+.has-error .form-checkbox input:indeterminate + .form-icon, .form-checkbox.is-error input:indeterminate + .form-icon { background: #e85600; border-color: #e85600; }
+
 .form-input:not(:placeholder-shown):invalid { border-color: #e85600; }
 
 .form-input:not(:placeholder-shown):invalid:focus { box-shadow: 0 0 0 0.1rem rgba(232, 86, 0, 0.2); }
@@ -2429,7 +2431,9 @@ input:disabled + .form-icon, input.disabled + .form-icon { background: #f0f1f4; 
 
 .form-horizontal .form-group { display: flex; flex-wrap: wrap; }
 
-.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .15rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
+.form-inline { display: inline-block; }
+
+.label { border-radius: 0.1rem; line-height: 1.2; padding: .1rem .2rem; background: #f0f1f4; color: #5b657a; display: inline-block; }
 
 .label.label-rounded { border-radius: 5rem; padding-left: .4rem; padding-right: .4rem; }
 
@@ -2614,6 +2618,12 @@ a.text-gray:visited { color: #bbc1cd; }
 a.text-light:focus, a.text-light:hover { color: #f2f2f2; }
 
 a.text-light:visited { color: white; }
+
+.text-dark { color: #50596c; }
+
+a.text-dark:focus, a.text-dark:hover { color: #454d5d; }
+
+a.text-dark:visited { color: #5b657a; }
 
 .text-success { color: #32b643; }
 
@@ -2801,9 +2811,9 @@ a.text-error:visited { color: #ff6003; }
 
 .py-2 { padding-bottom: 0.8rem !important; padding-top: 0.8rem !important; }
 
-.rounded { border-radius: 0.1rem; }
+.s-rounded { border-radius: 0.1rem; }
 
-.circle { border-radius: 50%; }
+.s-circle { border-radius: 50%; }
 
 .text-left { text-align: left; }
 
@@ -2833,7 +2843,7 @@ a.text-error:visited { color: #ff6003; }
 
 .text-break { hyphens: auto; word-break: break-word; word-wrap: break-word; }
 
-/** Swiper 4.3.3 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: June 5, 2018 */
+/** Swiper 4.3.5 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: July 31, 2018 */
 .swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; /* Fix of Webkit flickering */ z-index: 1; }
 
 .swiper-container-no-flexbox .swiper-slide { float: left; }
