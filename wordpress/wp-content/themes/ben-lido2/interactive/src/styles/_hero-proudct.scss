@@ -42,7 +42,7 @@
 
   &-price {
     color: $brown-grey;
-    @include sentinel(22px, 400);
+    @include sentinel(22px, 300);
     margin: 0;
   }
 

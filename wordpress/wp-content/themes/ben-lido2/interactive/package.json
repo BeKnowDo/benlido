@@ -80,6 +80,7 @@
     "selectivity": "^3.1.0",
     "spectre.css": "^0.5.2",
     "swiper": "^4.3.3",
+    "waypoints": "^4.0.1",
     "whatwg-fetch": "^2.0.4"
   }
 }

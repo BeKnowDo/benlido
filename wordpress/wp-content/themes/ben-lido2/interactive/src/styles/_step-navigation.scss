@@ -27,7 +27,7 @@
     color: $medium-grey;
     padding: 0;
     vertical-align: super;
-    @include sentinel(24px, 400);
+    @include sentinel(24px, 300);
   }
 
   .btn {

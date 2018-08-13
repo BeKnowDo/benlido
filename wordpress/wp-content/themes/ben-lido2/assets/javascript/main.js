@@ -1793,50 +1793,6 @@ function scroll(...args) {
 
 /***/ }),
 
-/***/ "./node_modules/element-closest/element-closest.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/element-closest/element-closest.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// element-closest | CC0-1.0 | github.com/jonathantneal/closest
-
-(function (ElementProto) {
-	if (typeof ElementProto.matches !== 'function') {
-		ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
-			var element = this;
-			var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
-			var index = 0;
-
-			while (elements[index] && elements[index] !== element) {
-				++index;
-			}
-
-			return Boolean(elements[index]);
-		};
-	}
-
-	if (typeof ElementProto.closest !== 'function') {
-		ElementProto.closest = function closest(selector) {
-			var element = this;
-
-			while (element && element.nodeType === 1) {
-				if (element.matches(selector)) {
-					return element;
-				}
-
-				element = element.parentNode;
-			}
-
-			return null;
-		};
-	}
-})(window.Element.prototype);
-
-
-/***/ }),
-
 /***/ "./node_modules/in-view/dist/in-view.min.js":
 /*!**************************************************!*\
   !*** ./node_modules/in-view/dist/in-view.min.js ***!
@@ -39719,15 +39675,8 @@ var ScrollToTop = exports.ScrollToTop = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.BenLidoAnimations = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _elementClosest = __webpack_require__(/*! element-closest */ "./node_modules/element-closest/element-closest.js");
-
-var _elementClosest2 = _interopRequireDefault(_elementClosest);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -39735,24 +39684,24 @@ var BenLidoAnimations = exports.BenLidoAnimations = function () {
   function BenLidoAnimations() {
     _classCallCheck(this, BenLidoAnimations);
 
-    this.destination = document.querySelector('#bl-animated-gif') || undefined;
+    this.destination = document.querySelector("#bl-animated-gif") || undefined;
   }
 
   _createClass(BenLidoAnimations, [{
-    key: 'init',
+    key: "init",
     value: function init() {
       if (this.destination !== undefined) {
         this.callAnimation();
       }
     }
   }, {
-    key: 'callAnimation',
+    key: "callAnimation",
     value: function callAnimation() {
       var interval = 250;
 
-      var path = '/wp-content/themes/ben-lido2/assets/images/bag-animation';
+      var path = "/wp-content/themes/ben-lido2/assets/images/bag-animation";
       var documentFragment = document.createDocumentFragment();
-      var imageTag = document.createElement('img');
+      var imageTag = document.createElement("img");
 
       documentFragment.appendChild(imageTag);
       this.destination.appendChild(documentFragment);
@@ -39767,7 +39716,7 @@ var BenLidoAnimations = exports.BenLidoAnimations = function () {
       var intervalID = window.setInterval(animate, interval);
 
       function animate() {
-        imageTag.src = path + '/BL__' + i + '.jpg';
+        imageTag.src = path + "/BL__" + i + ".jpg";
 
         if (countUp) {
           i++;

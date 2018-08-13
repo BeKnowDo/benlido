@@ -141,7 +141,7 @@
           text-align: center;
           margin: -4px auto 0;
           &:after {
-            content: 'Remove?';
+            content: "Remove?";
             display: block;
             color: $blumine;
           }
@@ -193,7 +193,7 @@
     }
 
     .shop_table {
-      @include sentinel(22px, 400);
+      @include sentinel(22px, 300);
       background-color: $silver-white;
       border: $grey-border;
       border-bottom: 0;
@@ -261,5 +261,4 @@
     padding: $unit-2 0 0;
     display: block;
   }
-
 }

@@ -58,7 +58,7 @@
     }
   }
   &-label {
-    @include sentinel(40px, 400);
+    @include sentinel(40px, 300);
     margin-bottom: 40px;
     color: $white;
   }

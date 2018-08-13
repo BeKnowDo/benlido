@@ -9,7 +9,7 @@
   text-align: center;
 
   &-value {
-    @include sentinel(17px, 400);
+    @include sentinel(17px, 300);
     border-right: $grey-border;
     box-sizing: border-box;
     display: inline-block;

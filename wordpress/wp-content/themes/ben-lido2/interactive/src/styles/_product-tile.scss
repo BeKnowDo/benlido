@@ -60,7 +60,7 @@
     }
 
     &-header {
-      @include sentinel(16px, 500);
+      @include sentinel(16px, 300);
       margin: 0 0 $unit-4;
     }
 
@@ -71,7 +71,7 @@
     }
 
     &-price {
-      @include sentinel(22px, 400);
+      @include sentinel(22px, 300);
       transition: opacity 0.2s ease-in-out;
     }
 
@@ -106,7 +106,7 @@
           display: block;
           letter-spacing: normal;
           line-height: 140%;
-          @include sentinel(16px, 400);
+          @include sentinel(16px, 300);
         }
 
         &-sub-header {

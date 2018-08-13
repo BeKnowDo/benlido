@@ -1,7 +1,7 @@
 .product {
   &-description {
     &-header {
-      @include sentinel(25px, 400);
+      @include sentinel(25px, 300);
       color: $medium-grey;
       margin: 0 auto 34px;
     }
@@ -16,8 +16,8 @@
       }
     }
     .disclaimer {
-      font-size: 12px;
-      margin-top:50px;
+      font-size: 10px;
+      margin-top: 50px;
       color: $medium-grey;
     }
   }

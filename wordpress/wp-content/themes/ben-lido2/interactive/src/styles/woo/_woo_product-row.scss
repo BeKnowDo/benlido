@@ -19,8 +19,8 @@
       }
     }
   }
-  >h2 {
-    @include sentinel(25px, 400);
+  > h2 {
+    @include sentinel(25px, 300);
     letter-spacing: normal;
     color: $grey;
     padding: 0 0 25px;
@@ -31,6 +31,5 @@
     &:first-child {
       // margin-bottom: 0;
     }
-
   }
 }

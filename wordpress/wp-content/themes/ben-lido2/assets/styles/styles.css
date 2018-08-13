@@ -3365,7 +3365,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-help-header { color: #393d5b; padding: 0; }
 
-.hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; line-height: normal; padding: 1.6rem 0 0; margin: 0; }
+.hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 300; font-style: normal; line-height: normal; padding: 1.6rem 0 0; margin: 0; }
 
 .hero-help-list { padding: 0.8rem 0 0; }
 
@@ -3373,7 +3373,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 68px; font-weight: 400; font-style: normal; }
 
-.hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: normal; padding: 0; }
+.hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 300; font-style: normal; letter-spacing: normal; padding: 0; }
 
 .hero-copy { padding: 20px 0 0; margin: 0; }
 
@@ -3427,7 +3427,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product-copy { color: #999999; line-height: 140%; }
 
-.hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; margin: 0; }
+.hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
 
 .hero-product-bag-link { display: flex; height: 100%; align-content: center; margin-top: 20px; position: relative; }
 
@@ -3479,7 +3479,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .step-navigation-text .fa-chevron-circle-right { padding-right: 8px; }
 
-.step-navigation-current { color: #999999; padding: 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; }
+.step-navigation-current { color: #999999; padding: 0; vertical-align: super; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 300; font-style: normal; }
 
 .step-navigation .btn-no-border { text-shadow: none; position: relative; }
 
@@ -3495,11 +3495,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .back-to-previous-page .fal { font-size: 25px; }
 
-.product-description-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; color: #999999; margin: 0 auto 34px; }
+.product-description-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 300; font-style: normal; color: #999999; margin: 0 auto 34px; }
 
 .single-product .summary .description ul { list-style: disc inside; }
 
-.single-product .summary .disclaimer { font-size: 12px; margin-top: 50px; color: #999999; }
+.single-product .summary .disclaimer { font-size: 10px; margin-top: 50px; color: #999999; }
 
 .product-tile { height: 100%; padding: 20px; border: 1px solid #e4e4e4; border-radius: 4px; display: flex; flex-direction: column; width: 100%; }
 
@@ -3515,11 +3515,11 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-tile-hover { font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 35px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; transform: translate3d(0, 50%, 0); opacity: 0; position: absolute; bottom: 40px; left: 0; width: 100%; text-align: center; color: #393d5b; }
 
-.product-tile-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 500; font-style: normal; margin: 0 0 0.8rem; }
+.product-tile-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 300; font-style: normal; margin: 0 0 0.8rem; }
 
 .product-tile-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 14px; font-weight: 300; font-style: normal; color: #999999; padding: 10px 0 0; }
 
-.product-tile-price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; }
+.product-tile-price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 300; font-style: normal; transition: opacity 0.2s ease-in-out; }
 
 .product-tile-description { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; font-style: normal; font-weight: 400; font-size: 14px; margin: 8px 0; }
 
@@ -3531,7 +3531,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-tile-empty-product .product-tile-link { min-height: 0; }
 
-.product-tile-empty-product .product-tile-header { display: block; letter-spacing: normal; line-height: 140%; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 400; font-style: normal; }
+.product-tile-empty-product .product-tile-header { display: block; letter-spacing: normal; line-height: 140%; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 16px; font-weight: 300; font-style: normal; }
 
 .product-tile-empty-product .product-tile-sub-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; padding-bottom: 30px; }
 
@@ -3541,7 +3541,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-row { max-width: 850px; margin: 0 auto; padding: 93px 10px 100px; }
 
-.product-row-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; color: #999999; padding: 0 0 60px; }
+.product-row-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 300; font-style: normal; color: #999999; padding: 0 0 60px; }
 
 .product-row .columns .column { margin-bottom: 20px; }
 
@@ -3557,7 +3557,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product-row { max-width: 850px; margin: 0 auto; padding: 93px 10px 100px; }
 
-.product-row-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; color: #999999; padding: 0 0 60px; }
+.product-row-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 300; font-style: normal; color: #999999; padding: 0 0 60px; }
 
 .product-row .columns .column { margin-bottom: 20px; }
 
@@ -3627,7 +3627,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .mobile-navigation { animation: 0.5s alternate fadeIn; margin-right: 0.6rem; margin-left: 0.6rem; display: none; }
 
-.parent-category-list-header { padding: 60px 0 20px; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; }
+.parent-category-list-header { padding: 60px 0 20px; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 300; font-style: normal; }
 
 .parent-category-list-item { display: block; }
 
@@ -3673,7 +3673,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .benlido-search-container .benlido-search-input:focus, .benlido-search-container .benlido-search-input:active { box-shadow: none; }
 
-.benlido-search-label { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 40px; font-weight: 400; font-style: normal; margin-bottom: 40px; color: #fff; }
+.benlido-search-label { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 40px; font-weight: 300; font-style: normal; margin-bottom: 40px; color: #fff; }
 
 .search-in-page { padding-left: 0.6rem; padding-right: 0.6rem; }
 
@@ -3681,7 +3681,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .search-in-page-header { font-size: 75px; margin: 44px auto; }
 
-.search-in-page-results-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 20px; font-weight: 400; font-style: normal; letter-spacing: normal; margin-bottom: 40px; color: #999999; padding: 40px 0 0; }
+.search-in-page-results-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 20px; font-weight: 300; font-style: normal; letter-spacing: normal; margin-bottom: 40px; color: #999999; padding: 40px 0 0; }
 
 .search-in-page button { background-color: #393d5b; border: 0; border-radius: 0 4px 4px 0; color: #fff; font-size: 24px; display: block; width: 100%; height: 100%; }
 
@@ -3771,7 +3771,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { width: 20%; margin-right: 0.8rem; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
+.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 300; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
 
 .single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { text-align: left; }
 
@@ -3892,9 +3892,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 @media (min-width: 1450px) { .hero-home[style*="background-image"] { padding-bottom: 340px; background-size: 100%; background-position-x: right; background-position-y: calc(100% + 140px); } }
 
-@media (min-width: 1600px) { .hero-home[style*="background-image"] { padding-bottom: 460px; background-size: 90%; background-position-x: right; background-position-y: calc(100% + 180px); } }
-
-@media (min-width: 2000px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: 78%; background-position-x: right; background-position-y: calc(100% + 226px); } }
+@media (min-width: 1600px) { .hero-home[style*="background-image"] { padding-bottom: 460px; background-size: contain; background-position-x: right; background-position-y: center; } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
@@ -3983,7 +3981,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .product .button { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px 34px; background-color: #9fb9c4; color: #fff; border-radius: 4px; }
 
-.product .price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; transition: opacity 0.2s ease-in-out; margin: 0.2rem 0 0; display: block; }
+.product .price { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 300; font-style: normal; transition: opacity 0.2s ease-in-out; margin: 0.2rem 0 0; display: block; }
 
 .product .price .amount { display: block; }
 
@@ -3997,7 +3995,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .products.related li .product-tile { border: 1px solid #e4e4e4; border-radius: 4px; }
 
-.products > h2 { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; letter-spacing: normal; color: #979797; padding: 0 0 25px; max-width: 850px; margin: 0 auto 0; text-align: center; }
+.products > h2 { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 300; font-style: normal; letter-spacing: normal; color: #979797; padding: 0 0 25px; max-width: 850px; margin: 0 auto 0; text-align: center; }
 
 .product .summary.entry-summary { flex-wrap: wrap; padding: 0 0.8rem; }
 
@@ -4165,7 +4163,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .cart .product-remove .remove { text-align: center; margin: -4px auto 0; }
 
-.woocommerce-cart .cart .product-remove .remove:after { content: 'Remove?'; display: block; color: #195675; }
+.woocommerce-cart .cart .product-remove .remove:after { content: "Remove?"; display: block; color: #195675; }
 
 .woocommerce-cart .cart .product-remove .remove:before { font-size: 22px; font-family: "Font Awesome 5 Pro"; color: #e10600; content: "\f2ed"; }
 
@@ -4179,7 +4177,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #9fb9c4; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
 
-.woocommerce-cart .cart_totals .shop_table { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 400; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-bottom: 0; border-radius: 4px; color: #999999; width: 100%; }
+.woocommerce-cart .cart_totals .shop_table { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 300; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-bottom: 0; border-radius: 4px; color: #999999; width: 100%; }
 
 .woocommerce-cart .cart_totals .shop_table tr th, .woocommerce-cart .cart_totals .shop_table tr td { text-align: left; border-bottom: 1px solid #e4e4e4; padding: 1.6rem; }
 
@@ -4203,7 +4201,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-cart .shipping-calculator-button { padding: 0.8rem 0 0; display: block; }
 
-.woocommerce-shipping-fields h3 { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 32px; font-weight: 400; font-style: normal; letter-spacing: normal; }
+.woocommerce-shipping-fields h3 { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 32px; font-weight: 300; font-style: normal; letter-spacing: normal; }
 
 .woocommerce-checkout { background-color: #f7f7f7; }
 
@@ -4257,15 +4255,15 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-checkout-review-order tfoot .cart-subtotal { color: #999999; }
 
-.woocommerce-checkout-review-order tfoot .cart-subtotal th { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 15px; font-weight: 400; font-style: normal; box-sizing: border-box; width: 50%; flex-grow: 1; }
+.woocommerce-checkout-review-order tfoot .cart-subtotal th { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 15px; font-weight: 300; font-style: normal; box-sizing: border-box; width: 50%; flex-grow: 1; }
 
 .woocommerce-checkout-review-order tfoot .cart-subtotal td { box-sizing: border-box; width: 50%; flex-grow: 1; text-align: right; }
 
-.woocommerce-checkout #order_review_heading { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 32px; font-weight: 400; font-style: normal; letter-spacing: normal; padding: 1.2rem 0 2rem; color: #606060; }
+.woocommerce-checkout #order_review_heading { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 32px; font-weight: 300; font-style: normal; letter-spacing: normal; padding: 1.2rem 0 2rem; color: #606060; }
 
 .woocommerce-checkout .woocommerce-additional-fields .input-text { background-color: #f7f7f7; }
 
-.woocommerce-checkout .woocommerce-billing-fields h3 { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 32px; font-weight: 400; font-style: normal; letter-spacing: normal; margin-bottom: 1.4rem; padding: 1.6rem 0 0.8rem; color: #606060; }
+.woocommerce-checkout .woocommerce-billing-fields h3 { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 32px; font-weight: 300; font-style: normal; letter-spacing: normal; margin-bottom: 1.4rem; padding: 1.6rem 0 0.8rem; color: #606060; }
 
 .woocommerce-checkout .woocommerce-billing-fields .input-text, .woocommerce-checkout .woocommerce-billing-fields .select2 { background-color: #f7f7f7; }
 
@@ -4321,7 +4319,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-order-details { border: 1px solid #e4e4e4; border-radius: 4px; background-color: #fff; padding: 1.6rem 2.4rem; }
 
-.woocommerce-order-details__title { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; color: #999999; text-align: center; padding: 1.2rem 0 2.4rem; margin: 0 0 1.2rem; letter-spacing: normal; border-bottom: 1px solid #e4e4e4; }
+.woocommerce-order-details__title { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 300; font-style: normal; color: #999999; text-align: center; padding: 1.2rem 0 2.4rem; margin: 0 0 1.2rem; letter-spacing: normal; border-bottom: 1px solid #e4e4e4; }
 
 .woocommerce-table { width: 100%; text-align: left; display: block; margin: 0 0 0.8rem; }
 
@@ -4345,9 +4343,9 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .woocommerce-table tfoot { display: block; border: 1px solid #e4e4e4; padding: 0.6rem 1.4rem; margin-top: 1.4rem; background-color: #f7f7f7; border-radius: 4px; }
 
-.woocommerce-thankyou-order-received { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 400; font-style: normal; text-align: center; padding: 1.2rem; margin: 0; }
+.woocommerce-thankyou-order-received { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 25px; font-weight: 300; font-style: normal; text-align: center; padding: 1.2rem; margin: 0; }
 
-.woocommerce-customer-details .woocommerce-column__title { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 400; font-style: normal; margin: 2rem 0 0.8rem; }
+.woocommerce-customer-details .woocommerce-column__title { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 24px; font-weight: 300; font-style: normal; margin: 2rem 0 0.8rem; }
 
 .woocommerce-customer-details .addresses { float: none; clear: both; overflow: hidden; margin: 1.6rem 0 0; }
 

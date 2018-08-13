@@ -19,7 +19,7 @@
   }
 
   &-results-header {
-    @include sentinel(20px, 400);
+    @include sentinel(20px, 300);
     letter-spacing: normal;
     margin-bottom: 40px;
     color: $medium-grey;

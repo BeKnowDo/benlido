@@ -67,7 +67,7 @@
       // margin-top: $unit-8;
 
       &__title {
-        @include sentinel(25px, 400);
+        @include sentinel(25px, 300);
         color: $medium-grey;
         text-align: center;
         padding: $unit-6 0 $unit-12;
@@ -143,16 +143,15 @@
   }
 
   &-thankyou-order-received {
-    @include sentinel(25px, 400);
+    @include sentinel(25px, 300);
     text-align: center;
     padding: $unit-6;
     margin: 0;
-
   }
 
   &-customer-details {
     .woocommerce-column__title {
-      @include sentinel(24px, 400);
+      @include sentinel(24px, 300);
       margin: $unit-10 0 $unit-2;
     }
     .addresses {

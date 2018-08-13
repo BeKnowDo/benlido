@@ -1,14 +1,11 @@
 .single-product {
   &.single {
-
     .product {
-
       &.product_cat-bags {
         width: 100%;
         flex-direction: column;
 
         .entry-summary {
-
           &.summary {
             margin: 0;
           }
@@ -38,17 +35,14 @@
               padding-left: 0;
               padding-right: 8px;
             }
-
           }
 
           .variations {
-
             &-header {
               @include knockout(45px, 400);
               margin: $unit-2 0 0;
               padding: 0;
             }
-
           }
 
           .reset_variations {
@@ -64,7 +58,6 @@
           .value {
             position: relative;
           }
-
         }
 
         .single_variation_wrap {
@@ -86,20 +79,17 @@
             margin-right: $unit-2;
 
             > label {
-              @include sentinel(24px, 400);
+              @include sentinel(24px, 300);
               padding-bottom: $unit-2;
               color: $grey;
               display: block;
             }
-
           }
 
           .quantity {
             text-align: left;
           }
-
         }
-
       }
     }
 
@@ -109,7 +99,6 @@
       .posted_in {
         margin-bottom: $unit-2;
       }
-
     }
 
     .wc-tabs {
@@ -122,7 +111,6 @@
     }
 
     .woocommerce-Tabs-panel--description {
-
       h2 {
         @include knockout(45px, 400);
         margin: 0 0 $unit-2;
@@ -132,6 +120,5 @@
         margin: 0;
       }
     }
-
   }
 }

@@ -1,7 +1,7 @@
 .parent-category-list {
   &-header {
     padding: 60px 0 20px;
-    @include sentinel(22px, 400);
+    @include sentinel(22px, 300);
   }
   &-item {
     display: block;

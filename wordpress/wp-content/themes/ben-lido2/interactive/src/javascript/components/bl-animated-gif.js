@@ -1,52 +1,50 @@
-import closest from 'element-closest'
-
 export class BenLidoAnimations {
-  constructor () {
-    this.destination = document.querySelector('#bl-animated-gif') || undefined
+  constructor() {
+    this.destination = document.querySelector("#bl-animated-gif") || undefined;
   }
 
-  init () {
+  init() {
     if (this.destination !== undefined) {
-      this.callAnimation()
+      this.callAnimation();
     }
   }
-  callAnimation () {
-    const interval = 250
+  callAnimation() {
+    const interval = 250;
 
-    const path = `/wp-content/themes/ben-lido2/assets/images/bag-animation`
-    const documentFragment = document.createDocumentFragment()
-    const imageTag = document.createElement('img')
+    const path = `/wp-content/themes/ben-lido2/assets/images/bag-animation`;
+    const documentFragment = document.createDocumentFragment();
+    const imageTag = document.createElement("img");
 
-    documentFragment.appendChild(imageTag)
-    this.destination.appendChild(documentFragment)
+    documentFragment.appendChild(imageTag);
+    this.destination.appendChild(documentFragment);
 
-    const startRange = 1
-    const endRange = 19
+    const startRange = 1;
+    const endRange = 19;
 
-    let i = startRange
-    let countUp = true
-    let loopCount = 0
+    let i = startRange;
+    let countUp = true;
+    let loopCount = 0;
 
-    let intervalID = window.setInterval(animate, interval)
+    let intervalID = window.setInterval(animate, interval);
 
-    function animate () {
-      imageTag.src = `${path}/BL__${i}.jpg`
+    function animate() {
+      imageTag.src = `${path}/BL__${i}.jpg`;
 
       if (countUp) {
-        i++
+        i++;
         if (i >= endRange) {
-          countUp = false
-          loopCount++
+          countUp = false;
+          loopCount++;
         }
       } else {
-        i--
+        i--;
         if (i <= startRange) {
-          countUp = true
+          countUp = true;
         }
       }
 
       if (loopCount > 4) {
-        window.clearInterval(intervalID)
+        window.clearInterval(intervalID);
       }
     }
   }
