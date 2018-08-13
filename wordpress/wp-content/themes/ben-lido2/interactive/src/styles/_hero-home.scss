@@ -5,6 +5,7 @@
       background-position-x: 50%;
       background-position-y: bottom;
       padding-top: 80px;
+      transition: background-position .2s ease-in-out;
 
       img {
         visibility: hidden;

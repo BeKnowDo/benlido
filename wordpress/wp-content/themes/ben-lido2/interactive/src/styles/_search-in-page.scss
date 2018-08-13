@@ -3,7 +3,7 @@
   padding-right: $unit-3;
 
   &-input {
-    @include sentinel(18px, 400);
+    @include sentinel(18px, 300);
     background-color: $silver-white;
     border: $grey-border;
     border-radius: 4px 0 0 4px;

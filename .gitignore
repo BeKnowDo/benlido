@@ -81,3 +81,4 @@ wordpress/readme.html
 *.wmv
 *.avi
 /wordpress/.idea/
+/.history/
