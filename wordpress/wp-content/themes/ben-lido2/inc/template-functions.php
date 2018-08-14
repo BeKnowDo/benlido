@@ -122,6 +122,9 @@ function bl_get_featured_categories() {
                 if (!empty($prod)) {
                   $product_id = $prod->ID;
                   $product = wc_get_product($product_id);
+                  if (empty($product)) {
+                    continue;
+                  }
                   $sku = $product->get_sku();
                   $product_url = get_permalink( $product_id);
                   $product_title = $prod->post_title;
