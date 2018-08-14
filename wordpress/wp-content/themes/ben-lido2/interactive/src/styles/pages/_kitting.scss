@@ -1,6 +1,12 @@
 .kitting-page {
   padding-bottom: 30px;
 
+  > .columns {
+    &:only-child {
+      justify-content: center;
+    }
+  }
+
   .hero {
     &-product {
       &-bag-image {

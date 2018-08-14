@@ -1,0 +1,168 @@
+@media (max-width: $size-md) {
+  .hero-product {
+    padding: 44px 20px;
+    border-bottom: $grey-border;
+    position: relative;
+
+    &-info-column {
+      align-self: center;
+    }
+
+    a {
+      color: inherit;
+      position: relative;
+
+      &[disabled="disabled"] {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 1;
+        &:hover {
+          background-color: $primary-color;
+        }
+      }
+    }
+
+    .btn {
+      &-link {
+        text-shadow: none;
+        margin-top: $unit-2;
+      }
+    }
+
+    &-header {
+      color: $brown-grey;
+      margin-bottom: $unit-2;
+      a {
+        display: inline-block;
+      }
+    }
+
+    &-copy {
+      color: $medium-grey;
+      line-height: 140%;
+    }
+
+    &-price {
+      color: $brown-grey;
+      @include sentinel(22px, 300);
+      margin: 0;
+    }
+
+    &-bag-link {
+      display: block;
+      // height: 100%;
+      align-content: center;
+      position: relative;
+      margin-top: 0;
+
+      &:after {
+        content: "";
+        transition: background-color 0.2s ease-in-out;
+        background-color: transparent;
+        display: flex;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      &:hover {
+        &:after {
+          transition: background-color 0.2s ease-in-out;
+          background-color: map-get($rgba, grey);
+        }
+
+        &:before {
+          /* We SHOULDN'T be doing this but #timeCrunch */
+          content: "View Details";
+
+          @include knockout(75px, 400);
+          letter-spacing: 2px;
+          color: $white;
+
+          display: flex;
+          align-self: center;
+          align-items: center;
+          justify-content: center;
+
+          position: absolute;
+          top: 0;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &-bag-image {
+      &[src=""] {
+        background-color: $light-grey;
+        height: 100%;
+        width: 100%;
+        &:after {
+          content: "IMAGE NOT AVAILABLE";
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          transform: translate(0, -50%);
+          left: 0;
+          width: 100%;
+        }
+      }
+      margin: 0 auto;
+      align-self: center;
+      display: block;
+    }
+
+    &-disabled {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      &-header {
+        font-size: 75px;
+      }
+    }
+
+    &-picked {
+      &.btn {
+        background-color: $brown-grey;
+      }
+    }
+
+    .btn {
+      margin-bottom: $unit-2;
+    }
+
+    &.disabled {
+      background-color: rgba(255, 255, 255, 0.4);
+      .columns {
+        * {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &-promo {
+      @include knockout32(15px, 400);
+      background-color: $brown-grey;
+      text-align: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 50%;
+      padding: 20px 20px;
+      > span {
+        color: $white;
+        max-width: 89px;
+        display: block;
+      }
+    }
+  }
+}
