@@ -256,16 +256,6 @@
   }
 }
 
-.home {
-  .navbar {
-    &-dropdown {
-      &-primary-items {
-        display: flex;
-      }
-    }
-  }
-}
-
 .archive,
 .page-template,
 .page-template-default {
@@ -295,6 +285,16 @@
             padding: $unit-1 $unit-2;
           }
         }
+      }
+    }
+  }
+}
+
+.home {
+  .navbar {
+    &-dropdown {
+      &-primary-items {
+        display: flex;
       }
     }
   }
