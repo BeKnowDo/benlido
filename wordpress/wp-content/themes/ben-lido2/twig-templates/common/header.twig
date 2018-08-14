@@ -3,18 +3,12 @@
     <div class="navbar">
 
       <div class="navbar-section">
-        {% include 'common/navigation/navbar.twig' with {
-          socialMediaLinks : socialMediaLinks,
-          className: className,
-          list: list,
-          logo: diamond_logo
-        } %}
+        {% include 'common/navigation/navbar.twig' with { socialMediaLinks : socialMediaLinks, className: className, list: list,
+        logo: diamond_logo } %}
       </div>
 
       <div class="navbar-center">
-        {% include 'common/logo.twig' with {
-          logo : logo
-        } %}
+        {% include 'common/logo.twig' with { logo : logo } %}
       </div>
 
       <div class="navbar-section">
@@ -50,13 +44,12 @@
 
                   <span class="navbar-login">
                     {% if user_is_logged_in == true %}
-                      <a href="{{logout_url}}" title="Log Out">Log out</a>
+                    <a href="{{logout_url}}" title="Log Out">Log out</a>
                     {% else %}
-                      <a href="{{register_url}}" title="Register an account">Sign Up</a>
-                      or
-                      <a href="{{login_url}}" title="Login to your account">Log in</a>
-                      to save your bag.
-                    {% endif %}
+                    <a href="{{register_url}}" title="Register an account">Sign Up</a>
+                    or
+                    <a href="{{login_url}}" title="Login to your account">Log in</a>
+                    to save your bag. {% endif %}
                   </span>
 
                 </div>
@@ -74,6 +67,6 @@
 
     {% include 'common/navigation/navbar-desktop.twig' %}
 
-  </header>
+</header>
 
-  {% include 'common/navigation/search-navigation.twig' %}
+{% include 'common/navigation/search-navigation.twig' %}

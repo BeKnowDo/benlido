@@ -111,20 +111,21 @@
       }
 
       &.desktop {
-        display: flex;
+        display: none;
         justify-content: center;
         margin-bottom: 0;
 
         li {
           @include knockout32(14px, 300);
+          letter-spacing: 0;
           padding: $unit-2;
-          text-transform: capitalize;
+          text-transform: none;
         }
 
         a {
           color: $brown-grey;
           &[title*="Home"] {
-            display: none;
+            // display: none;
           }
         }
       }
@@ -254,5 +255,28 @@
     max-width: 120px;
     min-height: 28px;
     width: 100%;
+  }
+}
+
+.home {
+  .navbar {
+    &-dropdown {
+      &-primary-items {
+        display: flex;
+      }
+    }
+  }
+}
+
+.archive {
+  padding-top: 52px;
+  .step-navigation {
+    .navbar {
+      &-dropdown {
+        &-primary-items {
+          display: flex;
+        }
+      }
+    }
   }
 }
