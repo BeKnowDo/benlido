@@ -36,7 +36,13 @@ $blumine: #195675;
 // Text Shadow
 $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 
+// RGBA
+$rgba: (
+  grey: rgba(0, 0, 0, 0.8)
+);
+
 // Typography
 $knockout: "Knockout 47 A", "Knockout 47 B";
+$knockout31: "Knockout 31 A", "Knockout 31 B";
 $knockout32: "Knockout 32 A", "Knockout 32 B";
 $sentinel: "Sentinel SSm A", "Sentinel SSm B";

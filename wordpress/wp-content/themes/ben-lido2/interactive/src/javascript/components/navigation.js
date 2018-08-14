@@ -29,7 +29,7 @@ export class Navigation {
   openNavigationAnimation() {
     const revealAnimation = KUTE.fromTo(
       this.menu,
-      { translate3d: [0, "-100%", 0], opacity: 0 },
+      { translate3d: [0, "-200%", 0], opacity: 0 },
       { translate3d: [0, 0, 0], opacity: 1 },
       { duration: 150 }
     );
@@ -49,7 +49,7 @@ export class Navigation {
     const hideAnimation = KUTE.fromTo(
       this.menu,
       { translate3d: [0, 0, 0], opacity: 1 },
-      { translate3d: [0, "-100%", 0], opacity: 0 },
+      { translate3d: [0, "-200%", 0], opacity: 0 },
       { duration: 150 }
     );
     hideAnimation.start();

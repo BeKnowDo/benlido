@@ -18,3 +18,10 @@
   font-weight: $weight;
   font-style: normal;
 }
+
+@mixin knockout31($size, $weight) {
+  font-family: $knockout31;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: normal;
+}

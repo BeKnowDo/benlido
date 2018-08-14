@@ -1,6 +1,7 @@
 <header class="bg-white benlido-header">
   <div class="max-width-xl">
     <div class="navbar">
+
       <div class="navbar-section">
         {% include 'common/navigation/navbar.twig' with {
           socialMediaLinks : socialMediaLinks,
@@ -18,25 +19,35 @@
 
       <div class="navbar-section">
         <div class="columns">
+
           <div class="column text-right hide-xs">
             <a class="navbar-section-account" href="{{my_account_url}}" title="{{my_account_title}}">
               <i class="fal fa-user-circle fa-2x"></i>
             </a>
           </div>
+
           <div class="column text-right">
             <a id="benlido-cart" class="navbar-section-cart" href="/cart">
               <i class="fal fa-suitcase"></i>
             </a>
           </div>
+
           <div class="column  text-right">
+
             <div class="navbar-item-wrapper">
+
               <span id="navbar-item-counter" class="navbar-item-counter">0</span>
+
               <div id="navbar-bag-container" class="navbar-bag-container position-relative">
+
                 <div class="navbar-bag">
+
                   <div id="navbar-bag-list" class="navbar-bag-list"></div>
+
                   <a class="btn btn-lg btn-block btn-primary" href="{{cart_url}}" title="Shopping cart">
                     View kit
                   </a>
+
                   <span class="navbar-login">
                     {% if user_is_logged_in == true %}
                       <a href="{{logout_url}}" title="Log Out">Log out</a>
@@ -47,13 +58,22 @@
                       to save your bag.
                     {% endif %}
                   </span>
+
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
       </div>
+
     </div>
+
+    {% include 'common/navigation/navbar-desktop.twig' %}
+
   </header>
 
   {% include 'common/navigation/search-navigation.twig' %}

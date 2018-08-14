@@ -3221,6 +3221,14 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .navbar-dropdown-primary-items a:hover { text-decoration: none; color: #9fb9c4; }
 
+.navbar-dropdown-primary-items.desktop { display: flex; justify-content: center; margin-bottom: 0; }
+
+.navbar-dropdown-primary-items.desktop li { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 14px; font-weight: 300; font-style: normal; padding: 0.8rem; text-transform: capitalize; }
+
+.navbar-dropdown-primary-items.desktop a { color: #393d5b; }
+
+.navbar-dropdown-primary-items.desktop a[title*="Home"] { display: none; }
+
 .navbar-item-counter { position: relative; top: 2px; display: inline-block; z-index: 1; font-size: 20px; }
 
 .navbar-item-counter:hover { cursor: pointer; }
@@ -3429,7 +3437,13 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
 
-.hero-product-bag-link { display: flex; height: 100%; align-content: center; margin-top: 20px; position: relative; }
+.hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
+
+.hero-product-bag-link:after { content: ""; transition: background-color 0.2s ease-in-out; background-color: transparent; display: flex; position: absolute; top: 0; width: 100%; height: 100%; }
+
+.hero-product-bag-link:hover:after { transition: background-color 0.2s ease-in-out; background-color: rgba(0, 0, 0, 0.8); }
+
+.hero-product-bag-link:hover:before { /* We SHOULDN'T be doing this but #timeCrunch */ content: "View Details"; font-family: "Knockout 47 A", "Knockout 47 B"; font-size: 75px; font-weight: 400; font-style: normal; letter-spacing: 2px; color: #fff; display: flex; align-self: center; align-items: center; justify-content: center; position: absolute; top: 0; z-index: 1; width: 100%; height: 100%; }
 
 .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
 
@@ -3455,7 +3469,7 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .hero-no-bag h1 { color: #393d5b; }
 
-.hero-no-bag .btn { margin-top: 40px; margin-bottom: 40px; padding-left: 60px; padding-right: 60px; }
+.hero-no-bag .btn { margin-top: 40px; margin-bottom: 0; padding-left: 60px; padding-right: 60px; }
 
 .back-to-top { padding: 30px 10px 10px; border-top: 1px solid #e4e4e4; }
 
@@ -3667,6 +3681,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .benlido-search-container .search-in-page button .fa-search { font-size: 30px; }
 
+.benlido-search-container .search-in-page button .fa-search:hover { cursor: pointer; }
+
 .benlido-search-container .parent-category-list { padding-left: 0.6rem; padding-right: 0.6rem; }
 
 .benlido-search-container .benlido-search-input { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 18px; font-weight: 400; font-style: normal; border: 0; border-bottom: 1px solid #fff; border-radius: 4px; box-shadow: none; display: block; }
@@ -3752,6 +3768,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 .single-product.single .product.product_cat-bags .entry-summary .cart { position: relative; margin: 0; padding: 0; }
 
 .single-product.single .product.product_cat-bags .entry-summary .swatch-control { text-align: center; margin: 0.8rem 0 0; }
+
+.single-product.single .product.product_cat-bags .entry-summary td.value .swatch-control { justify-content: left; }
 
 .single-product.single .product.product_cat-bags .entry-summary .swatch-wrapper { padding-left: 0; }
 
@@ -3841,6 +3859,8 @@ body { position: relative; padding-top: 52px; outline: none; }
 
 .bl-contact-list li { padding: 1.6rem 0 0; }
 
+@media (min-width: 840px) { body { padding-top: 98px; } }
+
 @media (max-width: 600px) { .btn.add-to-cart.in-cart { background-color: transparent; color: #393d5b; }
   .btn.add-to-cart.in-cart .add-to-cart-text { width: 60%; }
   .btn.add-to-cart.in-cart .fa-minus-circle { padding-left: 8px; padding-right: 0; text-align: center; color: #e10600; width: 20%; }
@@ -3858,10 +3878,9 @@ body { position: relative; padding-top: 52px; outline: none; }
   .hero-action-buttons .btn { max-width: none; }
   .hero-action-buttons .btn:last-child { margin-top: 0.8rem; } }
 
-@media (max-width: 480px) { .hero { padding-bottom: 0; } }
-
 @media (max-width: 840px) { .navbar-dropdown-primary-items { font-size: 34px; }
-  .navbar .custom-logo { max-width: 100px; } }
+  .navbar .custom-logo { max-width: 100px; }
+  .navbar .show-md { display: inline-block !important; } }
 
 @media (max-width: 480px) { .hero { padding-top: 50px; }
   .hero-help { padding-top: 0; padding-bottom: 50px; }

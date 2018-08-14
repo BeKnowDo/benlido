@@ -9,7 +9,6 @@ export class Search {
 
     this.searchForms =
       document.querySelectorAll(".search-in-page") || undefined;
-
   }
 
   init() {
@@ -21,7 +20,7 @@ export class Search {
 
   submitForm() {
     if (this.searchForms) {
-      this.searchForms.forEach( el => {
+      this.searchForms.forEach(el => {
         el.addEventListener("submit", e => {
           e.preventDefault();
           var passed = false;
@@ -33,13 +32,11 @@ export class Search {
           if (passed == true) {
             el.submit();
           } else {
-            
           }
         });
       });
     }
   }
-
 
   openNavigation() {
     // add toggling event to target
@@ -62,7 +59,7 @@ export class Search {
     if (this.searchBox) {
       const revealAnimation = KUTE.fromTo(
         this.searchBox,
-        { translate3d: [0, "-110%", 0], opacity: 0 },
+        { translate3d: [0, "-200%", 0], opacity: 0 },
         { translate3d: [0, 0, 0], opacity: 1 },
         { duration: 150 }
       );
@@ -75,7 +72,7 @@ export class Search {
       const hideAnimation = KUTE.fromTo(
         this.searchBox,
         { translate3d: [0, 0, 0], opacity: 1 },
-        { translate3d: [0, "-100%", 0], opacity: 0 },
+        { translate3d: [0, "-200%", 0], opacity: 0 },
         { duration: 150 }
       );
       hideAnimation.start();

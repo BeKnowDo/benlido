@@ -1,5 +1,5 @@
 {% if not className %}
-  {% set className = "navbar-dropdown-primary-items" %}
+  {% set className = "navbar-dropdown-primary-items desktop" %}
 {% endif %}
 
 {% if not list %}
@@ -33,5 +33,4 @@
 
 {% endif %}
 
-<i id="navbar-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
-{% include 'common/navigation/navbar-items.twig' with { className: className, list: list} %}
+{% include 'common/navigation/navbar-items.twig' with { className: 'navbar-dropdown-primary-items desktop hide-md', list: list} %}

@@ -27,6 +27,14 @@
             margin: $unit-2 0 0;
           }
 
+          td {
+            &.value {
+              .swatch-control {
+                justify-content: left;
+              }
+            }
+          }
+
           .swatch-wrapper {
             padding-left: 0;
 

@@ -10,6 +10,7 @@
   a {
     color: inherit;
     position: relative;
+
     &[disabled="disabled"] {
       cursor: not-allowed;
       pointer-events: none;
@@ -47,11 +48,49 @@
   }
 
   &-bag-link {
-    display: flex;
-    height: 100%;
+    display: block;
+    // height: 100%;
     align-content: center;
-    margin-top: 20px;
     position: relative;
+    margin-top: 0;
+
+    &:after {
+      content: "";
+      transition: background-color 0.2s ease-in-out;
+      background-color: transparent;
+      display: flex;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      &:after {
+        transition: background-color 0.2s ease-in-out;
+        background-color: map-get($rgba, grey);
+      }
+
+      &:before {
+        /* We SHOULDN'T be doing this but #timeCrunch */
+        content: "View Details";
+
+        @include knockout(75px, 400);
+        letter-spacing: 2px;
+        color: $white;
+
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
   &-bag-image {

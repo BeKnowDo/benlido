@@ -1,7 +1,9 @@
 @media (max-width: $size-xs) {
   .hero {
     &-no-bag {
-      // padding: 100px 20px;
+      .btn {
+        // margin-bottom: 0;
+      }
     }
   }
 }
@@ -10,6 +12,8 @@
   .hero {
     &-no-bag {
       // padding: 100px 20px;
+      .btn {
+      }
     }
   }
 }
