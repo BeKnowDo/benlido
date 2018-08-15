@@ -39998,6 +39998,8 @@ var BenLidoAnimations = exports.BenLidoAnimations = function () {
       var documentFragment = document.createDocumentFragment();
       var imageTag = document.createElement("img");
 
+      imageTag.src = path + "/BL__1.jpg";
+
       documentFragment.appendChild(imageTag);
       this.destination.appendChild(documentFragment);
 
