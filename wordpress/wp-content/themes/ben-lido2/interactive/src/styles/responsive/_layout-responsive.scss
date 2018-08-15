@@ -1,5 +1,9 @@
 @media (min-width: $size-md) {
-  body {
+  body,
+  .home,
+  .page-template-page-about,
+  .page-template-page-help,
+  .page-template-page-bags {
     padding-top: 98px;
   }
 }
