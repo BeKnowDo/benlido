@@ -1,6 +1,6 @@
-{% if not list %} 
+{% if not list %}
     {% set list = [ { url: '/', title: 'Home', text: 'Home' }, { url: '/bags', title: 'Build a Kit', text: 'Build a Kit' }, { url: '/kits',
-title: 'Prebuilt Kits', text: 'Prebuilt Kits' }, { url: '/about', title: 'About us', text: 'About us' }, { url: '/help', title: 'Help', text: 'Help' }, { url: '/my-account', title: 'Sign In', text: 'Sign In' } ]%} 
-{% endif %} 
+title: 'Prebuilt Kits', text: 'Prebuilt Kits' }, { url: '/about', title: 'About us', text: 'About us' }, { url: '/help', title: 'Help', text: 'Help' }, { url: '/my-account', title: 'Sign In', text: 'Sign In' } ]%}
+{% endif %}
 
 {% include 'common/navigation/navbar-items.twig' with { 'className': 'navbar-dropdown-primary-items desktop hide-md', 'list': list} %}
