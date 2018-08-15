@@ -113,45 +113,43 @@
   }
 }
 
-@media (min-width: $size-md + 1px) {
+// @media (min-width: $size-md + 1px) {
+//   .hero {
+//     &-home {
+//       &[style*="background-image"] {
+//         padding-bottom: 460px;
+//         background-size: 100%;
+//         background-position-x: right;
+//         background-position-y: calc(100% + 100px);
+//       }
+
+//       .hero-image {
+//         margin: 0 0 0 auto;
+//       }
+//     }
+//   }
+// }
+
+@media (max-width: $size-xl) and (min-width: $size-lg + 1px) {
   .hero {
     &-home {
       &[style*="background-image"] {
-        padding-bottom: 460px;
         background-size: contain;
-        background-position-x: right;
-        background-position-y: calc(100% + 100px);
-      }
-
-      .hero-image {
-        margin: 0 0 0 auto;
+        background-position-y: calc(100% + 60px);
       }
     }
   }
 }
 
- @media (max-width: $size-xl) and (min-width: $size-lg + 1px) {
-   .hero {
-     &-home {
-       &[style*="background-image"] {
-         background-size: contain;
-       }
-     }
-   }
- }
-
-// @media (min-width: $size-xl) {
-//   .hero {
-//     &-home {
-//       &[style*="background-image"] {
-//         padding-bottom: 460px;
-//         background-size: contain;
-//         background-position-x: right;
-//         background-position-y: center;
-//       }
-//     }
-//   }
-// }
+@media (min-width: $size-xl) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        background-position-y: calc(100% + 60px);
+      }
+    }
+  }
+}
 
 // @media (min-width: $size-xxl) {
 //   .hero {

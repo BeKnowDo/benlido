@@ -258,6 +258,7 @@
 
 .archive,
 .page-template,
+.woocommerce-page,
 .page-template-default {
   padding-top: 52px;
 
@@ -272,6 +273,8 @@
   }
 
   .step-navigation {
+    // border-bottom: $grey-border;
+    // margin-bottom: $unit-7;
     nav {
       display: flex;
       justify-content: center;
@@ -295,6 +298,7 @@
 }
 
 .home,
+.woocommerce-account,
 .page-template-page-about,
 .page-template-page-help,
 .page-template-page-bags {
@@ -303,6 +307,18 @@
       &-primary-items {
         &.desktop {
           display: flex;
+        }
+      }
+    }
+  }
+}
+
+.woocommerce-page {
+  .navbar {
+    &-dropdown {
+      &-primary-items {
+        &.desktop {
+          // display: none;
         }
       }
     }
