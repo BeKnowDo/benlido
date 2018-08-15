@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="column col-xs-3 col-sm-5 col-6 text-center">
-                {% include 'common/navigation/navbar-desktop.twig' %}
+                {% include 'common/navigation/navbar-desktop.twig' with { 'list': list, 'className': 'navbar-dropdown-primary-items desktop'} %}
 
                 <div class="step-navigation-current">
                     {{stepNavigation.current}}

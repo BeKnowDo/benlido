@@ -1,6 +1,11 @@
 <?php
 $data = array();
 $stepNavigation = array();
+
+// get the main nav
+if (function_exists('bl_get_top_nav')) {
+    $nav = bl_get_top_nav();
+}
 if (function_exists('get_field')) {
     // maybe we put the breadcrumb data here
     $previous_url = get_field('previous_url');
@@ -93,4 +98,5 @@ if (empty($stepNavigation)) {
 // forcing no nav
 //$stepNavigation = null;
 $data = array('stepNavigation'=>$stepNavigation);
+$data['list'] = $nav;
 Timber::render( 'common/step-navigation.twig', $data);
