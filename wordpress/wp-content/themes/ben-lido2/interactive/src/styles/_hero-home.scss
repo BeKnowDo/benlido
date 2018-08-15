@@ -1,8 +1,8 @@
 .hero {
   &-home {
     &[style*="background-image"] {
-      background-size: 100%;
-      background-position-x: 50%;
+      background-size: contain;
+      background-position-x: right;
       background-position-y: bottom;
       padding-top: 80px;
       transition: background-position .2s ease-in-out;

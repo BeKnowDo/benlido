@@ -111,7 +111,7 @@
       }
 
       &.desktop {
-        display: none;
+        display: flex;
         justify-content: center;
         margin-bottom: 0;
         border-top: $grey-border;
@@ -264,7 +264,9 @@
   .navbar {
     &-dropdown {
       &-primary-items {
-        display: none;
+        &.desktop {
+          display: none;
+        }
       }
     }
   }
@@ -279,10 +281,12 @@
     .navbar {
       &-dropdown {
         &-primary-items {
-          border: 0;
-          display: flex;
-          li {
-            padding: $unit-1 $unit-2;
+          &.desktop {
+            display: flex;
+            border: 0;
+            li {
+              padding: $unit-1 $unit-2;
+            }
           }
         }
       }
@@ -290,12 +294,17 @@
   }
 }
 
-.home {
+.home,
+.page-template-page-about,
+.page-template-page-help,
+.page-template-page-bags {
   padding-top: 98px;
   .navbar {
     &-dropdown {
       &-primary-items {
-        display: flex;
+        &.desktop {
+          display: flex;
+        }
       }
     }
   }

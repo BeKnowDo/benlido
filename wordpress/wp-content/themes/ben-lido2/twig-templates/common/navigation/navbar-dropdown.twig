@@ -1,37 +1,7 @@
-{% if not className %}
-  {% set className = "navbar-dropdown-primary-items" %}
-{% endif %}
-
-{% if not list %}
-  {% set list = [
-  {
-    url: '/',
-    title: 'Home',
-    text: 'Home'
-  },
-  {
-    url: '/build-a-kit',
-    title: 'Build a Kit',
-    text: 'Build a Kit'
-  },
-  {
-    url: '/pick-a-kit',
-    title: 'Prebuilt Kits',
-    text: 'Prebuilt Kits'
-  },
-  {
-    url: '/about',
-    title: 'About',
-    text: 'About'
-  },
-  {
-    url: '/register',
-    title: 'Sign In',
-    text: 'Sign In'
-  }
-  ]%}
-
-{% endif %}
+{% if not className %} {% set className = "navbar-dropdown-primary-items" %} {% endif %} {% if not list %} {% set list =
+[ { url: '/', title: 'Home', text: 'Home' }, { url: '/build-a-kit', title: 'Build a Kit', text: 'Build a Kit' }, { url: '/pick-a-kit',
+title: 'Prebuilt Kits', text: 'Prebuilt Kits' }, { url: '/about', title: 'About', text: 'About' }, { url: '/my-account',
+title: 'Sign In', text: 'Sign In' } ]%} {% endif %}
 
 <i id="navbar-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
 {% include 'common/navigation/navbar-items.twig' with { className: className, list: list} %}
