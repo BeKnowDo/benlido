@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd8e5048340835fe138bf0f42afe830f",
+    "content-hash": "413506dc9cba139d053d05c2f1e50423",
     "packages": [
         {
             "name": "composer/installers",
@@ -775,6 +775,26 @@
             "homepage": "https://wordpress.org/plugins/woocommerce/"
         },
         {
+            "name": "wpackagist-plugin/woocommerce-auto-added-coupons",
+            "version": "2.6.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/woocommerce-auto-added-coupons/",
+                "reference": "tags/2.6.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.2.6.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/woocommerce-auto-added-coupons/"
+        },
+        {
             "name": "wpackagist-plugin/woocommerce-google-analytics-integration",
             "version": "1.4.4",
             "source": {
@@ -816,15 +836,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "7.9.1",
+            "version": "8.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/7.9.1"
+                "reference": "tags/8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.7.9.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.0.zip",
                 "reference": null,
                 "shasum": null
             },

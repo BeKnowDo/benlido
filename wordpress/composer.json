@@ -68,6 +68,7 @@
         "wpackagist-plugin/svg-support":"*",
         "wpackagist-plugin/timber-library":"*",
         "wpackagist-plugin/woocommerce":"*",
+        "wpackagist-plugin/woocommerce-auto-added-coupons":"*",
         "wpackagist-plugin/woocommerce-google-analytics-integration":"*",
         "wpackagist-plugin/woocommerce-products-without-featured-images":"*",
         "wpackagist-plugin/wordpress-seo":"*",
