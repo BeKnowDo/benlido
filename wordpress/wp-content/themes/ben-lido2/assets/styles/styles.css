@@ -3925,7 +3925,15 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 @media (max-width: 1200px) and (min-width: 961px) { .hero-home[style*="background-image"] { background-size: contain; background-position-y: calc(100% + 60px); } }
 
-@media (min-width: 1200px) { .hero-home[style*="background-image"] { background-position-y: calc(100% + 60px); } }
+@media (min-width: 1200px) { .hero-home[style*="background-image"] { padding-bottom: 460px; background-size: 100%; background-position-y: calc(100% + 60px); } }
+
+@media (min-width: 1450px) { .hero-home[style*="background-image"] { background-size: contain; background-position-x: right; background-position-y: calc(100% + 60px); } }
+
+@media (min-width: 1600px) { .hero-home[style*="background-image"] { background-size: 88%; background-position-y: calc(100% + 100px); } }
+
+@media (min-width: 2000px) { .hero-home[style*="background-image"] { padding-bottom: 480px; background-size: 74%; background-position-y: calc(100% + 160px); } }
+
+@media (min-width: 2500px) { .hero-home[style*="background-image"] { background-size: 68%; } }
 
 @media (max-width: 840px) { .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
   .hero-product-info-column { align-self: center; }
