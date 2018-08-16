@@ -3275,6 +3275,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .archive .navbar-dropdown-primary-items.desktop, .page-template .navbar-dropdown-primary-items.desktop, .woocommerce-page .navbar-dropdown-primary-items.desktop, .page-template-default .navbar-dropdown-primary-items.desktop { display: none; }
 
+.archive.search-results .navbar-dropdown-primary-items.desktop, .page-template.search-results .navbar-dropdown-primary-items.desktop, .woocommerce-page.search-results .navbar-dropdown-primary-items.desktop, .page-template-default.search-results .navbar-dropdown-primary-items.desktop { display: flex; }
+
 .archive .step-navigation nav, .page-template .step-navigation nav, .woocommerce-page .step-navigation nav, .page-template-default .step-navigation nav { display: flex; justify-content: center; align-items: center; height: 100%; }
 
 .archive .step-navigation .navbar-dropdown-primary-items.desktop, .page-template .step-navigation .navbar-dropdown-primary-items.desktop, .woocommerce-page .step-navigation .navbar-dropdown-primary-items.desktop, .page-template-default .step-navigation .navbar-dropdown-primary-items.desktop { display: flex; border: 0; }
@@ -3711,7 +3713,9 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .search-in-page-input { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 18px; font-weight: 300; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-radius: 4px 0 0 4px; display: block; height: 100%; padding: 14px; color: #979797; }
 
-.search-in-page-header { font-size: 75px; margin: 44px auto; }
+.search-in-page-header { font-size: 75px; margin: 84px auto 44px auto; }
+
+@media (max-width: 840px) { .search-in-page-header { margin: 44px auto; } }
 
 .search-in-page-results-header { font-family: "Sentinel SSm A", "Sentinel SSm B"; font-size: 20px; font-weight: 300; font-style: normal; letter-spacing: normal; margin-bottom: 40px; color: #999999; padding: 40px 0 0; }
 

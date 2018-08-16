@@ -271,6 +271,18 @@
       }
     }
   }
+  &.search-results {
+    .navbar {
+      &-dropdown {
+        &-primary-items {
+          &.desktop {
+            display: flex;
+            
+          }
+        }
+      }
+    }
+  }
 
   .step-navigation {
     // border-bottom: $grey-border;
