@@ -1,0 +1,19 @@
+// different things for logged in versus logged out
+nav {
+    .show-logged-in {
+        display:none;
+    }
+}
+
+body {
+    &.logged-in {
+        nav {
+            .show-logged-in {
+                display:block;
+            }
+            .hide-logged-in {
+                display:none;
+            }
+        }
+    }
+}

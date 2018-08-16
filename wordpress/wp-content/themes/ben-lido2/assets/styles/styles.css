@@ -4527,4 +4527,10 @@ body { position: relative; padding-top: 98px; outline: none; }
 @media (max-width: 480px) { .products.related { padding: 50px 10px 70px; }
   .products.related .columns { margin: 0; } }
 
+nav .show-logged-in { display: none; }
+
+body.logged-in nav .show-logged-in { display: block; }
+
+body.logged-in nav .hide-logged-in { display: none; }
+
 /*# sourceMappingURL=styles.css.map */
