@@ -17,7 +17,7 @@
         padding-top: 0;
         border: 0;
         order: 4;
-        >span {
+        > span {
           color: $grey;
         }
         a {
@@ -72,20 +72,32 @@
     padding: 9px 4px;
     box-sizing: border-box;
   }
-  .woocommerce-product-gallery {
-    figure {
-      margin: 0;
+
+  .woocommerce-product {
+    &-gallery {
+      &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      figure {
+        margin: 0 0 $unit-4;
+      }
+
+      img {
+        height: auto;
+        width: auto;
+        max-width: 100%;
+      }
     }
-    img {
-      height: auto;
-      width: auto;
-    }
-  }
-  .woocommerce-product-gallery__image {
-    >a {
-      text-align: center;
-      display: block;
-      margin: 0 auto;
+
+    &-gallery__image {
+      > a {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+      }
     }
   }
 }
