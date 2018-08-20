@@ -1,5 +1,5 @@
 {% if stepNavigation is defined %}
-    <div class="step-navigation-wrapper border-bottom-grey border-top-grey">
+    <div class="step-navigation-wrapper border-bottom-grey">
         <div class="step-navigation max-width-xl">
 
             <div class="container">
@@ -9,7 +9,7 @@
                             <i class="fal fa-chevron-circle-left"></i>
                         </a>
                     </div>
-                    <div class="column col-xs-3 col-sm-5 col-6 col-lg-8 text-center">
+                    <div class="column col-xs-4 col-sm-6 col-6 col-lg-7 text-center">
                         {% include 'common/navigation/navbar-desktop.twig' with { 'list': list, 'className': 'navbar-dropdown-primary-items desktop'}
                 %}
 
@@ -17,7 +17,7 @@
                             {{stepNavigation.current}}
                         </div>
                     </div>
-                    <div class="column col-xs-6 col-sm-4 col-lg-2 col-3 text-right">
+                    <div class="column col-xs-6 col-sm-4 col-3 text-right">
 
                         {% if stepNavigation.next != '' %}
 
