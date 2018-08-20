@@ -146,8 +146,12 @@ export class CategoryMenu {
     const categories = this.parentCategoryContainer;
 
     categories.forEach(item => {
-      if (item.classList.contains("active") === true) {
-        item.classList.remove("active");
+      const child = item.querySelector(".sub-menu") || undefined;
+
+      if (child) {
+        if (child.classList.contains("active") === true) {
+          child.classList.remove("active");
+        }
       }
     });
   }
