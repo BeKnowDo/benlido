@@ -84,6 +84,17 @@
   }
 }
 
+.archive {
+  &.tax-product_cat {
+    .step-navigation {
+      &-wrapper {
+        padding: 8px 0;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
 .page-template {
   &.page-template-page-about {
     .step-navigation {
