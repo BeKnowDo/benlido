@@ -1,5 +1,7 @@
 .step-navigation {
-  padding: 18px 0;
+  // padding: 18px 0;
+  &-wrapper {
+  }
 
   &-text {
     vertical-align: super;
@@ -57,3 +59,64 @@
   .text-right {
   }
 }
+
+.single-product {
+  &.single {
+    &.single-product {
+      .step-navigation {
+        &-wrapper {
+          margin-bottom: $unit-3;
+          padding: 4px 0;
+        }
+      }
+    }
+  }
+}
+
+.archive {
+  &.post-type-archive {
+    .step-navigation {
+      &-wrapper {
+        padding: 8px 0;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.page-template {
+  &.page-template-page-about {
+    .step-navigation {
+      &-wrapper {
+        padding: 8px 0;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.page-template {
+  &-default {
+    &.page {
+      .step-navigation {
+        &-wrapper {
+          padding: 8px 0;
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.page-template {
+  &.page-template-page-about {
+    .benlido-header {
+      border-bottom: 0;
+    }
+  }
+}
+
+/*
+  For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure.
+  Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap
+*/

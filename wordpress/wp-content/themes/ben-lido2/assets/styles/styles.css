@@ -3499,8 +3499,6 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .back-to-top .fal { font-size: 22px; }
 
-.step-navigation { padding: 18px 0; }
-
 .step-navigation-text { vertical-align: super; color: #999999; }
 
 .step-navigation-text-back { font-weight: normal; position: absolute; bottom: -10px; left: 0; font-size: 11px; display: block; width: 55px; }
@@ -3521,6 +3519,17 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .step-navigation .fal { font-size: 25px; }
 
+.single-product.single.single-product .step-navigation-wrapper { margin-bottom: 0.6rem; padding: 4px 0; }
+
+.archive.post-type-archive .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
+
+.page-template.page-template-page-about .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
+
+.page-template-default.page .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
+
+.page-template.page-template-page-about .benlido-header { border-bottom: 0; }
+
+/* For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure. Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap */
 .back-to-previous-page { padding: 36px 0; color: #9fb9c4; }
 
 .back-to-previous-page .fal { font-size: 25px; }
