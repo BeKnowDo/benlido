@@ -382,6 +382,44 @@
                 "esc_html": 0
             },
             {
+                "key": "field_5b7c102bf90b2",
+                "label": "Return to Shop Copy",
+                "name": "return_to_shop_copy",
+                "type": "text",
+                "instructions": "This is the copy for the button in the Cart page that sends the person back to the shop",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Return to Shop",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b7c1138f05d6",
+                "label": "Empty Cart Copy",
+                "name": "empty_cart_copy",
+                "type": "text",
+                "instructions": "The copy for the empty cart button",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Empty Cart",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
                 "key": "field_5b3b7ce97961d",
                 "label": "Bag Category",
                 "name": "bag_category",

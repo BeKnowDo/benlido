@@ -116,7 +116,7 @@ function bl_get_kit_price($id) {
 
 	// get cache
 	if (function_exists('upco_get_cache')) {
-		$price = upco_get_cache($key);
+		//$price = upco_get_cache($key);
 	}
 	if (!empty($price)) {
 		return $price;
@@ -136,6 +136,19 @@ function bl_get_kit_price($id) {
 				$price += $product->get_price();
 			}
 		} // end foreach
+		// also need to add the bag price
+		if (function_exists('get_field')) {
+			$bag_for_this_kit = get_field('bag_for_this_kit',$id);
+		}
+		if (!empty($bag_for_this_kit) && is_object($bag_for_this_kit)) {
+			$bag = wc_get_product($bag_for_this_kit->ID);
+			if (!empty($bag) && is_object($bag)) {
+				$bag_price = $bag->get_price();
+			}
+			if (!empty($bag_price) && is_numeric($bag_price)) {
+				$price += $bag_price;
+			}
+		}
 		if (function_exists('upco_set_cache')) {
 			$group = upco_cache_group();
 			upco_set_cache($key,$price,$group,60*60*24); // 24 hour cache

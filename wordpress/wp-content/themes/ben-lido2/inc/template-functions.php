@@ -240,6 +240,10 @@ function bl_process_bags_list($items) {
             $product = wc_get_product($product_id);
             // see if we have selected this same product
             $bag_in_cart = bl_get_bag_from_cart();
+
+            if (!empty($product) && is_object($product)) {
+              $price = $product->get_price_html();
+            }
             
             if (function_exists('bl_get_product_category')) {
               $product_cat = bl_get_product_category($product_id);

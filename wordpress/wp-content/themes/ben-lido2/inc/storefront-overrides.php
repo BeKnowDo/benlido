@@ -55,6 +55,8 @@ function bl_storefront_overrides() {
 
 	remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 ); // moving related products down
 
+	remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
 	if (!is_product_category() && !is_shop()) {
 		add_action('woocommerce_after_main_content', 'woocommerce_output_related_products', 100); // moving related products down
 	}
@@ -95,6 +97,18 @@ function bl_storefront_overrides() {
 }
 
 add_action( 'wp', 'bl_storefront_overrides' );
+
+
+// check for empty-cart get param to clear the cart
+add_action( 'init', 'woocommerce_clear_cart_url' );
+function woocommerce_clear_cart_url() {
+  global $woocommerce;
+	
+	if ( isset( $_GET['empty-cart'] ) ) {
+		$woocommerce->cart->empty_cart(); 
+	}
+}
+
 
 // adding my accounts kits menu and subpage
 function bl_add_my_account_endpoints() {

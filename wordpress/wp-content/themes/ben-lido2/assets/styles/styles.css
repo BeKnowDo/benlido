@@ -4235,11 +4235,15 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .woocommerce-cart .cart .actions { padding-top: 1.6rem; }
 
-.woocommerce-cart .cart .actions .coupon { display: flex; padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
+.woocommerce-cart .cart .actions .coupon { display: none; padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
 
 .woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B"; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #9fb9c4; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); border: 0; }
 
 .woocommerce-cart .cart .actions .coupon .input-text { text-align: center; background-color: #f7f7f7; border-radius: 4px 0 0 4px; border: 1px solid #e4e4e4; padding: 0.8rem; margin: 0; }
+
+.woocommerce-cart .cart .actions .buttons { display: flex; }
+
+.woocommerce-cart .cart .actions .buttons .btn:first-child { margin-right: 20px; }
 
 .woocommerce-cart .cart .product-remove { position: static; max-width: 30px; padding: 0; }
 
