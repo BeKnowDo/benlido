@@ -116,7 +116,7 @@ function bl_get_kit_price($id) {
 
 	// get cache
 	if (function_exists('upco_get_cache')) {
-		$price = upco_get_cache($key);
+		//$price = upco_get_cache($key);
 	}
 	if (!empty($price)) {
 		return $price;
@@ -155,7 +155,8 @@ function bl_get_kit_price($id) {
 		}
 		if (!empty($coupon_for_this_kit)) {
 			//print_r ($coupon_for_this_kit);
-			$coupon_amount = get_post_meta('coupon_amount',$coupon_for_this_kit->ID,true);
+			$coupon_amount = get_post_meta($coupon_for_this_kit->ID,'coupon_amount',true);
+			//echo $coupon_amount;
 			if (is_numeric($coupon_amount)) {
 				$price = $price - floatval($coupon_amount);
 			}
