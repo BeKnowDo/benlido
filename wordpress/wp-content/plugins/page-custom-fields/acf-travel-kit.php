@@ -87,6 +87,29 @@ if( function_exists('acf_add_local_field_group') ):
                 'ui' => 1,
             ),
             array(
+                'key' => 'field_5b7c16c9e2f1c',
+                'label' => 'Coupon for This Kit',
+                'name' => 'coupon_for_this_kit',
+                'type' => 'post_object',
+                'instructions' => 'Select the coupon that goes with this kit',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'shop_coupon',
+                ),
+                'taxonomy' => array(
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+                'return_format' => 'object',
+                'ui' => 1,
+            ),
+            array(
                 'key' => 'field_5b4507f9226fb',
                 'label' => 'Color Variation Image Overrides',
                 'name' => 'color_variation_image_overrides',

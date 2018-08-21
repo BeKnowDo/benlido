@@ -149,6 +149,17 @@ function bl_get_kit_price($id) {
 				$price += $bag_price;
 			}
 		}
+		// need to subtract discounts
+		if (function_exists('get_field')) {
+			$coupon_for_this_kit = get_field('coupon_for_this_kit',$id);
+		}
+		if (!empty($coupon_for_this_kit)) {
+			//print_r ($coupon_for_this_kit);
+			$coupon_amount = get_post_meta('coupon_amount',$coupon_for_this_kit->ID,true);
+			if (is_numeric($coupon_amount)) {
+				$price = $price - floatval($coupon_amount);
+			}
+		}
 		if (function_exists('upco_set_cache')) {
 			$group = upco_cache_group();
 			upco_set_cache($key,$price,$group,60*60*24); // 24 hour cache
