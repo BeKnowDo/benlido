@@ -116,7 +116,7 @@ function bl_get_kit_price($id) {
 
 	// get cache
 	if (function_exists('upco_get_cache')) {
-		//$price = upco_get_cache($key);
+		$price = upco_get_cache($key);
 	}
 	if (!empty($price)) {
 		return $price;
