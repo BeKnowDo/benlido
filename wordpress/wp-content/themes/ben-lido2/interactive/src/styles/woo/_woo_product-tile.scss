@@ -59,6 +59,10 @@
       line-height: normal;
       margin: $unit-1 0 $unit-6;
       color: $grey;
+
+      a {
+        color: inherit;
+      }
     }
 
     &-placeholder {

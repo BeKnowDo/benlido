@@ -128,7 +128,13 @@ if ( ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
 	 */
 	function woocommerce_template_loop_product_title() {
         global $product;
-		echo '<h2 class="woocommerce-loop-product__title">' . substr($product->get_name(), 0, 60)."..." . '</h2>';
+
+        if (is_object($product)) {
+            $link = apply_filters( 'woocommerce_loop_product_link', get_permalink($product->get_id()), $product );
+        }
+
+        // echo '<h2 class="woocommerce-loop-product__title">' . substr($product->get_name(), 0, 60)."..." . '</h2>';
+        echo '<h2 class="woocommerce-loop-product__title"><a href="' . esc_url( $link ) . '">' . substr($product->get_name(), 0, 60)."..." . '</a></h2>';
 	}
 }
 
