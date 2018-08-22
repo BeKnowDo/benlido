@@ -136,3 +136,15 @@
     }
   }
 }
+
+html {
+  &[data-navigator-platform*="benlido-windows-platform"] {
+    .woocommerce {
+      &-Price-amount {
+        &.amount {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

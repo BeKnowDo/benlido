@@ -9,7 +9,8 @@ import {
   MyAccount,
   StepNavigation,
   Parallax,
-  BenLidoAnimations
+  BenLidoAnimations,
+  NavigationPlatform
 } from "./components";
 
 new Navigation().init();
@@ -23,3 +24,4 @@ new MyAccount().init();
 new StepNavigation().init();
 new Parallax().init();
 new BenLidoAnimations().init();
+new NavigationPlatform().init();

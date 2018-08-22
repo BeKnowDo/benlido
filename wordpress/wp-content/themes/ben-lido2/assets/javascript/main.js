@@ -41395,6 +41395,18 @@ Object.keys(_blAnimatedGif).forEach(function (key) {
   });
 });
 
+var _navigatorPlatformDetection = __webpack_require__(/*! ./navigator-platform-detection */ "./src/javascript/components/navigator-platform-detection.js");
+
+Object.keys(_navigatorPlatformDetection).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _navigatorPlatformDetection[key];
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./src/javascript/components/my-account.js":
@@ -41636,6 +41648,51 @@ var Navigation = exports.Navigation = function () {
   }]);
 
   return Navigation;
+}();
+
+/***/ }),
+
+/***/ "./src/javascript/components/navigator-platform-detection.js":
+/*!*******************************************************************!*\
+  !*** ./src/javascript/components/navigator-platform-detection.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var NavigationPlatform = exports.NavigationPlatform = function () {
+  function NavigationPlatform() {
+    _classCallCheck(this, NavigationPlatform);
+
+    this.platform = navigator.platform || undefined;
+    this.html = document.querySelector("html");
+  }
+
+  _createClass(NavigationPlatform, [{
+    key: "init",
+    value: function init() {
+      if (this.platform) {
+        // console.log(this.platform);
+        // console.log(this.html);
+
+        if (this.platform === "Win32") {
+          this.html.setAttribute("data-navigator-platform", "benlido-windows-platform");
+        }
+      }
+    }
+  }]);
+
+  return NavigationPlatform;
 }();
 
 /***/ }),
@@ -41959,6 +42016,7 @@ new _components.MyAccount().init();
 new _components.StepNavigation().init();
 new _components.Parallax().init();
 new _components.BenLidoAnimations().init();
+new _components.NavigationPlatform().init();
 
 /***/ }),
 

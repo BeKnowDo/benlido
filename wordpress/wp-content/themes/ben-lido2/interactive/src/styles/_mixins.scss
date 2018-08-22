@@ -1,26 +1,26 @@
 @mixin sentinel($size, $weight) {
-  font-family: $sentinel;
+  font-family: $sentinel, Arial, Helvetica, sans-serif;
   font-size: $size;
   font-weight: $weight;
   font-style: normal;
 }
 
 @mixin knockout($size, $weight) {
-  font-family: $knockout;
+  font-family: $knockout, Arial, Helvetica, sans-serif;
   font-size: $size;
   font-weight: $weight;
   font-style: normal;
 }
 
 @mixin knockout32($size, $weight) {
-  font-family: $knockout32;
+  font-family: $knockout32, Arial, Helvetica, sans-serif;
   font-size: $size;
   font-weight: $weight;
   font-style: normal;
 }
 
 @mixin knockout31($size, $weight) {
-  font-family: $knockout31;
+  font-family: $knockout31, Arial, Helvetica, sans-serif;
   font-size: $size;
   font-weight: $weight;
   font-style: normal;

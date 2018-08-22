@@ -168,3 +168,13 @@
   margin-left: $unit-3;
   display: none;
 }
+
+html {
+  &[data-navigator-platform*="benlido-windows-platform"] {
+    .category-list {
+      .menu-item {
+        font-weight: 500;
+      }
+    }
+  }
+}
