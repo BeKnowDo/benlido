@@ -61,7 +61,7 @@
             if (!empty($cat_id) && is_numeric($cat_id) && !empty($prod_id) && is_numeric($prod_id)) {
                 bl_override_category_default($cat_id,$prod_id);
             }
-            
+
         }
     }
     //print_r ($selected_products);
@@ -75,10 +75,10 @@ add_filter( 'wc_add_to_cart_message_html', '__return_null' );
         remove_action( 'storefront_content_top','woocommerce_breadcrumb', 10, 0);
      }
  }
- 
+
 get_header(); ?>
 
-<div id="primary" class="content-area">
+<div id="primary" class="content-area benlido-kits-page">
     <main id="main" class="site-main" role="main">
 
         <?php while ( have_posts() ) : the_post();
