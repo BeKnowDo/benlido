@@ -47,6 +47,11 @@
     margin: 0;
   }
 
+  &-callout {
+    @include knockout31(16px, 400);
+    // letter-spacing: 0.5px;
+  }
+
   &-bag-link {
     display: block;
     // height: 100%;
