@@ -106,6 +106,10 @@ function woocommerce_clear_cart_url() {
 	
 	if ( isset( $_GET['empty-cart'] ) ) {
 		$woocommerce->cart->empty_cart(); 
+		// also clear kit
+		if (function_exists('bl_clear_all_kit_data')) {
+			bl_clear_all_kit_data();
+		}
 	}
 }
 
