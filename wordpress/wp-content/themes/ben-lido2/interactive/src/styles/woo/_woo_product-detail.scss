@@ -76,9 +76,14 @@
   .woocommerce-product {
     &-gallery {
       &__wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+
+      }
+      ol {
+        &.flex-control-thumbs {
+          li {
+            //margin-right: 40px !important;
+          }
+        }
       }
 
       figure {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "413506dc9cba139d053d05c2f1e50423",
+    "content-hash": "9eec44c84afafebd35360044e9bb75bb",
     "packages": [
         {
             "name": "composer/installers",
@@ -187,6 +187,37 @@
                 "source": "https://bitbucket.org/upcomposer/upco-performance/src/cae807bbb239ef93b8824faec1ba92fd820c418c/?at=master"
             },
             "time": "2018-06-22T13:40:45+00:00"
+        },
+        {
+            "name": "up-plugins/woocommerce-additional-variation-images",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-additional-variation-images.git",
+                "reference": "c8cc75b14c3675610e9692c2a6ae4d2527b452c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-additional-variation-images/get/c8cc75b14c3675610e9692c2a6ae4d2527b452c8.zip",
+                "reference": "c8cc75b14c3675610e9692c2a6ae4d2527b452c8",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Additional Variation Images",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-additional-variation-images",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-additional-variation-images/src/c8cc75b14c3675610e9692c2a6ae4d2527b452c8/?at=master"
+            },
+            "time": "2018-08-23T10:54:42+00:00"
         },
         {
             "name": "up-plugins/woocommerce-brands",
@@ -776,15 +807,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce-auto-added-coupons",
-            "version": "2.6.3",
+            "version": "2.6.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce-auto-added-coupons/",
-                "reference": "tags/2.6.3"
+                "reference": "tags/2.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.2.6.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.2.6.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -886,6 +917,7 @@
         "up-plugins/woocommerce-table-rate-shipping": 20,
         "up-plugins/woothemes-updater": 20,
         "up-plugins/wp-all-export-pro": 20,
+        "up-plugins/woocommerce-additional-variation-images": 20,
         "up-plugins/woocommerce-variation-swatches-and-photos": 20
     },
     "prefer-stable": false,

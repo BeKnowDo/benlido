@@ -1,11 +1,11 @@
-=== WooCommerce Extended Coupon Features ===
+=== WooCommerce Extended Coupon Features FREE ===
 Contributors: josk79
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5T9XQBCS2QHRY&lc=NL&item_name=Jos%20Koenis&item_number=wordpress%2dplugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: woocommerce, coupons, discount
 Requires at least: 4.7
 Requires PHP: 5.3
-Tested up to: 4.9.6
-Stable tag: 2.6.3
+Tested up to: 4.9.8
+Stable tag: 2.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Additional functionality for WooCommerce Coupons: Allow discounts to be automati
 "WooCommerce Extended Coupon Features" adds functionality to the WooCommerce coupons and allows for automatic discount rules. 
 Very easy to use, the functionality is conveniently integrated to the WooCommerce Edit Coupon panel.
 
-Compatible with WooCommerce 3.3.4. Backwards compatible with older WooCommerce versions (2.6.0 confirmed).
+Compatible with WooCommerce 3.4.4. Backwards compatible with older WooCommerce versions (2.6.0 confirmed).
 
 Full documentation is available at [www.soft79.nl](http://www.soft79.nl/documentation/wjecf).
 
@@ -95,10 +95,6 @@ add_filter( 'woocommerce_checkout_fields', function( $checkout_fields ) {
 } );
 `
 
-= Can I make a donation? =
-
-Sure! [This](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5T9XQBCS2QHRY&lc=NL&item_name=Jos%20Koenis&item_number=wordpress%2dplugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted) is the link. Greatly appreciated!
-
 == Screenshots ==
 
 1. Allow a coupon to be applied automatically by checking "Auto coupon".
@@ -107,6 +103,11 @@ Sure! [This](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5T9XQ
 4. Additional restrictions based on shipping or payment method or the customer
 
 == Changelog ==
+
+= 2.6.4 =
+*Release Date - 2018-08-16*
+* FIX: Download JSON compatiblilty issue with WC 2.6.x
+* FIX: WPML Translate coupon title
 
 = 2.6.3 =
 *Release Date - 2018-06-04*

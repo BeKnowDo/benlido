@@ -22,6 +22,7 @@ class WJECF_WPML extends Abstract_WJECF_Plugin {
             add_filter( 'wjecf_get_product_id', array( $this, 'filter_get_product_id' ), 10 );
             add_filter( 'wjecf_get_product_ids', array( $this, 'filter_get_product_ids' ), 10 );
             add_filter( 'wjecf_get_product_cat_ids', array( $this, 'filter_get_product_cat_ids' ), 10 );
+            add_filter( 'woocommerce_coupon_get_description', array( $this, 'filter_get_coupon_description' ), 10, 2 );
         }
     }
 
@@ -39,8 +40,12 @@ class WJECF_WPML extends Abstract_WJECF_Plugin {
         return $this->get_translated_object_id( $product_id, 'product' );
     }
 
-//FUNCTIONS
+    public function filter_get_coupon_description( $description, $object ) {
+        $description = __( $description, 'woocommerce-jos-autocoupon');
+        return $description;
+    }
 
+//FUNCTIONS
 
     /**
      * Get the ids of all the translations. Otherwise return the original array

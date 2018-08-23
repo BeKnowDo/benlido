@@ -4113,8 +4113,6 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .product .qty { width: 100%; max-width: 80px; padding: 9px 4px; box-sizing: border-box; }
 
-.product .woocommerce-product-gallery__wrapper { display: flex; flex-wrap: wrap; justify-content: center; }
-
 .product .woocommerce-product-gallery figure { margin: 0 0 0.8rem; }
 
 .product .woocommerce-product-gallery img { height: auto; width: auto; max-width: 100%; }

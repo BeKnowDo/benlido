@@ -107,7 +107,7 @@ class WJECF_Debug extends Abstract_WJECF_Plugin  {
                 ksort( $meta );
                 $array['coupons'] = array(
                     'coupon_id' => $coupon_id,
-                    'coupon_code' => $coupon->get_code(),
+                    'coupon_code' => WJECF_Wrap( $coupon )->get_code(),
                     'meta' => $meta,
                 );
                 $array['result'] = 'ok';

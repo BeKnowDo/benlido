@@ -48,7 +48,7 @@ function bl_child_theme_init()
 
     remove_theme_support( 'wc-product-gallery-zoom' );
     //remove_theme_support( 'wc-product-gallery-lightbox' );
-    remove_theme_support( 'wc-product-gallery-slider' );
+    //remove_theme_support( 'wc-product-gallery-slider' );
 
 
 }

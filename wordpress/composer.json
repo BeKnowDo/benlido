@@ -12,6 +12,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-additional-variation-images.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-brands.git"
         },
         {
@@ -47,6 +51,7 @@
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",
         "up-plugins/wp-all-export-pro":"dev-master",
+        "up-plugins/woocommerce-additional-variation-images":"dev-master",
         "up-plugins/woocommerce-variation-swatches-and-photos":"dev-master",
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/categories-images":"*",
