@@ -168,6 +168,6 @@
 .bl-remove-bag-product {
   display:none;
   &.show {
-    display: inline-block;
+    display: inline-block !important;
   }
 }

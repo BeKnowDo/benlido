@@ -161,4 +161,14 @@
       margin: $unit-8 0 0;
     }
   }
+  #shipping-frequency {
+    button {
+      &.chosen {
+        display:none;
+        &.show {
+          display:block;
+        }
+      }
+    }
+  }
 }

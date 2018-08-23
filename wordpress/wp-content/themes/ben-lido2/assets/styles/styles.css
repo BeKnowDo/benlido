@@ -3139,7 +3139,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .position-relative { position: relative; }
 
-.hide { display: none; }
+.hide { display: none !important; }
 
 .dimmed-overlay { display: none; opacity: 0; transition: background-color 0.8s ease-in; }
 
@@ -3373,7 +3373,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .bl-remove-bag-product { display: none; }
 
-.bl-remove-bag-product.show { display: inline-block; }
+.bl-remove-bag-product.show { display: inline-block !important; }
 
 .category-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 75px; font-weight: 400; font-style: normal; }
 
@@ -4440,6 +4440,10 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .woocommerce-customer-details .woocommerce-column__title { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; margin: 2rem 0 0.8rem; }
 
 .woocommerce-customer-details .addresses { float: none; clear: both; overflow: hidden; margin: 1.6rem 0 0; }
+
+.woocommerce #shipping-frequency button.chosen { display: none; }
+
+.woocommerce #shipping-frequency button.chosen.show { display: block; }
 
 .woocommerce .button { border: none; }
 
