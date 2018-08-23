@@ -46,7 +46,31 @@ function bl_child_theme_init()
 
     // This theme uses wp_nav_menu() in one location.
 
-    //remove_theme_support( 'wc-product-gallery-zoom' );
+    // we will hide zoom for everything except bags
+    // the reason for this is that zoom is required for gallery to be able to see lightbox.
+    $is_bag = false;
+    $bag_category = null;
+    if (function_exists('get_field')) {
+        $bag_category = get_field('bag_category','option');
+    }
+
+    if (is_product() && is_numeric($bag_category) && !empty($bag_category)) {
+        global $post;
+        $terms = get_the_terms( $post->ID, 'product_cat' );
+        foreach ($terms as $term) {
+            $product_cat_id = $term->term_id;
+            if ($product_cat_id == $bag_category) {
+                $is_bag = true;
+            }
+            
+        }
+
+        if ($is_bag == false) {
+            remove_theme_support( 'wc-product-gallery-zoom' );
+        }
+        
+    }
+    
     //remove_theme_support( 'wc-product-gallery-lightbox' );
     //remove_theme_support( 'wc-product-gallery-slider' );
 
