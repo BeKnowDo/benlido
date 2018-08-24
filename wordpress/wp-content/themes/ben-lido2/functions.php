@@ -19,7 +19,7 @@ require_once 'inc/template-functions.php'; // functions for displaying things: l
 function bl_child_theme_init()
 {
     global $storefront_version;
-    $version = '1.10';
+    $version = '1.11';
     wp_dequeue_style( 'storefront-style' );
     wp_dequeue_style( 'storefront-woocommerce-style' );
     wp_dequeue_style( 'storefront-woocommerce-brands-style' );
@@ -35,6 +35,7 @@ function bl_child_theme_init()
     //wp_register_style('bl-style-libs', get_stylesheet_directory_uri() . '/css/bl.libs.css', array(), $version, 'all');
     wp_register_style('bl-style', get_stylesheet_directory_uri() . '/assets/styles/styles.css', array('bl-fonts'), $version, 'all');
     //wp_enqueue_script('bl-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.libs.js', array('jquery'),$version);
+    wp_enqueue_script('bl-custom-jquery', get_stylesheet_directory_uri() . '/assets/javascript/ben-lido.js', array('jquery'), $version);
     wp_enqueue_script('bl-scripts', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array('jquery'), $version,true);
 
     // removing default storefront styles.. this may cause issues later on with inherited dropdowns, error messages, etc. We will need to investigate this.

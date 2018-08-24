@@ -40110,6 +40110,7 @@ var Cart = exports.Cart = function () {
     value: function init() {
       if (this.counter) {
         this.getCurrentItems();
+        this.listenForUpdate();
       }
 
       if (this.addToCartButtons) {
@@ -40263,6 +40264,13 @@ var Cart = exports.Cart = function () {
         _this4.miniCart(response);
         _this4.updateTileQuantity(response, null);
       });
+    }
+  }, {
+    key: "listenForUpdate",
+    value: function listenForUpdate() {
+      // NOTE: since the cart page product remove/update is triggered via jQuery,
+      //       we cannot use addEventListener here to detect the custom event and update the cart count.
+      //       So, we need to do this in jQuery
     }
   }, {
     key: "miniCart",
@@ -42027,8 +42035,8 @@ new _components.NavigationPlatform().init();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\server\repositories\ben-lido\wordpress\wp-content\themes\ben-lido2\interactive\polyfills.js */"./polyfills.js");
-module.exports = __webpack_require__(/*! C:\server\repositories\ben-lido\wordpress\wp-content\themes\ben-lido2\interactive\src\javascript\index.js */"./src/javascript/index.js");
+__webpack_require__(/*! /Users/davidlin/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
+module.exports = __webpack_require__(/*! /Users/davidlin/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
 
 
 /***/ })
