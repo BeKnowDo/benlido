@@ -3099,11 +3099,11 @@ h1 { font-size: 75px; text-transform: uppercase; }
 
 p { color: #999999; }
 
-a { transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
+a { transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
 a:visited { color: #9fb9c4; }
 
-a:hover { text-decoration: none; transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
+a:hover { text-decoration: none; transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
 ul { list-style-type: none; margin: 0; padding: 0; }
 
@@ -3483,8 +3483,6 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product-promo > span { color: #fff; max-width: 89px; display: block; }
 
-.page-template-page-bags .hero-product-callout { display: none; }
-
 .hero-no-bag { padding: 100px 20px; }
 
 .hero-no-bag h1 { color: #393d5b; }
@@ -3533,10 +3531,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .page-template-default.page .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
 
-/*
-  For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure.
-  Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap
-*/
+/* For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure. Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap */
 .back-to-previous-page { padding: 36px 0; color: #9fb9c4; }
 
 .back-to-previous-page .fal { font-size: 25px; }
@@ -4180,9 +4175,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-remember-me .form-label input.form-input:after { position: absolute; z-index: 1; left: -4px; top: -2px; content: ""; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-radius: 25px; display: block; width: 100%; height: 22px; }
 
-.bl-remember-me .form-label input.form-input:before { transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; content: ""; position: absolute; z-index: 2; top: -2px; left: -4px; background-color: #979797; border: 1px solid #e4e4e4; border-radius: 50%; overflow: hidden; width: 22px; height: 22px; }
+.bl-remember-me .form-label input.form-input:before { transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; content: ""; position: absolute; z-index: 2; top: -2px; left: -4px; background-color: #979797; border: 1px solid #e4e4e4; border-radius: 50%; overflow: hidden; width: 22px; height: 22px; }
 
-.bl-remember-me .form-label input.form-input:checked:before { background-color: #9fb9c4; transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; left: 20px; }
+.bl-remember-me .form-label input.form-input:checked:before { background-color: #9fb9c4; transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; left: 20px; }
 
 .bl-remember-me .form-label > span { padding-top: 5px; }
 

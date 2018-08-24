@@ -30,7 +30,7 @@ bagURL = "" %} {% endif %} {% if items.picked == true %} {% set picked = "hero-p
       {% endif %} {% if items.copy %}
       <p class="hero-product-copy">{{items.copy}}</p>
       {% endif %} {% if items.price %}
-      <p class="hero-product-price">{{items.price}} <span class="hero-product-callout">as shown</span></p>
+      <p class="hero-product-price">{{items.price}}</p>
       {% endif %} {% set selected_variation_id = 0 %} {% if items.swatches %} {% set disabled = ' disabled="disabled"' %}
 
       <div class="columns bl-product-swatches">
