@@ -16,36 +16,53 @@ bagURL = "" %} {% endif %} {% if items.picked == true %} {% set picked = "hero-p
     <div class="column col-4 col-xs-12 col-sm-12 col-md-12 col-mx-auto hero-product-info-column">
 
       {% if items.logo %}
-      <a href="{{items.href}}" title="">
-        <img class="hero-product-logo" src="{{ items.logo }}" alt="" />
-      </a>
-      {% endif %} {% if items.preHeader %}
-      <h2>{{items.preHeader}}</h2>
-      {% endif %} {% if items.href %}
-      <h1 class="hero-product-header">
-        <a href="{{items.href}}" title="">
-          {{items.header}}
+        <a href="{{items.bagURL}}" title="{{items.header}}">
+          <img class="hero-product-logo" src="{{ items.logo }}" alt="" />
         </a>
-      </h1>
-      {% endif %} {% if items.copy %}
-      <p class="hero-product-copy">{{items.copy}}</p>
-      {% endif %} {% if items.price %}
-      <p class="hero-product-price">{{items.price}}</p>
-      {% endif %} {% set selected_variation_id = 0 %} {% if items.swatches %} {% set disabled = ' disabled="disabled"' %}
+      {% endif %} 
+      {% if items.preHeader %}
+        <h2>{{items.preHeader}}</h2>
+      {% endif %} 
+      {% if items.href %}
+        
+        <h1 class="hero-product-header">
+          {% if items.is_kit == false %}
+            <a href="{{items.bagURL}}" title="{{items.header}}">
+          {% endif %}
+          {{items.header}}
+          {% if items.is_kit == false %} 
+            </a>
+          {% endif %}
+        </h1>
+      {% endif %} 
+      {% if items.copy %}
+        <p class="hero-product-copy">{{items.copy}}</p>
+      {% endif %} 
+      {% if items.price %}
+        <p class="hero-product-price">{{items.price}}</p>
+      {% endif %} 
+      {% set selected_variation_id = 0 %} 
+      {% if items.swatches %} 
+        {% set disabled = ' disabled="disabled"' %}
 
-      <div class="columns bl-product-swatches">
-        {% for swatch in items.swatches %} {% set selected = "" %} {% if swatch.selected == true %} {% set selected_variation_id
-        = swatch.id %} {% set selected = " selected" %} {% set disabled = "" %} {% endif %}
-        <div class="select-option swatch-wrapper {{selected}}">
-          <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}"
-            data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}"
-            href="#">
-            {% if swatch.type == "image" %}
-            <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" /> {% endif %}
-          </a>
-        </div>
-        {% endfor %}
-      </div>
+          <div class="columns bl-product-swatches">
+            {% for swatch in items.swatches %} {% set selected = "" %} 
+              {% if swatch.selected == true %} 
+                {% set selected_variation_id = swatch.id %} 
+                {% set selected = " selected" %} 
+                {% set disabled = "" %} 
+              {% endif %}
+            <div class="select-option swatch-wrapper {{selected}}">
+              <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}"
+                data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}"
+                href="#">
+                {% if swatch.type == "image" %}
+                  <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" /> 
+                {% endif %}
+              </a>
+            </div>
+            {% endfor %}
+          </div>
 
       {% endif %}
 
@@ -64,14 +81,20 @@ bagURL = "" %} {% endif %} {% if items.picked == true %} {% set picked = "hero-p
     </div>
 
     <div class="column col-7 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
-      <a class="hero-product-bag-link" href="{{items.bagURL}}" title="{{items.header}}">
-        {% if items.promo is defined %}
-        <p class="hero-product-promo">
-          <span>{{ items.promo }}</span>
-        </p>
-        {% endif %}
+      {% if items.is_kit == false %}
+      {# we don't show link if it is a prebuilt kit #}
+        <a class="hero-product-bag-link {{items.css}}" href="{{items.bagURL}}" title="{{items.header}}">
+          {% if items.promo is defined %}
+          <p class="hero-product-promo">
+            <span>{{ items.promo }}</span>
+          </p>
+          {% endif %}
+      {% endif %}
         <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}" srcset="{{items.srcset}}" />
-      </a>
+      {# we don't show link if it is a prebuilt kit #}
+      {% if items.is_kit == false %}
+        </a>
+      {% endif %}
     </div>
 
   </div>

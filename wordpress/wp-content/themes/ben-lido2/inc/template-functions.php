@@ -154,6 +154,7 @@ function bl_process_bags_list($items) {
   if (!empty($items) && is_array($items)) {
     foreach ($items as $el) {
       $image = '';
+      $is_kit = false;
       $prod = null;
       $coming_soon = '';
       $skip = false;
@@ -178,6 +179,7 @@ function bl_process_bags_list($items) {
         
         switch ($type) {
           case 'travel_kit':
+            $is_kit = true;
             $css = 'prebuilt-kit';
             $disabled = false;
             //print_r ($el);
@@ -232,6 +234,7 @@ function bl_process_bags_list($items) {
           break;
           default:
             $css = 'self-kit';
+            $is_kit = false;
             $disabled = false;
             $prod = null;
             $available_variations = null;
@@ -309,6 +312,7 @@ function bl_process_bags_list($items) {
         if ($skip != true) {
           $results[] = array(
             'index' => $index,
+            'is_kit' => $is_kit,
             'feature'=>$feature,
             'logo'=>$logo,
             'css' => $css,
