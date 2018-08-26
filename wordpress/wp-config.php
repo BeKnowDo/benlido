@@ -16,6 +16,7 @@ switch($_SERVER['HTTP_HOST'])
         break;
     case 'benlido.urbanpixels.localhost':
     case 'macminis-Mac-mini.local':
+    case 'MacBook-Air-2.local':
 	define('SERVER_ENVIRONMENT','DAVE');
 	break;
     case 'dev.benlido.com':
