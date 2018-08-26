@@ -501,6 +501,25 @@
                         "ui": 1
                     },
                     {
+                        "key": "field_5b828d68947f2",
+                        "label": "Description Override",
+                        "name": "description_override",
+                        "type": "wysiwyg",
+                        "instructions": "This is if you want to override the default description of the bag or kit. Generally the description displayed comes from the description field from the actual product.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "tabs": "all",
+                        "toolbar": "full",
+                        "media_upload": 1,
+                        "delay": 0
+                    },
+                    {
                         "key": "field_5a9db0e24e0b6",
                         "label": "Image Override",
                         "name": "image_override",

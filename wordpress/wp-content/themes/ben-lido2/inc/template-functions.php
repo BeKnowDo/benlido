@@ -171,6 +171,7 @@ function bl_process_bags_list($items) {
           $status = $item->post_status;
           $type = $item->post_type;
         }
+        $description_override = $el['description_override'];
         $coming_soon = $el['coming_soon_copy'];
         $button_copy = $el['button_copy'];
         $selected_copy = $el['selected_copy'];
@@ -300,6 +301,10 @@ function bl_process_bags_list($items) {
         }
         if (!empty($el['image_override_retina']) && isset($el['image_override_retina']['url'])) {
           $image_retina = $el['image_override_retina']['url'];
+        }
+        // description override
+        if (!empty($description_override)) {
+          $description = $description_override;
         }
         if ($skip != true) {
           $results[] = array(
