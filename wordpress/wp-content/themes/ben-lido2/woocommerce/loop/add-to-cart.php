@@ -72,7 +72,7 @@ if ($is_swap == true) {
 }
 
 if ($mid_swap == true) {
-    $default_text = 'Swap';
+    $default_text = 'Select';
 }
 
 if (get_class($product) == 'WC_Product_Variable') {
