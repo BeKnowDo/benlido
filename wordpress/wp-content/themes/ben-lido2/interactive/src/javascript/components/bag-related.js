@@ -3,12 +3,20 @@ export class LidoBagDetail {
     this.swatches = document.querySelector("#picker_pa_color") || undefined;
     this.thumbnails =
       document.querySelector(".flex-control-thumbs") || undefined;
+
+    this.bagSwatches =
+      document.querySelectorAll(".bl-product-swatches") || undefined;
   }
   init() {
     if (this.swatches !== undefined) {
       this.attachClick();
+      this.defaultBagColor();
       // this.attachHover();
     }
+  }
+
+  defaultBagColor() {
+    // console.log(this.bagSwatches);
   }
 
   attachClick() {

@@ -80,6 +80,7 @@
     "promise": "^8.0.1",
     "selectivity": "^3.1.0",
     "spectre.css": "^0.5.3",
+    "sweetalert": "^2.1.0",
     "swiper": "^4.3.5",
     "whatwg-fetch": "^2.0.4"
   }

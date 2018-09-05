@@ -4467,7 +4467,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-product-gallery .flex-control-thumbs { display: flex; flex-wrap: wrap; justify-content: center; }
 
-.woocommerce-product-gallery .flex-control-thumbs li { float: none !important; width: auto !important; margin: 0 !important; display: none; }
+.woocommerce-product-gallery .flex-control-thumbs li { float: none !important; width: auto !important; margin: 0 !important; }
 
 .woocommerce-product-gallery .flex-control-thumbs li.bl-hide-thumbnail { display: none; }
 

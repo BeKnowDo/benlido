@@ -1,36 +1,54 @@
 import { endpoints } from "../../../config/endpoints";
 import KUTE from "kute.js";
 import mojs from "mo-js";
+import swal from "sweetalert";
 
 export class Cart {
   constructor() {
     this.counter = document.getElementById("navbar-item-counter") || undefined;
+
     this.kitID = document.getElementById("bl_kit_id") || undefined;
+
     this.listContainer =
       document.getElementById("navbar-bag-list") || undefined;
+
     this.addToCartButtons =
       document.querySelectorAll(".add-to-cart") || undefined;
+
     this.removeFromKitButtons =
       document.querySelectorAll(".remove-from-cart") || undefined;
+
     this.removeIcons =
       document.querySelectorAll(".fa-minus-circle") || undefined;
+
     this.swapFromCartButtons =
       document.querySelectorAll(".swap-from-cart") || undefined;
-    // this.cart = document.getElementById("benlido-cart") || undefined;
+
+    this.cart = document.getElementById("benlido-cart") || undefined;
+
     this.cartContainer =
       document.getElementById("navbar-bag-container") || undefined;
+
     this.addEmptyProduct =
       document.querySelectorAll(".bl-add-empty-product") || undefined;
+
     this.addKitToCartButtons =
       document.querySelectorAll(".add-kit-to-cart") || undefined;
+
     this.addBagProduct =
       document.querySelectorAll(".bl-add-bag-product") || undefined;
-      this.removeBagProduct =
+
+    this.removeBagProduct =
       document.querySelectorAll(".bl-remove-bag-product") || undefined;
+
     this.swatchColor = document.querySelectorAll(".swatch-color") || undefined;
+
+    this.clearCartButton = document.querySelector("#ben-lido-clear-cart");
+
     if (this.kitID) {
       this.kitID = this.kitID.value;
     }
+
     this.currentSwatch = null;
   }
 
@@ -64,9 +82,9 @@ export class Cart {
       this.removeBagFromCart();
     }
 
-    // if (this.cart) {
-    //   this.openCart();
-    // }
+    if (this.cart) {
+      this.openCart();
+    }
 
     if (this.addKitToCartButtons) {
       this.addKitToCart();
@@ -79,6 +97,36 @@ export class Cart {
     if (this.swatchColor) {
       this.setSwatchColor();
     }
+
+    if (this.clearCartButton) {
+      this.clearCart();
+    }
+  }
+
+  clearCart() {
+    const button = this.clearCartButton;
+    console.log(button);
+
+    button.addEventListener("click", e => {
+      e.preventDefault();
+
+      swal({
+        title: "Clear all items from your cart?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          swal("Poof! Your cart is now empty!", {
+            icon: "success"
+          }).then(() => {
+            window.location = button.href;
+          });
+        } else {
+          return true;
+        }
+      });
+    });
   }
 
   openCart() {
@@ -210,7 +258,7 @@ export class Cart {
               }x &nbsp; ${item.name}</p>
 
               <div class="column col-5 text-right">
-                
+
                 <a
                   href="/cart"
                   class="navbar-edit-item"
@@ -222,7 +270,7 @@ export class Cart {
                 >
                   <i class="fal fa-edit"></i>
                 </a>
-                
+
                 <span class="navbar-remove-item" data-product_id="${
                   item.id
                 }" data-variation_id="${item.variation_id}">
@@ -230,7 +278,7 @@ export class Cart {
                 </span>
 
               </div>
-              
+
             </li>`;
           })
           .join("")}
@@ -257,23 +305,23 @@ export class Cart {
       this.counter.innerHTML = count;
 
       const burst = new mojs.Burst({
-          parent: this.counter.parentElement,
-          top: position.y + 16,
-          left: position.x + 6,
-          radius: { 10: 19 },
-          angle: 45,
-          children: {
-            shape: "line",
-            radius: 4,
-            scale: 2,
-            stroke: "#195675",
-            strokeDasharray: "100%",
-            strokeDashoffset: { "-100%": "100%" },
-            duration: 400,
-            easing: "quad.out"
-          },
-          duration: 500
-        });
+        parent: this.counter.parentElement,
+        top: position.y + 16,
+        left: position.x + 6,
+        radius: { 10: 19 },
+        angle: 45,
+        children: {
+          shape: "line",
+          radius: 4,
+          scale: 2,
+          stroke: "#195675",
+          strokeDasharray: "100%",
+          strokeDashoffset: { "-100%": "100%" },
+          duration: 400,
+          easing: "quad.out"
+        },
+        duration: 500
+      });
       burst.replay();
     } else {
       this.counter.innerHTML = 0;
