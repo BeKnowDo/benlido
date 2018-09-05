@@ -39955,117 +39955,6 @@ var ScrollToTop = exports.ScrollToTop = function () {
 
 /***/ }),
 
-/***/ "./src/javascript/components/bag-detail.js":
-/*!*************************************************!*\
-  !*** ./src/javascript/components/bag-detail.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var LidoBagDetail = exports.LidoBagDetail = function () {
-  function LidoBagDetail() {
-    _classCallCheck(this, LidoBagDetail);
-
-    this.swatches = document.querySelector("#picker_pa_color") || undefined;
-    this.thumbnails = document.querySelector(".flex-control-thumbs") || undefined;
-  }
-
-  _createClass(LidoBagDetail, [{
-    key: "init",
-    value: function init() {
-      if (this.swatches !== undefined) {
-        this.attachClick();
-        // this.attachHover();
-      }
-    }
-  }, {
-    key: "attachClick",
-    value: function attachClick() {
-      var _this = this;
-
-      var swatches = this.swatches.querySelectorAll(".select-option");
-      swatches.forEach(function (item) {
-        _this.handleClick(item);
-      });
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick(item) {
-      var _this2 = this;
-
-      var target = item;
-      // console.log(this.thumbnails);
-
-      target.addEventListener("click", function (e) {
-        // WooCommerce...grrrr
-        var color = e.currentTarget.dataset.value;
-
-        _this2.thumbnails === undefined ? _this2.thumbnails = document.querySelector(".flex-control-thumbs") : undefined;
-
-        var images = _this2.thumbnails.querySelectorAll("img");
-
-        var i = 0;
-        for (i; i < images.length; i++) {
-          var test = images[i].src.toString().indexOf(color) !== -1;
-          if (test === true) {
-            images[i].parentNode.classList.remove("bl-hide-thumbnail");
-            images[i].parentNode.classList.add("bl-show-thumbnail");
-          } else {
-            images[i].parentNode.classList.add("bl-hide-thumbnail");
-            images[i].parentNode.classList.remove("bl-show-thumbnail");
-          }
-        }
-
-        images.forEach(function (item) {
-          // console.log(item);
-        });
-      });
-    }
-  }, {
-    key: "attachHover",
-    value: function attachHover() {
-      var _this3 = this;
-
-      var swatches = this.swatches.querySelectorAll(".select-option");
-      swatches.forEach(function (element) {
-        _this3.handleHover(element);
-      });
-    }
-  }, {
-    key: "handleHover",
-    value: function handleHover(item) {
-      item.addEventListener("mouseover", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var target = e.currentTarget;
-        target.click();
-      });
-
-      item.addEventListener("mouseout", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var target = e.currentTarget;
-        target.click();
-      });
-    }
-  }]);
-
-  return LidoBagDetail;
-}();
-
-/***/ }),
-
 /***/ "./src/javascript/components/bl-animated-gif.js":
 /*!******************************************************!*\
   !*** ./src/javascript/components/bl-animated-gif.js ***!
@@ -41526,18 +41415,6 @@ Object.keys(_navigatorPlatformDetection).forEach(function (key) {
   });
 });
 
-var _bagDetail = __webpack_require__(/*! ./bag-detail */ "./src/javascript/components/bag-detail.js");
-
-Object.keys(_bagDetail).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _bagDetail[key];
-    }
-  });
-});
-
 /***/ }),
 
 /***/ "./src/javascript/components/my-account.js":
@@ -42148,7 +42025,7 @@ new _components.StepNavigation().init();
 new _components.Parallax().init();
 new _components.BenLidoAnimations().init();
 new _components.NavigationPlatform().init();
-new _components.LidoBagDetail().init();
+// new LidoBagDetail().init();
 
 /***/ }),
 
