@@ -10,7 +10,32 @@
 .bl-bags-page {
   .hero-product {
     &:last-child {
-      border-top :0;
+      border-top: 0;
+    }
+  }
+}
+
+.woocommerce {
+  &-product-gallery {
+    .flex-control-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      li {
+        float: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        display: none;
+
+        &.bl-hide-thumbnail {
+          display: none;
+        }
+
+        &.bl-show-thumbnail {
+          display: block;
+        }
+      }
     }
   }
 }

@@ -149,8 +149,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 					?>
 						<a class="btn btn-primary btn-lg" href="<?php  echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?php echo $return_to_shop_copy;?></a>
 
-						<a class="btn btn-primary btn-lg" href="<?php  echo get_home_url(); ?>?empty-cart=true"><?php echo $empty_cart_copy;?></a>
+						<a class="btn btn-primary btn-lg btn-red" href="<?php  echo get_home_url(); ?>?empty-cart=true"><?php echo $empty_cart_copy;?></a>
 					</div>
+
 					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 					<?php do_action( 'woocommerce_cart_actions' ); ?>

@@ -130,6 +130,16 @@
     padding-right: 0;
     border: 0;
   }
+
+  &.btn-red {
+    background-color: $red;
+    border-color: $red;
+  }
+
+  &.btn-green {
+    background-color: $green;
+    border-color: $green;
+  }
 }
 
 .remove-from-cart {
@@ -166,7 +176,7 @@
 }
 
 .bl-remove-bag-product {
-  display:none;
+  display: none;
   &.show {
     display: inline-block !important;
   }

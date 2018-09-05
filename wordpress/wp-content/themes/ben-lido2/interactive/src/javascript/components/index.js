@@ -10,3 +10,4 @@ export * from "./step-navigation";
 export * from "./parallax";
 export * from "./bl-animated-gif";
 export * from "./navigator-platform-detection";
+export * from "./bag-detail";

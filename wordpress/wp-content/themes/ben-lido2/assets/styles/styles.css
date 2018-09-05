@@ -3159,7 +3159,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .bl-product-swatches:before { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 300; font-style: normal; margin: 0 0 0.8rem; content: "Choose a color"; display: block; width: 100%; }
 
-.bl-product-swatches .swatch-wrapper { background-color: transparent; width: 33%; max-width: 50px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
+.bl-product-swatches .swatch-wrapper { background-color: transparent; max-width: 60px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
 
 .bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
 
@@ -3171,17 +3171,19 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .swatch-anchor img { border-radius: 50%; display: block; width: auto; height: auto; }
 
-.swatch-control { justify-content: center; display: flex; padding: 0; margin: 20px auto; max-width: 160px; }
+.swatch-control { display: flex; flex-wrap: wrap; padding: 0; }
 
-.swatch-control .select-option { text-align: center; width: 33%; border: 0; }
+.swatch-control .select-option { border: 0; }
 
 .swatch-control .select-option.selected { border: 0; padding: 0; }
 
-.swatch-control .swatch-anchor { display: inline-block; width: auto !important; height: auto !important; }
+.swatch-control .swatch-anchor { display: block; width: 100% !important; height: auto !important; }
 
-.swatch-control .swatch-wrapper { background-color: transparent; width: 33%; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
+.swatch-control .swatch-wrapper { background-color: transparent; width: auto; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
 
 .swatch-control .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
+
+.swatch-control .swatch-wrapper img { width: 100% !important; }
 
 .benlido-header { border-bottom: 1px solid #e4e4e4; position: fixed; z-index: 2; top: 0; left: 0; width: 100%; }
 
@@ -3358,6 +3360,10 @@ body { position: relative; padding-top: 98px; outline: none; }
 .btn.add-to-cart.in-cart .fa-plus-circle:before { visibility: visible; display: block; }
 
 .btn.btn-separator { background-color: transparent; text-shadow: none; padding-left: 0; padding-right: 0; border: 0; }
+
+.btn.btn-red { background-color: #e10600; border-color: #e10600; }
+
+.btn.btn-green { background-color: #5b9376; border-color: #5b9376; }
 
 .remove-from-cart { padding: 10px 6px; position: relative; width: 50%; }
 
@@ -3546,7 +3552,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .product-tile:hover .product-tile-image, .product-tile:hover .product-tile-price, .product-tile:hover .product-tile-description { transition: opacity 0.2s ease-in-out; opacity: 0.5; }
 
-.product-tile:hover .product-tile-hover { transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; opacity: 1; transform: translate3d(0, -50%, 0); }
+.product-tile:hover .product-tile-hover { transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; opacity: 1; transform: translate3d(0, -100%, 0); }
 
 .product-tile-column { padding-left: 0.2rem; padding-right: 0.2rem; margin-top: 1.2rem; }
 
@@ -3798,7 +3804,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .single-product.single .product.product_cat-bags { width: 100%; flex-direction: column; }
 
-.single-product.single .product.product_cat-bags .entry-summary.summary { margin: 0; }
+.single-product.single .product.product_cat-bags .entry-summary.summary { margin: 0 0 1.2rem; }
 
 .single-product.single .product.product_cat-bags .entry-summary .price { width: 100%; text-align: left; }
 
@@ -4454,6 +4460,14 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .woocommerce-active .hero-product:last-child { border: none; border-top: 1px solid #e4e4e4; }
 
 .bl-bags-page .hero-product:last-child { border-top: 0; }
+
+.woocommerce-product-gallery .flex-control-thumbs { display: flex; flex-wrap: wrap; justify-content: center; }
+
+.woocommerce-product-gallery .flex-control-thumbs li { float: none !important; width: auto !important; margin: 0 !important; display: none; }
+
+.woocommerce-product-gallery .flex-control-thumbs li.bl-hide-thumbnail { display: none; }
+
+.woocommerce-product-gallery .flex-control-thumbs li.bl-show-thumbnail { display: block; }
 
 .products.related .columns .product { max-width: 33%; display: block; margin-bottom: 1.2rem; }
 

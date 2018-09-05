@@ -10,7 +10,8 @@ import {
   StepNavigation,
   Parallax,
   BenLidoAnimations,
-  NavigationPlatform
+  NavigationPlatform,
+  LidoBagDetail
 } from "./components";
 
 new Navigation().init();
@@ -25,3 +26,4 @@ new StepNavigation().init();
 new Parallax().init();
 new BenLidoAnimations().init();
 new NavigationPlatform().init();
+new LidoBagDetail().init();
