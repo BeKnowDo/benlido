@@ -8,15 +8,31 @@ export class LidoBagDetail {
       document.querySelectorAll(".bl-product-swatches") || undefined;
   }
   init() {
-    if (this.swatches !== undefined) {
+    if (this.swatches) {
       this.attachClick();
-      this.defaultBagColor();
       // this.attachHover();
+    }
+
+    if (this.bagSwatches) {
+      this.defaultBagColor();
     }
   }
 
   defaultBagColor() {
-    // console.log(this.bagSwatches);
+    const bagSwatches = this.bagSwatches;
+
+    bagSwatches.forEach(bagSwatch => {
+      const swatches = bagSwatch.querySelectorAll(".swatch-anchor");
+
+      let i = 0;
+      for (i; i < swatches.length; i++) {
+        const scope = swatches[i];
+        if (scope.parentNode.classList.contains("selected")) {
+          return false;
+        }
+      }
+      swatches[0].click();
+    });
   }
 
   attachClick() {

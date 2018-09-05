@@ -40466,16 +40466,32 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
   _createClass(LidoBagDetail, [{
     key: "init",
     value: function init() {
-      if (this.swatches !== undefined) {
+      if (this.swatches) {
         this.attachClick();
-        this.defaultBagColor();
         // this.attachHover();
+      }
+
+      if (this.bagSwatches) {
+        this.defaultBagColor();
       }
     }
   }, {
     key: "defaultBagColor",
     value: function defaultBagColor() {
-      // console.log(this.bagSwatches);
+      var bagSwatches = this.bagSwatches;
+
+      bagSwatches.forEach(function (bagSwatch) {
+        var swatches = bagSwatch.querySelectorAll(".swatch-anchor");
+
+        var i = 0;
+        for (i; i < swatches.length; i++) {
+          var scope = swatches[i];
+          if (scope.parentNode.classList.contains("selected")) {
+            return false;
+          }
+        }
+        swatches[0].click();
+      });
     }
   }, {
     key: "attachClick",
@@ -41609,9 +41625,35 @@ var CategoryMenu = exports.CategoryMenu = function () {
       }
     }
   }, {
+    key: "checkBreakpoint",
+    value: function checkBreakpoint() {
+      var _this = this;
+
+      var breakpoint = window.matchMedia("(min-width:839px)");
+
+      var breakpointChecker = function breakpointChecker() {
+        if (breakpoint.matches) {
+          // Desktop navigation version
+          _this.desktopNav = true;
+          _this.mobileNav = false;
+        } else if (!breakpoint.matches) {
+          // Mobile navigation version
+          _this.mobileNav = true;
+          _this.desktopNav = false;
+
+          // remove sticky if enabled
+          _this.menu.classList.remove("nav-fixed");
+          _this.toggleAll(_this.parentCategoryContainer);
+        }
+      };
+
+      breakpoint.addListener((0, _lodash.debounce)(breakpointChecker));
+      breakpointChecker();
+    }
+  }, {
     key: "mobile",
     value: function mobile() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.categoryList !== undefined && this.menuCategoryHeader !== undefined) {
         var fragment = document.createDocumentFragment();
@@ -41639,8 +41681,8 @@ var CategoryMenu = exports.CategoryMenu = function () {
             e.stopPropagation();
 
             var target = category.parentElement.querySelector(".sub-menu");
-            _this.toggleAllMobile();
-            _this.toggleSubCategory(target);
+            _this2.toggleAllMobile();
+            _this2.toggleSubCategory(target);
           });
         });
 
@@ -41661,32 +41703,6 @@ var CategoryMenu = exports.CategoryMenu = function () {
           }
         });
       }
-    }
-  }, {
-    key: "checkBreakpoint",
-    value: function checkBreakpoint() {
-      var _this2 = this;
-
-      var breakpoint = window.matchMedia("(min-width:839px)");
-
-      var breakpointChecker = function breakpointChecker() {
-        if (breakpoint.matches) {
-          // Desktop navigation version
-          _this2.desktopNav = true;
-          _this2.mobileNav = false;
-        } else if (!breakpoint.matches) {
-          // Mobile navigation version
-          _this2.mobileNav = true;
-          _this2.desktopNav = false;
-
-          // remove sticky if enabled
-          _this2.menu.classList.remove("nav-fixed");
-          _this2.toggleAll(_this2.parentCategoryContainer);
-        }
-      };
-
-      breakpoint.addListener((0, _lodash.debounce)(breakpointChecker));
-      breakpointChecker();
     }
   }, {
     key: "attachCategoryToggles",
@@ -41733,13 +41749,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
       var _this4 = this;
 
       if (target) {
-        var showSubCategory = _kute2.default.fromTo(target, {
-          maxHeight: 0,
-          opacity: 0
-        }, {
-          maxHeight: 500,
-          opacity: 1
-        }, {
+        var showSubCategory = _kute2.default.fromTo(target, { maxHeight: 0, opacity: 0 }, { maxHeight: 500, opacity: 1 }, {
           duration: 150,
           complete: function complete() {
             target.classList.toggle("active");
