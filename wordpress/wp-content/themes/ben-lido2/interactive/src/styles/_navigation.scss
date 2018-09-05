@@ -126,6 +126,14 @@
         a {
           color: $brown-grey;
         }
+
+        .hide-logged-in {
+          display: none;
+        }
+
+        .show-logged-in {
+          display: none;
+        }
       }
     }
   }
@@ -277,7 +285,6 @@
         &-primary-items {
           &.desktop {
             display: flex;
-            
           }
         }
       }

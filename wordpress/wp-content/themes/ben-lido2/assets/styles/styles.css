@@ -3231,6 +3231,10 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .navbar-dropdown-primary-items.desktop a { color: #393d5b; }
 
+.navbar-dropdown-primary-items.desktop .hide-logged-in { display: none; }
+
+.navbar-dropdown-primary-items.desktop .show-logged-in { display: none; }
+
 .navbar-item-counter { position: relative; top: 2px; display: inline-block; z-index: 1; font-size: 20px; }
 
 .navbar-item-counter:hover { cursor: pointer; }
