@@ -4,8 +4,18 @@
   }
 }
 
-@media (min-width: $size-md) {
+@media (max-width: $size-md) {
   .copyright {
     text-align: left;
+
+    &-logo {
+      > a {
+        display: block;
+      }
+    }
+
+    &-text {
+      display: inline-block;
+    }
   }
 }

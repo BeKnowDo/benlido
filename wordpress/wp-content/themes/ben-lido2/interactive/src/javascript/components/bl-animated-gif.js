@@ -18,6 +18,7 @@ export class BenLidoAnimations {
     const imageTag = document.createElement("img");
 
     imageTag.src = `${path}/BL__1.jpg`;
+    imageTag.alt = `Ben Lido Bag Animation`;
 
     documentFragment.appendChild(imageTag);
     this.destination.appendChild(documentFragment);

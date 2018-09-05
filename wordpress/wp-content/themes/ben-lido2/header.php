@@ -19,7 +19,7 @@ if (function_exists('get_field')) {
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
@@ -50,7 +50,7 @@ if (function_exists('get_field')) {
 		// instead, the header is replaced by the template part
 		get_template_part('template-parts/common/header');
 	?>
-	
+
 	<?php
 	/**
 	 * Functions hooked in to storefront_before_content

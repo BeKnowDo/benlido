@@ -1,9 +1,9 @@
 <span class="navbar-toggle">
-  <i id="navbar-trigger" class="fas fa-bars show-md"></i>
-  <i id="navbar-search" class="far fa-search"></i>
+    <i id="navbar-trigger" class="fas fa-bars show-md"></i>
+    <i id="navbar-search" class="far fa-search"></i>
 </span>
 {% if not socialMediaLinks %}
-  {% set socialMediaLinks = [
+    {% set socialMediaLinks = [
   {
     href: '?',
     title: 'Instagram',
@@ -23,20 +23,20 @@
 {% endif %}
 
 {% if not logo %}
-  {% set logo = '<a href="/"><img src="/images/ben-lido-header-logo.svg" /></a>'%}
+    {% set logo = '<a href="/" title="Back to Ben Lido Home Page"><img src="/images/ben-lido-header-logo.svg" alt="Ben Lido Logo" /></a>'%}
 {% endif %}
 
 <div id="navbar-dropdown" class="navbar-dropdown">
-  <div class="columns">
-    <div class="column col-3 col-xs-12 col-sm-12 col-md-4 col-mx-auto">
-      {% include 'common/navigation/navbar-dropdown.twig' %}
-    </div>
+    <div class="columns">
+        <div class="column col-3 col-xs-12 col-sm-12 col-md-4 col-mx-auto">
+            {% include 'common/navigation/navbar-dropdown.twig' %}
+        </div>
 
-    <div class="column col-3 col-xs-12 col-sm-12">
-      {% include 'common/social-media-links.twig' with { socialMediaLinks: socialMediaLinks } %}
+        <div class="column col-3 col-xs-12 col-sm-12">
+            {% include 'common/social-media-links.twig' with { socialMediaLinks: socialMediaLinks } %}
+        </div>
+        <div class="column col-3 col-xs-12 col-sm-12 col-mr-auto hide-sm">
+            {{logo}}
+        </div>
     </div>
-    <div class="column col-3 col-xs-12 col-sm-12 col-mr-auto hide-sm">
-      {{logo}}
-    </div>
-  </div>
 </div>

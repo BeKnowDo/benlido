@@ -3097,7 +3097,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: 
 
 h1 { font-size: 75px; text-transform: uppercase; }
 
-p { color: #999999; }
+p { color: #606060; }
 
 a { transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
@@ -3301,7 +3301,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .footer .col-3 { margin-bottom: 30px; }
 
-.footer li a { color: #979797; display: inline-block; font-size: 15px; }
+.footer li a { color: #606060; display: inline-block; font-size: 15px; }
 
 .footer li a:hover { color: #9fb9c4; }
 
@@ -3313,7 +3313,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .social-media-links a:hover { color: #9fb9c4; }
 
-.copyright { text-align: center; color: #979797; padding: 60px 0 0; }
+.copyright { text-align: center; color: #606060; padding: 60px 0 0; }
 
 .copyright-logo img { margin: auto; max-width: 165px; }
 
@@ -3327,9 +3327,9 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .btn-no-border { border: 0; }
 
-.btn.btn-primary { background-color: #9fb9c4; }
+.btn.btn-primary { background-color: #393d5b; }
 
-.btn.btn-primary:hover { background-color: #393d5b; }
+.btn.btn-primary:hover { background-color: #195675; }
 
 .btn.btn-primary:active { background-color: #9fb9c4; }
 
@@ -3988,14 +3988,18 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
-@media (min-width: 840px) { .copyright { text-align: left; } }
+@media (max-width: 840px) { .copyright { text-align: left; }
+  .copyright-logo > a { display: block; }
+  .copyright-text { display: inline-block; } }
 
 @media (min-width: 840px) { .footer .columns { flex-direction: row; }
-  .footer .columns .col-3:last-child { order: -1; } }
+  .footer .columns .column:last-child { order: -1; } }
 
 @media (min-width: 600px) { .copyright { padding: 0; } }
 
-@media (min-width: 840px) { .copyright { text-align: left; } }
+@media (max-width: 840px) { .copyright { text-align: left; }
+  .copyright-logo > a { display: block; }
+  .copyright-text { display: inline-block; } }
 
 @media (max-width: 840px) { .back-to-top { padding-top: 45px; padding-bottom: 25px; }
   .back-to-top .column { text-align: center; }
@@ -4251,7 +4255,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart .actions .coupon { display: none; padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
 
-.woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #9fb9c4; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); border: 0; }
+.woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #9fb9c4; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); border: 0; }
 
 .woocommerce-cart .cart .actions .coupon .input-text { text-align: center; background-color: #f7f7f7; border-radius: 4px 0 0 4px; border: 1px solid #e4e4e4; padding: 0.8rem; margin: 0; }
 
@@ -4275,7 +4279,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart_totals .select2-selection__rendered { font-size: 18px; }
 
-.woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #9fb9c4; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
+.woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #9fb9c4; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
 
 .woocommerce-cart .cart_totals .shop_table { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-bottom: 0; border-radius: 4px; color: #999999; width: 100%; }
 
@@ -4293,7 +4297,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart_totals .shop_table .order-total .woocommerce-Price-amount { color: #195675; }
 
-.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 400; font-style: normal; background-color: #9fb9c4; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
+.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 400; font-style: normal; background-color: #9fb9c4; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); }
 
 .woocommerce-cart .cart_totals .wc-proceed-to-checkout { margin-bottom: 0; }
 
@@ -4325,7 +4329,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-checkout #payment .place-order { padding: 0; }
 
-.woocommerce-checkout #payment .place-order .button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; text-transform: uppercase; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); letter-spacing: 1.5px; }
+.woocommerce-checkout #payment .place-order .button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; text-transform: uppercase; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); letter-spacing: 1.5px; }
 
 .woocommerce-checkout-review-order { text-align: left; }
 
@@ -4379,7 +4383,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-checkout .input-text { padding: 0.8rem; border-radius: 4px; border: 1px solid #e4e4e4; background-color: #fff; box-shadow: none !important; }
 
-.woocommerce-checkout .button { width: 100%; padding: 0.8rem 0; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; text-transform: uppercase; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); letter-spacing: 1.5px; font-size: 16px; }
+.woocommerce-checkout .button { width: 100%; padding: 0.8rem 0; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; text-transform: uppercase; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); letter-spacing: 1.5px; font-size: 16px; }
 
 .woocommerce-form { padding: 0.2rem 0.8rem 1rem; border-bottom: 1px solid #e4e4e4; margin-bottom: 2rem; }
 

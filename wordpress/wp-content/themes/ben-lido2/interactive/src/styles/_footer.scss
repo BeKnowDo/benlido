@@ -14,7 +14,8 @@
   .social-media-links {
     padding-top: 0;
     a {
-      &:hover {}
+      &:hover {
+      }
     }
   }
   &-primary-items {
@@ -26,7 +27,7 @@
   }
   li {
     a {
-      color: $grey;
+      color: $medium-grey-2;
       display: inline-block;
       font-size: 15px;
       &:hover {

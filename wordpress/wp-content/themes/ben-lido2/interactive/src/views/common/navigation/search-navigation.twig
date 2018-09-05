@@ -1,27 +1,24 @@
-<div id="benlido-search-container" class="benlido-search-container">
-  <i id="search-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
+<div id="benlido-search-container" class="benlido-search-container" role="search">
+    <i id="search-exit" class="fal navbar-dropdown-exit fa-times-circle"></i>
 
-  <div class="container max-width-lg">
-    <form id="navbar-search-form" action="/" method="get" class="columns col-gapless search-in-page">
-      <div class="column col-12">
-        <h2 class="search-in-page-header text-center">SEARCH</h2>
-      </div>
+    <div class="container max-width-lg">
+        <form id="navbar-search-form" action="/" method="get" class="columns col-gapless search-in-page">
+            <div class="column col-12">
+                <h2 class="search-in-page-header text-center">SEARCH</h2>
+            </div>
 
-      <div class="column col-xs-10 col-sm-10 col-11">
-        <input required value="{{term}}" class="form-input benlido-search-input search-in-page-input" type="search" aria-label="search text" id="" name="s" placeholder="Search for products..."/>
-        <input type="hidden" name="post_type" value="product" />
-      </div>
+            <div class="column col-xs-10 col-sm-10 col-11">
+                <input required="required" value="{{term}}" class="form-input benlido-search-input search-in-page-input" type="search" aria-label="search text" id="" name="s" placeholder="Search for products..."/>
+                <input type="hidden" name="post_type" value="product"/>
+            </div>
 
-      <div class="column col-xs-2 col-sm-2 col-md-1 col-1">
-        <button id="navbar-search-button">
-          <i class="fal fa-search"></i>
-        </button>
-      </div>
-
-    </form>
-
-    {# {% include 'common/parent-category-list.twig' with { categoryItems:categoryItems } %} #}
-
-  </div>
+            <div class="column col-xs-2 col-sm-2 col-md-1 col-1">
+                <button id="navbar-search-button" role="button" aria-label="Search">
+                    <i class="fal fa-search"></i>
+                </button>
+            </div>
+        </form>
+        {# {% include 'common/parent-category-list.twig' with { categoryItems:categoryItems } %} #}
+    </div>
 
 </div>

@@ -7,7 +7,7 @@ function bl_get_site_logo($is_diamond=false) {
   if ($is_diamond == true && function_exists('get_field')) {
     $diamond_logo = get_field('diamond_shaped_logo','option');
     if (!empty($diamond_logo) && isset($diamond_logo['url'])) {
-      $logo = '<a href="' . get_home_url() . '" title="' . esc_attr(get_bloginfo( 'name') ) . '" ><img src="' . $diamond_logo['url'] . '" /></a>';
+      $logo = '<a href="' . get_home_url() . '" title="' . esc_attr(get_bloginfo( 'name') ) . '" ><img src="' . $diamond_logo['url'] . '" alt="Ben Lido Logo"/></a>';
     }
   }
   elseif ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
@@ -77,7 +77,7 @@ function bl_generate_nav_links($item) {
       'classes'=>implode(' ', $item->classes)
     );
   }
-  
+
   return $res;
 }
 
@@ -113,7 +113,7 @@ function bl_get_featured_categories() {
             //print_r ($cat_obj);
             if (!empty($cat_obj) && is_object($cat_obj)) {
               $name = $cat_obj->name;
-              $cat_url = get_term_link($cat_id,'product_cat'); 
+              $cat_url = get_term_link($cat_id,'product_cat');
             }
             $prods = array();
             if (!empty($featured_products) && is_array($featured_products)) {
@@ -176,7 +176,7 @@ function bl_process_bags_list($items) {
         $coming_soon = $el['coming_soon_copy'];
         $button_copy = $el['button_copy'];
         $selected_copy = $el['selected_copy'];
-        
+
         switch ($type) {
           case 'travel_kit':
             $is_kit = true;
@@ -198,7 +198,7 @@ function bl_process_bags_list($items) {
               if ($kitting_page) {
                 $href = get_permalink($kitting_page) . '?id=' . $item_id;
               }
-              
+
             }
             if (!empty($bag_for_this_kit) && is_object($bag_for_this_kit) && isset($bag_for_this_kit->ID)) {
                 $product_id = $bag_for_this_kit->ID;
@@ -249,14 +249,14 @@ function bl_process_bags_list($items) {
             if (!empty($product) && is_object($product)) {
               $price = $product->get_price_html();
             }
-            
+
             if (function_exists('bl_get_product_category')) {
               $product_cat = bl_get_product_category($product_id);
             }
             if (!empty($product_cat) && is_object($product_cat) && isset($product_cat->term_id)) {
               $category_id = $product_cat->term_id;
             }
-            
+
             // NOTE: swatches come from the bags page because we need to have a custom image
             //print_r ($el);
             $color_variation_image_overrides = $el['color_variation_image_overrides'];
@@ -281,7 +281,7 @@ function bl_process_bags_list($items) {
             $href = get_permalink( woocommerce_get_page_id( 'shop' ) );
           break;
         }
-        
+
         if ($status == 'draft' || $status == 'future') {
           // see when it's available
           $post_date = $item->post_date;
@@ -385,11 +385,11 @@ function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides
       $res[] = $swatch;
     }
   }
-  
+
   return $res;
 }
 
-// NOTE: this method relies heavily on the woocommerce-variation-swatches-and-photos plugin. 
+// NOTE: this method relies heavily on the woocommerce-variation-swatches-and-photos plugin.
 function bl_get_variable_product_swatches($product_id,$selected_variation_id=null) {
   $variations = array();
     if (function_exists('wc_get_product')) {
@@ -448,7 +448,7 @@ function bl_get_variable_product_swatches($product_id,$selected_variation_id=nul
         if ($variation_id == $selected_variation_id) {
           $selected = true;
         }
-        
+
         $variations[] = array(
           'title' => $color_name,
           'id' => $variation_id,
@@ -604,7 +604,7 @@ function bl_get_this_category() {
   global $product;
   global $product_override;
   //print_r ($product_override);
-  
+
   if (!empty($product_override) && isset($product_override['id'])) {
     $override_id = $product_override['id'];
     if (!empty($product) && is_object($product)) {

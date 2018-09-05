@@ -19,10 +19,10 @@
   }
 
   &.btn-primary {
-    background-color: #9fb9c4;
+    background-color: $brown-grey;
 
     &:hover {
-      background-color: $brown-grey;
+      background-color: $blumine;
     }
     &:active {
       background-color: $blue-shale;
