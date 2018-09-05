@@ -4,20 +4,21 @@
 
             <div class="container">
                 <div class="columns">
-                    <div class="column col-3 col-lg-2 text-left">
+
+                    <div class="column col-lg-2 col-2 text-left">
                         <a class="btn btn-lg btn-no-border" href="{{stepNavigation.previousStep}}" title="">
                             <i class="fal fa-chevron-circle-left"></i>
                         </a>
                     </div>
-                    <div class="column col-xs-4 col-sm-6 col-6 col-lg-7 text-center">
-                        {% include 'common/navigation/navbar-desktop.twig' with { 'list': list, 'className': 'navbar-dropdown-primary-items desktop'}
-                %}
 
+                    <div class="column col-xs-4 col-sm-6 col-lg-8 col-8 text-center">
+                        {% include 'common/navigation/navbar-desktop.twig' with { 'list': list, 'className': 'navbar-dropdown-primary-items desktop'} %}
                         <div class="step-navigation-current">
                             {{stepNavigation.current}}
                         </div>
                     </div>
-                    <div class="column col-xs-6 col-sm-4 col-3 text-right">
+
+                    <div class="column col-xs-6 col-sm-4 col-2 text-right">
 
                         {% if stepNavigation.next != '' %}
 
@@ -37,6 +38,7 @@
 
                         {% endif %}
                     </div>
+
                 </div>
             </div>
 
