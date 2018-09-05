@@ -43,6 +43,29 @@ export class CategoryMenu {
     }
   }
 
+  checkBreakpoint() {
+    const breakpoint = window.matchMedia("(min-width:839px)");
+
+    const breakpointChecker = () => {
+      if (breakpoint.matches) {
+        // Desktop navigation version
+        this.desktopNav = true;
+        this.mobileNav = false;
+      } else if (!breakpoint.matches) {
+        // Mobile navigation version
+        this.mobileNav = true;
+        this.desktopNav = false;
+
+        // remove sticky if enabled
+        this.menu.classList.remove("nav-fixed");
+        this.toggleAll(this.parentCategoryContainer);
+      }
+    };
+
+    breakpoint.addListener(debounce(breakpointChecker));
+    breakpointChecker();
+  }
+
   mobile() {
     if (
       this.categoryList !== undefined &&
@@ -98,61 +121,27 @@ export class CategoryMenu {
     }
   }
 
-  checkBreakpoint() {
-    const breakpoint = window.matchMedia("(min-width:839px)");
-
-    const breakpointChecker = () => {
-      if (breakpoint.matches) {
-        // Desktop navigation version
-        this.desktopNav = true;
-        this.mobileNav = false;
-      } else if (!breakpoint.matches) {
-        // Mobile navigation version
-        this.mobileNav = true;
-        this.desktopNav = false;
-
-        // remove sticky if enabled
-        this.menu.classList.remove("nav-fixed");
-        this.toggleAll(this.parentCategoryContainer);
-      }
-    };
-
-    breakpoint.addListener(debounce(breakpointChecker));
-    breakpointChecker();
-  }
-
   attachCategoryToggles() {
     this.parentCategoryContainer.forEach(item => {
       const parent = item.querySelector("a") || undefined;
       const child = item.querySelector(".sub-menu") || undefined;
 
+      if (parent.parentElement.classList.contains("current-menu-item")) {
+        this.toggleSubCategory(child);
+      }
+
       if (item.classList.contains(this.wooActiveCategory)) {
         this.toggleSubCategory(child);
       }
 
-      if (parent && child) {
-        parent.addEventListener("click", e => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.toggleAll();
-          this.toggleSubCategory(child);
-        });
-      }
-    });
-  }
-
-  toggleAll() {
-    let i;
-    const categories = this.parentCategoryContainer;
-
-    categories.forEach(item => {
-      const child = item.querySelector(".sub-menu") || undefined;
-
-      if (child) {
-        if (child.classList.contains("active") === true) {
-          child.classList.remove("active");
-        }
-      }
+      // if (parent && child) {
+      //   parent.addEventListener("click", e => {
+      //     // e.preventDefault();
+      //     e.stopPropagation();
+      //     this.toggleAll();
+      //     this.toggleSubCategory(child);
+      //   });
+      // }
     });
   }
 
@@ -160,14 +149,8 @@ export class CategoryMenu {
     if (target) {
       const showSubCategory = KUTE.fromTo(
         target,
-        {
-          maxHeight: 0,
-          opacity: 0
-        },
-        {
-          maxHeight: 500,
-          opacity: 1
-        },
+        { maxHeight: 0, opacity: 0 },
+        { maxHeight: 500, opacity: 1 },
         {
           duration: 150,
           complete: () => {
@@ -185,6 +168,21 @@ export class CategoryMenu {
       );
       showSubCategory.start();
     }
+  }
+
+  toggleAll() {
+    let i;
+    const categories = this.parentCategoryContainer;
+
+    categories.forEach(item => {
+      const child = item.querySelector(".sub-menu") || undefined;
+
+      if (child) {
+        if (child.classList.contains("active") === true) {
+          child.classList.remove("active");
+        }
+      }
+    });
   }
 
   scrollFeaturedCategory(id) {

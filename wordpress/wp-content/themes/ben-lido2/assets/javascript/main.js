@@ -41713,34 +41713,22 @@ var CategoryMenu = exports.CategoryMenu = function () {
         var parent = item.querySelector("a") || undefined;
         var child = item.querySelector(".sub-menu") || undefined;
 
+        if (parent.parentElement.classList.contains("current-menu-item")) {
+          _this3.toggleSubCategory(child);
+        }
+
         if (item.classList.contains(_this3.wooActiveCategory)) {
           _this3.toggleSubCategory(child);
         }
 
-        if (parent && child) {
-          parent.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            _this3.toggleAll();
-            _this3.toggleSubCategory(child);
-          });
-        }
-      });
-    }
-  }, {
-    key: "toggleAll",
-    value: function toggleAll() {
-      var i = void 0;
-      var categories = this.parentCategoryContainer;
-
-      categories.forEach(function (item) {
-        var child = item.querySelector(".sub-menu") || undefined;
-
-        if (child) {
-          if (child.classList.contains("active") === true) {
-            child.classList.remove("active");
-          }
-        }
+        // if (parent && child) {
+        //   parent.addEventListener("click", e => {
+        //     // e.preventDefault();
+        //     e.stopPropagation();
+        //     this.toggleAll();
+        //     this.toggleSubCategory(child);
+        //   });
+        // }
       });
     }
   }, {
@@ -41763,6 +41751,22 @@ var CategoryMenu = exports.CategoryMenu = function () {
         });
         showSubCategory.start();
       }
+    }
+  }, {
+    key: "toggleAll",
+    value: function toggleAll() {
+      var i = void 0;
+      var categories = this.parentCategoryContainer;
+
+      categories.forEach(function (item) {
+        var child = item.querySelector(".sub-menu") || undefined;
+
+        if (child) {
+          if (child.classList.contains("active") === true) {
+            child.classList.remove("active");
+          }
+        }
+      });
     }
   }, {
     key: "scrollFeaturedCategory",
