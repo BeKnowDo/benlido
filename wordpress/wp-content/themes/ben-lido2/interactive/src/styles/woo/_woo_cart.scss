@@ -130,7 +130,8 @@
         }
       }
       .buttons {
-        display:flex;
+        display: flex;
+        margin-bottom: $unit-6;
         .btn {
           &:first-child {
             margin-right: 20px;

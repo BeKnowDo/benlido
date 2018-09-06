@@ -1,11 +1,26 @@
 .hero {
   &-home {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+      color: $white;
+    }
+
     &[style*="background-image"] {
-      background-size: contain;
-      background-position-x: right;
-      background-position-y: bottom;
-      padding-top: 80px;
-      transition: background-position .2s ease-in-out;
+      // background-size: contain;
+      // background-position-x: right;
+      // background-position-y: bottom;
+
+      position: relative;
+      transition: background-position 0.2s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      padding: 0 $unit-6;
+
+      // padding-top: 80px;
 
       img {
         visibility: hidden;
@@ -13,6 +28,28 @@
 
       .hero-image-container {
         // padding-top: 0;
+      }
+
+      .max-width-xl {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(3, 3, 3, 0.5);
+        z-index: auto;
+      }
+
+      .columns {
+        z-index: 1;
       }
     }
 
