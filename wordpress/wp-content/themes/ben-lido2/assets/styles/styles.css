@@ -3427,7 +3427,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home h1, .hero-home h2, .hero-home h3, .hero-home h4, .hero-home h5, .hero-home p { color: #fff; }
 
-.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: cover; background-position: center; padding: 0 1.2rem; }
+.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: cover; background-position: center; padding: 0 0.8rem; }
 
 .hero-home[style*="background-image"] img { visibility: hidden; }
 
@@ -3437,9 +3437,15 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home[style*="background-image"] .columns { z-index: 1; }
 
-.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 75px; font-weight: 400; font-style: normal; }
+.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 4rem; font-weight: 400; font-style: normal; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
+
+.hero-home .hero-copy { font-size: 1rem; letter-spacing: 0.5px; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
+
+.hero-home .hero-sub-header { font-size: 1rem; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
 .hero-home .hero-image { margin: 0 0 0 auto; }
+
+.hero-home .hero-action-buttons .btn.btn-lg { display: block; padding: 1.2rem 0.8rem; letter-spacing: 0.4px; }
 
 .hero-title-copy { padding: 2.4rem 20px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; }
 
@@ -3939,18 +3945,22 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 @media (max-width: 480px) { .hero { padding-top: 50px; }
   .hero-help { padding-top: 0; padding-bottom: 50px; }
-  .hero-home[style*="background-image"] .hero-header { font-size: 55px; }
-  .hero-home[style*="background-image"] .hero-image-container { padding-top: 90px; }
   .hero-home .hero-action-buttons { padding-top: 20px; }
   .hero-home .hero-sub-header { max-width: 260px; margin-right: auto; margin-left: auto; padding-bottom: 0.2rem; } }
 
-@media (max-width: 600px) and (min-width: 481px) { .hero-action-buttons { padding-top: 20px; }
-  .hero-home { padding-bottom: 250px; }
-  .hero-home[style*="background-image"] img { display: none; }
-  .hero-home[style*="background-image"] .hero-image-container { padding-top: 140px; } }
+@media (max-width: 600px) and (min-width: 481px) { .hero-action-buttons { padding-top: 20px; } }
 
 @media (max-width: 840px) and (min-width: 601px) { .hero { padding-top: 50px; }
-  .hero-help { padding-top: 0; padding-bottom: 50px; }
+  .hero-help { padding-top: 0; padding-bottom: 50px; } }
+
+@media (min-width: 840px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.2rem; font-weight: 400; font-style: normal; }
+  .hero-home .hero-sub-header { font-size: 1.2rem; }
+  .hero-home .hero-copy { font-size: 1.2rem; letter-spacing: 0.5px; }
+  .hero-home .hero-image { margin: 0 0 0 auto; } }
+
+@media (min-width: 960px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.6rem; font-weight: 400; font-style: normal; }
+  .hero-home .hero-sub-header { font-size: 1.6rem; }
+  .hero-home .hero-copy { font-size: 1.2rem; letter-spacing: 0.5px; }
   .hero-home .hero-image { margin: 0 0 0 auto; } }
 
 @media (max-width: 840px) { .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
@@ -4246,7 +4256,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart .actions .coupon { display: none; padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
 
-.woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #9fb9c4; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); border: 0; }
+.woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #9fb9c4; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); border: 0; }
 
 .woocommerce-cart .cart .actions .coupon .input-text { text-align: center; background-color: #f7f7f7; border-radius: 4px 0 0 4px; border: 1px solid #e4e4e4; padding: 0.8rem; margin: 0; }
 
@@ -4270,7 +4280,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart_totals .select2-selection__rendered { font-size: 18px; }
 
-.woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #9fb9c4; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
+.woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #9fb9c4; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
 
 .woocommerce-cart .cart_totals .shop_table { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-bottom: 0; border-radius: 4px; color: #999999; width: 100%; }
 
@@ -4288,7 +4298,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart_totals .shop_table .order-total .woocommerce-Price-amount { color: #195675; }
 
-.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 400; font-style: normal; background-color: #9fb9c4; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); }
+.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 400; font-style: normal; background-color: #9fb9c4; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
 .woocommerce-cart .cart_totals .wc-proceed-to-checkout { margin-bottom: 0; }
 
@@ -4320,7 +4330,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-checkout #payment .place-order { padding: 0; }
 
-.woocommerce-checkout #payment .place-order .button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; text-transform: uppercase; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); letter-spacing: 1.5px; }
+.woocommerce-checkout #payment .place-order .button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; text-transform: uppercase; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); letter-spacing: 1.5px; }
 
 .woocommerce-checkout-review-order { text-align: left; }
 
@@ -4374,7 +4384,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-checkout .input-text { padding: 0.8rem; border-radius: 4px; border: 1px solid #e4e4e4; background-color: #fff; box-shadow: none !important; }
 
-.woocommerce-checkout .button { width: 100%; padding: 0.8rem 0; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; text-transform: uppercase; text-shadow: 1px 0 2px rgba(0, 0, 0, 0.4); letter-spacing: 1.5px; font-size: 16px; }
+.woocommerce-checkout .button { width: 100%; padding: 0.8rem 0; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; text-transform: uppercase; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); letter-spacing: 1.5px; font-size: 16px; }
 
 .woocommerce-form { padding: 0.2rem 0.8rem 1rem; border-bottom: 1px solid #e4e4e4; margin-bottom: 2rem; }
 

@@ -18,7 +18,7 @@
       transition: background-position 0.2s ease-in-out;
       background-size: cover;
       background-position: center;
-      padding: 0 $unit-6;
+      padding: 0 $unit-2;
 
       // padding-top: 80px;
 
@@ -53,12 +53,36 @@
       }
     }
 
-    .hero-header {
-      @include knockout(75px, 400);
-    }
+    .hero {
+      &-header {
+        @include knockout($unit-18, 400);
+        text-shadow: $text-shadow;
+      }
 
-    .hero-image {
-      margin: 0 0 0 auto;
+      &-copy {
+        font-size: $unit-5;
+        letter-spacing: 0.5px;
+        text-shadow: $text-shadow;
+      }
+
+      &-sub-header {
+        font-size: $unit-5;
+        text-shadow: $text-shadow;
+      }
+
+      &-image {
+        margin: 0 0 0 auto;
+      }
+
+      &-action-buttons {
+        .btn {
+          &.btn-lg {
+            display: block;
+            padding: $unit-6 $unit-4;
+            letter-spacing: 0.4px;
+          }
+        }
+      }
     }
   }
 }
