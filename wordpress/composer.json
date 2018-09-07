@@ -72,6 +72,7 @@
         "wpackagist-plugin/subscribe-and-connect":"*",
         "wpackagist-plugin/svg-support":"*",
         "wpackagist-plugin/timber-library":"*",
+        "wpackagist-plugin/tawkto-live-chat":"*",
         "wpackagist-plugin/woocommerce":"*",
         "wpackagist-plugin/woocommerce-auto-added-coupons":"*",
         "wpackagist-plugin/woocommerce-google-analytics-integration":"*",

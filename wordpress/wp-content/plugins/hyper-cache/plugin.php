@@ -2,11 +2,11 @@
 
 /*
   Plugin Name: Hyper Cache
-  Plugin URI: http://www.satollo.net/plugins/hyper-cache
+  Plugin URI: https://www.satollo.net/plugins/hyper-cache
   Description: A easy to configure and efficient cache to increase the speed of your blog.
-  Version: 3.3.6
+  Version: 3.3.7
   Author: Stefano Lissa
-  Author URI: http://www.satollo.net
+  Author URI: https://www.satollo.net
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
   Contributors: satollo
  */

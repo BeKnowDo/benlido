@@ -2,8 +2,8 @@
 Tags: cache,performance,staticizer,apache,htaccess,tuning,speed,bandwidth,optimization,tidy,gzip,compression,server load,boost
 Requires at least: 3.9
 Tested up to: 4.9.6
-Stable tag: 3.3.6
-Donate link: http://www.satollo.net/donations
+Stable tag: 3.3.7
+Donate link: https://www.satollo.net/donations
 Contributors: satollo
 
 Hyper Cache is a performant and easy to configure cache system for WordPress.
@@ -25,8 +25,7 @@ Short list of features:
 * Able to serve expired pages to bots to increase the perceived blog speed by bots
 * Manages compression even on the fly for non cached pages
 * Lots of configurable bypasses: matching cookies, matching urls, user agents, ...
-* Comments aware: is able to serve cached pages even to visitors who commented the blog (perfect for
-blog with great readers paritipation)
+* Comments aware: is able to serve cached pages even to visitors who commented the blog (perfect for blog with great readers paritipation)
 * Cache folder can be moved outside your blog space to exclude it from backups
 * Controls over cache cleaning on blog events (post edited, comments, ...)
 * Autoclean to controls the cache used disk space
@@ -35,17 +34,16 @@ blog with great readers paritipation)
 * Response header signature to check the working status
 * bbPress specific integration
 
-More can be read on the [Hyper Cache official page](http://www.satollo.net/plugins/hyper-cache).
+More can be read on the [Hyper Cache official page](https://www.satollo.net/plugins/hyper-cache).
 
 You can further optimize the blog installing [Autoptimize](https://wordpress.org/plugins/autoptimize/)
 which cleans up the HTML, minifies and concatenates CSS and JavaScript.
 
 Other plugins by Stefano Lissa:
 
-* [Newsletter](http://www.thenewsletterplugin.com)
-* [Header and Footer](http://www.satollo.net/plugins/header-footer)
-* [Include Me](http://www.satollo.net/plugins/include-me)
-* [Comment Plus](http://www.satollo.net/plugins/comment-plus)
+* [Newsletter](https://www.thenewsletterplugin.com)
+* [Header and Footer](https://www.satollo.net/plugins/header-footer)
+* [Include Me](https://www.satollo.net/plugins/include-me)
 
 == Installation ==
 
@@ -55,8 +53,8 @@ Other plugins by Stefano Lissa:
 
 == Frequently Asked Questions ==
 
-See the [Hyper Cache official page](http://www.satollo.net/plugins/hyper-cache) or
-the [Hyper Cache official forum](http://www.satollo.net/forums/forum/hyper-cache-plugin).
+See the [Hyper Cache official page](https://www.satollo.net/plugins/hyper-cache) or
+the [Hyper Cache official forum](https://www.satollo.net/forums/forum/hyper-cache-plugin).
 
 == Screenshots ==
 
@@ -67,6 +65,10 @@ the [Hyper Cache official forum](http://www.satollo.net/forums/forum/hyper-cache
 3. Mobile devices configuration
 
 == Changelog ==
+
+= 3.3.7 =
+
+* Fixed http link on options panel
 
 = 3.3.6 =
 
@@ -231,9 +233,4 @@ the [Hyper Cache official forum](http://www.satollo.net/forums/forum/hyper-cache
 
 * Totally rewritten to include the Lite Cache features
 
-= To Do =
-
-* Register an action to clean the cache by other plugin
-* Separated cache for https
-* Invalidation of categories paths when /%category%/%postname% is used
 

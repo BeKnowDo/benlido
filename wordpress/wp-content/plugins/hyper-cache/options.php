@@ -260,10 +260,10 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
         <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><img style="width: auto; height: auto;" src="<?php echo plugins_url('hyper-cache')?>/images/donation.png"></a>
         
         <p>
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><strong>Help children</strong> and support this plugin</a>. <a href="http://www.satollo.net/donations" target="_blank">Read more</a>.
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><strong>Help children</strong> and support this plugin</a>. <a href="https://www.satollo.net/donations" target="_blank">Read more</a>.
         </p>
     </div>
-    
+    <!--
     <div class="hc-box">
         <h3>Optimize your images with ShortPixel</h3>
         
@@ -273,6 +273,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
             <a href="https://www.satollo.net/affiliate/shortpixel" target="_blank">Don't lose the cache benefits serving oversized pictures (affiliate).</a>
         </p>
     </div>
+    -->
     
     <div class="hc-box">
         <h3>Is your site without a newsletter?</h3>
@@ -296,17 +297,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
    
     
     <div style="clear: both"></div>
-<!--
-    <p>
-        Check out my other useful plugins:<br>
-        <a href="http://www.satollo.net/plugins/comment-plus?utm_source=hyper-cache&utm_medium=banner&utm_campaign=comment-plus" target="_blank"><img src="http://www.satollo.net/images/plugins/comment-plus-icon.png"></a>
-        <a href="http://www.satollo.net/plugins/header-footer?utm_source=hyper-cache&utm_medium=banner&utm_campaign=header-footer" target="_blank"><img src="http://www.satollo.net/images/plugins/header-footer-icon.png"></a>
-        <a href="http://www.satollo.net/plugins/include-me?utm_source=hyper-cache&utm_medium=banner&utm_campaign=include-me" target="_blank"><img src="http://www.satollo.net/images/plugins/include-me-icon.png"></a>
-        <a href="http://www.thenewsletterplugin.com/?utm_source=hyper-cache&utm_medium=banner&utm_campaign=newsletter" target="_blank"><img src="http://www.satollo.net/images/plugins/newsletter-icon.png"></a>
-        <a href="http://www.satollo.net/plugins/mailer?utm_source=hyper-cache&utm_medium=banner&utm_campaign=mailer" target="_blank"><img src="http://www.satollo.net/images/plugins/mailer-icon.png"></a>
-        <a href="http://www.satollo.net/plugins/php-text-widget?utm_source=hyper-cache&utm_medium=banner&utm_campaign=php-text-widget" target="_blank"><img src="http://www.satollo.net/images/plugins/php-text-widget-icon.png"></a>
-    </p>
--->
+
 
     <?php $controls->show(); ?>
 
@@ -316,11 +307,11 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
 
 
         <p>
-            Please, refer to the <a href="http://www.satollo.net/plugins/hyper-cache" target="_blank">official page</a>
-            and the <a href="http://www.satollo.net/forums/forum/hyper-cache" target="_blank">official forum</a> for support.
+            Please, refer to the <a href="https://www.satollo.net/plugins/hyper-cache" target="_blank">official page</a>
+            and the <a href="https://www.satollo.net/forums/forum/hyper-cache" target="_blank">official forum</a> for support.
 
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><img style="vertical-align: bottom" src="http://www.satollo.net/images/donate.png"></a>
-            Even <b>2$</b> helps! (<a href="http://www.satollo.net/donations" target="_blank">read more</a>)
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><img style="vertical-align: bottom" src="https://www.satollo.net/images/donate.png"></a>
+            Even <b>2$</b> helps! (<a href="https://www.satollo.net/donations" target="_blank">read more</a>)
         </p>
 
         <p>
@@ -360,8 +351,8 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                     </tr>
                 </table>
                 <p>
-                    I'm actually testing it with <a href="http://www.satollo.net/affiliate/maxcdn" target="_blank">MaxCDN</a> and
-                    <a href="http://www.satollo.net/affiliate/keycdn" target="_blank">KeyCDN</a>.
+                    I'm actually testing it with <a href="https://www.satollo.net/affiliate/maxcdn" target="_blank">MaxCDN</a> and
+                    <a href="https://www.satollo.net/affiliate/keycdn" target="_blank">KeyCDN</a>.
                 </p>
             </div>
 
@@ -479,18 +470,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-                    <!--
-                    <tr>
-                        <th><?php _e('Remove HTTP/HTTPS', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->checkbox('remove_protocol', __('Enable', 'hyper-cache')); ?>
-                            <p class="description">
-                               If your site uses both HTTP and HTTPS it's better to have page links as
-                               <code>://www.domain.com/...</code> without the protocol.
-                            </p>
-                        </td>
-                    </tr>
-                    -->
+                   
 
                     <tr valign="top">
                         <th><?php _e('HTTPS', 'hyper-cache'); ?></th>

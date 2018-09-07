@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9eec44c84afafebd35360044e9bb75bb",
+    "content-hash": "28e9ec5549cdf837defbf701d26a2173",
     "packages": [
         {
             "name": "composer/installers",
@@ -527,15 +527,15 @@
         },
         {
             "name": "wpackagist-plugin/hide-admin-bar",
-            "version": "0.3.9.3",
+            "version": "0.3.9.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/hide-admin-bar/",
-                "reference": "trunk"
+                "reference": "tags/0.3.9.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/hide-admin-bar.zip?timestamp=1533307453",
+                "url": "https://downloads.wordpress.org/plugin/hide-admin-bar.0.3.9.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -547,15 +547,15 @@
         },
         {
             "name": "wpackagist-plugin/hyper-cache",
-            "version": "3.3.6",
+            "version": "3.3.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/hyper-cache/",
-                "reference": "tags/3.3.6"
+                "reference": "tags/3.3.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.3.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/hyper-cache.3.3.7.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -587,15 +587,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "6.4.2",
+            "version": "6.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/6.4.2"
+                "reference": "tags/6.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.6.4.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.6.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -766,6 +766,26 @@
             "homepage": "https://wordpress.org/plugins/svg-support/"
         },
         {
+            "name": "wpackagist-plugin/tawkto-live-chat",
+            "version": "0.3.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/tawkto-live-chat/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/tawkto-live-chat.zip?timestamp=1511972140",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/tawkto-live-chat/"
+        },
+        {
             "name": "wpackagist-plugin/timber-library",
             "version": "1.7.1",
             "source": {
@@ -787,15 +807,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce",
-            "version": "3.4.4",
+            "version": "3.4.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.4.4"
+                "reference": "tags/3.4.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -807,15 +827,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce-auto-added-coupons",
-            "version": "2.6.4",
+            "version": "3.0.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce-auto-added-coupons/",
-                "reference": "tags/2.6.4"
+                "reference": "tags/3.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.2.6.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.3.0.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -867,15 +887,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "8.0",
+            "version": "8.1.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/8.0"
+                "reference": "tags/8.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.1.2.zip",
                 "reference": null,
                 "shasum": null
             },

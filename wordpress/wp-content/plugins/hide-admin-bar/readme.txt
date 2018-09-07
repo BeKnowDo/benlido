@@ -10,7 +10,7 @@ Hide the Admin Bar in WordPress 3.1+
 
 == Description ==
 
-Hides the Admin Bar in WordPress 3.1+, credits to <a href="http://yoast.com/disable-wp-admin-bar/">Yoast</a>, and <a href="http://developersmind.com/2011/02/23/disable-admin-bar-and-hide-preferences/">Pete Mall</a>. If you love this plugin, <A href="https://paypal.me/sdenike">buy me a cup of coffee</a>.
+Hides the Admin Bar in WordPress 3.1+, credits to <a href="http://yoast.com/disable-wp-admin-bar/">Yoast</a>, and <a href="http://developersmind.com/2011/02/23/disable-admin-bar-and-hide-preferences/">Pete Mall</a>. If you love this plugin, <A href="https://paypal.me/sdenike">buy me a cup of coffee</a>. [](http://coderisk.com/wp/plugin/hide-admin-bar/RIPS-YZAPQKY5XK)
 
 == Installation ==
 
@@ -19,6 +19,9 @@ Hides the Admin Bar in WordPress 3.1+, credits to <a href="http://yoast.com/disa
 3. Enjoy!, there are no settings for this.
 
 == Changelog ==
+
+= 0.3.9.4 - Aug 24th, 2018 =
+* Updated for CodeRisk 
 
 = 0.3.9.3 - Aug 3rd, 2018 =
 * Confirmed working with 4.9.8
