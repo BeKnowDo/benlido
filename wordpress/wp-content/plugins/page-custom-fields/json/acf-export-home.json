@@ -444,6 +444,41 @@
                         "toolbar": "full",
                         "media_upload": 0,
                         "delay": 0
+                    },
+                    {
+                        "key": "field_5b92c05b80598",
+                        "label": "Button Copy",
+                        "name": "button_copy",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b92c06280599",
+                        "label": "Button URL",
+                        "name": "button_url",
+                        "type": "url",
+                        "instructions": "This is the URL for the button",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
                     }
                 ]
             },
@@ -551,6 +586,41 @@
                         "toolbar": "full",
                         "media_upload": 0,
                         "delay": 0
+                    },
+                    {
+                        "key": "field_5b92c0a08059a",
+                        "label": "Button Copy",
+                        "name": "button_copy",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b92c0a88059b",
+                        "label": "Button URL",
+                        "name": "button_url",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
                     }
                 ]
             },
