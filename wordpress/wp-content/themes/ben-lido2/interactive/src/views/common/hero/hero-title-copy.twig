@@ -1,45 +1,33 @@
 {% for item in heroData %}
 
   {% if item.backgroundImage %}
-    <div
-      class="hero-title-copy text-center {% if item.overrideBackgroundClass %} {{item.overrideBackgroundClass}} {% else %} bg-gray {% endif %} {% if item.quote %} hero-title-copy-quote {% endif %}"
-      style="background-image: url({{item.backgroundImage}})">
+    <div class="hero-title-copy text-center {% if item.overrideBackgroundClass %} {{item.overrideBackgroundClass}} {% else %} bg-gray {% endif %} {% if item.quote %} hero-title-copy-quote {% endif %}" style="background-image: url({{item.backgroundImage}})">
     {% else %}
-      <div
-        class="hero-title-copy text-center {% if item.overrideBackgroundClass %} {{item.overrideBackgroundClass}} {% else %} bg-gray {% endif %} {% if item.quote %} hero-title-copy-quote {% endif %}">
+      <div class="hero-title-copy text-center {% if item.overrideBackgroundClass %} {{item.overrideBackgroundClass}} {% else %} bg-gray {% endif %} {% if item.quote %} hero-title-copy-quote {% endif %}">
       {% endif %}
 
-      <div
-        class="columns">
-        <div
-          class="column col-xs-12 col-sm-12 col-10 col-mx-auto">
-
+      <div class="columns">
+        <div class="column col-xs-12 col-sm-12 col-10 col-mx-auto">
+          {{ item.header }}
           {% if item.preHeaderText %}
-            <p
-              class="hero-sub-header">{{item.preHeaderText}}</p>
+            <p class="hero-sub-header">{{item.preHeaderText}}</p>
           {% endif %}
 
           {% if item.header %}
-            <h1
-              class="hero-title-copy-header">{{item.header}}</h1>
+            <h1 class="hero-title-copy-header">{{item.header}}</h1>
           {% endif %}
 
           {% if item.copy %}
-            <p
-              class="hero-title-copy-copy">{{item.copy}}</p>
+            <p class="hero-title-copy-copy">{{item.copy}}</p>
           {% endif %}
 
           {% if item.inlineImage %}
-            <span
-              id="bl-animated-gif"
-              class="bl-animated-gif"/>
+            <span id="bl-animated-gif" class="bl-animated-gif"/>
           {% endif %}
 
           {% if item.quote %}
-            <p
-              class="hero-title-quote">{{item.quote}}</p>
-            <p
-              class="hero-title-quote">{{item.author}}</p>
+            <p class="hero-title-quote">{{item.quote}}</p>
+            <p class="hero-title-quote">{{item.author}}</p>
           {% endif %}
 
         </div>
