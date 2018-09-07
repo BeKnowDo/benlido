@@ -21,7 +21,7 @@
 
         <div class="columns">
 
-          <div class="column col-sm-12 col-md-10 col-xl-8 col-8 col-mx-auto">
+          <div class="column col-sm-12 col-12 col-mx-auto">
 
             <p class="hero-sub-header">{{hero.preheader}}</p>
             <h1 class="hero-header">{{hero.header}}</h1>
@@ -33,17 +33,13 @@
                   <a href="{{button.url}}" class="btn btn-primary btn-lg btn-block {{button.classes}}" {{ button.target ?
               'rel="noopener noferrer" target="_blank"' }}>{{button.title}}</a>
                 </div>
-
-                {# {% if loop.index == 1 %}
-          <div class="column col-sm-12 col-1">
-            <span class="btn btn-lg btn-separator">
-              OR
-            </span>
-          </div>
-          {% endif %} #}
               {% endfor %}
             </div>
 
+          </div>
+
+          <div class="column col-12">
+            <img class="bl-diamond" src="/wp-content/uploads/2018/09/bendiamond.svg"/>
           </div>
 
           {% if hero.image %}
@@ -59,5 +55,6 @@
       </div>
 
     </div>
+
   {% endfor %}
 {% endif %}

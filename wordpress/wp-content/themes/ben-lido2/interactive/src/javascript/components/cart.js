@@ -53,6 +53,10 @@ export class Cart {
   }
 
   init() {
+    if (this.cart) {
+      this.openCart();
+    }
+
     if (this.counter) {
       this.getCurrentItems();
       this.listenForUpdate();
@@ -82,10 +86,6 @@ export class Cart {
       this.removeBagFromCart();
     }
 
-    if (this.cart) {
-      this.openCart();
-    }
-
     if (this.addKitToCartButtons) {
       this.addKitToCart();
     }
@@ -105,14 +105,12 @@ export class Cart {
 
   clearCart() {
     const button = this.clearCartButton;
-    console.log(button);
 
     button.addEventListener("click", e => {
       e.preventDefault();
 
       swal({
         title: "Clear all items from your cart?",
-        icon: "warning",
         buttons: true,
         dangerMode: true
       }).then(willDelete => {
@@ -222,6 +220,7 @@ export class Cart {
       });
     }
   }
+
   getCurrentItems() {
     fetch(endpoints.getCartItems, {
       credentials: "include",
@@ -232,10 +231,11 @@ export class Cart {
       })
       .then(response => {
         this.updateCount(response);
-        this.miniCart(response);
+        // this.miniCart(response);
         this.updateTileQuantity(response, null);
       });
   }
+
   listenForUpdate() {
     // NOTE: since the cart page product remove/update is triggered via jQuery,
     //       we cannot use addEventListener here to detect the custom event and update the cart count.
@@ -267,6 +267,7 @@ export class Cart {
                   data-sku="${item.sku}"
                   data-name="${item.name}"
                   data-category="${item.category}"
+                  aria-label="Edit cart item"
                 >
                   <i class="fal fa-edit"></i>
                 </a>

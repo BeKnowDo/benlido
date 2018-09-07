@@ -1,21 +1,52 @@
-{% extends "../layout/document.twig" %} {% block content %} {% if not homePageHero %} {% set homePageHero = [ { triangleBackground:
-true, header: 'Wander Well', copy: "Your favorite brands, in the right sizes, at the best prices—delivered to your door,
-ready to travel. You're good to go with Ben Lido.", image: '/images/home_hero-2.jpg', altText: 'Hero image alt text', hero_call_to_action_buttons:
-[{"title":"Build your own kit","url":"/build-a-kit","classes":"","target":false},{"title":"Start with a prebuilt kit","url":"/pick-a-kit","classes":"","target":false}]
-} ]%} {% endif %}
+{% extends "../layout/document.twig" %}
+{% block content %}
+  {% if not homePageHero %}
+    {% set homePageHero = [
+      {
+        triangleBackground: true,
+        header: 'Wander Well',
+        copy: "Your favorite brands, in the right sizes, at the best prices—delivered to your door, ready to travel. You're good to go with Ben Lido.",
+        image: '/images/home_hero-2.jpg',
+        altText: 'Hero image alt text',
+        hero_call_to_action_buttons: [
+        {
+          "title":"Build your own kit",
+          "url":"/build-a-kit",
+          "classes":"",
+          "target":false
+        },
+        {
+          "title":"Start with a prebuilt kit",
+          "url":"/pick-a-kit",
+          "classes":"",
+          "target":false
+        }
+      ]
+} ]%}
+  {% endif %}
 
-<div class="max-width-xl">
-  {% include 'common/hero/home-hero.twig' %}
-</div>
-
-{% if not homePageHeroes %} {% set homePageHeroes = [ { header: 'How it Works', copy: "Premium, personalized bags packed
-with the products you love, delivered anywhere, with easy subscription reorders.", image: '/images/hero-1.png' }, { header:
-'The Brands You Love', copy: "Unlike the aisle at your local retailer, if you want it, we'll have it - and we'll deliver
-it - right to your doorstep.", image: '/images/hero-2.png' } ] %} {% endif %}
-<div class="bg-grey">
   <div class="max-width-xl">
-    {% include 'common/hero/hero.twig' with { homePageHeroes: homePageHeroes }%}
+    {% include 'common/hero/home-hero.twig' %}
   </div>
-</div>
+
+  {% if not homePageHeroes %}
+    {% set homePageHeroes = [
+      {
+        header: 'How it Works',
+        copy: "Premium, personalized bags packed with the products you love, delivered anywhere, with easy subscription reorders.",
+        image: '/images/hero-1.png'
+      },
+      {
+        header: 'The Brands You Love',
+        copy: "Unlike the aisle at your local retailer, if you want it, we'll have it - and we'll deliver it - right to your doorstep.",
+        image: '/images/hero-2.png'
+      }
+    ]%}
+  {% endif %}
+  <div class="bg-grey">
+    <div class="max-width-xl">
+      {% include 'common/hero/hero.twig' with { homePageHeroes: homePageHeroes }%}
+    </div>
+  </div>
 
 {% endblock %}

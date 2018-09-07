@@ -9,6 +9,11 @@
       color: $white;
     }
 
+    .bl-diamond {
+      max-width: 230px;
+      padding: $unit-20 0 0;
+    }
+
     &[style*="background-image"] {
       // background-size: contain;
       // background-position-x: right;
@@ -17,13 +22,13 @@
       position: relative;
       transition: background-position 0.2s ease-in-out;
       background-size: cover;
-      background-position: center;
-      padding: 0 $unit-2;
+      background-position: center right;
+      padding: $unit-30 $unit-2;
 
       // padding-top: 80px;
 
       img {
-        visibility: hidden;
+        // visibility: hidden;
       }
 
       .hero-image-container {
@@ -31,10 +36,10 @@
       }
 
       .max-width-xl {
-        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
       }
 
       &:after {
@@ -44,7 +49,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(3, 3, 3, 0.5);
+        background-color: rgba(3, 3, 3, 0.4);
         z-index: auto;
       }
 
@@ -55,7 +60,7 @@
 
     .hero {
       &-header {
-        @include knockout($unit-18, 400);
+        @include knockout($unit-16, 400);
         text-shadow: $text-shadow;
       }
 
@@ -75,6 +80,7 @@
       }
 
       &-action-buttons {
+        padding-top: 22px;
         .btn {
           &.btn-lg {
             display: block;
@@ -82,6 +88,40 @@
             letter-spacing: 0.4px;
           }
         }
+      }
+    }
+  }
+  &-background-alternate {
+    padding: $unit-20 0;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(3, 3, 3, 0.4);
+      z-index: auto;
+    }
+
+    .column {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bl-diamond {
+      max-width: 25%;
+    }
+
+    .hero {
+      &-image-container {
+        position: absolute;
+        z-index: auto;
+        top: 0;
+        left: 0;
+        padding: 0;
       }
     }
   }

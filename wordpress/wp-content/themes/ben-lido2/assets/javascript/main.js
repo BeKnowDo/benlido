@@ -40745,6 +40745,10 @@ var Cart = exports.Cart = function () {
   _createClass(Cart, [{
     key: "init",
     value: function init() {
+      if (this.cart) {
+        this.openCart();
+      }
+
       if (this.counter) {
         this.getCurrentItems();
         this.listenForUpdate();
@@ -40774,10 +40778,6 @@ var Cart = exports.Cart = function () {
         this.removeBagFromCart();
       }
 
-      if (this.cart) {
-        this.openCart();
-      }
-
       if (this.addKitToCartButtons) {
         this.addKitToCart();
       }
@@ -40798,14 +40798,12 @@ var Cart = exports.Cart = function () {
     key: "clearCart",
     value: function clearCart() {
       var button = this.clearCartButton;
-      console.log(button);
 
       button.addEventListener("click", function (e) {
         e.preventDefault();
 
         (0, _sweetalert2.default)({
           title: "Clear all items from your cart?",
-          icon: "warning",
           buttons: true,
           dangerMode: true
         }).then(function (willDelete) {
@@ -40929,7 +40927,7 @@ var Cart = exports.Cart = function () {
         return response.json();
       }).then(function (response) {
         _this4.updateCount(response);
-        _this4.miniCart(response);
+        // this.miniCart(response);
         _this4.updateTileQuantity(response, null);
       });
     }
@@ -40945,7 +40943,7 @@ var Cart = exports.Cart = function () {
     value: function miniCart(items) {
       if (items.length > 0) {
         this.listContainer.innerHTML = "\n        <ul class=\"navbar-bag-list-container\">\n        " + items.map(function (item) {
-          return "\n            <li class=\"navbar-bag-item columns col-gapless\">\n              <div class=\"column col-2 navbar-product-thumbnail\">\n                <img src=\"" + item.image + "\" alt=\"Product image of: " + item.name + "\" />\n              </div>\n              <p class=\"column col-5 navbar-product-name\">" + item.count + "x &nbsp; " + item.name + "</p>\n\n              <div class=\"column col-5 text-right\">\n\n                <a\n                  href=\"/cart\"\n                  class=\"navbar-edit-item\"\n                  data-product_id=\"" + item.id + "\"\n                  data-variation_id=\"" + item.variation_id + "\"\n                  data-sku=\"" + item.sku + "\"\n                  data-name=\"" + item.name + "\"\n                  data-category=\"" + item.category + "\"\n                >\n                  <i class=\"fal fa-edit\"></i>\n                </a>\n\n                <span class=\"navbar-remove-item\" data-product_id=\"" + item.id + "\" data-variation_id=\"" + item.variation_id + "\">\n                  <i class=\"fal fa-times\"></i>\n                </span>\n\n              </div>\n\n            </li>";
+          return "\n            <li class=\"navbar-bag-item columns col-gapless\">\n              <div class=\"column col-2 navbar-product-thumbnail\">\n                <img src=\"" + item.image + "\" alt=\"Product image of: " + item.name + "\" />\n              </div>\n              <p class=\"column col-5 navbar-product-name\">" + item.count + "x &nbsp; " + item.name + "</p>\n\n              <div class=\"column col-5 text-right\">\n\n                <a\n                  href=\"/cart\"\n                  class=\"navbar-edit-item\"\n                  data-product_id=\"" + item.id + "\"\n                  data-variation_id=\"" + item.variation_id + "\"\n                  data-sku=\"" + item.sku + "\"\n                  data-name=\"" + item.name + "\"\n                  data-category=\"" + item.category + "\"\n                  aria-label=\"Edit cart item\"\n                >\n                  <i class=\"fal fa-edit\"></i>\n                </a>\n\n                <span class=\"navbar-remove-item\" data-product_id=\"" + item.id + "\" data-variation_id=\"" + item.variation_id + "\">\n                  <i class=\"fal fa-times\"></i>\n                </span>\n\n              </div>\n\n            </li>";
         }).join("") + "\n        </ul>\n      ";
 
         if (this.listContainer) {
