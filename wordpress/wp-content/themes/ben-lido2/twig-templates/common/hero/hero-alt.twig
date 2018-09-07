@@ -1,0 +1,28 @@
+{% for hero in homePageHeroes %}
+
+  <div class="columns">
+
+    {% if hero.image is not empty %}
+      <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-ml-auto">
+        <div class="hero-image-container">
+          <img class="hero-image" src="{{hero.image}}" alt="{{hero.header}}"/>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
+      <div class="hero">
+
+        {% if hero.header is not empty %}
+          <h1 class="hero-header">{{hero.header}}</h1>
+        {% endif %}
+
+        {% if hero.header is not empty %}
+          <p class="hero-copy">{{hero.copy}}</p>
+        {% endif %}
+
+      </div>
+    </div>
+
+  </div>
+{% endfor %}

@@ -1,24 +1,24 @@
-@media (max-width: $size-md) {
-  .bl-home-page {
-    .hero-row {
-      .column {
-        &:last-child {
-          border-top: $grey-border;
-        }
-      }
-      h1 {
-        font-size: 45px;
-      }
-    }
-  }
-}
+// @media (max-width: $size-md) {
+//   .bl-home-page {
+//     .hero-row {
+//       .column {
+//         &:last-child {
+//           border-top: $grey-border;
+//         }
+//       }
+//       h1 {
+//         font-size: 45px;
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: $size-sm) {
-  .bl-home-page {
-    .hero-row {
-      h1 {
-        // font-size: 75px;
-      }
-    }
-  }
-}
+// @media (max-width: $size-sm) {
+//   .bl-home-page {
+//     .hero-row {
+//       h1 {
+//         // font-size: 75px;
+//       }
+//     }
+//   }
+// }

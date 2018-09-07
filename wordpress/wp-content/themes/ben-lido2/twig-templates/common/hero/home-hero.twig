@@ -14,15 +14,12 @@
       {% set backgroundStatic = ''%}
     {% endif %}
 
-    <div class="hero hero-home {{ backgroundStatic }} {{ backgroundClassname }}" {% if hero.image %} style="background-image: url({{hero.image}})" {%
-  endif %}>
+    <div class="hero hero-home {{ backgroundStatic }} {{ backgroundClassname }}" {% if hero.image %} style="background-image: url({{hero.image}})" {% endif %}>
 
       <div class="max-width-xl">
-
         <div class="columns">
 
-          <div class="column col-sm-12 col-12 col-mx-auto">
-
+          <div class="column col-sm-12 col-md-10 col-8 col-mx-auto">
             <p class="hero-sub-header">{{hero.preheader}}</p>
             <h1 class="hero-header">{{hero.header}}</h1>
             <p class="hero-copy">{{hero.copy}}</p>
@@ -35,7 +32,6 @@
                 </div>
               {% endfor %}
             </div>
-
           </div>
 
           <div class="column col-12">

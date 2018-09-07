@@ -27,9 +27,9 @@ get_header(); ?>
             <?php endif;?>
 
             <?php if ($show_feature_cards == true):?>
-                <div class="bg-grey hero-row">
+                <div class="hero-row">
                     <div class="max-width-xl">
-                        <?php get_template_part( 'template-parts/common/hero/hero'); ?>
+                        <?php get_template_part( 'template-parts/common/hero/hero-alt'); ?>
                     </div>
                 </div>
             <?php endif;?>
