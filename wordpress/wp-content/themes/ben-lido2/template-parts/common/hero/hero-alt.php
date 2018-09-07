@@ -35,6 +35,14 @@ foreach($left_feature_cards as $item){
       $newArray['copy'] = $item['copy'];
   }
 
+  if (isset($item['button_copy'])) {
+      $newArray['button_copy'] = $item['button_copy'];
+  }
+
+  if (isset($item['button_url'])) {
+      $newArray['button_copy'] = $item['button_copy'];
+  }
+
   array_push($homePageHeroes, $newArray);
 }
 
@@ -51,6 +59,14 @@ foreach($right_feature_cards as $item){
 
   if (isset($item['copy'])) {
       $newArray['copy'] = $item['copy'];
+  }
+
+  if (isset($item['button_copy'])) {
+      $newArray['button_copy'] = $item['button_copy'];
+  }
+
+  if (isset($item['button_url'])) {
+      $newArray['button_url'] = $item['button_url'];
   }
 
   array_push($homePageHeroes, $newArray);

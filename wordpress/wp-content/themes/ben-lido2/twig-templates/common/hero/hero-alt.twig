@@ -21,6 +21,15 @@
           <p class="hero-copy">{{hero.copy}}</p>
         {% endif %}
 
+        {% if hero.button_copy is not empty %}
+          <div class="hero-action-buttons columns">
+            <div class="column col-xs-6 col-sm-6 col-mx-auto col-sm-12 col-6">
+              <a href="{{ hero.button_url }}" class="btn btn-primary btn-lg btn-block ">{{ hero.button_copy }}</a>
+            </div>
+          </div>
+
+        {% endif %}
+
       </div>
     </div>
 

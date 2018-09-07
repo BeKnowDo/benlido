@@ -130,15 +130,18 @@
         .columns {
           justify-content: center;
           align-items: center;
+        }
+        .max-width-xl {
+          > .columns {
+            &:nth-child(odd) {
+              background-color: $light-grey;
+            }
 
-          &:nth-child(odd) {
-            background-color: $light-grey;
-          }
-
-          &:nth-child(2) {
-            .column {
-              &:first-child {
-                order: 2;
+            &:nth-child(2) {
+              .column {
+                &:first-child {
+                  order: 2;
+                }
               }
             }
           }

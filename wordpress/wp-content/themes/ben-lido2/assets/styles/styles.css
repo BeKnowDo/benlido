@@ -3461,9 +3461,9 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .bl-home-page .hero-row .columns { justify-content: center; align-items: center; }
 
-.bl-home-page .hero-row .columns:nth-child(odd) { background-color: #e4e4e4; }
+.bl-home-page .hero-row .max-width-xl > .columns:nth-child(odd) { background-color: #e4e4e4; }
 
-.bl-home-page .hero-row .columns:nth-child(2) .column:first-child { order: 2; }
+.bl-home-page .hero-row .max-width-xl > .columns:nth-child(2) .column:first-child { order: 2; }
 
 .bl-home-page .hero-row .hero-header { position: relative; }
 
