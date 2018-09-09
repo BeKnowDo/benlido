@@ -317,6 +317,30 @@
                 ]
             },
             {
+                "key": "field_5b95245aed2d3",
+                "label": "Hero Image Companion",
+                "name": "hero_image_companion",
+                "type": "image",
+                "instructions": "Upload or select an image that will render below this hero's CTA buttons",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
                 "key": "field_5a8b5011c14fe",
                 "label": "Feature Cards Section",
                 "name": "",

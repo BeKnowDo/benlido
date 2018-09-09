@@ -324,6 +324,30 @@ if( function_exists('acf_add_local_field_group') ):
                 ),
             ),
             array(
+                'key' => 'field_5b95245aed2d3',
+                'label' => 'Hero Image Companion',
+                'name' => 'hero_image_companion',
+                'type' => 'image',
+                'instructions' => 'Upload or select an image that will render below this hero\'s CTA buttons',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
                 'key' => 'field_5a8b5011c14fe',
                 'label' => 'Feature Cards Section',
                 'name' => '',
@@ -1031,5 +1055,5 @@ if( function_exists('acf_add_local_field_group') ):
         'active' => 1,
         'description' => '',
     ));
-    
+
     endif;
