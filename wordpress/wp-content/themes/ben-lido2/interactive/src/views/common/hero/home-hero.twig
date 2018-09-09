@@ -34,9 +34,11 @@
             </div>
           </div>
 
-          <div class="column col-12">
-            <img class="bl-diamond" src="/wp-content/uploads/2018/09/bendiamond.svg"/>
-          </div>
+          {% if hero.hero_image_companion %}
+            <div class="column col-12">
+              <img class="bl-diamond" src="{{hero.hero_image_companion}}" alt="companion image"/>
+            </div>
+          {% endif %}
 
           {% if hero.image %}
             <div class="column col-md-12 col-xl-5 col-5 col-ml-auto d-none">
