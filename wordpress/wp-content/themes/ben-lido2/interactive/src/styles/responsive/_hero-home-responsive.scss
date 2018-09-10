@@ -140,6 +140,14 @@
         &-image {
           margin: 0 0 0 auto;
         }
+
+        &-action-buttons {
+          .btn {
+            &-lg {
+              padding: $unit-5 $unit-4;
+            }
+          }
+        }
       }
     }
   }

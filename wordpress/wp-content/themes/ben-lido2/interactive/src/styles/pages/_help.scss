@@ -1,5 +1,4 @@
 .bl-help {
-
   &-container {
     padding: $unit-16 $unit-2;
   }
@@ -19,11 +18,23 @@
         }
       }
     }
+
+    &-action-buttons {
+      max-width: none;
+      .column {
+        width: 100%;
+        &:last-child {
+          .btn {
+            margin-top: $unit-10;
+          }
+        }
+      }
+    }
+
     &-image {
       display: none;
     }
   }
-
 }
 
 .bl-hours {

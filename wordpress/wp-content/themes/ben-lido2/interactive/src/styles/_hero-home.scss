@@ -80,7 +80,7 @@
         .btn {
           &.btn-lg {
             display: block;
-            padding: $unit-6 $unit-4;
+            max-width: 200px;
             letter-spacing: 0.4px;
             border-color: $white;
           }
@@ -135,7 +135,7 @@
         .max-width-xl {
           > .columns {
             &:nth-child(odd) {
-              background-color: $light-grey;
+              background-color: $silver-white;
             }
 
             &:nth-child(2) {
