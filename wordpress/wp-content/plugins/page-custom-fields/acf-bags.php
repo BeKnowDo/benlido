@@ -549,7 +549,7 @@ If you chose a bag as the product, use the Color Variation Overrides section to 
 					'sub_fields' => array(
 						array(
 							'key' => 'field_5b96d6d9321ef',
-							'label' => 'Header',
+							'label' => 'Offer Header',
 							'name' => 'header',
 							'type' => 'text',
 							'instructions' => 'This is the hover state\'s header, e.g.: "SEE BAG DETAILS"',
@@ -568,11 +568,30 @@ If you chose a bag as the product, use the Color Variation Overrides section to 
 						),
 						array(
 							'key' => 'field_5b96d737321f0',
-							'label' => 'Copy',
+							'label' => 'Offer Copy',
 							'name' => 'copy',
 							'type' => 'text',
 							'instructions' => 'For any copy you\'d like to render as larger text (per our desired design), please wrap that copy with a strong html tag: e.g.:
 "<strong>YOUR TEXT HERE</strong>".',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_5b96dc1ec1d9c',
+							'label' => 'Offer Pre-text',
+							'name' => 'pre_text',
+							'type' => 'text',
+							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array(
