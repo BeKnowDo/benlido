@@ -65,6 +65,8 @@
       &-product {
         &-hover {
           &-details {
+            transition: opacity 0.2s ease-in-out;
+            opacity: 0;
             position: absolute;
             display: flex;
             justify-content: center;
@@ -77,6 +79,10 @@
             background-color: map-get($rgba, grey);
 
             color: $white;
+            &:hover {
+              opacity: 1;
+              transition: opacity 0.2s ease-in-out;
+            }
           }
 
           &-header {
