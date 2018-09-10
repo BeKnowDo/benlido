@@ -40472,7 +40472,7 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
       }
 
       if (this.bagSwatches) {
-        // this.defaultBagColor();
+        this.defaultBagColor();
       }
     }
   }, {
