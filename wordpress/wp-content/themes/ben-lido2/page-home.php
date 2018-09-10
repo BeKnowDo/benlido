@@ -27,11 +27,11 @@ get_header(); ?>
             <?php endif;?>
 
             <?php if ($show_feature_cards == true):?>
-                <div class="hero-row">
-                    <div class="max-width-xl">
-                        <?php get_template_part( 'template-parts/common/hero/hero-alt'); ?>
-                    </div>
-                </div>
+
+            <div class="hero-row">
+                <?php get_template_part( 'template-parts/common/hero/hero-alt'); ?>
+            </div>
+
             <?php endif;?>
 
             <?php if ($show_bottom_section == true):?>

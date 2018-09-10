@@ -128,25 +128,17 @@
   &-home-page {
     .hero {
       &-row {
+        &-background {
+          &:nth-child(odd) {
+            background-color: $silver-white;
+          }
+        }
+
         .columns {
           justify-content: center;
           align-items: center;
         }
-        .max-width-xl {
-          > .columns {
-            &:nth-child(odd) {
-              background-color: $silver-white;
-            }
 
-            &:nth-child(2) {
-              .column {
-                &:first-child {
-                  order: 2;
-                }
-              }
-            }
-          }
-        }
         .hero {
           &-header {
             position: relative;

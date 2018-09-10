@@ -3459,11 +3459,9 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-background-alternate .hero-image-container { position: absolute; z-index: auto; top: 0; left: 0; padding: 0; }
 
+.bl-home-page .hero-row-background:nth-child(odd) { background-color: #f7f7f7; }
+
 .bl-home-page .hero-row .columns { justify-content: center; align-items: center; }
-
-.bl-home-page .hero-row .max-width-xl > .columns:nth-child(odd) { background-color: #f7f7f7; }
-
-.bl-home-page .hero-row .max-width-xl > .columns:nth-child(2) .column:first-child { order: 2; }
 
 .bl-home-page .hero-row .hero-header { position: relative; }
 
@@ -3493,7 +3491,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product .btn-link { text-shadow: none; margin-top: 0.8rem; }
 
-.hero-product-header { color: #393d5b; margin-bottom: 0.8rem; }
+.hero-product-header { color: #393d5b; margin-bottom: 0.8rem; position: relative; top: -10px; }
 
 .hero-product-header a { display: inline-block; }
 
@@ -3986,9 +3984,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 @media (min-width: 840px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.2rem; font-weight: 400; font-style: normal; }
   .hero-home .hero-sub-header { font-size: 1.2rem; }
   .hero-home .hero-copy { font-size: 1.2rem; letter-spacing: 0.5px; }
-  .hero-home .hero-image { margin: 0 0 0 auto; } }
-
-@media (max-width: 840px) { .bl-home-page .hero-row .columns:nth-child(2) .column:first-child { order: 0; } }
+  .hero-home .hero-image { margin: 0 0 0 auto; }
+  .bl-home-page .hero-row-background:nth-child(even) .columns .column:first-child { order: 1; }
+  .bl-home-page .hero-row-background:last-child .columns .column:first-child { order: 1; } }
 
 @media (min-width: 960px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.6rem; font-weight: 400; font-style: normal; }
   .hero-home .hero-sub-header { font-size: 1.6rem; }

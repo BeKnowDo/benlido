@@ -40479,18 +40479,22 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
     key: "defaultBagColor",
     value: function defaultBagColor() {
       var bagSwatches = this.bagSwatches;
+      var activatedSwatchIndex = 0;
 
-      bagSwatches.forEach(function (bagSwatch) {
+      bagSwatches.forEach(function (bagSwatch, index) {
         var swatches = bagSwatch.querySelectorAll(".swatch-anchor");
 
         var i = 0;
-        for (i; i < swatches.length; i++) {
+        var swatchLength = swatches.length;
+
+        for (i; i < swatchLength; i++) {
           var scope = swatches[i];
           if (scope.parentNode.classList.contains("selected")) {
             return false;
           }
         }
-        swatches[0].click();
+
+        activatedSwatchIndex = 0;
       });
     }
   }, {
@@ -40509,7 +40513,6 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
       var _this2 = this;
 
       var target = item;
-      // console.log(this.thumbnails);
 
       target.addEventListener("click", function (e) {
         // WooCommerce...grrrr
@@ -40530,10 +40533,6 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
             images[i].parentNode.classList.remove("bl-show-thumbnail");
           }
         }
-
-        images.forEach(function (item) {
-          // console.log(item);
-        });
       });
     }
   }, {

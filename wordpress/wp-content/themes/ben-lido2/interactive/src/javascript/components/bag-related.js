@@ -20,18 +20,22 @@ export class LidoBagDetail {
 
   defaultBagColor() {
     const bagSwatches = this.bagSwatches;
+    let activatedSwatchIndex = 0;
 
-    bagSwatches.forEach(bagSwatch => {
+    bagSwatches.forEach((bagSwatch, index) => {
       const swatches = bagSwatch.querySelectorAll(".swatch-anchor");
 
       let i = 0;
-      for (i; i < swatches.length; i++) {
+      let swatchLength = swatches.length;
+
+      for (i; i < swatchLength; i++) {
         const scope = swatches[i];
         if (scope.parentNode.classList.contains("selected")) {
           return false;
         }
       }
-      swatches[0].click();
+
+      activatedSwatchIndex = 0;
     });
   }
 
@@ -44,7 +48,6 @@ export class LidoBagDetail {
 
   handleClick(item) {
     const target = item;
-    // console.log(this.thumbnails);
 
     target.addEventListener("click", e => {
       // WooCommerce...grrrr
@@ -67,10 +70,6 @@ export class LidoBagDetail {
           images[i].parentNode.classList.remove("bl-show-thumbnail");
         }
       }
-
-      images.forEach(item => {
-        // console.log(item);
-      });
     });
   }
 

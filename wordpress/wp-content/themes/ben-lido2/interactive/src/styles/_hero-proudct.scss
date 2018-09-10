@@ -31,6 +31,8 @@
   &-header {
     color: $brown-grey;
     margin-bottom: $unit-2;
+    position: relative;
+    top: -10px;
     a {
       display: inline-block;
     }

@@ -98,6 +98,35 @@
       }
     }
   }
+
+  .bl {
+    &-home-page {
+      .hero {
+        &-row {
+          &-background {
+            &:nth-child(even) {
+              .columns {
+                .column {
+                  &:first-child {
+                    order: 1;
+                  }
+                }
+              }
+            }
+            &:last-child {
+              .columns {
+                .column {
+                  &:first-child {
+                    order: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: $size-md) {
@@ -105,15 +134,6 @@
     &-home-page {
       .hero {
         &-row {
-          .columns {
-            &:nth-child(2) {
-              .column {
-                &:first-child {
-                  order: 0;
-                }
-              }
-            }
-          }
         }
       }
     }
