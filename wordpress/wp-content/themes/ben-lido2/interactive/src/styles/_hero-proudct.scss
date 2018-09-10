@@ -43,12 +43,12 @@
 
   &-price {
     color: $brown-grey;
-    @include sentinel(22px, 300);
+    @include knockout50($unit-10, 400);
     margin: 0;
   }
 
   &-callout {
-    @include knockout31(16px, 400);
+    // @include knockout31(16px, 400);
     // letter-spacing: 0.5px;
   }
 
@@ -169,4 +169,3 @@
     }
   }
 }
-

@@ -3447,7 +3447,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home .hero-action-buttons { padding-top: 22px; }
 
-.hero-home .hero-action-buttons .btn.btn-lg { display: block; max-width: 200px; letter-spacing: 0.4px; border-color: #fff; }
+.hero-home .hero-action-buttons .btn.btn-lg { display: block; max-width: 180px; letter-spacing: 0.4px; border-color: #fff; }
 
 .hero-background-alternate { padding: 4.4rem 0; position: relative; }
 
@@ -3499,9 +3499,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product-copy { color: #999999; line-height: 140%; }
 
-.hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
-
-.hero-product-callout { font-family: "Knockout 31 A", "Knockout 31 B", Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 400; font-style: normal; }
+.hero-product-price { color: #393d5b; font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 2rem; font-weight: 400; font-style: normal; margin: 0; }
 
 .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
 

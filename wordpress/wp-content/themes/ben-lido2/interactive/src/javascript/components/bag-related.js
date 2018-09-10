@@ -14,7 +14,7 @@ export class LidoBagDetail {
     }
 
     if (this.bagSwatches) {
-      this.defaultBagColor();
+      // this.defaultBagColor();
     }
   }
 

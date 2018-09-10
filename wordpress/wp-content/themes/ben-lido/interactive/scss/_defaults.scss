@@ -2,85 +2,87 @@
 
 // fonts
 @mixin sentinel {
-    font-family: "Sentinel SSm A", "Sentinel SSm B";
-    font-style: normal;
-    font-weight: 400;
+  font-family: "Sentinel SSm A", "Sentinel SSm B";
+  font-style: normal;
+  font-weight: 400;
 }
-@mixin knockout-jr {
-    font-family: "Knockout 32 A", "Knockout 32 B";
-    font-style: normal;
-    font-weight: 400;
+@mixin knockoutJr {
+  font-family: "Knockout 32 A", "Knockout 32 B";
+  font-style: normal;
+  font-weight: 400;
 }
 @mixin knockout {
-    font-family: "Knockout 47 A", "Knockout 47 B";
-    font-style: normal;
-    font-weight: 400;
+  font-family: "Knockout 47 A", "Knockout 47 B";
+  font-style: normal;
+  font-weight: 400;
 }
 
 // typography
-html, body {
-    @include knockout-jr;
+html,
+body {
+  @include knockoutJr;
 }
-h1, .header-title {
-    font-size: rem(24);
-    @include minpoint($min-hd) {
-        font-size: rem(32);
-    }
-    color: $blue;
+h1,
+.header-title {
+  font-size: rem(24);
+  @include minpoint($min-hd) {
+    font-size: rem(32);
+  }
+  color: $blue;
 }
 h2 {
-    @include sentinel;
-    font-size: rem(18);
-    @include minpoint($min-hd) {
-        font-size: rem(22);
-    }
-    font-weight: 500;
-    color: $gray;
+  @include sentinel;
+  font-size: rem(18);
+  @include minpoint($min-hd) {
+    font-size: rem(22);
+  }
+  font-weight: 500;
+  color: $gray;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // general
 .center {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .center-text {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 .pad-top {
-    padding-top: px(getBaseline(4)) !important;
-    @include minpoint($min-hd) {
-        padding-top: px(getBaseline(8)) !important;
-    }
+  padding-top: px(getBaseline(4)) !important;
+  @include minpoint($min-hd) {
+    padding-top: px(getBaseline(8)) !important;
+  }
 }
 .pull-up {
-    margin-top: px(getBaseline(-32));
+  margin-top: px(getBaseline(-32));
 }
 .middle {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .left {
-    float: left;
+  float: left;
 }
 .right {
-    float: right;
+  float: right;
 }
 .max-width {
-    width: 100% !important;
+  width: 100% !important;
 }
-.brown{
-    color:$brown
+.brown {
+  color: $brown;
 }
-.blue{
-    color:$blue
+.blue {
+  color: $blue;
 }
