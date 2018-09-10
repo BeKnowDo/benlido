@@ -163,6 +163,11 @@
               border-bottom: 4px solid $brown-grey;
             }
           }
+
+          &-copy {
+            @include sentinel($unit-5, 400);
+          }
+
           &-image-container {
             padding-top: $unit-16;
             padding-bottom: $unit-16;
