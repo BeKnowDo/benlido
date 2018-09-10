@@ -12,6 +12,14 @@
     border-radius: 4px;
     padding: $unit-5;
     margin-bottom: 75px;
+
+    .return-to-shop {
+      background-color: $brown-grey;
+      display: inline-block;
+      border-radius: 4px;
+      padding: $unit-4;
+      text-align: center;
+    }
   }
 
   .shop_table {

@@ -4250,6 +4250,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 75px; }
 
+.woocommerce-cart .entry-content .return-to-shop { background-color: #393d5b; display: inline-block; border-radius: 4px; padding: 0.8rem; text-align: center; }
+
 .woocommerce-cart .shop_table { width: 100%; }
 
 .woocommerce-cart .shop_table thead th { padding: 0.8rem 0.8rem 0; border: 0; }

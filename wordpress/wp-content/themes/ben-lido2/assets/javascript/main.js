@@ -40745,9 +40745,9 @@ var Cart = exports.Cart = function () {
   _createClass(Cart, [{
     key: "init",
     value: function init() {
-      if (this.cart) {
-        this.openCart();
-      }
+      // if (this.cart) {
+      //   this.openCart();
+      // }
 
       if (this.counter) {
         this.getCurrentItems();
