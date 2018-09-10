@@ -1,103 +1,154 @@
-{% if items is defined %} {% if items.disabled == true %} {% set className = "disabled" %} {% else %} {% set className =
-"" %} {% endif %} {% if items.triangleBackground %} {% set backgroundClassname = 'triangle-background'%} {% else %} {% set
-backgroundClassname = ''%} {% endif %} {% if items.bagURL is defined %} {% set bagURL = items.bagURL %} {% else %} {% set
-bagURL = "" %} {% endif %} {% if items.picked == true %} {% set picked = "hero-product-picked" %} {% set pickedCopy = items.selected_copy
-%} {% else %} {% set picked = "" %} {% set pickedCopy = items.button_copy %} {% endif %}
-
-<div class="hero-product bg-white {{ className }}">
-
+{% if items is defined %}
   {% if items.disabled == true %}
-  <div class="hero-product-disabled">
-    <h1 class="hero-product-disabled-header">{{ items.coming_soon }}</h1>
-  </div>
+    {% set className = "disabled" %}
+  {% else %}
+    {% set className = "" %}
+  {% endif %}
+  {% if items.triangleBackground %}
+    {% set backgroundClassname = 'triangle-background'%}
+  {% else %}
+    {% set
+backgroundClassname = ''%}
+  {% endif %}
+  {% if items.bagURL is defined %}
+    {% set bagURL = items.bagURL %}
+  {% else %}
+    {% set
+    bagURL = "" %}
+  {% endif %}
+  {% if items.picked == true %}
+    {% set picked = "hero-product-picked" %}
+    {% set pickedCopy = items.selected_copy %}
+  {% else %}
+    {% set picked = "" %}
+    {% set pickedCopy = items.button_copy %}
   {% endif %}
 
-  <div class="columns text-center">
-    <div class="column col-4 col-xs-12 col-sm-12 col-md-12 col-mx-auto hero-product-info-column">
+  <div class="hero-product bg-white {{ className }}">
 
-      {% if items.logo %}
-        <a href="{{items.bagURL}}" title="{{items.header}}">
-          <img class="hero-product-logo" src="{{ items.logo }}" alt="" />
-        </a>
-      {% endif %} 
-      {% if items.preHeader %}
-        <h2>{{items.preHeader}}</h2>
-      {% endif %} 
-      {% if items.href %}
-        
-        <h1 class="hero-product-header">
-          {% if items.is_kit == false %}
-            <a href="{{items.bagURL}}" title="{{items.header}}">
-          {% endif %}
-          {{items.header}}
-          {% if items.is_kit == false %} 
-            </a>
-          {% endif %}
-        </h1>
-      {% endif %} 
-      {% if items.copy %}
-        <p class="hero-product-copy">{{items.copy}}</p>
-      {% endif %} 
-      {% if items.price %}
-        <p class="hero-product-price">{{items.price}}</p>
-      {% endif %} 
-      {% set selected_variation_id = 0 %} 
-      {% if items.swatches %} 
-        {% set disabled = ' disabled="disabled"' %}
+    {% if items.disabled == true %}
+      <div class="hero-product-disabled">
+        <h1 class="hero-product-disabled-header">{{ items.coming_soon }}</h1>
+      </div>
+    {% endif %}
+
+    <div class="columns text-center">
+      <div class="column col-4 col-xs-12 col-sm-12 col-md-12 col-mx-auto hero-product-info-column">
+
+        {% if items.logo %}
+          <a href="{{items.bagURL}}" title="{{items.header}}">
+            <img class="hero-product-logo" src="{{ items.logo }}" alt=""/>
+          </a>
+        {% endif %}
+        {% if items.preHeader %}
+          <h2>{{items.preHeader}}</h2>
+        {% endif %}
+        {% if items.href %}
+
+          <h1 class="hero-product-header">
+            {% if items.is_kit == false %}
+              <a href="{{items.bagURL}}" title="{{items.header}}">
+              {% endif %}
+              {{items.header}}
+              {% if items.is_kit == false %}
+              </a>
+            {% endif %}
+          </h1>
+        {% endif %}
+        {% if items.copy %}
+          <p class="hero-product-copy">{{items.copy}}</p>
+        {% endif %}
+        {% if items.price %}
+          <p class="hero-product-price">{{items.price}}</p>
+        {% endif %}
+        {% set selected_variation_id = 0 %}
+        {% if items.swatches %}
+          {% set disabled = ' disabled="disabled"' %}
 
           <div class="columns bl-product-swatches">
-            {% for swatch in items.swatches %} {% set selected = "" %} 
-              {% if swatch.selected == true %} 
-                {% set selected_variation_id = swatch.id %} 
-                {% set selected = " selected" %} 
-                {% set disabled = "" %} 
+            {% for swatch in items.swatches %}
+              {% set selected = "" %}
+              {% if swatch.selected == true %}
+                {% set selected_variation_id = swatch.id %}
+                {% set selected = " selected" %}
+                {% set disabled = "" %}
               {% endif %}
-            <div class="select-option swatch-wrapper {{selected}}">
-              <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}"
-                data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}"
-                href="#">
-                {% if swatch.type == "image" %}
-                  <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}" /> 
-                {% endif %}
-              </a>
-            </div>
+              <div class="select-option swatch-wrapper {{selected}}">
+                <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
+                  {% if swatch.type == "image" %}
+                    <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
+                  {% endif %}
+                </a>
+              </div>
             {% endfor %}
           </div>
 
-      {% endif %}
+        {% endif %}
 
-      <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}"
-        {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}"
-        title="{{pickedCopy}}">
-        {{pickedCopy}}
-      </a>
-
-      <a class="btn btn-primary btn-lg bl-remove-bag-product {{items.removecss}}" id="button-{{items.index}}" href="{{items.href}}"
-        {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}"
-        title="Remove Bag">
-        Remove Bag
-      </a>
-
-    </div>
-
-    <div class="column col-7 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
-      {% if items.is_kit == false %}
-      {# we don't show link if it is a prebuilt kit #}
-        <a class="hero-product-bag-link {{items.css}}" href="{{items.bagURL}}" title="{{items.header}}">
-          {% if items.promo is defined %}
-          <p class="hero-product-promo">
-            <span>{{ items.promo }}</span>
-          </p>
-          {% endif %}
-      {% endif %}
-        <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}" srcset="{{items.srcset}}" />
-      {# we don't show link if it is a prebuilt kit #}
-      {% if items.is_kit == false %}
+        <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="{{pickedCopy}}">
+          {{pickedCopy}}
         </a>
-      {% endif %}
-    </div>
 
+        <a class="btn btn-primary btn-lg bl-remove-bag-product {{items.removecss}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="Remove Bag">
+          Remove Bag
+        </a>
+
+      </div>
+
+      <div class="column col-7 col-xs-12 col-sm-12 col-md-12 col-mr-auto">
+        {% if items.is_kit == false %}
+          {# we don't show link if it is a prebuilt kit #}
+          <a class="hero-product-bag-link {{items.css}}" href="{{items.bagURL}}" title="{{items.header}}">
+            {% if items.promo is defined %}
+              <p class="hero-product-promo">
+                <span>{{ items.promo }}</span>
+              </p>
+            {% endif %}
+          {% endif %}
+          <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}" srcset="{{items.srcset}}"/>
+
+          {% for details in items.hover_details %}
+            <span class="hero-product-hover-details">
+
+              <span class="hero-product-hover-header">
+                {{ details.header }}
+              </span>
+
+              <span class="hero-product-hover-offer">
+
+                {% if details.pre_text %}
+                  <span class="hero-product-hover-pre-text">{{ details.pre_text }}</span>
+                {% endif %}
+
+                {% if details.copy %}
+                  <span class="hero-product-hover-copy">
+                    {% if details.discount_price %}
+                      <strong>{{ details.discount_price }}</strong>
+                    {% endif %}
+
+                    {% if details.copy%}
+                      <span>
+                        {{ details.copy }}
+                      </span>
+                    {% endif %}
+                  </span>
+                {% endif %}
+
+              </span>
+
+              <span class="hero-product-hover-disclaimer">{{ details.disclaimer_copy }}</span>
+
+            </span>
+
+          {% endfor %}
+
+          {# we don't show link if it is a prebuilt kit #}
+          {% if items.is_kit == false %}
+          </a>
+        {% endif %}
+      </div>
+
+    </div>
   </div>
-</div>
 
 {% endif %}

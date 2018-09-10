@@ -3505,11 +3505,19 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
 
-.hero-product-bag-link:after { content: ""; transition: background-color 0.2s ease-in-out; background-color: transparent; display: flex; position: absolute; top: 0; width: 100%; height: 100%; }
+.hero-product-bag-link .hero-product-hover-details { position: absolute; display: flex; justify-content: center; align-items: center; flex-direction: column; top: 0; left: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.8); color: #fff; }
 
-.hero-product-bag-link:hover:after { transition: background-color 0.2s ease-in-out; background-color: rgba(0, 0, 0, 0.8); }
+.hero-product-bag-link .hero-product-hover-header { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 2.8rem; font-weight: 400; font-style: normal; }
 
-.hero-product-bag-link:hover:before { /* We SHOULDN'T be doing this but #timeCrunch */ content: "View Details"; font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 75px; font-weight: 400; font-style: normal; letter-spacing: 2px; color: #fff; display: flex; align-self: center; align-items: center; justify-content: center; position: absolute; top: 0; z-index: 1; width: 100%; height: 100%; }
+.hero-product-bag-link .hero-product-hover-pre-text { color: #87a4b0; }
+
+.hero-product-bag-link .hero-product-hover-offer { border-top: 1px solid #fff; width: auto; padding: 0.8rem 1.6rem; display: inline-flex; justify-content: center; align-items: center; }
+
+.hero-product-bag-link .hero-product-hover-copy { display: inline-flex; justify-content: center; align-items: center; }
+
+.hero-product-bag-link .hero-product-hover-copy strong { font-size: 40px; padding: 0 0.8rem; }
+
+.hero-product-bag-link .hero-product-hover-disclaimer { font-size: 12px; padding-top: 1.6rem; }
 
 .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
 
@@ -4010,8 +4018,6 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
   .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
   .hero-product-bag-link:after { content: ""; transition: background-color 0.2s ease-in-out; background-color: transparent; display: flex; position: absolute; top: 0; width: 100%; height: 100%; }
-  .hero-product-bag-link:hover:after { transition: background-color 0.2s ease-in-out; background-color: rgba(0, 0, 0, 0.8); }
-  .hero-product-bag-link:hover:before { /* We SHOULDN'T be doing this but #timeCrunch */ content: "View Details"; font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 75px; font-weight: 400; font-style: normal; letter-spacing: 2px; color: #fff; display: flex; align-self: center; align-items: center; justify-content: center; position: absolute; top: 0; z-index: 1; width: 100%; height: 100%; }
   .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
   .hero-product-bag-image[src=""] { background-color: #e4e4e4; height: 100%; width: 100%; }
   .hero-product-bag-image[src=""]:after { content: "IMAGE NOT AVAILABLE"; text-align: center; position: absolute; top: 50%; transform: translate(0, -50%); left: 0; width: 100%; }

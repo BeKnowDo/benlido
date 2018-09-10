@@ -153,6 +153,8 @@ function bl_process_bags_list($items) {
   $index = 0;
   if (!empty($items) && is_array($items)) {
     foreach ($items as $el) {
+      // echo '<br/><br/><pre>' . var_export($el, true) . '</pre>';
+
       $image = '';
       $is_kit = false;
       $prod = null;
@@ -176,6 +178,7 @@ function bl_process_bags_list($items) {
         $coming_soon = $el['coming_soon_copy'];
         $button_copy = $el['button_copy'];
         $selected_copy = $el['selected_copy'];
+        $hover_details = $el['hover_details'];
 
         switch ($type) {
           case 'travel_kit':
@@ -325,6 +328,7 @@ function bl_process_bags_list($items) {
             'swatches'=>$swatches,
             'button_copy'=>$button_copy,
             'selected_copy'=>$selected_copy,
+            'hover_details' => $hover_details,
             'picked'=>$picked,
             'image'=>$image,
             'image_retina'=>$image_retina,
@@ -587,6 +591,7 @@ function bl_process_kit_bag($item,$kit_id=null) {
         'bagURL' => $href,
         'button_copy' => 'Change Bag',
         'selected_copy' => 'Change Bag',
+        'hover_details' => $hover_details,
         'disabled' => false,
         'swatches' => $swatches
   );

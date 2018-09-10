@@ -1,3 +1,7 @@
 $grey-border: 1px solid $light-grey;
 $cart-border: 1px solid rgba(3, 3, 3, 0.3);
 $white-border: 2px solid $white;
+
+@mixin border($position: "bottom", $color: $red, $thickness: "5px") {
+  border-#{$position}: $thickness solid $color;
+}

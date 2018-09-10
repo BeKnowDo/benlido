@@ -61,42 +61,96 @@
     position: relative;
     margin-top: 0;
 
-    &:after {
-      content: "";
-      transition: background-color 0.2s ease-in-out;
-      background-color: transparent;
-      display: flex;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
+    .hero {
+      &-product {
+        &-hover {
+          &-details {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: map-get($rgba, grey);
+
+            color: $white;
+          }
+
+          &-header {
+            @include knockout32($unit-14, 400);
+          }
+
+          &-pre-text {
+            color: $blue-shale;
+          }
+
+          &-offer {
+            @include border("top", $white, 1px);
+            width: auto;
+            padding: $unit-2 $unit-8;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          &-copy {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            strong {
+              font-size: 40px;
+              padding: 0 $unit-2;
+            }
+          }
+
+          &-disclaimer {
+            font-size: 12px;
+            padding-top: $unit-8;
+          }
+        }
+      }
     }
 
+    // &:after {
+    //   content: "";
+    //   transition: background-color 0.2s ease-in-out;
+    //   background-color: transparent;
+    //   display: flex;
+    //   position: absolute;
+    //   top: 0;
+    //   width: 100%;
+    //   height: 100%;
+    // }
+
     &:hover {
-      &:after {
-        transition: background-color 0.2s ease-in-out;
-        background-color: map-get($rgba, grey);
-      }
+      // &:after {
+      //   transition: background-color 0.2s ease-in-out;
+      //   background-color: map-get($rgba, grey);
+      // }
 
-      &:before {
-        /* We SHOULDN'T be doing this but #timeCrunch */
-        content: "View Details";
+      // &:before {
+      //   /* We SHOULDN'T be doing this but #timeCrunch */
+      //   content: "View Details";
 
-        @include knockout(75px, 400);
-        letter-spacing: 2px;
-        color: $white;
+      //   @include knockout(75px, 400);
+      //   letter-spacing: 2px;
+      //   color: $white;
 
-        display: flex;
-        align-self: center;
-        align-items: center;
-        justify-content: center;
+      //   display: flex;
+      //   align-self: center;
+      //   align-items: center;
+      //   justify-content: center;
 
-        position: absolute;
-        top: 0;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-      }
+      //   position: absolute;
+      //   top: 0;
+      //   z-index: 1;
+      //   width: 100%;
+      //   height: 100%;
+      // }
     }
   }
 

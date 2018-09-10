@@ -555,11 +555,11 @@
                 "maxlength": ""
               },
               {
-                "key": "field_5b96d737321f0",
-                "label": "Offer Copy",
-                "name": "copy",
+                "key": "field_5b96dc1ec1d9c",
+                "label": "Offer Pre-text",
+                "name": "pre_text",
                 "type": "text",
-                "instructions": "For any copy you'd like to render as larger text (per our desired design), please wrap that copy with a strong html tag: e.g.: \r\n\"<strong>YOUR TEXT HERE</strong>\".",
+                "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -574,9 +574,28 @@
                 "maxlength": ""
               },
               {
-                "key": "field_5b96dc1ec1d9c",
-                "label": "Offer Pre-text",
-                "name": "pre_text",
+                "key": "field_5b96d737321f0",
+                "label": "Offer Copy",
+                "name": "copy",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+              },
+              {
+                "key": "field_5b96f5834b1fa",
+                "label": "Offer Discount Price",
+                "name": "discount_price",
                 "type": "text",
                 "instructions": "",
                 "required": 0,

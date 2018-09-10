@@ -10,7 +10,7 @@ if (function_exists('get_field')) {
     //print_r ($selectable_bags);
     if(function_exists('bl_process_bags_list')) {
         $bags = bl_process_bags_list($selectable_bags);
-    }  
+    }
 }
 //print_r ($bags);
 
@@ -39,8 +39,11 @@ if (empty($bags) && empty(bl_get_product_swap()) && bl_is_kit_add() == false) {
 }
 //print_r ($bags);
 // override message
-// if we are in the 
+// if we are in the
 
-$data = array('products'=>$bags);
+// echo '<br/><br/><pre>' . var_export($bags, true) . '</pre>';
+
+
+$data = array('products' => $bags);
 //print_r ($data);
 Timber::render( 'common/hero/hero-product-list.twig', $data);
