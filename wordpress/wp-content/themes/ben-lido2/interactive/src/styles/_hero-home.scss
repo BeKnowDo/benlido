@@ -45,7 +45,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(3, 3, 3, 0.4);
+        // background-color: rgba(3, 3, 3, 0.1);
         z-index: auto;
       }
 
@@ -82,6 +82,7 @@
             display: block;
             padding: $unit-6 $unit-4;
             letter-spacing: 0.4px;
+            border-color: $white;
           }
         }
       }
