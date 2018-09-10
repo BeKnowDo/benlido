@@ -28,6 +28,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-social-login.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping.git"
         },
         {
@@ -48,6 +52,7 @@
         "up-plugins/upco-performance":"dev-master",
         "up-plugins/woocommerce-brands":"dev-master",
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
+        "up-plugins/woocommerce-social-login":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",
         "up-plugins/wp-all-export-pro":"dev-master",

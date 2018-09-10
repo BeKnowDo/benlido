@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-social-login",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Social Login",
+    "version":"2.6.0",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-social-login.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

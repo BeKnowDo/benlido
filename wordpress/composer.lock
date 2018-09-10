@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28e9ec5549cdf837defbf701d26a2173",
+    "content-hash": "07118ec3c43af8d2a854008dc63603b5",
     "packages": [
         {
             "name": "composer/installers",
@@ -280,6 +280,37 @@
                 "source": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods/src/f9a88ba6151c5036889e123141f657a64d81dedc/?at=master"
             },
             "time": "2017-05-15T16:41:08+00:00"
+        },
+        {
+            "name": "up-plugins/woocommerce-social-login",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-social-login.git",
+                "reference": "dd9cca271b1cfbf7037853085ed60ef8561d513c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-social-login/get/dd9cca271b1cfbf7037853085ed60ef8561d513c.zip",
+                "reference": "dd9cca271b1cfbf7037853085ed60ef8561d513c",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Social Login",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-social-login",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-social-login/src/dd9cca271b1cfbf7037853085ed60ef8561d513c/?at=master"
+            },
+            "time": "2018-08-28T14:13:07+00:00"
         },
         {
             "name": "up-plugins/woocommerce-table-rate-shipping",
@@ -687,15 +718,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.4",
+            "version": "3.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.4"
+                "reference": "tags/3.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.4.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -934,6 +965,7 @@
         "up-plugins/upco-performance": 20,
         "up-plugins/woocommerce-brands": 20,
         "up-plugins/woocommerce-cost-of-goods": 20,
+        "up-plugins/woocommerce-social-login": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
         "up-plugins/woothemes-updater": 20,
         "up-plugins/wp-all-export-pro": 20,
