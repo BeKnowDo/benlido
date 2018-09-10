@@ -3459,7 +3459,11 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-background-alternate .hero-image-container { position: absolute; z-index: auto; top: 0; left: 0; padding: 0; }
 
+.bl-home-page .hero-row-background { border-bottom: 1px solid #e4e4e4; }
+
 .bl-home-page .hero-row-background:nth-child(odd) { background-color: #f7f7f7; }
+
+.bl-home-page .hero-row-background:last-child { border-bottom: none; }
 
 .bl-home-page .hero-row .columns { justify-content: center; align-items: center; }
 

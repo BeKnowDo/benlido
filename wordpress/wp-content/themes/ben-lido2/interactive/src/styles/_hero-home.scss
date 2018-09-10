@@ -129,8 +129,14 @@
     .hero {
       &-row {
         &-background {
+          border-bottom: $grey-border;
+
           &:nth-child(odd) {
             background-color: $silver-white;
+          }
+
+          &:last-child {
+            border-bottom: none;
           }
         }
 
