@@ -66,21 +66,27 @@ backgroundClassname = ''%}
           {% set disabled = ' disabled="disabled"' %}
 
           <div class="columns bl-product-swatches">
-            {% for swatch in items.swatches %}
-              {% set selected = "" %}
-              {% if swatch.selected == true %}
-                {% set selected_variation_id = swatch.id %}
-                {% set selected = " selected" %}
-                {% set disabled = "" %}
-              {% endif %}
-              <div class="select-option swatch-wrapper {{selected}}">
-                <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
-                  {% if swatch.type == "image" %}
-                    <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
-                  {% endif %}
-                </a>
-              </div>
-            {% endfor %}
+
+            <div class="bl-product-swatches-header">Choose a Color</div>
+
+            <div class="bl-product-swatches-container">
+              {% for swatch in items.swatches %}
+                {% set selected = "" %}
+                {% if swatch.selected == true %}
+                  {% set selected_variation_id = swatch.id %}
+                  {% set selected = " selected" %}
+                  {% set disabled = "" %}
+                {% endif %}
+                <div class="select-option swatch-wrapper {{selected}}">
+                  <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
+                    {% if swatch.type == "image" %}
+                      <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
+                    {% endif %}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+
           </div>
 
         {% endif %}

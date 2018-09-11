@@ -3155,13 +3155,15 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .bl-add-bag-product.changed:hover { background-color: #87a4b0; }
 
-.bl-product-swatches { margin: 20px auto; justify-content: center; padding: 0; }
+.bl-product-swatches { margin: 20px auto; justify-content: center; align-items: center; padding: 0; }
 
-.bl-product-swatches:before { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 300; font-style: normal; margin: 0 0 0.8rem; content: "Choose a color"; display: block; width: 100%; }
+.bl-product-swatches-container { display: flex; }
 
-.bl-product-swatches .swatch-wrapper { background-color: transparent; max-width: 60px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
+.bl-product-swatches-header { margin: 0; padding: 0 0.8rem 0 0; }
 
-.bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
+.bl-product-swatches .swatch-wrapper { transition: padding 0.1s ease-in-out; background-color: transparent; max-width: 42px; margin: 0 0.2rem; padding: 0.2rem; border: none; float: none; }
+
+.bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 0; border: 0; }
 
 .bl-product-swatches .swatch-color { display: block; }
 
@@ -3427,9 +3429,9 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home h1, .hero-home h2, .hero-home h3, .hero-home h4, .hero-home h5, .hero-home p { color: #fff; }
 
-.hero-home .bl-diamond { max-width: 230px; padding: 4.4rem 0 0; }
+.hero-home .bl-diamond { max-width: 190px; padding: 3.2rem 0 0; }
 
-.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: cover; background-position: center right; padding: 6.4rem 0.8rem; }
+.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: cover; background-position: center right; padding: 4rem 0.8rem; }
 
 .hero-home[style*="background-image"] .max-width-xl { display: flex; align-items: center; justify-content: center; position: relative; }
 
@@ -3437,7 +3439,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home[style*="background-image"] .columns { z-index: 1; }
 
-.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 3.2rem; font-weight: 400; font-style: normal; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
+.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 2.8rem; font-weight: 400; font-style: normal; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
 .hero-home .hero-copy { font-size: 1rem; letter-spacing: 0.5px; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
@@ -3973,7 +3975,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 @media (max-width: 840px) { .hero { padding: 50px 20px; } }
 
-@media (max-width: 600px) { .hero-header { font-size: 75px; }
+@media (max-width: 600px) { .hero-header { font-size: 50px; }
   .hero-action-buttons .btn { max-width: none; }
   .hero-action-buttons .btn:last-child { margin-top: 0.8rem; } }
 
@@ -4013,7 +4015,6 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .hero-product-header { color: #393d5b; margin-bottom: 0.8rem; }
   .hero-product-header a { display: inline-block; }
   .hero-product-copy { color: #999999; line-height: 140%; }
-  .hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
   .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
   .hero-product-bag-link:after { content: ""; transition: background-color 0.2s ease-in-out; background-color: transparent; display: flex; position: absolute; top: 0; width: 100%; height: 100%; }
   .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }

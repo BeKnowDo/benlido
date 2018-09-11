@@ -43,9 +43,6 @@
     }
 
     &-price {
-      color: $brown-grey;
-      @include sentinel(22px, 300);
-      margin: 0;
     }
 
     &-bag-link {
