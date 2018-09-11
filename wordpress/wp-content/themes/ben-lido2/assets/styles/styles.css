@@ -3858,39 +3858,39 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .hero-product ~ .hero-title-copy { border-top: 0; }
 
-.single-product.single .product.product_cat-bags { width: 100%; flex-direction: column; }
+.single-product.single .product.product_cat-bags-internal { width: 100%; flex-direction: column; }
 
-.single-product.single .product.product_cat-bags .entry-summary.summary { margin: 0 0 1.2rem; }
+.single-product.single .product.product_cat-bags-internal .entry-summary.summary { margin: 0 0 1.2rem; }
 
-.single-product.single .product.product_cat-bags .entry-summary .price { width: 100%; text-align: left; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .price { width: 100%; text-align: left; }
 
-.single-product.single .product.product_cat-bags .entry-summary .cart { position: relative; margin: 0; padding: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .cart { position: relative; margin: 0; padding: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .swatch-control { text-align: center; margin: 0.8rem 0 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .swatch-control { text-align: center; margin: 0.8rem 0 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary td.value .swatch-control { justify-content: left; }
+.single-product.single .product.product_cat-bags-internal .entry-summary td.value .swatch-control { justify-content: left; }
 
-.single-product.single .product.product_cat-bags .entry-summary .swatch-wrapper { padding-left: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .swatch-wrapper { padding-left: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .swatch-wrapper.selected { padding: 4px; padding-left: 0; padding-right: 8px; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .swatch-wrapper.selected { padding: 4px; padding-left: 0; padding-right: 8px; }
 
-.single-product.single .product.product_cat-bags .entry-summary .variations-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 45px; font-weight: 400; font-style: normal; margin: 0.8rem 0 0; padding: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .variations-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 45px; font-weight: 400; font-style: normal; margin: 0.8rem 0 0; padding: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .reset_variations { display: none !important; font-size: 18px; padding: 0; margin: 0; position: absolute; top: -20px; right: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .reset_variations { display: none !important; font-size: 18px; padding: 0; margin: 0; position: absolute; top: -20px; right: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .value { position: relative; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .value { position: relative; }
 
-.single-product.single .product.product_cat-bags .single_variation_wrap { width: 100%; }
+.single-product.single .product.product_cat-bags-internal .single_variation_wrap { width: 100%; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart { display: flex; width: 100%; padding: 0 0 1rem; margin: 0; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart { display: flex; width: 100%; padding: 0 0 1rem; margin: 0; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .button { width: 80%; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .button { width: 80%; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { width: 20%; margin-right: 0.8rem; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .quantity { width: 20%; margin-right: 0.8rem; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { text-align: left; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .quantity { text-align: left; }
 
 .single-product.single .product_meta { padding: 0.8rem 0.8rem 0 0; }
 
