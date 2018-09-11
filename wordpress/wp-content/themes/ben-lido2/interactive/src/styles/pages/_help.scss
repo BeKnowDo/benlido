@@ -17,16 +17,10 @@
           }
         }
       }
-    }
 
-    &-action-buttons {
-      max-width: none;
-      .column {
-        width: 100%;
-        &:last-child {
-          .btn {
-            margin-top: $unit-10;
-          }
+      > .max-width-xl {
+        > .columns {
+          width: 100%;
         }
       }
     }

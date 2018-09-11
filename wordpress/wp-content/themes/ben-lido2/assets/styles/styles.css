@@ -3946,11 +3946,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-help .hero-home[style*="background-image"].full-background .hero-header { color: #fff; }
 
-.bl-help .hero-action-buttons { max-width: none; }
-
-.bl-help .hero-action-buttons .column { width: 100%; }
-
-.bl-help .hero-action-buttons .column:last-child .btn { margin-top: 2rem; }
+.bl-help .hero-home > .max-width-xl > .columns { width: 100%; }
 
 .bl-help .hero-image { display: none; }
 
