@@ -27,6 +27,7 @@ export class CategoryMenu {
     this.mobileMenu = null
 
     this.wooActiveCategory = 'current-menu-parent'
+    this.wooActiveSubCategory = 'current-menu-item'
   }
 
   init () {
@@ -122,21 +123,20 @@ export class CategoryMenu {
   }
 
   attachCategoryToggles () {
+    // Loop through all categories
     this.parentCategoryContainer.forEach(item => {
-      const parent = item.querySelector('a') || undefined
-      const child = item.querySelector('.sub-menu') || undefined
+      const category = item.querySelector('a') || undefined
+      const subCategory = item.querySelector('.sub-menu') || undefined
 
-      if (item.classList.contains(this.wooActiveCategory)) {
-        this.toggleSubCategory(child)
+      // Check if sub category is active
+      if (subCategory.querySelector(`.${this.wooActiveSubCategory}`)) {
+        this.toggleSubCategory(subCategory)
+        return
       }
 
-      if (parent && child) {
-        parent.addEventListener('click', e => {
-          e.preventDefault()
-          e.stopPropagation()
-          this.toggleAll()
-          this.toggleSubCategory(child)
-        })
+      // Check if parent category is active
+      if (category.parentElement.classList.contains(this.wooActiveSubCategory)) {
+        this.toggleSubCategory(subCategory)
       }
     })
   }

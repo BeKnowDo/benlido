@@ -41603,6 +41603,7 @@ var CategoryMenu = exports.CategoryMenu = function () {
     this.mobileMenu = null;
 
     this.wooActiveCategory = 'current-menu-parent';
+    this.wooActiveSubCategory = 'current-menu-item';
   }
 
   _createClass(CategoryMenu, [{
@@ -41706,21 +41707,20 @@ var CategoryMenu = exports.CategoryMenu = function () {
     value: function attachCategoryToggles() {
       var _this3 = this;
 
+      // Loop through all categories
       this.parentCategoryContainer.forEach(function (item) {
-        var parent = item.querySelector('a') || undefined;
-        var child = item.querySelector('.sub-menu') || undefined;
+        var category = item.querySelector('a') || undefined;
+        var subCategory = item.querySelector('.sub-menu') || undefined;
 
-        if (item.classList.contains(_this3.wooActiveCategory)) {
-          _this3.toggleSubCategory(child);
+        // Check if sub category is active
+        if (subCategory.querySelector('.' + _this3.wooActiveSubCategory)) {
+          _this3.toggleSubCategory(subCategory);
+          return;
         }
 
-        if (parent && child) {
-          parent.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            _this3.toggleAll();
-            _this3.toggleSubCategory(child);
-          });
+        // Check if parent category is active
+        if (category.parentElement.classList.contains(_this3.wooActiveSubCategory)) {
+          _this3.toggleSubCategory(subCategory);
         }
       });
     }
