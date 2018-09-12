@@ -4632,6 +4632,10 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .single-product #content .product.type-product .product_title { font-size: 35px; }
   .single-product #content .product.type-product .quantity { width: 33%; font-size: 14px; } }
 
+@media (min-width: 600px) { .single-product .product.type-product { flex-direction: row; }
+  .single-product .product .woocommerce-product-gallery.woocommerce-product-gallery--with-images { width: 50%; }
+  .single-product .product .entry-summary { width: 50%; } }
+
 @media (max-width: 840px) { .product-tile { border: 0; border-bottom: 1px solid #e4e4e4; border-radius: 0; padding: 1rem 0.8rem; text-align: center; }
   .product-tile:hover .product-tile-hover { transform: translate3d(0, 0, 0); }
   .product-tile-link { display: inline-block; min-height: 0; }

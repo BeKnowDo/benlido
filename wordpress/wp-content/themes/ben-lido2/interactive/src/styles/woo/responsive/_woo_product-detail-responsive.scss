@@ -1,32 +1,32 @@
 @media (max-width: $size-sm) {
   .product {
-    .summary {
-      &.entry-summary {
-        .price {
-        }
+    // .summary {
+    //   &.entry-summary {
+    //     .price {
+    //     }
 
-        .product_meta {
-        }
-      }
-    }
+    //     .product_meta {
+    //     }
+    //   }
+    // }
 
-    .input-text {
-    }
+    // .input-text {
+    // }
 
-    &_title {
-    }
+    // &_title {
+    // }
 
-    .woocommerce-product-details__short-description {
-    }
+    // .woocommerce-product-details__short-description {
+    // }
 
-    .cart {
-    }
+    // .cart {
+    // }
 
-    .button {
-    }
+    // .button {
+    // }
 
-    .woocommerce-tabs {
-    }
+    // .woocommerce-tabs {
+    // }
 
     .quantity {
       .screen-reader-text {
@@ -38,17 +38,17 @@
       max-width: 80px;
     }
 
-    .woocommerce-product-gallery {
-      figure {
-      }
-      img {
-      }
-    }
+    // .woocommerce-product-gallery {
+    //   figure {
+    //   }
+    //   img {
+    //   }
+    // }
 
-    .woocommerce-product-gallery__image {
-      > a {
-      }
-    }
+    // .woocommerce-product-gallery__image {
+    //   > a {
+    //   }
+    // }
   }
 
   .single-product {
@@ -81,6 +81,24 @@
             font-size: 14px;
           }
         }
+      }
+    }
+  }
+}
+
+@media (min-width: $size-sm) {
+  .single-product{
+    .product{
+      &.type-product{
+        flex-direction: row;
+      }
+      .woocommerce-product-gallery {
+        &.woocommerce-product-gallery--with-images {
+          width: 50%;
+        }
+      }
+      .entry-summary {
+        width: 50%;
       }
     }
   }
