@@ -40812,6 +40812,7 @@ var Cart = exports.Cart = function () {
 
         (0, _sweetalert2.default)({
           title: 'Clear all items from your cart?',
+          icon: 'info',
           buttons: true,
           dangerMode: true
         }).then(function (willDelete) {

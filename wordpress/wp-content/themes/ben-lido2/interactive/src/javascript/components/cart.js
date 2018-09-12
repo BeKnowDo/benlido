@@ -111,6 +111,7 @@ export class Cart {
 
       swal({
         title: 'Clear all items from your cart?',
+        icon: 'info',
         buttons: true,
         dangerMode: true
       }).then(willDelete => {
