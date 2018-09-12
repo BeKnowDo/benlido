@@ -36,6 +36,12 @@
       li {
         height: 100%;
       }
+
+      ul {
+        &:empty {
+          background-color: $silver-white;
+        }
+      }
     }
 
     &-link {

@@ -56,7 +56,10 @@
     font-size: 25px;
   }
 
-  .text-right {
+  .text-left {
+    a {
+      color: $blue-shale;
+    }
   }
 }
 

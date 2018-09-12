@@ -4,7 +4,6 @@
   }
 
   .category-list {
-
     &-wrapper {
       display: none;
       margin-top: 0;
@@ -49,7 +48,6 @@
     }
 
     .menu {
-
       &-item {
         margin: 0;
         padding: $unit-6 $unit-6;
@@ -59,20 +57,17 @@
           border: 0;
         }
       }
-
     }
-
   }
 
   .show-categories {
-
     .category-list-breadcrumbs {
       padding: 10px 0 10px;
     }
 
     .widget_nav_menu {
       display: block;
-      animation: .5s alternate fadeIn;
+      animation: 0.5s alternate fadeIn;
       border-top: $grey-border;
       padding: 0;
 
@@ -86,11 +81,8 @@
             border: 0;
             padding-bottom: 0;
           }
-
         }
-
       }
-
     }
   }
 
@@ -100,6 +92,7 @@
     border-radius: 4px;
     border: $grey-border;
     margin-top: 20px;
+    margin-bottom: 20px;
 
     .category-list {
       &-parent {

@@ -1,12 +1,11 @@
 @media (min-width: $size-xs) {
-
 }
+
 @media (min-width: $size-sm) {
   .single-product {
     &.single {
-
       .product {
-        &.product_cat-bags {
+        &.product_cat-bags-internal {
           flex-direction: row;
           flex-wrap: wrap;
           .woocommerce-product-gallery {
@@ -19,91 +18,66 @@
             }
 
             .price {
-
             }
 
             .cart {
-
             }
 
             .swatch-control {
-
             }
 
             .swatch-wrapper {
-
               &.selected {
-
               }
             }
 
             .variations {
               &-header {
-
               }
             }
 
             .reset_variations {
-
             }
 
             .value {
-
             }
-
           }
 
           .single_variation_wrap {
-
           }
 
           .woocommerce-variation-add-to-cart {
-
             .button {
-
             }
 
             .quantity {
-
               > label {
               }
-
             }
-
           }
-
         }
-
       }
 
       .product_meta {
-
         .posted_in {
-
           a {
-
           }
         }
       }
 
       .wc-tabs {
-
       }
 
       .woocommerce-tabs {
-
       }
 
       .woocommerce-Tabs-panel--description {
         h2 {
-
         }
 
         p {
-
         }
       }
-
     }
   }
 }
@@ -111,105 +85,77 @@
 @media (min-width: $size-md) {
   .single-product {
     &.single {
-
-      .product_cat-bags {
-
+      .product_cat-bags-internal {
         .entry-summary {
           &.summary {
             width: 100%;
           }
 
           .price {
-
           }
 
           .cart {
-
           }
 
           .swatch-control {
-
           }
 
           .swatch-wrapper {
-
             &.selected {
-
             }
           }
 
           .variations {
             &-header {
-
             }
           }
 
           .reset_variations {
-
           }
 
           .value {
-
           }
-
         }
 
         .single_variation_wrap {
-
         }
 
         .woocommerce-variation-add-to-cart {
-
           .button {
-
           }
 
           .quantity {
-
             > label {
             }
-
           }
-
         }
-
       }
 
       .product_meta {
-
         .posted_in {
-
           a {
-
           }
         }
       }
 
       .wc-tabs {
-
       }
 
       .woocommerce-tabs {
-
       }
 
       .woocommerce-Tabs-panel--description {
         h2 {
-
         }
 
         p {
-
         }
       }
-
     }
   }
 }
 
 @media (min-width: $size-lg) {
-
 }
 @media (min-width: $size-xl) {
-
 }

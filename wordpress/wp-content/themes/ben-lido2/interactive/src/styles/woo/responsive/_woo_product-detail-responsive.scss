@@ -1,4 +1,3 @@
-
 @media (max-width: $size-sm) {
   .product {
     .summary {
@@ -56,27 +55,26 @@
     #content {
       .product {
         &.type-product {
-          flex-direction: row;
+          // flex-direction: row;
 
           .product_title {
             font-size: 35px;
           }
 
-          .woocommerce-product-gallery {
-            width: 40%;
-            img {
+          // .woocommerce-product-gallery {
+          //   width: 40%;
+          //   img {
+          //   }
+          // }
 
-            }
-          }
-          .entry-summary {
-            width: 60%;
-            margin-bottom: 40px;
+          // .entry-summary {
+          //   width: 60%;
+          //   margin-bottom: 40px;
 
-            .button {
-              padding: 10px;
-            }
-
-          }
+          //   .button {
+          //     padding: 10px;
+          //   }
+          // }
 
           .quantity {
             width: 33%;

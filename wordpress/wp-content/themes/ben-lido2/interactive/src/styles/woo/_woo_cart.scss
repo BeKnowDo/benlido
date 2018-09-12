@@ -109,7 +109,7 @@
     }
 
     .actions {
-      padding-top: $unit-8;
+      padding-top: $unit-4;
 
       .coupon {
         display: none;
@@ -140,10 +140,19 @@
       .buttons {
         display: flex;
         margin-bottom: $unit-6;
+
+        .container {
+          margin: 0 0 0 auto;
+        }
+
         .btn {
-          &:first-child {
-            margin-right: 20px;
-          }
+          margin-top: $unit-2;
+        }
+
+        > .columns {
+          width: 100%;
+          justify-content: right;
+          justify-items: right;
         }
       }
     }

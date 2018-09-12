@@ -40457,105 +40457,114 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
   function LidoBagDetail() {
     _classCallCheck(this, LidoBagDetail);
 
-    this.swatches = document.querySelector("#picker_pa_color") || undefined;
-    this.thumbnails = document.querySelector(".flex-control-thumbs") || undefined;
+    this.swatches = document.querySelector('#picker_pa_color') || undefined;
+    this.thumbnails = document.querySelector('.flex-control-thumbs') || undefined;
 
-    this.bagSwatches = document.querySelectorAll(".bl-product-swatches") || undefined;
+    this.bagSwatches = document.querySelectorAll('.bl-product-swatches') || undefined;
   }
 
   _createClass(LidoBagDetail, [{
-    key: "init",
+    key: 'init',
     value: function init() {
+      var _this = this;
+
       if (this.swatches) {
         this.attachClick();
         // this.attachHover();
       }
 
-      if (this.bagSwatches) {
-        this.defaultBagColor();
+      if (this.swatches) {
+        setTimeout(function () {
+          _this.defaultBagColor();
+        }, 1000);
       }
     }
   }, {
-    key: "defaultBagColor",
+    key: 'defaultBagColor',
     value: function defaultBagColor() {
-      var bagSwatches = this.bagSwatches;
+      var bagSwatches = this.swatches.querySelectorAll('.swatch-wrapper');
       var activatedSwatchIndex = 0;
 
       bagSwatches.forEach(function (bagSwatch, index) {
-        var swatches = bagSwatch.querySelectorAll(".swatch-anchor");
+        var swatches = bagSwatch.querySelectorAll('.swatch-anchor');
 
         var i = 0;
         var swatchLength = swatches.length;
 
         for (i; i < swatchLength; i++) {
           var scope = swatches[i];
-          if (scope.parentNode.classList.contains("selected")) {
+
+          if (scope.parentNode.classList.contains('selected')) {
             return false;
           }
         }
 
         activatedSwatchIndex = 0;
-      });
-    }
-  }, {
-    key: "attachClick",
-    value: function attachClick() {
-      var _this = this;
 
-      var swatches = this.swatches.querySelectorAll(".select-option");
+        // bagSwatch.querySelector('.swatch-anchor').click()
+      });
+
+      bagSwatches[0].querySelector('.swatch-anchor').click();
+    }
+  }, {
+    key: 'attachClick',
+    value: function attachClick() {
+      var _this2 = this;
+
+      var swatches = this.swatches.querySelectorAll('.select-option');
       swatches.forEach(function (item) {
-        _this.handleClick(item);
+        _this2.handleClick(item);
       });
     }
   }, {
-    key: "handleClick",
+    key: 'handleClick',
     value: function handleClick(item) {
-      var _this2 = this;
+      var _this3 = this;
 
       var target = item;
 
-      target.addEventListener("click", function (e) {
+      target.addEventListener('click', function (e) {
         // WooCommerce...grrrr
         var color = e.currentTarget.dataset.value;
 
-        _this2.thumbnails === undefined ? _this2.thumbnails = document.querySelector(".flex-control-thumbs") : undefined;
+        _this3.thumbnails === undefined ? _this3.thumbnails = document.querySelector('.flex-control-thumbs') : undefined;
 
-        var images = _this2.thumbnails.querySelectorAll("img");
+        var images = _this3.thumbnails.querySelectorAll('img');
 
         var i = 0;
         for (i; i < images.length; i++) {
           var test = images[i].src.toString().indexOf(color) !== -1;
           if (test === true) {
-            images[i].parentNode.classList.remove("bl-hide-thumbnail");
-            images[i].parentNode.classList.add("bl-show-thumbnail");
+            images[i].parentNode.classList.remove('bl-hide-thumbnail');
+            images[i].parentNode.classList.add('bl-show-thumbnail');
           } else {
-            images[i].parentNode.classList.add("bl-hide-thumbnail");
-            images[i].parentNode.classList.remove("bl-show-thumbnail");
+            images[i].parentNode.classList.add('bl-hide-thumbnail');
+            images[i].parentNode.classList.remove('bl-show-thumbnail');
           }
         }
       });
     }
   }, {
-    key: "attachHover",
+    key: 'attachHover',
     value: function attachHover() {
-      var _this3 = this;
+      var _this4 = this;
 
-      var swatches = this.swatches.querySelectorAll(".select-option");
+      var swatches = this.swatches.querySelectorAll('.select-option');
       swatches.forEach(function (element) {
-        _this3.handleHover(element);
+        _this4.handleHover(element);
       });
     }
   }, {
-    key: "handleHover",
+    key: 'handleHover',
     value: function handleHover(item) {
-      item.addEventListener("mouseover", function (e) {
+      item.addEventListener('mouseover', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var target = e.currentTarget;
         target.click();
       });
 
-      item.addEventListener("mouseout", function (e) {
+      item.addEventListener('mouseout', function (e) {
         e.preventDefault();
         e.stopPropagation();
         var target = e.currentTarget;
@@ -42713,8 +42722,8 @@ new _components.LidoBagDetail().init();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/cesar/server/repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
-module.exports = __webpack_require__(/*! /home/cesar/server/repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
+__webpack_require__(/*! /Users/bkd/Repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
+module.exports = __webpack_require__(/*! /Users/bkd/Repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
 
 
 /***/ })
