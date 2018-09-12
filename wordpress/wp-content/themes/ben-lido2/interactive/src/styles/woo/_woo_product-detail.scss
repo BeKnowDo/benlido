@@ -86,6 +86,27 @@
 
   .woocommerce-product {
     &-gallery {
+      .flex-viewport {
+        height: auto !important;
+
+        > figure {
+          height: auto !important;
+        }
+      }
+
+      &__image {
+        text-align: center;
+        margin: 0 auto !important;
+        height: auto !important;
+        // width: auto !important;
+        // max-width: 75%;
+
+        > img {
+          // max-width: 75%;
+          // width: auto !important;
+        }
+      }
+
       &__wrapper {
       }
 
@@ -104,7 +125,6 @@
       img {
         height: auto;
         width: auto;
-        max-width: 100%;
       }
     }
 

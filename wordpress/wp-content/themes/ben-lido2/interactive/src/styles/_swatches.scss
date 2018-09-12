@@ -80,42 +80,51 @@
 }
 
 .swatch-control {
-  // justify-content: center;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  // margin: 20px auto;
-  // max-width: 160px;
+  margin: 0;
 
   .select-option {
-    // text-align: center;
-    // width: 33%;
     border: 0;
-    &.selected {
-      border: 0;
-      padding: 0;
-    }
+
+    // &.selected {
+    //   border: 0;
+    //   padding: 0;
+    // }
   }
 
   .swatch {
     &-anchor {
       display: block;
       width: 100% !important;
+      max-width: 80% !important;
       height: auto !important;
+      margin: $unit-2 auto;
     }
+
     &-wrapper {
       background-color: transparent;
+      border: 0;
+
       width: auto;
       border: none;
       float: none;
-      margin: 0;
-      padding: 8px;
-      transition: padding 0.1s ease-in-out;
+      margin: 0 auto;
+      padding: 0;
+      transition: padding 0.1s ease-in-out, width 0.1s ease-in-out;
 
       &.selected {
-        transition: padding 0.1s ease-in-out;
-        padding: 4px;
+        transition: padding 0.1s ease-in-out, width 0.1s ease-in-out;
         border: 0;
+        padding: 0;
+
+        > a {
+          max-width: 100% !important;
+        }
       }
 
       img {

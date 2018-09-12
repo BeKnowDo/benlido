@@ -1,38 +1,47 @@
-.woocommerce-active {
-  .hero-product {
-    &:last-child {
-      border: none;
-      border-top: $grey-border;
+.product-template-default {
+  .woocommerce-active {
+    .hero-product {
+      &:last-child {
+        border: none;
+        border-top: $grey-border;
+      }
     }
   }
-}
 
-.bl-bags-page {
-  .hero-product {
-    &:last-child {
-      border-top: 0;
+  .bl-bags-page {
+    .hero-product {
+      &:last-child {
+        border-top: 0;
+      }
     }
   }
-}
 
-.woocommerce {
-  &-product-gallery {
-    .flex-control-thumbs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+  div {
+    &.woocommerce {
+      &-product-gallery {
+        .flex-control {
+          &-thumbs {
+            &.flex-control-nav {
+              margin: 0 0 $unit-2;
 
-      li {
-        float: none !important;
-        width: 23% !important;
-        margin: 0 !important;
+              li {
+                float: none !important;
+                // width: 23% !important;
+                margin: 0 !important;
 
-        &.bl-hide-thumbnail {
-          display: none;
-        }
+                &.bl-hide-thumbnail {
+                  display: none;
+                }
 
-        &.bl-show-thumbnail {
-          display: block;
+                &.bl-show-thumbnail {
+                  display: block;
+                }
+              }
+            }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
         }
       }
     }
