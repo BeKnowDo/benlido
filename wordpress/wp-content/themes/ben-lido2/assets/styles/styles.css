@@ -3309,6 +3309,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .footer-contact-links { list-style-type: none; padding: 0; }
 
+.footer-contact-links h6 { font-size: 2rem; }
+
 .social-media-links { padding-top: 14px; }
 
 .social-media-links a { color: #fff; }
