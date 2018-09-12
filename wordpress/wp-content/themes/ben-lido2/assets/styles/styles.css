@@ -3395,16 +3395,6 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero { text-align: center; color: #979797; padding: 150px 20px; }
 
-.hero-help { text-align: left; padding: 0 0 2.8rem; margin-bottom: 2.8rem; border-bottom: 1px solid #e4e4e4; }
-
-.hero-help-header { color: #393d5b; padding: 0; }
-
-.hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; line-height: normal; padding: 1.6rem 0 0; margin: 0; }
-
-.hero-help-list { padding: 0.8rem 0 0; }
-
-.hero-help-list li { padding: 0.8rem 0 0; }
-
 .hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 68px; font-weight: 400; font-style: normal; }
 
 .hero-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 300; font-style: normal; letter-spacing: normal; padding: 0; }
@@ -3949,6 +3939,18 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .bl-about-us .hero-title-copy:last-child:only-child { text-align: left; }
 
 .bl-help-container { padding: 3.2rem 0.8rem; }
+
+.bl-help-container .columns .column:last-child .hero-help { border-bottom: 0; }
+
+.bl-help .hero-help { text-align: left; padding: 0 0 2.8rem; margin-bottom: 2.8rem; border-bottom: 1px solid #e4e4e4; }
+
+.bl-help .hero-help-header { color: #393d5b; padding: 0; }
+
+.bl-help .hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; line-height: normal; padding: 1.6rem 0 0; margin: 0; }
+
+.bl-help .hero-help-list { padding: 0.8rem 0 0; }
+
+.bl-help .hero-help-list li { padding: 0.8rem 0 0; }
 
 .bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
 

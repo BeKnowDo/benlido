@@ -3,33 +3,6 @@
   color: $grey;
   padding: 150px 20px;
 
-  &-help {
-    text-align: left;
-    padding: 0 0 $unit-14;
-    margin-bottom: $unit-14;
-    border-bottom: $grey-border;
-
-    &-header {
-      color: $brown-grey;
-      padding: 0;
-    }
-
-    &-copy {
-      @include sentinel(24px, 300);
-      line-height: normal;
-      padding: $unit-8 0 0;
-      margin: 0;
-    }
-
-    &-list {
-      padding: $unit-2 0 0;
-
-      li {
-        padding: $unit-4 0 0;
-      }
-    }
-  }
-
   &-header {
     color: $dark-grey;
     text-transform: uppercase;
