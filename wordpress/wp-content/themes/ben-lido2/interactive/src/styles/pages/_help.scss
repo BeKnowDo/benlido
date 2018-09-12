@@ -27,23 +27,52 @@
       margin-bottom: $unit-14;
       border-bottom: $grey-border;
 
+
+      &-sentinel {
+        @include sentinel($unit-6, 300);
+        color: $grey;
+      }
+
       &-header {
         color: $brown-grey;
         padding: 0;
       }
 
       &-copy {
-        @include sentinel(24px, 300);
+        @include sentinel($unit-6, 300);
         line-height: normal;
+        color: $grey;
         padding: $unit-8 0 0;
         margin: 0;
       }
 
       &-list {
         padding: $unit-2 0 0;
+        counter-reset: li;
+
+
+        &-ordered {
+          &::before {
+            counter-increment: li;
+            list-style-type: decimal;
+            content: counter(li)'.';
+            display: inline-block;
+            color: $brown-grey;
+            width: $unit-6;
+          }
+        }
 
         li {
           padding: $unit-4 0 0;
+        }
+
+        strong {
+          color: $brown-grey;
+        }
+
+        div {
+          color: $dark-grey;
+          font-weight: 700;
         }
       }
     }
