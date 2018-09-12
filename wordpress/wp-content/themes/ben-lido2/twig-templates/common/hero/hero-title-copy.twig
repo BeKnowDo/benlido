@@ -17,7 +17,7 @@
           {% endif %}
 
           {% if item.copy %}
-            <p class="hero-title-copy-copy">{{item.copy}}</p>
+            <p class="hero-title-copy-copy">{{item.copy|raw}}</p>
           {% endif %}
 
           {% if item.inlineImage %}
