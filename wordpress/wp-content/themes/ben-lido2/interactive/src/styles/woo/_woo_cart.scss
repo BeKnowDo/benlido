@@ -19,6 +19,12 @@
       border-radius: 4px;
       padding: $unit-4;
       text-align: center;
+
+      a {
+        &:visited {
+          color: $white;
+        }
+      }
     }
   }
 

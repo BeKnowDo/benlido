@@ -64,6 +64,18 @@ function bl_get_contact_nav() {
   return $final_nav;
 }
 
+function bl_get_brands_contact_nav() {
+  $final_nav = array();
+  $locations = get_nav_menu_locations();
+  $menu_id = $locations[ 'for-brands' ];
+  $nav = wp_get_nav_menu_items($menu_id);
+  foreach ($nav as $item) {
+    $res = bl_generate_nav_links($item);
+    $final_nav[] = $res;
+  }
+  return $final_nav;
+}
+
 function bl_generate_nav_links($item) {
   $res = array();
   if (!empty($item) && is_object($item)) {

@@ -3101,7 +3101,7 @@ p { color: #606060; }
 
 a { transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
-a:visited { color: #fff; }
+a:visited { color: #87a4b0; }
 
 a:hover { text-decoration: none; transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
@@ -3303,13 +3303,13 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .footer .col-3 { margin-bottom: 30px; }
 
+.footer h6 { font-size: 2rem; text-transform: uppercase; margin-bottom: 0.2rem; }
+
 .footer li a { color: #606060; display: inline-block; font-size: 15px; }
 
 .footer li a:hover { color: #87a4b0; }
 
-.footer-contact-links { list-style-type: none; padding: 0; }
-
-.footer-contact-links h6 { font-size: 2rem; }
+.footer-contact-links { list-style-type: none; margin: 0 0 1.6rem; padding: 0; }
 
 .social-media-links { padding-top: 14px; }
 
@@ -3946,13 +3946,21 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-help .hero-help { text-align: left; padding: 0 0 2.8rem; margin-bottom: 2.8rem; border-bottom: 1px solid #e4e4e4; }
 
+.bl-help .hero-help-sentinel { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; color: #979797; }
+
 .bl-help .hero-help-header { color: #393d5b; padding: 0; }
 
-.bl-help .hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; line-height: normal; padding: 1.6rem 0 0; margin: 0; }
+.bl-help .hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; line-height: normal; color: #979797; padding: 1.6rem 0 0; margin: 0; }
 
-.bl-help .hero-help-list { padding: 0.8rem 0 0; }
+.bl-help .hero-help-list { padding: 0.8rem 0 0; counter-reset: li; }
+
+.bl-help .hero-help-list-ordered::before { counter-increment: li; list-style-type: decimal; content: counter(li) "."; display: inline-block; color: #393d5b; width: 1.2rem; }
 
 .bl-help .hero-help-list li { padding: 0.8rem 0 0; }
+
+.bl-help .hero-help-list strong { color: #393d5b; }
+
+.bl-help .hero-help-list div { color: #404953; font-weight: 700; }
 
 .bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
 
@@ -4276,6 +4284,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 75px; }
 
 .woocommerce-cart .entry-content .return-to-shop { background-color: #393d5b; display: inline-block; border-radius: 4px; padding: 0.8rem; text-align: center; }
+
+.woocommerce-cart .entry-content .return-to-shop a:visited { color: #fff; }
 
 .woocommerce-cart .shop_table { width: 100%; }
 
@@ -4623,6 +4633,10 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .product .qty { max-width: 80px; }
   .single-product #content .product.type-product .product_title { font-size: 35px; }
   .single-product #content .product.type-product .quantity { width: 33%; font-size: 14px; } }
+
+@media (min-width: 600px) { .single-product .product.type-product { flex-direction: row; }
+  .single-product .product .woocommerce-product-gallery.woocommerce-product-gallery--with-images { width: 50%; }
+  .single-product .product .entry-summary { width: 50%; } }
 
 @media (max-width: 840px) { .product-tile { border: 0; border-bottom: 1px solid #e4e4e4; border-radius: 0; padding: 1rem 0.8rem; text-align: center; }
   .product-tile:hover .product-tile-hover { transform: translate3d(0, 0, 0); }
