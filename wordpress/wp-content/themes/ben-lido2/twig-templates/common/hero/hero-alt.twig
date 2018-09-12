@@ -11,32 +11,37 @@
           </div>
         {% endif %}
 
-        <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
-          <div class="hero">
-
-            {% if hero.header is not empty %}
-              <h1 class="hero-header">{{hero.header}}</h1>
+        {% if homePageHeroes | length >= 1 and hero.image is empty %}
+          <div class="column col-6 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
+          {% else %}
+            <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
             {% endif %}
 
-            {% if hero.header is not empty %}
-              <div class="hero-copy">
-                {{hero.copy}}
-              </div>
-            {% endif %}
+            <div class="hero">
 
-            {% if hero.button_copy is not empty %}
-              <div class="hero-action-buttons columns">
-                <div class="column col-xs-6 col-sm-6 col-mx-auto col-sm-12 col-6">
-                  <a href="{{ hero.button_url }}" class="btn btn-primary btn-lg btn-block ">{{ hero.button_copy }}</a>
+              {% if hero.header is not empty %}
+                <h1 class="hero-header">{{hero.header}}</h1>
+              {% endif %}
+
+              {% if hero.header is not empty %}
+                <div class="hero-copy">
+                  {{hero.copy}}
                 </div>
-              </div>
+              {% endif %}
 
-            {% endif %}
+              {% if hero.button_copy is not empty %}
+                <div class="hero-action-buttons columns">
+                  <div class="column col-xs-6 col-sm-6 col-mx-auto col-sm-12 col-6">
+                    <a href="{{ hero.button_url }}" class="btn btn-primary btn-lg btn-block ">{{ hero.button_copy }}</a>
+                  </div>
+                </div>
 
+              {% endif %}
+
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
