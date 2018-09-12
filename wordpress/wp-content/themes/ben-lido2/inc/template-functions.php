@@ -520,8 +520,8 @@ function bl_process_kit_bag($item,$kit_id=null) {
   $product_id = 0;
   $index = 0;
   $pre_header = '';
-//print_r ($item);
-  if (function_exists('get_field')) {
+  //print_r ($item);
+  if (function_exists('get_field') && !empty($kit_id)) {
     $color_variation_image_overrides = get_field('color_variation_image_overrides',$kit_id);
   }
   if (!empty($item) && is_object($item) && method_exists($item,'get_name')) {

@@ -1,6 +1,7 @@
 <?php
 // we're using this page for both bags and kits... so we are checking if we have a kit Id
 global $kit_id;
+global $bl_custom_kit_id;
 
 $data = array();
 $bags = array();
@@ -15,13 +16,20 @@ if (function_exists('get_field')) {
 //print_r ($bags);
 
 if (empty($bags) && !empty($kit_id)) {
-    if (function_exists('bl_get_kit_bag')) {
+    if (function_exists('bl_get_kit_bag') && $kit_id != $bl_custom_kit_id) {
         $bags = bl_get_kit_bag($kit_id);
     }
+
 
     if (!empty($bags) && is_object($bags) && function_exists('bl_process_kit_bag')) {
         $bags = bl_process_kit_bag($bags,$kit_id);
     }
+
+    // this means that it is not a real prebuilt kit
+    if ($kit_id == $bl_custom_kit_id) {
+        $bags = null;
+    }
+
 }
 if (empty($bags) && empty(bl_get_product_swap()) && bl_is_kit_add() == false) {
     $bag = bl_get_bag_from_cart();
