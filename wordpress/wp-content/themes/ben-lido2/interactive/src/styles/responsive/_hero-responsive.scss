@@ -1,6 +1,6 @@
 @media (max-width: $size-md) {
   .hero {
-    padding: 50px 20px;
+    padding: 50px $unit-2;
 
     &-header {
       // font-size: 42px;

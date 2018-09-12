@@ -3979,7 +3979,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .btn-selected .remove-from-cart:after { display: none; }
   .btn-selected-swap.swap-from-cart { border-radius: 4px; background-color: #393d5b; color: #fff; width: 100%; } }
 
-@media (max-width: 840px) { .hero { padding: 50px 20px; } }
+@media (max-width: 840px) { .hero { padding: 50px 0.8rem; } }
 
 @media (max-width: 600px) { .hero-header { font-size: 50px; }
   .hero-action-buttons .btn { max-width: none; }
