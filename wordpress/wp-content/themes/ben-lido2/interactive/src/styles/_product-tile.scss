@@ -133,6 +133,11 @@
         padding: 10px 6px;
         margin-top: auto;
         position: relative;
+        a {
+          &:visited {
+            color: $white;
+          }
+        }
       }
     }
 

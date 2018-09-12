@@ -167,7 +167,8 @@
 .swap-from-cart {
   padding: 10px 6px;
   color: $white;
-  &:hover {
+  &:hover,
+  &:visited {
     color: $white;
     text-decoration: none;
   }

@@ -1,6 +1,7 @@
 export class LidoBagDetail {
   constructor () {
     this.swatches = document.querySelector('#picker_pa_color') || undefined
+    this.bagListingSwatches = document.querySelectorAll('.bl-product-swatches-container').length > 0 ? document.querySelectorAll('.bl-product-swatches-container') : undefined
     this.thumbnails =
       document.querySelector('.flex-control-thumbs') || undefined
 
@@ -13,18 +14,41 @@ export class LidoBagDetail {
       // this.attachHover();
     }
 
-    if (this.swatches) {
-      setTimeout(() => {
-        this.defaultBagColor()
-      }, 1000)
-    }
+    setTimeout(() => {
+      // For Bag Detail Pages
+      if (this.swatches) {
+        this.defaultBagDetailSwatch()
+      }
+
+      if(this.bagListingSwatches !== undefined) {
+        this.defaultBagListingSwatch()
+      }
+    }, 500)
+
   }
 
-  defaultBagColor () {
+  defaultBagListingSwatch() {
+    this.bagListingSwatches.forEach((item, index) => {
+      this.bagListingActivateSwatch(item, index)
+    })
+  }
+
+  bagListingActivateSwatch(item, index) {
+    const swatches = item.querySelectorAll('.swatch-wrapper')
+    let trackIndex = index
+
+    if(item.querySelector('.selected') === null) {
+      swatches[trackIndex].querySelector('.swatch-anchor').click()
+    }
+
+  }
+
+  defaultBagDetailSwatch () {
     const bagSwatches = this.swatches.querySelectorAll('.swatch-wrapper')
     let activatedSwatchIndex = 0
 
     bagSwatches.forEach((bagSwatch, index) => {
+
       const swatches = bagSwatch.querySelectorAll('.swatch-anchor')
 
       let i = 0

@@ -40458,6 +40458,7 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
     _classCallCheck(this, LidoBagDetail);
 
     this.swatches = document.querySelector('#picker_pa_color') || undefined;
+    this.bagListingSwatches = document.querySelectorAll('.bl-product-swatches-container').length > 0 ? document.querySelectorAll('.bl-product-swatches-container') : undefined;
     this.thumbnails = document.querySelector('.flex-control-thumbs') || undefined;
 
     this.bagSwatches = document.querySelectorAll('.bl-product-swatches') || undefined;
@@ -40473,19 +40474,44 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
         // this.attachHover();
       }
 
-      if (this.swatches) {
-        setTimeout(function () {
-          _this.defaultBagColor();
-        }, 1000);
+      setTimeout(function () {
+        // For Bag Detail Pages
+        if (_this.swatches) {
+          _this.defaultBagDetailSwatch();
+        }
+
+        if (_this.bagListingSwatches !== undefined) {
+          _this.defaultBagListingSwatch();
+        }
+      }, 500);
+    }
+  }, {
+    key: 'defaultBagListingSwatch',
+    value: function defaultBagListingSwatch() {
+      var _this2 = this;
+
+      this.bagListingSwatches.forEach(function (item, index) {
+        _this2.bagListingActivateSwatch(item, index);
+      });
+    }
+  }, {
+    key: 'bagListingActivateSwatch',
+    value: function bagListingActivateSwatch(item, index) {
+      var swatches = item.querySelectorAll('.swatch-wrapper');
+      var trackIndex = index;
+
+      if (item.querySelector('.selected') === null) {
+        swatches[trackIndex].querySelector('.swatch-anchor').click();
       }
     }
   }, {
-    key: 'defaultBagColor',
-    value: function defaultBagColor() {
+    key: 'defaultBagDetailSwatch',
+    value: function defaultBagDetailSwatch() {
       var bagSwatches = this.swatches.querySelectorAll('.swatch-wrapper');
       var activatedSwatchIndex = 0;
 
       bagSwatches.forEach(function (bagSwatch, index) {
+
         var swatches = bagSwatch.querySelectorAll('.swatch-anchor');
 
         var i = 0;
@@ -40509,17 +40535,17 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
   }, {
     key: 'attachClick',
     value: function attachClick() {
-      var _this2 = this;
+      var _this3 = this;
 
       var swatches = this.swatches.querySelectorAll('.select-option');
       swatches.forEach(function (item) {
-        _this2.handleClick(item);
+        _this3.handleClick(item);
       });
     }
   }, {
     key: 'handleClick',
     value: function handleClick(item) {
-      var _this3 = this;
+      var _this4 = this;
 
       var target = item;
 
@@ -40527,9 +40553,9 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
         // WooCommerce...grrrr
         var color = e.currentTarget.dataset.value;
 
-        _this3.thumbnails === undefined ? _this3.thumbnails = document.querySelector('.flex-control-thumbs') : undefined;
+        _this4.thumbnails === undefined ? _this4.thumbnails = document.querySelector('.flex-control-thumbs') : undefined;
 
-        var images = _this3.thumbnails.querySelectorAll('img');
+        var images = _this4.thumbnails.querySelectorAll('img');
 
         var i = 0;
         for (i; i < images.length; i++) {
@@ -40547,11 +40573,11 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
   }, {
     key: 'attachHover',
     value: function attachHover() {
-      var _this4 = this;
+      var _this5 = this;
 
       var swatches = this.swatches.querySelectorAll('.select-option');
       swatches.forEach(function (element) {
-        _this4.handleHover(element);
+        _this5.handleHover(element);
       });
     }
   }, {

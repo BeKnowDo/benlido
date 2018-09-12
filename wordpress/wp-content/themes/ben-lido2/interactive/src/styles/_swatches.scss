@@ -47,6 +47,13 @@
           transition: padding 0.1s ease-in-out;
           padding: 0;
           border: 0;
+
+          a {
+            cursor: pointer;
+            border-color: $medium-grey;
+            box-shadow: 0 0 14px rgba(3, 3, 3, 0.2);
+            transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+          }
         }
       }
 
@@ -63,8 +70,7 @@
   padding: 4px;
   transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
 
-  &:hover,
-  &.selected {
+  &:hover {
     cursor: pointer;
     border-color: $medium-grey;
     box-shadow: 0 0 14px rgba(3, 3, 3, 0.2);
@@ -108,7 +114,7 @@
 
     &-wrapper {
       background-color: transparent;
-      border: 0;
+      // border: 0;
 
       width: auto;
       border: none;
