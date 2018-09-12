@@ -12,6 +12,8 @@ Version: 1.0
  */
 global $bl_ecommerce_api_slug;
 $bl_ecommerce_api_slug = '/bl-api';
+global $bl_custom_kit_id;
+$bl_custom_kit_id = 99999999;
 
 // adding frequency to the session for checkout
 if (!function_exists('bl_add_frequency_to_session')) {
@@ -284,6 +286,24 @@ if (!function_exists('bl_start_swap')) {
     }
 }
 
+if (!function_exists('bl_create_custom_kit')) {
+    function bl_create_custom_kit() {
+        global $bl_custom_kit_id;
+        $holder = array();
+        //$kit_list = bl_get_kit_list();
+        $bag_obj = bl_get_bag_from_cart();
+        if (!empty($bag_obj)) {
+            $bag = array('bag'=>$bag_obj['id'],'variation'=>$bag_obj['variation_id']);
+        }
+        $kit_id = $bl_custom_kit_id;
+        bl_set_kit_list($kit_id,$bag,$holder);
+        bl_set_kit_add($kit_id,true);
+        wp_redirect(wc_get_page_permalink( 'shop' ));
+
+    }
+
+}
+
 if (!function_exists('bl_select_item_as_swapped')) {
     // this is to pick the item to swap with the one that was chosen before
     function bl_select_item_as_swapped($kit_id,$prod_id,$cat_id) {
@@ -294,6 +314,7 @@ if (!function_exists('bl_select_item_as_swapped')) {
         $items = array();
         $holder = array();
         $kit_list = bl_get_kit_list();
+        //print_r ($kit_list);
         if (!empty($kit_list)) {
             $items = $kit_list['items'];
         }
@@ -310,6 +331,9 @@ if (!function_exists('bl_select_item_as_swapped')) {
         if (!empty($holder) && is_array($holder) && !empty($prod_id)) {
             $new = array('category'=>$cat_id,'product'=>$prod_id,'variation'=>null,'quantity'=>1);
             array_unshift($holder,$new);
+        }
+        if (empty($holder)) {
+            $holder[] = array('category'=>$cat_id,'product'=>$prod_id,'variation'=>null,'quantity'=>1);
         }
         if (!empty($holder)) {
             bl_set_kit_list($kit_id,$kit_list['bag'],$holder);
@@ -620,13 +644,19 @@ function bl_get_current_kit_id() {
 }
 
 function bl_get_kit_page_url($id) {
+    global $bl_custom_kit_id;
     if (function_exists('get_field')) {
         $kitting_page = get_field('kitting_page','option');
     }
     if (!empty($kitting_page) && is_object($kitting_page)) {
         $kitting_page = get_permalink($kitting_page->ID);
     }
-    $url = $kitting_page . '?id=' . $id;
+    $url = $kitting_page;
+    if ($id != $bl_custom_kit_id) {
+        $url = $kitting_page . '?id=' . $id;
+    }
+    
+    
     return $url;
 }
 

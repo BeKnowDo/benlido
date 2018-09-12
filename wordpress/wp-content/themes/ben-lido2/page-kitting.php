@@ -17,6 +17,9 @@
             }
         }
     }
+    if (function_exists('bl_get_current_kit_id')) {
+        $kit_id = bl_get_current_kit_id();
+    }
     if ($_REQUEST['id']) {
         $kit_id = $_REQUEST['id'];
     }
@@ -52,7 +55,7 @@
             }
             wp_redirect($delivery_frequency_page);
         }
-    }
+    } // end $_POST
     if (isset($_REQUEST['cat']) && isset($_REQUEST['prod'])) {
         // overriding featured product for this category
         if (function_exists('bl_override_category_default')) {
@@ -63,7 +66,13 @@
             }
 
         }
+    } // end cat
+
+    // Finally, if there is no kit ID, we create a custom kit ID of 99999999 for personal kit
+    if (empty($kit_id)) {
+        bl_create_custom_kit();
     }
+
     //print_r ($selected_products);
 
  // removing the add to cart message

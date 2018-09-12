@@ -182,6 +182,15 @@ function bl_add_back_to_top() {
 	get_template_part( 'template-parts/common/back-to','top' );
 }
 
+//add_filter( 'woocommerce_add_to_cart_redirect', 'bl_add_to_cart_redirect', 10, 1 );
+
+function bl_add_to_cart_redirect($url) {
+	if (is_product()) {
+		$url =  wc_get_page_permalink( 'shop' );
+	}
+	return $url;
+}
+
 
 if ( ! function_exists( 'storefront_product_search' ) ) {
 	/**

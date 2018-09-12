@@ -180,6 +180,11 @@ function bl_process_bags_list($items) {
         $selected_copy = $el['selected_copy'];
         $hover_details = $el['hover_details'];
 
+        if (function_exists('get_field')) {
+          // we need to get the kit page
+          $kitting_page = get_field('kitting_page','option');
+        }
+
         switch ($type) {
           case 'travel_kit':
             $is_kit = true;
@@ -236,7 +241,9 @@ function bl_process_bags_list($items) {
             }
           break;
           default:
-            $css = 'self-kit';
+            //$css = 'self-kit';
+            // NOTE: we will create a prebuilt kit with no items in it.
+            $css = 'prebuilt-kit';
             $is_kit = false;
             $disabled = false;
             $prod = null;
@@ -281,7 +288,10 @@ function bl_process_bags_list($items) {
               $css .= ' has-variations';
             }
             $url = get_permalink($product_id);
-            $href = get_permalink( woocommerce_get_page_id( 'shop' ) );
+            //$href = get_permalink( woocommerce_get_page_id( 'shop' ) );
+            if ($kitting_page) {
+              $href = get_permalink($kitting_page);
+            }
           break;
         }
 
