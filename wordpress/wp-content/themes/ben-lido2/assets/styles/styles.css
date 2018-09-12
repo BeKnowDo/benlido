@@ -3303,13 +3303,13 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .footer .col-3 { margin-bottom: 30px; }
 
+.footer h6 { font-size: 2rem; text-transform: uppercase; margin-bottom: 0.2rem; }
+
 .footer li a { color: #606060; display: inline-block; font-size: 15px; }
 
 .footer li a:hover { color: #87a4b0; }
 
-.footer-contact-links { list-style-type: none; padding: 0; }
-
-.footer-contact-links h6 { font-size: 2rem; }
+.footer-contact-links { list-style-type: none; margin: 0 0 1.6rem; padding: 0; }
 
 .social-media-links { padding-top: 14px; }
 

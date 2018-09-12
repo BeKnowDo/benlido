@@ -13,20 +13,27 @@ if (function_exists('bl_get_site_logo')) {
 if (function_exists('bl_get_footer_nav')) {
     $list = bl_get_footer_nav();
 }
+
 if (function_exists('bl_get_social_media_nav')) {
     $socialMediaLinks = bl_get_social_media_nav();
 }
+
 if (function_exists('bl_get_contact_nav')) {
     $contact = bl_get_contact_nav();
 }
 
+if (function_exists('bl_get_brands_contact_nav')) {
+    $forBrands = bl_get_brands_contact_nav();
+}
+
 $data = array(
     'className'=>$className,
-    'list'=>$list,
-    'socialMediaLinks'=>$socialMediaLinks,
-    'logo'=>$diamond_logo,
-    'copyright_date'=>$copyright_date,
-    'contact'=>$contact
+    'list' => $list,
+    'socialMediaLinks' => $socialMediaLinks,
+    'logo' => $diamond_logo,
+    'copyright_date' => $copyright_date,
+    'contact' => $contact,
+    'forBrands' => $forBrands
 );
 
 //print_r (json_encode($contact));

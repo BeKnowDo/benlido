@@ -2,10 +2,34 @@
   {% set className = "footer-primary-items" %}
 {% endif %}
 {% if not list %}
-  {% set list = [ { url:
-'/', title: 'Home', text: 'Home' }, { url: '/bags/', title: 'Build a kit', text: 'Build a kit' }, { url: '/kits', title:
-'Prebuilt kits', text: 'Prebuilt kits' }, { url: '/about', title: 'About', text: 'About' }, { url: '/my-account', title:
-'Sign in', text: 'Sign In' } ] %}
+  {% set list = [
+    {
+      url: '/',
+      title: 'Home',
+      text: 'Home'
+    },
+    {
+      url: '/bags/',
+      title: 'Build a kit',
+      text: 'Build a kit'
+    },
+    {
+      url: '/kits',
+      title: 'Prebuilt kits',
+      text: 'Prebuilt kits'
+    },
+    {
+      url: '/about',
+      title: 'About',
+      text: 'About'
+    },
+    {
+      url: '/my-account',
+      title: 'Sign in',
+      text: 'Sign In'
+    }
+  ]
+%}
 {% endif %}
 {% if not logo %}
   {% set logo = '<img src="/images/diamond_logo.svg">' %}
@@ -27,9 +51,28 @@
     }
   ] %}
 {% endif %}
+
 {% if not contact %}
-  {% set contact = [{"id":1302,"title":"Email: help@benlido.com","alt_title":"Email: help@benlido.com","post_name":"helpbenlido-com","url":"mailto:help@benlido.com","target":"","classes":""},{"id":1303,"title":"Call:
-1-800-555-5555","alt_title":"Call: 1-800-555-5555","post_name":"1-800-555-5555","url":"tel:1-800-555-5555","target":"","classes":""}]
+  {% set contact = [
+    {
+      "id": 1302,
+      "title": "Email: help@benlido.com",
+      "alt_title":"Email: help@benlido.com",
+      "post_name":"helpbenlido-com",
+      "url":"mailto:help@benlido.com",
+      "target":"",
+      "classes":""
+    },
+    {
+      "id": 1303,
+      "title": "Call: 1-800-555-5555",
+      "alt_title":"Call: 1-800-555-5555",
+      "post_name":"1-800-555-5555",
+      "url":"tel:1-800-555-5555",
+      "target":"",
+      "classes":""
+    }
+  ]
 %}
 {% endif %}
 
@@ -50,6 +93,9 @@
       <div class="column col-xs-12 col-sm-12 col-md-12 col-3">
         <h6>Contact</h6>
         {% include 'common/contact-links.twig' %}
+
+        <h6>For Brands</h6>
+        {% include 'common/for-brands-links.twig' %}
       </div>
 
       <div class="column col-xs-12 col-sm-12 col-md-12 col-2 col-mr-auto">

@@ -4,7 +4,7 @@ if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {
 		echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php') ) . '</a></p></div>';
 	});
-	
+
 	return;
 }
 Timber::$dirname = array('twig-templates', 'views');
@@ -63,15 +63,15 @@ function bl_child_theme_init()
             if ($product_cat_id == $bag_category) {
                 $is_bag = true;
             }
-            
+
         }
 
         if ($is_bag == false) {
             remove_theme_support( 'wc-product-gallery-zoom' );
         }
-        
+
     }
-    
+
     //remove_theme_support( 'wc-product-gallery-lightbox' );
     //remove_theme_support( 'wc-product-gallery-slider' );
 
@@ -87,9 +87,11 @@ function bl_after_theme_setup() {
         'search-right' => esc_html__( 'Search Menu Right', 'benlido'),
         'footer' => esc_html__( 'Footer Menu', 'benlido'),
         'contact' => esc_html__( 'Contact Menu', 'benlido'),
+        'for-brands' => esc_html__( 'For Brands', 'benlido'),
+
     ) );
     add_action('after_setup_theme','bl_after_theme_setup_deferred'); // this is the trick to override after_setup_theme in the parent theme
-    
+
 }
 function bl_after_theme_setup_deferred() {
     remove_theme_support( 'custom-logo' );
