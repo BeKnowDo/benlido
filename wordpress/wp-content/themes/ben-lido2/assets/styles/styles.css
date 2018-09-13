@@ -3836,6 +3836,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-animated-gif { padding-top: 2rem; display: block; }
 
+.jquery-modal.blocker { z-index: 2; }
+
 .search-results #content { background-color: #fff; }
 
 .search-results .related.products { display: none; }

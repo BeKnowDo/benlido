@@ -34,16 +34,21 @@ function bl_child_theme_init()
     wp_register_style('bl-fonts', '//cloud.typography.com/7086216/6631592/css/fonts.css', array(), $version, 'all');
     //wp_register_style('bl-style-libs', get_stylesheet_directory_uri() . '/css/bl.libs.css', array(), $version, 'all');
     wp_register_style('bl-style', get_stylesheet_directory_uri() . '/assets/styles/styles.css', array('bl-fonts'), $version, 'all');
+    wp_register_style('jquery-modal','//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css',array(),$version,'all');
     //wp_enqueue_script('bl-scripts-libs', get_stylesheet_directory_uri() . '/js/bl.libs.js', array('jquery'),$version);
+    wp_enqueue_script('jquery-cookie', get_stylesheet_directory_uri() . '/assets/javascript/jquery.cookie.js', array('jquery'), $version);
+    wp_enqueue_script('jquery-modal', '//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js', array('jquery'), $version);
     wp_enqueue_script('bl-custom-jquery', get_stylesheet_directory_uri() . '/assets/javascript/ben-lido.js', array('jquery'), $version);
     wp_enqueue_script('bl-scripts', get_stylesheet_directory_uri() . '/assets/javascript/main.js', array('jquery'), $version,true);
 
     // removing default storefront styles.. this may cause issues later on with inherited dropdowns, error messages, etc. We will need to investigate this.
     //wp_enqueue_style('parent-storefront-style');
     wp_enqueue_style('parent-storefront-woocommerce-style');
+    wp_enqueue_style( 'jquery-modal' );
     wp_enqueue_style('bl-style-libs'); // Enqueue it!
     wp_enqueue_style('bl-fonts'); // Enqueue it!
     wp_enqueue_style('bl-style'); // Enqueue it!
+    
 
     // This theme uses wp_nav_menu() in one location.
 

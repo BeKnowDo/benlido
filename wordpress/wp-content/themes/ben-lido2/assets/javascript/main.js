@@ -2932,7 +2932,7 @@ function observeDOM(watches, container, cb) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.10';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -3196,7 +3196,7 @@ function observeDOM(watches, container, cb) {
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -4142,20 +4142,6 @@ function observeDOM(watches, container, cb) {
       }
     }
     return result;
-  }
-
-  /**
-   * Gets the value at `key`, unless `key` is "__proto__".
-   *
-   * @private
-   * @param {Object} object The object to query.
-   * @param {string} key The key of the property to get.
-   * @returns {*} Returns the property value.
-   */
-  function safeGet(object, key) {
-    return key == '__proto__'
-      ? undefined
-      : object[key];
   }
 
   /**
@@ -6615,7 +6601,7 @@ function observeDOM(watches, container, cb) {
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+          else if (!isObject(objValue) || isFunction(objValue)) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -9536,6 +9522,22 @@ function observeDOM(watches, container, cb) {
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
+    }
+
+    /**
+     * Gets the value at `key`, unless `key` is "__proto__".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
+     */
+    function safeGet(object, key) {
+      if (key == '__proto__') {
+        return;
+      }
+
+      return object[key];
     }
 
     /**
@@ -42793,8 +42795,8 @@ new _components.LidoBagDetail().init();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/cesar/server/repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
-module.exports = __webpack_require__(/*! /home/cesar/server/repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
+__webpack_require__(/*! /Volumes/MasterHD/Users/dave/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
+module.exports = __webpack_require__(/*! /Volumes/MasterHD/Users/dave/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
 
 
 /***/ })
