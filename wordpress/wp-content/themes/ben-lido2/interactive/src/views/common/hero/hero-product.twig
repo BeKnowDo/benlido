@@ -151,6 +151,19 @@ backgroundClassname = ''%}
           {# we don't show link if it is a prebuilt kit #}
           {% if items.is_kit == false %}
           </a>
+        {% else %}
+          {# this is a kit #}
+          {% if items.products is not empty %}
+            <a class="hero-product-bag-link {{items.css}}" title="{{items.header}}">
+            <span class="hero-product-hover-details">
+              <ul>
+                {% for prod in items.products %}
+                  <li>{{prod}}</li>
+                {% endfor %}
+              </ul>
+            </span>
+            </a>
+          {% endif %}
         {% endif %}
       </div>
 

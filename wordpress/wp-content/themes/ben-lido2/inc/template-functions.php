@@ -175,6 +175,8 @@ function bl_process_bags_list($items) {
       $href = '#';
       $swatches = array();
       $category_id = 0;
+      $products = array();
+      $hover_details = '';
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -202,6 +204,7 @@ function bl_process_bags_list($items) {
             $is_kit = true;
             $css = 'prebuilt-kit';
             $disabled = false;
+            $products = array();
             //print_r ($el);
             // the price of the kit is the total of all the products
             if (function_exists('bl_get_kit_price')) {
@@ -214,6 +217,17 @@ function bl_process_bags_list($items) {
               // get the bag for the kit
               $bag_for_this_kit = get_field('bag_for_this_kit',$item_id);
               $color_variation_image_overrides = get_field('color_variation_image_overrides',$item_id);
+              $product_categories = get_field('product_categories',$item_id);
+              //print_r ($product_categories);
+              if (!empty($product_categories) && is_array($product_categories)) {
+                foreach ($product_categories as $prod_cat) {
+                  //print_r ($prod_cat);
+                  $prod = $prod_cat['featured_product'];
+                  if ($prod) {
+                    $products[] = $prod->post_title;
+                  }
+                }
+              }
               // need the bag associated with the kit
               if ($kitting_page) {
                 $href = get_permalink($kitting_page) . '?id=' . $item_id;
@@ -351,6 +365,7 @@ function bl_process_bags_list($items) {
             'button_copy'=>$button_copy,
             'selected_copy'=>$selected_copy,
             'hover_details' => $hover_details,
+            'products' => $products,
             'picked'=>$picked,
             'image'=>$image,
             'image_retina'=>$image_retina,
