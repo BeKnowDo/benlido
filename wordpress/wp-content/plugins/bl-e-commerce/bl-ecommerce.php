@@ -213,6 +213,7 @@ if (!function_exists('bl_clear_all_kit_data')) {
 if (!function_exists('bl_get_kit_list')) {
     function bl_get_kit_list() {
         $current_kit = WC()->session->get( 'current_kit' );
+        //error_log('current kit list: '.json_encode($current_kit));
         return $current_kit;
     }
 }
@@ -220,7 +221,11 @@ if (!function_exists('bl_get_kit_list')) {
 if (!function_exists('bl_set_product_swap')) {
     function bl_set_product_swap($kit_id,$category_id,$product_id) {
         $kit_id = intval(trim($kit_id));
-        bl_save_current_kit($kit_id);
+        $kit_list = bl_get_kit_list();
+        if (empty($kit_list)) {
+            bl_save_current_kit($kit_id);
+        }
+        
         $category_id = intval(trim($category_id));
         $product_id = intval(trim($product_id));
         if (is_numeric($kit_id) && is_numeric($product_id)) {
