@@ -3852,7 +3852,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .kitting-page .hero-product-bag-image { margin: 0 0 0 auto; }
 
-.kitting-page .hero-product.bg-white { background-color: transparent; }
+.kitting-page .hero-product.bg-white { background-color: transparent; border-bottom: 0; }
 
 .kitting-page .hero-product-copy { display: none; }
 
@@ -4337,7 +4337,15 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart .actions .buttons .container { margin: 0 0 0 auto; }
 
-.woocommerce-cart .cart .actions .buttons .btn { margin-top: 0.8rem; }
+.woocommerce-cart .cart .actions .buttons .column { margin: 0 0 0.8rem; }
+
+.woocommerce-cart .cart .actions .buttons .btn { margin-top: 0.8rem; padding: 0.8rem 1.2rem; display: block; text-align: center; margin: 0; }
+
+.woocommerce-cart .cart .actions .buttons .btn[name*="update_cart"] { opacity: 1; background-color: #f7f7f7; border: 1px solid #e4e4e4; padding: 0.8rem 1.2rem; color: #87a4b0; display: block; }
+
+.woocommerce-cart .cart .actions .buttons .btn[name*="update_cart"]:not([disabled]) { background-color: #195675; color: #fff; }
+
+.woocommerce-cart .cart .actions .buttons .btn.btn-red { border-color: transparent; background-color: transparent; text-decoration: underline; color: #e10600; }
 
 .woocommerce-cart .cart .actions .buttons > .columns { width: 100%; justify-content: right; justify-items: right; }
 

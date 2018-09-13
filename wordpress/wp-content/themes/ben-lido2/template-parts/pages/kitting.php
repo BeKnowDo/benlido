@@ -19,6 +19,7 @@ if (function_exists('bl_get_current_kit_items')) {
 <input type="hidden" id="bl_kit_id" name="bl_kit_id" value="<?php echo $kit_id;?>" />
 
 <div class="bg-white">
+<?php if (!empty($kit_products) && is_array($kit_products)):?>
   <div class="max-width-xl kitting-page">
 
       <?php
@@ -26,9 +27,6 @@ if (function_exists('bl_get_current_kit_items')) {
       ?>
 
       <div class="columns">
-
-          <?php if (!empty($kit_products) && is_array($kit_products)):?>
-
           <div class="column col-xs-6 col-sm-6 col-md-6 col-3 product-tile-column product-tile-empty-product">
             <?php get_template_part('template-parts/common/product/add-empty','product'); ?>
           </div>
@@ -54,11 +52,10 @@ if (function_exists('bl_get_current_kit_items')) {
             </div>
 
           <?php endforeach;?>
-
-          <?php endif;?>
-
       </div>
+
   </div>
+    <?php endif;?>
 </div>
 
 <div class="bg-gray">

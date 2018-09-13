@@ -151,8 +151,37 @@
           margin: 0 0 0 auto;
         }
 
+        .column {
+          margin: 0 0 $unit-2;
+        }
+
         .btn {
           margin-top: $unit-2;
+          padding: $unit-4 $unit-6;
+          display: block;
+          text-align: center;
+          margin: 0;
+
+          &[name*="update_cart"] {
+            opacity: 1;
+            background-color: $silver-white;
+            @include border(all, $light-grey, 1px);
+            padding: $unit-4 $unit-6;
+            color: $blue-shale;
+            display: block;
+
+            &:not([disabled]) {
+              background-color: $blumine;
+              color: $white;
+            }
+          }
+
+          &.btn-red {
+            border-color: transparent;
+            background-color: transparent;
+            text-decoration: underline;
+            color: $red;
+          }
         }
 
         > .columns {

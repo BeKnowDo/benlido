@@ -152,17 +152,18 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 							<div class="columns">
 
-								<div class="column col-xs-12 col-6">
+								<div class="column col-xs-12 col-4">
 									<a class="btn btn-block btn-primary btn-lg" href="<?php  echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?php echo $return_to_shop_copy;?></a>
 								</div>
 
-								<div class="column col-xs-12 col-6">
+								<div class="column col-xs-12 col-4">
+									<button type="submit" class="button btn btn-block btn-primary btn-lg" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+								</div>
+
+								<div class="column col-xs-12 col-4">
 									<a id="ben-lido-clear-cart" class="btn btn-block btn-primary btn-lg btn-red" href="<?php  echo get_home_url(); ?>?empty-cart=true"><?php echo $empty_cart_copy;?></a>
 								</div>
 
-								<div class="column col-12">
-									<button type="submit" class="button btn" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-								</div>
 
 								</div>
 
