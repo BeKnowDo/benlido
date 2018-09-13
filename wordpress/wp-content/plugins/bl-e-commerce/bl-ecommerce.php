@@ -719,8 +719,15 @@ function bl_save_current_kit($id) {
 
 function bl_add_to_kit($kit_id,$product_id,$category_id) {
     // array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
+    global $bl_custom_kit_id;
     $kit_list = bl_get_kit_list();
-    $current_kit_id = $kit_list['kit_id'];
+
+    if (!empty($kit_list)) {
+        $current_kit_id = $kit_list['kit_id'];
+    } else {
+        $current_kit_id = $bl_custom_kit_id;
+    }
+
     $holder = array();
     $added = false;
     if ($kit_id == $current_kit_id) {
@@ -736,11 +743,16 @@ function bl_add_to_kit($kit_id,$product_id,$category_id) {
                 $holder[] = $item;
             }
         }
-        if ($added == false) {
+
+        if ($added == false && !empty($holder)) {
             array_unshift($holder,array('category'=>$category_id,'product'=>$product_id,'variation'=>null,'quantity'=>1));
+        }
+        else if (empty($holder)) {
+            $holder[] = array('category'=>$category_id,'product'=>$product_id,'variation'=>null,'quantity'=>1);
         }
     }
     if (!empty($holder)) {
+        //print_r ($holder);
         bl_set_kit_list($kit_id,$kit_list['bag'],$holder);
         return true;
     }

@@ -2,7 +2,23 @@
 global $shop_landing_featured_product;
 global $shop_landing_category;
 
+$from_nav = false;
 $is_kit_add = false;
+if (isset($_REQUEST['shop_now'])) {
+  $from_nav = true;
+}
+
+if ($from_nav == true) {
+  $current_kit_id = bl_get_current_kit_id();
+  if (empty($current_kit_id)) {
+    global $bl_custom_kit_id;
+    $current_kit_id = $bl_custom_kit_id;
+    bl_set_kit_list($current_kit_id,array(),array());
+    bl_set_kit_add($current_kit_id);
+  }
+}
+
+
 if (function_exists('bl_is_kit_add')) {
   $is_kit_add = bl_is_kit_add();
 }
