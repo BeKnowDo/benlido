@@ -3489,6 +3489,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product a[disabled="disabled"]:hover { background-color: #87a4b0; }
 
+.hero-product > .columns .column { position: relative; }
+
 .hero-product .btn-link { text-shadow: none; margin-top: 0.8rem; }
 
 .hero-product-header { color: #393d5b; margin-bottom: 0.8rem; position: relative; top: -10px; }
@@ -3501,7 +3503,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
 
-.hero-product-bag-link .hero-product-hover-details { transition: opacity 0.2s ease-in-out; opacity: 0; position: absolute; display: flex; justify-content: center; align-items: center; flex-direction: column; top: 0; left: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.8); color: #fff; }
+.hero-product-bag-link .hero-product-hover-details { background-color: rgba(0, 0, 0, 0.8); transition: opacity 0.2s ease-in-out; opacity: 0; position: absolute; display: flex; justify-content: center; align-items: center; flex-direction: column; top: 0; left: 0; height: 100%; width: 100%; color: #fff; }
 
 .hero-product-bag-link .hero-product-hover-details:hover { opacity: 1; transition: opacity 0.2s ease-in-out; }
 
@@ -3516,6 +3518,22 @@ body { position: relative; padding-top: 98px; outline: none; }
 .hero-product-bag-link .hero-product-hover-copy strong { font-size: 40px; padding: 0 0.8rem; }
 
 .hero-product-bag-link .hero-product-hover-disclaimer { font-size: 12px; padding-top: 1.6rem; }
+
+.hero-product-kit-link { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.hero-product-kit-link.hero-product-bag-link { position: absolute; }
+
+.hero-product-kit-link:hover .hero-product-hover-details { opacity: 1; }
+
+.hero-product-kit-link .hero-product-hover-details { background-color: rgba(0, 0, 0, 0.8); padding: 1.6rem; }
+
+.hero-product-kit-link .hero-product-hover-details:hover { opacity: 1; }
+
+.hero-product-kit-link .hero-product-hover-details h2 { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 2.4rem; font-weight: 300; font-style: normal; border-bottom: 1px solid #fff; padding: 0 0 0.8rem; margin: 0 0 2rem; width: 100%; }
+
+.hero-product-kit-link .hero-product-hover-details .count { font-size: 12px; }
+
+.hero-product-kit-link .hero-product-hover-details .count:before { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 0.8rem; font-weight: 300; font-style: normal; content: "1"; width: 20px; display: inline-block; }
 
 .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
 
