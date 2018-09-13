@@ -28,12 +28,16 @@ $mid_swap = false;
 $is_kit_add = false;
 $kit_id = null;
 
+// NOTE: setting $mid_swap as true means that we are always adding items into the kit and not the cart
+//$mid_swap = true;
+
 if (function_exists('bl_is_swap')) {
     $is_swap = bl_is_swap();
 }
 if (function_exists('bl_is_kit_add')) {
     $is_kit_add = bl_is_kit_add();
 }
+
 
 if ($is_kit_add == true || $is_swap == true) {
     // getting the kit ID so that we can add the item to the kit and then redirect back to the kit

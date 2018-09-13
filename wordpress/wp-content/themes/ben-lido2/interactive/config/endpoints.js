@@ -1,6 +1,7 @@
 export const endpoints = {
   getCartItems: "/bl-api/cart",
   addToCart: "/bl-api/cart/add",
+  addToKitCart: "/bl-api/kit/kit-add", // add the item to the cart, but really it's the kit
   addToKit: "/bl-api/kit/add",
   removeFromCart: "/bl-api/cart/remove",
   removeFromKit: '/bl-api/kit/remove',

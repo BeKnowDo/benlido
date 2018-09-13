@@ -102,6 +102,7 @@ Object.defineProperty(exports, "__esModule", {
 var endpoints = exports.endpoints = {
   getCartItems: "/bl-api/cart",
   addToCart: "/bl-api/cart/add",
+  addToKitCart: "/bl-api/kit/kit-add", // add the item to the cart, but really it's the kit
   addToKit: "/bl-api/kit/add",
   removeFromCart: "/bl-api/cart/remove",
   removeFromKit: '/bl-api/kit/remove',
@@ -2931,7 +2932,7 @@ function observeDOM(watches, container, cb) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.10';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -3195,7 +3196,7 @@ function observeDOM(watches, container, cb) {
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -4141,20 +4142,6 @@ function observeDOM(watches, container, cb) {
       }
     }
     return result;
-  }
-
-  /**
-   * Gets the value at `key`, unless `key` is "__proto__".
-   *
-   * @private
-   * @param {Object} object The object to query.
-   * @param {string} key The key of the property to get.
-   * @returns {*} Returns the property value.
-   */
-  function safeGet(object, key) {
-    return key == '__proto__'
-      ? undefined
-      : object[key];
   }
 
   /**
@@ -6614,7 +6601,7 @@ function observeDOM(watches, container, cb) {
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+          else if (!isObject(objValue) || isFunction(objValue)) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -9535,6 +9522,22 @@ function observeDOM(watches, container, cb) {
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
+    }
+
+    /**
+     * Gets the value at `key`, unless `key` is "__proto__".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
+     */
+    function safeGet(object, key) {
+      if (key == '__proto__') {
+        return;
+      }
+
+      return object[key];
     }
 
     /**
@@ -40747,6 +40750,8 @@ var Cart = exports.Cart = function () {
 
     this.addToCartButtons = document.querySelectorAll('.add-to-cart') || undefined;
 
+    this.singleAddToCartButtons = document.querySelectorAll('button.single_add_to_cart_button') || undefined;
+
     this.removeFromKitButtons = document.querySelectorAll('.remove-from-cart') || undefined;
 
     this.removeIcons = document.querySelectorAll('.fa-minus-circle') || undefined;
@@ -40814,6 +40819,10 @@ var Cart = exports.Cart = function () {
 
       if (this.addKitToCartButtons) {
         this.addKitToCart();
+      }
+
+      if (this.singleAddToCartButtons) {
+        this.singleAddToCart();
       }
 
       if (this.addBagProduct) {
@@ -40884,6 +40893,43 @@ var Cart = exports.Cart = function () {
             }).then(function (response) {
               if (response.success == 1) {
                 document.location.href = el.href;
+              }
+            });
+          });
+        });
+      }
+    }
+  }, {
+    key: 'singleAddToCart',
+    value: function singleAddToCart() {
+      if (this.singleAddToCartButtons.length > 0) {
+        var addKitCartUrl = _endpoints.endpoints.addToKitCart;
+        this.singleAddToCartButtons.forEach(function (el) {
+          if (el.value) {
+            addKitCartUrl += '/' + el.value;
+          }
+          var quantities = document.getElementsByName("quantity");
+          if (quantities.length > 0) {
+            var qty = quantities[0];
+            if (qty && qty.value) {
+              addKitCartUrl += '/' + qty.value;
+            } else {
+              addKitCartUrl += '/1';
+            }
+          } else {
+            addKitCartUrl += '/1';
+          }
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            fetch(addKitCartUrl, {
+              credentials: 'include',
+              method: 'POST'
+            }).then(function (response) {
+              return response.json();
+            }).then(function (response) {
+              if (response.success == 1 && response.href.length > 1) {
+                //alert(response.href);
+                document.location.href = response.href;
               }
             });
           });
@@ -42749,8 +42795,8 @@ new _components.LidoBagDetail().init();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bkd/Repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
-module.exports = __webpack_require__(/*! /Users/bkd/Repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
+__webpack_require__(/*! /Volumes/MasterHD/Users/dave/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
+module.exports = __webpack_require__(/*! /Volumes/MasterHD/Users/dave/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
 
 
 /***/ })

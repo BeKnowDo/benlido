@@ -15,6 +15,9 @@ export class Cart {
     this.addToCartButtons =
       document.querySelectorAll('.add-to-cart') || undefined
 
+    this.singleAddToCartButtons =
+    document.querySelectorAll('button.single_add_to_cart_button') || undefined
+
     this.removeFromKitButtons =
       document.querySelectorAll('.remove-from-cart') || undefined
 
@@ -90,6 +93,10 @@ export class Cart {
       this.addKitToCart()
     }
 
+    if (this.singleAddToCartButtons) {
+      this.singleAddToCart();
+    }
+
     if (this.addBagProduct) {
       this.addBagProductToCart()
     }
@@ -159,6 +166,45 @@ export class Cart {
             })
         })
       })
+    }
+  }
+
+  singleAddToCart() {
+    if (this.singleAddToCartButtons.length > 0) {
+      let addKitCartUrl = endpoints.addToKitCart;
+      this.singleAddToCartButtons.forEach(el => {
+        if (el.value) {
+          addKitCartUrl += '/' + el.value;
+        }
+        let quantities =  document.getElementsByName("quantity");
+        if (quantities.length > 0) {
+          let qty = quantities[0];
+          if (qty && qty.value) {
+            addKitCartUrl += '/' + qty.value;
+          }
+          else {
+            addKitCartUrl += '/1';
+          }
+        } else {
+          addKitCartUrl += '/1';
+        }
+        el.addEventListener('click', e => {
+          e.preventDefault()
+          fetch(addKitCartUrl, {
+            credentials: 'include',
+            method: 'POST'
+          })
+            .then(function (response) {
+              return response.json()
+            })
+            .then(response => {
+              if (response.success == 1 && response.href.length > 1) {
+                //alert(response.href);
+                document.location.href = response.href;
+              }
+            })
+        })
+      });
     }
   }
 

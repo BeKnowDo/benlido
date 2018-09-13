@@ -152,6 +152,12 @@ if (!function_exists('bl_is_swap')) {
 if (!function_exists('bl_is_kit_add')) {
     function bl_is_kit_add() {
         $is_kit_add = WC()->session->get( 'is_kit_add' );
+        // lets make sure we're not swapping before we set $is_kit_add to true
+        $is_swap = bl_is_swap();
+        if ($is_swap == false) {
+            // get $is_kit_add as tru because we do not allow for regular purchase of items into the cart
+            $is_kit_add = true;
+        }
         return $is_kit_add;
     }
 }
@@ -741,6 +747,47 @@ function bl_add_to_kit($kit_id,$product_id,$category_id) {
     return false;
 }
 
+// 
+function bl_add_to_kit_cart($product_id,$quantity) {
+    global $bl_custom_kit_id;
+    $kitting_page = '';
+    if (function_exists('get_field')) {
+        $kitting_page = get_field('kitting_page','option');
+    }
+    if (!empty($kitting_page) && is_object($kitting_page)) {
+        $kitting_page = get_permalink($kitting_page->ID);
+    }
+    $category_id = 0;
+    $result = array('success'=>false,'message'=>'error','href'=>$kitting_page);
+    // let's see if we have a kit
+    $kit_id = bl_get_current_kit_id();
+    //echo $current_kit_id;
+    //echo $product_id;
+    //echo $quantity;
+    if (empty($kit_id)) {
+        $kit_id = $bl_custom_kit_id;
+        bl_set_kit_list($kit_id,array(),array());
+    }
+    // we need to get the main category from this product
+    $cats = get_the_terms( $product_id, 'product_cat' );
+    if (!empty($cats) && is_array($cats)) {
+        $category = $cats[0];
+    }
+    if (!empty($category) && is_object($category) && isset($category->term_id)) {
+        $category_id = $category->term_id;
+    }
+    //print_r ($cats);
+    $success = bl_add_to_kit($kit_id,$product_id,$category_id);
+    if ($success == true) {
+        $result['success'] = true;
+        if ($kit_id != $bl_custom_kit_id) {
+            $kitting_page = $kitting_page . '?id=' . $kit_id;
+        }
+        $result['href'] = $kitting_page;
+    }
+    return $result;
+}
+
 // removes the item from the kit
 function bl_remove_from_kit($kit_id,$product_id,$category_id) {
     // first see if we have a kit
@@ -1203,6 +1250,18 @@ function bl_ecommerce_url_intercept() {
                             print_r (json_encode(array('url'=>$url)));
                             die;
                         }
+                        die;
+                        break;
+                    case 'kit-add':
+                        //  /bl-api/kit/kit-add/{product_id}/{quantity}
+                        // this is to replace the add to cart button so that it always tries to find a kit to add it to.
+                        // if there is no kit, it will create a custom kit with no bag.
+                        if (isset($api_parts[5])) {
+                            $qty = $api_parts[5];
+                        }
+                        $resp = bl_add_to_kit_cart($id,$qty);
+                        header('Content-Type: application/json');
+                        print_r (json_encode($resp));
                         die;
                         break;
                     case 'remove':

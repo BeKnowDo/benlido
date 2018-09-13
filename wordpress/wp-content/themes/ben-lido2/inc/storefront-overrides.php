@@ -165,6 +165,15 @@ function bl_remove_product_page_skus( $enabled ) {
 add_filter( 'wc_product_sku_enabled', 'bl_remove_product_page_skus' );
 
 
+function bl_add_to_cart_text() {
+	return __( 'Add to kit', 'benlido' );
+}
+
+add_filter( 'woocommerce_product_add_to_cart_text', 'bl_add_to_cart_text' );
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'bl_add_to_cart_text' );
+
+
+
 function bl_login_redirect( $redirect, $user ) {
     $redirect_page_id = url_to_postid( $redirect );
     $checkout_page_id = wc_get_page_id( 'checkout' );
