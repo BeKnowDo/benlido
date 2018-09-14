@@ -1,9 +1,17 @@
-{% if banner is defined %}
+{% if banner.text is not empty %}
 
   <div class="benlido-banner benlido-banner--top bg-blue">
     <div class="columns">
       <div class="column col-12">
-        {{ banner.text }}
+
+        {% if banner.url is not empty %}
+          <a href="{{ banner.url }}" title="Ben Lido special offer" target="_blank">
+            {{ banner.text }}
+          </a>
+        {% else %}
+          {{ banner.text }}
+        {% endif %}
+
       </div>
     </div>
   </div>

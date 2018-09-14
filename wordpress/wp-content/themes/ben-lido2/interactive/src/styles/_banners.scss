@@ -1,8 +1,15 @@
 .benlido {
   &-banner {
-    @include knockout32($unit-5, 300);
+    @include knockout32(10px, 300);
     padding: $unit-3 $unit-2;
     color: $white;
     text-align: center;
+
+    a {
+      color: $white;
+      &:visited {
+        color: $white;
+      }
+    }
   }
 }
