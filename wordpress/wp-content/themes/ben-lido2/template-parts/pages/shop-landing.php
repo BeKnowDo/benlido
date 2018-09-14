@@ -41,10 +41,11 @@ if (function_exists('bl_get_featured_categories')) {
     <div class="columns">
 
       <h3 class="column col-12 shop-landing-featured-header" id="category-<?php echo $category_id;?>">
-        <?php echo $category_name;?>
-        <i class="fal fa-chevron-circle-down"></i>
+        <a href="<?php echo $category_href;?>" title="">
+          <?php echo $category_name;?>
+          <i class="fal fa-chevron-circle-down"></i>
+        </a>
       </h3>
-
         <ul class="columns">
         <?php foreach ($featured_products as $featured_product):?>
             <?php

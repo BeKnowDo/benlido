@@ -1,6 +1,12 @@
 .shop-landing-featured {
   padding-bottom: 20px;
 
+  &-header {
+    a {
+      color: inherit;
+    }
+  }
+
   &-products {
     > .columns {
       padding-left: $unit-1;

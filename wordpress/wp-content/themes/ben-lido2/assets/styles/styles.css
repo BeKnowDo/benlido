@@ -3768,6 +3768,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .shop-landing-featured { padding-bottom: 20px; }
 
+.shop-landing-featured-header a { color: inherit; }
+
 .shop-landing-featured-products > .columns { padding-left: 0.2rem; padding-right: 0.2rem; }
 
 .shop-landing-featured-products > .columns .columns { margin-left: 0; margin-right: 0; }
