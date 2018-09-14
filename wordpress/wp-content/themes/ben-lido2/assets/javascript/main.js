@@ -40908,11 +40908,14 @@ var Cart = exports.Cart = function () {
     value: function singleAddToCart() {
       if (this.singleAddToCartButtons.length > 0) {
         var addKitCartUrl = _endpoints.endpoints.addToKitCart;
+
         this.singleAddToCartButtons.forEach(function (el) {
+          var quantities = document.getElementsByName('quantity');
+
           if (el.value) {
             addKitCartUrl += '/' + el.value;
           }
-          var quantities = document.getElementsByName("quantity");
+
           if (quantities.length > 0) {
             var qty = quantities[0];
             if (qty && qty.value) {
@@ -40932,7 +40935,7 @@ var Cart = exports.Cart = function () {
               return response.json();
             }).then(function (response) {
               if (response.success == 1 && response.href.length > 1) {
-                //alert(response.href);
+                // alert(response.href);
                 document.location.href = response.href;
               }
             });
@@ -41150,7 +41153,9 @@ var Cart = exports.Cart = function () {
       if (swaps.length > 0) {
         swaps.forEach(function (swap) {
           swap.addEventListener('click', function (e) {
+            swap.parentElement.classList.add('loading');
             e.preventDefault();
+
             var el = swap.dataset;
             var kit_id = el.kit_id ? el.kit_id : 0;
             var cat_id = el.cat_id ? el.cat_id : 0;
@@ -41167,12 +41172,13 @@ var Cart = exports.Cart = function () {
               }
             }).then(function (res) {
               return res.json();
-            }).catch(function (error) {
-              return console.error('Error:', error);
-            }).then(function (response) {
-              if (response.error) {} else {
+            }).catch(swap.parentElement.classList.remove('loading')).then(function (response) {
+              if (response.error) {
+                swap.parentElement.classList.remove('loading');
+              } else {
                 if (response.url) {
                   setTimeout(function () {
+                    swap.parentElement.classList.remove('loading');
                     document.location.href = response.url;
                   }, 100);
                 }
@@ -41339,11 +41345,14 @@ var Cart = exports.Cart = function () {
         this.addToCartButtons.forEach(function (button) {
           // const removeItemIcon = button.querySelector(".fa-minus-circle");
           var addItemIcon = button.querySelector('.fa-plus-circle');
-          var text = button.querySelector('.add-to-cart-text');
+          // const text = button.querySelector('.add-to-cart-text')
           // const inCartText = text.dataset.cartText;
 
           addItemIcon.addEventListener('click', function (e) {
             e.preventDefault();
+
+            button.classList.add('loading');
+
             var el = addItemIcon.dataset;
             var kit_id = el.kit_id ? el.kit_id : 0;
             var cat_id = el.cat_id ? el.cat_id : 0;
@@ -41382,15 +41391,19 @@ var Cart = exports.Cart = function () {
             }).catch(function (error) {
               return console.error('Error:', error);
             }).then(function (response) {
-              if (response.error) {} else {
+              if (response.error) {
+                button.classList.remove('loading');
+              } else {
                 if (typeof response.items !== 'undefined') {
                   _this8.updateCount(response.items);
                   _this8.miniCart(response.items);
                   _this8.updateTileQuantity(response.items, null);
+                  button.classList.remove('loading');
                 }
                 if (typeof response.url !== 'undefined') {
                   // we will get a return URL
                   setTimeout(function () {
+                    // button.classList.remove('loading')
                     document.location.href = response.url;
                   }, 100); // setTimeout to bust promise
                 }

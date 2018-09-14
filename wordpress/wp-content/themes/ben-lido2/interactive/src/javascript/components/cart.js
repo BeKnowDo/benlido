@@ -94,7 +94,7 @@ export class Cart {
     }
 
     if (this.singleAddToCartButtons) {
-      this.singleAddToCart();
+      this.singleAddToCart()
     }
 
     if (this.addBagProduct) {
@@ -169,24 +169,26 @@ export class Cart {
     }
   }
 
-  singleAddToCart() {
+  singleAddToCart () {
     if (this.singleAddToCartButtons.length > 0) {
-      let addKitCartUrl = endpoints.addToKitCart;
+      let addKitCartUrl = endpoints.addToKitCart
+
       this.singleAddToCartButtons.forEach(el => {
+        let quantities = document.getElementsByName('quantity')
+
         if (el.value) {
-          addKitCartUrl += '/' + el.value;
+          addKitCartUrl += '/' + el.value
         }
-        let quantities =  document.getElementsByName("quantity");
+
         if (quantities.length > 0) {
-          let qty = quantities[0];
+          let qty = quantities[0]
           if (qty && qty.value) {
-            addKitCartUrl += '/' + qty.value;
-          }
-          else {
-            addKitCartUrl += '/1';
+            addKitCartUrl += '/' + qty.value
+          } else {
+            addKitCartUrl += '/1'
           }
         } else {
-          addKitCartUrl += '/1';
+          addKitCartUrl += '/1'
         }
         el.addEventListener('click', e => {
           e.preventDefault()
@@ -199,12 +201,12 @@ export class Cart {
             })
             .then(response => {
               if (response.success == 1 && response.href.length > 1) {
-                //alert(response.href);
-                document.location.href = response.href;
+                // alert(response.href);
+                document.location.href = response.href
               }
             })
         })
-      });
+      })
     }
   }
 
@@ -452,7 +454,9 @@ export class Cart {
     if (swaps.length > 0) {
       swaps.forEach(swap => {
         swap.addEventListener('click', e => {
+          swap.parentElement.classList.add('loading')
           e.preventDefault()
+
           let el = swap.dataset
           let kit_id = el.kit_id ? el.kit_id : 0
           let cat_id = el.cat_id ? el.cat_id : 0
@@ -469,12 +473,14 @@ export class Cart {
             }
           })
             .then(res => res.json())
-            .catch(error => console.error('Error:', error))
+            .catch(swap.parentElement.classList.remove('loading'))
             .then(response => {
               if (response.error) {
+                swap.parentElement.classList.remove('loading')
               } else {
                 if (response.url) {
                   setTimeout(function () {
+                    swap.parentElement.classList.remove('loading')
                     document.location.href = response.url
                   }, 100)
                 }
@@ -642,11 +648,14 @@ export class Cart {
       this.addToCartButtons.forEach(button => {
         // const removeItemIcon = button.querySelector(".fa-minus-circle");
         const addItemIcon = button.querySelector('.fa-plus-circle')
-        const text = button.querySelector('.add-to-cart-text')
+        // const text = button.querySelector('.add-to-cart-text')
         // const inCartText = text.dataset.cartText;
 
         addItemIcon.addEventListener('click', e => {
           e.preventDefault()
+
+          button.classList.add('loading')
+
           let el = addItemIcon.dataset
           let kit_id = el.kit_id ? el.kit_id : 0
           let cat_id = el.cat_id ? el.cat_id : 0
@@ -686,15 +695,18 @@ export class Cart {
             .catch(error => console.error('Error:', error))
             .then(response => {
               if (response.error) {
+                button.classList.remove('loading')
               } else {
                 if (typeof response.items !== 'undefined') {
                   this.updateCount(response.items)
                   this.miniCart(response.items)
                   this.updateTileQuantity(response.items, null)
+                  button.classList.remove('loading')
                 }
                 if (typeof response.url !== 'undefined') {
                   // we will get a return URL
                   setTimeout(function () {
+                    // button.classList.remove('loading')
                     document.location.href = response.url
                   }, 100) // setTimeout to bust promise
                 }

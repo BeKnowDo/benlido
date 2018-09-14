@@ -2179,6 +2179,14 @@ dl dt { font-weight: bold; }
 
 dl dd { margin: 0.8rem 0 0.8rem 0; }
 
+@keyframes loading { 0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); } }
+
+@keyframes slide-down { 0% { opacity: 0;
+    transform: translateY(-1.6rem); }
+  100% { opacity: 1;
+    transform: translateY(0); } }
+
 .table { border-collapse: collapse; border-spacing: 0; width: 100%; text-align: left; }
 
 .table.table-striped tbody tr:nth-of-type(odd) { background: #f8f9fa; }
@@ -3376,6 +3384,10 @@ body { position: relative; padding-top: 98px; outline: none; }
 .btn.btn-red { background-color: #e10600; border-color: #e10600; }
 
 .btn.btn-green { background-color: #5b9376; border-color: #5b9376; }
+
+.btn.loading .remove-from-cart, .btn.loading .swap-from-cart { visibility: hidden; }
+
+.btn.loading::after { height: 1.2rem; width: 1.2rem; top: 58%; }
 
 .remove-from-cart { padding: 10px 6px; position: relative; width: 50%; }
 
