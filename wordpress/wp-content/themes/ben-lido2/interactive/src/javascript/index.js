@@ -11,11 +11,13 @@ import {
   Parallax,
   BenLidoAnimations,
   NavigationPlatform,
-  LidoBagDetail,
-  BenHeader
+  LidoBagDetail
+  // BenLidoBanners
+  // BenHeader
 } from './components'
 
-new BenHeader().init()
+// new BenHeader().init()
+// new BenLidoBanners().init()
 new Navigation().init()
 new Cart().init()
 new ScrollToTop().init()

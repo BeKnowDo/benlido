@@ -5,7 +5,6 @@ export class BenHeader {
   }
 
   init () {
-    console.log(this.header)
-
+    // console.log(this.header)
   }
 }

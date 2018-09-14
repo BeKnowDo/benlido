@@ -3890,6 +3890,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .hero-product ~ .hero-title-copy { border-top: 0; }
 
+.home.page-template { padding-top: 82px; }
+
 .single-product.single .product.product_cat-bags-internal { flex-direction: column; }
 
 .single-product.single .product.product_cat-bags-internal .entry-summary.summary { margin: 0 0 1.2rem; }
@@ -4138,6 +4140,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 @media (min-width: 600px) { .benlido-banner { font-size: 0.8rem; } }
 
 /* Pages */
+@media (min-width: 840px) { .home.page-template { padding-top: 134px; } }
+
 @media (min-width: 600px) { .single-product.single .product.product_cat-bags-internal { flex-direction: row; flex-wrap: wrap; }
   .single-product.single .product.product_cat-bags-internal .woocommerce-product-gallery { width: 50%; }
   .single-product.single .product.product_cat-bags-internal .entry-summary.summary { width: 50%; } }

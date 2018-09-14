@@ -42008,43 +42008,6 @@ var Frequency = exports.Frequency = function () {
 
 /***/ }),
 
-/***/ "./src/javascript/components/header.js":
-/*!*********************************************!*\
-  !*** ./src/javascript/components/header.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var BenHeader = exports.BenHeader = function () {
-  function BenHeader() {
-    _classCallCheck(this, BenHeader);
-
-    this.header = document.querySelector('.navbar') || undefined;
-  }
-
-  _createClass(BenHeader, [{
-    key: 'init',
-    value: function init() {
-      console.log(this.header);
-    }
-  }]);
-
-  return BenHeader;
-}();
-
-/***/ }),
-
 /***/ "./src/javascript/components/index.js":
 /*!********************************************!*\
   !*** ./src/javascript/components/index.js ***!
@@ -42211,18 +42174,6 @@ Object.keys(_bagRelated).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _bagRelated[key];
-    }
-  });
-});
-
-var _header = __webpack_require__(/*! ./header */ "./src/javascript/components/header.js");
-
-Object.keys(_header).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _header[key];
     }
   });
 });
@@ -42825,7 +42776,8 @@ var StepNavigation = exports.StepNavigation = function () {
 
 var _components = __webpack_require__(/*! ./components */ "./src/javascript/components/index.js");
 
-new _components.BenHeader().init();
+// new BenHeader().init()
+// new BenLidoBanners().init()
 new _components.Navigation().init();
 new _components.Cart().init();
 new _components.ScrollToTop().init();

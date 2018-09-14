@@ -1,24 +1,24 @@
 (function ($) {
     $(document).ready(function(){
 
-        // // signup modal
-        // if ($.cookie('blsignup') === undefined || $('.mc4wp-alert').length > 0) { // show modal if no cookie or mailchimp has a response for us
+        // signup modal
+        if ($.cookie('blsignup') === undefined || $('.mc4wp-alert').length > 0) { // show modal if no cookie or mailchimp has a response for us
 
-        //     if ($('#modalSubscribe').hasClass('modal-subscribe')) {
-        //         $('#modalSubscribe').modal({
-        //             overlayClose: true
-        //         });
-        //     }
+            if ($('#modalSubscribe').hasClass('modal-subscribe')) {
+                $('#modalSubscribe').modal({
+                    overlayClose: true
+                });
+            }
 
-        //     if ($('.mc4wp-alert').length > 0 && $('.mc4wp-success').length > 0) {
-        //         $('.mc4wp-form input').hide();
-        //         $.cookie('blsignup', 'true', {expires: 90, path: '/'});
-        //     } else {
-        //         $.cookie('blsignup', 'true', {path: '/'});
-        //     }
+            if ($('.mc4wp-alert').length > 0 && $('.mc4wp-success').length > 0) {
+                $('.mc4wp-form input').hide();
+                $.cookie('blsignup', 'true', {expires: 90, path: '/'});
+            } else {
+                $.cookie('blsignup', 'true', {path: '/'});
+            }
 
 
-        // }
+        }
 
         var cartAPI = '/bl-api/cart';
         // update cart totals
