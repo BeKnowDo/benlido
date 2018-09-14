@@ -57,9 +57,9 @@
         &.type-product {
           // flex-direction: row;
 
-          .product_title {
-            font-size: 35px;
-          }
+          // .product_title {
+          //   font-size: 35px;
+          // }
 
           // .woocommerce-product-gallery {
           //   width: 40%;
@@ -87,9 +87,9 @@
 }
 
 @media (min-width: $size-sm) {
-  .single-product{
-    .product{
-      &.type-product{
+  .single-product {
+    .product {
+      &.type-product {
         flex-direction: row;
       }
       .woocommerce-product-gallery {
@@ -100,6 +100,22 @@
       .entry-summary {
         width: 50%;
       }
+    }
+  }
+}
+
+@media (min-width: $size-md) {
+  .product {
+    &_title {
+      font-size: 50px;
+    }
+  }
+}
+
+@media (min-width: $size-lg) {
+  .product {
+    &_title {
+      font-size: 70px;
     }
   }
 }

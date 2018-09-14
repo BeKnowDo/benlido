@@ -38,7 +38,7 @@
   }
 
   &_title {
-    @include knockout(70px, 400);
+    @include knockout(42px, 400);
     text-transform: uppercase;
     text-align: left;
     margin: 0 0 $unit-8;
@@ -62,6 +62,8 @@
 
   .button {
     align-self: flex-end;
+    padding-left: $unit-5;
+    padding-right: $unit-5;
   }
 
   .woocommerce-tabs {
