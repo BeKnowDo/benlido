@@ -36,12 +36,20 @@
   }
 
   &-header {
-    @include sentinel(18px, 300);
+    // @include sentinel(18px, 300);
+    @include knockout50($unit-10, 400);
     // text-align: center;
     letter-spacing: normal;
-    color: $medium-grey;
+    color: $comet;
     text-align: center;
     padding: $unit-8 0 $unit-1;
+
+    .fal {
+      padding-left: $unit-2;
+      &:before {
+        font-size: $unit-8;
+      }
+    }
   }
 
   &-view-all {

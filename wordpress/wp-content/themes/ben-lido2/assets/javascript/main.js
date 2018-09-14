@@ -2932,7 +2932,7 @@ function observeDOM(watches, container, cb) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.10';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -3196,7 +3196,7 @@ function observeDOM(watches, container, cb) {
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -4142,6 +4142,20 @@ function observeDOM(watches, container, cb) {
       }
     }
     return result;
+  }
+
+  /**
+   * Gets the value at `key`, unless `key` is "__proto__".
+   *
+   * @private
+   * @param {Object} object The object to query.
+   * @param {string} key The key of the property to get.
+   * @returns {*} Returns the property value.
+   */
+  function safeGet(object, key) {
+    return key == '__proto__'
+      ? undefined
+      : object[key];
   }
 
   /**
@@ -6601,7 +6615,7 @@ function observeDOM(watches, container, cb) {
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || isFunction(objValue)) {
+          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -9522,22 +9536,6 @@ function observeDOM(watches, container, cb) {
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
-    }
-
-    /**
-     * Gets the value at `key`, unless `key` is "__proto__".
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @param {string} key The key of the property to get.
-     * @returns {*} Returns the property value.
-     */
-    function safeGet(object, key) {
-      if (key == '__proto__') {
-        return;
-      }
-
-      return object[key];
     }
 
     /**
@@ -40463,8 +40461,8 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
     this.swatches = document.querySelector('#picker_pa_color') || undefined;
     this.bagListingSwatches = document.querySelectorAll('.bl-product-swatches-container').length > 0 ? document.querySelectorAll('.bl-product-swatches-container') : undefined;
     this.thumbnails = document.querySelector('.flex-control-thumbs') || undefined;
-
     this.bagSwatches = document.querySelectorAll('.bl-product-swatches') || undefined;
+    this.bagsDescription = document.querySelectorAll('div.hero-product .hero-product-copy') || undefined;
   }
 
   _createClass(LidoBagDetail, [{
@@ -40472,7 +40470,7 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
     value: function init() {
       var _this = this;
 
-      if (this.swatches) {
+      if (this.swatches !== undefined) {
         this.attachClick();
         // this.attachHover();
       }
@@ -40487,6 +40485,13 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
           _this.defaultBagListingSwatch();
         }
       }, 500);
+
+      if (this.bagsDescription !== undefined) {}
+    }
+  }, {
+    key: 'enableReadMore',
+    value: function enableReadMore() {
+      // console.log(this.bagsDescription)
     }
   }, {
     key: 'defaultBagListingSwatch',
@@ -40514,7 +40519,6 @@ var LidoBagDetail = exports.LidoBagDetail = function () {
       var activatedSwatchIndex = 0;
 
       bagSwatches.forEach(function (bagSwatch, index) {
-
         var swatches = bagSwatch.querySelectorAll('.swatch-anchor');
 
         var i = 0;
@@ -42004,6 +42008,43 @@ var Frequency = exports.Frequency = function () {
 
 /***/ }),
 
+/***/ "./src/javascript/components/header.js":
+/*!*********************************************!*\
+  !*** ./src/javascript/components/header.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BenHeader = exports.BenHeader = function () {
+  function BenHeader() {
+    _classCallCheck(this, BenHeader);
+
+    this.header = document.querySelector('.navbar') || undefined;
+  }
+
+  _createClass(BenHeader, [{
+    key: 'init',
+    value: function init() {
+      console.log(this.header);
+    }
+  }]);
+
+  return BenHeader;
+}();
+
+/***/ }),
+
 /***/ "./src/javascript/components/index.js":
 /*!********************************************!*\
   !*** ./src/javascript/components/index.js ***!
@@ -42170,6 +42211,18 @@ Object.keys(_bagRelated).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _bagRelated[key];
+    }
+  });
+});
+
+var _header = __webpack_require__(/*! ./header */ "./src/javascript/components/header.js");
+
+Object.keys(_header).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _header[key];
     }
   });
 });
@@ -42772,6 +42825,7 @@ var StepNavigation = exports.StepNavigation = function () {
 
 var _components = __webpack_require__(/*! ./components */ "./src/javascript/components/index.js");
 
+new _components.BenHeader().init();
 new _components.Navigation().init();
 new _components.Cart().init();
 new _components.ScrollToTop().init();
@@ -42795,8 +42849,8 @@ new _components.LidoBagDetail().init();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Volumes/MasterHD/Users/dave/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
-module.exports = __webpack_require__(/*! /Volumes/MasterHD/Users/dave/Sites/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
+__webpack_require__(/*! /home/cesar/server/repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/polyfills.js */"./polyfills.js");
+module.exports = __webpack_require__(/*! /home/cesar/server/repositories/ben-lido/wordpress/wp-content/themes/ben-lido2/interactive/src/javascript/index.js */"./src/javascript/index.js");
 
 
 /***/ })

@@ -765,6 +765,57 @@ if( function_exists('acf_add_local_field_group') ):
                 'return_format' => 'object',
                 'ui' => 1,
             ),
+            array(
+                'key' => 'field_5b9bd4e7adcd4',
+                'label' => 'Top Banner',
+                'name' => '',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placement' => 'top',
+                'endpoint' => 0,
+            ),
+            array(
+                'key' => 'field_5b9bd571adcd5',
+                'label' => 'Banner Text',
+                'name' => 'banner_text',
+                'type' => 'text',
+                'instructions' => 'Enter the banner\'s text/copy.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => 'This text will appear on top of the site\'s header...',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_5b9bd584adcd6',
+                'label' => 'Banner URL',
+                'name' => 'banner_url',
+                'type' => 'url',
+                'instructions' => 'Enter the banner\'s destination URL (link)',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+            ),
         ),
         'location' => array(
             array(
@@ -784,5 +835,5 @@ if( function_exists('acf_add_local_field_group') ):
         'active' => 1,
         'description' => '',
     ));
-    
+
     endif;
