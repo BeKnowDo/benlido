@@ -1,8 +1,7 @@
 .benlido {
   &-banner {
-    @include knockout50($unit-10, 300);
-
-    padding: $unit-2;
+    @include knockout32($unit-5, 300);
+    padding: $unit-3 $unit-2;
     color: $white;
     text-align: center;
   }

@@ -3,6 +3,9 @@
 {% endif %}
 
 <header class="bg-white benlido-header">
+
+  {% include 'common/banners/top-banner.twig' with { 'banner': banner } %}
+
   <div class="max-width-xl">
     <div class="navbar">
 
@@ -76,9 +79,7 @@
 
     </div>
   </div>
-
   {% include 'common/navigation/navbar-desktop.twig' with { 'list': list } %}
-
 </header>
 
 {% include 'common/navigation/search-navigation.twig' %}
