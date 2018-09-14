@@ -1,8 +1,7 @@
 .max-width {
-
   &-xl {
-  max-width: $size-xl;
-  margin: 0 auto;
+    max-width: $size-xl;
+    margin: 0 auto;
   }
 
   &-lg {
@@ -19,7 +18,6 @@
     max-width: $size-sm;
     margin: 0 auto;
   }
-
 }
 
 .bg {
@@ -30,8 +28,11 @@
   &-grey {
     background-color: $silver-white;
   }
-}
 
+  &-blue {
+    background-color: $brown-grey;
+  }
+}
 
 .triangle-background {
   background-image: url(/images/triangle.svg);
@@ -41,7 +42,7 @@
   background-size: 103%;
 }
 
-.border{
+.border {
   &-top-grey {
     border-top: $grey-border;
   }
@@ -50,11 +51,10 @@
   }
 }
 
-
 .position-relative {
   position: relative;
 }
 
 .hide {
-  display:none !important;
+  display: none !important;
 }
