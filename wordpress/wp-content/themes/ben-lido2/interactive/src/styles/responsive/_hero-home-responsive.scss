@@ -143,9 +143,16 @@
 @media (min-width: $size-lg) {
   .hero {
     &-home {
+      &[style*="background-image"] {
+        height: 65vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .hero {
         &-header {
-          @include knockout($unit-26, 400);
+          @include knockout($unit-30, 400);
         }
 
         &-sub-header {
