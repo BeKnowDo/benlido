@@ -69,7 +69,7 @@ module.exports = {
   wordpressTwigDestination: resolveApp('../twig-templates'),
   wordpressImageDestination: resolveApp('../assets/images'),
   wordpressCssPath: resolveApp('../assets/styles'),
-  wordpressJSPath: resolveApp('../assets/javascript'),
+  wordpressJSPath: resolveApp('../assets/javascript/build'),
   wordpressFontsDestination: resolveApp('../assets/styles/webfonts'),
 
   cartLimit: 26

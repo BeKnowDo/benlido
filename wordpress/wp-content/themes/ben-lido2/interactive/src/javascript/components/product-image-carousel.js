@@ -1,42 +1,42 @@
-import Swiper from "swiper";
-import { debounce } from "lodash";
+import Swiper from 'swiper'
+import { debounce } from 'lodash'
 
 export class ProductImageCarousel {
-  constructor() {
-    this.target = document.querySelector(".swiper-container") || undefined;
+  constructor () {
+    this.target = document.querySelector('.swiper-container') || undefined
   }
 
-  init() {
+  init () {
     if (this.target) {
-      this.enable();
+      this.enable()
     }
   }
 
-  toggleClass() {
-    const toggleClass = this.target.dataset.toggleClass;
-    this.target.classList.toggle(toggleClass);
+  toggleClass () {
+    const toggleClass = this.target.dataset.toggleClass
+    this.target.classList.toggle(toggleClass)
   }
 
-  enable() {
-    const breakpoint = window.matchMedia("(min-width:600px)");
+  enable () {
+    const breakpoint = window.matchMedia('(min-width:600px)')
 
     // keep track of swiper to destroy later
-    let swiper;
+    let swiper
 
     const breakpointChecker = () => {
       if (breakpoint.matches) {
         if (swiper !== undefined) {
-          swiper.destroy(true, true);
-          this.toggleClass();
+          swiper.destroy(true, true)
+          this.toggleClass()
         } else {
           // or/and do nothing
-          return;
+
         }
       } else if (!breakpoint.matches) {
         // fire small viewport version of swiper
-        return enableSwiper();
+        return enableSwiper()
       }
-    };
+    }
 
     const enableSwiper = () => {
       swiper = new Swiper(this.target, {
@@ -48,16 +48,16 @@ export class ProductImageCarousel {
         keyboardControl: true,
         grabCursor: true,
         pagination: {
-          el: ".swiper-pagination"
+          el: '.swiper-pagination'
         }
-      });
-      this.toggleClass();
-    };
+      })
+      this.toggleClass()
+    }
 
     // keep an eye on viewport size changes
-    breakpoint.addListener(debounce(breakpointChecker));
+    breakpoint.addListener(debounce(breakpointChecker))
 
     // kickstart
-    breakpointChecker();
+    breakpointChecker()
   }
 }

@@ -1,7 +1,7 @@
 import {
   Navigation,
   ScrollToTop,
-  ProductImageCarousel,
+  // ProductImageCarousel,
   CategoryMenu,
   Cart,
   Search,
@@ -21,7 +21,7 @@ import {
 new Navigation().init()
 new Cart().init()
 new ScrollToTop().init()
-new ProductImageCarousel().init()
+// new ProductImageCarousel().init()
 new CategoryMenu().init()
 new Search().init()
 new Frequency().init()
