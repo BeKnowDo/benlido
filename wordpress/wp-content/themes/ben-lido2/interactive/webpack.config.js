@@ -1,11 +1,8 @@
-const webpack = require('webpack')
 const path = require('path')
 const paths = require('./config/paths')
+const webpack = require('webpack')
 const chalk = require('chalk')
 const wordpressCheck = require('./scripts/wordpress-check').check()
-// const CompressionPlugin = require('compression-webpack-plugin')
-const Visualizer = require('webpack-visualizer-plugin')
-
 const log = console.log
 
 const destination = wordpressCheck
@@ -15,44 +12,13 @@ const destination = wordpressCheck
 log(chalk.black.bgWhite(destination))
 
 module.exports = {
-  plugins: [
-    // new CompressionPlugin(),
-    new Visualizer({
-      filename: './statistics.html'
-    })
-  ],
-
-  // devtool: 'source-map', // enhance debugging by adding meta info for the browser devtools
-
+  devtool: 'source-map', // enhance debugging by adding meta info for the browser devtools
   entry: [require.resolve('./polyfills'), path.join(paths.jsEntry)],
-
   output: {
     path: destination,
     filename: '[name].js',
-    publicPath: '/'
-    // sourceMapFilename: '[name].map'
-  },
-
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 30000,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name (module) {
-            // get the name. E.g. node_modules/packageName/not/this/part.js
-            // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-
-            // npm package names are URL-safe, but some servers don't like @ symbols
-            return `npm.${packageName.replace('@', '')}`
-          }
-        }
-      }
-    }
+    publicPath: '/',
+    sourceMapFilename: '[name].map'
   },
 
   resolve: {
@@ -64,11 +30,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['env']
           }
         }
       }
