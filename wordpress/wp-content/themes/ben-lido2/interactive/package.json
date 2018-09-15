@@ -11,6 +11,7 @@
     "wp-fed": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"yarn styles:watch --wordpress\" \"yarn webpack --wordpress\" \"yarn twig:watch --wordpress\"",
     "wordpress": "concurrently \"yarn fonts --wordpress\" \"yarn styles --wordpress\" \"webpack --wordpress --config webpack.config.js --mode production\" \"yarn twig\"",
     "dev": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn twig:watch\" \"yarn webpack\" \"yarn server\" \"yarn wordpress:watch\"",
+    "beta": "concurrently \"yarn fonts\" \"yarn styles\" \"yarn styles:watch\" \"yarn twig:watch\" \"npm run webpack \" \"yarn server\" \"yarn wordpress:watch\"",
     "styles": "node scripts/styles.js",
     "styles:watch": "onchange 'src/styles/**/*.scss' -- yarn styles",
     "fonts": "node scripts/fonts.js",
@@ -18,6 +19,8 @@
     "twig": "node scripts/twig.js",
     "twig:watch": "onchange 'src/views/**/*.twig' -- yarn twig",
     "webpack": "webpack --mode production --config webpack.config.js",
+    "webpack-beta": "webpack --wordpress--mode production --config webpack.beta.config.js",
+    "webpack-beta-dev": "webpack --wordpress --mode development --config webpack.beta.config.js",
     "wordpress:watch": "onchange 'src/views/**/*.twig' 'src/styles/**/*.scss' 'src/javascript/**/*.js' -- yarn wordpress"
   },
   "proxy": {},
@@ -63,8 +66,8 @@
     "standard": "^12.0.1",
     "twig": "^1.12.0",
     "webpack": "^4.19.0",
+    "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
-    "webpack-visualizer-plugin": "^0.1.11",
     "yargs": "^11.1.0"
   },
   "testURL": "http://localhost",

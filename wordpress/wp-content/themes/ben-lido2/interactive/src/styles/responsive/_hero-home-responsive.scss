@@ -19,13 +19,6 @@
     }
 
     &-home {
-      &[style*="background-image"] {
-        // padding-top: 40px;
-        // background-size: 148%;
-        // background-position-x: right;
-        // background-position-y: calc(100% + 50px);
-      }
-
       .hero {
         &-action-buttons {
           padding-top: 20px;
@@ -70,6 +63,28 @@
       &-list {
         li {
         }
+      }
+    }
+  }
+}
+
+@media (min-width: $size-xxs) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        background-size: 264%;
+      }
+    }
+  }
+}
+
+@media (min-width: $size-xs) {
+  .hero {
+    &-home {
+      &[style*="background-image"] {
+        transition: background-position 0.2s ease-in-out;
+        background-size: cover;
+        background-position: 80% bottom;
       }
     }
   }

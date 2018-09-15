@@ -31,3 +31,5 @@ new Parallax().init()
 new BenLidoAnimations().init()
 new NavigationPlatform().init()
 new LidoBagDetail().init()
+
+console.log('here')

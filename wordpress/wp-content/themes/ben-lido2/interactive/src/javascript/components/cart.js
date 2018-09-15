@@ -1,6 +1,6 @@
 import { endpoints } from '../../../config/endpoints'
 import KUTE from 'kute.js'
-import mojs from 'mo-js'
+// import mojs from 'mo-js'
 import swal from 'sweetalert'
 
 export class Cart {
@@ -351,28 +351,28 @@ export class Cart {
           count = parseInt(count) + parseInt(item.count)
         }
       })
-      const position = this.counter.getBoundingClientRect()
+      // const position = this.counter.getBoundingClientRect()
       this.counter.innerHTML = count
 
-      const burst = new mojs.Burst({
-        parent: this.counter.parentElement,
-        top: position.y + 16,
-        left: position.x + 6,
-        radius: { 10: 19 },
-        angle: 45,
-        children: {
-          shape: 'line',
-          radius: 4,
-          scale: 2,
-          stroke: '#195675',
-          strokeDasharray: '100%',
-          strokeDashoffset: { '-100%': '100%' },
-          duration: 400,
-          easing: 'quad.out'
-        },
-        duration: 500
-      })
-      burst.replay()
+      // const burst = new mojs.Burst({
+      //   parent: this.counter.parentElement,
+      //   top: position.y + 16,
+      //   left: position.x + 6,
+      //   radius: { 10: 19 },
+      //   angle: 45,
+      //   children: {
+      //     shape: 'line',
+      //     radius: 4,
+      //     scale: 2,
+      //     stroke: '#195675',
+      //     strokeDasharray: '100%',
+      //     strokeDashoffset: { '-100%': '100%' },
+      //     duration: 400,
+      //     easing: 'quad.out'
+      //   },
+      //   duration: 500
+      // })
+      // burst.replay()
     } else {
       this.counter.innerHTML = 0
     }

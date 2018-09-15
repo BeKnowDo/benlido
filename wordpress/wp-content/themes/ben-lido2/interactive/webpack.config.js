@@ -12,13 +12,13 @@ const destination = wordpressCheck
 log(chalk.black.bgWhite(destination))
 
 module.exports = {
-  devtool: 'source-map', // enhance debugging by adding meta info for the browser devtools
+  // devtool: 'source-map', // enhance debugging by adding meta info for the browser devtools
   entry: [require.resolve('./polyfills'), path.join(paths.jsEntry)],
   output: {
     path: destination,
     filename: '[name].js',
-    publicPath: '/',
-    sourceMapFilename: '[name].map'
+    publicPath: '/'
+    // sourceMapFilename: '[name].map'
   },
 
   resolve: {
