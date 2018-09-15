@@ -40,7 +40,7 @@ foreach($left_feature_cards as $item){
   }
 
   if (isset($item['button_url'])) {
-      $newArray['button_copy'] = $item['button_copy'];
+      $newArray['button_url'] = $item['button_url'];
   }
 
   array_push($homePageHeroes, $newArray);
