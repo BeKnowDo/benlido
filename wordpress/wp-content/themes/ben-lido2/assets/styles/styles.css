@@ -3439,7 +3439,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home .bl-diamond { max-width: 190px; padding: 3.2rem 0 0; }
 
-.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: cover; background-position: center right; padding: 4rem 0.8rem; }
+.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: 302%; background-position: 89% bottom; padding: 4rem 0.8rem; }
 
 .hero-home[style*="background-image"] .max-width-xl { display: flex; align-items: center; justify-content: center; position: relative; }
 
@@ -3458,6 +3458,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 .hero-home .hero-action-buttons { padding-top: 22px; }
 
 .hero-home .hero-action-buttons .btn.btn-lg { display: block; max-width: 180px; letter-spacing: 0.4px; border-color: #fff; }
+
+.hero-home .hero-action-buttons .btn.btn-primary { background-color: #50596c; background-color: #195675; background-color: #e4f1fd; color: #195675; border-color: #50596c; }
 
 .hero-background-alternate { padding: 4.4rem 0; position: relative; }
 
@@ -4062,6 +4064,10 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 @media (max-width: 840px) and (min-width: 601px) { .hero { padding-top: 50px; }
   .hero-help { padding-top: 0; padding-bottom: 50px; } }
+
+@media (min-width: 375px) { .hero-home[style*="background-image"] { background-size: 264%; } }
+
+@media (min-width: 480px) { .hero-home[style*="background-image"] { transition: background-position 0.2s ease-in-out; background-size: cover; background-position: 80% bottom; } }
 
 @media (min-width: 840px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.2rem; font-weight: 400; font-style: normal; }
   .hero-home .hero-sub-header { font-size: 1.2rem; }
