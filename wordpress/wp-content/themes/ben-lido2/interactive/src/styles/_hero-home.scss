@@ -11,19 +11,30 @@
 
     .bl-diamond {
       max-width: 190px;
-      padding: $unit-16 0 0;
+      width: 100%;
+      display: block;
+
+      &-container {
+        transform: translate(-50%, 50%);
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+      }
     }
 
     &[style*="background-image"] {
-      // background-size: contain;
-      // background-position-x: right;
-      // background-position-y: bottom;
       position: relative;
-      // background-color: $red;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
       transition: background-position 0.2s ease-in-out;
-      background-size: 302%;
-      background-position: 89% bottom;
-      padding: $unit-18 $unit-2;
+      background-size: 240%;
+      background-position: 69% bottom;
+      padding: $unit-18 $unit-2 $unit-30;
+      margin-bottom: $unit-18;
 
       img {
         // visibility: hidden;
@@ -132,6 +143,8 @@
 
 .bl {
   &-home-page {
+    background-color: $silver-white;
+
     .hero {
       &-row {
         &-background {
@@ -139,6 +152,10 @@
 
           &:nth-child(odd) {
             background-color: $silver-white;
+          }
+
+          &:nth-child(even) {
+            background-color: $white;
           }
 
           &:last-child {

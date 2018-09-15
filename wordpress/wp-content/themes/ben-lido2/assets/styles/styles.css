@@ -3437,9 +3437,11 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home h1, .hero-home h2, .hero-home h3, .hero-home h4, .hero-home h5, .hero-home p { color: #fff; }
 
-.hero-home .bl-diamond { max-width: 190px; padding: 3.2rem 0 0; }
+.hero-home .bl-diamond { max-width: 190px; width: 100%; display: block; }
 
-.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: 302%; background-position: 89% bottom; padding: 4rem 0.8rem; }
+.hero-home .bl-diamond-container { transform: translate(-50%, 50%); position: absolute; left: 50%; bottom: 0; }
+
+.hero-home[style*="background-image"] { position: relative; display: flex; align-items: center; justify-content: center; position: relative; transition: background-position 0.2s ease-in-out; background-size: 240%; background-position: 69% bottom; padding: 4rem 0.8rem 6.4rem; margin-bottom: 4rem; }
 
 .hero-home[style*="background-image"] .max-width-xl { display: flex; align-items: center; justify-content: center; position: relative; }
 
@@ -3471,9 +3473,13 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-background-alternate .hero-image-container { position: absolute; z-index: auto; top: 0; left: 0; padding: 0; }
 
+.bl-home-page { background-color: #f7f7f7; }
+
 .bl-home-page .hero-row-background { border-bottom: 1px solid #e4e4e4; }
 
 .bl-home-page .hero-row-background:nth-child(odd) { background-color: #f7f7f7; }
+
+.bl-home-page .hero-row-background:nth-child(even) { background-color: #fff; }
 
 .bl-home-page .hero-row-background:last-child { border-bottom: none; }
 
@@ -4076,7 +4082,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .bl-home-page .hero-row-background:nth-child(even) .columns .column:first-child { order: 1; }
   .bl-home-page .hero-row-background:last-child .columns .column:first-child { order: 1; } }
 
-@media (min-width: 960px) { .hero-home[style*="background-image"] { height: 65vh; display: flex; align-items: center; justify-content: center; }
+@media (min-width: 960px) { .hero-home[style*="background-image"] { height: 55vh; display: flex; align-items: center; justify-content: center; }
   .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 6.4rem; font-weight: 400; font-style: normal; }
   .hero-home .hero-sub-header { font-size: 1.6rem; }
   .hero-home .hero-copy { font-size: 1.2rem; letter-spacing: 0.5px; }
