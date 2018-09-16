@@ -3978,7 +3978,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-about-us .hero-title-copy .hero-title-copy-header { padding-bottom: 1.2rem; }
 
-.bl-about-us .hero-title-copy[style*="background-image"] { border: 0; text-align: center; padding: 0 2rem; height: 100vh; display: flex; background-size: cover; background-position: center; }
+.bl-about-us .hero-title-copy[style*="background-image"] { border: 0; text-align: center; padding: 0 2rem; height: 100vh; max-height: 600px; display: flex; background-size: cover; background-position: center; }
 
 .bl-about-us .hero-title-copy[style*="background-image"] * { color: #fff; }
 

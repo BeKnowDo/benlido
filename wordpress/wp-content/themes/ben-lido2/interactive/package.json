@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.1",
     "@babel/preset-env": "^7.0.0",
+    "args": "^5.0.0",
     "autoprefixer": "^8.6.5",
     "babel-loader": "^8.0.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -83,6 +84,7 @@
     "mo-js": "^0.288.2",
     "notie": "^4.3.1",
     "promise": "^8.0.1",
+    "puppeteer": "^1.8.0",
     "selectivity": "^3.1.0",
     "spectre.css": "^0.5.3",
     "sweetalert": "^2.1.0",

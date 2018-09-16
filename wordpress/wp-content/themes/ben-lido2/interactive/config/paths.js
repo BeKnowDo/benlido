@@ -65,6 +65,8 @@ module.exports = {
   jsPath: resolveApp('build/javascript'),
   fontsDestination: resolveApp('build/styles/webfonts'),
 
+  puppeteerDestination: resolveApp('build/puppeteer'),
+
   wordpressPath: resolveApp('../assets'),
   wordpressTwigDestination: resolveApp('../twig-templates'),
   wordpressImageDestination: resolveApp('../assets/images'),
