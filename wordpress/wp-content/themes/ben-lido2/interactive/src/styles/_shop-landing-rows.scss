@@ -43,7 +43,7 @@
 
   &-header {
     // @include sentinel(18px, 300);
-    @include knockout50($unit-10, 400);
+    @include knockout50($unit-8, 400);
     // text-align: center;
     letter-spacing: normal;
     color: $comet;
@@ -53,7 +53,7 @@
     .fal {
       padding-left: $unit-2;
       &:before {
-        font-size: $unit-8;
+        font-size: $unit-6;
       }
     }
   }
