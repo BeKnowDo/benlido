@@ -83,7 +83,7 @@
     "lodash": "^4.17.11",
     "mo-js": "^0.288.2",
     "notie": "^4.3.1",
-    "promise": "^8.0.1",
+    "promise": "^8.0.2",
     "puppeteer": "^1.8.0",
     "selectivity": "^3.1.0",
     "spectre.css": "^0.5.3",
