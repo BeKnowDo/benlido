@@ -1,84 +1,85 @@
 {% if not my_account_title %}
-    {% set my_account_title = "View my account" %}
+  {% set my_account_title = "View my account" %}
 {% endif %}
 
 <header class="bg-white benlido-header">
-    <div class="max-width-xl">
-        <div class="navbar">
 
-            <div class="navbar-section">
-                {% include 'common/navigation/navbar.twig' with {
-                    socialMediaLinks : socialMediaLinks,
-                    className: className,
-                    list: list,
-                    logo: diamond_logo
-                } %}
-            </div>
+  {% include 'common/banners/top-banner.twig' with { 'banner': banner } %}
 
-            <div class="navbar-center">
-                {% include 'common/logo.twig' with {
-                    logo : logo
-                } %}
-            </div>
+  <div class="max-width-xl">
+    <div class="navbar">
 
-            <div class="navbar-section">
-                <div class="columns">
+      <div class="navbar-section">
+        {% include 'common/navigation/navbar.twig' with {
+          socialMediaLinks : socialMediaLinks,
+          className: className,
+          list: list,
+          logo: diamond_logo
+        } %}
+      </div>
 
-                    <div class="column text-right hide-xs">
-                        <a class="navbar-section-account" href="{{my_account_url}}" title="{{my_account_title}}" aria-label="My Account">
-                            <i class="fal fa-user-circle fa-2x"></i>
-                        </a>
-                    </div>
+      <div class="navbar-center">
+        {% include 'common/logo.twig' with {
+          logo : logo
+        } %}
+      </div>
 
-                    <div class="column text-right">
-                        <a id="benlido-cart" class="navbar-section-cart" href="/cart" aria-label="My Cart">
-                            <i class="fal fa-suitcase"></i>
-                        </a>
-                    </div>
+      <div class="navbar-section">
+        <div class="columns">
 
-                    <div class="column  text-right">
+          <div class="column text-right hide-xs">
+            <a class="navbar-section-account" href="{{my_account_url}}" title="{{my_account_title}}" aria-label="My Account">
+              <i class="fal fa-user-circle fa-2x"></i>
+            </a>
+          </div>
 
-                        <div class="navbar-item-wrapper">
+          <div class="column text-right">
+            <a id="benlido-cart" class="navbar-section-cart" href="/cart" aria-label="My Cart">
+              <i class="fal fa-suitcase"></i>
+            </a>
+          </div>
 
-                            <span id="navbar-item-counter" class="navbar-item-counter">0</span>
+          <div class="column  text-right">
 
-                            <div id="navbar-bag-container" class="navbar-bag-container position-relative">
+            <div class="navbar-item-wrapper">
 
-                                <div class="navbar-bag">
+              <span id="navbar-item-counter" class="navbar-item-counter">0</span>
 
-                                    <div id="navbar-bag-list" class="navbar-bag-list"></div>
+              <div id="navbar-bag-container" class="navbar-bag-container position-relative">
 
-                                    <a class="btn btn-lg btn-block btn-primary" href="{{cart_url}}" title="Shopping cart">
-                                        View kit
-                                    </a>
+                <div class="navbar-bag">
 
-                                    <span class="navbar-login">
-                                        {% if user_is_logged_in == true %}
-                                            <a href="{{logout_url}}" title="Log Out">Log out</a>
-                                        {% else %}
-                                            <a href="{{register_url}}" title="Register an account">Sign Up</a>
-                                            or
-                                            <a href="{{login_url}}" title="Login to your account">Log in</a>
-                                            to save your bag.
-                                        {% endif %}
-                                    </span>
+                  <div id="navbar-bag-list" class="navbar-bag-list"></div>
 
-                                </div>
+                  <a class="btn btn-lg btn-block btn-primary" href="{{cart_url}}" title="Shopping cart">
+                    View kit
+                  </a>
 
-                            </div>
-
-                        </div>
-
-                    </div>
+                  <span class="navbar-login">
+                    {% if user_is_logged_in == true %}
+                      <a href="{{logout_url}}" title="Log Out">Log out</a>
+                    {% else %}
+                      <a href="{{register_url}}" title="Register an account">Sign Up</a>
+                      or
+                      <a href="{{login_url}}" title="Login to your account">Log in</a>
+                      to save your bag.
+                    {% endif %}
+                  </span>
 
                 </div>
+
+              </div>
+
             </div>
 
+          </div>
+
         </div>
+      </div>
+
     </div>
-
-    {% include 'common/navigation/navbar-desktop.twig' with { 'list': list } %}
-
+  </div>
+  {% include 'common/navigation/navbar-desktop.twig' with { 'list': list } %}
 </header>
 
 {% include 'common/navigation/search-navigation.twig' %}

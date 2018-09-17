@@ -141,6 +141,18 @@
     background-color: $green;
     border-color: $green;
   }
+
+  &.loading {
+    .remove-from-cart,
+    .swap-from-cart {
+      visibility: hidden;
+    }
+    &::after {
+      height: $unit-6;
+      width: $unit-6;
+      top: 58%;
+    }
+  }
 }
 
 .remove-from-cart {

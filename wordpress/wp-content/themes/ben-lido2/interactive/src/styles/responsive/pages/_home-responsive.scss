@@ -22,3 +22,11 @@
 //     }
 //   }
 // }
+
+@media (min-width: $size-md) {
+  .home {
+    &.page-template {
+      padding-top: 134px;
+    }
+  }
+}

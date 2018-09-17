@@ -1,0 +1,15 @@
+@media (min-width: $size-sm) {
+  .benlido {
+    &-banner {
+      font-size: $unit-4;
+    }
+  }
+}
+
+// @media (min-width: $size-md) {
+//   .benlido {
+//     &-banner {
+//       font-size: $unit-5;
+//     }
+//   }
+// }

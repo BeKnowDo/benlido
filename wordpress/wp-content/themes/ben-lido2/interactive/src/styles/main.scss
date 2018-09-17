@@ -16,6 +16,7 @@
 @import "node_modules/spectre.css/src/normalize";
 @import "node_modules/spectre.css/src/base";
 @import "node_modules/spectre.css/src/typography";
+@import "node_modules/spectre.css/src/animations";
 @import "node_modules/spectre.css/src/tables";
 @import "node_modules/spectre.css/src/buttons";
 @import "node_modules/spectre.css/src/forms";
@@ -58,7 +59,7 @@
 @import "./back-to-top";
 @import "./step-navigation";
 @import "./back-to-previous-page";
-
+@import "./banners";
 @import "./product-detail";
 @import "./product-tile";
 @import "./product-row";

@@ -1,4 +1,4 @@
 {
   "plugins": ["syntax-dynamic-import"],
-  "presets": ["env"]
+  "presets": ["@babel/preset-env"]
 }

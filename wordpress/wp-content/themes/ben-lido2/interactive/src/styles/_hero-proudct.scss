@@ -56,7 +56,9 @@
   }
 
   &-callout {
-    // @include knockout31(16px, 400);
+    color: $grey;
+    padding: 0 $unit-1 0;
+
     // letter-spacing: 0.5px;
   }
 

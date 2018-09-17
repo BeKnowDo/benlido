@@ -27,6 +27,11 @@
       margin-bottom: $unit-14;
       border-bottom: $grey-border;
 
+      &-disclaimer {
+        @include sentinel($unit-4, 300);
+        margin: $unit-6 0 0;
+        color: $grey;
+      }
 
       &-sentinel {
         @include sentinel($unit-6, 300);

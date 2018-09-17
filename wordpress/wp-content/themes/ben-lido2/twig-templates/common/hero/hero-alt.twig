@@ -1,42 +1,42 @@
 {% for hero in homePageHeroes %}
-  <div class="hero-row-background">
-    <div class="max-width-xl">
-      <div class="columns">
+<div class="hero-row-background">
+  <div class="max-width-xl">
+    <div class="columns">
 
-        {% if hero.image is not empty %}
-          <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-ml-auto">
-            <div class="hero-image-container">
-              <img class="hero-image" src="{{hero.image}}" alt="{{hero.header}}"/>
+      {% if hero.image is not empty %}
+      <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-ml-auto">
+        <div class="hero-image-container">
+          <img class="hero-image" src="{{hero.image}}" alt="{{hero.header}}" />
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="column col-6 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
+        <div class="hero">
+
+          {% if hero.header is not empty %}
+          <h1 class="hero-header">{{hero.header}}</h1>
+          {% endif %}
+
+          {% if hero.header is not empty %}
+          <div class="hero-copy">
+            {{hero.copy}}
+          </div>
+          {% endif %}
+
+          {% if hero.button_copy is not empty %}
+          <div class="hero-action-buttons columns">
+            <div class="column col-xs-6 col-sm-6 col-mx-auto col-sm-12 col-6">
+              <a href="{{ hero.button_url }}" class="btn btn-primary btn-lg btn-block ">{{ hero.button_copy }}</a>
             </div>
           </div>
-        {% endif %}
 
-        <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
-          <div class="hero">
+          {% endif %}
 
-            {% if hero.header is not empty %}
-              <h1 class="hero-header">{{hero.header}}</h1>
-            {% endif %}
-
-            {% if hero.header is not empty %}
-              <div class="hero-copy">
-                {{hero.copy}}
-              </div>
-            {% endif %}
-
-            {% if hero.button_copy is not empty %}
-              <div class="hero-action-buttons columns">
-                <div class="column col-xs-6 col-sm-6 col-mx-auto col-sm-12 col-6">
-                  <a href="{{ hero.button_url }}" class="btn btn-primary btn-lg btn-block ">{{ hero.button_copy }}</a>
-                </div>
-              </div>
-
-            {% endif %}
-
-          </div>
         </div>
-
       </div>
+
     </div>
   </div>
+</div>
 {% endfor %}

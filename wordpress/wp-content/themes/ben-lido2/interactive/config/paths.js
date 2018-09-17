@@ -65,11 +65,13 @@ module.exports = {
   jsPath: resolveApp('build/javascript'),
   fontsDestination: resolveApp('build/styles/webfonts'),
 
+  puppeteerDestination: resolveApp('build/puppeteer'),
+
   wordpressPath: resolveApp('../assets'),
   wordpressTwigDestination: resolveApp('../twig-templates'),
   wordpressImageDestination: resolveApp('../assets/images'),
   wordpressCssPath: resolveApp('../assets/styles'),
-  wordpressJSPath: resolveApp('../assets/javascript'),
+  wordpressJSPath: resolveApp('../assets/javascript/build'),
   wordpressFontsDestination: resolveApp('../assets/styles/webfonts'),
 
   cartLimit: 26
