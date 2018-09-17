@@ -81,7 +81,7 @@ bagURL = "" %}
           {% set disabled = "" %}
           {% endif %}
           <div class="select-option swatch-wrapper {{selected}}">
-            <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}"
+            <a class="swatch-anchor swatch-color " data-default-color="{{swatch.default_selected_color}}" title="{{swatch.title}}" data-product_id="{{items.product_id}}"
               data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}"
               data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
               {% if swatch.type == "image" %}

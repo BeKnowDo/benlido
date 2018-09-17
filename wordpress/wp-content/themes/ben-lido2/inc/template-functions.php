@@ -397,6 +397,7 @@ function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides
       $variation = $override['variation'];
       $image_override = $override['image_override'];
       $image_override_retina = $override['image_override_retina'];
+      $default_selected_color = $override['default_selected_color'];
       $type = 'image';
       if (!empty($variation) && is_object($variation)) {
         $id = $variation->ID;
@@ -408,7 +409,7 @@ function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides
       if (!empty($image_override_retina) && is_array($image_override_retina)) {
         $image_retina = $image_override_retina['url'];
       }
-      $holder[] = array('id'=>$id,'category_id'=>$category_id,'title'=>$title,'type'=>$type,'hero_image'=>$image,'hero_image_retina'=>$image_retina);
+      $holder[] = array('id'=>$id,'category_id'=>$category_id,'title'=>$title,'type'=>$type,'hero_image'=>$image,'hero_image_retina'=>$image_retina,'default_selected_color'=>$default_selected_color);
     } // end foreach
   }
   $swatches = bl_get_variable_product_swatches($product_id,$selected_id);
@@ -420,6 +421,7 @@ function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides
         if ($swatch_id == $test_id) {
           $swatch['hero_image'] = $el['hero_image'];
           $swatch['hero_image_retina'] = $el['hero_image_retina'];
+          $swatch['default_selected_color'] = $el['default_selected_color'];
         }
       }
 
