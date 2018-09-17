@@ -217,9 +217,9 @@ export class Cart {
           // first, see if we are a bag or a kit
           el.addEventListener('click', e => {
             e.preventDefault()
-            if (el.classList.contains('hero-product-picked')) {
-              let returnURL = el.href
-              document.location.href = returnURL
+            if (el.classList.contains('hero-product-picked') && document.body.classList.contains('page-template-page-kitting')) {
+              this.saveChangeBag();
+              return false;
             }
             if (el.dataset) {
               let variation_id = el.dataset.variation_id || ''
@@ -253,6 +253,29 @@ export class Cart {
         }
       })
     }
+  }
+
+  saveChangeBag() {
+    let selectedItem = document.querySelectorAll('.select-option.swatch-wrapper.selected');
+    if (selectedItem) {
+      let el = selectedItem[0].getElementsByClassName('swatch-anchor');
+      if (el && el.length > 0) {
+        let product_id = el[0].dataset.product_id || '';
+        let variation_id = el[0].dataset.variation_id || '';
+        let category_id = el[0].dataset.category_id || '';
+        let swapBagUrl = endpoints.swapBag + '/' + product_id + '/' + category_id + '/' + variation_id;
+          fetch(swapBagUrl, {
+            credentials: 'include',
+            method: 'POST'
+          })
+          .then(function (response) {
+            return response.json()
+          })
+          .then(response => {
+          });
+      }
+    }
+    return false;
   }
 
   // takes the URL and does an AJAX call to change state of add item to kit to true
@@ -795,7 +818,8 @@ export class Cart {
                       removeBagProduct.classList.remove('show')
                       this.updateCount(response.items)
                       this.miniCart(response.items)
-                      this.updateTileQuantity(response.items, null)
+                      this.updateTileQuantity(response.items, null);
+                      location.reload();
                     }
                     if (typeof response.url !== 'undefined') {
                       // we will get a return URL

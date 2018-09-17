@@ -6,6 +6,9 @@ Description: provides custom e-commerce functionality for the site
 Version: 1.0
 */
 
+// key function:
+// bl_get_kit_list(); // gets all the items in the kit (including bag)
+// bl_set_kit_list($kit_id,$bag,$items,$kit_name); // sets the kit list
 
 /**
  * NOTE: if we want to see if the category is attached to the cart item, we can turin it on in here: bl_get_cart_item_meta()... set bypass to true
@@ -198,8 +201,9 @@ if (!function_exists('bl_set_kit_list')) {
      * @param int $kit_id the id of the kit
      * @param mixed $bag array('bag'=>int,'variation'=>int)
      * @param mixed $items array of the product/category items: array('category'=>int, 'product'=>int, 'variation'=>int, 'quantity'=>int)
+     * @param String $kit_name the name of the kit (for future use)
      */
-    function bl_set_kit_list($kit_id,$bag,$items) {
+    function bl_set_kit_list($kit_id,$bag,$items,$kit_name='') {
         $kit = array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
         WC()->session->set_customer_session_cookie(true);
         WC()->session->set( 'current_kit', $kit);
@@ -217,7 +221,7 @@ if (!function_exists('bl_clear_all_kit_data')) {
 }
 
 if (!function_exists('bl_get_kit_list')) {
-    function bl_get_kit_list() {
+    function bl_get_kit_list($kit_name='') {
         $current_kit = WC()->session->get( 'current_kit' );
         //error_log('current kit list: '.json_encode($current_kit));
         return $current_kit;
@@ -1096,6 +1100,34 @@ function bl_get_kit_future_shippings($kits) {
     return $future_kits;
 }
 
+function bl_change_bag($product_id,$category_id,$variation_id,$personal_kit_id=0) {
+    $kit = bl_get_kit_list();
+    $kit_bag = $kit['bag'];
+    $kit_product_id = 0; // NOTE: kit product ID is currently the same as variation id
+    $kit_variation_id = 0; 
+    if ($kit_bag['bag'] == $kit_bag['variation'] && $kit_bag['variation'] > 0) {
+        $kit_variation_id = $kit_bag['variation'];
+    }
+    // first, remove the item from the cart
+    if ($variation_id != $kit_variation_id) {
+
+        bl_remove_from_cart($kit_variation_id,$kit_variation_id,1);
+        bl_add_to_cart($product_id,$category_id,1,$variation_id);
+
+        $kit_bag = array(
+            'bag' => $variation_id,
+            'variation' => $variation_id
+        );
+        $kit_id = $kit['kit_id'];
+        $items = $kit['items'];
+        if (!empty($kit_id)) {
+            bl_set_kit_list($kit_id,$kit_bag,$items);
+        }
+        
+
+    }
+}
+
 
 // this is the API endpoint parsing
 function bl_ecommerce_url_intercept() {
@@ -1139,19 +1171,35 @@ function bl_ecommerce_url_intercept() {
             case 'product':
                 switch ($action) {
                     case 'get':
-                        // /bl-api/cart/get/{product_id}/{variation_id}
+                        // /bl-api/product/get/{product_id}/{variation_id}
                         if (isset($api_parts[5])) {
                             $variation_id = $api_parts[5];
                         }
                         $prod = bl_get_product_data($id,$variation_id);
                         header('Content-Type: application/json');
                         print_r (json_encode($prod));
-                        
+                        die;
                         break;
                     default:
                         header('Content-Type: application/json');
                         print_r (json_encode(array()));
+                        die;
                         break;
+                }
+                break;
+            case 'bag':
+                switch ($action) {
+                    case 'swap':
+                        if (isset($api_parts[5])) {
+                            $category_id = $api_parts[5];
+                        }
+                        if (isset($api_parts[6])) {
+                            $variation_id = $api_parts[6];
+                        }
+                        $personal_kit_id = 0;
+                        $res = bl_change_bag($id,$category_id,$variation_id,$personal_kit_id);
+                        die;
+                    break;
                 }
                 break;
             case 'cart':

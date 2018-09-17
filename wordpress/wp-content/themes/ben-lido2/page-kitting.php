@@ -5,6 +5,7 @@
 //print_r (get_intermediate_image_sizes());
     $kit_id = 0;
     global $kit_id;
+    global $bl_custom_kit_id;
     $success = false;
     if ($_REQUEST['buy_kit']) {
         $buy_kit = $_REQUEST['buy_kit'];
@@ -71,6 +72,16 @@
     // Finally, if there is no kit ID, we create a custom kit ID of 99999999 for personal kit
     if (empty($kit_id)) {
         bl_create_custom_kit();
+    }
+    if (!empty($kit_id) && $kit_id == $bl_custom_kit_id) {
+        // see if we have any products. If not, we will redirect to the shop page.
+        $kit_list = bl_get_kit_list();
+        $items = $kit_list['items'];
+        if (empty($items)) {
+            bl_set_kit_add($kit_id,true);
+            wp_redirect(wc_get_page_permalink( 'shop' ));
+        }
+        
     }
 
     //print_r ($selected_products);

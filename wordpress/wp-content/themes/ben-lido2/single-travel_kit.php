@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Ben Lido Kitting Page
+ * Template Name: Ben Lido Travel Kit Page
  */
 //print_r (get_intermediate_image_sizes());
     $kit_id = 0;

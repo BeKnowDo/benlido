@@ -107,6 +107,7 @@ var endpoints = exports.endpoints = {
   removeFromCart: "/bl-api/cart/remove",
   removeFromKit: '/bl-api/kit/remove',
   swapItemFromKit: '/bl-api/kit/swap',
+  swapBag: '/bl-api/bag/swap',
   selectSwap: '/bl-api/kit/select',
   setKitState: '/bl-api/kit/state',
   setKit: '/bl-api/kit/set',
@@ -40951,24 +40952,24 @@ var Cart = exports.Cart = function () {
             // first, see if we are a bag or a kit
             el.addEventListener('click', function (e) {
               e.preventDefault();
-              if (el.classList.contains('hero-product-picked')) {
-                var returnURL = el.href;
-                document.location.href = returnURL;
+              if (el.classList.contains('hero-product-picked') && document.body.classList.contains('page-template-page-kitting')) {
+                _this2.saveChangeBag();
+                return false;
               }
               if (el.dataset) {
                 var variation_id = el.dataset.variation_id || '';
                 var product_id = el.dataset.product_id || '';
                 var category_id = el.dataset.category_id || '';
-                var _returnURL = el.href;
+                var returnURL = el.href;
                 if (variation_id.length > 0 && product_id.length > 0) {
                   if (el.classList.contains('self-kit') || el.classList.contains('prebuilt-kit') || el.classList.contains('in-kit-detail')) {
                     if (el.classList.contains('in-kit')) {
-                      _returnURL = 'in-kit';
+                      returnURL = 'in-kit';
                     }
                     if (el.classList.contains('changed')) {
-                      _this2.addItemToCart(product_id, category_id, variation_id, 1, _returnURL);
+                      _this2.addItemToCart(product_id, category_id, variation_id, 1, returnURL);
                     } else {
-                      document.location.href = _returnURL;
+                      document.location.href = returnURL;
                     }
                   }
                 }
@@ -40977,6 +40978,27 @@ var Cart = exports.Cart = function () {
           }
         });
       }
+    }
+  }, {
+    key: 'saveChangeBag',
+    value: function saveChangeBag() {
+      var selectedItem = document.querySelectorAll('.select-option.swatch-wrapper.selected');
+      if (selectedItem) {
+        var el = selectedItem[0].getElementsByClassName('swatch-anchor');
+        if (el && el.length > 0) {
+          var product_id = el[0].dataset.product_id || '';
+          var variation_id = el[0].dataset.variation_id || '';
+          var category_id = el[0].dataset.category_id || '';
+          var swapBagUrl = _endpoints.endpoints.swapBag + '/' + product_id + '/' + category_id + '/' + variation_id;
+          fetch(swapBagUrl, {
+            credentials: 'include',
+            method: 'POST'
+          }).then(function (response) {
+            return response.json();
+          }).then(function (response) {});
+        }
+      }
+      return false;
     }
 
     // takes the URL and does an AJAX call to change state of add item to kit to true
@@ -41484,6 +41506,7 @@ var Cart = exports.Cart = function () {
                       _this10.updateCount(response.items);
                       _this10.miniCart(response.items);
                       _this10.updateTileQuantity(response.items, null);
+                      location.reload();
                     }
                     if (typeof response.url !== 'undefined') {
                       // we will get a return URL
