@@ -3315,7 +3315,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .footer .col-3 { margin-bottom: 30px; }
 
-.footer h6 { font-size: 2rem; text-transform: uppercase; margin-bottom: 0.2rem; }
+.footer h6 { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 1.4rem; font-weight: 300; font-style: normal; text-transform: uppercase; margin-bottom: 0.8rem; color: #979797; }
 
 .footer li a { color: #606060; display: inline-block; font-size: 15px; }
 
