@@ -1,2 +1,2 @@
-const fonts = require("./fonts-function");
-fonts.fonts();
+const fonts = require('./fonts-function')
+fonts.fonts()

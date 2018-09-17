@@ -63,7 +63,7 @@ module.exports = {
   cssMapPath: resolveApp('build/styles/styles.css.map'),
   imageDestination: resolveApp('build/images'),
   jsPath: resolveApp('build/javascript'),
-  fontsDestination: resolveApp('build/styles/webfonts'),
+  fontsDestination: resolveApp('build/webfonts'),
 
   puppeteerDestination: resolveApp('build/puppeteer'),
 
@@ -72,7 +72,7 @@ module.exports = {
   wordpressImageDestination: resolveApp('../assets/images'),
   wordpressCssPath: resolveApp('../assets/styles'),
   wordpressJSPath: resolveApp('../assets/javascript/build'),
-  wordpressFontsDestination: resolveApp('../assets/styles/webfonts'),
+  wordpressFontsDestination: resolveApp('../assets/webfonts'),
 
   cartLimit: 26
 }
