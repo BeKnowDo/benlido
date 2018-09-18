@@ -5296,7 +5296,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-help .hero-help-list div { color: #404953; font-weight: 700; }
 
-.bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+.bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; margin-bottom: 0; }
 
 .bl-help .hero-home[style*="background-image"].full-background .hero-header { color: #fff; }
 
