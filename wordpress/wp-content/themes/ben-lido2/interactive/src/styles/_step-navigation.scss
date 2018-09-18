@@ -68,6 +68,9 @@
   .text-left {
     a {
       color: $blue-shale;
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
   }
 }

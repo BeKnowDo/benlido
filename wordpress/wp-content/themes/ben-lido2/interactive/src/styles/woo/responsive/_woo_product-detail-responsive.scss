@@ -89,6 +89,11 @@
 @media (min-width: $size-sm) {
   .single-product {
     .product {
+
+      &_title {
+        margin-top: $unit-12;
+      }
+
       &.type-product {
         flex-direction: row;
       }

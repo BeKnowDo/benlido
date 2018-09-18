@@ -4653,6 +4653,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .btn.add-to-cart.in-cart .fa-plus-circle:before { visibility: visible; display: block; }
 
+.btn.add-kit-to-cart { margin: 0.8rem 0; padding: 0.8rem; }
+
 .btn.btn-separator { background-color: transparent; text-shadow: none; padding-left: 0; padding-right: 0; border: 0; }
 
 .btn.btn-red { background-color: #e10600; border-color: #e10600; }
@@ -4895,7 +4897,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .step-navigation .fal { font-size: 25px; }
 
-.step-navigation .text-left a { color: #87a4b0; }
+.step-navigation .text-left a { color: #87a4b0; display: flex; align-items: center; height: 100%; }
 
 /* For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure. Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap */
 .back-to-previous-page { padding: 36px 0; color: #87a4b0; }
@@ -5984,7 +5986,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .product .qty { max-width: 80px; }
   .single-product #content .product.type-product .quantity { width: 33%; font-size: 14px; } }
 
-@media (min-width: 600px) { .single-product .product.type-product { flex-direction: row; }
+@media (min-width: 600px) { .single-product .product_title { margin-top: 2.4rem; }
+  .single-product .product.type-product { flex-direction: row; }
   .single-product .product .woocommerce-product-gallery.woocommerce-product-gallery--with-images { width: 50%; }
   .single-product .product .entry-summary { width: 50%; } }
 

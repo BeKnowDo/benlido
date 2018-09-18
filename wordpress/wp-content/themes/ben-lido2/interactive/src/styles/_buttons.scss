@@ -124,6 +124,11 @@
     }
   }
 
+  &.add-kit-to-cart {
+    margin: $unit-2 0;
+    padding: $unit-2;
+  }
+
   &.btn-separator {
     background-color: transparent;
     text-shadow: none;
