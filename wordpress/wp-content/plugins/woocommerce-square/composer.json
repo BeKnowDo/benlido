@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-square",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Square eCommerce Plugin",
+    "version":"1.0.32",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-square.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
