@@ -46,7 +46,12 @@ export class LidoBagDetail {
     let trackIndex = index
 
     if (item.querySelector('.selected') === null) {
-      swatches[trackIndex].querySelector('.swatch-anchor').click()
+      let defaultColor = item.querySelector('.default-color');
+      if (defaultColor === null) {
+          swatches[trackIndex].querySelector('.swatch-anchor').click();
+      } else {
+        defaultColor.querySelector('.swatch-anchor').click();
+      }
     }
   }
 
