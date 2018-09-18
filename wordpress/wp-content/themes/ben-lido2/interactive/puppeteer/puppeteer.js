@@ -1,6 +1,6 @@
 const host = 'http://benlido.localhost'
 
-const config = {
+module.exports = {
   pages: [
     {
       name: 'Home',
@@ -78,5 +78,3 @@ const config = {
 
   ]
 }
-
-module.exports.puppetConfig = config
