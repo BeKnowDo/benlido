@@ -335,6 +335,14 @@ input[type="checkbox"].big {
 .Purchase-visible,
 .Lead-visible,
 .CompleteRegistration-visible,
+.Subscribe-visible,
+.CustomizeProduct-visible,
+.FindLocation-visible,
+.StartTrial-visible,
+.SubmitApplication-visible,
+.Schedule-visible,
+.Contact-visible,
+.Donate-visible,
 .CustomCode-visible,
 .CustomEvent-visible {
   display: none;
@@ -349,6 +357,14 @@ input[type="checkbox"].big {
 .Lead .Lead-visible,
 .CompleteRegistration .CompleteRegistration-visible,
 .Search .Search-visible,
+.Subscribe .Subscribe-visible,
+.CustomizeProduct .CustomizeProduct-visible,
+.FindLocation .FindLocation-visible,
+.StartTrial .StartTrial-visible,
+.SubmitApplication .SubmitApplication-visible,
+.Schedule .Schedule-visible,
+.Contact .Contact-visible,
+.Donate .Donate-visible,
 .CustomCode .CustomCode-visible,
 .CustomEvent .CustomEvent-visible {
   display: table-row;

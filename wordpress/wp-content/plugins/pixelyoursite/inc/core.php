@@ -102,6 +102,10 @@ if ( ! function_exists( 'pys_get_woo_code' ) ) {
 		if ( pys_get_option( 'woo', 'on_view_content' ) && is_product() ) {
 
             $product = wc_get_product( $post->ID );
+            
+            if ( ! $product ) {
+                return;
+            }
 
             $content_id = pys_get_product_content_id( $post->ID );
             $params['content_ids'] = json_encode( $content_id );

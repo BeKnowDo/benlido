@@ -195,6 +195,15 @@ if( !function_exists( 'pys_event_types_select_options' ) ) {
 		<option <?php selected( 'Lead', $current ); ?> value="Lead">Lead</option>
 		<option <?php selected( 'CompleteRegistration', $current ); ?> value="CompleteRegistration">CompleteRegistration</option>
 
+        <option <?php selected( 'Subscribe', $current ); ?> value="Subscribe">Subscribe</option>
+        <option <?php selected( 'CustomizeProduct', $current ); ?> value="CustomizeProduct">CustomizeProduct</option>
+        <option <?php selected( 'FindLocation', $current ); ?> value="FindLocation">FindLocation</option>
+        <option <?php selected( 'StartTrial', $current ); ?> value="StartTrial">StartTrial</option>
+        <option <?php selected( 'SubmitApplication', $current ); ?> value="SubmitApplication">SubmitApplication</option>
+        <option <?php selected( 'Schedule', $current ); ?> value="Schedule">Schedule</option>
+        <option <?php selected( 'Contact', $current ); ?> value="Contact">Contact</option>
+        <option <?php selected( 'Donate', $current ); ?> value="Donate">Donate</option>
+
 		<?php if ( $full ) : ?>
 
 		<option disabled></option>
@@ -1140,7 +1149,16 @@ if( ! function_exists( 'pys_is_standard_event' ) ) {
 			'InitiateCheckout',
 			'AddPaymentInfo',
 			'Purchase',
-			'Lead'
+			'Lead',
+			'CompleteRegistration',
+			'Subscribe',
+			'CustomizeProduct',
+			'FindLocation',
+			'StartTrial',
+			'SubmitApplication',
+			'Schedule',
+			'Contact',
+			'Donate',
 		);
 
 		return in_array( $eventtype, $std_events );

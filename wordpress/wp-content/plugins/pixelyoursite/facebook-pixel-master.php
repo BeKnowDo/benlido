@@ -5,17 +5,17 @@
 	Plugin URI: http://www.pixelyoursite.com/facebook-pixel-plugin-help
 	Author: PixelYourSite
 	Author URI: http://www.pixelyoursite.com
-	Version: 5.3.1
+	Version: 5.3.2
 	License: GPLv3
 	WC requires at least: 2.6.0
-	WC tested up to: 3.3.5
+	WC tested up to: 3.4.5
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-define( 'PYS_FREE_VERSION', '5.3.1' );
+define( 'PYS_FREE_VERSION', '5.3.2' );
 
 if ( ! function_exists( 'pys_is_pixelyoursite_pro_active' ) ) {
 

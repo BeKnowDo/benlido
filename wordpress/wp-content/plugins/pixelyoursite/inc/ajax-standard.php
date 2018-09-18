@@ -89,7 +89,7 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 					</td>
 				</tr>
 
-				<tr class="ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible">
+				<tr class="ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible Subscribe-visible StartTrial-visible">
 					<td class="legend"><p class="label"><?php _e( 'Value:', 'pys' ); ?></p></td>
 					<td>
 						<input type="text" name="std_event[value]" value="<?php esc_attr_e( $event['value'] ); ?>">
@@ -97,7 +97,7 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 					</td>
 				</tr>
 
-				<tr class="ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible">
+				<tr class="ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible Subscribe-visible StartTrial-visible">
 					<td class="legend"><p class="label"><?php _e( 'Currency:', 'pys' ); ?></p></td>
 					<td>
 						<select name="std_event[currency]" id="currency"
@@ -192,6 +192,13 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 					</td>
 				</tr>
 
+                <tr class="Subscribe-visible StartTrial-visible">
+                    <td class="legend"><p class="label">predicted_ltv:</p></td>
+                    <td>
+                        <input type="text" name="std_event[predicted_ltv]" value="<?php esc_attr_e( $event['predicted_ltv'] ); ?>">
+                    </td>
+                </tr>
+
 				<tr class="CustomCode-visible">
 					<td class="legend">
 						<p class="label" style="line-height: inherit;"><?php _e( 'Custom event code (advanced users only):', 'pys' ); ?></p></td>
@@ -214,7 +221,7 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 
 				<?php $param_id = uniqid() . $param; ?>
 
-				<tr class="class-<?php esc_attr_e( $param_id ); ?> ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">
+				<tr class="class-<?php esc_attr_e( $param_id ); ?> ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">
 					<td class="legend"><p class="label"><?php _e( 'Param name:', 'pys' ); ?></p></td>
 					<td>
 						<input type="text" name="std_event[custom_names][<?php esc_attr_e( $param ); ?>]" 
@@ -222,7 +229,7 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 					</td>
 				</tr>
 
-					<tr class="class-<?php esc_attr_e( $param_id ); ?> ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">
+				<tr class="class-<?php esc_attr_e( $param_id ); ?> ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">
 					<td class="legend"><p class="label"><?php _e( 'Param value:', 'pys' ); ?></p></td>
 					<td>
 						<input type="text" name="std_event[custom_values][<?php esc_attr_e( $param ); ?>]"
@@ -230,7 +237,7 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 					</td>
 				</tr>
 
-					<tr class="class-<?php esc_attr_e( $param_id ); ?> tall ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">
+				<tr class="class-<?php esc_attr_e( $param_id ); ?> tall ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">
 					<td></td>
 					<td><a href="#" class="remove-param"
 					       data-id="<?php esc_attr_e( $param_id ); ?>">Remove param</a></td>
@@ -240,7 +247,7 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 
 				<tr id="marker"></tr>
 
-				<tr class="ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">
+				<tr class="ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">
 					<td class="legend"></td>
 					<td>
 						<a href="#"
@@ -343,17 +350,17 @@ if ( ! function_exists( 'pys_edit_std_event' ) ) {
 
 					var id = makeid();
 
-					var html = '<tr class="class-' + id + ' ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">';
+					var html = '<tr class="class-' + id + ' ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">';
 					html += '<td class="legend"><p class="label">' + l10n_param_name + '</p></td>';
 					html += '<td><input type="text" name="std_event[custom_names][' + id + ']" value=""></td>';
 					html += '</tr>';
 
-					html += '<tr class="class-' + id + ' ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">';
+					html += '<tr class="class-' + id + ' ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">';
 					html += '<td class="legend"><p class="label">' + l10n_param_value + '</p></td>';
 					html += '<td><input type="text" name="std_event[custom_values][' + id + ']" value=""></td>';
 					html += '</tr>';
 
-					html += '<tr class="class-' + id + ' tall ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible">';
+					html += '<tr class="class-' + id + ' tall ViewContent-visible Search-visible AddToCart-visible AddToWishlist-visible InitiateCheckout-visible AddPaymentInfo-visible Purchase-visible Lead-visible CompleteRegistration-visible CustomEvent-visible Subscribe-visible CustomizeProduct-visible FindLocation-visible StartTrial-visible SubmitApplication-visible Schedule-visible Contact-visible Donate-visible">';
 					html += '<td></td>';
 					html += '<td><a href="#" class="remove-param" data-id="' + id + '">' + l10n_param_remove + '</a></td>';
 					html += '</tr>';
