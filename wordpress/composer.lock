@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "049797d727261bf27f2690430d935067710049c2"
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
-                "reference": "049797d727261bf27f2690430d935067710049c2",
+                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-12-29T09:13:20+00:00"
+            "time": "2018-08-27T06:10:37+00:00"
         },
         {
             "name": "up-plugins/advanced-custom-fields-pro",
@@ -318,12 +318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping.git",
-                "reference": "31d16ee5b578acd13451680eb9dcbf0413eaeb45"
+                "reference": "45f6da3333a656b469a8736ad08d9576d16a445e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping/get/31d16ee5b578acd13451680eb9dcbf0413eaeb45.zip",
-                "reference": "31d16ee5b578acd13451680eb9dcbf0413eaeb45",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping/get/45f6da3333a656b469a8736ad08d9576d16a445e.zip",
+                "reference": "45f6da3333a656b469a8736ad08d9576d16a445e",
                 "shasum": ""
             },
             "require": {
@@ -339,9 +339,9 @@
             "description": "WooCommerce Table Rate Shipping",
             "homepage": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping",
             "support": {
-                "source": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping/src/31d16ee5b578acd13451680eb9dcbf0413eaeb45/?at=master"
+                "source": "https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping/src/45f6da3333a656b469a8736ad08d9576d16a445e/?at=master"
             },
-            "time": "2018-01-02T14:36:10+00:00"
+            "time": "2018-09-18T17:45:46+00:00"
         },
         {
             "name": "up-plugins/woocommerce-variation-swatches-and-photos",
@@ -638,15 +638,15 @@
         },
         {
             "name": "wpackagist-plugin/mailchimp-for-wp",
-            "version": "4.2.4",
+            "version": "4.2.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/mailchimp-for-wp/",
-                "reference": "tags/4.2.4"
+                "reference": "tags/4.2.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/mailchimp-for-wp.4.2.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -678,15 +678,15 @@
         },
         {
             "name": "wpackagist-plugin/pixelyoursite",
-            "version": "5.3.1",
+            "version": "5.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pixelyoursite/",
-                "reference": "tags/5.3.1"
+                "reference": "tags/5.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.3.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/pixelyoursite.5.3.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -818,15 +818,15 @@
         },
         {
             "name": "wpackagist-plugin/timber-library",
-            "version": "1.7.1",
+            "version": "1.8.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/1.7.1"
+                "reference": "tags/1.8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.1.7.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/timber-library.1.8.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -918,15 +918,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "8.1.2",
+            "version": "8.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/8.1.2"
+                "reference": "tags/8.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.1.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.2.zip",
                 "reference": null,
                 "shasum": null
             },

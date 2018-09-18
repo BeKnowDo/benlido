@@ -446,6 +446,7 @@ if (!function_exists('bl_remove_cart_items')) {
 if (!function_exists('bl_add_current_kit_to_cart')) {
     function bl_add_current_kit_to_cart() {
         $kit_list = bl_get_kit_list();
+        bl_remove_cart_items(); // remove everything in the cart first before adding
         // bag
         $bag = $kit_list['bag'];
 
