@@ -1,8 +1,8 @@
 const args = require('args')
 const puppeteer = require('puppeteer')
 const devices = require('puppeteer/DeviceDescriptors')
-const path = require('./config/paths')
-
+const path = require('../config/paths')
+const puppetConfig = require('./puppeteer')
 console.clear()
 
 args
@@ -17,91 +17,17 @@ const pass = 'benlido2018'
 
 class BenLidoPuppet {
   constructor () {
-    this.pageList = [
-      {
-        name: 'Home',
-        url: `${host}`
-      },
-      {
-        name: 'Bags',
-        url: `${host}/bags/`
-      },
-      {
-        name: 'Kits',
-        url: `${host}/kits`
-      },
-      {
-        name: 'Shop',
-        url: `${host}/shop`
-      },
-      {
-        name: 'About',
-        url: `${host}/about`
-      },
-      {
-        name: 'Help',
-        url: `${host}/help`
-      },
-      {
-        name: 'NAVIGATOR',
-        url: `${host}/kitting/?id=1746`
-      },
-      {
-        name: 'JETSETTER',
-        url: `${host}/kitting/?id=1769`
-      },
-      {
-        name: 'OCEANSIDER',
-        url: `${host}/kitting/?id=1771`
-      },
-      {
-        name: 'EXPLORER',
-        url: `${host}/kitting/?id=1772`
-      },
-      {
-        name: 'DAY-TRIPPER',
-        url: `${host}/kitting/?id=1773`
-      }
-    ]
+    this.pageList = puppetConfig.puppetConfig.pages
 
     this.targets = flags.p !== undefined ? this.pageList.filter(item => item.name === `${flags.p}`) : this.pageList
 
-    this.deviceList = [
-      {
-        'name': 'iPhone 6 Plus'
-      },
-      {
-        'name': 'iPhone 7'
-      },
-      {
-        'name': 'iPhone 7 Plus'
-      },
-      {
-        'name': 'iPhone 8'
-      },
-      {
-        'name': 'iPhone 8 Plus'
-      },
-      {
-        'name': 'iPhone X'
-      },
-      {
-        'name': 'Pixel 2'
-      },
-      {
-        'name': 'iPad'
-      },
-      {
-        'name': 'iPad Pro'
-      }
-
-    ]
+    this.deviceList = puppetConfig.puppetConfig.devices
 
     // // console.log(this.pageList.filter(item => item.name === flags.p))
     // console.log(this.targets)
   }
 
-  process () {
+  takeScreenshots () {
     let i = 0
 
     ;(async () => {
@@ -139,4 +65,4 @@ class BenLidoPuppet {
   }
 }
 
-new BenLidoPuppet().process()
+new BenLidoPuppet().takeScreenshots()
