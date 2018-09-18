@@ -2,7 +2,7 @@
 
 $heroNoBag = array(
   "header" => "NO THANKS, I ALREADY HAVE A BAG",
-  "url" => '/shop',
+  "url" => '/shop?shop_now=true',
   "actionText" => 'Shop Products'
 );
 
