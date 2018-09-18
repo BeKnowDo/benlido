@@ -11,20 +11,48 @@ args
 const flags = args.parse(process.argv)
 
 // const host = 'http://dev.benlido.com'
-const host = 'http://benlido.localhost'
 const user = 'benlido'
 const pass = 'benlido2018'
 
 class BenLidoPuppet {
   constructor () {
-    this.pageList = puppetConfig.puppetConfig.pages
-
+    this.screenshotExtension = 'jpeg'
+    this.pageList = puppetConfig.pages
     this.targets = flags.p !== undefined ? this.pageList.filter(item => item.name === `${flags.p}`) : this.pageList
+    this.deviceList = puppetConfig.devices
+  }
 
-    this.deviceList = puppetConfig.puppetConfig.devices
+  async getMainNavigation () {
+    // navbar-dropdown-primary-items desktop hide-md
+    const homePage = this.pageList.filter(item => item.name === 'Home').length ? this.pageList.filter(item => item.name === 'Home')[0] : undefined
 
-    // // console.log(this.pageList.filter(item => item.name === flags.p))
-    // console.log(this.targets)
+    if (homePage !== 'undefined') {
+      const targetUrl = homePage.url
+      const browser = await puppeteer.launch()
+      const puppet = await browser.newPage()
+
+      await puppet.goto(`${targetUrl}`)
+
+      const mainLinks = '.navbar-dropdown-primary-items > li > a'
+
+      // Extract the results from the puppet.
+      const links = await puppet.evaluate(mainLinks => {
+        const anchors = Array.from(document.querySelectorAll(mainLinks))
+        return anchors.map(anchor => {
+          const title = anchor.textContent.split('|')[0].trim()
+          return {
+            name: title,
+            url: anchor.href
+          }
+        })
+      }, mainLinks)
+
+      this.pageList = links
+
+      await puppet.close()
+      await browser.close()
+      return this.takeScreenshots()
+    }
   }
 
   takeScreenshots () {
@@ -52,7 +80,9 @@ class BenLidoPuppet {
 
               // other actions...
               await puppet.screenshot({
-                path: `${path.puppeteerDestination}/${name}-${deviceName.replace(/\s/g, '')}-${devices[`${deviceName}`].viewport.width}x${devices[`${deviceName}`].viewport.height}.png`,
+                path: `${path.puppeteerDestination}/${name}-${deviceName.replace(/\s/g, '')}-${devices[`${deviceName}`].viewport.width}x${devices[`${deviceName}`].viewport.height}.${this.screenshotExtension}`,
+                type: this.screenshotExtension,
+                quality: 65,
                 fullPage: true
               })
 
@@ -65,4 +95,4 @@ class BenLidoPuppet {
   }
 }
 
-new BenLidoPuppet().takeScreenshots()
+new BenLidoPuppet().getMainNavigation()
