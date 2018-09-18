@@ -3,3 +3,9 @@
     border-top: 0;
   }
 }
+
+.step-navigation-wrapper {
+  &+ .hero-title-copy {
+    border-top: 0;
+  }
+}

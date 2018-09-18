@@ -209,7 +209,7 @@ function bl_process_bags_list($items) {
             // the price of the kit is the total of all the products
             if (function_exists('bl_get_kit_price')) {
               $price = wc_price(bl_get_kit_price($item_id));
-              $price =  ' <span class="hero-product-callout">starting at</span>' . $price;
+              $price =  ' <span class="hero-product-callout">about </span>' . $price . ' <span class="hero-product-callout">as shown</span>';
             }
             if (function_exists('get_field')) {
               // we need to get the kit page

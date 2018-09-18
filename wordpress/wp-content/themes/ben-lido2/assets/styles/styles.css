@@ -4577,8 +4577,6 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .archive .step-navigation .navbar-dropdown-primary-items.desktop, .page-template .step-navigation .navbar-dropdown-primary-items.desktop, .woocommerce-page .step-navigation .navbar-dropdown-primary-items.desktop, .page-template-default .step-navigation .navbar-dropdown-primary-items.desktop { display: flex; border: 0; }
 
-.archive .step-navigation .navbar-dropdown-primary-items.desktop li, .page-template .step-navigation .navbar-dropdown-primary-items.desktop li, .woocommerce-page .step-navigation .navbar-dropdown-primary-items.desktop li, .page-template-default .step-navigation .navbar-dropdown-primary-items.desktop li { padding: 0.2rem 0.8rem; }
-
 .home .navbar-dropdown-primary-items.desktop, .woocommerce-account .navbar-dropdown-primary-items.desktop, .page-template-page-about .navbar-dropdown-primary-items.desktop, .page-template-page-help .navbar-dropdown-primary-items.desktop, .page-template-page-bags .navbar-dropdown-primary-items.desktop { display: flex; }
 
 .footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; background-color: #fff; }
@@ -4875,6 +4873,10 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .back-to-top .fal { font-size: 22px; }
 
+.step-navigation-wrapper { display: flex; align-items: center; }
+
+.step-navigation-wrapper .max-width-xl { width: 100%; }
+
 .step-navigation-text { vertical-align: super; color: #999999; }
 
 .step-navigation-text-back { font-weight: normal; position: absolute; bottom: -10px; left: 0; font-size: 11px; display: block; width: 55px; }
@@ -4889,23 +4891,11 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .step-navigation .btn-no-border .step-navigation-text { font-size: 16px; }
 
-.step-navigation .btn-lg { padding: 6px 16px; }
-
 .step-navigation .btn-primary .step-navigation-text { text-align: left; font-family: "Knockout 32 A", "Knockout 32 B"; color: #fff; }
 
 .step-navigation .fal { font-size: 25px; }
 
 .step-navigation .text-left a { color: #87a4b0; }
-
-.single-product.single.single-product .step-navigation-wrapper { margin-bottom: 2.8rem; padding: 4px 0; }
-
-.archive.post-type-archive .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
-
-.archive.tax-product_cat .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
-
-.page-template.page-template-page-about .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
-
-.page-template-default.page .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
 
 /* For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure. Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap */
 .back-to-previous-page { padding: 36px 0; color: #87a4b0; }
@@ -5189,6 +5179,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .kitting-page .hero-product-copy { display: none; }
 
 .hero-product ~ .hero-title-copy { border-top: 0; }
+
+.step-navigation-wrapper + .hero-title-copy { border-top: 0; }
 
 .home.page-template { padding-top: 82px; }
 

@@ -1,6 +1,14 @@
 .step-navigation {
   // padding: 18px 0;
+
   &-wrapper {
+    display: flex;
+    align-items: center;
+    // min-height: 53px;
+
+    .max-width-xl {
+      width: 100%;
+    }
   }
 
   &-text {
@@ -25,6 +33,7 @@
       padding-right: 8px;
     }
   }
+
   &-current {
     color: $medium-grey;
     padding: 0;
@@ -41,7 +50,7 @@
       }
     }
     &-lg {
-      padding: 6px 16px;
+      // padding: 0 16px;
     }
     &-primary {
       .step-navigation-text {
@@ -68,8 +77,8 @@
     &.single-product {
       .step-navigation {
         &-wrapper {
-          margin-bottom: $unit-14;
-          padding: 4px 0;
+          // margin-bottom: $unit-14;
+          // padding: 4px 0;
         }
       }
     }
@@ -80,8 +89,8 @@
   &.post-type-archive {
     .step-navigation {
       &-wrapper {
-        padding: 8px 0;
-        border-bottom: 0;
+        // padding: 8px 0;
+        // border-bottom: 0;
       }
     }
   }
@@ -91,8 +100,8 @@
   &.tax-product_cat {
     .step-navigation {
       &-wrapper {
-        padding: 8px 0;
-        border-bottom: 0;
+        // padding: 8px 0;
+        // border-bottom: 0;
       }
     }
   }
@@ -102,8 +111,8 @@
   &.page-template-page-about {
     .step-navigation {
       &-wrapper {
-        padding: 8px 0;
-        border-bottom: 0;
+        // padding: 8px 0;
+        // border-bottom: 0;
       }
     }
   }
@@ -114,8 +123,8 @@
     &.page {
       .step-navigation {
         &-wrapper {
-          padding: 8px 0;
-          border-bottom: 0;
+          // padding: 8px 0;
+          // border-bottom: 0;
         }
       }
     }
