@@ -21,7 +21,8 @@
     "webpack": "webpack --mode production --config webpack.config.js",
     "webpack-beta": "webpack --wordpress--mode production --config webpack.beta.config.js",
     "webpack-beta-dev": "webpack --wordpress --mode development --config webpack.beta.config.js",
-    "wordpress:watch": "onchange 'src/views/**/*.twig' 'src/styles/**/*.scss' 'src/javascript/**/*.js' -- yarn wordpress"
+    "wordpress:watch": "onchange 'src/views/**/*.twig' 'src/styles/**/*.scss' 'src/javascript/**/*.js' -- yarn wordpress",
+    "puppet": "node puppeteer"
   },
   "proxy": {},
   "repository": {
