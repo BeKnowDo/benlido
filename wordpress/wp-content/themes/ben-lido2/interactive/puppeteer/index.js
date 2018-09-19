@@ -66,15 +66,15 @@ class BenLidoPuppet {
           args: ['--disable-dev-shm-usage']
         })
         .then(async browser => {
-          for (i; i < this.deviceList.length; i++) {
+          for (i; i < this.targets.length; i++) {
             let o = 0
+            const url = this.targets[i].url
+            const name = this.targets[i].name
 
-            for (o; o < this.targets.length; o++) {
-              const deviceName = this.deviceList[i].name
-              const url = this.targets[o].url
-              const name = this.targets[o].name
+            for (o; o < this.deviceList.length; o++) {
+              const deviceName = this.deviceList[o].name
               const folder = deviceName.replace(/\s/g, '')
-              const rootUrl = `${path.puppeteerDestination}/${folder}/`
+              const rootUrl = `${path.puppeteerDestination}/${name}/`
               const width = devices[deviceName].viewport.width
               const height = devices[deviceName].viewport.height
 
@@ -92,7 +92,7 @@ class BenLidoPuppet {
                   fs.ensureDirSync(destinationPath)
                 }
 
-                console.log(chalk.bgGreenBright.black(`Generated image into: ${folder}/${name}`))
+                console.log(chalk.bgGreenBright.black(`Generated image into: /${name}`))
                 console.log(chalk.red.bgWhite(`File name is: ${name}-${folder}-${width}x${height}.${this.screenshotExtension}`))
 
                 // other actions...
@@ -102,7 +102,6 @@ class BenLidoPuppet {
                   quality: 60,
                   fullPage: true
                 })
-
               } catch (err) {
                 console.error(err)
               }
