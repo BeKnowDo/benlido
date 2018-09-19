@@ -97,11 +97,17 @@
           }
 
           &.btn-primary {
-            background-color: $comet;
-            background-color: $blumine;
+            // background-color: $comet;
+            // background-color: $blumine;
             background-color: $sky-blue;
             color: $blumine;
             border-color: $comet;
+
+            &:hover {
+              background-color: $brown-grey;
+              border-color: $brown-grey;
+              color: $white;
+            }
           }
         }
       }
