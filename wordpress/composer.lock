@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07118ec3c43af8d2a854008dc63603b5",
+    "content-hash": "5e320e8465e2b9b6b2ad7bc59e3ecd17",
     "packages": [
         {
             "name": "composer/installers",
@@ -132,12 +132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro.git",
-                "reference": "fe2d74b78690783d0c1fc9d3a77852d929bf1b96"
+                "reference": "8599b95d97de6e7205905d2a7afe7119b48641af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/get/fe2d74b78690783d0c1fc9d3a77852d929bf1b96.zip",
-                "reference": "fe2d74b78690783d0c1fc9d3a77852d929bf1b96",
+                "url": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/get/8599b95d97de6e7205905d2a7afe7119b48641af.zip",
+                "reference": "8599b95d97de6e7205905d2a7afe7119b48641af",
                 "shasum": ""
             },
             "require": {
@@ -153,9 +153,9 @@
             "description": "Advanced Custom Fields Pro",
             "homepage": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro",
             "support": {
-                "source": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/src/fe2d74b78690783d0c1fc9d3a77852d929bf1b96/?at=master"
+                "source": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/src/8599b95d97de6e7205905d2a7afe7119b48641af/?at=master"
             },
-            "time": "2018-06-04T21:34:32+00:00"
+            "time": "2018-09-18T18:09:14+00:00"
         },
         {
             "name": "up-plugins/upco-performance",
@@ -311,6 +311,37 @@
                 "source": "https://bitbucket.org/upcomposer/woocommerce-social-login/src/dd9cca271b1cfbf7037853085ed60ef8561d513c/?at=master"
             },
             "time": "2018-08-28T14:13:07+00:00"
+        },
+        {
+            "name": "up-plugins/woocommerce-square",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-square.git",
+                "reference": "43bea1062dfa44976e12cdf862c379ff77b4e013"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-square/get/43bea1062dfa44976e12cdf862c379ff77b4e013.zip",
+                "reference": "43bea1062dfa44976e12cdf862c379ff77b4e013",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Square eCommerce Plugin",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-square",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-square/src/43bea1062dfa44976e12cdf862c379ff77b4e013/?at=master"
+            },
+            "time": "2018-09-07T13:12:03+00:00"
         },
         {
             "name": "up-plugins/woocommerce-table-rate-shipping",
@@ -555,6 +586,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/google-analytics-for-wordpress/"
+        },
+        {
+            "name": "wpackagist-plugin/google-tag-manager",
+            "version": "1.0.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/google-tag-manager/",
+                "reference": "tags/1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/google-tag-manager.1.0.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/google-tag-manager/"
         },
         {
             "name": "wpackagist-plugin/hide-admin-bar",
@@ -817,6 +868,26 @@
             "homepage": "https://wordpress.org/plugins/tawkto-live-chat/"
         },
         {
+            "name": "wpackagist-plugin/taxjar-simplified-taxes-for-woocommerce",
+            "version": "2.0.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/taxjar-simplified-taxes-for-woocommerce/",
+                "reference": "tags/2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/taxjar-simplified-taxes-for-woocommerce.2.0.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/taxjar-simplified-taxes-for-woocommerce/"
+        },
+        {
             "name": "wpackagist-plugin/timber-library",
             "version": "1.8.0",
             "source": {
@@ -966,6 +1037,7 @@
         "up-plugins/woocommerce-brands": 20,
         "up-plugins/woocommerce-cost-of-goods": 20,
         "up-plugins/woocommerce-social-login": 20,
+        "up-plugins/woocommerce-square": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
         "up-plugins/woothemes-updater": 20,
         "up-plugins/wp-all-export-pro": 20,

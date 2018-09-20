@@ -32,6 +32,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-square.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-table-rate-shipping.git"
         },
         {
@@ -53,6 +57,7 @@
         "up-plugins/woocommerce-brands":"dev-master",
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-social-login":"dev-master",
+        "up-plugins/woocommerce-square":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",
         "up-plugins/wp-all-export-pro":"dev-master",
@@ -64,6 +69,7 @@
         "wpackagist-plugin/disable-xml-rpc":"*",
         "wpackagist-plugin/disable-xml-rpc-pingback":"*",
         "wpackagist-plugin/google-analytics-for-wordpress":"*",
+        "wpackagist-plugin/google-tag-manager":"*",
         "wpackagist-plugin/hide-admin-bar":"*",
         "wpackagist-plugin/hyper-cache":"*",
         "wpackagist-plugin/incapsula":"*",
@@ -76,6 +82,7 @@
         "wpackagist-plugin/regenerate-thumbnails":"*",
         "wpackagist-plugin/subscribe-and-connect":"*",
         "wpackagist-plugin/svg-support":"*",
+        "wpackagist-plugin/taxjar-simplified-taxes-for-woocommerce":"*",
         "wpackagist-plugin/timber-library":"*",
         "wpackagist-plugin/tawkto-live-chat":"*",
         "wpackagist-plugin/woocommerce":"*",
