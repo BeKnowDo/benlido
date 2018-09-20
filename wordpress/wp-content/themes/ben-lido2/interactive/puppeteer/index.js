@@ -60,58 +60,56 @@ class BenLidoPuppet {
   takeScreenshots () {
     let i = 0
 
-    ;(async () => {
-      puppeteer
-        .launch({
-          args: ['--disable-dev-shm-usage']
-        })
-        .then(async browser => {
-          for (i; i < this.targets.length; i++) {
-            let o = 0
-            const url = this.targets[i].url
-            const name = this.targets[i].name
+    puppeteer
+      .launch({
+        args: ['--disable-dev-shm-usage']
+      })
+      .then(async browser => {
+        for (i; i < this.targets.length; i++) {
+          let o = 0
+          const url = this.targets[i].url
+          const name = this.targets[i].name
 
-            for (o; o < this.deviceList.length; o++) {
-              const deviceName = this.deviceList[o].name
-              const folder = deviceName.replace(/\s/g, '')
-              const rootUrl = `${path.puppeteerDestination}/${name}/`
-              const width = devices[deviceName].viewport.width
-              const height = devices[deviceName].viewport.height
+          for (o; o < this.deviceList.length; o++) {
+            const deviceName = this.deviceList[o].name
+            const folder = deviceName.replace(/\s/g, '')
+            const rootUrl = `${path.puppeteerDestination}/${name}/`
+            const width = devices[deviceName].viewport.width
+            const height = devices[deviceName].viewport.height
 
-              console.log(chalk.red(`fetching screenshot for: ${deviceName}`))
+            console.log(chalk.red(`fetching screenshot for: ${deviceName}`))
 
-              const puppet = await browser.newPage()
-              await puppet.authenticate({ username: `${user}`, password: `${pass}` })
-              await puppet.emulate(devices[`${deviceName}`])
-              await puppet.goto(`${url}`)
+            const puppet = await browser.newPage()
+            await puppet.authenticate({ username: `${user}`, password: `${pass}` })
+            await puppet.emulate(devices[`${deviceName}`])
+            await puppet.goto(`${url}`)
 
-              const destinationPath = `${rootUrl}`
+            const destinationPath = `${rootUrl}`
 
-              try {
-                if (!fs.existsSync(destinationPath)) {
-                  fs.ensureDirSync(destinationPath)
-                }
-
-                console.log(chalk.bgGreenBright.black(`Generated image into: /${name}`))
-                console.log(chalk.red.bgWhite(`File name is: ${name}-${folder}-${width}x${height}.${this.screenshotExtension}`))
-
-                // other actions...
-                await puppet.screenshot({
-                  path: `${rootUrl}/${name}-${folder}-${width}x${height}.${this.screenshotExtension}`,
-                  type: this.screenshotExtension,
-                  quality: 60,
-                  fullPage: true
-                })
-              } catch (err) {
-                console.error(err)
+            try {
+              if (!fs.existsSync(destinationPath)) {
+                fs.ensureDirSync(destinationPath)
               }
 
-              await puppet.close()
+              console.log(chalk.bgGreenBright.black(`Generated image into: /${name}`))
+              console.log(chalk.red.bgWhite(`File name is: ${name}-${folder}-${width}x${height}.${this.screenshotExtension}`))
+
+              // other actions...
+              await puppet.screenshot({
+                path: `${rootUrl}/${name}-${folder}-${width}x${height}.${this.screenshotExtension}`,
+                type: this.screenshotExtension,
+                quality: 60,
+                fullPage: true
+              })
+            } catch (err) {
+              console.error(err)
             }
+
+            puppet.close()
           }
-          await browser.close()
-        })
-    })()
+        }
+        await browser.close()
+      })
   }
 }
 
