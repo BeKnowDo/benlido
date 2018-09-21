@@ -96,20 +96,36 @@
 
       &.type-product {
         flex-direction: row;
+
+        .entry-summary {
+          width: 50%;
+        }
       }
+
       .woocommerce-product-gallery {
         &.woocommerce-product-gallery--with-images {
           width: 50%;
         }
       }
-      .entry-summary {
-        width: 50%;
-      }
+
     }
   }
 }
 
 @media (min-width: $size-md) {
+
+  .single-product {
+    .product {
+      &.type-product {
+
+        .entry-summary {
+          padding-left: $unit-16;
+        }
+      }
+
+    }
+  }
+
   .product {
     &_title {
       font-size: 50px;

@@ -3,7 +3,7 @@
     &.entry-summary {
       // display: flex;
       flex-wrap: wrap;
-      padding: 0 0 $unit-16 $unit-12;
+      padding: 0 $unit-2;
 
       .price {
         font-size: 24px;
@@ -179,8 +179,8 @@
 
       .entry-summary {
         float: none;
-        // width: 60%;
         margin-bottom: 100px;
+        // width: 60%;
       }
 
       .cart {
