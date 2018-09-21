@@ -177,6 +177,7 @@ function bl_process_bags_list($items) {
       $category_id = 0;
       $products = array();
       $hover_details = '';
+      $price = '';
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -197,6 +198,12 @@ function bl_process_bags_list($items) {
         if (function_exists('get_field')) {
           // we need to get the kit page
           $kitting_page = get_field('kitting_page','option');
+          $price = get_field('price_override',$item_id);
+        }
+
+        if (!empty($price)) {
+          $args = array('decimals'=>0);
+          $price =  ' <span class="hero-product-callout">about </span>' . wc_price($price,$args) . ' <span class="hero-product-callout">as shown</span>';
         }
 
         switch ($type) {
@@ -207,8 +214,10 @@ function bl_process_bags_list($items) {
             $products = array();
             //print_r ($el);
             // the price of the kit is the total of all the products
-            if (function_exists('bl_get_kit_price')) {
-              $price = wc_price(bl_get_kit_price($item_id));
+            
+            if (empty($price) && function_exists('bl_get_kit_price')) {
+              $args = array('decimals'=>0);
+              $price = wc_price(bl_get_kit_price($item_id),$args);
               $price =  ' <span class="hero-product-callout">about </span>' . $price . ' <span class="hero-product-callout">as shown</span>';
             }
             if (function_exists('get_field')) {

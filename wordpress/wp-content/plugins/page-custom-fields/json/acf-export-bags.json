@@ -832,7 +832,7 @@
                             {
                                 "key": "field_5ba0144b0aa4a",
                                 "label": "Default Selected Color",
-                                "name": "",
+                                "name": "default_selected_color",
                                 "type": "true_false",
                                 "instructions": "Select which is the default selected color for this bag",
                                 "required": 0,

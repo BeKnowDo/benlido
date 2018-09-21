@@ -37,6 +37,8 @@ if( function_exists('acf_add_local_field_group') ):
                 'message' => 'This is where you create kits.
     A kit is composed of a title, description, and featured image.
     You will also need to choose a bag that is associated with this kit.
+    If you do not want the Kit to automatically calculate the price of the kit, you can use the price override field to enter a number.
+    This number will not affect the final calculation for the price of the kit. This number is just an approximate price that we will display to the customer.
     Since the Kits page shows a wide image, we need to override the square product images with these wide ones. Upload them here.
     You will then add which category or subcategory of products each kit can contain as well as how many someone can choose.
     You can also select a featured product to show. If there is no featured product, then the first available product will be displayed.',
@@ -61,6 +63,28 @@ if( function_exists('acf_add_local_field_group') ):
                 'prepend' => '',
                 'append' => '',
                 'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_5ba517dc519d7',
+                'label' => 'Price Override',
+                'name' => 'price_override',
+                'type' => 'number',
+                'instructions' => 'Enter a number here to override the auto-calculated cost of this kit.
+    Does not need the dollar sign.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'min' => '',
+                'max' => '',
+                'step' => '',
             ),
             array(
                 'key' => 'field_5b2a5af67142c',
