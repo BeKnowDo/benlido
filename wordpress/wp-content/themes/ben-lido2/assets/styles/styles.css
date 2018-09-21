@@ -5542,7 +5542,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .product .woocommerce-product-gallery .flex-viewport > figure { height: auto !important; }
 
-.product .woocommerce-product-gallery__image { text-align: center; margin: 0 auto !important; height: auto !important; }
+.product .woocommerce-product-gallery__image { text-align: center; margin: 2.4rem auto 0 !important; height: auto !important; }
 
 .product .woocommerce-product-gallery ol.flex-control-thumbs li { width: 33%; }
 
