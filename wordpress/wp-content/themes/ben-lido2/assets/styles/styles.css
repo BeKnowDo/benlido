@@ -5502,7 +5502,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .products > h2 { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 25px; font-weight: 300; font-style: normal; letter-spacing: normal; color: #979797; padding: 0 0 25px; max-width: 850px; margin: 0 auto 0; text-align: center; }
 
-.product .summary.entry-summary { flex-wrap: wrap; padding: 0 0.8rem; }
+.product .summary.entry-summary { flex-wrap: wrap; padding: 0 0 3.2rem 2.4rem; }
 
 .product .summary.entry-summary .price { font-size: 24px; width: 100%; text-align: left; order: 1; flex-direction: row; min-width: 100px; margin: 0 0 0.8rem; }
 
@@ -5511,6 +5511,12 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .product .summary.entry-summary .product_meta > span { color: #979797; }
 
 .product .summary.entry-summary .product_meta a { text-decoration: none; color: #195675; }
+
+.product .summary.entry-summary .single_variation_wrap .woocommerce-variation-add-to-cart .quantity { display: flex; align-items: center; width: 30%; }
+
+.product .summary.entry-summary .single_variation_wrap .woocommerce-variation-add-to-cart .quantity > label { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.4rem; font-weight: 300; font-style: normal; margin: 0 1.2rem 0 0; padding: 0; }
+
+.product .summary.entry-summary .single_variation_wrap .woocommerce-variation-add-to-cart .single_add_to_cart_button { max-width: 200px; }
 
 .product .input-text { border-radius: 4px; border: 1px solid rgba(3, 3, 3, 0.3); text-align: center; padding-left: 10px; }
 
