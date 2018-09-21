@@ -4799,9 +4799,11 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product-copy { color: #999999; line-height: 140%; }
 
-.hero-product-price { color: #393d5b; font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 2rem; font-weight: 400; font-style: normal; margin: 0; }
+.hero-product-price { color: #393d5b; font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; margin: 0; }
 
 .hero-product-callout { color: #979797; padding: 0 0.2rem 0; }
+
+.hero-product .woocommerce-Price-amount { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 2.4rem; font-weight: 400; font-style: normal; }
 
 .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
 

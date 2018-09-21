@@ -51,15 +51,17 @@
 
   &-price {
     color: $brown-grey;
-    @include knockout50($unit-10, 400);
+    @include knockout32($unit-6, 300);
     margin: 0;
   }
 
   &-callout {
     color: $grey;
     padding: 0 $unit-1 0;
+  }
 
-    // letter-spacing: 0.5px;
+  .woocommerce-Price-amount {
+    @include knockout50($unit-12, 400);
   }
 
   &-bag-link {
