@@ -5,6 +5,7 @@ const devices = require('puppeteer/DeviceDescriptors')
 const path = require('../config/paths')
 const chalk = require('chalk')
 const puppetConfig = require('./puppeteer')
+const { prompt } = require('inquirer')
 // console.clear()
 
 args
@@ -22,6 +23,25 @@ class BenLidoPuppet {
     this.pageList = puppetConfig.pages
     this.targets = flags.p !== undefined ? this.pageList.filter(item => item.name === `${flags.p}`) : this.pageList
     this.deviceList = puppetConfig.devices
+    this.questions = [
+      {
+        type: 'list',
+        name: 'functions',
+        message: 'What would you like to do?',
+        choices: [
+          {
+            key: 't',
+            name: 'Take Screenshots',
+            value: 'screenshots'
+          },
+          {
+            key: 'l',
+            name: 'Load test the server',
+            value: 'loadtest'
+          }
+        ]
+      }
+    ]
   }
 
   async getMainNavigation () {
@@ -57,6 +77,29 @@ class BenLidoPuppet {
     }
   }
 
+  cli () {
+    prompt(this.questions)
+      .then(answers => {
+        this.handleAnswer(answers)
+      })
+  }
+
+  handleAnswer (response) {
+    const path = response.functions ? response.functions : 'none'
+
+    switch (path) {
+      case 'none':
+        console.log('nothing provided')
+        break
+      case 'screenshots':
+        this.takeScreenshots()
+        break
+
+      default:
+        break
+    }
+  }
+
   takeScreenshots () {
     let i = 0
 
@@ -70,6 +113,9 @@ class BenLidoPuppet {
           const url = this.targets[i].url
           const name = this.targets[i].name
 
+          console.clear()
+          console.log(chalk.green(`Generating images for: ${name} page`))
+
           for (o; o < this.deviceList.length; o++) {
             const deviceName = this.deviceList[o].name
             const folder = deviceName.replace(/\s/g, '')
@@ -77,8 +123,7 @@ class BenLidoPuppet {
             const width = devices[deviceName].viewport.width
             const height = devices[deviceName].viewport.height
 
-            console.log(chalk.red(`fetching screenshot for: ${deviceName}`))
-
+            console.log(chalk.cyan(`fetching screenshot for: `) + chalk.bgBlack.white(`${deviceName}`))
             const puppet = await browser.newPage()
             await puppet.authenticate({ username: `${user}`, password: `${pass}` })
             await puppet.emulate(devices[`${deviceName}`])
@@ -91,21 +136,26 @@ class BenLidoPuppet {
                 fs.ensureDirSync(destinationPath)
               }
 
-              console.log(chalk.bgGreenBright.black(`Generated image into: /${name}`))
-              console.log(chalk.red.bgWhite(`File name is: ${name}-${folder}-${width}x${height}.${this.screenshotExtension}`))
+              // console.log(chalk.blue(`File name is: ${name}-${folder}-${width}x${height}.${this.screenshotExtension}`))
 
               // other actions...
               await puppet.screenshot({
+                path: `${rootUrl}/${name}-${folder}-${width}x${height}.fullscreen.${this.screenshotExtension}`,
+                type: this.screenshotExtension,
+                quality: 20,
+                fullPage: true
+              })
+
+              await puppet.screenshot({
                 path: `${rootUrl}/${name}-${folder}-${width}x${height}.${this.screenshotExtension}`,
                 type: this.screenshotExtension,
-                quality: 60,
-                fullPage: true
+                quality: 20
               })
             } catch (err) {
               console.error(err)
             }
 
-            puppet.close()
+            await puppet.close()
           }
         }
         await browser.close()
@@ -113,5 +163,6 @@ class BenLidoPuppet {
   }
 }
 
+new BenLidoPuppet().cli()
 // new BenLidoPuppet().getMainNavigation()
-new BenLidoPuppet().takeScreenshots()
+// new BenLidoPuppet().takeScreenshots()
