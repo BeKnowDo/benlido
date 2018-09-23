@@ -12,7 +12,8 @@ if (!empty($contact_form)) {
 }
 ?>
 <?php if ($enable_signup_popup == true):?>
-    <div class="modal-subscribe" id="modalSubscribe" >
+
+    <div class="modal-subscribe bl-newsletter-capture" id="modalSubscribe" >
         <div class="inner-content">
             <h3><?php echo $popup_header;?></h3>
             <div class="intro"><?php echo $popup_copy;?></div>
