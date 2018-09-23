@@ -1,0 +1,109 @@
+.bl {
+  &-newsletter-modal {
+    display: none;
+    background-color: $white;
+    padding: $unit-6;
+    max-width: 500px;
+
+
+    &-content {
+      padding: $unit-6 $unit-6 0;
+      text-align: center;
+    }
+
+    &-header {
+      @include sentinel($unit-5, 600);
+      line-height: 140%;
+      text-transform: none;
+      font-style: italic;
+      margin-bottom: $unit-2;
+      padding-top: $unit-40;
+      background: url(../images/topheademail.png) no-repeat scroll center top;
+
+    }
+
+    &-copy {
+      @include knockout50($unit-6, 300);
+      max-width: 310px;
+      margin: 0 auto;
+      color: $brown-grey;
+
+      p {
+        color: $brown-grey;
+      }
+    }
+
+    &-form {
+      padding: $unit-10 $unit-10 $unit-40;
+      background: url(../images/bottomdiamond.png) no-repeat scroll center bottom;
+
+      form {
+        > div {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          > div {
+            width: 100%;
+            margin-bottom: $unit-2;
+          }
+
+        }
+      }
+
+      input {
+        padding: $unit-1 $unit-2;
+        display: block;
+        width: 100%;
+      }
+
+      .submit {
+        width: 100%;
+
+        input {
+          background-color: $sky-blue;
+          @include border(all, $blumine, 1px);
+          border-radius: 4px;
+          color: $blumine;
+          position: relative;
+          width: 100%;
+        }
+      }
+
+      .fname,
+      .lname {
+        display: none;
+      }
+
+    }
+  }
+}
+
+@media (min-width: $size-sm) {
+  .bl {
+    &-newsletter-modal {
+      &-form {
+        form {
+          > div {
+            flex-direction: row;
+            width: 100%;
+
+            > div {
+              width: 70%;
+            }
+
+          }
+        }
+
+        input {
+          width: 90%;
+        }
+
+        .submit {
+          width: 30%;
+        }
+
+      }
+    }
+  }
+}

@@ -13,12 +13,25 @@ if (!empty($contact_form)) {
 ?>
 <?php if ($enable_signup_popup == true):?>
 
-    <div class="modal-subscribe bl-newsletter-capture" id="modalSubscribe" >
-        <div class="inner-content">
-            <h3><?php echo $popup_header;?></h3>
-            <div class="intro"><?php echo $popup_copy;?></div>
-            <?php echo do_shortcode('[mc4wp_form id="' . $signup_field_id . '"]'); ?>
+    <section class="modal-subscribe bl-newsletter-modal" id="modalSubscribe">
+
+        <div class="bg-grey">
+
+            <div class="bl-newsletter-modal-content">
+                <h1 class="bl-newsletter-modal-header">
+                    <?php echo $popup_header;?>
+                </h1>
+                <div class="bl-newsletter-modal-copy">
+                    <?php echo $popup_copy;?>
+                </div>
+            </div>
+
+            <div class="bl-newsletter-modal-form">
+                <?php echo do_shortcode('[mc4wp_form id="' . $signup_field_id . '"]'); ?>
+            </div>
+
         </div>
 
-    </div>
+    </section>
+
 <?php endif;?>

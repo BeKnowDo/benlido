@@ -5162,7 +5162,34 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-animated-gif { padding-top: 2rem; display: block; }
 
-.jquery-modal.blocker { z-index: 2; }
+.bl-newsletter-modal { display: none; background-color: #fff; padding: 1.2rem; max-width: 500px; }
+
+.bl-newsletter-modal-content { padding: 1.2rem 1.2rem 0; text-align: center; }
+
+.bl-newsletter-modal-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 600; font-style: normal; line-height: 140%; text-transform: none; font-style: italic; margin-bottom: 0.8rem; padding-top: 8.4rem; background: url(../images/topheademail.png) no-repeat scroll center top; }
+
+.bl-newsletter-modal-copy { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; max-width: 310px; margin: 0 auto; color: #393d5b; }
+
+.bl-newsletter-modal-copy p { color: #393d5b; }
+
+.bl-newsletter-modal-form { padding: 2rem 2rem 8.4rem; background: url(../images/bottomdiamond.png) no-repeat scroll center bottom; }
+
+.bl-newsletter-modal-form form > div { display: flex; flex-direction: column; width: 100%; }
+
+.bl-newsletter-modal-form form > div > div { width: 100%; margin-bottom: 0.8rem; }
+
+.bl-newsletter-modal-form input { padding: 0.2rem 0.8rem; display: block; width: 100%; }
+
+.bl-newsletter-modal-form .submit { width: 100%; }
+
+.bl-newsletter-modal-form .submit input { background-color: #e4f1fd; border: 1px solid #195675; border-radius: 4px; color: #195675; position: relative; width: 100%; }
+
+.bl-newsletter-modal-form .fname, .bl-newsletter-modal-form .lname { display: none; }
+
+@media (min-width: 600px) { .bl-newsletter-modal-form form > div { flex-direction: row; width: 100%; }
+  .bl-newsletter-modal-form form > div > div { width: 70%; }
+  .bl-newsletter-modal-form input { width: 90%; }
+  .bl-newsletter-modal-form .submit { width: 30%; } }
 
 .search-results #content { background-color: #fff; }
 

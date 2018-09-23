@@ -1,2 +1,2 @@
-const images = require("./images-function");
-images.images();
+const images = require('./images-function')
+images.images()
