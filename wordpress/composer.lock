@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57d62caf8005dca07f01693990cb6dc8",
+    "content-hash": "a8e10b3cc150a15259e66cc64c0d00d3",
     "packages": [
         {
             "name": "composer/installers",
@@ -280,6 +280,37 @@
                 "source": "https://bitbucket.org/upcomposer/woocommerce-cost-of-goods/src/f9a88ba6151c5036889e123141f657a64d81dedc/?at=master"
             },
             "time": "2017-05-15T16:41:08+00:00"
+        },
+        {
+            "name": "up-plugins/woocommerce-google-analytics-pro",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro.git",
+                "reference": "21801b9839e8dde1263104b813f4c2156676c1ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro/get/21801b9839e8dde1263104b813f4c2156676c1ae.zip",
+                "reference": "21801b9839e8dde1263104b813f4c2156676c1ae",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Google Analytics Pro",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro/src/21801b9839e8dde1263104b813f4c2156676c1ae/?at=master"
+            },
+            "time": "2018-09-24T20:22:05+00:00"
         },
         {
             "name": "up-plugins/woocommerce-social-login",
@@ -948,26 +979,6 @@
             "homepage": "https://wordpress.org/plugins/woocommerce-auto-added-coupons/"
         },
         {
-            "name": "wpackagist-plugin/woocommerce-google-analytics-integration",
-            "version": "1.4.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/woocommerce-google-analytics-integration/",
-                "reference": "tags/1.4.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-google-analytics-integration.1.4.4.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/woocommerce-google-analytics-integration/"
-        },
-        {
             "name": "wpackagist-plugin/woocommerce-products-without-featured-images",
             "version": "0.1",
             "source": {
@@ -1035,6 +1046,7 @@
         "up-plugins/advanced-custom-fields-pro": 20,
         "up-plugins/upco-performance": 20,
         "up-plugins/woocommerce-brands": 20,
+        "up-plugins/woocommerce-google-analytics-pro": 20,
         "up-plugins/woocommerce-cost-of-goods": 20,
         "up-plugins/woocommerce-social-login": 20,
         "up-plugins/woocommerce-square": 20,

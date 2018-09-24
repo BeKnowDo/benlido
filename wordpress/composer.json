@@ -20,6 +20,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos.git"
         },
         {
@@ -55,6 +59,7 @@
         "up-plugins/advanced-custom-fields-pro":"dev-master",
         "up-plugins/upco-performance":"dev-master",
         "up-plugins/woocommerce-brands":"dev-master",
+        "up-plugins/woocommerce-google-analytics-pro":"dev-master",
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-social-login":"dev-master",
         "up-plugins/woocommerce-square":"dev-master",
@@ -87,7 +92,6 @@
         "wpackagist-plugin/tawkto-live-chat":"*",
         "wpackagist-plugin/woocommerce":"*",
         "wpackagist-plugin/woocommerce-auto-added-coupons":"*",
-        "wpackagist-plugin/woocommerce-google-analytics-integration":"*",
         "wpackagist-plugin/woocommerce-products-without-featured-images":"*",
         "wpackagist-plugin/wordpress-seo":"*",
         "wpackagist-plugin/wp-ses":"*"

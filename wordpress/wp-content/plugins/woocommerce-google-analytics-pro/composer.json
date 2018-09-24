@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-google-analytics-pro",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Google Analytics Pro",
+    "version":"1.6.3",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
