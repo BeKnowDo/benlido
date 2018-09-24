@@ -7,7 +7,7 @@ export class BLGoogleAnalytics {
     }
 
     addToCart (product) {
-        console.log(product);
+        //console.log(product);
         if (typeof ga == 'function') {
             ga('ec:addProduct', {
                 'id': product.id,
