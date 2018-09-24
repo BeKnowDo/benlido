@@ -100,42 +100,53 @@ function bl_ga_add_to_cart($product) {
         $script = '<script type="text/javascript">';
         $script .= ' if (typeof ga == "function") {';
         $script .= ' ga("ec:addProduct", {';
+
+        $script_alt = '<script type="text/javascript">';
+        $script_alt .= ' if (typeof __gaTracker == "function") {';
+        $script_alt .= ' __gaTracker("ec:addProduct", {';
     
     
         // see what we got
         // sku
         if ($product['sku']) {
             $script .= ' "id" : "' . $product['sku'] . '", ';
+            $script_alt .= ' "id" : "' . $product['sku'] . '", ';
         }
     
         // name
         if ($product['name']) {
             $script .= ' "name" : "' . esc_attr($product['name']) . '", ';
+            $script_alt .= ' "name" : "' . esc_attr($product['name']) . '", ';
         }
     
         // category
         if ($product['category']) {
             $script .= ' "category" : "' . esc_attr($product['category']) . '", ';
+            $script_alt .= ' "category" : "' . esc_attr($product['category']) . '", ';
         }
     
         // brand
         if ($product['brand']) {
             $script .= ' "brand" : "' . esc_attr($product['brand']) . '", ';
+            $script_alt .= ' "brand" : "' . esc_attr($product['brand']) . '", ';
         }
     
         // variant
         if ($product['variant']) {
             $script .= ' "variant" : "' . $product['variant'] . '", ';
+            $script_alt .= ' "variant" : "' . $product['variant'] . '", ';
         }
     
         // price
         if ($product['price']) {
             $script .= ' "price" : "' . $product['price'] . '", ';
+            $script_alt .= ' "price" : "' . $product['price'] . '", ';
         }
     
         // sku
         if ($product['quantity']) {
             $script .= ' "quantity" : "' . $product['quantity'] . '", ';
+            $script_alt .= ' "quantity" : "' . $product['quantity'] . '", ';
         }
     
         $script .= ' });';
@@ -144,8 +155,13 @@ function bl_ga_add_to_cart($product) {
         $script .= '}';
         $script .= '</script>';
 
+        $script_alt .= ' });';
+        $script_alt .= '__gaTracker("ec:setAction", "add");';
+        $script_alt .= '__gaTracker("send", "event", "UX", "click", "add to cart"); ';
+        $script_alt .= '}';
+        $script_alt .= '</script>';
+
     }
 
-
-    return $script;
+    return $script . $script_alt;
 }
