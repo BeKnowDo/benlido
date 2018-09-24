@@ -85,7 +85,7 @@ backgroundClassname = ''%}
                   {% set defaultColor = "default-color" %}
                 {% endif %}
                 <div class="select-option swatch-wrapper {{selected}} {{defaultColor}}">
-                  <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
+                  <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_name="{{swatch.product_name}}" data-product_category_name="{{swatch.product_category_name}}" data-product_sku="{{swatch.sku}}" data-price="{{swatch.price}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
                     {% if swatch.type == "image" %}
                       <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
                     {% endif %}
@@ -98,7 +98,7 @@ backgroundClassname = ''%}
 
         {% endif %}
 
-        <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="{{pickedCopy}}">
+        <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" data-product_name="" data-product_sku="" data-product_category_name="" data-price="" title="{{pickedCopy}}">
           {{pickedCopy}}
         </a>
 

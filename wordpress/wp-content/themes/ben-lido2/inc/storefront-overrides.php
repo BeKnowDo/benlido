@@ -26,6 +26,8 @@ function bl_storefront_overrides() {
 
 	add_action( 'woocommerce_single_product_summary', 'bl_product_detail_description', 80 );
 
+	add_action( 'woocommerce_after_cart', 'bl_google_analytics_cart_page',90); // this comes from the bl-google-analytics plugin
+
 	//add_action('storefront_footer','bl_footer_menus',10);
 
 	// basically removed all the storefront_header action because we are removing it from the template itself to accommodate for how Cesar is building the template

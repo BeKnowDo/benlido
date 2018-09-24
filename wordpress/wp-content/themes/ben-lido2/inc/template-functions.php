@@ -448,9 +448,21 @@ function bl_get_variable_product_swatches($product_id,$selected_variation_id=nul
       $prod = wc_get_product($product_id);
     }
     if (!empty($prod)) {
+      $product_name = $prod->get_name();
+      $sku = $prod->get_sku();
       $price = $prod->get_price_html();
       $available_variations = $prod->get_available_variations();
+      $category_ids = $prod->get_category_ids();
       //print_r ($available_variations);
+    }
+    if (!empty($category_ids) && is_array($category_ids)) {
+      $cat_id = $category_ids[0];
+    }
+    if (!empty($cat_id)) {
+      $cat_obj = get_term($cat_id);
+    }
+    if ($cat_obj && is_object($cat_obj)) {
+      $product_category_name = $cat_obj->name;
     }
 
     if (!empty($available_variations) && is_array($available_variations)) {
@@ -469,6 +481,7 @@ function bl_get_variable_product_swatches($product_id,$selected_variation_id=nul
         // we need variation ID, attribute name, color swatch, image
         //print_r ($variation);
         $attributes = $variation['attributes'];
+        $price = $variation['display_price'];
         $swatch_obj = array();
         $swatch_image = null;
         $swatch_type = null;
@@ -507,7 +520,11 @@ function bl_get_variable_product_swatches($product_id,$selected_variation_id=nul
           'type' => $swatch_type,
           'color' => $swatch_color,
           'selected' => $selected,
-          'image' => $swatch_image
+          'image' => $swatch_image,
+          'product_name' => $product_name,
+          'sku' => $sku,
+          'product_category_name' => $product_category_name,
+          'price' => $price
         );
       }
     }

@@ -2,6 +2,7 @@ import { endpoints } from '../../../config/endpoints'
 import KUTE from 'kute.js'
 // import mojs from 'mo-js'
 import swal from 'sweetalert'
+import { BLGoogleAnalytics } from './google-analytics.js'
 
 export class Cart {
   constructor () {
@@ -228,6 +229,12 @@ export class Cart {
               let product_id = el.dataset.product_id || ''
               let category_id = el.dataset.category_id || ''
               let returnURL = el.href
+              let sku = el.dataset.product_sku || ''
+              let product_name = el.dataset.product_name || ''
+              let product_category = el.dataset.product_category_name || ''
+              let price = el.dataset.price || ''
+              let prod_obj = {'id': sku,'name': product_name,'category': product_category,'variant': variation_id,'price': price,'quantity':1}
+
               if (variation_id.length > 0 && product_id.length > 0) {
                 if (
                   el.classList.contains('self-kit') ||
@@ -238,6 +245,10 @@ export class Cart {
                     returnURL = 'in-kit'
                   }
                   if (el.classList.contains('changed')) {
+                    //console.log(prod_obj);
+                    let googleanalytics = new BLGoogleAnalytics;
+                    googleanalytics.addToCart(prod_obj);
+
                     this.addItemToCart(
                       product_id,
                       category_id,
@@ -853,6 +864,10 @@ export class Cart {
         let swatchNodes
         let data = el.dataset
         let variation_id = data.variation_id ? data.variation_id : 0
+        let product_name = data.product_name || ''
+        let product_sku = data.product_sku || ''
+        let product_category_name = data.product_category_name || ''
+        let price = data.price || ''
         if (parent.classList.contains('selected')) {
           this.currentSwatch = variation_id
           let primary_image = data.hero_image ? data.hero_image : ''
@@ -907,6 +922,10 @@ export class Cart {
             let div_id = 'hero-' + index
             if (addButton) {
               addButton.setAttribute('data-variation_id', variation_id)
+              addButton.setAttribute('data-product_sku', product_sku)
+              addButton.setAttribute('data-product_name', product_name)
+              addButton.setAttribute('data-product_category_name', product_category_name)
+              addButton.setAttribute('data-price', price)
               addButton.removeAttribute('disabled')
               document.getElementById(div_id).src = hero_image
               document

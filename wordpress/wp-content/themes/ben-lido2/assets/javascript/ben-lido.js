@@ -1,5 +1,5 @@
 (function ($) {
-    $(document).ready(function(){
+    $(document).ready(function($){
 
         // signup modal
         if ($.cookie('blsignup') === undefined || $('.mc4wp-alert').length > 0) { // show modal if no cookie or mailchimp has a response for us
