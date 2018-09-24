@@ -1,9 +1,15 @@
+.jquery-modal {
+  &.blocker {
+    z-index: 999;
+  }
+}
 .bl {
   &-newsletter-modal {
     display: none;
     background-color: $white;
     padding: $unit-6;
-    max-width: 500px;
+    max-width: 100%;
+    width: 100%;
 
 
     &-content {
@@ -24,7 +30,7 @@
 
     &-copy {
       @include knockout50($unit-6, 300);
-      max-width: 310px;
+      max-width: 290px;
       margin: 0 auto;
       color: $brown-grey;
 
@@ -82,6 +88,8 @@
 @media (min-width: $size-sm) {
   .bl {
     &-newsletter-modal {
+      max-width: 500px;
+
       &-form {
         form {
           > div {

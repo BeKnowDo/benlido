@@ -5162,13 +5162,15 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-animated-gif { padding-top: 2rem; display: block; }
 
-.bl-newsletter-modal { display: none; background-color: #fff; padding: 1.2rem; max-width: 500px; }
+.jquery-modal.blocker { z-index: 999; }
+
+.bl-newsletter-modal { display: none; background-color: #fff; padding: 1.2rem; max-width: 100%; width: 100%; }
 
 .bl-newsletter-modal-content { padding: 1.2rem 1.2rem 0; text-align: center; }
 
 .bl-newsletter-modal-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 600; font-style: normal; line-height: 140%; text-transform: none; font-style: italic; margin-bottom: 0.8rem; padding-top: 8.4rem; background: url(../images/topheademail.png) no-repeat scroll center top; }
 
-.bl-newsletter-modal-copy { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; max-width: 310px; margin: 0 auto; color: #393d5b; }
+.bl-newsletter-modal-copy { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; max-width: 290px; margin: 0 auto; color: #393d5b; }
 
 .bl-newsletter-modal-copy p { color: #393d5b; }
 
@@ -5186,7 +5188,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-newsletter-modal-form .fname, .bl-newsletter-modal-form .lname { display: none; }
 
-@media (min-width: 600px) { .bl-newsletter-modal-form form > div { flex-direction: row; width: 100%; }
+@media (min-width: 600px) { .bl-newsletter-modal { max-width: 500px; }
+  .bl-newsletter-modal-form form > div { flex-direction: row; width: 100%; }
   .bl-newsletter-modal-form form > div > div { width: 70%; }
   .bl-newsletter-modal-form input { width: 90%; }
   .bl-newsletter-modal-form .submit { width: 30%; } }
