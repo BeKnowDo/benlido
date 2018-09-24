@@ -19,7 +19,7 @@ require_once 'inc/template-functions.php'; // functions for displaying things: l
 function bl_child_theme_init()
 {
     global $storefront_version;
-    $version = '1.14';
+    $version = '1.15';
     wp_dequeue_style( 'storefront-style' );
     wp_dequeue_style( 'storefront-woocommerce-style' );
     wp_dequeue_style( 'storefront-woocommerce-brands-style' );
@@ -117,6 +117,21 @@ function bl_remove_widget_areas() {
 }
 
 add_action('after_setup_theme','bl_after_theme_setup',0);
+
+
+function bl_add_favicons() {
+    
+    ?>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri()?>/assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri()?>/assets/images/favicons/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri()?>/assets/images/favicons/favicon-16x16.png">
+    <meta name="theme-color" content="#ffffff">
+<?php
+}
+
+add_action('wp_head', 'bl_add_favicons');
 //add_action('childtheme_sidebars','bl_remove_widget_areas');
 
 
