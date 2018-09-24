@@ -18,7 +18,7 @@ function bl_google_analytics_cart_page() {
         if (!empty($kit_list) && is_array($kit_list)) {
             $items = $kit_list['items'];
         }
-
+        bl_clear_add_to_cart();
     }
     if (!empty($items) && is_array($items)) {
         foreach ($items as $item) {

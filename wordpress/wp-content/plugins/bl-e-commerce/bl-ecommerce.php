@@ -484,6 +484,10 @@ if (!function_exists('bl_add_current_kit_to_cart')) {
         }
         */
         // redirect to the cart page
+        // we're going to set a session variable so that we know to fire off add-to-cart Google Analytics events on the cart page
+        if (function_exists('bl_show_add_to_cart')) {
+            bl_show_add_to_cart();
+        }
         wp_redirect(wc_get_cart_url());
         exit;
         //return true;
