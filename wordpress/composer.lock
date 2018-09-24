@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e320e8465e2b9b6b2ad7bc59e3ecd17",
+    "content-hash": "57d62caf8005dca07f01693990cb6dc8",
     "packages": [
         {
             "name": "composer/installers",
@@ -569,15 +569,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "7.1.0",
+            "version": "7.2.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/7.1.0"
+                "reference": "tags/7.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.1.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.7.2.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -646,26 +646,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/hyper-cache/"
-        },
-        {
-            "name": "wpackagist-plugin/incapsula",
-            "version": "1.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/incapsula/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/incapsula.zip?timestamp=1380036373",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/incapsula/"
         },
         {
             "name": "wpackagist-plugin/jetpack",
@@ -769,15 +749,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.4.1",
+            "version": "3.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.4.1"
+                "reference": "tags/3.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.4.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -826,6 +806,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/subscribe-and-connect/"
+        },
+        {
+            "name": "wpackagist-plugin/sucuri-scanner",
+            "version": "1.8.18",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/sucuri-scanner/",
+                "reference": "tags/1.8.18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/sucuri-scanner.1.8.18.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/sucuri-scanner/"
         },
         {
             "name": "wpackagist-plugin/svg-support",
@@ -989,15 +989,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "8.2",
+            "version": "8.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/8.2"
+                "reference": "tags/8.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
