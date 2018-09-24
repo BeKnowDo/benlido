@@ -11,7 +11,7 @@ switch($_SERVER['HTTP_HOST'])
 {
     case 'benlido.com':
     case 'www.benlido.com':
-    case 'ip-172-31-39-199':
+    case 'ip-172-31-15-220':
         define('SERVER_ENVIRONMENT','PROD');
         break;
     case 'benlido.urbanpixels.localhost':
