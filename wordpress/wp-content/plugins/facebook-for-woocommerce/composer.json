@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/facebook-for-woocommerce",
+    "type": "wordpress-plugin",
+    "description": "Facebook for WooCommerce",
+    "version":"1.9.5",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/facebook-for-woocommerce.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
