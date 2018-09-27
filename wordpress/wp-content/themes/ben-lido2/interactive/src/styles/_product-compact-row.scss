@@ -1,0 +1,255 @@
+.benlido {
+  &-compact-product {
+
+    &-instruction-header {
+      @include knockout32(15px, 300);
+      padding: 0 0 $unit-8;
+      letter-spacing: -.5px;
+      text-align: center;
+
+      > strong {
+        @include knockout50($unit-5, 300);
+        letter-spacing: normal;
+      }
+
+    }
+
+    &-list {
+      padding: $unit-10 $unit-10 0;
+      margin: 0 auto;
+      position: relative;
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        background: none !important;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.swiper-button-disabled {
+          pointer-events: auto;
+        }
+        > i {
+          font-size: $unit-6;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .hero {
+
+        &-product {
+          text-align: center;
+
+          &-header {
+            @include knockout50($unit-5, 300);
+            top: auto;
+            padding: $unit-4 0 0;
+          }
+
+          &-copy {
+            text-align: center;
+          }
+
+          &-swatch{
+            &-count {
+              color: $grey;
+              text-align: center;
+              padding: 0 0 $unit-1;
+              margin: 0;
+            }
+          }
+
+          &-separator {
+            color: $grey;
+          }
+
+          &-price {
+            @include knockout50($unit-5, 300);
+            text-align: center;
+          }
+
+          &-bag {
+            &-image {
+
+              &-container {
+                position: relative;
+
+                img {
+                  margin: 0 auto;
+                }
+              }
+
+              &[src=""] {
+                background-color: $light-grey;
+                height: 100%;
+                width: 100%;
+                &:after {
+                  content: "IMAGE NOT AVAILABLE";
+                  text-align: center;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(0, -50%);
+                  left: 0;
+                  width: 100%;
+                }
+              }
+            }
+          }
+
+        }
+
+      }
+
+      .promo-text {
+        @include border(left, $light-grey, 1px);
+        @include knockout50($unit-6, 300);
+        max-width: 200px;
+        display: inline-block;
+        color: $brick-red;
+        text-align: left;
+      }
+
+      .swiper-container {
+        position: static;
+        padding: 0 0 $unit-5;
+      }
+
+      .swiper-wrapper {
+        display: flex;
+        position: static;
+        box-sizing: border-box;
+      }
+
+      .swiper-slide {
+      }
+
+      .benlido-active-slide {
+        position: relative;
+
+        &::after {
+          content: '\f0d7';
+          font-size: 22px;
+          display: block;
+          width: 20px;
+          height: 20px;
+          margin: 0 auto;
+          font-family: 'Font Awesome 5 Pro';
+          font-weight: 900;
+          // background-color: $black;
+          position: absolute;
+          bottom: -6px;
+          left: 0;
+          right: 0;
+          z-index: 100;
+        }
+        &::before {
+          @include border(bottom, $light-grey, 1px);
+          content: ' ';
+          display: block;
+          height: 2px;
+          width: 70%;
+          margin: 0 auto;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+
+      .centered {
+        text-align: center;
+      }
+
+      .btn-primary {
+        margin: $unit-5 auto 0;
+
+        box-sizing: border-box;
+      }
+
+      &-item {
+        // @include border(right, $light-grey, 1px);
+        text-align: center;
+        padding-right: 10px;
+        width: 50%;
+
+        &:last-child {
+          border: none;
+        }
+
+
+      }
+
+      &-detail {
+        padding: $unit-2;
+
+        .hero {
+          &-product {
+
+            &-header {
+              @include knockout($unit-12, 300);
+              text-align: center;
+              padding: 0 $unit-2 $unit-6;
+            }
+
+            &-price {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              @include knockout50($unit-10, 300);
+              box-sizing: border-box;
+
+              > span {
+                width: 80%;
+                padding: $unit-2 $unit-5;
+                box-sizing: border-box;
+
+                &:first-child {
+                  text-align: center;
+                  padding: $unit-2 $unit-5;
+                  width: auto;
+                }
+              }
+            }
+
+            &-bag-image{
+              &-container {
+                // display: inline-flex;
+                // align-self: center;
+                height: 100%;
+                padding: $unit-4 0 0;
+              }
+            }
+          }
+        }
+
+        .swiper-slide-active {
+          &::before{
+            display: none;
+          }
+
+          &::after{
+            display: none;
+          }
+        }
+
+      }
+
+    }
+  }
+}
+
+@media (min-width: $size-sm) {
+  .benlido {
+    &-compact-product {
+      &-list {
+        &-item {
+          width: 33%;
+        }
+      }
+    }
+  }
+}

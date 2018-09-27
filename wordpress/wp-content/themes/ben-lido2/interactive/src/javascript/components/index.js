@@ -12,5 +12,7 @@ export * from './bl-animated-gif'
 export * from './navigator-platform-detection'
 export * from './bag-related'
 export * from './google-analytics'
+
+export * from './compact-product-list'
 // export * from './banners'
 // export * from './header'

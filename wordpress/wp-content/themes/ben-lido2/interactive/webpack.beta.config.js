@@ -81,7 +81,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components)\/(?!(dom7|ssr-window|swiper)\/).*/,
         use: {
           loader: 'babel-loader',
           options: {

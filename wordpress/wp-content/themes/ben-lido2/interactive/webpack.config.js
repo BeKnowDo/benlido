@@ -13,7 +13,7 @@ log(chalk.black.bgWhite(destination))
 
 module.exports = {
   // devtool: 'source-map', // enhance debugging by adding meta info for the browser devtools
-  entry: [require.resolve('./polyfills'), path.join(paths.jsEntry)],
+  entry: [require.resolve('./polyfills'), '@babel/polyfill', path.join(paths.jsEntry)],
   output: {
     path: destination,
     filename: '[name].js',
@@ -30,7 +30,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!(dom7|ssr-window|swiper)\/).*/,
         use: {
           loader: 'babel-loader',
           options: {

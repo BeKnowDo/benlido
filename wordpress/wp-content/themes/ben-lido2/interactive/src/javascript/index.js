@@ -11,7 +11,8 @@ import {
   Parallax,
   BenLidoAnimations,
   NavigationPlatform,
-  LidoBagDetail
+  LidoBagDetail,
+  CompactProductList
   // BenLidoBanners
   // BenHeader
 } from './components'
@@ -31,3 +32,4 @@ new Parallax().init()
 new BenLidoAnimations().init()
 new NavigationPlatform().init()
 new LidoBagDetail().init()
+new CompactProductList().init()

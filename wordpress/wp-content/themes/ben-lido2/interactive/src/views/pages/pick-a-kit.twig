@@ -2,69 +2,74 @@
 
 {% block content %}
 
-  {% if not heroData %}
-    {% set heroData = [
-      {
-        header: 'Let Us Help You Get Started',
-        copy: 'Choose a curated kit, customize it and make it your own. No shipping costs and all products up to 100% free with kit purchase.'
-      }
-  ]%}
-  {% endif %}
-  {% include 'common/step-navigation.twig' %}
-  {% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
+{% if not heroData %}
+{% set heroData = [
+{
+header: 'Let Us Help You Get Started',
+copy: 'Choose a curated kit, customize it and make it your own. No shipping costs and all products up to 100% free with
+kit purchase.'
+}
+]%}
+{% endif %}
+{% include 'common/step-navigation.twig' %}
+{% include 'common/hero/hero-title-copy.twig' with { heroData: heroData } %}
 
-  {% if not items %}
-    {% set items = [
-      {
-        logo: '/images/kipling.png',
-        header: 'AIDEN BY KIPLING',
-        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
-        price: '$35',
-        picked: true,
-        href: '/kit-selected',
-        image: '/images/product-image.png',
-        bagURL: '/product/123',
-        promo: 'Includes $20 off all personal care items'
-      },
-      {
-        logo: '/images/kipling.png',
-        header: 'THE EMERSON',
-        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
-        price: '$45',
-        href: '/kit-selected',
-        image: '/images/product-image.png',
-        bagURL: '/product/123'
-      },
-      {
-        logo: '/images/kipling.png',
-        header: 'THE SANDINISTA',
-        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
-        price: '$35',
-        href: '/kit-selected',
-        image: '/images/product-image.png',
-        bagURL: '/product/123',
-        disabled: true,
-        coming_soon: 'COMING SOON!',
-      },
-      {
-        logo: '/images/kipling.png',
-        header: 'THE CENTURION',
-        copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go  companion. Customize your essential products below and make the kit uniquely yours.',
-        price: '$35',
-        href: '/kit-selected',
-        image: '/images/product-image.png',
-        bagURL: '/product/123'
-      }
+{% if not items %}
+{% set items = [
+{
+logo: '/images/kipling.png',
+header: 'AIDEN BY KIPLING',
+copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go companion.
+Customize your essential products below and make the kit uniquely yours.',
+price: '$35',
+picked: true,
+href: '/kit-selected',
+image: '/images/product-image.png',
+bagURL: '/product/123',
+promo: 'Includes $20 off all personal care items'
+},
+{
+logo: '/images/kipling.png',
+header: 'THE EMERSON',
+copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go companion.
+Customize your essential products below and make the kit uniquely yours.',
+price: '$45',
+href: '/kit-selected',
+image: '/images/product-image.png',
+bagURL: '/product/123'
+},
+{
+logo: '/images/kipling.png',
+header: 'THE SANDINISTA',
+copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go companion.
+Customize your essential products below and make the kit uniquely yours.',
+price: '$35',
+href: '/kit-selected',
+image: '/images/product-image.png',
+bagURL: '/product/123',
+disabled: true,
+coming_soon: 'COMING SOON!',
+},
+{
+logo: '/images/kipling.png',
+header: 'THE CENTURION',
+copy: 'The Aiden is a lightweight travel kit is brought to you by Kipling, and is the perfect tow on-the-go companion.
+Customize your essential products below and make the kit uniquely yours.',
+price: '$35',
+href: '/kit-selected',
+image: '/images/product-image.png',
+bagURL: '/product/123'
+}
 
-    ]%}
-  {% endif %}
+]%}
+{% endif %}
 
-  <div class="bg-white">
-    <div class="max-width-xl">
-      {% include 'common/hero/hero-product-list.twig' with { products: items } %}
-    </div>
+<div class="bg-white">
+  <div class="max-width-xl">
+    {% include 'common/hero/hero-product-list-compact.twig' with { products: items } %}
   </div>
+</div>
 
-  {% include 'common/back-to-top.twig' %}
+{% include 'common/back-to-top.twig' %}
 
 {% endblock %}

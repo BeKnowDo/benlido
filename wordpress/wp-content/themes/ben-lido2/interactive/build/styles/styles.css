@@ -1,4 +1,4 @@
-/*! Font Awesome Pro 5.0.2 by @fontawesome - http://fontawesome.com License - http://fontawesome.com/license (Commercial License) */
+/*! Font Awesome Pro 5.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) */
 .fa, .fas, .far, .fal, .fab { -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; display: inline-block; font-style: normal; font-variant: normal; text-rendering: auto; line-height: 1; }
 
 .fa-lg { font-size: 1.333333em; line-height: 0.75em; vertical-align: -.0667em; }
@@ -80,9 +80,13 @@
 readers do not read off random characters that represent icons */
 .fa-500px:before { content: "\f26e"; }
 
+.fa-abacus:before { content: "\f640"; }
+
 .fa-accessible-icon:before { content: "\f368"; }
 
 .fa-accusoft:before { content: "\f369"; }
+
+.fa-ad:before { content: "\f641"; }
 
 .fa-address-book:before { content: "\f2b9"; }
 
@@ -96,6 +100,8 @@ readers do not read off random characters that represent icons */
 
 .fa-affiliatetheme:before { content: "\f36b"; }
 
+.fa-air-freshener:before { content: "\f5d0"; }
+
 .fa-alarm-clock:before { content: "\f34e"; }
 
 .fa-algolia:before { content: "\f36c"; }
@@ -108,6 +114,10 @@ readers do not read off random characters that represent icons */
 
 .fa-align-right:before { content: "\f038"; }
 
+.fa-alipay:before { content: "\f642"; }
+
+.fa-allergies:before { content: "\f461"; }
+
 .fa-amazon:before { content: "\f270"; }
 
 .fa-amazon-pay:before { content: "\f42c"; }
@@ -117,6 +127,8 @@ readers do not read off random characters that represent icons */
 .fa-american-sign-language-interpreting:before { content: "\f2a3"; }
 
 .fa-amilia:before { content: "\f36d"; }
+
+.fa-analytics:before { content: "\f643"; }
 
 .fa-anchor:before { content: "\f13d"; }
 
@@ -140,9 +152,13 @@ readers do not read off random characters that represent icons */
 
 .fa-angle-up:before { content: "\f106"; }
 
+.fa-angry:before { content: "\f556"; }
+
 .fa-angrycreative:before { content: "\f36e"; }
 
 .fa-angular:before { content: "\f420"; }
+
+.fa-ankh:before { content: "\f644"; }
 
 .fa-app-store:before { content: "\f36f"; }
 
@@ -152,9 +168,13 @@ readers do not read off random characters that represent icons */
 
 .fa-apple:before { content: "\f179"; }
 
+.fa-apple-alt:before { content: "\f5d1"; }
+
 .fa-apple-pay:before { content: "\f415"; }
 
 .fa-archive:before { content: "\f187"; }
+
+.fa-archway:before { content: "\f557"; }
 
 .fa-arrow-alt-circle-down:before { content: "\f358"; }
 
@@ -256,6 +276,12 @@ readers do not read off random characters that represent icons */
 
 .fa-at:before { content: "\f1fa"; }
 
+.fa-atlas:before { content: "\f558"; }
+
+.fa-atom:before { content: "\f5d2"; }
+
+.fa-atom-alt:before { content: "\f5d3"; }
+
 .fa-audible:before { content: "\f373"; }
 
 .fa-audio-description:before { content: "\f29e"; }
@@ -266,7 +292,13 @@ readers do not read off random characters that represent icons */
 
 .fa-aviato:before { content: "\f421"; }
 
+.fa-award:before { content: "\f559"; }
+
 .fa-aws:before { content: "\f375"; }
+
+.fa-backpack:before { content: "\f5d4"; }
+
+.fa-backspace:before { content: "\f55a"; }
 
 .fa-backward:before { content: "\f04a"; }
 
@@ -274,15 +306,39 @@ readers do not read off random characters that represent icons */
 
 .fa-badge-check:before { content: "\f336"; }
 
+.fa-badge-dollar:before { content: "\f645"; }
+
+.fa-badge-percent:before { content: "\f646"; }
+
 .fa-balance-scale:before { content: "\f24e"; }
 
+.fa-balance-scale-left:before { content: "\f515"; }
+
+.fa-balance-scale-right:before { content: "\f516"; }
+
 .fa-ban:before { content: "\f05e"; }
+
+.fa-band-aid:before { content: "\f462"; }
 
 .fa-bandcamp:before { content: "\f2d5"; }
 
 .fa-barcode:before { content: "\f02a"; }
 
+.fa-barcode-alt:before { content: "\f463"; }
+
+.fa-barcode-read:before { content: "\f464"; }
+
+.fa-barcode-scan:before { content: "\f465"; }
+
 .fa-bars:before { content: "\f0c9"; }
+
+.fa-baseball:before { content: "\f432"; }
+
+.fa-baseball-ball:before { content: "\f433"; }
+
+.fa-basketball-ball:before { content: "\f434"; }
+
+.fa-basketball-hoop:before { content: "\f435"; }
 
 .fa-bath:before { content: "\f2cd"; }
 
@@ -310,7 +366,15 @@ readers do not read off random characters that represent icons */
 
 .fa-bell:before { content: "\f0f3"; }
 
+.fa-bell-school:before { content: "\f5d5"; }
+
+.fa-bell-school-slash:before { content: "\f5d6"; }
+
 .fa-bell-slash:before { content: "\f1f6"; }
+
+.fa-bezier-curve:before { content: "\f55b"; }
+
+.fa-bible:before { content: "\f647"; }
 
 .fa-bicycle:before { content: "\f206"; }
 
@@ -330,6 +394,10 @@ readers do not read off random characters that represent icons */
 
 .fa-blackberry:before { content: "\f37b"; }
 
+.fa-blanket:before { content: "\f498"; }
+
+.fa-blender:before { content: "\f517"; }
+
 .fa-blind:before { content: "\f29d"; }
 
 .fa-blogger:before { content: "\f37c"; }
@@ -346,15 +414,69 @@ readers do not read off random characters that represent icons */
 
 .fa-bomb:before { content: "\f1e2"; }
 
+.fa-bone:before { content: "\f5d7"; }
+
+.fa-bone-break:before { content: "\f5d8"; }
+
+.fa-bong:before { content: "\f55c"; }
+
 .fa-book:before { content: "\f02d"; }
+
+.fa-book-alt:before { content: "\f5d9"; }
+
+.fa-book-heart:before { content: "\f499"; }
+
+.fa-book-open:before { content: "\f518"; }
+
+.fa-book-reader:before { content: "\f5da"; }
 
 .fa-bookmark:before { content: "\f02e"; }
 
+.fa-books:before { content: "\f5db"; }
+
+.fa-bowling-ball:before { content: "\f436"; }
+
+.fa-bowling-pins:before { content: "\f437"; }
+
+.fa-box:before { content: "\f466"; }
+
+.fa-box-alt:before { content: "\f49a"; }
+
+.fa-box-check:before { content: "\f467"; }
+
+.fa-box-fragile:before { content: "\f49b"; }
+
+.fa-box-full:before { content: "\f49c"; }
+
+.fa-box-heart:before { content: "\f49d"; }
+
+.fa-box-open:before { content: "\f49e"; }
+
+.fa-box-up:before { content: "\f49f"; }
+
+.fa-box-usd:before { content: "\f4a0"; }
+
+.fa-boxes:before { content: "\f468"; }
+
+.fa-boxes-alt:before { content: "\f4a1"; }
+
+.fa-boxing-glove:before { content: "\f438"; }
+
 .fa-braille:before { content: "\f2a1"; }
+
+.fa-brain:before { content: "\f5dc"; }
 
 .fa-briefcase:before { content: "\f0b1"; }
 
+.fa-briefcase-medical:before { content: "\f469"; }
+
+.fa-broadcast-tower:before { content: "\f519"; }
+
+.fa-broom:before { content: "\f51a"; }
+
 .fa-browser:before { content: "\f37e"; }
+
+.fa-brush:before { content: "\f55d"; }
 
 .fa-btc:before { content: "\f15a"; }
 
@@ -366,13 +488,29 @@ readers do not read off random characters that represent icons */
 
 .fa-bullseye:before { content: "\f140"; }
 
+.fa-bullseye-arrow:before { content: "\f648"; }
+
+.fa-bullseye-pointer:before { content: "\f649"; }
+
+.fa-burn:before { content: "\f46a"; }
+
 .fa-buromobelexperte:before { content: "\f37f"; }
 
 .fa-bus:before { content: "\f207"; }
 
+.fa-bus-alt:before { content: "\f55e"; }
+
+.fa-bus-school:before { content: "\f5dd"; }
+
+.fa-business-time:before { content: "\f64a"; }
+
 .fa-buysellads:before { content: "\f20d"; }
 
+.fa-cabinet-filing:before { content: "\f64b"; }
+
 .fa-calculator:before { content: "\f1ec"; }
+
+.fa-calculator-alt:before { content: "\f64c"; }
 
 .fa-calendar:before { content: "\f133"; }
 
@@ -396,7 +534,29 @@ readers do not read off random characters that represent icons */
 
 .fa-camera-retro:before { content: "\f083"; }
 
+.fa-cannabis:before { content: "\f55f"; }
+
+.fa-capsules:before { content: "\f46b"; }
+
 .fa-car:before { content: "\f1b9"; }
+
+.fa-car-alt:before { content: "\f5de"; }
+
+.fa-car-battery:before { content: "\f5df"; }
+
+.fa-car-bump:before { content: "\f5e0"; }
+
+.fa-car-crash:before { content: "\f5e1"; }
+
+.fa-car-garage:before { content: "\f5e2"; }
+
+.fa-car-mechanic:before { content: "\f5e3"; }
+
+.fa-car-side:before { content: "\f5e4"; }
+
+.fa-car-tilt:before { content: "\f5e5"; }
+
+.fa-car-wash:before { content: "\f5e6"; }
 
 .fa-caret-circle-down:before { content: "\f32d"; }
 
@@ -450,19 +610,63 @@ readers do not read off random characters that represent icons */
 
 .fa-certificate:before { content: "\f0a3"; }
 
+.fa-chalkboard:before { content: "\f51b"; }
+
+.fa-chalkboard-teacher:before { content: "\f51c"; }
+
+.fa-charging-station:before { content: "\f5e7"; }
+
 .fa-chart-area:before { content: "\f1fe"; }
 
 .fa-chart-bar:before { content: "\f080"; }
 
 .fa-chart-line:before { content: "\f201"; }
 
+.fa-chart-line-down:before { content: "\f64d"; }
+
 .fa-chart-pie:before { content: "\f200"; }
+
+.fa-chart-pie-alt:before { content: "\f64e"; }
 
 .fa-check:before { content: "\f00c"; }
 
 .fa-check-circle:before { content: "\f058"; }
 
+.fa-check-double:before { content: "\f560"; }
+
 .fa-check-square:before { content: "\f14a"; }
+
+.fa-chess:before { content: "\f439"; }
+
+.fa-chess-bishop:before { content: "\f43a"; }
+
+.fa-chess-bishop-alt:before { content: "\f43b"; }
+
+.fa-chess-board:before { content: "\f43c"; }
+
+.fa-chess-clock:before { content: "\f43d"; }
+
+.fa-chess-clock-alt:before { content: "\f43e"; }
+
+.fa-chess-king:before { content: "\f43f"; }
+
+.fa-chess-king-alt:before { content: "\f440"; }
+
+.fa-chess-knight:before { content: "\f441"; }
+
+.fa-chess-knight-alt:before { content: "\f442"; }
+
+.fa-chess-pawn:before { content: "\f443"; }
+
+.fa-chess-pawn-alt:before { content: "\f444"; }
+
+.fa-chess-queen:before { content: "\f445"; }
+
+.fa-chess-queen-alt:before { content: "\f446"; }
+
+.fa-chess-rook:before { content: "\f447"; }
+
+.fa-chess-rook-alt:before { content: "\f448"; }
 
 .fa-chevron-circle-down:before { content: "\f13a"; }
 
@@ -500,11 +704,21 @@ readers do not read off random characters that represent icons */
 
 .fa-chrome:before { content: "\f268"; }
 
+.fa-church:before { content: "\f51d"; }
+
 .fa-circle:before { content: "\f111"; }
 
 .fa-circle-notch:before { content: "\f1ce"; }
 
+.fa-city:before { content: "\f64f"; }
+
 .fa-clipboard:before { content: "\f328"; }
+
+.fa-clipboard-check:before { content: "\f46c"; }
+
+.fa-clipboard-list:before { content: "\f46d"; }
+
+.fa-clipboard-prescription:before { content: "\f5e8"; }
 
 .fa-clock:before { content: "\f017"; }
 
@@ -530,6 +744,8 @@ readers do not read off random characters that represent icons */
 
 .fa-club:before { content: "\f327"; }
 
+.fa-cocktail:before { content: "\f561"; }
+
 .fa-code:before { content: "\f121"; }
 
 .fa-code-branch:before { content: "\f126"; }
@@ -548,15 +764,71 @@ readers do not read off random characters that represent icons */
 
 .fa-cogs:before { content: "\f085"; }
 
+.fa-coins:before { content: "\f51e"; }
+
 .fa-columns:before { content: "\f0db"; }
 
 .fa-comment:before { content: "\f075"; }
 
 .fa-comment-alt:before { content: "\f27a"; }
 
+.fa-comment-alt-check:before { content: "\f4a2"; }
+
+.fa-comment-alt-dollar:before { content: "\f650"; }
+
+.fa-comment-alt-dots:before { content: "\f4a3"; }
+
+.fa-comment-alt-edit:before { content: "\f4a4"; }
+
+.fa-comment-alt-exclamation:before { content: "\f4a5"; }
+
+.fa-comment-alt-lines:before { content: "\f4a6"; }
+
+.fa-comment-alt-minus:before { content: "\f4a7"; }
+
+.fa-comment-alt-plus:before { content: "\f4a8"; }
+
+.fa-comment-alt-slash:before { content: "\f4a9"; }
+
+.fa-comment-alt-smile:before { content: "\f4aa"; }
+
+.fa-comment-alt-times:before { content: "\f4ab"; }
+
+.fa-comment-check:before { content: "\f4ac"; }
+
+.fa-comment-dollar:before { content: "\f651"; }
+
+.fa-comment-dots:before { content: "\f4ad"; }
+
+.fa-comment-edit:before { content: "\f4ae"; }
+
+.fa-comment-exclamation:before { content: "\f4af"; }
+
+.fa-comment-lines:before { content: "\f4b0"; }
+
+.fa-comment-minus:before { content: "\f4b1"; }
+
+.fa-comment-plus:before { content: "\f4b2"; }
+
+.fa-comment-slash:before { content: "\f4b3"; }
+
+.fa-comment-smile:before { content: "\f4b4"; }
+
+.fa-comment-times:before { content: "\f4b5"; }
+
 .fa-comments:before { content: "\f086"; }
 
+.fa-comments-alt:before { content: "\f4b6"; }
+
+.fa-comments-alt-dollar:before { content: "\f652"; }
+
+.fa-comments-dollar:before { content: "\f653"; }
+
+.fa-compact-disc:before { content: "\f51f"; }
+
 .fa-compass:before { content: "\f14e"; }
+
+.fa-compass-slash:before { content: "\f5e9"; }
 
 .fa-compress:before { content: "\f066"; }
 
@@ -564,17 +836,57 @@ readers do not read off random characters that represent icons */
 
 .fa-compress-wide:before { content: "\f326"; }
 
+.fa-concierge-bell:before { content: "\f562"; }
+
 .fa-connectdevelop:before { content: "\f20e"; }
 
+.fa-container-storage:before { content: "\f4b7"; }
+
 .fa-contao:before { content: "\f26d"; }
+
+.fa-conveyor-belt:before { content: "\f46e"; }
+
+.fa-conveyor-belt-alt:before { content: "\f46f"; }
+
+.fa-cookie:before { content: "\f563"; }
+
+.fa-cookie-bite:before { content: "\f564"; }
 
 .fa-copy:before { content: "\f0c5"; }
 
 .fa-copyright:before { content: "\f1f9"; }
 
+.fa-couch:before { content: "\f4b8"; }
+
 .fa-cpanel:before { content: "\f388"; }
 
 .fa-creative-commons:before { content: "\f25e"; }
+
+.fa-creative-commons-by:before { content: "\f4e7"; }
+
+.fa-creative-commons-nc:before { content: "\f4e8"; }
+
+.fa-creative-commons-nc-eu:before { content: "\f4e9"; }
+
+.fa-creative-commons-nc-jp:before { content: "\f4ea"; }
+
+.fa-creative-commons-nd:before { content: "\f4eb"; }
+
+.fa-creative-commons-pd:before { content: "\f4ec"; }
+
+.fa-creative-commons-pd-alt:before { content: "\f4ed"; }
+
+.fa-creative-commons-remix:before { content: "\f4ee"; }
+
+.fa-creative-commons-sa:before { content: "\f4ef"; }
+
+.fa-creative-commons-sampling:before { content: "\f4f0"; }
+
+.fa-creative-commons-sampling-plus:before { content: "\f4f1"; }
+
+.fa-creative-commons-share:before { content: "\f4f2"; }
+
+.fa-creative-commons-zero:before { content: "\f4f3"; }
 
 .fa-credit-card:before { content: "\f09d"; }
 
@@ -582,9 +894,19 @@ readers do not read off random characters that represent icons */
 
 .fa-credit-card-front:before { content: "\f38a"; }
 
+.fa-cricket:before { content: "\f449"; }
+
 .fa-crop:before { content: "\f125"; }
 
+.fa-crop-alt:before { content: "\f565"; }
+
+.fa-cross:before { content: "\f654"; }
+
 .fa-crosshairs:before { content: "\f05b"; }
+
+.fa-crow:before { content: "\f520"; }
+
+.fa-crown:before { content: "\f521"; }
 
 .fa-css3:before { content: "\f13c"; }
 
@@ -593,6 +915,8 @@ readers do not read off random characters that represent icons */
 .fa-cube:before { content: "\f1b2"; }
 
 .fa-cubes:before { content: "\f1b3"; }
+
+.fa-curling:before { content: "\f44a"; }
 
 .fa-cut:before { content: "\f0c4"; }
 
@@ -618,15 +942,47 @@ readers do not read off random characters that represent icons */
 
 .fa-deviantart:before { content: "\f1bd"; }
 
+.fa-dharmachakra:before { content: "\f655"; }
+
+.fa-diagnoses:before { content: "\f470"; }
+
 .fa-diamond:before { content: "\f219"; }
+
+.fa-dice:before { content: "\f522"; }
+
+.fa-dice-five:before { content: "\f523"; }
+
+.fa-dice-four:before { content: "\f524"; }
+
+.fa-dice-one:before { content: "\f525"; }
+
+.fa-dice-six:before { content: "\f526"; }
+
+.fa-dice-three:before { content: "\f527"; }
+
+.fa-dice-two:before { content: "\f528"; }
 
 .fa-digg:before { content: "\f1a6"; }
 
 .fa-digital-ocean:before { content: "\f391"; }
 
+.fa-digital-tachograph:before { content: "\f566"; }
+
+.fa-diploma:before { content: "\f5ea"; }
+
+.fa-directions:before { content: "\f5eb"; }
+
 .fa-discord:before { content: "\f392"; }
 
 .fa-discourse:before { content: "\f393"; }
+
+.fa-divide:before { content: "\f529"; }
+
+.fa-dizzy:before { content: "\f567"; }
+
+.fa-dna:before { content: "\f471"; }
+
+.fa-do-not-enter:before { content: "\f5ec"; }
 
 .fa-dochub:before { content: "\f394"; }
 
@@ -634,11 +990,37 @@ readers do not read off random characters that represent icons */
 
 .fa-dollar-sign:before { content: "\f155"; }
 
+.fa-dolly:before { content: "\f472"; }
+
+.fa-dolly-empty:before { content: "\f473"; }
+
+.fa-dolly-flatbed:before { content: "\f474"; }
+
+.fa-dolly-flatbed-alt:before { content: "\f475"; }
+
+.fa-dolly-flatbed-empty:before { content: "\f476"; }
+
+.fa-donate:before { content: "\f4b9"; }
+
+.fa-door-closed:before { content: "\f52a"; }
+
+.fa-door-open:before { content: "\f52b"; }
+
 .fa-dot-circle:before { content: "\f192"; }
+
+.fa-dove:before { content: "\f4ba"; }
 
 .fa-download:before { content: "\f019"; }
 
 .fa-draft2digital:before { content: "\f396"; }
+
+.fa-drafting-compass:before { content: "\f568"; }
+
+.fa-draw-circle:before { content: "\f5ed"; }
+
+.fa-draw-polygon:before { content: "\f5ee"; }
+
+.fa-draw-square:before { content: "\f5ef"; }
 
 .fa-dribbble:before { content: "\f17d"; }
 
@@ -646,17 +1028,29 @@ readers do not read off random characters that represent icons */
 
 .fa-dropbox:before { content: "\f16b"; }
 
+.fa-drum:before { content: "\f569"; }
+
+.fa-drum-steelpan:before { content: "\f56a"; }
+
 .fa-drupal:before { content: "\f1a9"; }
+
+.fa-dumbbell:before { content: "\f44b"; }
 
 .fa-dyalog:before { content: "\f399"; }
 
+.fa-ear:before { content: "\f5f0"; }
+
 .fa-earlybirds:before { content: "\f39a"; }
+
+.fa-ebay:before { content: "\f4f4"; }
 
 .fa-edge:before { content: "\f282"; }
 
 .fa-edit:before { content: "\f044"; }
 
 .fa-eject:before { content: "\f052"; }
+
+.fa-elementor:before { content: "\f430"; }
 
 .fa-ellipsis-h:before { content: "\f141"; }
 
@@ -666,17 +1060,29 @@ readers do not read off random characters that represent icons */
 
 .fa-ellipsis-v-alt:before { content: "\f39c"; }
 
+.fa-ello:before { content: "\f5f1"; }
+
 .fa-ember:before { content: "\f423"; }
 
 .fa-empire:before { content: "\f1d1"; }
+
+.fa-empty-set:before { content: "\f656"; }
+
+.fa-engine-warning:before { content: "\f5f2"; }
 
 .fa-envelope:before { content: "\f0e0"; }
 
 .fa-envelope-open:before { content: "\f2b6"; }
 
+.fa-envelope-open-dollar:before { content: "\f657"; }
+
+.fa-envelope-open-text:before { content: "\f658"; }
+
 .fa-envelope-square:before { content: "\f199"; }
 
 .fa-envira:before { content: "\f299"; }
+
+.fa-equals:before { content: "\f52c"; }
 
 .fa-eraser:before { content: "\f12d"; }
 
@@ -740,7 +1146,13 @@ readers do not read off random characters that represent icons */
 
 .fa-fax:before { content: "\f1ac"; }
 
+.fa-feather:before { content: "\f52d"; }
+
+.fa-feather-alt:before { content: "\f56b"; }
+
 .fa-female:before { content: "\f182"; }
+
+.fa-field-hockey:before { content: "\f44c"; }
 
 .fa-fighter-jet:before { content: "\f0fb"; }
 
@@ -752,9 +1164,19 @@ readers do not read off random characters that represent icons */
 
 .fa-file-audio:before { content: "\f1c7"; }
 
+.fa-file-certificate:before { content: "\f5f3"; }
+
+.fa-file-chart-line:before { content: "\f659"; }
+
+.fa-file-chart-pie:before { content: "\f65a"; }
+
 .fa-file-check:before { content: "\f316"; }
 
 .fa-file-code:before { content: "\f1c9"; }
+
+.fa-file-contract:before { content: "\f56c"; }
+
+.fa-file-download:before { content: "\f56d"; }
 
 .fa-file-edit:before { content: "\f31c"; }
 
@@ -762,7 +1184,19 @@ readers do not read off random characters that represent icons */
 
 .fa-file-exclamation:before { content: "\f31a"; }
 
+.fa-file-export:before { content: "\f56e"; }
+
 .fa-file-image:before { content: "\f1c5"; }
+
+.fa-file-import:before { content: "\f56f"; }
+
+.fa-file-invoice:before { content: "\f570"; }
+
+.fa-file-invoice-dollar:before { content: "\f571"; }
+
+.fa-file-medical:before { content: "\f477"; }
+
+.fa-file-medical-alt:before { content: "\f478"; }
 
 .fa-file-minus:before { content: "\f318"; }
 
@@ -772,11 +1206,25 @@ readers do not read off random characters that represent icons */
 
 .fa-file-powerpoint:before { content: "\f1c4"; }
 
+.fa-file-prescription:before { content: "\f572"; }
+
+.fa-file-signature:before { content: "\f573"; }
+
+.fa-file-spreadsheet:before { content: "\f65b"; }
+
 .fa-file-times:before { content: "\f317"; }
+
+.fa-file-upload:before { content: "\f574"; }
+
+.fa-file-user:before { content: "\f65c"; }
 
 .fa-file-video:before { content: "\f1c8"; }
 
 .fa-file-word:before { content: "\f1c2"; }
+
+.fa-fill:before { content: "\f575"; }
+
+.fa-fill-drip:before { content: "\f576"; }
 
 .fa-film:before { content: "\f008"; }
 
@@ -784,15 +1232,23 @@ readers do not read off random characters that represent icons */
 
 .fa-filter:before { content: "\f0b0"; }
 
+.fa-fingerprint:before { content: "\f577"; }
+
 .fa-fire:before { content: "\f06d"; }
 
 .fa-fire-extinguisher:before { content: "\f134"; }
 
 .fa-firefox:before { content: "\f269"; }
 
+.fa-first-aid:before { content: "\f479"; }
+
 .fa-first-order:before { content: "\f2b0"; }
 
+.fa-first-order-alt:before { content: "\f50a"; }
+
 .fa-firstdraft:before { content: "\f3a1"; }
+
+.fa-fish:before { content: "\f578"; }
 
 .fa-flag:before { content: "\f024"; }
 
@@ -802,11 +1258,23 @@ readers do not read off random characters that represent icons */
 
 .fa-flickr:before { content: "\f16e"; }
 
+.fa-flipboard:before { content: "\f44d"; }
+
+.fa-flushed:before { content: "\f579"; }
+
 .fa-fly:before { content: "\f417"; }
 
 .fa-folder:before { content: "\f07b"; }
 
+.fa-folder-minus:before { content: "\f65d"; }
+
 .fa-folder-open:before { content: "\f07c"; }
+
+.fa-folder-plus:before { content: "\f65e"; }
+
+.fa-folder-times:before { content: "\f65f"; }
+
+.fa-folders:before { content: "\f660"; }
 
 .fa-font:before { content: "\f031"; }
 
@@ -816,9 +1284,17 @@ readers do not read off random characters that represent icons */
 
 .fa-font-awesome-flag:before { content: "\f425"; }
 
+.fa-font-awesome-logo-full:before { content: "\f4e6"; }
+
 .fa-fonticons:before { content: "\f280"; }
 
 .fa-fonticons-fi:before { content: "\f3a2"; }
+
+.fa-football-ball:before { content: "\f44e"; }
+
+.fa-football-helmet:before { content: "\f44f"; }
+
+.fa-forklift:before { content: "\f47a"; }
 
 .fa-fort-awesome:before { content: "\f286"; }
 
@@ -830,15 +1306,35 @@ readers do not read off random characters that represent icons */
 
 .fa-foursquare:before { content: "\f180"; }
 
+.fa-fragile:before { content: "\f4bb"; }
+
 .fa-free-code-camp:before { content: "\f2c5"; }
 
 .fa-freebsd:before { content: "\f3a4"; }
 
+.fa-frog:before { content: "\f52e"; }
+
 .fa-frown:before { content: "\f119"; }
+
+.fa-frown-open:before { content: "\f57a"; }
+
+.fa-fulcrum:before { content: "\f50b"; }
+
+.fa-function:before { content: "\f661"; }
+
+.fa-funnel-dollar:before { content: "\f662"; }
 
 .fa-futbol:before { content: "\f1e3"; }
 
+.fa-galactic-republic:before { content: "\f50c"; }
+
+.fa-galactic-senate:before { content: "\f50d"; }
+
 .fa-gamepad:before { content: "\f11b"; }
+
+.fa-gas-pump:before { content: "\f52f"; }
+
+.fa-gas-pump-slash:before { content: "\f5f4"; }
 
 .fa-gavel:before { content: "\f0e3"; }
 
@@ -853,6 +1349,8 @@ readers do not read off random characters that represent icons */
 .fa-gg-circle:before { content: "\f261"; }
 
 .fa-gift:before { content: "\f06b"; }
+
+.fa-gift-card:before { content: "\f663"; }
 
 .fa-git:before { content: "\f1d3"; }
 
@@ -872,13 +1370,31 @@ readers do not read off random characters that represent icons */
 
 .fa-glass-martini:before { content: "\f000"; }
 
+.fa-glass-martini-alt:before { content: "\f57b"; }
+
+.fa-glasses:before { content: "\f530"; }
+
+.fa-glasses-alt:before { content: "\f5f5"; }
+
 .fa-glide:before { content: "\f2a5"; }
 
 .fa-glide-g:before { content: "\f2a6"; }
 
 .fa-globe:before { content: "\f0ac"; }
 
+.fa-globe-africa:before { content: "\f57c"; }
+
+.fa-globe-americas:before { content: "\f57d"; }
+
+.fa-globe-asia:before { content: "\f57e"; }
+
+.fa-globe-stand:before { content: "\f5f6"; }
+
 .fa-gofore:before { content: "\f3a7"; }
+
+.fa-golf-ball:before { content: "\f450"; }
+
+.fa-golf-club:before { content: "\f451"; }
 
 .fa-goodreads:before { content: "\f3a8"; }
 
@@ -898,11 +1414,49 @@ readers do not read off random characters that represent icons */
 
 .fa-google-wallet:before { content: "\f1ee"; }
 
+.fa-gopuram:before { content: "\f664"; }
+
 .fa-graduation-cap:before { content: "\f19d"; }
 
 .fa-gratipay:before { content: "\f184"; }
 
 .fa-grav:before { content: "\f2d6"; }
+
+.fa-greater-than:before { content: "\f531"; }
+
+.fa-greater-than-equal:before { content: "\f532"; }
+
+.fa-grimace:before { content: "\f57f"; }
+
+.fa-grin:before { content: "\f580"; }
+
+.fa-grin-alt:before { content: "\f581"; }
+
+.fa-grin-beam:before { content: "\f582"; }
+
+.fa-grin-beam-sweat:before { content: "\f583"; }
+
+.fa-grin-hearts:before { content: "\f584"; }
+
+.fa-grin-squint:before { content: "\f585"; }
+
+.fa-grin-squint-tears:before { content: "\f586"; }
+
+.fa-grin-stars:before { content: "\f587"; }
+
+.fa-grin-tears:before { content: "\f588"; }
+
+.fa-grin-tongue:before { content: "\f589"; }
+
+.fa-grin-tongue-squint:before { content: "\f58a"; }
+
+.fa-grin-tongue-wink:before { content: "\f58b"; }
+
+.fa-grin-wink:before { content: "\f58c"; }
+
+.fa-grip-horizontal:before { content: "\f58d"; }
+
+.fa-grip-vertical:before { content: "\f58e"; }
 
 .fa-gripfire:before { content: "\f3ac"; }
 
@@ -922,6 +1476,24 @@ readers do not read off random characters that represent icons */
 
 .fa-hacker-news-square:before { content: "\f3af"; }
 
+.fa-hackerrank:before { content: "\f5f7"; }
+
+.fa-hamsa:before { content: "\f665"; }
+
+.fa-hand-heart:before { content: "\f4bc"; }
+
+.fa-hand-holding:before { content: "\f4bd"; }
+
+.fa-hand-holding-box:before { content: "\f47b"; }
+
+.fa-hand-holding-heart:before { content: "\f4be"; }
+
+.fa-hand-holding-seedling:before { content: "\f4bf"; }
+
+.fa-hand-holding-usd:before { content: "\f4c0"; }
+
+.fa-hand-holding-water:before { content: "\f4c1"; }
+
 .fa-hand-lizard:before { content: "\f258"; }
 
 .fa-hand-paper:before { content: "\f256"; }
@@ -938,15 +1510,29 @@ readers do not read off random characters that represent icons */
 
 .fa-hand-pointer:before { content: "\f25a"; }
 
+.fa-hand-receiving:before { content: "\f47c"; }
+
 .fa-hand-rock:before { content: "\f255"; }
 
 .fa-hand-scissors:before { content: "\f257"; }
 
 .fa-hand-spock:before { content: "\f259"; }
 
+.fa-hands:before { content: "\f4c2"; }
+
+.fa-hands-heart:before { content: "\f4c3"; }
+
+.fa-hands-helping:before { content: "\f4c4"; }
+
+.fa-hands-usd:before { content: "\f4c5"; }
+
 .fa-handshake:before { content: "\f2b5"; }
 
+.fa-handshake-alt:before { content: "\f4c6"; }
+
 .fa-hashtag:before { content: "\f292"; }
+
+.fa-haykal:before { content: "\f666"; }
 
 .fa-hdd:before { content: "\f0a0"; }
 
@@ -954,21 +1540,53 @@ readers do not read off random characters that represent icons */
 
 .fa-headphones:before { content: "\f025"; }
 
+.fa-headphones-alt:before { content: "\f58f"; }
+
+.fa-headset:before { content: "\f590"; }
+
 .fa-heart:before { content: "\f004"; }
+
+.fa-heart-circle:before { content: "\f4c7"; }
+
+.fa-heart-rate:before { content: "\f5f8"; }
+
+.fa-heart-square:before { content: "\f4c8"; }
 
 .fa-heartbeat:before { content: "\f21e"; }
 
+.fa-helicopter:before { content: "\f533"; }
+
 .fa-hexagon:before { content: "\f312"; }
+
+.fa-highlighter:before { content: "\f591"; }
+
+.fa-hips:before { content: "\f452"; }
 
 .fa-hire-a-helper:before { content: "\f3b0"; }
 
 .fa-history:before { content: "\f1da"; }
 
+.fa-hockey-puck:before { content: "\f453"; }
+
+.fa-hockey-sticks:before { content: "\f454"; }
+
 .fa-home:before { content: "\f015"; }
+
+.fa-home-heart:before { content: "\f4c9"; }
 
 .fa-hooli:before { content: "\f427"; }
 
+.fa-hornbill:before { content: "\f592"; }
+
 .fa-hospital:before { content: "\f0f8"; }
+
+.fa-hospital-alt:before { content: "\f47d"; }
+
+.fa-hospital-symbol:before { content: "\f47e"; }
+
+.fa-hot-tub:before { content: "\f593"; }
+
+.fa-hotel:before { content: "\f594"; }
 
 .fa-hotjar:before { content: "\f3b1"; }
 
@@ -992,6 +1610,8 @@ readers do not read off random characters that represent icons */
 
 .fa-id-card:before { content: "\f2c2"; }
 
+.fa-id-card-alt:before { content: "\f47f"; }
+
 .fa-image:before { content: "\f03e"; }
 
 .fa-images:before { content: "\f302"; }
@@ -1010,15 +1630,25 @@ readers do not read off random characters that represent icons */
 
 .fa-industry-alt:before { content: "\f3b3"; }
 
+.fa-infinity:before { content: "\f534"; }
+
 .fa-info:before { content: "\f129"; }
 
 .fa-info-circle:before { content: "\f05a"; }
 
 .fa-info-square:before { content: "\f30f"; }
 
+.fa-inhaler:before { content: "\f5f9"; }
+
 .fa-instagram:before { content: "\f16d"; }
 
+.fa-integral:before { content: "\f667"; }
+
 .fa-internet-explorer:before { content: "\f26b"; }
+
+.fa-intersection:before { content: "\f668"; }
+
+.fa-inventory:before { content: "\f480"; }
 
 .fa-ioxhost:before { content: "\f208"; }
 
@@ -1030,11 +1660,21 @@ readers do not read off random characters that represent icons */
 
 .fa-jack-o-lantern:before { content: "\f30e"; }
 
+.fa-java:before { content: "\f4e4"; }
+
+.fa-jedi:before { content: "\f669"; }
+
+.fa-jedi-order:before { content: "\f50e"; }
+
 .fa-jenkins:before { content: "\f3b6"; }
 
 .fa-joget:before { content: "\f3b7"; }
 
+.fa-joint:before { content: "\f595"; }
+
 .fa-joomla:before { content: "\f1aa"; }
+
+.fa-journal-whills:before { content: "\f66a"; }
 
 .fa-js:before { content: "\f3b8"; }
 
@@ -1042,21 +1682,49 @@ readers do not read off random characters that represent icons */
 
 .fa-jsfiddle:before { content: "\f1cc"; }
 
+.fa-kaaba:before { content: "\f66b"; }
+
+.fa-kaggle:before { content: "\f5fa"; }
+
 .fa-key:before { content: "\f084"; }
+
+.fa-keybase:before { content: "\f4f5"; }
 
 .fa-keyboard:before { content: "\f11c"; }
 
 .fa-keycdn:before { content: "\f3ba"; }
 
+.fa-keynote:before { content: "\f66c"; }
+
+.fa-khanda:before { content: "\f66d"; }
+
 .fa-kickstarter:before { content: "\f3bb"; }
 
 .fa-kickstarter-k:before { content: "\f3bc"; }
 
+.fa-kidneys:before { content: "\f5fb"; }
+
+.fa-kiss:before { content: "\f596"; }
+
+.fa-kiss-beam:before { content: "\f597"; }
+
+.fa-kiss-wink-heart:before { content: "\f598"; }
+
+.fa-kiwi-bird:before { content: "\f535"; }
+
 .fa-korvue:before { content: "\f42f"; }
+
+.fa-lambda:before { content: "\f66e"; }
+
+.fa-lamp:before { content: "\f4ca"; }
+
+.fa-landmark:before { content: "\f66f"; }
 
 .fa-language:before { content: "\f1ab"; }
 
 .fa-laptop:before { content: "\f109"; }
+
+.fa-laptop-code:before { content: "\f5fc"; }
 
 .fa-laravel:before { content: "\f3bd"; }
 
@@ -1064,13 +1732,33 @@ readers do not read off random characters that represent icons */
 
 .fa-lastfm-square:before { content: "\f203"; }
 
+.fa-laugh:before { content: "\f599"; }
+
+.fa-laugh-beam:before { content: "\f59a"; }
+
+.fa-laugh-squint:before { content: "\f59b"; }
+
+.fa-laugh-wink:before { content: "\f59c"; }
+
+.fa-layer-group:before { content: "\f5fd"; }
+
+.fa-layer-minus:before { content: "\f5fe"; }
+
+.fa-layer-plus:before { content: "\f5ff"; }
+
 .fa-leaf:before { content: "\f06c"; }
+
+.fa-leaf-heart:before { content: "\f4cb"; }
 
 .fa-leanpub:before { content: "\f212"; }
 
 .fa-lemon:before { content: "\f094"; }
 
 .fa-less:before { content: "\f41d"; }
+
+.fa-less-than:before { content: "\f536"; }
+
+.fa-less-than-equal:before { content: "\f537"; }
 
 .fa-level-down:before { content: "\f149"; }
 
@@ -1084,6 +1772,14 @@ readers do not read off random characters that represent icons */
 
 .fa-lightbulb:before { content: "\f0eb"; }
 
+.fa-lightbulb-dollar:before { content: "\f670"; }
+
+.fa-lightbulb-exclamation:before { content: "\f671"; }
+
+.fa-lightbulb-on:before { content: "\f672"; }
+
+.fa-lightbulb-slash:before { content: "\f673"; }
+
 .fa-line:before { content: "\f3c0"; }
 
 .fa-link:before { content: "\f0c1"; }
@@ -1096,6 +1792,8 @@ readers do not read off random characters that represent icons */
 
 .fa-linux:before { content: "\f17c"; }
 
+.fa-lips:before { content: "\f600"; }
+
 .fa-lira-sign:before { content: "\f195"; }
 
 .fa-list:before { content: "\f03a"; }
@@ -1106,7 +1804,13 @@ readers do not read off random characters that represent icons */
 
 .fa-list-ul:before { content: "\f0ca"; }
 
+.fa-location:before { content: "\f601"; }
+
 .fa-location-arrow:before { content: "\f124"; }
+
+.fa-location-circle:before { content: "\f602"; }
+
+.fa-location-slash:before { content: "\f603"; }
 
 .fa-lock:before { content: "\f023"; }
 
@@ -1132,7 +1836,15 @@ readers do not read off random characters that represent icons */
 
 .fa-long-arrow-up:before { content: "\f176"; }
 
+.fa-loveseat:before { content: "\f4cc"; }
+
 .fa-low-vision:before { content: "\f2a8"; }
+
+.fa-luchador:before { content: "\f455"; }
+
+.fa-luggage-cart:before { content: "\f59d"; }
+
+.fa-lungs:before { content: "\f604"; }
 
 .fa-lyft:before { content: "\f3c3"; }
 
@@ -1142,17 +1854,51 @@ readers do not read off random characters that represent icons */
 
 .fa-magnet:before { content: "\f076"; }
 
+.fa-mail-bulk:before { content: "\f674"; }
+
+.fa-mailchimp:before { content: "\f59e"; }
+
 .fa-male:before { content: "\f183"; }
 
+.fa-mandalorian:before { content: "\f50f"; }
+
 .fa-map:before { content: "\f279"; }
+
+.fa-map-marked:before { content: "\f59f"; }
+
+.fa-map-marked-alt:before { content: "\f5a0"; }
 
 .fa-map-marker:before { content: "\f041"; }
 
 .fa-map-marker-alt:before { content: "\f3c5"; }
 
+.fa-map-marker-alt-slash:before { content: "\f605"; }
+
+.fa-map-marker-check:before { content: "\f606"; }
+
+.fa-map-marker-edit:before { content: "\f607"; }
+
+.fa-map-marker-exclamation:before { content: "\f608"; }
+
+.fa-map-marker-minus:before { content: "\f609"; }
+
+.fa-map-marker-plus:before { content: "\f60a"; }
+
+.fa-map-marker-question:before { content: "\f60b"; }
+
+.fa-map-marker-slash:before { content: "\f60c"; }
+
+.fa-map-marker-smile:before { content: "\f60d"; }
+
+.fa-map-marker-times:before { content: "\f60e"; }
+
 .fa-map-pin:before { content: "\f276"; }
 
 .fa-map-signs:before { content: "\f277"; }
+
+.fa-markdown:before { content: "\f60f"; }
+
+.fa-marker:before { content: "\f5a1"; }
 
 .fa-mars:before { content: "\f222"; }
 
@@ -1164,7 +1910,11 @@ readers do not read off random characters that represent icons */
 
 .fa-mars-stroke-v:before { content: "\f22a"; }
 
+.fa-mastodon:before { content: "\f4f6"; }
+
 .fa-maxcdn:before { content: "\f136"; }
+
+.fa-medal:before { content: "\f5a2"; }
 
 .fa-medapps:before { content: "\f3c6"; }
 
@@ -1178,7 +1928,19 @@ readers do not read off random characters that represent icons */
 
 .fa-meetup:before { content: "\f2e0"; }
 
+.fa-megaphone:before { content: "\f675"; }
+
+.fa-megaport:before { content: "\f5a3"; }
+
 .fa-meh:before { content: "\f11a"; }
+
+.fa-meh-blank:before { content: "\f5a4"; }
+
+.fa-meh-rolling-eyes:before { content: "\f5a5"; }
+
+.fa-memory:before { content: "\f538"; }
+
+.fa-menorah:before { content: "\f676"; }
 
 .fa-mercury:before { content: "\f223"; }
 
@@ -1188,9 +1950,15 @@ readers do not read off random characters that represent icons */
 
 .fa-microphone-alt:before { content: "\f3c9"; }
 
+.fa-microphone-alt-slash:before { content: "\f539"; }
+
 .fa-microphone-slash:before { content: "\f131"; }
 
+.fa-microscope:before { content: "\f610"; }
+
 .fa-microsoft:before { content: "\f3ca"; }
+
+.fa-mind-share:before { content: "\f677"; }
 
 .fa-minus:before { content: "\f068"; }
 
@@ -1224,7 +1992,23 @@ readers do not read off random characters that represent icons */
 
 .fa-money-bill-alt:before { content: "\f3d1"; }
 
+.fa-money-bill-wave:before { content: "\f53a"; }
+
+.fa-money-bill-wave-alt:before { content: "\f53b"; }
+
+.fa-money-check:before { content: "\f53c"; }
+
+.fa-money-check-alt:before { content: "\f53d"; }
+
+.fa-monitor-heart-rate:before { content: "\f611"; }
+
+.fa-monument:before { content: "\f5a6"; }
+
 .fa-moon:before { content: "\f186"; }
+
+.fa-mortar-pestle:before { content: "\f5a7"; }
+
+.fa-mosque:before { content: "\f678"; }
 
 .fa-motorcycle:before { content: "\f21c"; }
 
@@ -1234,15 +2018,23 @@ readers do not read off random characters that represent icons */
 
 .fa-napster:before { content: "\f3d2"; }
 
+.fa-neos:before { content: "\f612"; }
+
 .fa-neuter:before { content: "\f22c"; }
 
 .fa-newspaper:before { content: "\f1ea"; }
+
+.fa-nimblr:before { content: "\f5a8"; }
 
 .fa-nintendo-switch:before { content: "\f418"; }
 
 .fa-node:before { content: "\f419"; }
 
 .fa-node-js:before { content: "\f3d3"; }
+
+.fa-not-equal:before { content: "\f53e"; }
+
+.fa-notes-medical:before { content: "\f481"; }
 
 .fa-npm:before { content: "\f3d4"; }
 
@@ -1259,6 +2051,16 @@ readers do not read off random characters that represent icons */
 .fa-odnoklassniki:before { content: "\f263"; }
 
 .fa-odnoklassniki-square:before { content: "\f264"; }
+
+.fa-oil-can:before { content: "\f613"; }
+
+.fa-oil-temp:before { content: "\f614"; }
+
+.fa-old-republic:before { content: "\f510"; }
+
+.fa-om:before { content: "\f679"; }
+
+.fa-omega:before { content: "\f67a"; }
 
 .fa-opencart:before { content: "\f23d"; }
 
@@ -1278,13 +2080,37 @@ readers do not read off random characters that represent icons */
 
 .fa-paint-brush:before { content: "\f1fc"; }
 
+.fa-paint-brush-alt:before { content: "\f5a9"; }
+
+.fa-paint-roller:before { content: "\f5aa"; }
+
+.fa-palette:before { content: "\f53f"; }
+
 .fa-palfed:before { content: "\f3d8"; }
+
+.fa-pallet:before { content: "\f482"; }
+
+.fa-pallet-alt:before { content: "\f483"; }
 
 .fa-paper-plane:before { content: "\f1d8"; }
 
 .fa-paperclip:before { content: "\f0c6"; }
 
+.fa-parachute-box:before { content: "\f4cd"; }
+
 .fa-paragraph:before { content: "\f1dd"; }
+
+.fa-parking:before { content: "\f540"; }
+
+.fa-parking-circle:before { content: "\f615"; }
+
+.fa-parking-circle-slash:before { content: "\f616"; }
+
+.fa-parking-slash:before { content: "\f617"; }
+
+.fa-passport:before { content: "\f5ab"; }
+
+.fa-pastafarianism:before { content: "\f67b"; }
 
 .fa-paste:before { content: "\f0ea"; }
 
@@ -1298,9 +2124,15 @@ readers do not read off random characters that represent icons */
 
 .fa-paypal:before { content: "\f1ed"; }
 
+.fa-peace:before { content: "\f67c"; }
+
 .fa-pen:before { content: "\f304"; }
 
 .fa-pen-alt:before { content: "\f305"; }
+
+.fa-pen-fancy:before { content: "\f5ac"; }
+
+.fa-pen-nib:before { content: "\f5ad"; }
 
 .fa-pen-square:before { content: "\f14b"; }
 
@@ -1308,15 +2140,37 @@ readers do not read off random characters that represent icons */
 
 .fa-pencil-alt:before { content: "\f303"; }
 
+.fa-pencil-paintbrush:before { content: "\f618"; }
+
+.fa-pencil-ruler:before { content: "\f5ae"; }
+
+.fa-pennant:before { content: "\f456"; }
+
+.fa-people-carry:before { content: "\f4ce"; }
+
 .fa-percent:before { content: "\f295"; }
 
+.fa-percentage:before { content: "\f541"; }
+
 .fa-periscope:before { content: "\f3da"; }
+
+.fa-person-carry:before { content: "\f4cf"; }
+
+.fa-person-dolly:before { content: "\f4d0"; }
+
+.fa-person-dolly-empty:before { content: "\f4d1"; }
 
 .fa-phabricator:before { content: "\f3db"; }
 
 .fa-phoenix-framework:before { content: "\f3dc"; }
 
+.fa-phoenix-squadron:before { content: "\f511"; }
+
 .fa-phone:before { content: "\f095"; }
+
+.fa-phone-office:before { content: "\f67d"; }
+
+.fa-phone-plus:before { content: "\f4d2"; }
 
 .fa-phone-slash:before { content: "\f3dd"; }
 
@@ -1324,11 +2178,21 @@ readers do not read off random characters that represent icons */
 
 .fa-phone-volume:before { content: "\f2a0"; }
 
+.fa-php:before { content: "\f457"; }
+
+.fa-pi:before { content: "\f67e"; }
+
 .fa-pied-piper:before { content: "\f2ae"; }
 
 .fa-pied-piper-alt:before { content: "\f1a8"; }
 
+.fa-pied-piper-hat:before { content: "\f4e5"; }
+
 .fa-pied-piper-pp:before { content: "\f1a7"; }
+
+.fa-piggy-bank:before { content: "\f4d3"; }
+
+.fa-pills:before { content: "\f484"; }
 
 .fa-pinterest:before { content: "\f0d2"; }
 
@@ -1336,9 +2200,15 @@ readers do not read off random characters that represent icons */
 
 .fa-pinterest-square:before { content: "\f0d3"; }
 
+.fa-place-of-worship:before { content: "\f67f"; }
+
 .fa-plane:before { content: "\f072"; }
 
 .fa-plane-alt:before { content: "\f3de"; }
+
+.fa-plane-arrival:before { content: "\f5af"; }
+
+.fa-plane-departure:before { content: "\f5b0"; }
 
 .fa-play:before { content: "\f04b"; }
 
@@ -1360,7 +2230,15 @@ readers do not read off random characters that represent icons */
 
 .fa-podcast:before { content: "\f2ce"; }
 
+.fa-podium:before { content: "\f680"; }
+
+.fa-poll:before { content: "\f681"; }
+
+.fa-poll-h:before { content: "\f682"; }
+
 .fa-poo:before { content: "\f2fe"; }
+
+.fa-poop:before { content: "\f619"; }
 
 .fa-portrait:before { content: "\f3e0"; }
 
@@ -1368,9 +2246,27 @@ readers do not read off random characters that represent icons */
 
 .fa-power-off:before { content: "\f011"; }
 
+.fa-pray:before { content: "\f683"; }
+
+.fa-praying-hands:before { content: "\f684"; }
+
+.fa-prescription:before { content: "\f5b1"; }
+
+.fa-prescription-bottle:before { content: "\f485"; }
+
+.fa-prescription-bottle-alt:before { content: "\f486"; }
+
+.fa-presentation:before { content: "\f685"; }
+
 .fa-print:before { content: "\f02f"; }
 
+.fa-print-slash:before { content: "\f686"; }
+
+.fa-procedures:before { content: "\f487"; }
+
 .fa-product-hunt:before { content: "\f288"; }
+
+.fa-project-diagram:before { content: "\f542"; }
 
 .fa-pushed:before { content: "\f3e1"; }
 
@@ -1388,11 +2284,23 @@ readers do not read off random characters that represent icons */
 
 .fa-question-square:before { content: "\f2fd"; }
 
+.fa-quidditch:before { content: "\f458"; }
+
+.fa-quinscape:before { content: "\f459"; }
+
 .fa-quora:before { content: "\f2c4"; }
 
 .fa-quote-left:before { content: "\f10d"; }
 
 .fa-quote-right:before { content: "\f10e"; }
+
+.fa-quran:before { content: "\f687"; }
+
+.fa-r-project:before { content: "\f4f7"; }
+
+.fa-racquet:before { content: "\f45a"; }
+
+.fa-ramp-loading:before { content: "\f4d4"; }
 
 .fa-random:before { content: "\f074"; }
 
@@ -1400,7 +2308,11 @@ readers do not read off random characters that represent icons */
 
 .fa-react:before { content: "\f41b"; }
 
+.fa-readme:before { content: "\f4d5"; }
+
 .fa-rebel:before { content: "\f1d0"; }
+
+.fa-receipt:before { content: "\f543"; }
 
 .fa-rectangle-landscape:before { content: "\f2fa"; }
 
@@ -1442,13 +2354,21 @@ readers do not read off random characters that represent icons */
 
 .fa-replyd:before { content: "\f3e6"; }
 
+.fa-researchgate:before { content: "\f4f8"; }
+
 .fa-resolving:before { content: "\f3e7"; }
 
 .fa-retweet:before { content: "\f079"; }
 
 .fa-retweet-alt:before { content: "\f361"; }
 
+.fa-rev:before { content: "\f5b2"; }
+
+.fa-ribbon:before { content: "\f4d6"; }
+
 .fa-road:before { content: "\f018"; }
+
+.fa-robot:before { content: "\f544"; }
 
 .fa-rocket:before { content: "\f135"; }
 
@@ -1456,13 +2376,33 @@ readers do not read off random characters that represent icons */
 
 .fa-rockrms:before { content: "\f3e9"; }
 
+.fa-route:before { content: "\f4d7"; }
+
+.fa-route-highway:before { content: "\f61a"; }
+
+.fa-route-interstate:before { content: "\f61b"; }
+
 .fa-rss:before { content: "\f09e"; }
 
 .fa-rss-square:before { content: "\f143"; }
 
 .fa-ruble-sign:before { content: "\f158"; }
 
+.fa-ruler:before { content: "\f545"; }
+
+.fa-ruler-combined:before { content: "\f546"; }
+
+.fa-ruler-horizontal:before { content: "\f547"; }
+
+.fa-ruler-triangle:before { content: "\f61c"; }
+
+.fa-ruler-vertical:before { content: "\f548"; }
+
 .fa-rupee-sign:before { content: "\f156"; }
+
+.fa-sad-cry:before { content: "\f5b3"; }
+
+.fa-sad-tear:before { content: "\f5b4"; }
 
 .fa-safari:before { content: "\f267"; }
 
@@ -1470,7 +2410,21 @@ readers do not read off random characters that represent icons */
 
 .fa-save:before { content: "\f0c7"; }
 
+.fa-scalpel:before { content: "\f61d"; }
+
+.fa-scalpel-path:before { content: "\f61e"; }
+
+.fa-scanner:before { content: "\f488"; }
+
+.fa-scanner-keyboard:before { content: "\f489"; }
+
+.fa-scanner-touchscreen:before { content: "\f48a"; }
+
 .fa-schlix:before { content: "\f3ea"; }
+
+.fa-school:before { content: "\f549"; }
+
+.fa-screwdriver:before { content: "\f54a"; }
 
 .fa-scribd:before { content: "\f28a"; }
 
@@ -1478,11 +2432,17 @@ readers do not read off random characters that represent icons */
 
 .fa-search:before { content: "\f002"; }
 
+.fa-search-dollar:before { content: "\f688"; }
+
+.fa-search-location:before { content: "\f689"; }
+
 .fa-search-minus:before { content: "\f010"; }
 
 .fa-search-plus:before { content: "\f00e"; }
 
 .fa-searchengin:before { content: "\f3eb"; }
+
+.fa-seedling:before { content: "\f4d8"; }
 
 .fa-sellcast:before { content: "\f2da"; }
 
@@ -1491,6 +2451,8 @@ readers do not read off random characters that represent icons */
 .fa-server:before { content: "\f233"; }
 
 .fa-servicestack:before { content: "\f3ec"; }
+
+.fa-shapes:before { content: "\f61f"; }
 
 .fa-share:before { content: "\f064"; }
 
@@ -1512,7 +2474,13 @@ readers do not read off random characters that represent icons */
 
 .fa-ship:before { content: "\f21a"; }
 
+.fa-shipping-fast:before { content: "\f48b"; }
+
+.fa-shipping-timed:before { content: "\f48c"; }
+
 .fa-shirtsinbulk:before { content: "\f214"; }
+
+.fa-shoe-prints:before { content: "\f54b"; }
 
 .fa-shopping-bag:before { content: "\f290"; }
 
@@ -1520,7 +2488,19 @@ readers do not read off random characters that represent icons */
 
 .fa-shopping-cart:before { content: "\f07a"; }
 
+.fa-shopware:before { content: "\f5b5"; }
+
 .fa-shower:before { content: "\f2cc"; }
+
+.fa-shredder:before { content: "\f68a"; }
+
+.fa-shuttle-van:before { content: "\f5b6"; }
+
+.fa-shuttlecock:before { content: "\f45b"; }
+
+.fa-sigma:before { content: "\f68b"; }
+
+.fa-sign:before { content: "\f4d9"; }
 
 .fa-sign-in:before { content: "\f090"; }
 
@@ -1534,11 +2514,39 @@ readers do not read off random characters that represent icons */
 
 .fa-signal:before { content: "\f012"; }
 
+.fa-signal-1:before { content: "\f68c"; }
+
+.fa-signal-2:before { content: "\f68d"; }
+
+.fa-signal-3:before { content: "\f68e"; }
+
+.fa-signal-4:before { content: "\f68f"; }
+
+.fa-signal-alt:before { content: "\f690"; }
+
+.fa-signal-alt-1:before { content: "\f691"; }
+
+.fa-signal-alt-2:before { content: "\f692"; }
+
+.fa-signal-alt-3:before { content: "\f693"; }
+
+.fa-signal-alt-slash:before { content: "\f694"; }
+
+.fa-signal-slash:before { content: "\f695"; }
+
+.fa-signature:before { content: "\f5b7"; }
+
 .fa-simplybuilt:before { content: "\f215"; }
 
 .fa-sistrix:before { content: "\f3ee"; }
 
 .fa-sitemap:before { content: "\f0e8"; }
+
+.fa-sith:before { content: "\f512"; }
+
+.fa-skeleton:before { content: "\f620"; }
+
+.fa-skull:before { content: "\f54c"; }
 
 .fa-skyatlas:before { content: "\f216"; }
 
@@ -1560,6 +2568,16 @@ readers do not read off random characters that represent icons */
 
 .fa-smile:before { content: "\f118"; }
 
+.fa-smile-beam:before { content: "\f5b8"; }
+
+.fa-smile-plus:before { content: "\f5b9"; }
+
+.fa-smile-wink:before { content: "\f4da"; }
+
+.fa-smoking:before { content: "\f48d"; }
+
+.fa-smoking-ban:before { content: "\f54d"; }
+
 .fa-snapchat:before { content: "\f2ab"; }
 
 .fa-snapchat-ghost:before { content: "\f2ac"; }
@@ -1567,6 +2585,10 @@ readers do not read off random characters that represent icons */
 .fa-snapchat-square:before { content: "\f2ad"; }
 
 .fa-snowflake:before { content: "\f2dc"; }
+
+.fa-socks:before { content: "\f696"; }
+
+.fa-solar-panel:before { content: "\f5ba"; }
 
 .fa-sort:before { content: "\f0dc"; }
 
@@ -1588,6 +2610,8 @@ readers do not read off random characters that represent icons */
 
 .fa-soundcloud:before { content: "\f1be"; }
 
+.fa-spa:before { content: "\f5bb"; }
+
 .fa-space-shuttle:before { content: "\f197"; }
 
 .fa-spade:before { content: "\f2f4"; }
@@ -1598,19 +2622,41 @@ readers do not read off random characters that represent icons */
 
 .fa-spinner-third:before { content: "\f3f4"; }
 
+.fa-splotch:before { content: "\f5bc"; }
+
 .fa-spotify:before { content: "\f1bc"; }
 
+.fa-spray-can:before { content: "\f5bd"; }
+
 .fa-square:before { content: "\f0c8"; }
+
+.fa-square-full:before { content: "\f45c"; }
+
+.fa-square-root:before { content: "\f697"; }
+
+.fa-square-root-alt:before { content: "\f698"; }
+
+.fa-squarespace:before { content: "\f5be"; }
 
 .fa-stack-exchange:before { content: "\f18d"; }
 
 .fa-stack-overflow:before { content: "\f16c"; }
 
+.fa-stamp:before { content: "\f5bf"; }
+
 .fa-star:before { content: "\f005"; }
+
+.fa-star-and-crescent:before { content: "\f699"; }
 
 .fa-star-exclamation:before { content: "\f2f3"; }
 
 .fa-star-half:before { content: "\f089"; }
+
+.fa-star-half-alt:before { content: "\f5c0"; }
+
+.fa-star-of-david:before { content: "\f69a"; }
+
+.fa-star-of-life:before { content: "\f621"; }
 
 .fa-staylinked:before { content: "\f3f5"; }
 
@@ -1619,6 +2665,8 @@ readers do not read off random characters that represent icons */
 .fa-steam-square:before { content: "\f1b7"; }
 
 .fa-steam-symbol:before { content: "\f3f6"; }
+
+.fa-steering-wheel:before { content: "\f622"; }
 
 .fa-step-backward:before { content: "\f048"; }
 
@@ -1630,13 +2678,21 @@ readers do not read off random characters that represent icons */
 
 .fa-sticky-note:before { content: "\f249"; }
 
+.fa-stomach:before { content: "\f623"; }
+
 .fa-stop:before { content: "\f04d"; }
 
 .fa-stop-circle:before { content: "\f28d"; }
 
 .fa-stopwatch:before { content: "\f2f2"; }
 
+.fa-store:before { content: "\f54e"; }
+
+.fa-store-alt:before { content: "\f54f"; }
+
 .fa-strava:before { content: "\f428"; }
+
+.fa-stream:before { content: "\f550"; }
 
 .fa-street-view:before { content: "\f21d"; }
 
@@ -1645,6 +2701,8 @@ readers do not read off random characters that represent icons */
 .fa-stripe:before { content: "\f429"; }
 
 .fa-stripe-s:before { content: "\f42a"; }
+
+.fa-stroopwafel:before { content: "\f551"; }
 
 .fa-studiovinari:before { content: "\f3f8"; }
 
@@ -1658,6 +2716,8 @@ readers do not read off random characters that represent icons */
 
 .fa-suitcase:before { content: "\f0f2"; }
 
+.fa-suitcase-rolling:before { content: "\f5c1"; }
+
 .fa-sun:before { content: "\f185"; }
 
 .fa-superpowers:before { content: "\f2dd"; }
@@ -1666,11 +2726,25 @@ readers do not read off random characters that represent icons */
 
 .fa-supple:before { content: "\f3f9"; }
 
+.fa-surprise:before { content: "\f5c2"; }
+
+.fa-swatchbook:before { content: "\f5c3"; }
+
+.fa-swimmer:before { content: "\f5c4"; }
+
+.fa-swimming-pool:before { content: "\f5c5"; }
+
+.fa-synagogue:before { content: "\f69b"; }
+
 .fa-sync:before { content: "\f021"; }
 
 .fa-sync-alt:before { content: "\f2f1"; }
 
+.fa-syringe:before { content: "\f48e"; }
+
 .fa-table:before { content: "\f0ce"; }
+
+.fa-table-tennis:before { content: "\f45d"; }
 
 .fa-tablet:before { content: "\f10a"; }
 
@@ -1680,23 +2754,59 @@ readers do not read off random characters that represent icons */
 
 .fa-tablet-android-alt:before { content: "\f3fc"; }
 
+.fa-tablet-rugged:before { content: "\f48f"; }
+
+.fa-tablets:before { content: "\f490"; }
+
 .fa-tachometer:before { content: "\f0e4"; }
 
 .fa-tachometer-alt:before { content: "\f3fd"; }
+
+.fa-tachometer-alt-average:before { content: "\f624"; }
+
+.fa-tachometer-alt-fast:before { content: "\f625"; }
+
+.fa-tachometer-alt-fastest:before { content: "\f626"; }
+
+.fa-tachometer-alt-slow:before { content: "\f627"; }
+
+.fa-tachometer-alt-slowest:before { content: "\f628"; }
+
+.fa-tachometer-average:before { content: "\f629"; }
+
+.fa-tachometer-fast:before { content: "\f62a"; }
+
+.fa-tachometer-fastest:before { content: "\f62b"; }
+
+.fa-tachometer-slow:before { content: "\f62c"; }
+
+.fa-tachometer-slowest:before { content: "\f62d"; }
 
 .fa-tag:before { content: "\f02b"; }
 
 .fa-tags:before { content: "\f02c"; }
 
+.fa-tally:before { content: "\f69c"; }
+
+.fa-tape:before { content: "\f4db"; }
+
 .fa-tasks:before { content: "\f0ae"; }
 
 .fa-taxi:before { content: "\f1ba"; }
+
+.fa-teamspeak:before { content: "\f4f9"; }
+
+.fa-teeth:before { content: "\f62e"; }
+
+.fa-teeth-open:before { content: "\f62f"; }
 
 .fa-telegram:before { content: "\f2c6"; }
 
 .fa-telegram-plane:before { content: "\f3fe"; }
 
 .fa-tencent-weibo:before { content: "\f1d5"; }
+
+.fa-tennis-ball:before { content: "\f45e"; }
 
 .fa-terminal:before { content: "\f120"; }
 
@@ -1710,7 +2820,15 @@ readers do not read off random characters that represent icons */
 
 .fa-th-list:before { content: "\f00b"; }
 
+.fa-the-red-yeti:before { content: "\f69d"; }
+
+.fa-theater-masks:before { content: "\f630"; }
+
+.fa-themeco:before { content: "\f5c6"; }
+
 .fa-themeisle:before { content: "\f2b2"; }
+
+.fa-thermometer:before { content: "\f491"; }
 
 .fa-thermometer-empty:before { content: "\f2cb"; }
 
@@ -1722,6 +2840,8 @@ readers do not read off random characters that represent icons */
 
 .fa-thermometer-three-quarters:before { content: "\f2c8"; }
 
+.fa-theta:before { content: "\f69e"; }
+
 .fa-thumbs-down:before { content: "\f165"; }
 
 .fa-thumbs-up:before { content: "\f164"; }
@@ -1731,6 +2851,8 @@ readers do not read off random characters that represent icons */
 .fa-ticket:before { content: "\f145"; }
 
 .fa-ticket-alt:before { content: "\f3ff"; }
+
+.fa-tilde:before { content: "\f69f"; }
 
 .fa-times:before { content: "\f00d"; }
 
@@ -1744,11 +2866,45 @@ readers do not read off random characters that represent icons */
 
 .fa-tint:before { content: "\f043"; }
 
+.fa-tint-slash:before { content: "\f5c7"; }
+
+.fa-tire:before { content: "\f631"; }
+
+.fa-tire-flat:before { content: "\f632"; }
+
+.fa-tire-pressure-warning:before { content: "\f633"; }
+
+.fa-tire-rugged:before { content: "\f634"; }
+
+.fa-tired:before { content: "\f5c8"; }
+
 .fa-toggle-off:before { content: "\f204"; }
 
 .fa-toggle-on:before { content: "\f205"; }
 
+.fa-toolbox:before { content: "\f552"; }
+
+.fa-tooth:before { content: "\f5c9"; }
+
+.fa-toothbrush:before { content: "\f635"; }
+
+.fa-torah:before { content: "\f6a0"; }
+
+.fa-torii-gate:before { content: "\f6a1"; }
+
+.fa-trade-federation:before { content: "\f513"; }
+
 .fa-trademark:before { content: "\f25c"; }
+
+.fa-traffic-cone:before { content: "\f636"; }
+
+.fa-traffic-light:before { content: "\f637"; }
+
+.fa-traffic-light-go:before { content: "\f638"; }
+
+.fa-traffic-light-slow:before { content: "\f639"; }
+
+.fa-traffic-light-stop:before { content: "\f63a"; }
 
 .fa-train:before { content: "\f238"; }
 
@@ -1776,6 +2932,22 @@ readers do not read off random characters that represent icons */
 
 .fa-truck:before { content: "\f0d1"; }
 
+.fa-truck-container:before { content: "\f4dc"; }
+
+.fa-truck-couch:before { content: "\f4dd"; }
+
+.fa-truck-loading:before { content: "\f4de"; }
+
+.fa-truck-monster:before { content: "\f63b"; }
+
+.fa-truck-moving:before { content: "\f4df"; }
+
+.fa-truck-pickup:before { content: "\f63c"; }
+
+.fa-truck-ramp:before { content: "\f4e0"; }
+
+.fa-tshirt:before { content: "\f553"; }
+
 .fa-tty:before { content: "\f1e4"; }
 
 .fa-tumblr:before { content: "\f173"; }
@@ -1800,11 +2972,15 @@ readers do not read off random characters that represent icons */
 
 .fa-umbrella:before { content: "\f0e9"; }
 
+.fa-umbrella-beach:before { content: "\f5ca"; }
+
 .fa-underline:before { content: "\f0cd"; }
 
 .fa-undo:before { content: "\f0e2"; }
 
 .fa-undo-alt:before { content: "\f2ea"; }
+
+.fa-union:before { content: "\f6a2"; }
 
 .fa-uniregistry:before { content: "\f404"; }
 
@@ -1832,17 +3008,57 @@ readers do not read off random characters that represent icons */
 
 .fa-user-alt:before { content: "\f406"; }
 
+.fa-user-alt-slash:before { content: "\f4fa"; }
+
+.fa-user-astronaut:before { content: "\f4fb"; }
+
+.fa-user-chart:before { content: "\f6a3"; }
+
+.fa-user-check:before { content: "\f4fc"; }
+
 .fa-user-circle:before { content: "\f2bd"; }
 
+.fa-user-clock:before { content: "\f4fd"; }
+
+.fa-user-cog:before { content: "\f4fe"; }
+
+.fa-user-crown:before { content: "\f6a4"; }
+
+.fa-user-edit:before { content: "\f4ff"; }
+
+.fa-user-friends:before { content: "\f500"; }
+
+.fa-user-graduate:before { content: "\f501"; }
+
+.fa-user-lock:before { content: "\f502"; }
+
 .fa-user-md:before { content: "\f0f0"; }
+
+.fa-user-minus:before { content: "\f503"; }
+
+.fa-user-ninja:before { content: "\f504"; }
 
 .fa-user-plus:before { content: "\f234"; }
 
 .fa-user-secret:before { content: "\f21b"; }
 
+.fa-user-shield:before { content: "\f505"; }
+
+.fa-user-slash:before { content: "\f506"; }
+
+.fa-user-tag:before { content: "\f507"; }
+
+.fa-user-tie:before { content: "\f508"; }
+
 .fa-user-times:before { content: "\f235"; }
 
 .fa-users:before { content: "\f0c0"; }
+
+.fa-users-class:before { content: "\f63d"; }
+
+.fa-users-cog:before { content: "\f509"; }
+
+.fa-users-crown:before { content: "\f6a5"; }
 
 .fa-ussunnah:before { content: "\f407"; }
 
@@ -1858,6 +3074,10 @@ readers do not read off random characters that represent icons */
 
 .fa-vaadin:before { content: "\f408"; }
 
+.fa-value-absolute:before { content: "\f6a6"; }
+
+.fa-vector-square:before { content: "\f5cb"; }
+
 .fa-venus:before { content: "\f221"; }
 
 .fa-venus-double:before { content: "\f226"; }
@@ -1870,9 +3090,19 @@ readers do not read off random characters that represent icons */
 
 .fa-viadeo-square:before { content: "\f2aa"; }
 
+.fa-vial:before { content: "\f492"; }
+
+.fa-vials:before { content: "\f493"; }
+
 .fa-viber:before { content: "\f409"; }
 
 .fa-video:before { content: "\f03d"; }
+
+.fa-video-plus:before { content: "\f4e1"; }
+
+.fa-video-slash:before { content: "\f4e2"; }
+
+.fa-vihara:before { content: "\f6a7"; }
 
 .fa-vimeo:before { content: "\f40a"; }
 
@@ -1886,19 +3116,41 @@ readers do not read off random characters that represent icons */
 
 .fa-vnv:before { content: "\f40b"; }
 
+.fa-volleyball-ball:before { content: "\f45f"; }
+
+.fa-volume:before { content: "\f6a8"; }
+
 .fa-volume-down:before { content: "\f027"; }
 
-.fa-volume-mute:before { content: "\f2e2"; }
+.fa-volume-mute:before { content: "\f6a9"; }
 
 .fa-volume-off:before { content: "\f026"; }
+
+.fa-volume-slash:before { content: "\f2e2"; }
 
 .fa-volume-up:before { content: "\f028"; }
 
 .fa-vuejs:before { content: "\f41f"; }
 
+.fa-walking:before { content: "\f554"; }
+
+.fa-wallet:before { content: "\f555"; }
+
+.fa-warehouse:before { content: "\f494"; }
+
+.fa-warehouse-alt:before { content: "\f495"; }
+
 .fa-watch:before { content: "\f2e1"; }
 
+.fa-watch-fitness:before { content: "\f63e"; }
+
+.fa-weebly:before { content: "\f5cc"; }
+
 .fa-weibo:before { content: "\f18a"; }
+
+.fa-weight:before { content: "\f496"; }
+
+.fa-weight-hanging:before { content: "\f5cd"; }
 
 .fa-weixin:before { content: "\f1d7"; }
 
@@ -1908,9 +3160,17 @@ readers do not read off random characters that represent icons */
 
 .fa-wheelchair:before { content: "\f193"; }
 
+.fa-whistle:before { content: "\f460"; }
+
 .fa-whmcs:before { content: "\f40d"; }
 
 .fa-wifi:before { content: "\f1eb"; }
+
+.fa-wifi-1:before { content: "\f6aa"; }
+
+.fa-wifi-2:before { content: "\f6ab"; }
+
+.fa-wifi-slash:before { content: "\f6ac"; }
 
 .fa-wikipedia-w:before { content: "\f266"; }
 
@@ -1928,6 +3188,14 @@ readers do not read off random characters that represent icons */
 
 .fa-windows:before { content: "\f17a"; }
 
+.fa-wine-glass:before { content: "\f4e3"; }
+
+.fa-wine-glass-alt:before { content: "\f5ce"; }
+
+.fa-wix:before { content: "\f5cf"; }
+
+.fa-wolf-pack-battalion:before { content: "\f514"; }
+
 .fa-won-sign:before { content: "\f159"; }
 
 .fa-wordpress:before { content: "\f19a"; }
@@ -1941,6 +3209,8 @@ readers do not read off random characters that represent icons */
 .fa-wpforms:before { content: "\f298"; }
 
 .fa-wrench:before { content: "\f0ad"; }
+
+.fa-x-ray:before { content: "\f497"; }
 
 .fa-xbox:before { content: "\f412"; }
 
@@ -1960,26 +3230,32 @@ readers do not read off random characters that represent icons */
 
 .fa-yen-sign:before { content: "\f157"; }
 
+.fa-yin-yang:before { content: "\f6ad"; }
+
 .fa-yoast:before { content: "\f2b1"; }
 
 .fa-youtube:before { content: "\f167"; }
+
+.fa-youtube-square:before { content: "\f431"; }
+
+.fa-zhihu:before { content: "\f63f"; }
 
 .sr-only { border: 0; clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 
 .sr-only-focusable:active, .sr-only-focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
 
 /*! Font Awesome Pro 5.0.2 by @fontawesome - http://fontawesome.com License - http://fontawesome.com/license (Commercial License) */
-@font-face { font-family: 'Font Awesome 5 Pro'; font-style: normal; font-weight: 300; src: url("./webfonts/fa-light-300.eot"); src: url("./webfonts/fa-light-300.eot?#iefix") format("embedded-opentype"), url("./webfonts/fa-light-300.woff2") format("woff2"), url("./webfonts/fa-light-300.woff") format("woff"), url("./webfonts/fa-light-300.ttf") format("truetype"), url("./webfonts/fa-light-300.svg#fontawesome") format("svg"); }
+@font-face { font-family: 'Font Awesome 5 Pro'; font-style: normal; font-weight: 300; src: url("../webfonts/fa-light-300.eot"); src: url("../webfonts/fa-light-300.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-light-300.woff2") format("woff2"), url("../webfonts/fa-light-300.woff") format("woff"), url("../webfonts/fa-light-300.ttf") format("truetype"), url("../webfonts/fa-light-300.svg#fontawesome") format("svg"); }
 
 .fal { font-family: 'Font Awesome 5 Pro'; font-weight: 300; }
 
 /*! Font Awesome Pro 5.0.2 by @fontawesome - http://fontawesome.com License - http://fontawesome.com/license (Commercial License) */
-@font-face { font-family: 'Font Awesome 5 Pro'; font-style: normal; font-weight: 900; src: url("./webfonts/fa-solid-900.eot"); src: url("./webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("./webfonts/fa-solid-900.woff2") format("woff2"), url("./webfonts/fa-solid-900.woff") format("woff"), url("./webfonts/fa-solid-900.ttf") format("truetype"), url("./webfonts/fa-solid-900.svg#fontawesome") format("svg"); }
+@font-face { font-family: 'Font Awesome 5 Pro'; font-style: normal; font-weight: 900; src: url("../webfonts/fa-solid-900.eot"); src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg"); }
 
 .fa, .fas { font-family: 'Font Awesome 5 Pro'; font-weight: 900; }
 
 /*! Font Awesome Pro 5.0.2 by @fontawesome - http://fontawesome.com License - http://fontawesome.com/license (Commercial License) */
-@font-face { font-family: 'Font Awesome 5 Pro'; font-style: normal; font-weight: 400; src: url("./webfonts/fa-regular-400.eot"); src: url("./webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("./webfonts/fa-regular-400.woff2") format("woff2"), url("./webfonts/fa-regular-400.woff") format("woff"), url("./webfonts/fa-regular-400.ttf") format("truetype"), url("./webfonts/fa-regular-400.svg#fontawesome") format("svg"); }
+@font-face { font-family: 'Font Awesome 5 Pro'; font-style: normal; font-weight: 400; src: url("../webfonts/fa-regular-400.eot"); src: url("../webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.woff") format("woff"), url("../webfonts/fa-regular-400.ttf") format("truetype"), url("../webfonts/fa-regular-400.svg#fontawesome") format("svg"); }
 
 .far { font-family: 'Font Awesome 5 Pro'; font-weight: 400; }
 
@@ -2123,13 +3399,13 @@ html { box-sizing: border-box; font-size: 20px; line-height: 1.5; -webkit-tap-hi
 
 body { background: #fff; color: #50596c; font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; font-size: 0.8rem; overflow-x: hidden; text-rendering: optimizeLegibility; }
 
-a { color: #9fb9c4; outline: none; text-decoration: none; }
+a { color: #87a4b0; outline: none; text-decoration: none; }
 
-a:focus { box-shadow: 0 0 0 0.1rem rgba(159, 185, 196, 0.2); }
+a:focus { box-shadow: 0 0 0 0.1rem rgba(135, 164, 176, 0.2); }
 
-a:focus, a:hover, a:active, a.active { color: #7fa2b1; text-decoration: underline; }
+a:focus, a:hover, a:active, a.active { color: #688d9c; text-decoration: underline; }
 
-a:visited { color: #bfd0d7; }
+a:visited { color: #a6bbc4; }
 
 h1, h2, h3, h4, h5, h6 { color: inherit; font-weight: 500; line-height: 1.2; margin-bottom: .5em; margin-top: 0; }
 
@@ -2179,6 +3455,14 @@ dl dt { font-weight: bold; }
 
 dl dd { margin: 0.8rem 0 0.8rem 0; }
 
+@keyframes loading { 0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); } }
+
+@keyframes slide-down { 0% { opacity: 0;
+    transform: translateY(-1.6rem); }
+  100% { opacity: 1;
+    transform: translateY(0); } }
+
 .table { border-collapse: collapse; border-spacing: 0; width: 100%; text-align: left; }
 
 .table.table-striped tbody tr:nth-of-type(odd) { background: #f8f9fa; }
@@ -2193,23 +3477,23 @@ dl dd { margin: 0.8rem 0 0.8rem 0; }
 
 .table th { border-bottom-width: 0.1rem; }
 
-.btn { transition: all .2s ease; appearance: none; background: #fff; border: 0.05rem solid #9fb9c4; border-radius: 0.1rem; color: #9fb9c4; cursor: pointer; display: inline-block; font-size: 0.8rem; height: 1.8rem; line-height: 1rem; outline: none; padding: 0.35rem 0.8rem; text-align: center; text-decoration: none; user-select: none; vertical-align: middle; white-space: nowrap; }
+.btn { transition: all .2s ease; appearance: none; background: #fff; border: 0.05rem solid #87a4b0; border-radius: 0.1rem; color: #87a4b0; cursor: pointer; display: inline-block; font-size: 0.8rem; height: 1.8rem; line-height: 1rem; outline: none; padding: 0.35rem 0.8rem; text-align: center; text-decoration: none; user-select: none; vertical-align: middle; white-space: nowrap; }
 
-.btn:focus { box-shadow: 0 0 0 0.1rem rgba(159, 185, 196, 0.2); }
+.btn:focus { box-shadow: 0 0 0 0.1rem rgba(135, 164, 176, 0.2); }
 
-.btn:focus, .btn:hover { background: white; border-color: #96b2be; text-decoration: none; }
+.btn:focus, .btn:hover { background: #fafbfc; border-color: #7e9daa; text-decoration: none; }
 
-.btn:active, .btn.active { background: #96b2be; border-color: #86a7b4; color: #fff; text-decoration: none; }
+.btn:active, .btn.active { background: #7e9daa; border-color: #6e91a0; color: #fff; text-decoration: none; }
 
 .btn:active.loading::after, .btn.active.loading::after { border-bottom-color: #fff; border-left-color: #fff; }
 
 .btn[disabled], .btn:disabled, .btn.disabled { cursor: default; opacity: .5; pointer-events: none; }
 
-.btn.btn-primary { background: #9fb9c4; border-color: #96b2be; color: #fff; }
+.btn.btn-primary { background: #87a4b0; border-color: #7e9daa; color: #fff; }
 
-.btn.btn-primary:focus, .btn.btn-primary:hover { background: #8fadba; border-color: #86a7b4; color: #fff; }
+.btn.btn-primary:focus, .btn.btn-primary:hover { background: #7898a6; border-color: #6e91a0; color: #fff; }
 
-.btn.btn-primary:active, .btn.btn-primary.active { background: #89a9b6; border-color: #7fa2b1; color: #fff; }
+.btn.btn-primary:active, .btn.btn-primary.active { background: #7194a2; border-color: #688d9c; color: #fff; }
 
 .btn.btn-primary.loading::after { border-bottom-color: #fff; border-left-color: #fff; }
 
@@ -2233,9 +3517,9 @@ dl dd { margin: 0.8rem 0 0.8rem 0; }
 
 .btn.btn-error.loading::after { border-bottom-color: #fff; border-left-color: #fff; }
 
-.btn.btn-link { background: transparent; border-color: transparent; color: #9fb9c4; }
+.btn.btn-link { background: transparent; border-color: transparent; color: #87a4b0; }
 
-.btn.btn-link:focus, .btn.btn-link:hover, .btn.btn-link:active, .btn.btn-link.active { color: #7fa2b1; }
+.btn.btn-link:focus, .btn.btn-link:hover, .btn.btn-link:active, .btn.btn-link.active { color: #688d9c; }
 
 .btn.btn-sm { font-size: 0.7rem; height: 1.4rem; padding: 0.15rem 0.6rem; }
 
@@ -2285,7 +3569,7 @@ legend { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.8rem; }
 
 .form-input { transition: all .2s ease; appearance: none; background: #fff; background-image: none; border: 0.05rem solid #caced7; border-radius: 0.1rem; color: #50596c; display: block; font-size: 0.8rem; height: 1.8rem; line-height: 1rem; max-width: 100%; outline: none; padding: 0.35rem 0.8rem; position: relative; width: 100%; }
 
-.form-input:focus { box-shadow: 0 0 0 0.1rem rgba(159, 185, 196, 0.2); border-color: #9fb9c4; }
+.form-input:focus { box-shadow: 0 0 0 0.1rem rgba(135, 164, 176, 0.2); border-color: #87a4b0; }
 
 .form-input::placeholder { color: #acb3c2; }
 
@@ -2313,7 +3597,7 @@ textarea.form-input { height: auto; }
 
 .form-select:not([multiple]):not([size]) { background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right 0.35rem center/0.4rem 0.5rem; padding-right: 1.6rem; }
 
-.form-select:focus { box-shadow: 0 0 0 0.1rem rgba(159, 185, 196, 0.2); border-color: #9fb9c4; }
+.form-select:focus { box-shadow: 0 0 0 0.1rem rgba(135, 164, 176, 0.2); border-color: #87a4b0; }
 
 .form-select::-ms-expand { display: none; }
 
@@ -2337,9 +3621,9 @@ textarea.form-input { height: auto; }
 
 .form-checkbox input, .form-radio input, .form-switch input { clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; }
 
-.form-checkbox input:focus + .form-icon, .form-radio input:focus + .form-icon, .form-switch input:focus + .form-icon { box-shadow: 0 0 0 0.1rem rgba(159, 185, 196, 0.2); border-color: #9fb9c4; }
+.form-checkbox input:focus + .form-icon, .form-radio input:focus + .form-icon, .form-switch input:focus + .form-icon { box-shadow: 0 0 0 0.1rem rgba(135, 164, 176, 0.2); border-color: #87a4b0; }
 
-.form-checkbox input:checked + .form-icon, .form-radio input:checked + .form-icon, .form-switch input:checked + .form-icon { background: #9fb9c4; border-color: #9fb9c4; }
+.form-checkbox input:checked + .form-icon, .form-radio input:checked + .form-icon, .form-switch input:checked + .form-icon { background: #87a4b0; border-color: #87a4b0; }
 
 .form-checkbox .form-icon, .form-radio .form-icon, .form-switch .form-icon { transition: all .2s ease; border: 0.05rem solid #caced7; cursor: pointer; display: inline-block; position: absolute; }
 
@@ -2355,7 +3639,7 @@ textarea.form-input { height: auto; }
 
 .form-checkbox input:checked + .form-icon::before { background-clip: padding-box; border: 0.1rem solid #fff; border-left-width: 0; border-top-width: 0; content: ""; height: 12px; left: 50%; margin-left: -4px; margin-top: -8px; position: absolute; top: 50%; transform: rotate(45deg); width: 8px; }
 
-.form-checkbox input:indeterminate + .form-icon { background: #9fb9c4; border-color: #9fb9c4; }
+.form-checkbox input:indeterminate + .form-icon { background: #87a4b0; border-color: #87a4b0; }
 
 .form-checkbox input:indeterminate + .form-icon::before { background: #fff; content: ""; height: 2px; left: 50%; margin-left: -5px; margin-top: -1px; position: absolute; top: 50%; width: 10px; }
 
@@ -2437,9 +3721,9 @@ input:disabled + .form-icon, input.disabled + .form-icon { background: #f0f1f4; 
 
 .label.label-rounded { border-radius: 5rem; padding-left: .4rem; padding-right: .4rem; }
 
-.label.label-primary { background: #9fb9c4; color: #fff; }
+.label.label-primary { background: #87a4b0; color: #fff; }
 
-.label.label-secondary { background: white; color: #9fb9c4; }
+.label.label-secondary { background: #fafbfc; color: #87a4b0; }
 
 .label.label-success { background: #32b643; color: #fff; }
 
@@ -2595,15 +3879,15 @@ input:disabled + .form-icon, input.disabled + .form-icon { background: #f0f1f4; 
 
 .navbar .navbar-brand { font-size: 0.9rem; font-weight: 500; text-decoration: none; }
 
-.text-primary { color: #9fb9c4; }
+.text-primary { color: #87a4b0; }
 
-a.text-primary:focus, a.text-primary:hover { color: #8fadba; }
+a.text-primary:focus, a.text-primary:hover { color: #7898a6; }
 
-a.text-primary:visited { color: #afc5ce; }
+a.text-primary:visited { color: #96b0ba; }
 
-.text-secondary { color: #f7f7f7; }
+.text-secondary { color: #f1f4f6; }
 
-a.text-secondary:focus, a.text-secondary:hover { color: #ebebeb; }
+a.text-secondary:focus, a.text-secondary:hover { color: #e2e9ec; }
 
 a.text-secondary:visited { color: white; }
 
@@ -2643,9 +3927,9 @@ a.text-error:focus, a.text-error:hover { color: #cf4d00; }
 
 a.text-error:visited { color: #ff6003; }
 
-.bg-primary { background: #9fb9c4; }
+.bg-primary { background: #87a4b0; }
 
-.bg-secondary { background: white; }
+.bg-secondary { background: #fafbfc; }
 
 .bg-dark { background: #454d5d; color: #fff; }
 
@@ -2705,7 +3989,7 @@ a.text-error:visited { color: #ff6003; }
 
 .loading { color: transparent !important; min-height: 0.8rem; pointer-events: none; position: relative; }
 
-.loading::after { animation: loading 500ms infinite linear; border: 0.1rem solid #9fb9c4; border-radius: 50%; border-right-color: transparent; border-top-color: transparent; content: ""; display: block; height: 0.8rem; left: 50%; margin-left: -0.8rem; margin-top: -0.8rem; position: absolute; top: 50%; width: 0.8rem; z-index: 1; }
+.loading::after { animation: loading 500ms infinite linear; border: 0.1rem solid #87a4b0; border-radius: 50%; border-right-color: transparent; border-top-color: transparent; content: ""; display: block; height: 0.8rem; left: 50%; margin-left: -0.8rem; margin-top: -0.8rem; position: absolute; top: 50%; width: 0.8rem; z-index: 1; }
 
 .loading.loading-lg { min-height: 2rem; }
 
@@ -2843,7 +4127,7 @@ a.text-error:visited { color: #ff6003; }
 
 .text-break { hyphens: auto; word-break: break-word; word-wrap: break-word; }
 
-/** Swiper 4.3.5 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: July 31, 2018 */
+/** Swiper 4.4.1 Most modern mobile touch slider and framework with hardware accelerated transitions http://www.idangero.us/swiper/ Copyright 2014-2018 Vladimir Kharlampidi Released under the MIT License Released on: September 14, 2018 */
 .swiper-container { margin: 0 auto; position: relative; overflow: hidden; list-style: none; padding: 0; /* Fix of Webkit flickering */ z-index: 1; }
 
 .swiper-container-no-flexbox .swiper-slide { float: left; }
@@ -2860,7 +4144,7 @@ a.text-error:visited { color: #ff6003; }
 
 .swiper-slide { -webkit-flex-shrink: 0; -ms-flex-negative: 0; flex-shrink: 0; width: 100%; height: 100%; position: relative; -webkit-transition-property: -webkit-transform; transition-property: -webkit-transform; -o-transition-property: transform; transition-property: transform; transition-property: transform, -webkit-transform; }
 
-.swiper-invisible-blank-slide { visibility: hidden; }
+.swiper-slide-invisible-blank { visibility: hidden; }
 
 /* Auto Height */
 .swiper-container-autoheight, .swiper-container-autoheight .swiper-slide { height: auto; }
@@ -3053,7 +4337,7 @@ button.swiper-pagination-bullet { border: none; margin: 0; padding: 0; -webkit-b
 
 .swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet { background-color: transparent; border: 1px solid #404953; }
 
-.swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet-active { background-color: #9fb9c4; border: 0; }
+.swiper-container-horizontal .swiper-pagination-bullets .swiper-pagination-bullet-active { background-color: #87a4b0; border: 0; }
 
 @keyframes fadeIn { from { opacity: 0; }
   to { opacity: 1; } }
@@ -3093,7 +4377,7 @@ html, body { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sa
 
 h1, h2, h3, h4, h5, h6 { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 50px; font-weight: 400; font-style: normal; letter-spacing: 1.5px; line-height: 90%; margin: 0; }
 
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: #9fb9c4; text-decoration: none; }
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: #87a4b0; text-decoration: none; }
 
 h1 { font-size: 75px; text-transform: uppercase; }
 
@@ -3101,7 +4385,7 @@ p { color: #606060; }
 
 a { transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
-a:visited { color: #fff; }
+a:visited { color: #87a4b0; }
 
 a:hover { text-decoration: none; transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
 
@@ -3131,6 +4415,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .bg-grey { background-color: #f7f7f7; }
 
+.bg-blue { background-color: #393d5b; }
+
 .triangle-background { background-image: url(/images/triangle.svg); background-position: 100% bottom; background-repeat: no-repeat; box-sizing: border-box; background-size: 103%; }
 
 .border-top-grey { border-top: 1px solid #e4e4e4; }
@@ -3153,35 +4439,39 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .bl-add-bag-product.changed { background-color: #393d5b; }
 
-.bl-add-bag-product.changed:hover { background-color: #9fb9c4; }
+.bl-add-bag-product.changed:hover { background-color: #87a4b0; }
 
-.bl-product-swatches { margin: 20px auto; justify-content: center; padding: 0; }
+.bl-product-swatches { margin: 20px auto; justify-content: center; align-items: center; padding: 0; }
 
-.bl-product-swatches:before { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 300; font-style: normal; margin: 0 0 0.8rem; content: "Choose a color"; display: block; width: 100%; }
+.bl-product-swatches-container { display: flex; }
 
-.bl-product-swatches .swatch-wrapper { background-color: transparent; max-width: 60px; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
+.bl-product-swatches-header { margin: 0; padding: 0 0.8rem 0 0; }
 
-.bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
+.bl-product-swatches .swatch-wrapper { transition: padding 0.1s ease-in-out; background-color: transparent; max-width: 42px; margin: 0 0.2rem; padding: 0.2rem; border: none; float: none; }
+
+.bl-product-swatches .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 0; border: 0; }
+
+.bl-product-swatches .swatch-wrapper.selected a { cursor: pointer; border-color: #999999; box-shadow: 0 0 14px rgba(3, 3, 3, 0.2); transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out; }
 
 .bl-product-swatches .swatch-color { display: block; }
 
 .swatch-anchor { border: 1px solid #e4e4e4; border-radius: 50%; padding: 4px; transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out; }
 
-.swatch-anchor:hover, .swatch-anchor.selected { cursor: pointer; border-color: #999999; box-shadow: 0 0 14px rgba(3, 3, 3, 0.2); transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out; }
+.swatch-anchor:hover { cursor: pointer; border-color: #999999; box-shadow: 0 0 14px rgba(3, 3, 3, 0.2); transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out; }
 
 .swatch-anchor img { border-radius: 50%; display: block; width: auto; height: auto; }
 
-.swatch-control { display: flex; flex-wrap: wrap; padding: 0; }
+.swatch-control { justify-content: left; align-items: center; text-align: center; display: flex; flex-wrap: wrap; padding: 0; margin: 0; }
 
 .swatch-control .select-option { border: 0; }
 
-.swatch-control .select-option.selected { border: 0; padding: 0; }
+.swatch-control .swatch-anchor { display: block; width: 100% !important; max-width: 80% !important; height: auto !important; margin: 0.8rem auto; }
 
-.swatch-control .swatch-anchor { display: block; width: 100% !important; height: auto !important; }
+.swatch-control .swatch-wrapper { background-color: transparent; width: auto; border: none; float: none; margin: 0 auto; padding: 0; transition: padding 0.1s ease-in-out, width 0.1s ease-in-out; }
 
-.swatch-control .swatch-wrapper { background-color: transparent; width: auto; border: none; float: none; margin: 0; padding: 8px; transition: padding 0.1s ease-in-out; }
+.swatch-control .swatch-wrapper.selected { transition: padding 0.1s ease-in-out, width 0.1s ease-in-out; border: 0; padding: 0; }
 
-.swatch-control .swatch-wrapper.selected { transition: padding 0.1s ease-in-out; padding: 4px; border: 0; }
+.swatch-control .swatch-wrapper.selected > a { max-width: 100% !important; }
 
 .swatch-control .swatch-wrapper img { width: 100% !important; }
 
@@ -3223,7 +4513,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .navbar-dropdown-primary-items a { color: #fff; }
 
-.navbar-dropdown-primary-items a:hover { text-decoration: none; color: #9fb9c4; }
+.navbar-dropdown-primary-items a:hover { text-decoration: none; color: #87a4b0; }
 
 .navbar-dropdown-primary-items.desktop { display: flex; justify-content: center; margin-bottom: 0; border-top: 1px solid #e4e4e4; }
 
@@ -3287,8 +4577,6 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .archive .step-navigation .navbar-dropdown-primary-items.desktop, .page-template .step-navigation .navbar-dropdown-primary-items.desktop, .woocommerce-page .step-navigation .navbar-dropdown-primary-items.desktop, .page-template-default .step-navigation .navbar-dropdown-primary-items.desktop { display: flex; border: 0; }
 
-.archive .step-navigation .navbar-dropdown-primary-items.desktop li, .page-template .step-navigation .navbar-dropdown-primary-items.desktop li, .woocommerce-page .step-navigation .navbar-dropdown-primary-items.desktop li, .page-template-default .step-navigation .navbar-dropdown-primary-items.desktop li { padding: 0.2rem 0.8rem; }
-
 .home .navbar-dropdown-primary-items.desktop, .woocommerce-account .navbar-dropdown-primary-items.desktop, .page-template-page-about .navbar-dropdown-primary-items.desktop, .page-template-page-help .navbar-dropdown-primary-items.desktop, .page-template-page-bags .navbar-dropdown-primary-items.desktop { display: flex; }
 
 .footer { clear: both; padding: 0 34px 50px; border-top: 1px solid #e4e4e4; background-color: #fff; }
@@ -3301,17 +4589,19 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .footer .col-3 { margin-bottom: 30px; }
 
+.footer h6 { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 1.4rem; font-weight: 300; font-style: normal; text-transform: uppercase; margin-bottom: 0.8rem; color: #979797; }
+
 .footer li a { color: #606060; display: inline-block; font-size: 15px; }
 
-.footer li a:hover { color: #9fb9c4; }
+.footer li a:hover { color: #87a4b0; }
 
-.footer-contact-links { list-style-type: none; padding: 0; }
+.footer-contact-links { list-style-type: none; margin: 0 0 1.6rem; padding: 0; }
 
 .social-media-links { padding-top: 14px; }
 
 .social-media-links a { color: #fff; }
 
-.social-media-links a:hover { color: #9fb9c4; }
+.social-media-links a:hover { color: #87a4b0; }
 
 .copyright { text-align: center; color: #606060; padding: 60px 0 0; }
 
@@ -3327,11 +4617,11 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .btn-no-border { border: 0; }
 
-.btn.btn-primary { background-color: #393d5b; border-color: rgba(3, 3, 3, 0.3); }
+.btn.btn-primary { background-color: #87a4b0; border-color: rgba(3, 3, 3, 0.3); }
 
-.btn.btn-primary:hover { background-color: #195675; }
+.btn.btn-primary:hover { background-color: #393d5b; }
 
-.btn.btn-primary:active { background-color: #9fb9c4; }
+.btn.btn-primary:active { background-color: #87a4b0; }
 
 .btn.btn-selected { background-color: #393d5b; padding: 10px; display: flex; }
 
@@ -3363,11 +4653,17 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .btn.add-to-cart.in-cart .fa-plus-circle:before { visibility: visible; display: block; }
 
+.btn.add-kit-to-cart { margin: 0.8rem 0; padding: 0.8rem; }
+
 .btn.btn-separator { background-color: transparent; text-shadow: none; padding-left: 0; padding-right: 0; border: 0; }
 
 .btn.btn-red { background-color: #e10600; border-color: #e10600; }
 
 .btn.btn-green { background-color: #5b9376; border-color: #5b9376; }
+
+.btn.loading .remove-from-cart, .btn.loading .swap-from-cart { visibility: hidden; }
+
+.btn.loading::after { height: 1.2rem; width: 1.2rem; top: 58%; }
 
 .remove-from-cart { padding: 10px 6px; position: relative; width: 50%; }
 
@@ -3377,7 +4673,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .swap-from-cart { padding: 10px 6px; color: #fff; }
 
-.swap-from-cart:hover { color: #fff; text-decoration: none; }
+.swap-from-cart:hover, .swap-from-cart:visited { color: #fff; text-decoration: none; }
 
 .swap-from-cart:only-child { width: 100%; }
 
@@ -3392,16 +4688,6 @@ body { position: relative; padding-top: 98px; outline: none; }
 .category-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 300; font-style: normal; padding: 10px 0; color: #999999; }
 
 .hero { text-align: center; color: #979797; padding: 150px 20px; }
-
-.hero-help { text-align: left; padding: 0 0 2.8rem; margin-bottom: 2.8rem; border-bottom: 1px solid #e4e4e4; }
-
-.hero-help-header { color: #393d5b; padding: 0; }
-
-.hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; line-height: normal; padding: 1.6rem 0 0; margin: 0; }
-
-.hero-help-list { padding: 0.8rem 0 0; }
-
-.hero-help-list li { padding: 0.8rem 0 0; }
 
 .hero-header { color: #404953; text-transform: uppercase; font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 68px; font-weight: 400; font-style: normal; }
 
@@ -3427,17 +4713,19 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home h1, .hero-home h2, .hero-home h3, .hero-home h4, .hero-home h5, .hero-home p { color: #fff; }
 
-.hero-home .bl-diamond { max-width: 230px; padding: 4.4rem 0 0; }
+.hero-home .bl-diamond { max-width: 190px; width: 100%; display: block; }
 
-.hero-home[style*="background-image"] { position: relative; transition: background-position 0.2s ease-in-out; background-size: cover; background-position: center right; padding: 6.4rem 0.8rem; }
+.hero-home .bl-diamond-container { transform: translate(-50%, 50%); position: absolute; left: 50%; bottom: 0; }
 
-.hero-home[style*="background-image"] .max-width-xl { display: flex; align-items: center; justify-content: center; position: relative; }
+.hero-home[style*="background-image"] { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; transition: background-position 0.2s ease-in-out; background-size: 240%; background-position: 69% bottom; padding: 4rem 0.8rem 6.4rem; margin-bottom: 4rem; }
 
-.hero-home[style*="background-image"]:after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(3, 3, 3, 0.4); z-index: auto; }
+.hero-home[style*="background-image"] .max-width-xl { width: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+
+.hero-home[style*="background-image"]:after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: auto; }
 
 .hero-home[style*="background-image"] .columns { z-index: 1; }
 
-.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 3.2rem; font-weight: 400; font-style: normal; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
+.hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 2.8rem; font-weight: 400; font-style: normal; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
 .hero-home .hero-copy { font-size: 1rem; letter-spacing: 0.5px; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
@@ -3447,7 +4735,11 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-home .hero-action-buttons { padding-top: 22px; }
 
-.hero-home .hero-action-buttons .btn.btn-lg { display: block; padding: 1.2rem 0.8rem; letter-spacing: 0.4px; }
+.hero-home .hero-action-buttons .btn.btn-lg { display: block; max-width: 180px; letter-spacing: 0.4px; border-color: #fff; }
+
+.hero-home .hero-action-buttons .btn.btn-primary { background-color: #e4f1fd; color: #195675; border-color: #50596c; }
+
+.hero-home .hero-action-buttons .btn.btn-primary:hover { background-color: #393d5b; border-color: #393d5b; color: #fff; }
 
 .hero-background-alternate { padding: 4.4rem 0; position: relative; }
 
@@ -3459,15 +4751,23 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-background-alternate .hero-image-container { position: absolute; z-index: auto; top: 0; left: 0; padding: 0; }
 
+.bl-home-page { background-color: #f7f7f7; }
+
+.bl-home-page .hero-row-background { border-bottom: 1px solid #e4e4e4; }
+
+.bl-home-page .hero-row-background:nth-child(odd) { background-color: #f7f7f7; }
+
+.bl-home-page .hero-row-background:nth-child(even) { background-color: #fff; }
+
+.bl-home-page .hero-row-background:last-child { border-bottom: none; }
+
 .bl-home-page .hero-row .columns { justify-content: center; align-items: center; }
-
-.bl-home-page .hero-row .max-width-xl > .columns:nth-child(odd) { background-color: #e4e4e4; }
-
-.bl-home-page .hero-row .max-width-xl > .columns:nth-child(2) .column:first-child { order: 2; }
 
 .bl-home-page .hero-row .hero-header { position: relative; }
 
 .bl-home-page .hero-row .hero-header:after { content: ""; position: absolute; left: 0; right: 0; top: -30px; width: 30px; margin: 0 auto; border-bottom: 4px solid #393d5b; }
+
+.bl-home-page .hero-row .hero-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 400; font-style: normal; }
 
 .bl-home-page .hero-row .hero-image-container { padding-top: 3.2rem; padding-bottom: 3.2rem; }
 
@@ -3487,27 +4787,57 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .hero-product a[disabled="disabled"] { cursor: not-allowed; pointer-events: none; opacity: 1; }
 
-.hero-product a[disabled="disabled"]:hover { background-color: #9fb9c4; }
+.hero-product a[disabled="disabled"]:hover { background-color: #87a4b0; }
+
+.hero-product > .columns .column { position: relative; }
 
 .hero-product .btn-link { text-shadow: none; margin-top: 0.8rem; }
 
-.hero-product-header { color: #393d5b; margin-bottom: 0.8rem; }
+.hero-product-header { color: #393d5b; margin-bottom: 0.8rem; position: relative; top: -10px; }
 
 .hero-product-header a { display: inline-block; }
 
 .hero-product-copy { color: #999999; line-height: 140%; }
 
-.hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
+.hero-product-price { color: #393d5b; font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; margin: 0; }
 
-.hero-product-callout { font-family: "Knockout 31 A", "Knockout 31 B", Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 400; font-style: normal; }
+.hero-product-callout { color: #979797; padding: 0 0.2rem 0; }
+
+.hero-product .woocommerce-Price-amount { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 2.4rem; font-weight: 400; font-style: normal; }
 
 .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
 
-.hero-product-bag-link:after { content: ""; transition: background-color 0.2s ease-in-out; background-color: transparent; display: flex; position: absolute; top: 0; width: 100%; height: 100%; }
+.hero-product-bag-link .hero-product-hover-details { background-color: rgba(0, 0, 0, 0.8); transition: opacity 0.2s ease-in-out; opacity: 0; position: absolute; display: flex; justify-content: center; align-items: center; flex-direction: column; top: 0; left: 0; height: 100%; width: 100%; color: #fff; }
 
-.hero-product-bag-link:hover:after { transition: background-color 0.2s ease-in-out; background-color: rgba(0, 0, 0, 0.8); }
+.hero-product-bag-link .hero-product-hover-details:hover { opacity: 1; transition: opacity 0.2s ease-in-out; }
 
-.hero-product-bag-link:hover:before { /* We SHOULDN'T be doing this but #timeCrunch */ content: "View Details"; font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 75px; font-weight: 400; font-style: normal; letter-spacing: 2px; color: #fff; display: flex; align-self: center; align-items: center; justify-content: center; position: absolute; top: 0; z-index: 1; width: 100%; height: 100%; }
+.hero-product-bag-link .hero-product-hover-header { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 2.8rem; font-weight: 400; font-style: normal; }
+
+.hero-product-bag-link .hero-product-hover-pre-text { color: #87a4b0; }
+
+.hero-product-bag-link .hero-product-hover-offer { border-top: 1px solid #fff; width: auto; padding: 0.8rem 1.6rem; display: inline-flex; justify-content: center; align-items: center; }
+
+.hero-product-bag-link .hero-product-hover-copy { display: inline-flex; justify-content: center; align-items: center; }
+
+.hero-product-bag-link .hero-product-hover-copy strong { font-size: 40px; padding: 0 0.8rem; }
+
+.hero-product-bag-link .hero-product-hover-disclaimer { font-size: 12px; padding-top: 1.6rem; }
+
+.hero-product-kit-link { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.hero-product-kit-link.hero-product-bag-link { position: absolute; }
+
+.hero-product-kit-link:hover .hero-product-hover-details { opacity: 1; }
+
+.hero-product-kit-link .hero-product-hover-details { background-color: rgba(0, 0, 0, 0.8); padding: 1.6rem; }
+
+.hero-product-kit-link .hero-product-hover-details:hover { opacity: 1; }
+
+.hero-product-kit-link .hero-product-hover-details h2 { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 2.4rem; font-weight: 300; font-style: normal; border-bottom: 1px solid #fff; padding: 0 0 0.8rem; margin: 0 0 2rem; width: 100%; }
+
+.hero-product-kit-link .hero-product-hover-details .count { font-size: 12px; }
+
+.hero-product-kit-link .hero-product-hover-details .count:before { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 0.8rem; font-weight: 300; font-style: normal; content: "1"; width: 20px; display: inline-block; }
 
 .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
 
@@ -3549,6 +4879,10 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .back-to-top .fal { font-size: 22px; }
 
+.step-navigation-wrapper { display: flex; align-items: center; }
+
+.step-navigation-wrapper .max-width-xl { width: 100%; }
+
 .step-navigation-text { vertical-align: super; color: #999999; }
 
 .step-navigation-text-back { font-weight: normal; position: absolute; bottom: -10px; left: 0; font-size: 11px; display: block; width: 55px; }
@@ -3563,26 +4897,22 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .step-navigation .btn-no-border .step-navigation-text { font-size: 16px; }
 
-.step-navigation .btn-lg { padding: 6px 16px; }
-
 .step-navigation .btn-primary .step-navigation-text { text-align: left; font-family: "Knockout 32 A", "Knockout 32 B"; color: #fff; }
 
 .step-navigation .fal { font-size: 25px; }
 
-.single-product.single.single-product .step-navigation-wrapper { margin-bottom: 2.8rem; padding: 4px 0; }
-
-.archive.post-type-archive .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
-
-.archive.tax-product_cat .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
-
-.page-template.page-template-page-about .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
-
-.page-template-default.page .step-navigation-wrapper { padding: 8px 0; border-bottom: 0; }
+.step-navigation .text-left a { color: #87a4b0; display: flex; align-items: center; height: 100%; }
 
 /* For any future Front-end Developer working on this: This is a result of being forced into reactionary changes with very little time to executure. Throw in the lack of flexibility of Wordpress/Woocommerce templating and you get this type of crap */
-.back-to-previous-page { padding: 36px 0; color: #9fb9c4; }
+.back-to-previous-page { padding: 36px 0; color: #87a4b0; }
 
 .back-to-previous-page .fal { font-size: 25px; }
+
+.benlido-banner { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 10px; font-weight: 300; font-style: normal; padding: 0.6rem 0.8rem; color: #fff; text-align: center; }
+
+.benlido-banner a { color: #fff; }
+
+.benlido-banner a:visited { color: #fff; }
 
 .product-description-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 25px; font-weight: 300; font-style: normal; color: #999999; margin: 0 auto 34px; }
 
@@ -3599,6 +4929,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 .product-tile-column { padding-left: 0.8rem; padding-right: 0.8rem; margin-top: 1.2rem; }
 
 .product-tile-column ul, .product-tile-column li { height: 100%; }
+
+.product-tile-column ul:empty { background-color: #f7f7f7; }
 
 .product-tile-link { position: relative; display: block; margin: 0 auto; }
 
@@ -3620,13 +4952,15 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .product-tile-empty-product .product-tile { justify-content: center; border: 0; }
 
-.product-tile-empty-product .product-tile-link { min-height: 0; color: #9fb9c4; }
+.product-tile-empty-product .product-tile-link { min-height: 0; color: #87a4b0; }
 
 .product-tile-empty-product .product-tile-header { display: block; letter-spacing: normal; line-height: 140%; font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 300; font-style: normal; }
 
 .product-tile-empty-product .product-tile-sub-header { display: none; font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; padding-bottom: 30px; }
 
 .product-tile-empty-product .btn-primary { padding: 10px 6px; margin-top: auto; position: relative; }
+
+.product-tile-empty-product .btn-primary a:visited { color: #fff; }
 
 .product-tile .btn { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; padding: 0; margin-top: auto; }
 
@@ -3637,6 +4971,20 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 .product-row-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 25px; font-weight: 300; font-style: normal; color: #999999; padding: 0 0 60px; }
 
 .product-row .columns .column { margin-bottom: 20px; }
+
+.benlido-compact-product-list-item { border-right: 1px solid #e4e4e4; }
+
+.benlido-compact-product-list .hero-product-header { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; text-align: center; top: auto; padding: 0.8rem 0.8rem 0; }
+
+.benlido-compact-product-list .hero-product-swatch-count { color: #979797; text-align: center; padding: 0; margin: 0; }
+
+.benlido-compact-product-list .hero-product-price { display: inline-block; font-size: 1.2rem; }
+
+.benlido-compact-product-list .hero-product-bag-image-container { position: relative; }
+
+.benlido-compact-product-list .hero-product-bag-image[src=""] { background-color: #e4e4e4; height: 100%; width: 100%; }
+
+.benlido-compact-product-list .hero-product-bag-image[src=""]:after { content: "IMAGE NOT AVAILABLE"; text-align: center; position: absolute; top: 50%; transform: translate(0, -50%); left: 0; width: 100%; }
 
 .product-information-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 70px; font-weight: 400; font-style: normal; text-transform: uppercase; text-align: center; }
 
@@ -3728,6 +5076,8 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .shop-landing-featured { padding-bottom: 20px; }
 
+.shop-landing-featured-header a { color: inherit; }
+
 .shop-landing-featured-products > .columns { padding-left: 0.2rem; padding-right: 0.2rem; }
 
 .shop-landing-featured-products > .columns .columns { margin-left: 0; margin-right: 0; }
@@ -3738,13 +5088,17 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .shop-landing-featured-products .columns ul.columns { width: 100%; }
 
-.shop-landing-featured-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 300; font-style: normal; letter-spacing: normal; color: #999999; text-align: center; padding: 1.6rem 0 0.2rem; }
+.shop-landing-featured-header { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 400; font-style: normal; letter-spacing: normal; color: #50596c; text-align: center; padding: 1.6rem 0 0.2rem; }
+
+.shop-landing-featured-header .fal { padding-left: 0.8rem; }
+
+.shop-landing-featured-header .fal:before { font-size: 1.2rem; }
 
 .shop-landing-featured-view-all { border-bottom: 1px solid #e4e4e4; }
 
 .shop-landing-featured-view-all:last-child { border-bottom: 0; }
 
-.shop-landing-featured-view-all .btn { display: inline-block; min-width: 200px; padding: 14px 34px; margin-top: 1.2rem; margin-bottom: 1.2rem; color: #9fb9c4; text-shadow: none; }
+.shop-landing-featured-view-all .btn { display: inline-block; min-width: 200px; padding: 14px 34px; margin-top: 1.2rem; margin-bottom: 1.2rem; color: #87a4b0; text-shadow: none; }
 
 .post-type-archive .shop-landing-featured { padding-bottom: 0; }
 
@@ -3822,6 +5176,38 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-animated-gif { padding-top: 2rem; display: block; }
 
+.jquery-modal.blocker { z-index: 999; }
+
+.bl-newsletter-modal { display: none; background-color: #fff; padding: 1.2rem; max-width: 100%; width: 100%; }
+
+.bl-newsletter-modal-content { padding: 1.2rem 1.2rem 0; text-align: center; }
+
+.bl-newsletter-modal-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 600; font-style: normal; line-height: 140%; text-transform: none; font-style: italic; margin-bottom: 0.8rem; padding-top: 8.4rem; background: url(../images/topheademail.png) no-repeat scroll center top; }
+
+.bl-newsletter-modal-copy { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; max-width: 290px; margin: 0 auto; color: #393d5b; }
+
+.bl-newsletter-modal-copy p { color: #393d5b; }
+
+.bl-newsletter-modal-form { padding: 2rem 2rem 8.4rem; background: url(../images/bottomdiamond.png) no-repeat scroll center bottom; }
+
+.bl-newsletter-modal-form form > div { display: flex; flex-direction: column; width: 100%; }
+
+.bl-newsletter-modal-form form > div > div { width: 100%; margin-bottom: 0.8rem; }
+
+.bl-newsletter-modal-form input { padding: 0.2rem 0.8rem; display: block; width: 100%; }
+
+.bl-newsletter-modal-form .submit { width: 100%; }
+
+.bl-newsletter-modal-form .submit input { background-color: #e4f1fd; border: 1px solid #195675; border-radius: 4px; color: #195675; position: relative; width: 100%; }
+
+.bl-newsletter-modal-form .fname, .bl-newsletter-modal-form .lname { display: none; }
+
+@media (min-width: 600px) { .bl-newsletter-modal { max-width: 500px; }
+  .bl-newsletter-modal-form form > div { flex-direction: row; width: 100%; }
+  .bl-newsletter-modal-form form > div > div { width: 70%; }
+  .bl-newsletter-modal-form input { width: 90%; }
+  .bl-newsletter-modal-form .submit { width: 30%; } }
+
 .search-results #content { background-color: #fff; }
 
 .search-results .related.products { display: none; }
@@ -3838,45 +5224,51 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .kitting-page .hero-product-bag-image { margin: 0 0 0 auto; }
 
-.kitting-page .hero-product.bg-white { background-color: transparent; }
+.kitting-page .hero-product.bg-white { background-color: transparent; border-bottom: 0; }
 
 .kitting-page .hero-product-copy { display: none; }
 
 .hero-product ~ .hero-title-copy { border-top: 0; }
 
-.single-product.single .product.product_cat-bags { width: 100%; flex-direction: column; }
+.step-navigation-wrapper + .hero-title-copy { border-top: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary.summary { margin: 0 0 1.2rem; }
+.home.page-template { padding-top: 82px; }
 
-.single-product.single .product.product_cat-bags .entry-summary .price { width: 100%; text-align: left; }
+.single-product.single .product.product_cat-bags-internal { flex-direction: column; }
 
-.single-product.single .product.product_cat-bags .entry-summary .cart { position: relative; margin: 0; padding: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary.summary { margin: 0 0 1.2rem; }
 
-.single-product.single .product.product_cat-bags .entry-summary .swatch-control { text-align: center; margin: 0.8rem 0 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .price { width: 100%; text-align: left; }
 
-.single-product.single .product.product_cat-bags .entry-summary td.value .swatch-control { justify-content: left; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .cart { position: relative; margin: 0; padding: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .swatch-wrapper { padding-left: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .variations { border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; margin: 0.8rem 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .swatch-wrapper.selected { padding: 4px; padding-left: 0; padding-right: 8px; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .variations tr { display: flex; align-items: center; }
 
-.single-product.single .product.product_cat-bags .entry-summary .variations-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 45px; font-weight: 400; font-style: normal; margin: 0.8rem 0 0; padding: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .variations td.label { padding-right: 0.8rem; }
 
-.single-product.single .product.product_cat-bags .entry-summary .reset_variations { display: none !important; font-size: 18px; padding: 0; margin: 0; position: absolute; top: -20px; right: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .variations td.value { margin: 0; }
 
-.single-product.single .product.product_cat-bags .entry-summary .value { position: relative; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .variations-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 45px; font-weight: 400; font-style: normal; margin: 0.8rem 0 0; padding: 0; }
 
-.single-product.single .product.product_cat-bags .single_variation_wrap { width: 100%; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .reset_variations { display: none !important; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart { display: flex; width: 100%; padding: 0 0 1rem; margin: 0; }
+.single-product.single .product.product_cat-bags-internal .entry-summary .value { position: relative; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .button { width: 80%; }
+.single-product.single .product.product_cat-bags-internal .single_variation_wrap { width: 100%; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { width: 20%; margin-right: 0.8rem; }
+.single-product.single .product.product_cat-bags-internal .single_variation_wrap .in-stock { display: none; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart { display: flex; width: 100%; padding: 0 0 1rem; margin: 0; }
 
-.single-product.single .product.product_cat-bags .woocommerce-variation-add-to-cart .quantity { text-align: left; }
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .button { width: 80%; }
+
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .quantity { width: 20%; margin-right: 0.8rem; }
+
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .quantity > label { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 300; font-style: normal; padding-bottom: 0.8rem; color: #979797; display: block; }
+
+.single-product.single .product.product_cat-bags-internal .woocommerce-variation-add-to-cart .quantity { text-align: left; }
 
 .single-product.single .product_meta { padding: 0.8rem 0.8rem 0 0; }
 
@@ -3906,7 +5298,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-about-us .hero-title-copy .hero-title-copy-header { padding-bottom: 1.2rem; }
 
-.bl-about-us .hero-title-copy[style*="background-image"] { border: 0; text-align: center; padding: 0 2rem; height: 100vh; display: flex; background-size: cover; background-position: center; }
+.bl-about-us .hero-title-copy[style*="background-image"] { border: 0; text-align: center; padding: 0 2rem; height: 100vh; max-height: 600px; display: flex; background-size: cover; background-position: center; }
 
 .bl-about-us .hero-title-copy[style*="background-image"] * { color: #fff; }
 
@@ -3930,9 +5322,33 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-help-container { padding: 3.2rem 0.8rem; }
 
-.bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+.bl-help-container .columns .column:last-child .hero-help { border-bottom: 0; }
+
+.bl-help .hero-help { text-align: left; padding: 0 0 2.8rem; margin-bottom: 2.8rem; border-bottom: 1px solid #e4e4e4; }
+
+.bl-help .hero-help-disclaimer { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 0.8rem; font-weight: 300; font-style: normal; margin: 1.2rem 0 0; color: #979797; }
+
+.bl-help .hero-help-sentinel { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; color: #979797; }
+
+.bl-help .hero-help-header { color: #393d5b; padding: 0; }
+
+.bl-help .hero-help-copy { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; line-height: normal; color: #979797; padding: 1.6rem 0 0; margin: 0; }
+
+.bl-help .hero-help-list { padding: 0.8rem 0 0; counter-reset: li; }
+
+.bl-help .hero-help-list-ordered::before { counter-increment: li; list-style-type: decimal; content: counter(li) "."; display: inline-block; color: #393d5b; width: 1.2rem; }
+
+.bl-help .hero-help-list li { padding: 0.8rem 0 0; }
+
+.bl-help .hero-help-list strong { color: #393d5b; }
+
+.bl-help .hero-help-list div { color: #404953; font-weight: 700; }
+
+.bl-help .hero-home[style*="background-image"].full-background { padding: 4rem 2.4rem 4.4rem !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; margin-bottom: 0; }
 
 .bl-help .hero-home[style*="background-image"].full-background .hero-header { color: #fff; }
+
+.bl-help .hero-home > .max-width-xl > .columns { width: 100%; }
 
 .bl-help .hero-image { display: none; }
 
@@ -3957,9 +5373,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .btn-selected .remove-from-cart:after { display: none; }
   .btn-selected-swap.swap-from-cart { border-radius: 4px; background-color: #393d5b; color: #fff; width: 100%; } }
 
-@media (max-width: 840px) { .hero { padding: 50px 20px; } }
+@media (max-width: 840px) { .hero { padding: 50px 0.8rem; } }
 
-@media (max-width: 600px) { .hero-header { font-size: 75px; }
+@media (max-width: 600px) { .hero-header { font-size: 50px; }
   .hero-action-buttons .btn { max-width: none; }
   .hero-action-buttons .btn:last-child { margin-top: 0.8rem; } }
 
@@ -3977,32 +5393,35 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 @media (max-width: 840px) and (min-width: 601px) { .hero { padding-top: 50px; }
   .hero-help { padding-top: 0; padding-bottom: 50px; } }
 
+@media (min-width: 375px) { .hero-home[style*="background-image"] { background-size: 264%; } }
+
+@media (min-width: 480px) { .hero-home[style*="background-image"] { transition: background-position 0.2s ease-in-out; background-size: cover; background-position: 80% bottom; } }
+
 @media (min-width: 840px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.2rem; font-weight: 400; font-style: normal; }
   .hero-home .hero-sub-header { font-size: 1.2rem; }
   .hero-home .hero-copy { font-size: 1.2rem; letter-spacing: 0.5px; }
-  .hero-home .hero-image { margin: 0 0 0 auto; } }
+  .hero-home .hero-image { margin: 0 0 0 auto; }
+  .bl-home-page .hero-row-background:nth-child(even) .columns .column:first-child { order: 1; }
+  .bl-home-page .hero-row-background:last-child .columns .column:first-child { order: 1; } }
 
-@media (max-width: 840px) { .bl-home-page .hero-row .columns:nth-child(2) .column:first-child { order: 0; } }
-
-@media (min-width: 960px) { .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 5.6rem; font-weight: 400; font-style: normal; }
+@media (min-width: 960px) { .hero-home[style*="background-image"] { height: 55vh; display: flex; align-items: center; justify-content: center; }
+  .hero-home .hero-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 6.4rem; font-weight: 400; font-style: normal; }
   .hero-home .hero-sub-header { font-size: 1.6rem; }
   .hero-home .hero-copy { font-size: 1.2rem; letter-spacing: 0.5px; }
-  .hero-home .hero-image { margin: 0 0 0 auto; } }
+  .hero-home .hero-image { margin: 0 0 0 auto; }
+  .hero-home .hero-action-buttons .btn-lg { padding: 1rem 0.8rem; } }
 
 @media (max-width: 840px) { .hero-product { padding: 44px 20px; border-bottom: 1px solid #e4e4e4; position: relative; }
   .hero-product-info-column { align-self: center; }
   .hero-product a { color: inherit; position: relative; }
   .hero-product a[disabled="disabled"] { cursor: not-allowed; pointer-events: none; opacity: 1; }
-  .hero-product a[disabled="disabled"]:hover { background-color: #9fb9c4; }
+  .hero-product a[disabled="disabled"]:hover { background-color: #87a4b0; }
   .hero-product .btn-link { text-shadow: none; margin-top: 0.8rem; }
   .hero-product-header { color: #393d5b; margin-bottom: 0.8rem; }
   .hero-product-header a { display: inline-block; }
   .hero-product-copy { color: #999999; line-height: 140%; }
-  .hero-product-price { color: #393d5b; font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; margin: 0; }
   .hero-product-bag-link { display: block; align-content: center; position: relative; margin-top: 0; }
   .hero-product-bag-link:after { content: ""; transition: background-color 0.2s ease-in-out; background-color: transparent; display: flex; position: absolute; top: 0; width: 100%; height: 100%; }
-  .hero-product-bag-link:hover:after { transition: background-color 0.2s ease-in-out; background-color: rgba(0, 0, 0, 0.8); }
-  .hero-product-bag-link:hover:before { /* We SHOULDN'T be doing this but #timeCrunch */ content: "View Details"; font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 75px; font-weight: 400; font-style: normal; letter-spacing: 2px; color: #fff; display: flex; align-self: center; align-items: center; justify-content: center; position: absolute; top: 0; z-index: 1; width: 100%; height: 100%; }
   .hero-product-bag-image { margin: 0 auto; align-self: center; display: block; }
   .hero-product-bag-image[src=""] { background-color: #e4e4e4; height: 100%; width: 100%; }
   .hero-product-bag-image[src=""]:after { content: "IMAGE NOT AVAILABLE"; text-align: center; position: absolute; top: 50%; transform: translate(0, -50%); left: 0; width: 100%; }
@@ -4044,11 +5463,11 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .category-list .menu-item { margin: 0; padding: 1.2rem 1.2rem; border-bottom: 1px dashed #e4e4e4; }
   .category-list .menu-item:last-child { border: 0; }
   .show-categories .category-list-breadcrumbs { padding: 10px 0 10px; }
-  .show-categories .widget_nav_menu { display: block; animation: .5s alternate fadeIn; border-top: 1px solid #e4e4e4; padding: 0; }
+  .show-categories .widget_nav_menu { display: block; animation: 0.5s alternate fadeIn; border-top: 1px solid #e4e4e4; padding: 0; }
   .show-categories .widget_nav_menu .sub-menu { margin-bottom: 0; }
   .show-categories .widget_nav_menu .sub-menu .menu-item { padding: 0.8rem 0.2rem; }
   .show-categories .widget_nav_menu .sub-menu .menu-item:last-child { border: 0; padding-bottom: 0; }
-  .mobile-navigation { display: block; background-color: #fff; border-radius: 4px; border: 1px solid #e4e4e4; margin-top: 20px; }
+  .mobile-navigation { display: block; background-color: #fff; border-radius: 4px; border: 1px solid #e4e4e4; margin-top: 20px; margin-bottom: 20px; }
   .mobile-navigation .category-list-parent a { color: #195675; display: block; }
   .mobile-navigation .category-list-breadcrumbs { cursor: pointer; padding-top: 0; display: block; }
   .mobile-navigation .category-list-breadcrumbs { padding: 0; margin: 0; }
@@ -4063,12 +5482,20 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 @media (max-width: 600px) { h1 { font-size: 50px; } }
 
-/* Pages */
-@media (min-width: 600px) { .single-product.single .product.product_cat-bags { flex-direction: row; flex-wrap: wrap; }
-  .single-product.single .product.product_cat-bags .woocommerce-product-gallery { width: 50%; }
-  .single-product.single .product.product_cat-bags .entry-summary.summary { width: 50%; } }
+@media (max-width: 480px) { h1 { font-size: 42px; } }
 
-@media (min-width: 840px) { .single-product.single .product_cat-bags .entry-summary.summary { width: 100%; } }
+@media (max-width: 840px) { .shop-landing-featured-products .product:nth-child(n + 3):last-child { display: none; } }
+
+@media (min-width: 600px) { .benlido-banner { font-size: 0.8rem; } }
+
+/* Pages */
+@media (min-width: 840px) { .home.page-template { padding-top: 134px; } }
+
+@media (min-width: 600px) { .single-product.single .product.product_cat-bags-internal { flex-direction: row; flex-wrap: wrap; }
+  .single-product.single .product.product_cat-bags-internal .woocommerce-product-gallery { width: 50%; }
+  .single-product.single .product.product_cat-bags-internal .entry-summary.summary { width: 50%; } }
+
+@media (min-width: 840px) { .single-product.single .product_cat-bags-internal .entry-summary.summary { width: 100%; } }
 
 @media (min-width: 600px) { .bl-about-us .hero-title-copy { padding-top: 50px; padding-bottom: 50px; }
   .bl-about-us .hero-title-copy-quote[style*="background-image"] { padding-top: 200px; padding-bottom: 200px; }
@@ -4101,7 +5528,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .product-tile-image[height] { height: auto !important; position: relative; z-index: 0; }
 
-.product .button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px 34px; background-color: #9fb9c4; color: #fff; border-radius: 4px; }
+.product .button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px 34px; background-color: #87a4b0; color: #fff; border-radius: 4px; }
 
 .product .price { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; transition: opacity 0.2s ease-in-out; margin: 0.2rem 0 0; display: block; }
 
@@ -4131,15 +5558,21 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .product .summary.entry-summary .product_meta a { text-decoration: none; color: #195675; }
 
+.product .summary.entry-summary .single_variation_wrap .woocommerce-variation-add-to-cart .quantity { display: flex; align-items: center; width: auto; }
+
+.product .summary.entry-summary .single_variation_wrap .woocommerce-variation-add-to-cart .quantity > label { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.4rem; font-weight: 300; font-style: normal; margin: 0 1.2rem 0 0; padding: 0; }
+
+.product .summary.entry-summary .single_variation_wrap .woocommerce-variation-add-to-cart .single_add_to_cart_button { max-width: 100px; }
+
 .product .input-text { border-radius: 4px; border: 1px solid rgba(3, 3, 3, 0.3); text-align: center; padding-left: 10px; }
 
-.product_title { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 70px; font-weight: 400; font-style: normal; text-transform: uppercase; text-align: left; margin: 0 0 1.6rem; width: 100%; order: 0; }
+.product_title { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 42px; font-weight: 400; font-style: normal; text-transform: uppercase; text-align: left; margin: 0 0 1.6rem; width: 100%; order: 0; }
 
 .product .woocommerce-product-details__short-description { flex-direction: row; width: 100%; order: 3; }
 
 .product .cart { width: 100%; display: flex; align-items: center; justify-content: left; order: 2; }
 
-.product .button { align-self: flex-end; }
+.product .button { align-self: flex-end; padding-left: 1rem; padding-right: 1rem; }
 
 .product .woocommerce-tabs { display: none; }
 
@@ -4147,19 +5580,27 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .product .screen-reader-text { padding-right: 0.8rem; }
 
-.product .qty { width: 100%; max-width: 80px; padding: 9px 4px; box-sizing: border-box; }
+.product .qty { width: 100%; max-width: 80px; padding: 9px 4px 9px 10px; box-sizing: border-box; }
+
+.product .woocommerce-product-gallery .flex-viewport { height: auto !important; }
+
+.product .woocommerce-product-gallery .flex-viewport > figure { height: auto !important; }
+
+.product .woocommerce-product-gallery__image { text-align: center; margin: 2.8rem auto 0 !important; height: auto !important; }
+
+.product .woocommerce-product-gallery ol.flex-control-thumbs li { width: 33%; }
 
 .product .woocommerce-product-gallery figure { margin: 0 0 0.8rem; }
 
-.product .woocommerce-product-gallery img { height: auto; width: auto; max-width: 100%; }
+.product .woocommerce-product-gallery img { height: auto; width: auto; }
 
 .product .woocommerce-product-gallery__image > a { text-align: center; display: block; margin: 0 auto; }
 
-.single-product .product.type-product { display: flex; flex-direction: row; }
+.single-product .product.type-product { display: flex; flex-direction: column; }
 
-.single-product .product.type-product .woocommerce-product-gallery { float: none; width: 40%; margin: 0; }
+.single-product .product.type-product .woocommerce-product-gallery { float: none; margin: 0 auto; }
 
-.single-product .product.type-product .entry-summary { float: none; width: 60%; margin-bottom: 100px; }
+.single-product .product.type-product .entry-summary { float: none; margin-bottom: 100px; }
 
 .single-product .product.type-product .cart { padding: 1.8rem 0 1.2rem; width: 100%; }
 
@@ -4171,7 +5612,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-account .entry-header { text-align: center; padding: 1.6rem 0.8rem; }
 
-.woocommerce-account .button { padding: 10px 34px; height: auto; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; }
+.woocommerce-account .button { padding: 10px 34px; height: auto; margin-bottom: 0.8rem; background-color: #87a4b0; border-radius: 4px; color: #fff; border: 0; box-shadow: none; }
 
 .woocommerce-account .woocommerce-MyAccount-content { padding: 1.2rem; width: 80%; }
 
@@ -4215,7 +5656,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-remember-me .form-label input.form-input:before { transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; content: ""; position: absolute; z-index: 2; top: -2px; left: -4px; background-color: #979797; border: 1px solid #e4e4e4; border-radius: 50%; overflow: hidden; width: 22px; height: 22px; }
 
-.bl-remember-me .form-label input.form-input:checked:before { background-color: #9fb9c4; transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; left: 20px; }
+.bl-remember-me .form-label input.form-input:checked:before { background-color: #87a4b0; transition: left 0.2s ease-in-out, right 0.2s ease-in-out, background-color 0.2s ease-in-out; left: 20px; }
 
 .bl-remember-me .form-label > span { padding-top: 5px; }
 
@@ -4227,7 +5668,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-account .woocommerce-MyAccount-content .woocommerce-Address-title { margin: 0.8rem 0; }
 
-.woocommerce-account .woocommerce-MyAccount-content .edit { background-color: #9fb9c4; color: #fff; display: inline-block; border: 1px solid #e4e4e4; border-radius: 4px; margin: 0.8rem 0 0; padding: 0.8rem; min-width: 100px; text-align: center; }
+.woocommerce-account .woocommerce-MyAccount-content .edit { background-color: #87a4b0; color: #fff; display: inline-block; border: 1px solid #e4e4e4; border-radius: 4px; margin: 0.8rem 0 0; padding: 0.8rem; min-width: 100px; text-align: center; }
 
 .woocommerce-account .woocommerce-MyAccount-content .edit:hover { background-color: #195675; }
 
@@ -4240,6 +5681,10 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 .woocommerce-cart .entry-title { text-align: center; padding: 2rem 0; }
 
 .woocommerce-cart .entry-content { background-color: #fff; border: 1px solid #e4e4e4; border-radius: 4px; padding: 1rem; margin-bottom: 75px; }
+
+.woocommerce-cart .entry-content .return-to-shop { background-color: #393d5b; display: inline-block; border-radius: 4px; padding: 0.8rem; text-align: center; }
+
+.woocommerce-cart .entry-content .return-to-shop a:visited { color: #fff; }
 
 .woocommerce-cart .shop_table { width: 100%; }
 
@@ -4275,17 +5720,29 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart [name="update_cart"] { background-color: #f7f7f7; display: inline-block; height: 100%; padding: 0.8rem 2rem; border: 1px solid #e4e4e4; border-radius: 4px; }
 
-.woocommerce-cart .cart .actions { padding-top: 1.6rem; }
+.woocommerce-cart .cart .actions { padding-top: 0.8rem; }
 
 .woocommerce-cart .cart .actions .coupon { display: none; padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
 
-.woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #9fb9c4; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); border: 0; }
+.woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #87a4b0; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); border: 0; }
 
 .woocommerce-cart .cart .actions .coupon .input-text { text-align: center; background-color: #f7f7f7; border-radius: 4px 0 0 4px; border: 1px solid #e4e4e4; padding: 0.8rem; margin: 0; }
 
 .woocommerce-cart .cart .actions .buttons { display: flex; margin-bottom: 1.2rem; }
 
-.woocommerce-cart .cart .actions .buttons .btn:first-child { margin-right: 20px; }
+.woocommerce-cart .cart .actions .buttons .container { margin: 0 0 0 auto; }
+
+.woocommerce-cart .cart .actions .buttons .column { margin: 0 0 0.8rem; }
+
+.woocommerce-cart .cart .actions .buttons .btn { margin-top: 0.8rem; padding: 0.8rem 1.2rem; display: block; text-align: center; margin: 0; }
+
+.woocommerce-cart .cart .actions .buttons .btn[name*="update_cart"] { opacity: 1; background-color: #f7f7f7; border: 1px solid #e4e4e4; padding: 0.8rem 1.2rem; color: #87a4b0; display: block; }
+
+.woocommerce-cart .cart .actions .buttons .btn[name*="update_cart"]:not([disabled]) { background-color: #195675; color: #fff; }
+
+.woocommerce-cart .cart .actions .buttons .btn.btn-red { border-color: transparent; background-color: transparent; text-decoration: underline; color: #e10600; }
+
+.woocommerce-cart .cart .actions .buttons > .columns { width: 100%; justify-content: right; justify-items: right; }
 
 .woocommerce-cart .cart .product-remove { position: static; max-width: 30px; padding: 0; }
 
@@ -4303,7 +5760,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart_totals .select2-selection__rendered { font-size: 18px; }
 
-.woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #9fb9c4; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
+.woocommerce-cart .cart_totals button[name="calc_shipping"] { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; font-style: normal; border-radius: 4px; background-color: #87a4b0; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); color: #fff; padding: 0.8rem 1.6rem; border: 0; }
 
 .woocommerce-cart .cart_totals .shop_table { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; background-color: #f7f7f7; border: 1px solid #e4e4e4; border-bottom: 0; border-radius: 4px; color: #999999; width: 100%; }
 
@@ -4321,7 +5778,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart_totals .shop_table .order-total .woocommerce-Price-amount { color: #195675; }
 
-.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 400; font-style: normal; background-color: #9fb9c4; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
+.woocommerce-cart .cart_totals .checkout-button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 400; font-style: normal; background-color: #87a4b0; color: #fff; margin-top: 1rem; margin-bottom: 0; width: auto; padding: 0.8rem 1.8rem; border-radius: 4px; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); }
 
 .woocommerce-cart .cart_totals .wc-proceed-to-checkout { margin-bottom: 0; }
 
@@ -4407,7 +5864,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-checkout .input-text { padding: 0.8rem; border-radius: 4px; border: 1px solid #e4e4e4; background-color: #fff; box-shadow: none !important; }
 
-.woocommerce-checkout .button { width: 100%; padding: 0.8rem 0; margin-bottom: 0.8rem; background-color: #9fb9c4; border-radius: 4px; color: #fff; border: 0; box-shadow: none; text-transform: uppercase; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); letter-spacing: 1.5px; font-size: 16px; }
+.woocommerce-checkout .button { width: 100%; padding: 0.8rem 0; margin-bottom: 0.8rem; background-color: #87a4b0; border-radius: 4px; color: #fff; border: 0; box-shadow: none; text-transform: uppercase; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); letter-spacing: 1.5px; font-size: 16px; }
 
 .woocommerce-form { padding: 0.2rem 0.8rem 1rem; border-bottom: 1px solid #e4e4e4; margin-bottom: 2rem; }
 
@@ -4419,9 +5876,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-info { border-radius: 4px; background-color: #393d5b; border: 1px solid #e4e4e4; color: #fff; margin-bottom: 0.8rem; }
 
-.woocommerce-info a { color: #9fb9c4; text-decoration: underline; display: block; }
+.woocommerce-info a { color: #87a4b0; text-decoration: underline; display: block; }
 
-.woocommerce-info a:hover { color: #9fb9c4; }
+.woocommerce-info a:hover { color: #87a4b0; }
 
 .woocommerce-order-received .entry-content { background-color: transparent; border: 0; margin: 0 0.8rem 0.8rem; padding-top: 0; }
 
@@ -4487,21 +5944,23 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce .button:hover { cursor: pointer; }
 
-.woocommerce-message, .woocommerce-error { margin: 1rem 0; background-color: #393d5b; box-sizing: border-box; }
+.woocommerce-message, .woocommerce-error, .woocommerce-info { margin: 1rem 0; background-color: #393d5b; box-sizing: border-box; }
 
-.woocommerce-active .hero-product:last-child { border: none; border-top: 1px solid #e4e4e4; }
+.product-template-default .woocommerce-active .hero-product:last-child { border: none; border-top: 1px solid #e4e4e4; }
 
-.bl-bags-page .hero-product:last-child { border-top: 0; }
+.product-template-default .bl-bags-page .hero-product:last-child { border-top: 0; }
 
-.woocommerce-product-gallery .flex-control-thumbs { display: flex; flex-wrap: wrap; justify-content: center; }
+.product-template-default div.woocommerce-product-gallery .flex-control-thumbs { display: flex; flex-wrap: wrap; justify-content: center; }
 
-.woocommerce-product-gallery .flex-control-thumbs li { float: none !important; width: auto !important; margin: 0 !important; }
+.product-template-default div.woocommerce-product-gallery .flex-control-thumbs.flex-control-nav { margin: 0 0 0.8rem; }
 
-.woocommerce-product-gallery .flex-control-thumbs li.bl-hide-thumbnail { display: none; }
+.product-template-default div.woocommerce-product-gallery .flex-control-thumbs.flex-control-nav li { float: none !important; margin: 0 !important; }
 
-.woocommerce-product-gallery .flex-control-thumbs li.bl-show-thumbnail { display: block; }
+.product-template-default div.woocommerce-product-gallery .flex-control-thumbs.flex-control-nav li.bl-hide-thumbnail { display: none; }
 
-.products.related .columns .product { max-width: 33%; display: block; margin-bottom: 1.2rem; }
+.product-template-default div.woocommerce-product-gallery .flex-control-thumbs.flex-control-nav li.bl-show-thumbnail { display: block; }
+
+.products.related .columns .product { margin-bottom: 1.2rem; }
 
 .bl-account-navigation { padding: 0; border-right: 1px solid #e4e4e4; margin: 0; width: 20%; }
 
@@ -4509,7 +5968,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .bl-account-navigation li { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 300; font-style: normal; padding: 0; border-bottom: 1px solid #e4e4e4; transition: background-color 0.2s ease-in-out; }
 
-.bl-account-navigation li:hover { cursor: pointer; transition: background-color 0.2s ease-in-out; background-color: #9fb9c4; }
+.bl-account-navigation li:hover { cursor: pointer; transition: background-color 0.2s ease-in-out; background-color: #87a4b0; }
 
 .bl-account-navigation li:hover a { color: #fff; }
 
@@ -4527,7 +5986,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-account .woocommerce-orders-table tbody td > span { text-align: center; display: inline-block; width: 100%; }
 
-.woocommerce-account .woocommerce-orders-table tbody .view { font-size: 14px; text-align: center; background: none; color: #9fb9c4; display: block; width: 100%; margin: 0; padding: 0; }
+.woocommerce-account .woocommerce-orders-table tbody .view { font-size: 14px; text-align: center; background: none; color: #87a4b0; display: block; width: 100%; margin: 0; padding: 0; }
 
 .woocommerce-account .woocommerce-orders-table tbody .view:after { display: none !important; }
 
@@ -4579,12 +6038,17 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 @media (max-width: 600px) { .product .quantity .screen-reader-text { padding-right: 0.8rem; }
   .product .qty { max-width: 80px; }
-  .single-product #content .product.type-product { flex-direction: row; }
-  .single-product #content .product.type-product .product_title { font-size: 35px; }
-  .single-product #content .product.type-product .woocommerce-product-gallery { width: 40%; }
-  .single-product #content .product.type-product .entry-summary { width: 60%; margin-bottom: 40px; }
-  .single-product #content .product.type-product .entry-summary .button { padding: 10px; }
   .single-product #content .product.type-product .quantity { width: 33%; font-size: 14px; } }
+
+@media (min-width: 600px) { .single-product .product_title { margin-top: 2.4rem; }
+  .single-product .product.type-product { flex-direction: row; }
+  .single-product .product.type-product .entry-summary { width: 50%; }
+  .single-product .product .woocommerce-product-gallery.woocommerce-product-gallery--with-images { width: 50%; } }
+
+@media (min-width: 840px) { .single-product .product.type-product .entry-summary { padding-left: 3.2rem; }
+  .product_title { font-size: 50px; } }
+
+@media (min-width: 960px) { .product_title { font-size: 70px; } }
 
 @media (max-width: 840px) { .product-tile { border: 0; border-bottom: 1px solid #e4e4e4; border-radius: 0; padding: 1rem 0.8rem; text-align: center; }
   .product-tile:hover .product-tile-hover { transform: translate3d(0, 0, 0); }
@@ -4602,10 +6066,6 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
   .woocommerce-account .woocommerce-MyAccount-content { width: 100%; } }
 
 @media (min-width: 840px) { .woocommerce-account .woocommerce-orders-table__row .amount { display: inline; } }
-
-@media (max-width: 840px) { .products.related .columns .product { max-width: 100%; display: block; } }
-
-@media (min-width: 840px) { .products.related .columns .product { max-width: 33%; display: block; } }
 
 @media (max-width: 480px) { .products.related { padding: 50px 10px 70px; }
   .products.related .columns { margin: 0; } }

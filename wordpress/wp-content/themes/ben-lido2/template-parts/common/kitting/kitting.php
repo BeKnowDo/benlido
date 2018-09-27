@@ -1,5 +1,5 @@
 <?php
-    
+
     $kit_id = null;
     $categories = array();
     $kitting_page = '';
@@ -108,4 +108,3 @@
         </form>
     </div>
 </div>
-    

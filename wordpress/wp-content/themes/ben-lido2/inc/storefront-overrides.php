@@ -105,9 +105,9 @@ add_action( 'wp', 'bl_storefront_overrides' );
 add_action( 'init', 'woocommerce_clear_cart_url' );
 function woocommerce_clear_cart_url() {
   global $woocommerce;
-	
+
 	if ( isset( $_GET['empty-cart'] ) ) {
-		$woocommerce->cart->empty_cart(); 
+		$woocommerce->cart->empty_cart();
 		// also clear kit
 		if (function_exists('bl_clear_all_kit_data')) {
 			bl_clear_all_kit_data();
@@ -494,7 +494,7 @@ function bl_storefront_main_content_wrapper_end() {
 }
 
 function bl_bag_hero() {
-	get_template_part('template-parts/common/hero/hero-product','list');
+	get_template_part('template-parts/common/hero/hero-product-compact','list');
 }
 
 function bl_header() {
@@ -572,7 +572,7 @@ function bl_product_detail_description() {
 	if (is_object($post)) {
 		echo $post->post_content;
 	}
-	
+
 
 	echo '</div>';
 	$dont_show = false;
@@ -589,13 +589,13 @@ function bl_product_detail_description() {
 			$dont_show = true;
 		}
 	}
-	
+
 	$disclaimer = '<div class="disclaimer"><strong>Disclaimer:</strong> While we work to ensure that product information is correct, on occasion manufacturers may alter their ingredient lists. Actual product packaging and materials may contain more and/or different information than that shown on our Web site. We recommend that you do not solely rely on the information presented and that you always read labels, warnings, and directions before using or consuming a product. For additional information about a product, please contact the manufacturer. Content on this site is for reference purposes and is not intended to substitute for advice given by a physician, pharmacist, or other licensed health-care professional. You should not use this information as self-diagnosis or for treating a health problem or disease. Contact your health-care provider immediately if you suspect that you have a medical problem. Information and statements regarding dietary supplements have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure, or prevent any disease or health condition. BenLido.com assumes no liability for inaccuracies or misstatements about products.</div>';
 
 	if ($dont_show == false) {
 		echo $disclaimer;
 	}
-	
+
 }
 
 

@@ -178,6 +178,7 @@ function bl_process_bags_list($items) {
       $products = array();
       $hover_details = '';
       $price = '';
+      $pre_header = '';
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
@@ -199,11 +200,12 @@ function bl_process_bags_list($items) {
           // we need to get the kit page
           $kitting_page = get_field('kitting_page','option');
           $price = get_field('price_override',$item_id);
+
         }
 
         if (!empty($price)) {
           $args = array('decimals'=>0);
-          $price =  ' <span class="hero-product-callout">about </span>' . wc_price($price,$args) . ' <span class="hero-product-callout">as shown</span>';
+          $price = wc_price($price,$args);
         }
 
         switch ($type) {
@@ -214,12 +216,13 @@ function bl_process_bags_list($items) {
             $products = array();
             //print_r ($el);
             // the price of the kit is the total of all the products
-            
+
             if (empty($price) && function_exists('bl_get_kit_price')) {
               $args = array('decimals'=>0);
               $price = wc_price(bl_get_kit_price($item_id),$args);
               $price =  ' <span class="hero-product-callout">about </span>' . $price . ' <span class="hero-product-callout">as shown</span>';
             }
+
             if (function_exists('get_field')) {
               // we need to get the kit page
               $kitting_page = get_field('kitting_page','option');
@@ -240,9 +243,11 @@ function bl_process_bags_list($items) {
               // need the bag associated with the kit
               if ($kitting_page) {
                 $href = get_permalink($kitting_page) . '?id=' . $item_id;
+                $pre_header = get_field('pre_header', $item_id);
               }
 
             }
+
             if (!empty($bag_for_this_kit) && is_object($bag_for_this_kit) && isset($bag_for_this_kit->ID)) {
                 $product_id = $bag_for_this_kit->ID;
                 $product = wc_get_product($product_id);
@@ -252,12 +257,15 @@ function bl_process_bags_list($items) {
                   $product_cat = bl_get_product_category($product_id);
                 }
             }
+
             if (!empty($product_cat) && is_object($product_cat) && isset($product_cat->term_id)) {
               $category_id = $product_cat->term_id;
             }
+
             if (!empty($product_id) && !empty($color_variation_image_overrides) && !empty($product_cat)) {
               $swatches = bl_get_bag_product_swatch_overrides($product_id,$category_id,$color_variation_image_overrides);
             }
+
             if (!empty($swatches) && !empty($bag_in_cart)) {
               $swatches_holder = array();
               foreach ($swatches as $swatch) {
@@ -361,6 +369,7 @@ function bl_process_bags_list($items) {
           $results[] = array(
             'index' => $index,
             'is_kit' => $is_kit,
+            'pre_header' => $pre_header,
             'feature'=>$feature,
             'logo'=>$logo,
             'css' => $css,

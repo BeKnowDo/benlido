@@ -1,0 +1,40 @@
+{% if products is defined %}
+
+  <div class="benlido-compact-product-list">
+    <h3 class="benlido-compact-product-instruction-header">
+      <strong>STEP ONE:</strong>
+      Choose your Bag
+    </h3>
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for item in products %}
+          {% include 'common/hero/hero-product-compact.twig' with { items: item } %}
+        {% endfor %}
+      </div>
+
+      <!-- Add Arrows -->
+      <div class="swiper-button-next">
+        <i class="far fa-chevron-circle-right"></i>
+      </div>
+
+      <div class="swiper-button-prev">
+        <i class="far fa-chevron-circle-left"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="benlido-compact-product-list benlido-compact-product-list-detail">
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for item in products %}
+          {% include 'common/hero/hero-product-compact-slide.twig' with { items: item } %}
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+{% endif %}
