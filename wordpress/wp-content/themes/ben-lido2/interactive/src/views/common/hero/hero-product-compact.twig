@@ -1,7 +1,5 @@
-<div class="benlido-compact-product-list-item swiper-slide">
-
-  {% if items is defined %}
-
+{% if items is defined %}
+  <div class="benlido-compact-product-list-item swiper-slide" data-product-id="{{items.product_id}}">
     {% set selected_variation_id = 0 %}
 
     {# Check if items are disabled and set variable value #}
@@ -61,6 +59,5 @@
       </p>
     {% endif %}
 
-  {% endif %}
-
-</div>
+  </div>
+{% endif %}

@@ -4986,6 +4986,10 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list .swiper-button-next:hover, .benlido-compact-product-list .swiper-button-prev:hover { cursor: pointer; }
 
+.benlido-compact-product-list .disabled .swiper-slide { opacity: .3; }
+
+.benlido-compact-product-list .disabled .benlido-active-slide { opacity: 1; }
+
 .benlido-compact-product-list .hero-product { text-align: center; }
 
 .benlido-compact-product-list .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 300; font-style: normal; top: auto; padding: 0.8rem 0 0; text-align: center; }

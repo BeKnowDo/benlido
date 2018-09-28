@@ -41,6 +41,15 @@
         }
       }
 
+      .disabled {
+        .swiper-slide {
+          opacity: .3;
+        }
+        .benlido-active-slide {
+          opacity: 1;
+        }
+      }
+
       .hero {
 
         &-product {

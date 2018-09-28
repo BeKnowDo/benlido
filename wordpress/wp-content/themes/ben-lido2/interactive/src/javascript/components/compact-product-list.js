@@ -1,5 +1,6 @@
 import Swiper from 'swiper'
 // import KUTE from 'kute.js'
+import 'element-closest'
 
 export class CompactProductList {
   constructor () {
@@ -42,17 +43,27 @@ export class CompactProductList {
   }
 
   findSelectedBag () {
-    const slides = this.bagDetail.querySelectorAll('.swiper-slide') || undefined
+    const selectedProduct = this.bagDetail.querySelector('.hero-product-picked') || undefined
 
-    if (slides !== undefined) {
-      let i
-      const max = slides.length
+    if (selectedProduct !== undefined) {
+      const targetDataset = selectedProduct.closest('.swiper-slide') ? selectedProduct.closest('.swiper-slide').dataset : undefined
+      const targets = this.bagOptions.querySelectorAll('.swiper-slide')
+      const targetId = targetDataset.productId
 
-      console.log(max)
+      let i = 0
+      let max = targets.length
 
-      for (i = 0; i < max; i++) {
-        console.log(slides[i])
+      for (i; i <= max; i++) {
+        const scope = targets[i].dataset.productId
+        if (scope === targetId) {
+          this.bagOptions.classList.add('disabled')
+          targets[i].classList.add(this.activeSlideClass)
+          targets[i].click()
+          return false
+        }
       }
+
+      console.log(targets)
     }
   }
 
