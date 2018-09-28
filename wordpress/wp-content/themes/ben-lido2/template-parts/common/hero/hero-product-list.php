@@ -20,7 +20,6 @@ if (empty($bags) && !empty($kit_id)) {
         $bags = bl_get_kit_bag($kit_id);
     }
 
-
     if (!empty($bags) && is_object($bags) && function_exists('bl_process_kit_bag')) {
         $bags = bl_process_kit_bag($bags,$kit_id);
     }

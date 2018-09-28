@@ -1,6 +1,7 @@
 {% if products is defined %}
 
-  <div class="benlido-compact-product-list">
+  <div class="benlido-compact-product-list benlido-compact-product-options">
+
     <h3 class="benlido-compact-product-instruction-header">
       <strong>STEP ONE:</strong>
       Choose your Bag
@@ -26,12 +27,240 @@
   </div>
 
   <div class="benlido-compact-product-list benlido-compact-product-list-detail">
-
     <div class="swiper-container">
       <div class="swiper-wrapper">
         {% for item in products %}
           {% include 'common/hero/hero-product-compact-slide.twig' with { items: item } %}
         {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="benlido-compact-product-list benlido-compact-product-styles-list">
+
+    <h3 class="benlido-compact-product-instruction-header">
+      <strong>STEP TWO:</strong>
+      Choose your Travel Style:
+    </h3>
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+
+        {% set benlidoStyleOptions = [
+          {
+            disabled: false,
+            picked: false,
+            coming_soon: null,
+            logo: '',
+            header: 'BUILD YOUR OWN',
+            copy: "We'll suggest the essentials, you do the rest.",
+            image: 'https://www.benlido.com/wp-content/uploads/2018/09/1169818.png',
+            srcset: '',
+            preHeader: 'Pre Header',
+            is_kit: true,
+            price: 45,
+            swatches: [
+              {}, {}, {}, {}, {}
+            ],
+            selected_copy: 'Item Selected',
+            button_copy: 'Add me!'
+          },
+          {
+            disabled: false,
+            picked: false,
+            coming_soon: null,
+            logo: '',
+            header: 'BUSINESS',
+            copy: 'For frequent fliers & road-warriors',
+            image: 'https://www.benlido.com/wp-content/uploads/2018/09/plane-e1538060235120.png',
+            srcset: '',
+            preHeader: 'Pre Header',
+            is_kit: true,
+            price: 45,
+            swatches: [
+              {}, {}, {}, {}, {}
+            ],
+            selected_copy: 'Item Selected',
+            button_copy: 'Add me!'
+          },
+          {
+            disabled: false,
+            picked: false,
+            coming_soon: null,
+            logo: '',
+            header: 'ADVENTURE',
+            copy: 'Hiking & adventures off the grid',
+            image: 'https://www.benlido.com/wp-content/uploads/2018/09/hiking-1.png',
+            srcset: '',
+            preHeader: 'Pre Header',
+            is_kit: true,
+            price: 45,
+            swatches: [
+              {}, {}, {}, {}, {}
+            ],
+            selected_copy: 'Item Selected',
+            button_copy: 'Add me!'
+          },
+          {
+            disabled: false,
+            picked: false,
+            coming_soon: null,
+            logo: '',
+            header: 'BEACH',
+            copy: 'Sun & Fun with all the protection',
+            image: 'https://www.benlido.com/wp-content/uploads/2018/09/sun-umbrella.png',
+            srcset: '',
+            preHeader: 'Pre Header',
+            is_kit: true,
+            price: 45,
+            swatches: [
+              {}, {}, {}, {}, {}
+            ],
+            selected_copy: 'Item Selected',
+            button_copy: 'Add me!'
+          },
+          {
+            disabled: false,
+            picked: false,
+            coming_soon: null,
+            logo: '',
+            header: 'NATURAL',
+            copy: 'Packed with products that are natural & organic',
+            image: 'https://www.benlido.com/wp-content/uploads/2018/09/ecology.png',
+            srcset: '',
+            preHeader: 'Pre Header',
+            is_kit: true,
+            price: 45,
+            swatches: [
+              {}, {}, {}, {}, {}
+            ],
+            selected_copy: 'Item Selected',
+            button_copy: 'Add me!'
+          }
+        ] %}
+
+        {% for item in benlidoStyleOptions %}
+          {% include 'common/hero/hero-styles-list.twig' with { items: item } %}
+        {% endfor %}
+      </div>
+
+      <!-- Add Arrows -->
+      <div class="swiper-button-next">
+        <i class="far fa-chevron-circle-right"></i>
+      </div>
+
+      <div class="swiper-button-prev">
+        <i class="far fa-chevron-circle-left"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="benlido-compact-product-list benlido-compact-product-styles-list-detail">
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+
+        {% set benlidoStyleOptions = [
+            {
+              disabled: false,
+              picked: false,
+              coming_soon: null,
+              logo: '',
+              header: 'My Header',
+              image: 'https://www.benlido.com/wp-content/uploads/2018/09/1169818.png',
+              srcset: '',
+              preHeader: 'Pre Header',
+              is_kit: true,
+              price: 45,
+              swatches: [
+                {}, {}, {}, {}, {}
+              ],
+              selected_copy: 'Item Selected',
+              button_copy: 'Add me!'
+            },
+            {
+              disabled: false,
+              picked: false,
+              coming_soon: null,
+              logo: '',
+              header: 'My Header',
+              image: 'https://www.benlido.com/wp-content/uploads/2018/09/plane-e1538060235120.png',
+              srcset: '',
+              preHeader: 'Pre Header',
+              is_kit: true,
+              price: 45,
+              swatches: [
+                {}, {}, {}, {}, {}
+              ],
+              selected_copy: 'Item Selected',
+              button_copy: 'Add me!'
+            },
+            {
+              disabled: false,
+              picked: false,
+              coming_soon: null,
+              logo: '',
+              header: 'My Header',
+              image: 'https://www.benlido.com/wp-content/uploads/2018/09/hiking-1.png',
+              srcset: '',
+              preHeader: 'Pre Header',
+              is_kit: true,
+              price: 45,
+              swatches: [
+                {}, {}, {}, {}, {}
+              ],
+              selected_copy: 'Item Selected',
+              button_copy: 'Add me!'
+            },
+            {
+              disabled: false,
+              picked: false,
+              coming_soon: null,
+              logo: '',
+              header: 'My Header',
+              image: 'https://www.benlido.com/wp-content/uploads/2018/09/sun-umbrella.png',
+              srcset: '',
+              preHeader: 'Pre Header',
+              is_kit: true,
+              price: 45,
+              swatches: [
+                {}, {}, {}, {}, {}
+              ],
+              selected_copy: 'Item Selected',
+              button_copy: 'Add me!'
+            },
+            {
+              disabled: false,
+              picked: false,
+              coming_soon: null,
+              logo: '',
+              header: 'My Header',
+              image: 'https://www.benlido.com/wp-content/uploads/2018/09/sun-umbrella.png',
+              srcset: '',
+              preHeader: 'Pre Header',
+              is_kit: true,
+              price: 45,
+              swatches: [
+                {}, {}, {}, {}, {}
+              ],
+              selected_copy: 'Item Selected',
+              button_copy: 'Add me!'
+            }
+          ] %}
+
+        {% for item in benlidoStyleOptions %}
+          {% include 'common/hero/hero-product-compact-slide.twig' with { items: item } %}
+        {% endfor %}
+      </div>
+
+      <!-- Add Arrows -->
+      <div class="swiper-button-next">
+        <i class="far fa-chevron-circle-right"></i>
+      </div>
+
+      <div class="swiper-button-prev">
+        <i class="far fa-chevron-circle-left"></i>
       </div>
     </div>
 

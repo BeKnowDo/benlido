@@ -36,7 +36,7 @@
 
     <div class="columns">
 
-      <div class="column col-xs-12 col-sm-7 col-md-6 col-5 col-mx-auto">
+      <div class="column col-xs-12 col-sm-12 col-md-6 col-5 col-mx-auto">
         {# Check if a URL has been provided #}
         {% if items.href %}
           <h1 class="hero-product-header">
@@ -55,45 +55,123 @@
           <div class="hero-product-copy">{{items.copy}}</div>
         {% endif %}
 
-        <div class="columns">
-          <div class="column col-12">
+        <div class="column col-12 show-sm">
+          <div class="hero-product-bag-image-container">
+
+            <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}"/>
+
+            {# Check if product has swatches #}
+            {% if items.swatches %}
+              {% set disabled = ' disabled="disabled"' %}
+              <div class="columns bl-product-swatches" data-id="{{items.index}}">
+                <div class="bl-product-swatches-header">Choose a Color</div>
+                <div class="bl-product-swatches-container">
+                  {% for swatch in items.swatches %}
+
+                    {% set selected = "" %}
+                    {% set defaultColor = "" %}
+
+                    {# Check if swatch is selected #}
+                    {% if swatch.selected == true %}
+                      {% set selected_variation_id = swatch.id %}
+                      {% set selected = " selected" %}
+                      {% set disabled = "" %}
+                    {% endif %}
+
+                    {# Check if there's a default swatch color #}
+                    {% if swatch.default_selected_color == "1" %}
+                      {% set defaultColor = "default-color" %}
+                    {% endif %}
+
+                    <div class="select-option swatch-wrapper {{selected}} {{defaultColor}}">
+                      <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_name="{{swatch.product_name}}" data-product_category_name="{{swatch.product_category_name}}" data-product_sku="{{swatch.sku}}" data-price="{{swatch.price}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
+                        {% if swatch.type == "image" %}
+                          <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
+                        {% endif %}
+                      </a>
+                    </div>
+
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+
+        <div class="columns benlido-compact-product-list-actions">
+          <div class="column col-3 col-ml-auto">
             {# Display price #}
             {% if items.price %}
               <p class="hero-product-price">
                 <span>
                   {{items.price}}
                 </span>
-                {% if items.pre_header %}
-                  <span class="promo-text">{{items.pre_header}}</span>
-                {% endif %}
               </p>
             {% endif %}
           </div>
-        </div>
-
-        <div class="columns">
-          <div class="column col-12 centered">
-            <a class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" data-product_name="" data-product_sku="" data-product_category_name="" data-price="" title="{{pickedCopy}}">
+          <div class="column col-7">
+            <span class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" data-product_name="" data-product_sku="" data-product_category_name="" data-price="" title="{{pickedCopy}}">
               {{pickedCopy}}
-            </a>
-          </div>
-        </div>
-
-        <div class="columns">
-          <div class="column col-12 centered">
-            <a class="btn btn-primary btn-lg bl-remove-bag-product {{items.removecss}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="Remove Bag">
+            </span>
+            <span class="btn btn-primary btn-lg bl-remove-bag-product {{items.removecss}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="Remove Bag">
               Remove Bag
-            </a>
+            </span>
           </div>
         </div>
-
       </div>
 
-      <div class="column col-xs-12 col-sm-5 col-md-6 col-7">
+      <div class="column col-xs-12 col-sm-12 col-md-6 col-7 hide-sm">
         <div class="hero-product-bag-image-container">
-          <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}" srcset="{{items.srcset}}"/>
+
+          <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}"/>
+
+          {# Check if product has swatches #}
+          {% if items.swatches %}
+            {% set disabled = ' disabled="disabled"' %}
+            <div class="columns bl-product-swatches">
+              <div class="bl-product-swatches-header">Choose a Color</div>
+              <div class="bl-product-swatches-container">
+                {% for swatch in items.swatches %}
+
+                  {% set selected = "" %}
+                  {% set defaultColor = "" %}
+
+                  {# Check if swatch is selected #}
+                  {% if swatch.selected == true %}
+                    {% set selected_variation_id = swatch.id %}
+                    {% set selected = " selected" %}
+                    {% set disabled = "" %}
+                  {% endif %}
+
+                  {# Check if there's a default swatch color #}
+                  {% if swatch.default_selected_color == "1" %}
+                    {% set defaultColor = "default-color" %}
+                  {% endif %}
+
+                  <div class="select-option swatch-wrapper {{selected}} {{defaultColor}}">
+                    <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_name="{{swatch.product_name}}" data-product_category_name="{{swatch.product_category_name}}" data-product_sku="{{swatch.sku}}" data-price="{{swatch.price}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
+                      {% if swatch.type == "image" %}
+                        <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
+                      {% endif %}
+                    </a>
+                  </div>
+
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
         </div>
       </div>
+
+      {# <div class="columns col-mx-auto">
+        <div class="column col-12">
+          {% if items.pre_header %}
+            <span class="promo-text">{{items.pre_header}}</span>
+          {% endif %}
+        </div>
+      </div> #}
 
     </div>
 

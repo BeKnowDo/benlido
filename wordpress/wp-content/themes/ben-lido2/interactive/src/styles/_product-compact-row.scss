@@ -18,6 +18,7 @@
       padding: $unit-10 $unit-10 0;
       margin: 0 auto;
       position: relative;
+      overflow-x: hidden;
 
       .swiper-button-next,
       .swiper-button-prev {
@@ -45,9 +46,14 @@
           text-align: center;
 
           &-header {
-            @include knockout50($unit-5, 300);
+            @include knockout($unit-8, 300);
             top: auto;
             padding: $unit-4 0 0;
+          }
+
+          &-price {
+            @include knockout($unit-8, 300);
+            text-align: center;
           }
 
           &-copy {
@@ -65,11 +71,6 @@
 
           &-separator {
             color: $grey;
-          }
-
-          &-price {
-            @include knockout50($unit-5, 300);
-            text-align: center;
           }
 
           &-bag {
@@ -105,9 +106,8 @@
       }
 
       .promo-text {
-        @include border(left, $light-grey, 1px);
         @include knockout50($unit-6, 300);
-        max-width: 200px;
+        padding: $unit-2 0 0;
         display: inline-block;
         color: $brick-red;
         text-align: left;
@@ -124,7 +124,16 @@
         box-sizing: border-box;
       }
 
+      .swiper-slide-visible {
+        @include border(right, $light-grey, 1px);
+      }
+
       .swiper-slide {
+        cursor: pointer;
+      }
+
+      .swiper-slide-next {
+        // border-right: 0;
       }
 
       .benlido-active-slide {
@@ -165,8 +174,7 @@
       }
 
       .btn-primary {
-        margin: $unit-5 auto 0;
-
+        // margin: $unit-5 auto 0;
         box-sizing: border-box;
       }
 
@@ -183,8 +191,12 @@
 
       }
 
+      &-actions{
+        align-items: center;
+      }
+
       &-detail {
-        padding: $unit-2;
+        padding: 0 $unit-2;
 
         .hero {
           &-product {
@@ -196,21 +208,20 @@
             }
 
             &-price {
-              display: flex;
-              justify-content: center;
-              align-items: center;
               @include knockout50($unit-10, 300);
+              display: flex;
+              align-items: center;
+              text-align: right;
+              // justify-content: center;
               box-sizing: border-box;
 
               > span {
-                width: 80%;
-                padding: $unit-2 $unit-5;
+                padding: 0 $unit-5 0 0;
                 box-sizing: border-box;
+                width: 100%;
 
                 &:first-child {
-                  text-align: center;
-                  padding: $unit-2 $unit-5;
-                  width: auto;
+                  // padding: $unit-2 $unit-5;
                 }
               }
             }
@@ -220,10 +231,14 @@
                 // display: inline-flex;
                 // align-self: center;
                 height: 100%;
-                padding: $unit-4 0 0;
+                padding: 0;
               }
             }
           }
+        }
+
+        .swiper-container {
+          padding: $unit-10 0;
         }
 
         .swiper-slide-active {
@@ -239,6 +254,52 @@
       }
 
     }
+
+    &-options {
+
+    }
+
+    &-styles-list {
+      @include border(bottom, $light-grey, 1px);
+      @include border(top, $light-grey, 1px);
+      opacity: .3;
+
+      &.active {
+        opacity: 1;
+      }
+
+      .swiper-slide {
+        padding: 0 $unit-6;
+      }
+
+      .hero {
+
+        &-header {
+          font-size: 22px;
+        }
+
+        &-product {
+          &-bag {
+            &-image {
+              max-width: 60%;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media (min-width: $size-xs) {
+  .benlido {
+    &-compact-product {
+      &-list {
+        &-item {
+          width: 50%;
+        }
+      }
+    }
   }
 }
 
@@ -247,7 +308,19 @@
     &-compact-product {
       &-list {
         &-item {
-          width: 33%;
+          width: 25%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $size-lg) {
+  .benlido {
+    &-compact-product {
+      &-list {
+        &-item {
+          width: 20%;
         }
       }
     }
