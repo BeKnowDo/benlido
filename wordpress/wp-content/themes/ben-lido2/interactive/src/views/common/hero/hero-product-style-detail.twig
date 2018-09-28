@@ -59,43 +59,7 @@
           <div class="hero-product-bag-image-container">
 
             {% if items.image %}
-              <img id="hero-{{items.index}}" class="hero-product-bag-image" src="{{items.image}}"/>
-            {% endif %}
-
-            {# Check if product has swatches #}
-            {% if items.swatches %}
-              {% set disabled = ' disabled="disabled"' %}
-              <div class="columns bl-product-swatches" data-id="{{items.index}}">
-                <div class="bl-product-swatches-header">Choose a Color</div>
-                <div class="bl-product-swatches-container">
-                  {% for swatch in items.swatches %}
-
-                    {% set selected = "" %}
-                    {% set defaultColor = "" %}
-
-                    {# Check if swatch is selected #}
-                    {% if swatch.selected == true %}
-                      {% set selected_variation_id = swatch.id %}
-                      {% set selected = " selected" %}
-                      {% set disabled = "" %}
-                    {% endif %}
-
-                    {# Check if there's a default swatch color #}
-                    {% if swatch.default_selected_color == "1" %}
-                      {% set defaultColor = "default-color" %}
-                    {% endif %}
-
-                    <div class="select-option swatch-wrapper {{selected}} {{defaultColor}}">
-                      <a class="swatch-anchor swatch-color " title="{{swatch.title}}" data-product_name="{{swatch.product_name}}" data-product_category_name="{{swatch.product_category_name}}" data-product_sku="{{swatch.sku}}" data-price="{{swatch.price}}" data-product_id="{{items.product_id}}" data-variation_id="{{swatch.id}}" data-category_id="{{items.category_id}}" data-index="{{items.index}}" data-hero_image="{{swatch.hero_image}}" data-hero_image_retina="{{swatch.hero_image_retina}}" href="#">
-                        {% if swatch.type == "image" %}
-                          <img class="wp-post-image swatch-photopa_color_ swatch-img" src="{{swatch.image}}"/>
-                        {% endif %}
-                      </a>
-                    </div>
-
-                  {% endfor %}
-                </div>
-              </div>
+              <img class="hero-product-bag-image" src="{{items.image}}"/>
             {% endif %}
 
           </div>

@@ -5044,7 +5044,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list-detail { transition: max-height .3s ease-in-out; max-height: 0; padding: 0 0.8rem; }
 
-.benlido-compact-product-list-detail.active { border-bottom: 1px solid #e4e4e4; transition: max-height .3s ease-in-out; max-height: 3000px; }
+.benlido-compact-product-list-detail.active { transition: max-height .3s ease-in-out; max-height: 3000px; }
 
 .benlido-compact-product-list-detail .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 4rem; font-weight: 300; font-style: normal; text-align: center; padding: 0 0.8rem 1.2rem; }
 
@@ -5064,7 +5064,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-options .benlido-active-slide { opacity: 1; }
 
-.benlido-compact-product-styles-list { max-height: 0; transition: max-height .3s ease-in-out; padding: 0 2rem; }
+.benlido-compact-product-styles-list { max-height: 0; transition: max-height .3s ease-in-out; padding: 0 2rem; border: 0; }
 
 .benlido-compact-product-styles-list.active { border-bottom: 1px solid #e4e4e4; border-top: 1px solid #e4e4e4; max-height: 1000px; padding: 2rem 2rem 0; transition: max-height .3s ease-in-out; }
 

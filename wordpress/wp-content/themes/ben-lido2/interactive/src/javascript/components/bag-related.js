@@ -26,6 +26,10 @@ export class LidoBagDetail {
         this.defaultBagDetailSwatch()
       }
 
+      if (this.bagSwatches !== undefined) {
+        this.restoreSwatch()
+      }
+
       if (this.bagListingSwatches !== undefined) {
         // this.defaultBagListingSwatch()
       }
@@ -120,12 +124,6 @@ export class LidoBagDetail {
 
           // Check if variation value is greater than ZERO...for a reason I don't understand :)
           if (variationId > 0) {
-            // if (swatchNodes.length > 0) {
-            //   swatchNodes.forEach(listElement => {
-            //     listElement.classList.remove('selected')
-            //   })
-            // }
-
             // TODO: Stay functional - break this out
             const heroSwatches = parentSlide.querySelectorAll('.bl-product-swatches-container')
 
@@ -266,6 +264,28 @@ export class LidoBagDetail {
       e.stopPropagation()
       const target = e.currentTarget
       target.click()
+    })
+  }
+
+  restoreSwatch () {
+    const targets = this.bagSwatches
+
+    targets.forEach((target, index) => {
+      const targetSwatch = target.querySelector('.select-option.selected') || undefined
+
+      if (targetSwatch !== undefined) {
+        const target = targetSwatch.querySelector('a')
+        const src = target.dataset.hero_image
+        const hero = targetSwatch.closest('.hero-product-bag-image-container').querySelector('img.hero-product-bag-image')
+
+        // console.log(target)
+        console.log(hero)
+        // console.log(src)
+
+        hero.src = src
+
+        return false
+      }
     })
   }
 }

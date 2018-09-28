@@ -230,7 +230,7 @@
         padding: 0 $unit-2;
 
         &.active {
-          @include border(bottom, $light-grey, 1px);
+          // @include border(bottom, $light-grey, 1px);
           // @include border(top, $light-grey, 1px);
           transition: max-height .3s ease-in-out;
           max-height: 3000px;
@@ -309,6 +309,7 @@
       max-height: 0;
       transition: max-height .3s ease-in-out;
       padding: 0 $unit-10;
+      border: 0;
 
       &.active {
         @include border(bottom, $light-grey, 1px);
