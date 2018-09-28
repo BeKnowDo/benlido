@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Ben Lido Bags Page
+ * Template Name: Ben Lido Kit Style Page
  */
 
 $show_hero_section = false;
@@ -35,7 +35,7 @@ get_header(); ?>
 
             <div class="bg-white">
                 <div class="max-width-xl">
-                    <?php get_template_part( 'template-parts/common/hero/hero-product','list'); ?>
+                    <?php get_template_part( 'template-parts/common/hero/hero-product-compact','list'); ?>
                 </div>
             </div>
 
