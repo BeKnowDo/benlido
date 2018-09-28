@@ -17,10 +17,11 @@ if (function_exists('get_field')) {
 
     $selectable_kits = get_field('selectable_kits');
 
-    //print_r ($selectable_bags);
+    //print_r ($selectable_kits);
     if(function_exists('bl_process_bags_list')) {
         $kits = bl_process_bags_list($selectable_kits);
     }
+    //print_r ($kits);
 
 }
 //print_r ($bags);

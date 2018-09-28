@@ -179,10 +179,17 @@ function bl_process_bags_list($items) {
       $hover_details = '';
       $price = '';
       $pre_header = '';
+      $is_new_kit = false; // this shows me if we are talking about  a new system or not
       //print_r ($el);
       // get if the item is published or coming soon
       if (!empty($el) && is_array($el)) {
         $item = $el['product'];
+        if (empty($item)) {
+          $item = $el['kit'];
+          if (!empty($item)) {
+            $is_new_kit = true;
+          }
+        }
         if (!empty($item) && is_object($item)) {
           $item_id = $item->ID;
           $title = $item->post_title;
@@ -222,6 +229,12 @@ function bl_process_bags_list($items) {
               $price = wc_price(bl_get_kit_price($item_id),$args);
               $price =  ' <span class="hero-product-callout">about </span>' . $price . ' <span class="hero-product-callout">as shown</span>';
             }
+
+            if ($is_new_kit == true) {
+              // get image
+              $image = wp_get_attachment_image_url( get_post_thumbnail_id( $item_id ), 'full' ); // NOTE: we'll need to figure out a good image size for here
+            }
+
 
             if (function_exists('get_field')) {
               // we need to get the kit page
