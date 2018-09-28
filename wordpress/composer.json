@@ -8,6 +8,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/facebook-for-woocommerce.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/upco-performance.git"
         },
         {
@@ -57,6 +61,7 @@
     ],
     "require": {
         "up-plugins/advanced-custom-fields-pro":"dev-master",
+        "up-plugins/facebook-for-woocommerce":"dev-master",
         "up-plugins/upco-performance":"dev-master",
         "up-plugins/woocommerce-brands":"dev-master",
         "up-plugins/woocommerce-google-analytics-pro":"dev-master",

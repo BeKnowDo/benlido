@@ -851,6 +851,111 @@
                         ]
                     }
                 ]
+            },
+            {
+                "key": "field_5bae3a5d091e5",
+                "label": "Selectable Kits",
+                "name": "selectable_kits",
+                "type": "repeater",
+                "instructions": "For the new system, you pick the lifestyle kits for here",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_5bae3a96091e6",
+                        "label": "Kit",
+                        "name": "kit",
+                        "type": "post_object",
+                        "instructions": "Select the Kit",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "travel_kit"
+                        ],
+                        "taxonomy": "",
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "return_format": "object",
+                        "ui": 1
+                    },
+                    {
+                        "key": "field_5bae3ad4091e7",
+                        "label": "Description Override",
+                        "name": "description_override",
+                        "type": "wysiwyg",
+                        "instructions": "If you want to override the description from the kit",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "tabs": "all",
+                        "toolbar": "full",
+                        "media_upload": 1,
+                        "delay": 0
+                    },
+                    {
+                        "key": "field_5bae3b16091e8",
+                        "label": "Image Override",
+                        "name": "image_override",
+                        "type": "image",
+                        "instructions": "If you want to use a different image for the kit than the default kit image. Select it here.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "thumbnail",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_5bae3c7a091e9",
+                        "label": "Promo Copy",
+                        "name": "promo_copy",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
             }
         ],
         "location": [
@@ -859,6 +964,13 @@
                     "param": "page_template",
                     "operator": "==",
                     "value": "page-bags.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-kit-styles.php"
                 }
             ]
         ],

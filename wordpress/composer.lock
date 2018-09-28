@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8e10b3cc150a15259e66cc64c0d00d3",
+    "content-hash": "bec1a6436dd81bf0e94bff0a0fde06f1",
     "packages": [
         {
             "name": "composer/installers",
@@ -156,6 +156,37 @@
                 "source": "https://bitbucket.org/upcomposer/advanced-custom-fields-pro/src/8599b95d97de6e7205905d2a7afe7119b48641af/?at=master"
             },
             "time": "2018-09-18T18:09:14+00:00"
+        },
+        {
+            "name": "up-plugins/facebook-for-woocommerce",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/facebook-for-woocommerce.git",
+                "reference": "d9bfcc93b6ed8d3244527608061b1d58fb02df7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/facebook-for-woocommerce/get/d9bfcc93b6ed8d3244527608061b1d58fb02df7f.zip",
+                "reference": "d9bfcc93b6ed8d3244527608061b1d58fb02df7f",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "Facebook for WooCommerce",
+            "homepage": "https://bitbucket.org/upcomposer/facebook-for-woocommerce",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/facebook-for-woocommerce/src/d9bfcc93b6ed8d3244527608061b1d58fb02df7f/?at=master"
+            },
+            "time": "2018-09-25T14:23:26+00:00"
         },
         {
             "name": "up-plugins/upco-performance",
@@ -1000,15 +1031,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "8.2.1",
+            "version": "8.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/8.2.1"
+                "reference": "tags/8.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.2.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1044,6 +1075,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "up-plugins/advanced-custom-fields-pro": 20,
+        "up-plugins/facebook-for-woocommerce": 20,
         "up-plugins/upco-performance": 20,
         "up-plugins/woocommerce-brands": 20,
         "up-plugins/woocommerce-google-analytics-pro": 20,
