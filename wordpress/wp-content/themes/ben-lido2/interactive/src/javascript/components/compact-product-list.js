@@ -1,31 +1,63 @@
 import Swiper from 'swiper'
-import KUTE from 'kute.js'
+// import KUTE from 'kute.js'
 
 export class CompactProductList {
   constructor () {
-    this.thumbnailController = document.querySelector('.benlido-compact-product-options .swiper-container') || undefined
-    this.detailSlides = document.querySelector('.benlido-compact-product-list-detail .swiper-container') || undefined
+    this.bagOptions = document.querySelector('.benlido-compact-product-options .swiper-container') || undefined
+    this.bagDetail = document.querySelector('.benlido-compact-product-list-detail .swiper-container') || undefined
+
     this.stylesOptions = document.querySelector('.benlido-compact-product-styles-list') || undefined
+    this.stylesDetails = document.querySelector('.benlido-compact-product-styles-list-detail') || undefined
 
     this.thumbnailSwiper = null
     this.detailSwiper = null
+    this.stylesOptionsSwiper = null
+    this.stylesDetailsSwiper = null
+
     this.activeSlideClass = 'benlido-active-slide'
   }
 
   init () {
-    if (this.thumbnailController !== undefined) {
+    if (this.bagOptions !== undefined) {
       this.buildBagThumbnailSwiper()
-      this.showBag()
+    }
+
+    if (this.bagDetail !== undefined) {
+      this.showBagDetail()
       this.bagDetailSlide()
+      this.findSelectedBag()
     }
 
     if (this.stylesOptions !== undefined) {
       this.buildStyleSwiper()
     }
+
+    if (this.stylesDetails !== undefined) {
+      this.buildStyleDetailSwiper()
+    }
+
+    if (this.stylesDetails !== undefined) {
+      this.showStyleDetail()
+    }
+  }
+
+  findSelectedBag () {
+    const slides = this.bagDetail.querySelectorAll('.swiper-slide') || undefined
+
+    if (slides !== undefined) {
+      let i
+      const max = slides.length
+
+      console.log(max)
+
+      for (i = 0; i < max; i++) {
+        console.log(slides[i])
+      }
+    }
   }
 
   buildBagThumbnailSwiper () {
-    const target = this.thumbnailController
+    const target = this.bagOptions
 
     if (target !== undefined) {
       const mySwiper = new Swiper(target, {
@@ -35,13 +67,13 @@ export class CompactProductList {
         loopFillGroupWithBlank: false,
         breakpoints: {
           320: {
-            slidesPerView: 2
+            slidesPerView: 1
           },
           480: {
-            slidesPerView: 2
+            slidesPerView: 1
           },
           768: {
-            slidesPerView: 3
+            slidesPerView: 2
           },
           1024: {
             slidesPerView: 4
@@ -56,22 +88,18 @@ export class CompactProductList {
         }
       })
 
-      this.thumbnailSwiper = mySwiper
-
-      mySwiper.on('click', e => {
-
-      })
-
       mySwiper.on('slideChangeTransitionEnd', () => {
         this.removeActiveSlide()
         this.addActiveSlideClass()
         this.detailSwiper.slideTo(this.thumbnailSwiper.activeIndex)
       })
+
+      this.thumbnailSwiper = mySwiper
     }
   }
 
   bagDetailSlide () {
-    const targets = this.detailSlides
+    const targets = this.bagDetail
     if (targets) {
       const mySwiper = new Swiper(targets, {
         shortSwipes: false,
@@ -106,41 +134,13 @@ export class CompactProductList {
   collapseBagDetailSlide (target) {
     if (target) {
       const scope = target
-      const height = scope.dataset.height ? scope.dataset.height : scope.offsetHeight
-
-      scope.dataset.height = height
-
-      KUTE.fromTo(scope,
-        {
-          height: height > 0 ? height : 0
-        },
-        {
-          height: height <= 0 ? height : 0
-        },
-        {
-          duration: 150,
-          complete: () => {
-            this.setStyleOption()
-          }
-        })
-        .start()
-    } else {
-      const slides = this.detailSlides || undefined
-      let i
-      let max = slides.length
-
-      console.log(slides)
-
-      if (slides !== undefined) {
-        for (i = 0; i >= max; i++) {
-          console.log(slides[i])
-        }
-      }
+      scope.classList.remove('active')
+      this.showStyleOptions()
     }
   }
 
   removeActiveSlide (slides) {
-    const targets = slides || this.thumbnailController.querySelectorAll('.swiper-slide')
+    const targets = slides || this.bagOptions.querySelectorAll('.swiper-slide')
 
     let i = 0
     let maxLength = targets.length
@@ -162,6 +162,7 @@ export class CompactProductList {
           shortSwipes: false,
           watchSlidesVisibility: true,
           loopFillGroupWithBlank: false,
+          // loop: true,
           breakpoints: {
             320: {
               slidesPerView: 2
@@ -184,13 +185,40 @@ export class CompactProductList {
             prevEl: '.swiper-button-prev'
           }
         })
+
+        this.stylesOptionsSwiper = mySwiper
+
+        mySwiper.on('slideChangeTransitionEnd', () => {
+          const slides = target.querySelectorAll('.swiper-slide')
+          this.removeActiveSlide(slides)
+          this.addActiveSlideClass(slides)
+          this.stylesDetailsSwiper.slideTo(this.stylesOptionsSwiper.activeIndex)
+        })
       }
     }
   }
 
-  setStyleOption () {
+  buildStyleDetailSwiper () {
+    if (this.stylesDetails !== undefined) {
+      const target = this.stylesDetails.querySelector('.swiper-container') || undefined
+      if (target !== undefined) {
+        const mySwiper = new Swiper(target, {
+          shortSwipes: false,
+          autoHeight: true
+        })
+        this.stylesDetailsSwiper = mySwiper
+      }
+    }
+  }
+
+  showStyleOptions () {
     if (this.stylesOptions !== undefined) {
       const target = this.stylesOptions
+      target.classList.add('active')
+    }
+
+    if (this.stylesDetails !== undefined) {
+      const target = this.stylesDetails
       target.classList.add('active')
     }
   }
@@ -199,17 +227,46 @@ export class CompactProductList {
 
   }
 
-  showBag () {
-    const targets = this.thumbnailController.querySelectorAll('.swiper-slide')
+  showBagDetail () {
+    const targets = this.bagOptions.querySelectorAll('.swiper-slide')
 
     targets.forEach((slide, index) => {
       slide.addEventListener('click', async () => {
+        // reveal bag detail swiper
+        this.bagDetail.parentElement.classList.add('active')
+
+        // slide to targeted bag detail slide
         this.detailSwiper.slideTo(index)
+
+        // DO WE NEED THIS??
         this.thumbnailSwiper.slideTo(index)
 
+        // Hide bag detail swiper
         this.collapseBagDetailSlide()
 
+        // wait until class removal is complete
         await this.removeActiveSlide(targets)
+
+        // add active class to slide
+        this.addActiveSlideClass(slide)
+      })
+    })
+  }
+
+  showStyleDetail () {
+    const targets = this.stylesOptions.querySelectorAll('.swiper-slide') || undefined
+    targets.forEach((slide, index) => {
+      slide.addEventListener('click', async () => {
+        this.bagDetail.parentElement.classList.remove('active')
+        this.stylesDetailsSwiper.slideTo(index)
+
+        // DO WE NEED THIS??
+        this.stylesOptionsSwiper.slideTo(index)
+
+        // wait until class removal is complete
+        await this.removeActiveSlide(targets)
+
+        // add active class to slide
         this.addActiveSlideClass(slide)
       })
     })

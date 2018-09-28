@@ -4475,7 +4475,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .swatch-control .swatch-wrapper img { width: 100% !important; }
 
-.benlido-header { border-bottom: 1px solid #e4e4e4; position: fixed; z-index: 2; top: 0; left: 0; width: 100%; }
+.benlido-header { border-bottom: 1px solid #e4e4e4; position: fixed; z-index: 4; top: 0; left: 0; width: 100%; }
 
 .navbar { padding: 10px; z-index: 100; }
 
@@ -4976,9 +4976,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-instruction-header > strong { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 300; font-style: normal; letter-spacing: normal; }
 
-.benlido-compact-product-list { padding: 2rem 2rem 0; margin: 0 auto; position: relative; overflow-x: hidden; }
+.benlido-compact-product-list { padding: 2rem 2rem 0; margin: 0 auto; position: relative; overflow: hidden; }
 
-.benlido-compact-product-list .swiper-button-next, .benlido-compact-product-list .swiper-button-prev { background: none !important; z-index: 100; display: flex; align-items: center; justify-content: center; }
+.benlido-compact-product-list .swiper-button-next, .benlido-compact-product-list .swiper-button-prev { background: none !important; z-index: 100; display: flex; align-items: center; justify-content: center; z-index: 3; }
 
 .benlido-compact-product-list .swiper-button-next.swiper-button-disabled, .benlido-compact-product-list .swiper-button-prev.swiper-button-disabled { pointer-events: auto; }
 
@@ -4988,11 +4988,13 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list .hero-product { text-align: center; }
 
-.benlido-compact-product-list .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 300; font-style: normal; top: auto; padding: 0.8rem 0 0; }
+.benlido-compact-product-list .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 300; font-style: normal; top: auto; padding: 0.8rem 0 0; text-align: center; }
+
+.benlido-compact-product-list .hero-product-header a { color: #393d5b; }
 
 .benlido-compact-product-list .hero-product-price { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 300; font-style: normal; text-align: center; }
 
-.benlido-compact-product-list .hero-product-copy { text-align: center; }
+.benlido-compact-product-list .hero-product-copy { text-align: center; margin-bottom: 2rem; }
 
 .benlido-compact-product-list .hero-product-swatch-count { color: #979797; text-align: center; padding: 0 0 0.2rem; margin: 0; }
 
@@ -5008,9 +5010,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list .promo-text { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; padding: 0.8rem 0 0; display: inline-block; color: #c08059; text-align: left; }
 
-.benlido-compact-product-list .swiper-container { position: static; padding: 0 0 1rem; }
+.benlido-compact-product-list .swiper-container { position: static; padding: 0 0 2.8rem; }
 
-.benlido-compact-product-list .swiper-wrapper { display: flex; position: static; box-sizing: border-box; }
+.benlido-compact-product-list .swiper-wrapper { display: flex; position: static; box-sizing: border-box; align-items: center; }
 
 .benlido-compact-product-list .swiper-slide-visible { border-right: 1px solid #e4e4e4; }
 
@@ -5018,23 +5020,29 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list .benlido-active-slide { position: relative; }
 
-.benlido-compact-product-list .benlido-active-slide::after { content: '\f0d7'; font-size: 22px; display: block; width: 20px; height: 20px; margin: 0 auto; font-family: 'Font Awesome 5 Pro'; font-weight: 900; position: absolute; bottom: -6px; left: 0; right: 0; z-index: 100; }
-
-.benlido-compact-product-list .benlido-active-slide::before { border-bottom: 1px solid #e4e4e4; content: ' '; display: block; height: 2px; width: 70%; margin: 0 auto; position: absolute; left: 0; right: 0; bottom: 0; }
+.benlido-compact-product-list .benlido-active-slide::after { border-top: 1px solid #e4e4e4; content: ' '; display: block; width: 100%; height: 1px; margin: 0 auto; padding: 0; text-align: center; font-family: 'Font Awesome 5 Pro'; font-weight: 900; background-color: #fff; position: absolute; bottom: -34px; left: 0; right: 0; z-index: 100; }
 
 .benlido-compact-product-list .centered { text-align: center; }
 
 .benlido-compact-product-list .btn-primary { box-sizing: border-box; }
 
-.benlido-compact-product-list-item { text-align: center; padding-right: 10px; width: 50%; }
+.benlido-compact-product-list-item { text-align: center; padding-right: 10px; width: 100%; }
 
 .benlido-compact-product-list-item:last-child { border: none; }
 
+.benlido-compact-product-list-no-item { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; }
+
+.benlido-compact-product-list-no-item img { padding: 0 0.8rem; }
+
+.benlido-compact-product-list-no-item .fa-ban { color: #e10600; opacity: .2; }
+
 .benlido-compact-product-list-actions { align-items: center; }
 
-.benlido-compact-product-list-detail { padding: 0 0.8rem; }
+.benlido-compact-product-list-detail { transition: max-height .3s ease-in-out; max-height: 0; padding: 0 0.8rem; }
 
-.benlido-compact-product-list-detail .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 2.4rem; font-weight: 300; font-style: normal; text-align: center; padding: 0 0.8rem 1.2rem; }
+.benlido-compact-product-list-detail.active { border-bottom: 1px solid #e4e4e4; transition: max-height .3s ease-in-out; max-height: 3000px; }
+
+.benlido-compact-product-list-detail .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 4rem; font-weight: 300; font-style: normal; text-align: center; padding: 0 0.8rem 1.2rem; }
 
 .benlido-compact-product-list-detail .hero-product-price { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 2rem; font-weight: 300; font-style: normal; display: flex; align-items: center; text-align: right; box-sizing: border-box; }
 
@@ -5048,17 +5056,33 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list-detail .swiper-slide-active::after { display: none; }
 
-.benlido-compact-product-styles-list { border-bottom: 1px solid #e4e4e4; border-top: 1px solid #e4e4e4; opacity: .3; }
+.benlido-compact-product-options { z-index: 2; }
 
-.benlido-compact-product-styles-list.active { opacity: 1; }
+.benlido-compact-product-options .benlido-active-slide { opacity: 1; }
+
+.benlido-compact-product-styles-list { max-height: 0; transition: max-height .3s ease-in-out; padding: 0 2rem; }
+
+.benlido-compact-product-styles-list.active { border-bottom: 1px solid #e4e4e4; border-top: 1px solid #e4e4e4; max-height: 1000px; padding: 2rem 2rem 0; transition: max-height .3s ease-in-out; }
 
 .benlido-compact-product-styles-list .swiper-slide { padding: 0 1.2rem; }
 
-.benlido-compact-product-styles-list .hero-header { font-size: 22px; }
-
 .benlido-compact-product-styles-list .hero-product-bag-image { max-width: 60%; }
 
-@media (min-width: 480px) { .benlido-compact-product-list-item { width: 50%; } }
+.benlido-compact-product-styles-list-detail { max-height: 0; transition: max-height .3s ease-in-out; padding: 0 2rem; overflow: hidden; }
+
+.benlido-compact-product-styles-list-detail.active { max-height: 1000px; padding: 2rem 2rem 0; transition: max-height .3s ease-in-out; }
+
+.benlido-compact-product-styles-list-detail .hero-product-header { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 4rem; font-weight: 300; font-style: normal; text-align: center; padding: 0 0.8rem 1.2rem; }
+
+.benlido-compact-product-styles-list-detail .hero-product-price { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 1.2rem; font-weight: 300; font-style: normal; display: flex; align-items: center; justify-content: center; text-align: right; box-sizing: border-box; color: #979797; padding: 0.8rem 0; }
+
+.benlido-compact-product-styles-list-detail .hero-product-price > span { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 2.4rem; font-weight: 300; font-style: normal; color: #393d5b; padding: 0 0.8rem; box-sizing: border-box; }
+
+.benlido-compact-product-styles-list-detail .hero-product-price .promo-text { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 300; font-style: normal; line-height: 100%; padding: 0.8rem 0; display: inline-block; color: #c08059; text-align: left; max-width: 150px; }
+
+.benlido-compact-product-styles-list-detail .hero-product-bag-image-container { height: 100%; padding: 0; }
+
+@media (min-width: 480px) { .benlido-compact-product-list-item { width: 100%; } }
 
 @media (min-width: 600px) { .benlido-compact-product-list-item { width: 25%; } }
 

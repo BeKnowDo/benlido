@@ -18,7 +18,7 @@
       padding: $unit-10 $unit-10 0;
       margin: 0 auto;
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;
 
       .swiper-button-next,
       .swiper-button-prev {
@@ -27,6 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 3;
 
         &.swiper-button-disabled {
           pointer-events: auto;
@@ -49,6 +50,11 @@
             @include knockout($unit-8, 300);
             top: auto;
             padding: $unit-4 0 0;
+            text-align: center;
+
+            a {
+              color: $brown-grey;
+            }
           }
 
           &-price {
@@ -58,6 +64,7 @@
 
           &-copy {
             text-align: center;
+            margin-bottom: $unit-10;
           }
 
           &-swatch{
@@ -88,6 +95,7 @@
                 background-color: $light-grey;
                 height: 100%;
                 width: 100%;
+
                 &:after {
                   content: "IMAGE NOT AVAILABLE";
                   text-align: center;
@@ -115,13 +123,14 @@
 
       .swiper-container {
         position: static;
-        padding: 0 0 $unit-5;
+        padding: 0 0 $unit-14;
       }
 
       .swiper-wrapper {
         display: flex;
         position: static;
         box-sizing: border-box;
+        align-items: center;
       }
 
       .swiper-slide-visible {
@@ -140,33 +149,27 @@
         position: relative;
 
         &::after {
-          content: '\f0d7';
-          font-size: 22px;
+          @include border(top, $light-grey, 1px);
+          content: ' ';
           display: block;
-          width: 20px;
-          height: 20px;
+          // width: 20px;
+          width: 100%;
+
+          height: 1px;
           margin: 0 auto;
+          padding: 0;
+          text-align: center;
           font-family: 'Font Awesome 5 Pro';
           font-weight: 900;
-          // background-color: $black;
+          background-color: $white;
           position: absolute;
-          bottom: -6px;
+          bottom: -34px;
+
           left: 0;
           right: 0;
           z-index: 100;
         }
-        &::before {
-          @include border(bottom, $light-grey, 1px);
-          content: ' ';
-          display: block;
-          height: 2px;
-          width: 70%;
-          margin: 0 auto;
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-        }
+
       }
 
       .centered {
@@ -182,7 +185,7 @@
         // @include border(right, $light-grey, 1px);
         text-align: center;
         padding-right: 10px;
-        width: 50%;
+        width: 100%;
 
         &:last-child {
           border: none;
@@ -191,18 +194,44 @@
 
       }
 
+      &-no-item {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // height: 100% !important;
+
+        img {
+          padding: 0 $unit-4;
+        }
+        .fa-ban {
+          color: $red;
+          opacity: .2;
+        }
+      }
+
       &-actions{
         align-items: center;
       }
 
       &-detail {
+        // padding: 0 $unit-2;
+        transition: max-height .3s ease-in-out;
+        max-height: 0;
         padding: 0 $unit-2;
+
+        &.active {
+          @include border(bottom, $light-grey, 1px);
+          // @include border(top, $light-grey, 1px);
+          transition: max-height .3s ease-in-out;
+          max-height: 3000px;
+        }
 
         .hero {
           &-product {
 
             &-header {
-              @include knockout($unit-12, 300);
+              @include knockout($unit-18, 300);
               text-align: center;
               padding: 0 $unit-2 $unit-6;
             }
@@ -212,17 +241,12 @@
               display: flex;
               align-items: center;
               text-align: right;
-              // justify-content: center;
               box-sizing: border-box;
 
               > span {
                 padding: 0 $unit-5 0 0;
                 box-sizing: border-box;
                 width: 100%;
-
-                &:first-child {
-                  // padding: $unit-2 $unit-5;
-                }
               }
             }
 
@@ -256,16 +280,33 @@
     }
 
     &-options {
+      z-index: 2;
 
+
+      .swiper-slide {
+        // opacity: .3;
+      }
+
+      .benlido-active-slide {
+        opacity: 1;
+      }
+
+      .swiper-container {
+        // padding-bottom: 0;
+      }
     }
 
     &-styles-list {
-      @include border(bottom, $light-grey, 1px);
-      @include border(top, $light-grey, 1px);
-      opacity: .3;
+      max-height: 0;
+      transition: max-height .3s ease-in-out;
+      padding: 0 $unit-10;
 
       &.active {
-        opacity: 1;
+        @include border(bottom, $light-grey, 1px);
+        @include border(top, $light-grey, 1px);
+        max-height: 1000px;
+        padding: $unit-10 $unit-10 0;
+        transition: max-height .3s ease-in-out;
       }
 
       .swiper-slide {
@@ -273,11 +314,6 @@
       }
 
       .hero {
-
-        &-header {
-          font-size: 22px;
-        }
-
         &-product {
           &-bag {
             &-image {
@@ -287,7 +323,71 @@
         }
       }
 
+      &-detail {
+        max-height: 0;
+        transition: max-height .3s ease-in-out;
+        padding: 0 $unit-10;
+        overflow: hidden;
+
+        &.active {
+          max-height: 1000px;
+          padding: $unit-10 $unit-10 0;
+          transition: max-height .3s ease-in-out;
+        }
+
+        .hero {
+          &-product {
+
+            &-header {
+              @include knockout($unit-18, 300);
+              text-align: center;
+              padding: 0 $unit-2 $unit-6;
+            }
+
+            &-price {
+              @include knockout32($unit-6, 300);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: right;
+              box-sizing: border-box;
+              color: $grey;
+              padding: $unit-2 0;
+
+              > span {
+                @include knockout50($unit-12, 300);
+                color: $brown-grey;
+                padding: 0 $unit-2;
+                box-sizing: border-box;
+              }
+
+              .promo-text {
+                @include knockout32($unit-5, 300);
+                line-height: 100%;
+                padding: $unit-2 0;
+                display: inline-block;
+                color: $brick-red;
+                text-align: left;
+                max-width: 150px;
+              }
+
+            }
+
+            &-bag-image{
+              &-container {
+                // display: inline-flex;
+                // align-self: center;
+                height: 100%;
+                padding: 0;
+              }
+            }
+          }
+        }
+
+      }
+
     }
+
   }
 }
 
@@ -296,7 +396,7 @@
     &-compact-product {
       &-list {
         &-item {
-          width: 50%;
+          width: 100%;
         }
       }
     }

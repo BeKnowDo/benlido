@@ -40,7 +40,7 @@ get_header(); ?>
             </div>
 
             <?php
-                get_template_part( 'template-parts/common/hero/hero-no','bag');
+                // get_template_part( 'template-parts/common/hero/hero-no','bag');
             ?>
 
             <?php

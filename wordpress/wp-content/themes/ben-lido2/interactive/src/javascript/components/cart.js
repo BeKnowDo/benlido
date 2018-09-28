@@ -282,7 +282,7 @@ export class Cart {
       .catch(error => console.error('Error:', error))
       .then(response => {
         if (response.error) {} else {
-          console.log({ response, returnURL })
+          // console.log({ response, returnURL })
 
           // if (returnURL.length > 0 && returnURL !== 'in-cart') {
           //   document.location.href = returnURL

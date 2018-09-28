@@ -168,6 +168,7 @@ function bl_process_bags_list($items) {
       // echo '<br/><br/><pre>' . var_export($el, true) . '</pre>';
 
       $image = '';
+      $original_image ='';
       $is_kit = false;
       $prod = null;
       $coming_soon = '';
@@ -233,6 +234,7 @@ function bl_process_bags_list($items) {
             if ($is_new_kit == true) {
               // get image
               $image = wp_get_attachment_image_url( get_post_thumbnail_id( $item_id ), 'full' ); // NOTE: we'll need to figure out a good image size for here
+              $original_image = $image;
             }
 
 
@@ -364,6 +366,7 @@ function bl_process_bags_list($items) {
         }
         // get image
         $image = wp_get_attachment_image_url( get_post_thumbnail_id( $item_id ), 'full' ); // NOTE: we'll need to figure out a good image size for here
+        $original_image = $image;
         if (empty($image)) {
 
         }
@@ -398,6 +401,7 @@ function bl_process_bags_list($items) {
             'hover_details' => $hover_details,
             'products' => $products,
             'picked'=>$picked,
+            'original_image' => $original_image,
             'image'=>$image,
             'image_retina'=>$image_retina,
             'bagURL'=>$url,
@@ -430,16 +434,21 @@ function bl_get_bag_product_swatch_overrides($product_id,$category_id,$overrides
       $image_override_retina = $override['image_override_retina'];
       $default_selected_color = $override['default_selected_color'];
       $type = 'image';
+
       if (!empty($variation) && is_object($variation)) {
         $id = $variation->ID;
         $title = $variation->post_title;
       }
+
       if (!empty($image_override) && is_array($image_override)) {
+        $original_image = $image;
         $image = $image_override['url'];
       }
+
       if (!empty($image_override_retina) && is_array($image_override_retina)) {
         $image_retina = $image_override_retina['url'];
       }
+
       $holder[] = array('id'=>$id,'category_id'=>$category_id,'title'=>$title,'type'=>$type,'hero_image'=>$image,'hero_image_retina'=>$image_retina,'default_selected_color'=>$default_selected_color);
     } // end foreach
   }

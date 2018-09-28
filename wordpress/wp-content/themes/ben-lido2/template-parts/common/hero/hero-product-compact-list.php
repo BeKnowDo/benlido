@@ -60,7 +60,7 @@ if (empty($bags) && empty(bl_get_product_swap()) && bl_is_kit_add() == false) {
 // override message
 // if we are in the
 
-// echo '<br/><br/><pre>' . var_export($bags, true) . '</pre>';
+// echo '<br/><br/><pre>' . var_export($kits, true) . '</pre>';
 
 $data = array('products' => $bags, 'kits'=>$kits);
 
