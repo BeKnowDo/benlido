@@ -59,11 +59,13 @@ export class CompactProductList {
           this.bagOptions.classList.add('disabled')
           targets[i].classList.add(this.activeSlideClass)
           targets[i].click()
+
+          this.stylesOptions.classList.add('active')
+          this.stylesDetails.classList.add('active')
+
           return false
         }
       }
-
-      console.log(targets)
     }
   }
 
