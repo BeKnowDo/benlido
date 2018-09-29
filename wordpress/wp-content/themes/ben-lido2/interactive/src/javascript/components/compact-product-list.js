@@ -1,5 +1,5 @@
 import Swiper from 'swiper'
-// import KUTE from 'kute.js'
+import KUTE from 'kute.js'
 import 'element-closest'
 
 export class CompactProductList {
@@ -81,7 +81,7 @@ export class CompactProductList {
             slidesPerView: 1
           },
           480: {
-            slidesPerView: 1
+            slidesPerView: 2
           },
           768: {
             slidesPerView: 2
@@ -176,7 +176,7 @@ export class CompactProductList {
           // loop: true,
           breakpoints: {
             320: {
-              slidesPerView: 2
+              slidesPerView: 1
             },
             480: {
               slidesPerView: 2
@@ -231,6 +231,14 @@ export class CompactProductList {
     if (this.stylesDetails !== undefined) {
       const target = this.stylesDetails
       target.classList.add('active')
+
+      const coordinates = this.stylesOptions.getBoundingClientRect()
+
+      KUTE.to(
+        'window',
+        { scroll: coordinates.top },
+        { easing: 'easingCubicOut', duration: 500 }
+      ).start()
     }
   }
 
@@ -252,9 +260,6 @@ export class CompactProductList {
         // DO WE NEED THIS??
         this.thumbnailSwiper.slideTo(index)
 
-        // Hide bag detail swiper
-        this.collapseBagDetailSlide()
-
         // wait until class removal is complete
         await this.removeActiveSlide(targets)
 
@@ -268,7 +273,8 @@ export class CompactProductList {
     const targets = this.stylesOptions.querySelectorAll('.swiper-slide') || undefined
     targets.forEach((slide, index) => {
       slide.addEventListener('click', async () => {
-        this.bagDetail.parentElement.classList.remove('active')
+        // Collapse bag detail
+        // this.bagDetail.parentElement.classList.remove('active')
         this.stylesDetailsSwiper.slideTo(index)
 
         // DO WE NEED THIS??

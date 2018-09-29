@@ -209,7 +209,7 @@ export class Cart {
     if (this.addBagProduct.length > 0) {
       this.addBagProduct.forEach(el => {
         const scope = el
-        const targetSlide = el.closest('.benlido-compact-product-list')
+        // const targetSlide = el.closest('.benlido-compact-product-list')
 
         // first, see if we have variations
         if (scope.classList.contains('has-variations')) {
@@ -222,8 +222,8 @@ export class Cart {
               return false
             }
 
-            const collapse = new CompactProductList()
-            collapse.collapseBagDetailSlide(targetSlide)
+            const showStyleOptions = new CompactProductList()
+            showStyleOptions.showStyleOptions()
 
             if (scope.dataset) {
               const variationId = scope.dataset.variation_id || ''

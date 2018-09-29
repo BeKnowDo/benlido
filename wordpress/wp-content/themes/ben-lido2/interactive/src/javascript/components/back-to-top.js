@@ -1,22 +1,22 @@
-import KUTE from "kute.js";
+import KUTE from 'kute.js'
 
 export class ScrollToTop {
-  constructor() {
-    this.clickTarget = document.getElementById("back-to-top") || undefined;
+  constructor () {
+    this.clickTarget = document.getElementById('back-to-top') || undefined
   }
-  init() {
+  init () {
     if (this.clickTarget) {
-      this.enable();
+      this.enable()
     }
   }
 
-  enable() {
+  enable () {
     this.clickTarget.onclick = () => {
       KUTE.to(
-        "window",
+        'window',
         { scroll: 0 },
-        { easing: "easingCubicOut", duration: 500 }
-      ).start();
-    };
+        { easing: 'easingCubicOut', duration: 500 }
+      ).start()
+    }
   }
 }

@@ -20,18 +20,18 @@ export class LidoBagDetail {
       this.setSwatchColor()
     }
 
+    if (this.bagSwatches !== undefined) {
+      this.restoreSwatch()
+    }
+
     setTimeout(() => {
       // For Bag Detail Pages
       if (this.swatches) {
         this.defaultBagDetailSwatch()
       }
 
-      if (this.bagSwatches !== undefined) {
-        this.restoreSwatch()
-      }
-
       if (this.bagListingSwatches !== undefined) {
-        // this.defaultBagListingSwatch()
+        this.defaultBagListingSwatch()
       }
     }, 500)
 
@@ -276,13 +276,11 @@ export class LidoBagDetail {
       if (targetSwatch !== undefined) {
         const target = targetSwatch.querySelector('a')
         const src = target.dataset.hero_image
-        const hero = targetSwatch.closest('.hero-product-bag-image-container').querySelector('img.hero-product-bag-image')
+        const hero = targetSwatch.closest('.hero-product-bag-image-container').querySelector('img.hero-product-bag-image') || undefined
 
-        // console.log(target)
-        console.log(hero)
-        // console.log(src)
-
-        hero.src = src
+        if (hero !== undefined) {
+          hero.src = src
+        }
 
         return false
       }
