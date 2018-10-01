@@ -3,7 +3,7 @@
 
     &-instruction-header {
       @include knockout32(15px, 300);
-      padding: 0 0 $unit-8;
+      padding: $unit-8 0;
       letter-spacing: -.5px;
       text-align: center;
 
@@ -15,7 +15,7 @@
     }
 
     &-list {
-      padding: $unit-10 $unit-10 0;
+      padding: 0 $unit-10 0;
       margin: 0 auto;
       position: relative;
       overflow: hidden;
@@ -39,6 +39,13 @@
         &:hover {
           cursor: pointer;
         }
+      }
+      .swiper-button-next {
+        right: 0;
+      }
+
+      .swiper-button-prev {
+        left: 0;
       }
 
       .disabled {
@@ -80,7 +87,7 @@
             &-count {
               color: $grey;
               text-align: center;
-              padding: 0 0 $unit-1;
+              padding: 0 0 $unit-8;
               margin: 0;
             }
           }
@@ -94,6 +101,8 @@
 
               &-container {
                 position: relative;
+                padding: $unit-2 $unit-6;
+                margin: $unit-5 auto 0;
 
                 img {
                   margin: 0 auto;
@@ -131,49 +140,19 @@
       }
 
       .swiper-container {
-        position: static;
-        padding: 0 0 $unit-14;
+        // position: static;
+        padding: 0;
       }
 
       .swiper-wrapper {
         display: flex;
-        position: static;
         box-sizing: border-box;
         align-items: center;
-      }
-
-      .swiper-slide-visible {
-        // @include border(right, $light-grey, 1px);
+        // position: static;
       }
 
       .swiper-slide {
         cursor: pointer;
-      }
-
-      .swiper-slide-next {
-        // border-right: 0;
-      }
-
-      .benlido-active-slide {
-        position: relative;
-
-        &::after {
-          content: '\f0d7';
-          font-size: 22px;
-          display: block;
-          width: 20px;
-          height: 20px;
-          margin: 0 auto;
-          font-family: 'Font Awesome 5 Pro';
-          font-weight: 900;
-          // background-color: $black;
-          position: absolute;
-          bottom: -32px;
-          left: 0;
-          right: 0;
-          z-index: 100;
-        }
-
       }
 
       .centered {
@@ -188,7 +167,7 @@
       &-item {
         // @include border(right, $light-grey, 1px);
         text-align: center;
-        padding-right: 10px;
+        padding: 0 $unit-2;
         width: 100%;
 
         &:last-child {
@@ -203,7 +182,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        // height: 100% !important;
 
         img {
           padding: 0 $unit-4;
@@ -219,16 +197,17 @@
       }
 
       &-detail {
-        // padding: 0 $unit-2;
         transition: max-height .3s ease-in-out;
         max-height: 0;
-        padding: 0 $unit-2;
+        padding: 0 $unit-10;
 
         &.active {
-          // @include border(bottom, $light-grey, 1px);
-          // @include border(top, $light-grey, 1px);
           transition: max-height .3s ease-in-out;
           max-height: 3000px;
+
+          .columns {
+            padding: $unit-10;
+          }
         }
 
         .hero {
@@ -256,9 +235,7 @@
 
             &-bag-image{
               &-container {
-                // display: inline-flex;
-                // align-self: center;
-                height: 100%;
+                // height: 100%;
                 padding: 0;
               }
             }
@@ -266,7 +243,13 @@
         }
 
         .swiper-container {
-          padding: $unit-10 0;
+          // @include border(all, $light-grey, 1px);
+          // border-top: none;
+          padding: 0 0 $unit-10;
+        }
+
+        .columns {
+          padding: 0 $unit-10;
         }
 
         .swiper-slide-active {
@@ -287,16 +270,38 @@
       z-index: 2;
 
       .swiper-slide {
-        // opacity: .3;
-      }
-
-      .benlido-active-slide {
-        opacity: 1;
+        // height: 100%;
       }
 
       .swiper-container {
-        // padding-bottom: 0;
+        background-color: $silver-white;
       }
+
+      .swiper-wrapper {
+        @include border(all, $light-grey, 1px);
+        border-radius: 4px 4px 0 0;
+      }
+
+      .benlido-active-slide {
+        // @include border(right, $light-grey, 1px);
+        // @include border(left, $light-grey, 1px);
+
+        // top: 2px;
+        // height: calc(100% + .2rem);
+
+        // &::after {
+        //   // content: '';
+        //   display: block;
+        //   width: 100%;
+        //   height: 2px;
+        //   background-color: $white;
+        //   position: absolute;
+        //   bottom: 0;
+        //   left: 0;
+        // }
+
+      }
+
     }
 
     &-styles-list {
@@ -304,17 +309,34 @@
       transition: max-height .3s ease-in-out;
       padding: 0 $unit-10;
       border: 0;
+      margin-bottom: $unit-16;
 
       &.active {
-        @include border(bottom, $light-grey, 1px);
-        @include border(top, $light-grey, 1px);
         max-height: 1000px;
         padding: $unit-10 $unit-10 0;
+        margin-bottom: 0;
+
         transition: max-height .3s ease-in-out;
       }
 
       .swiper-slide {
         padding: 0 $unit-2;
+      }
+
+      .swiper-container {
+        background-color: $silver-white;
+      }
+
+      .swiper-wrapper {
+        @include border(all, $light-grey, 1px);
+        border-radius: 4px 4px 0 0;
+      }
+
+      .benlido-active-slide {
+        @include border(top, $light-grey, 1px);
+        @include border(left, $light-grey, 1px);
+        @include border(right, $light-grey, 1px);
+        background-color: $white;
       }
 
       .hero {
@@ -335,8 +357,18 @@
 
         &.active {
           max-height: 1000px;
-          padding: $unit-10 $unit-10 0;
+          padding: 0 $unit-10 0;
+          margin-bottom: $unit-16;
           transition: max-height .3s ease-in-out;
+        }
+
+        .columns {
+          padding-top: $unit-16;
+        }
+
+        .swiper-container {
+          @include border(all, $light-grey, 1px);
+          border-top: 0;
         }
 
         .hero {
@@ -398,6 +430,17 @@
 @media (min-width: $size-xs) {
   .benlido {
     &-compact-product {
+
+      &-options {
+        .benlido-active-slide {
+          // @include border(all, $light-grey, 1px);
+          border-bottom: 0;
+          background-color: $white;
+          overflow: hidden;
+          opacity: 1;
+        }
+      }
+
       &-list {
         &-item {
           width: 100%;

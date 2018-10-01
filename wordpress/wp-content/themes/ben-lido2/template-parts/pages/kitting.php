@@ -64,7 +64,7 @@ if (function_exists('bl_get_current_kit_items')) {
 <div class="bg-gray">
     <div class="max-width-xl kitting-page">
         <?php
-            get_template_part( 'template-parts/common/hero/hero-product-compact','list');
+            get_template_part( 'template-parts/common/hero/hero-product','list');
         ?>
     </div>
 </div>

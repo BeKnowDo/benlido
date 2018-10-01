@@ -20,7 +20,7 @@ export class CompactProductList {
 
   init () {
     if (this.bagOptions !== undefined) {
-      this.buildBagThumbnailSwiper()
+      this.bagOptionsSwiper()
     }
 
     if (this.bagDetail !== undefined) {
@@ -69,21 +69,18 @@ export class CompactProductList {
     }
   }
 
-  buildBagThumbnailSwiper () {
+  bagOptionsSwiper () {
     const target = this.bagOptions
 
     if (target !== undefined) {
       const mySwiper = new Swiper(target, {
-        autoHeight: true,
+        // autoHeight: true,
         shortSwipes: false,
         watchSlidesVisibility: true,
         loopFillGroupWithBlank: false,
         breakpoints: {
-          320: {
-            slidesPerView: 1
-          },
           480: {
-            slidesPerView: 2
+            slidesPerView: 1
           },
           768: {
             slidesPerView: 2
@@ -102,8 +99,9 @@ export class CompactProductList {
       })
 
       mySwiper.on('slideChangeTransitionEnd', () => {
-        this.removeActiveSlide()
+        this.removeActiveSlideClass()
         this.addActiveSlideClass()
+        this.bagDetail.classList.add(this.activeSlideClass)
         this.detailSwiper.slideTo(this.thumbnailSwiper.activeIndex)
       })
 
@@ -152,7 +150,7 @@ export class CompactProductList {
     }
   }
 
-  removeActiveSlide (slides) {
+  removeActiveSlideClass (slides) {
     const targets = slides || this.bagOptions.querySelectorAll('.swiper-slide')
 
     let i = 0
@@ -177,11 +175,8 @@ export class CompactProductList {
           loopFillGroupWithBlank: false,
           // loop: true,
           breakpoints: {
-            320: {
-              slidesPerView: 1
-            },
             480: {
-              slidesPerView: 2
+              slidesPerView: 1
             },
             768: {
               slidesPerView: 3
@@ -203,7 +198,7 @@ export class CompactProductList {
 
         mySwiper.on('slideChangeTransitionEnd', () => {
           const slides = target.querySelectorAll('.swiper-slide')
-          this.removeActiveSlide(slides)
+          this.removeActiveSlideClass(slides)
           this.addActiveSlideClass(slides)
           this.stylesDetailsSwiper.slideTo(this.stylesOptionsSwiper.activeIndex)
         })
@@ -234,7 +229,7 @@ export class CompactProductList {
       const target = this.stylesDetails
       target.classList.add('active')
 
-      const coordinates = this.stylesOptions.getBoundingClientRect()
+      const coordinates = this.stylesOptions.querySelector('.benlido-compact-product-instruction-header').getBoundingClientRect()
 
       KUTE.to(
         'window',
@@ -263,8 +258,7 @@ export class CompactProductList {
         this.thumbnailSwiper.slideTo(index)
 
         // wait until class removal is complete
-        await this.removeActiveSlide(targets)
-
+        await this.removeActiveSlideClass(targets)
         // add active class to slide
         this.addActiveSlideClass(slide)
       })
@@ -283,7 +277,7 @@ export class CompactProductList {
         this.stylesOptionsSwiper.slideTo(index)
 
         // wait until class removal is complete
-        await this.removeActiveSlide(targets)
+        await this.removeActiveSlideClass(targets)
 
         // add active class to slide
         this.addActiveSlideClass(slide)
