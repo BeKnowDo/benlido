@@ -4972,9 +4972,9 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .product-row .columns .column { margin-bottom: 20px; }
 
-.benlido-compact-product-instruction-header { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 300; font-style: normal; padding: 1.6rem 0; letter-spacing: -.5px; text-align: center; }
+.benlido-compact-product-instruction-header { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 300; font-style: normal; padding: 1.6rem 0; letter-spacing: -.5px; text-align: center; }
 
-.benlido-compact-product-instruction-header > strong { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 300; font-style: normal; letter-spacing: normal; }
+.benlido-compact-product-instruction-header > strong { font-family: "Knockout 50 A", "Knockout 50 B", Arial, Helvetica, sans-serif; font-size: 1.6rem; font-weight: 300; font-style: normal; letter-spacing: normal; }
 
 .benlido-compact-product-list { padding: 0 0.8rem 0; margin: 0 auto; position: relative; overflow: hidden; }
 
@@ -5054,7 +5054,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amo
 
 .benlido-compact-product-list-detail .hero-product-bag-image-container { padding: 0; }
 
-.benlido-compact-product-list-detail .swiper-container { border: 1px solid #e4e4e4; border-top: none; padding: 0 0 2rem; }
+.benlido-compact-product-list-detail .swiper-container { border: 1px solid #e4e4e4; border-top: none; }
 
 .benlido-compact-product-list-detail .columns { padding: 2rem 0; }
 

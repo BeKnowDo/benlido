@@ -84,10 +84,10 @@ export class CompactProductList {
             slidesPerView: 2
           },
           1024: {
-            slidesPerView: 4
+            slidesPerView: 2
           },
           5000: {
-            slidesPerView: 5
+            slidesPerView: 2
           }
         },
         navigation: {
@@ -175,9 +175,9 @@ export class CompactProductList {
               slidesPerView: 2
             },
             1024: {
-              slidesPerView: 4
+              slidesPerView: 3
             },
-            5000: {
+            1200: {
               slidesPerView: 5
             }
           },

@@ -2,13 +2,13 @@
   &-compact-product {
 
     &-instruction-header {
-      @include knockout32(15px, 300);
+      @include knockout32($unit-8, 300);
       padding: $unit-8 0;
       letter-spacing: -.5px;
       text-align: center;
 
       > strong {
-        @include knockout50($unit-5, 300);
+        @include knockout50($unit-8, 300);
         letter-spacing: normal;
       }
 
@@ -247,7 +247,7 @@
         .swiper-container {
           @include border(all, $light-grey, 1px);
           border-top: none;
-          padding: 0 0 $unit-10;
+          // padding: 0 0 $unit-10;
         }
 
         .columns {
