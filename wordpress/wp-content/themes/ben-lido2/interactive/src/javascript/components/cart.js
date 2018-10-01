@@ -151,7 +151,7 @@ export class Cart {
                 return response.json()
               })
               .then(response => {
-                if (response.success == 1) {
+                if (response.success === 1) {
                   document.location.href = el.href
                 }
               })
@@ -259,6 +259,9 @@ export class Cart {
                     // document.location.href = returnURL
                   }
                 }
+
+                scope.innerHTML = `Selected`
+                scope.classList.add('hero-product-picked')
               }
             }
           })

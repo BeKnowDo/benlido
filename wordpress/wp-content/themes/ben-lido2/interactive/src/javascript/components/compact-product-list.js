@@ -75,9 +75,7 @@ export class CompactProductList {
     if (target !== undefined) {
       const mySwiper = new Swiper(target, {
         // autoHeight: true,
-        shortSwipes: false,
-        watchSlidesVisibility: true,
-        loopFillGroupWithBlank: false,
+        shortSwipes: true,
         breakpoints: {
           480: {
             slidesPerView: 1
@@ -114,7 +112,7 @@ export class CompactProductList {
     if (targets) {
       const mySwiper = new Swiper(targets, {
         shortSwipes: false,
-        autoHeight: true
+        autoHeight: false
       })
       this.detailSwiper = mySwiper
     }
@@ -169,17 +167,12 @@ export class CompactProductList {
       const target = this.stylesOptions.querySelector('.swiper-container') || undefined
       if (target !== undefined) {
         const mySwiper = new Swiper(target, {
-          autoHeight: true,
-          shortSwipes: false,
-          watchSlidesVisibility: true,
-          loopFillGroupWithBlank: false,
-          // loop: true,
           breakpoints: {
             480: {
               slidesPerView: 1
             },
             768: {
-              slidesPerView: 3
+              slidesPerView: 2
             },
             1024: {
               slidesPerView: 4
