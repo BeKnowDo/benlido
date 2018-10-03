@@ -21,3 +21,5 @@ include_once ( plugin_dir_path(__FILE__) . '/acf-home.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-bags.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-kitting.php');
 include_once ( plugin_dir_path(__FILE__) . '/acf-frequency.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-about.php');
+include_once ( plugin_dir_path(__FILE__) . '/acf-help.php');
