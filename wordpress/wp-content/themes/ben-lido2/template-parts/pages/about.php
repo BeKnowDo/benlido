@@ -1,7 +1,4 @@
-<?php
-$content = array();
-//$preHeaderText = get_the_title();
-if (function_exists('get_field')) {
+<?php if (function_exists('get_field')) {
 	$show_hero 		= get_field('show_hero_section');
 	$show_statement = get_field('show_statement_section');
 	$show_quote 	= get_field('show_quote_section');
