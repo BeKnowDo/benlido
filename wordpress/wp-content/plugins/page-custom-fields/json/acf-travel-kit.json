@@ -101,6 +101,25 @@
                 "mime_types": ""
             },
             {
+                "key": "field_5bb630e22d4fc",
+                "label": "Lifestyle Blurb",
+                "name": "lifestyle_blurb",
+                "type": "text",
+                "instructions": "a short description of this lifestyle",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
                 "key": "field_5b2a5af67142c",
                 "label": "Bag for this Kit",
                 "name": "bag_for_this_kit",
