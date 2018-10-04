@@ -6,6 +6,7 @@ global $bl_custom_kit_id;
 $data = array();
 $bags = array();
 $kits = array();
+$empty = array();
 
 if (function_exists('get_field')) {
     $selectable_bags = get_field('selectable_bags');
@@ -25,6 +26,10 @@ if (function_exists('get_field')) {
 
 }
 //print_r ($bags);
+
+if (function_exists('bl_get_no_bag')) {
+    $empty = bl_get_no_bag();
+}
 
 if (empty($bags) && !empty($kit_id)) {
     if (function_exists('bl_get_kit_bag') && $kit_id != $bl_custom_kit_id) {
@@ -62,7 +67,7 @@ if (empty($bags) && empty(bl_get_product_swap()) && bl_is_kit_add() == false) {
 
 // echo '<br/><br/><pre>' . var_export($kits, true) . '</pre>';
 
-$data = array('products' => $bags, 'kits'=>$kits);
+$data = array('products' => $bags, 'kits'=>$kits, 'empty'=> $empty);
 
 //print_r ($data);
 

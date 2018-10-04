@@ -14,9 +14,11 @@
         {% endfor %}
 
         <div class="benlido-compact-product-list-item benlido-compact-product-list-no-item swiper-slide" data-product-id="99999999">
-          <i class="fas fa-ban fa-5x"></i>
-          <h1 class="hero-product-header">NONE</h1>
-          <p class="hero-product-swatch-count">I already have a bag</p>
+          <div class="hero-product-bag-image-container">
+            <img class="hero-product-bag-image" src="{{empty.icon}}"/>
+          </div>
+          <h1 class="hero-product-header">{{empty.header}}</h1>
+          <p class="hero-product-swatch-count">{{empty.subheader}}</p>
         </div>
 
       </div>
@@ -39,9 +41,11 @@
         {% for item in products %}
           {% include 'common/hero/hero-product-compact-detail.twig' with { items: item } %}
         {% endfor %}
-        {% if products is defined %}
-        {% include 'common/hero/hero-product-compact-detail.twig' with { items: empty } %}
+
+        {% if empty %}
+          {% include 'common/hero/hero-product-compact-detail.twig' with { items: empty } %}
         {% endif %}
+
       </div>
     </div>
   </div>

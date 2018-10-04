@@ -31,6 +31,8 @@ export class Cart {
 
     this.addBagProduct = document.querySelectorAll('.bl-add-bag-product') || undefined
 
+    this.noBagProduct = document.querySelectorAll('.bl-add-bag-product.is-empty-button') || undefined
+
     this.removeBagProduct = document.querySelectorAll('.bl-remove-bag-product') || undefined
 
     this.clearCartButton = document.querySelector('#ben-lido-clear-cart')
@@ -86,6 +88,10 @@ export class Cart {
 
     if (this.addBagProduct) {
       this.addBagProductToCart()
+    }
+
+    if (this.noBagProduct) {
+      this.noBagProductClicked()
     }
 
     if (this.clearCartButton) {
@@ -204,6 +210,23 @@ export class Cart {
     }
   }
 
+  // clicking on the no bag option
+  noBagProductClicked () {
+    if (this.noBagProduct.length > 0) {
+      this.noBagProduct.forEach(el => {
+        el.addEventListener('click', e=> {
+          e.preventDefault();
+          el.classList.add('hero-product-picked')
+          let lifestyleList = document.querySelector('.benlido-compact-product-styles-list');
+          let rect = lifestyleList.getBoundingClientRect();
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          let distance = rect.top + scrollTop - 30;
+          window.scrollTo({top:distance, behavior:'smooth'});
+
+        })
+      });
+    }
+  }
   // add the bag to either the cart or the kit
   addBagProductToCart () {
     if (this.addBagProduct.length > 0) {

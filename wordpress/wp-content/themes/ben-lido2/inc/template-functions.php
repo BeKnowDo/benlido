@@ -705,6 +705,42 @@ function bl_process_kit_bag($item,$kit_id=null) {
   return $results;
 }
 
+// this gets the data for the "no bag", which should be similar to a product object above
+function bl_get_no_bag() {
+  $result = array();
+  if (function_exists('get_field')) {
+    $no_bag_icon = get_field('no_bag_icon','option');
+    $no_bag_header = get_field('no_bag_header','option');
+    $no_bag_subheader = get_field('no_bag_subheader','option');
+    $no_bag_detail_image = get_field('no_bag_detail_image','option');
+    $no_bag_detail_header = get_field('no_bag_detail_header','option');
+    $no_bag_detail_description = get_field('no_bag_detail_description','option');
+    $no_bag_detail_button_copy = get_field('no_bag_detail_button_copy','option');
+
+    if (!empty($no_bag_icon) && is_array($no_bag_icon)) {
+      $no_bag_icon = $no_bag_icon['url'];
+    }
+
+    if (!empty($no_bag_detail_image) && is_array($no_bag_detail_image)) {
+      $no_bag_detail_image = $no_bag_detail_image['url'];
+    }
+
+    $result = array(
+      'index' => '99999999',
+      'is_empty' => "is-empty-button",
+      'icon' => $no_bag_icon,
+      'preHeader'=> $no_bag_header,
+      'subheader' => $no_bag_subheader,
+      'header' => $no_bag_detail_header,
+      'copy' => $no_bag_detail_description,
+      'image' => $no_bag_detail_image,
+      'button_copy' => $no_bag_detail_button_copy
+    );
+    
+  }
+  return $result;
+} // end bl_get_no_bag();
+
 // gets the name of this particular category, no matter it's from a category page, a shop landing page, or the primary category of the product
 function bl_get_this_category() {
   if (is_product_category()) {

@@ -99,18 +99,20 @@
         </div>
 
         <div class="columns benlido-compact-product-list-actions">
+          {% if items.price %}
           <div class="column col-6">
             {# Display price #}
-            {% if items.price %}
+            
               <p class="hero-product-price">
                 <span>
                   {{items.price}}
                 </span>
               </p>
-            {% endif %}
+            
           </div>
-          <div class="column col-xs-6">
-            <span class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" data-product_name="" data-product_sku="" data-product_category_name="" data-price="" title="{{pickedCopy}}">
+          {% endif %}
+          <div class="column col-xs-6 {% if items.price is empty %} centered {% endif %}">
+            <span class="btn btn-primary btn-lg bl-add-bag-product {{items.css}} {{picked}} {{items.is_empty}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" data-product_name="" data-product_sku="" data-product_category_name="" data-price="" title="{{pickedCopy}}">
               {{pickedCopy}}
             </span>
             <span class="btn btn-primary btn-lg bl-remove-bag-product {{items.removecss}}" id="button-{{items.index}}" href="{{items.href}}" {{disabled}} data-category_id="{{items.category_id}}" data-product_id="{{items.product_id}}" data-variation_id="{{selected_variation_id}}" title="Remove Bag">

@@ -1,765 +1,953 @@
 [
-  {
-    "key": "group_5a6e4dad9316c",
-    "title": "Options Custom Fields",
-    "fields": [
-      {
-        "key": "field_5b191c1877508",
-        "label": "General",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b191a17666a2",
-        "label": "Instructions",
-        "name": "",
-        "type": "message",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "message": "The main logo is in Appearance -> Customize area. We kept it there because that is the location for default assets.\r\nAny assets that need to be configured globally, and are unique to this site should be here.\r\nThe Add Item to Kit Section is where you would enter the copy for anything to do with the extra block that allows you to add more items to your pre-built kit.",
-        "new_lines": "wpautop",
-        "esc_html": 0
-      },
-      {
-        "key": "field_5b1915c3666a0",
-        "label": "Header and Footer Section",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b1915df666a1",
-        "label": "Diamond Shaped Logo",
-        "name": "diamond_shaped_logo",
-        "type": "image",
-        "instructions": "This is the diamond shaped logo used in the dropdown menu as well as the footer",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "return_format": "array",
-        "preview_size": "thumbnail",
-        "library": "all",
-        "min_width": "",
-        "min_height": "",
-        "min_size": "",
-        "max_width": "",
-        "max_height": "",
-        "max_size": "",
-        "mime_types": ""
-      },
-      {
-        "key": "field_5a6e4e06fb422",
-        "label": "Amazon Configuration Section",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5a6e4e20fb423",
-        "label": "Amazon Access Key",
-        "name": "amazon_access_key",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5a6e4e35fb424",
-        "label": "Amazon Secret Key",
-        "name": "amazon_secret_key",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5a6e4e41fb425",
-        "label": "Amazon Associate Tag",
-        "name": "amazon_associate_tag",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5a9dbe4ff0bc3",
-        "label": "Page Sections",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b475859626dd",
-        "label": "Bags Page",
-        "name": "bags_page",
-        "type": "post_object",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": ["page"],
-        "taxonomy": [],
-        "allow_null": 0,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
-      },
-      {
-        "key": "field_5a9dbe5ef0bc4",
-        "label": "Kitting Page",
-        "name": "kitting_page",
-        "type": "post_object",
-        "instructions": "Select the page that shows the kitting process of selecting products for the kit.",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": ["page"],
-        "taxonomy": [],
-        "allow_null": 0,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
-      },
-      {
-        "key": "field_5a9e8f6a2431b",
-        "label": "Delivery Frequency Page",
-        "name": "delivery_frequency_page",
-        "type": "post_object",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": ["page"],
-        "taxonomy": [],
-        "allow_null": 0,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
-      },
-      {
-        "key": "field_5ab14b33f44a2",
-        "label": "Category Page",
-        "name": "category_page",
-        "type": "post_object",
-        "instructions": "The page that displays the Kitting \"Edit\" category",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": ["page"],
-        "taxonomy": [],
-        "allow_null": 0,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
-      },
-      {
-        "key": "field_5b3241eef33b6",
-        "label": "Add Item to Kit Section",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b324262f33b7",
-        "label": "Add Item Block header",
-        "name": "add_item_block_header",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b32426ef33b8",
-        "label": "Add Item Block Subheader",
-        "name": "add_item_block_subheader",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b32427cf33b9",
-        "label": "Add Item Button Copy",
-        "name": "add_item_button_copy",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b324284f33ba",
-        "label": "Shop Page URL",
-        "name": "shop_page_url",
-        "type": "post_object",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": ["page"],
-        "taxonomy": [],
-        "allow_null": 0,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
-      },
-      {
-        "key": "field_5b3b7cae7961b",
-        "label": "E-Commerce Section",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b3b7ccc7961c",
-        "label": "Instructions",
-        "name": "",
-        "type": "message",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "message": "Some things that are required for the e-commerce / cart / checkout to work",
-        "new_lines": "wpautop",
-        "esc_html": 0
-      },
-      {
-        "key": "field_5b7c102bf90b2",
-        "label": "Return to Shop Copy",
-        "name": "return_to_shop_copy",
-        "type": "text",
-        "instructions": "This is the copy for the button in the Cart page that sends the person back to the shop",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "Return to Shop",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b7c1138f05d6",
-        "label": "Empty Cart Copy",
-        "name": "empty_cart_copy",
-        "type": "text",
-        "instructions": "The copy for the empty cart button",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "Empty Cart",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b3b7ce97961d",
-        "label": "Bag Category",
-        "name": "bag_category",
-        "type": "taxonomy",
-        "instructions": "select the category for the bag",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "taxonomy": "product_cat",
-        "field_type": "select",
-        "allow_null": 0,
-        "add_term": 1,
-        "save_terms": 0,
-        "load_terms": 0,
-        "return_format": "id",
-        "multiple": 0
-      },
-      {
-        "key": "field_5b3bb431b52a4",
-        "label": "Maximum number of words for products names in the mini cart",
-        "name": "mini_cart_max_num_words",
-        "type": "number",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": 5,
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "min": 2,
-        "max": 30,
-        "step": ""
-      },
-      {
-        "key": "field_5b567bd034865",
-        "label": "Frequency Section",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b567bf834866",
-        "label": "Super Header",
-        "name": "super_header",
-        "type": "text",
-        "instructions": "The text above the header",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b567c0b34867",
-        "label": "Header",
-        "name": "header",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b567c1c34868",
-        "label": "Blurb",
-        "name": "blurb",
-        "type": "wysiwyg",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "tabs": "all",
-        "toolbar": "full",
-        "media_upload": 1,
-        "delay": 0
-      },
-      {
-        "key": "field_5b567c2a34869",
-        "label": "Frequencies",
-        "name": "frequencies",
-        "type": "repeater",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "collapsed": "",
-        "min": 0,
-        "max": 0,
-        "layout": "table",
-        "button_label": "",
-        "sub_fields": [
-          {
-            "key": "field_5b567c3f3486a",
-            "label": "Button Copy",
-            "name": "button_copy",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-              "width": "",
-              "class": "",
-              "id": ""
+    {
+        "key": "group_5a6e4dad9316c",
+        "title": "Options Custom Fields",
+        "fields": [
+            {
+                "key": "field_5b191c1877508",
+                "label": "General",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-          },
-          {
-            "key": "field_5b567c4f3486b",
-            "label": "Icon",
-            "name": "icon",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-              "width": "",
-              "class": "",
-              "id": ""
+            {
+                "key": "field_5b191a17666a2",
+                "label": "Instructions",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "The main logo is in Appearance -> Customize area. We kept it there because that is the location for default assets.\r\nAny assets that need to be configured globally, and are unique to this site should be here.\r\nThe Add Item to Kit Section is where you would enter the copy for anything to do with the extra block that allows you to add more items to your pre-built kit.",
+                "new_lines": "wpautop",
+                "esc_html": 0
             },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-          },
-          {
-            "key": "field_5b567c6b3486c",
-            "label": "Number of Days",
-            "name": "number_of_days",
-            "type": "number",
-            "instructions": "if it's every other month, put in 60. if it's every 4 months, put in 120",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-              "width": "",
-              "class": "",
-              "id": ""
+            {
+                "key": "field_5b1915c3666a0",
+                "label": "Header and Footer Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-          },
-          {
-            "key": "field_5b567c933486d",
-            "label": "Percentage Discount",
-            "name": "percentage_discount",
-            "type": "number",
-            "instructions": "Put in the number of percent off for this frequency",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-              "width": "",
-              "class": "",
-              "id": ""
+            {
+                "key": "field_5b1915df666a1",
+                "label": "Diamond Shaped Logo",
+                "name": "diamond_shaped_logo",
+                "type": "image",
+                "instructions": "This is the diamond shaped logo used in the dropdown menu as well as the footer",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-          },
-          {
-            "key": "field_5b567cb83486e",
-            "label": "Frequency Copy",
-            "name": "frequency_copy",
-            "type": "wysiwyg",
-            "instructions": "A blurb about the frequency (OPTIONAL)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-              "width": "",
-              "class": "",
-              "id": ""
+            {
+                "key": "field_5a6e4e06fb422",
+                "label": "Amazon Configuration Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
             },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-          }
-        ]
-      },
-      {
-        "key": "field_5b9ac025778f8",
-        "label": "Signup Modal Section",
-        "name": "",
-        "type": "tab",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "placement": "top",
-        "endpoint": 0
-      },
-      {
-        "key": "field_5b9ac034778f9",
-        "label": "Enable Signup Popup",
-        "name": "enable_signup_popup",
-        "type": "true_false",
-        "instructions": "Turn on the signup popup or not",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "message": "",
-        "default_value": 0,
-        "ui": 0,
-        "ui_on_text": "",
-        "ui_off_text": ""
-      },
-      {
-        "key": "field_5b9ac058778fa",
-        "label": "Popup Header",
-        "name": "popup_header",
-        "type": "text",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "placeholder": "",
-        "prepend": "",
-        "append": "",
-        "maxlength": ""
-      },
-      {
-        "key": "field_5b9ac062778fb",
-        "label": "Popup Copy",
-        "name": "popup_copy",
-        "type": "wysiwyg",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "default_value": "",
-        "tabs": "all",
-        "toolbar": "full",
-        "media_upload": 1,
-        "delay": 0
-      },
-      {
-        "key": "field_5b9ac072778fc",
-        "label": "Contact Form",
-        "name": "contact_form",
-        "type": "post_object",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "post_type": ["mc4wp-form"],
-        "taxonomy": [],
-        "allow_null": 0,
-        "multiple": 0,
-        "return_format": "object",
-        "ui": 1
-      }
-    ],
-    "location": [
-      [
-        {
-          "param": "options_page",
-          "operator": "==",
-          "value": "acf-options"
-        }
-      ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": ""
-  }
+            {
+                "key": "field_5a6e4e20fb423",
+                "label": "Amazon Access Key",
+                "name": "amazon_access_key",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5a6e4e35fb424",
+                "label": "Amazon Secret Key",
+                "name": "amazon_secret_key",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5a6e4e41fb425",
+                "label": "Amazon Associate Tag",
+                "name": "amazon_associate_tag",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5a9dbe4ff0bc3",
+                "label": "Page Sections",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b475859626dd",
+                "label": "Bags Page",
+                "name": "bags_page",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5a9dbe5ef0bc4",
+                "label": "Kitting Page",
+                "name": "kitting_page",
+                "type": "post_object",
+                "instructions": "Select the page that shows the kitting process of selecting products for the kit.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5a9e8f6a2431b",
+                "label": "Delivery Frequency Page",
+                "name": "delivery_frequency_page",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5ab14b33f44a2",
+                "label": "Category Page",
+                "name": "category_page",
+                "type": "post_object",
+                "instructions": "The page that displays the Kitting \"Edit\" category",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b3241eef33b6",
+                "label": "Add Item to Kit Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b324262f33b7",
+                "label": "Add Item Block header",
+                "name": "add_item_block_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b32426ef33b8",
+                "label": "Add Item Block Subheader",
+                "name": "add_item_block_subheader",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b32427cf33b9",
+                "label": "Add Item Button Copy",
+                "name": "add_item_button_copy",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b324284f33ba",
+                "label": "Shop Page URL",
+                "name": "shop_page_url",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b3b7cae7961b",
+                "label": "E-Commerce Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b3b7ccc7961c",
+                "label": "Instructions",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Some things that are required for the e-commerce \/ cart \/ checkout to work",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_5b7c102bf90b2",
+                "label": "Return to Shop Copy",
+                "name": "return_to_shop_copy",
+                "type": "text",
+                "instructions": "This is the copy for the button in the Cart page that sends the person back to the shop",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Return to Shop",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b7c1138f05d6",
+                "label": "Empty Cart Copy",
+                "name": "empty_cart_copy",
+                "type": "text",
+                "instructions": "The copy for the empty cart button",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Empty Cart",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b3b7ce97961d",
+                "label": "Bag Category",
+                "name": "bag_category",
+                "type": "taxonomy",
+                "instructions": "select the category for the bag",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "taxonomy": "product_cat",
+                "field_type": "select",
+                "allow_null": 0,
+                "add_term": 1,
+                "save_terms": 0,
+                "load_terms": 0,
+                "return_format": "id",
+                "multiple": 0
+            },
+            {
+                "key": "field_5b3bb431b52a4",
+                "label": "Maximum number of words for products names in the mini cart",
+                "name": "mini_cart_max_num_words",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 5,
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "min": 2,
+                "max": 30,
+                "step": ""
+            },
+            {
+                "key": "field_5b567bd034865",
+                "label": "Frequency Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b567bf834866",
+                "label": "Super Header",
+                "name": "super_header",
+                "type": "text",
+                "instructions": "The text above the header",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b567c0b34867",
+                "label": "Header",
+                "name": "header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b567c1c34868",
+                "label": "Blurb",
+                "name": "blurb",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_5b567c2a34869",
+                "label": "Frequencies",
+                "name": "frequencies",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_5b567c3f3486a",
+                        "label": "Button Copy",
+                        "name": "button_copy",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b567c4f3486b",
+                        "label": "Icon",
+                        "name": "icon",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "thumbnail",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_5b567c6b3486c",
+                        "label": "Number of Days",
+                        "name": "number_of_days",
+                        "type": "number",
+                        "instructions": "if it's every other month, put in 60. if it's every 4 months, put in 120",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": "",
+                        "max": "",
+                        "step": ""
+                    },
+                    {
+                        "key": "field_5b567c933486d",
+                        "label": "Percentage Discount",
+                        "name": "percentage_discount",
+                        "type": "number",
+                        "instructions": "Put in the number of percent off for this frequency",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": "",
+                        "max": "",
+                        "step": ""
+                    },
+                    {
+                        "key": "field_5b567cb83486e",
+                        "label": "Frequency Copy",
+                        "name": "frequency_copy",
+                        "type": "wysiwyg",
+                        "instructions": "A blurb about the frequency (OPTIONAL)",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "tabs": "all",
+                        "toolbar": "full",
+                        "media_upload": 1,
+                        "delay": 0
+                    }
+                ]
+            },
+            {
+                "key": "field_5b9ac025778f8",
+                "label": "Signup Modal Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5b9ac034778f9",
+                "label": "Enable Signup Popup",
+                "name": "enable_signup_popup",
+                "type": "true_false",
+                "instructions": "Turn on the signup popup or not",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_5b9ac058778fa",
+                "label": "Popup Header",
+                "name": "popup_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5b9ac062778fb",
+                "label": "Popup Copy",
+                "name": "popup_copy",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_5b9ac072778fc",
+                "label": "Contact Form",
+                "name": "contact_form",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "mc4wp-form"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5bb646c446f0e",
+                "label": "No Bag Section",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5bb646d446f0f",
+                "label": "Instructions",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "There section contains the content required to show the \"I don't need a bag\" option when building a kit",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_5bb6471f46f10",
+                "label": "No Bag Icon",
+                "name": "no_bag_icon",
+                "type": "image",
+                "instructions": "This is the icon for the top area to select this option",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_5bb6476746f11",
+                "label": "No Bag Header",
+                "name": "no_bag_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5bb6494c46f12",
+                "label": "No Bag SubHeader",
+                "name": "no_bag_subheader",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5bb649a646f16",
+                "label": "No Bag Detail Image",
+                "name": "no_bag_detail_image",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_5bb6496b46f13",
+                "label": "No Bag Detail Header",
+                "name": "no_bag_detail_header",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5bb6497346f14",
+                "label": "No Bag Detail Description",
+                "name": "no_bag_detail_description",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_5bb6499246f15",
+                "label": "No Bag Detail Button Copy",
+                "name": "no_bag_detail_button_copy",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
 ]

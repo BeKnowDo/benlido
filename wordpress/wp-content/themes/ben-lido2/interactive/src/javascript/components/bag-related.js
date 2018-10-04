@@ -45,19 +45,26 @@ export class LidoBagDetail {
   }
 
   defaultBagListingSwatch () {
-    this.bagListingSwatches.forEach((item, index) => {
-      this.bagListingActivateSwatch(item, index)
-    })
+    if (this.bagListingSwatches !== undefined) {
+      this.bagListingSwatches.forEach((item, index) => {
+        this.bagListingActivateSwatch(item, index)
+      })
+    }
+
   }
 
   bagListingActivateSwatch (item, index) {
-    const swatches = item.querySelectorAll('.swatch-wrapper')
+    let swatches = item.querySelectorAll('.swatch-wrapper')
     let trackIndex = index
 
     if (item.querySelector('.selected') === null) {
       let defaultColor = item.querySelector('.default-color')
-      if (defaultColor === null) {
-        swatches[trackIndex].querySelector('.swatch-anchor').click()
+      
+      if (defaultColor === null && swatches.length > 0) {
+        if (typeof swatches[trackIndex] != 'undefined') {
+          swatches[trackIndex].querySelector('.swatch-anchor').click()
+        } 
+        
       } else {
         defaultColor.querySelector('.swatch-anchor').click()
       }
