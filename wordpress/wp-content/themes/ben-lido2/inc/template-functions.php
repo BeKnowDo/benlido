@@ -208,7 +208,6 @@ function bl_process_bags_list($items) {
           // we need to get the kit page
           $kitting_page = get_field('kitting_page','option');
           $price = get_field('price_override',$item_id);
-
         }
 
         if (!empty($price)) {
@@ -222,6 +221,7 @@ function bl_process_bags_list($items) {
             $css = 'prebuilt-kit';
             $disabled = false;
             $products = array();
+            $lifestyle_icon = array();
             //print_r ($el);
             // the price of the kit is the total of all the products
 
@@ -245,6 +245,7 @@ function bl_process_bags_list($items) {
               $bag_for_this_kit = get_field('bag_for_this_kit',$item_id);
               $color_variation_image_overrides = get_field('color_variation_image_overrides',$item_id);
               $product_categories = get_field('product_categories',$item_id);
+              $lifestyle_icon = get_field('lifestyle_icon',$item_id);
               //print_r ($product_categories);
               if (!empty($product_categories) && is_array($product_categories)) {
                 foreach ($product_categories as $prod_cat) {
@@ -262,6 +263,12 @@ function bl_process_bags_list($items) {
               }
 
             }
+
+            if (!empty($lifestyle_icon) && is_array($lifestyle_icon)) {
+              $lifestyle_icon = $lifestyle_icon['url'];
+            }
+
+            
 
             if (!empty($bag_for_this_kit) && is_object($bag_for_this_kit) && isset($bag_for_this_kit->ID)) {
                 $product_id = $bag_for_this_kit->ID;
@@ -371,6 +378,9 @@ function bl_process_bags_list($items) {
 
         }
         // image overrides
+        if (!empty($el['bag_thumbnail']) && isset($el['bag_thumbnail']['url'])) {
+          $image = $el['bag_thumbnail']['url'];
+        }
         if (!empty($el['image_override']) && isset($el['image_override']['url'])) {
           $image = $el['image_override']['url'];
         }
@@ -402,6 +412,7 @@ function bl_process_bags_list($items) {
             'products' => $products,
             'picked'=>$picked,
             'original_image' => $original_image,
+            'lifestyle_icon' => $lifestyle_icon,
             'image'=>$image,
             'image_retina'=>$image_retina,
             'bagURL'=>$url,

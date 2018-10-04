@@ -77,6 +77,30 @@
                 "step": ""
             },
             {
+                "key": "field_5bb5eeb36ab1f",
+                "label": "Lifestyle Icon",
+                "name": "lifestyle_icon",
+                "type": "image",
+                "instructions": "Upload the lifestyle icon if this is a lifestyle kit",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
                 "key": "field_5b2a5af67142c",
                 "label": "Bag for this Kit",
                 "name": "bag_for_this_kit",
