@@ -4942,7 +4942,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .product-tile-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 300; font-style: normal; margin: 0 0 0.8rem; }
 
-.product-tile-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 300; font-style: normal; color: #999999; padding: 10px 0 0; }
+.product-tile-sub-header { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 300; font-style: normal; color: #999999; padding: 10px 0 0; letter-spacing: 0; }
 
 .product-tile-price { font-family: "Sentinel SSm A", "Sentinel SSm B", Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 300; font-style: normal; transition: opacity 0.2s ease-in-out; }
 
@@ -4966,7 +4966,7 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .product-tile .btn { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; padding: 0; margin-top: auto; }
 
-.product-tile.recommendation h3.product-tile-header { display: block; margin-top: 10px; min-height: 36px; }
+.product-tile.recommendation h3.product-tile-header { display: block; margin-top: 10px; min-height: 36px; letter-spacing: 0; }
 
 html[data-navigator-platform*="benlido-windows-platform"] .woocommerce-Price-amount.amount { font-weight: 500; }
 
