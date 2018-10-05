@@ -13,6 +13,9 @@ if (empty($kit_id) && !empty($_REQUEST['id'])) {
     $kit_id = $_REQUEST['id'];
 }
 
+if (empty($kit_id) && function_exists('bl_get_current_kit_id')) {
+    $kit_id = bl_get_current_kit_id();
+}
 get_template_part( 'template-parts/common/step','navigation');
 
 if (function_exists('bl_get_current_kit_items')) {
