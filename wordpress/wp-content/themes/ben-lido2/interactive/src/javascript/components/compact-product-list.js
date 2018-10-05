@@ -184,7 +184,8 @@ export class CompactProductList {
           navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
-          }
+          },
+          autoHeight: true
         })
 
         this.stylesOptionsSwiper = mySwiper
