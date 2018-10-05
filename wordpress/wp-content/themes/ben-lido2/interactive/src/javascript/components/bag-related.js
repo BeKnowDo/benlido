@@ -6,7 +6,8 @@ export class LidoBagDetail {
     this.thumbnails = document.querySelector('.flex-control-thumbs') || undefined
     this.bagSwatches = document.querySelectorAll('.bl-product-swatches') || undefined
     this.bagsDescription = document.querySelectorAll('div.hero-product .hero-product-copy') || undefined
-    this.swatchColor = document.querySelectorAll('.swatch-color') || undefined
+    this.swatchColor = document.querySelectorAll('.normal.swatch-color') || undefined
+    this.swatchColorCompact = document.querySelectorAll('.compact.swatch-color') || undefined
     this.currentSwatch = null
   }
 
@@ -18,6 +19,10 @@ export class LidoBagDetail {
 
     if (this.swatchColor) {
       this.setSwatchColor()
+    }
+
+    if (this.swatchColorCompact) {
+      this.setSwatchColorCompact()
     }
 
     if (this.bagSwatches !== undefined) {
@@ -74,6 +79,94 @@ export class LidoBagDetail {
   setSwatchColor () {
     if (this.swatchColor.length > 0) {
       this.swatchColor.forEach(el => {
+        let parent = el.parentElement
+        let parentHolder = parent.parentElement
+        let swatchNodes
+        let data = el.dataset
+        let variation_id = data.variation_id ? data.variation_id : 0
+        let product_name = data.product_name || ''
+        let product_sku = data.product_sku || ''
+        let product_category_name = data.product_category_name || ''
+        let price = data.price || ''
+        if (parent.classList.contains('selected')) {
+          this.currentSwatch = variation_id
+          let primary_image = data.hero_image ? data.hero_image : ''
+          let primary_image_retina = data.hero_image_retina
+            ? data.hero_image_retina
+            : ''
+          let index = data.index ? data.index : 0
+          if (primary_image.length > 0) {
+            let div_id = 'hero-' + index
+            if (primary_image_retina.length > 1) {
+              primary_image_retina += ' 2x'
+            }
+            document.getElementById(div_id).src = primary_image
+            document
+              .getElementById(div_id)
+              .setAttribute('srcset', primary_image_retina)
+          }
+        }
+        if (typeof parentHolder !== 'undefined') {
+          swatchNodes = parentHolder.querySelectorAll('.select-option')
+        }
+        el.addEventListener('click', e => {
+          e.preventDefault()
+          let changed = false
+
+          let product_id = data.product_id ? data.product_id : 0
+          let index = data.index ? data.index : 0
+
+          let hero_image = data.hero_image ? data.hero_image : ''
+          let hero_image_retina = data.hero_image_retina
+            ? data.hero_image_retina
+            : ''
+
+          if (hero_image_retina.length > 1) {
+            hero_image_retina += ' 2x'
+          }
+          if (variation_id > 0) {
+            if (swatchNodes.length > 0) {
+              // console.log(swatchNodes);
+              swatchNodes.forEach(listElement => {
+                listElement.classList.remove('selected')
+              })
+            }
+
+            if (variation_id != this.currentSwatch) {
+              changed = true
+            } else {
+              changed = false
+            }
+            el.parentNode.classList.add('selected')
+            let addButton = document.getElementById('button-' + index)
+            let div_id = 'hero-' + index
+            if (addButton) {
+              addButton.setAttribute('data-variation_id', variation_id)
+              addButton.setAttribute('data-product_sku', product_sku)
+              addButton.setAttribute('data-product_name', product_name)
+              addButton.setAttribute('data-product_category_name', product_category_name)
+              addButton.setAttribute('data-price', price)
+              addButton.removeAttribute('disabled')
+              document.getElementById(div_id).src = hero_image
+              document
+                .getElementById(div_id)
+                .setAttribute('srcset', hero_image_retina)
+              if (changed == false) {
+                addButton.classList.remove('changed')
+              } else {
+                addButton.classList.add('changed')
+              }
+            }
+          }
+        })
+      })
+    }
+  }
+
+
+  setSwatchColorCompact () {
+    if (this.swatchColorCompact.length > 0) {
+      this.swatchColorCompact.forEach(el => {
         let scope = el
         let parent = scope.parentElement
         let parentHolder = parent.parentElement
@@ -132,25 +225,30 @@ export class LidoBagDetail {
           // Check if variation value is greater than ZERO...for a reason I don't understand :)
           if (variationId > 0) {
             // TODO: Stay functional - break this out
-            const heroSwatches = parentSlide.querySelectorAll('.bl-product-swatches-container')
+            if (parentSlide != null || parentSlide != undefined) {
 
-            heroSwatches.forEach(swatch => {
-              let swatchTarget = swatch.querySelectorAll('.swatch-color')
+              const heroSwatches = parentSlide.querySelectorAll('.bl-product-swatches-container')
 
-              swatchTarget.forEach(item => {
-                item.parentNode.classList.remove('selected')
-              })
-
-              let i
-              const max = swatchTarget.length
-
-              for (i = 0; i < max; i++) {
-                if (swatchTarget[i].dataset.variation_id === variationId) {
-                  swatchTarget[i].parentNode.classList.add('selected')
-                  return false
+              heroSwatches.forEach(swatch => {
+                let swatchTarget = swatch.querySelectorAll('.swatch-color')
+  
+                swatchTarget.forEach(item => {
+                  item.parentNode.classList.remove('selected')
+                })
+  
+                let i
+                const max = swatchTarget.length
+  
+                for (i = 0; i < max; i++) {
+                  if (swatchTarget[i].dataset.variation_id === variationId) {
+                    swatchTarget[i].parentNode.classList.add('selected')
+                    return false
+                  }
                 }
-              }
-            })
+              });
+
+            }
+
 
             // Keep track of state change...this is why state management is needed...this is a headache
             if (variationId !== this.currentSwatch) {

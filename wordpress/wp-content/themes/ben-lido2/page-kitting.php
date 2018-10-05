@@ -80,7 +80,7 @@
         $items = $kit_list['items'];
         if (empty($items)) {
             bl_set_kit_add($kit_id,true);
-            wp_redirect(wc_get_page_permalink( 'shop' ));
+            //wp_redirect(wc_get_page_permalink( 'shop' ));
         }
         
     }

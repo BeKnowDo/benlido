@@ -4922,6 +4922,8 @@ body { position: relative; padding-top: 98px; outline: none; }
 
 .product-tile { height: 100%; padding: 20px; border: 1px solid rgba(9, 9, 9, 0.1); border-radius: 4px; display: flex; flex-direction: column; width: 100%; }
 
+.product-tile svg { width: 100%; height: auto; }
+
 .product-tile:hover .product-tile-image, .product-tile:hover .product-tile-price, .product-tile:hover .product-tile-description { transition: opacity 0.2s ease-in-out; opacity: 0.5; }
 
 .product-tile:hover .product-tile-hover { transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; opacity: 1; transform: translate3d(0, -100%, 0); }

@@ -180,6 +180,8 @@ function bl_process_bags_list($items) {
       $hover_details = '';
       $price = '';
       $pre_header = '';
+      $lifestyle_icon = '';
+      $is_svg = '';
       $is_new_kit = false; // this shows me if we are talking about  a new system or not
       //print_r ($el);
       // get if the item is published or coming soon
@@ -265,6 +267,12 @@ function bl_process_bags_list($items) {
             }
 
             if (!empty($lifestyle_icon) && is_array($lifestyle_icon)) {
+              //print_r ($lifestyle_icon);
+              // check for svg
+              $mimetype = $lifestyle_icon['mime_type'];
+              if (strlen(stristr($mimetype,'svg'))> 0) {
+                $is_svg = 'svg';
+              }
               $lifestyle_icon = $lifestyle_icon['url'];
             }
 
@@ -413,6 +421,7 @@ function bl_process_bags_list($items) {
             'picked'=>$picked,
             'original_image' => $original_image,
             'lifestyle_icon' => $lifestyle_icon,
+            'lifestyle_icon_css' => $is_svg,
             'image'=>$image,
             'image_retina'=>$image_retina,
             'bagURL'=>$url,

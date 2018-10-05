@@ -1,7 +1,9 @@
 <?php
 // see if we have a kit id
 global $kit_id;
+global $bl_custom_kit_id;
 $build_your_own_id = 0;
+$show_reco = false;
 
 if (function_exists('get_field')) {
     $build_your_own_id = get_field('build_your_own_id','option');
@@ -17,7 +19,16 @@ if (function_exists('bl_get_current_kit_items')) {
     $kit_products = bl_get_current_kit_items($kit_id);
     $product_count = count($kit_products);
 }
-if ($kit_id == $build_your_own_id && function_exists('bl_get_kit_recommendations')) {
+
+if ($kit_id == $build_your_own_id) {
+    $show_reco = true;
+}
+
+if ($kit_id == $bl_custom_kit_id) {
+    $show_reco = true;
+}
+
+if ($show_reco == true && function_exists('bl_get_kit_recommendations')) {
     $reco = bl_get_kit_recommendations($kit_id);
     if (!empty($reco) && isset($reco['categories'])) {
         $recommendations = $reco['categories'];

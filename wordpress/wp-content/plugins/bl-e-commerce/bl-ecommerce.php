@@ -313,7 +313,7 @@ if (!function_exists('bl_create_custom_kit')) {
         $kit_id = $bl_custom_kit_id;
         bl_set_kit_list($kit_id,$bag,$holder);
         bl_set_kit_add($kit_id,true);
-        wp_redirect(wc_get_page_permalink( 'shop' ));
+        //wp_redirect(wc_get_page_permalink( 'shop' ));
 
     }
 
@@ -628,6 +628,8 @@ function bl_check_cat_against_session($cat_id) {
 function bl_get_kit_recommendations($kit_id=0) {
     $result = array();
     $categories = array();
+    $is_svg = '';
+    $image_is_svg = '';
     if (function_exists('get_field')) {
         $build_your_own_title = get_field('build_your_own_title','option');
         $build_your_own_description = get_field('build_your_own_description','option');
@@ -639,9 +641,19 @@ function bl_get_kit_recommendations($kit_id=0) {
 
     }
     if (!empty($build_your_own_icon) && is_array($build_your_own_icon)) {
+        $mimetype = $build_your_own_icon['mime_type'];
+        //print_r ($mimetype);
+        if (strlen(stristr($mimetype,'svg'))> 0) {
+            $is_svg = 'svg';
+        }
         $build_your_own_icon = $build_your_own_icon['url'];
     }
     if (!empty($build_your_own_image) && is_array($build_your_own_image)) {
+        $mimetype = $build_your_own_image['mime_type'];
+        //print_r ($mimetype);
+        if (strlen(stristr($mimetype,'svg'))> 0) {
+            $image_is_svg = 'svg';
+        }
         $build_your_own_image = $build_your_own_image['url'];
     }
 
@@ -651,6 +663,7 @@ function bl_get_kit_recommendations($kit_id=0) {
             $cat_id = $cat['category'];
             $icon = $cat['icon'];
             $cat_name = '';
+            $icon_is_svg = '';
             if (!empty($cat_id) && is_numeric($cat_id)) {
                 $term = get_term($cat['category']);
                 if (!empty($term) && is_object($term)) {
@@ -658,6 +671,11 @@ function bl_get_kit_recommendations($kit_id=0) {
                 }
             }
             if (!empty($icon) && is_array($icon)) {
+                $mimetype = $icon['mime_type'];
+                //print_r ($mimetype);
+                if (strlen(stristr($mimetype,'svg'))> 0) {
+                    $icon_is_svg = 'svg';
+                }
                 $icon = $icon['url'];
             }
             if ($cat_id) {
@@ -665,7 +683,7 @@ function bl_get_kit_recommendations($kit_id=0) {
             }
             $should_remove = bl_check_cat_against_session($cat_id);
             if ($should_remove != true) {
-                $categories[] = array('kit_id'=>$kit_id,'cat_id'=>$cat_id,'cat_name'=>$cat_name,'image'=>$icon,'href'=>$href);
+                $categories[] = array('kit_id'=>$kit_id,'cat_id'=>$cat_id,'cat_name'=>$cat_name,'image'=>$icon,'image_css'=>$icon_is_svg, 'href'=>$href);
             }
             
             
@@ -683,7 +701,9 @@ function bl_get_kit_recommendations($kit_id=0) {
         'copy' => $build_your_own_description,
         'href' => $href,
         'image' => $build_your_own_image,
+        'image_css' => $image_is_svg,
         'lifestyle_icon' => $build_your_own_icon,
+        'lifestyle_icon_css' => $is_svg,
         'categories' => $categories,
     );
 

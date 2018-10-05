@@ -29,7 +29,9 @@ export class Cart {
 
     this.addKitToCartButtons = document.querySelectorAll('.add-kit-to-cart') || undefined
 
-    this.addBagProduct = document.querySelectorAll('.bl-add-bag-product') || undefined
+    this.addBagProduct = document.querySelectorAll('.normal.bl-add-bag-product') || undefined
+
+    this.addBagProductCompact = document.querySelectorAll('.compact.bl-add-bag-product') || undefined
 
     this.noBagProduct = document.querySelectorAll('.bl-add-bag-product.is-empty-button') || undefined
 
@@ -88,6 +90,10 @@ export class Cart {
 
     if (this.addBagProduct) {
       this.addBagProductToCart()
+    }
+
+    if (this.addBagProductCompact) {
+      this.addBagProductToCartCompact()
     }
 
     if (this.noBagProduct) {
@@ -236,10 +242,68 @@ export class Cart {
       });
     }
   }
+
   // add the bag to either the cart or the kit
   addBagProductToCart () {
     if (this.addBagProduct.length > 0) {
       this.addBagProduct.forEach(el => {
+        // first, see if we have variations
+        if (el.classList.contains('has-variations')) {
+          // first, see if we are a bag or a kit
+          el.addEventListener('click', e => {
+            e.preventDefault()
+            if (el.classList.contains('hero-product-picked') && document.body.classList.contains('page-template-page-kitting')) {
+              this.saveChangeBag();
+              return false;
+            }
+            if (el.dataset) {
+              let variation_id = el.dataset.variation_id || ''
+              let product_id = el.dataset.product_id || ''
+              let category_id = el.dataset.category_id || ''
+              let returnURL = el.href
+              let sku = el.dataset.product_sku || ''
+              let product_name = el.dataset.product_name || ''
+              let product_category = el.dataset.product_category_name || ''
+              let price = el.dataset.price || ''
+              let prod_obj = {'id': sku,'name': product_name,'category': product_category,'variant': variation_id,'price': price,'quantity':1}
+
+              if (variation_id.length > 0 && product_id.length > 0) {
+                if (
+                  el.classList.contains('self-kit') ||
+                  el.classList.contains('prebuilt-kit') ||
+                  el.classList.contains('in-kit-detail')
+                ) {
+                  if (el.classList.contains('in-kit')) {
+                    returnURL = 'in-kit'
+                  }
+                  if (el.classList.contains('changed')) {
+                    //console.log(prod_obj);
+                    let googleanalytics = new BLGoogleAnalytics;
+                    googleanalytics.addToCart(prod_obj);
+
+                    this.addItemToCart(
+                      product_id,
+                      category_id,
+                      variation_id,
+                      1,
+                      returnURL
+                    )
+                  } else {
+                    document.location.href = returnURL
+                  }
+                }
+              }
+            }
+          })
+        }
+      })
+    }
+  }
+
+  // add the bag in the new decoupled template
+  addBagProductToCartCompact () {
+    if (this.addBagProductCompact.length > 0) {
+      this.addBagProductCompact.forEach(el => {
         const scope = el
         // const targetSlide = el.closest('.benlido-compact-product-list')
 
@@ -285,7 +349,7 @@ export class Cart {
                     let googleanalytics = new BLGoogleAnalytics()
                     googleanalytics.addToCart(desiredProduct)
 
-                    this.addItemToCart(productId, categoryId, variationId, 1, returnURL)
+                    this.addItemToCartCompact(productId, categoryId, variationId, 1, returnURL)
                   } else {
 
                     // document.location.href = returnURL
@@ -302,7 +366,41 @@ export class Cart {
     }
   }
 
-  addItemToCart (productId, categoryId, variationId, quantity, returnURL) {
+  addItemToCart (product_id, category_id, variation_id, quantity, returnURL) {
+    let url =
+      endpoints.addToCart +
+      '/' +
+      product_id +
+      '/' +
+      category_id +
+      '/' +
+      variation_id +
+      '/' +
+      quantity
+    fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {
+        if (response.error) {
+        } else {
+          if (returnURL.length > 0 && returnURL != 'in-cart') {
+            document.location.href = returnURL
+          } else {
+            this.updateCount(response)
+            this.miniCart(response)
+            this.updateTileQuantity(response.items, item)
+          }
+        }
+      })
+  }
+
+  addItemToCartCompact (productId, categoryId, variationId, quantity, returnURL) {
     let url = `${endpoints
       .addToCart}/${productId}/${categoryId}/${variationId}/${quantity}`
 
