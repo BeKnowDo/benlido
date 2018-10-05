@@ -148,7 +148,8 @@ export class Cart {
         .addKitToCartButtons
         .forEach(el => {
           el.addEventListener('click', e => {
-            e.preventDefault()
+            e.preventDefault();
+
             fetch(setKitUrl, {
               credentials: 'include',
               method: 'POST'
@@ -157,7 +158,9 @@ export class Cart {
                 return response.json()
               })
               .then(response => {
-                if (response.success === 1) {
+                console.log(response);
+                if (response.success === true) {
+                  console.log("SUCCESS");
                   document.location.href = el.href
                 }
               })
@@ -218,10 +221,16 @@ export class Cart {
           e.preventDefault();
           el.classList.add('hero-product-picked')
           let lifestyleList = document.querySelector('.benlido-compact-product-styles-list');
+          let lifestyleDetail = document.querySelector('.benlido-compact-product-styles-list-detail');
+          lifestyleList.classList.add('active');
+          lifestyleDetail.classList.add('active');
           let rect = lifestyleList.getBoundingClientRect();
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
           let distance = rect.top + scrollTop - 30;
-          window.scrollTo({top:distance, behavior:'smooth'});
+          setTimeout(function() {
+            window.scrollTo({top:distance, behavior:'smooth'});
+          },300);
+          
 
         })
       });
@@ -473,11 +482,18 @@ export class Cart {
             let category_id = target.category_id
               ? target.category_id
               : undefined
+              let is_recommendation = target.is_recommendation
+              ? target.is_recommendation
+              : undefined
 
             if (product_id !== undefined && category_id !== undefined) {
               let removeItem = {
                 product_id: product_id,
                 category_id: category_id
+              }
+
+              if (is_recommendation == 1) {
+                removeItem['is_recommendation'] = true;
               }
 
               let parentNode = el.parentElement.parentElement.parentElement.parentElement.parentElement || undefined
@@ -550,37 +566,45 @@ export class Cart {
           let prod_id = el.prod_id
             ? el.prod_id
             : 0
+          let is_recommendation = el.is_recommendation
+            ? el.is_recommendation
+            : 0
 
-          let swapURL = endpoints.swapItemFromKit
-          // add to kit is: kit_id, product_id, cat_id
-          swapURL += '/' + kit_id + '/' + prod_id + '/' + cat_id
-          fetch(swapURL, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-            .then(res => res.json())
-            .catch(swap.parentElement.classList.remove('loading'))
-            .then(response => {
-              if (response.error) {
-                swap
-                  .parentElement
-                  .classList
-                  .remove('loading')
-              } else {
-                if (response.url) {
-                  setTimeout(function () {
-                    swap
-                      .parentElement
-                      .classList
-                      .remove('loading')
-                    document.location.href = response.url
-                  }, 100)
-                }
+          if (is_recommendation == 1) {
+            this.setKitStateAPI(kit_id, 1, swap.href);
+          } else {
+            let swapURL = endpoints.swapItemFromKit
+            // add to kit is: kit_id, product_id, cat_id
+            swapURL += '/' + kit_id + '/' + prod_id + '/' + cat_id
+            fetch(swapURL, {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                'Content-Type': 'application/json'
               }
             })
+              .then(res => res.json())
+              .catch(swap.parentElement.classList.remove('loading'))
+              .then(response => {
+                if (response.error) {
+                  swap
+                    .parentElement
+                    .classList
+                    .remove('loading')
+                } else {
+                  if (response.url) {
+                    setTimeout(function () {
+                      swap
+                        .parentElement
+                        .classList
+                        .remove('loading')
+                      document.location.href = response.url
+                    }, 100)
+                  }
+                }
+              });
+          }
+
         })
       })
     }
@@ -590,6 +614,9 @@ export class Cart {
     let kit_id = document.getElementById('bl_kit_id')
     let fromCart = item.from_cart
       ? item.from_cart
+      : false
+      let is_recommendation = item.is_recommendation
+      ? item.is_recommendation
       : false
     if (kit_id && kit_id.value) {
       kit_id = parseInt(kit_id.value)
@@ -607,6 +634,10 @@ export class Cart {
     }
     if (kit_id > 0 && item.product_id && fromCart == false) {
       removeURL = endpoints.removeFromKit + '/' + kit_id + '/' + item.product_id
+      if (is_recommendation == true) {
+        removeURL = endpoints.removeRecommendation;
+      }
+      
       if (item.category_id) {
         removeURL += '/' + item.category_id
       }

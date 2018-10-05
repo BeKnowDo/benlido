@@ -5,6 +5,7 @@ export const endpoints = {
   addToKit: '/bl-api/kit/add',
   removeFromCart: '/bl-api/cart/remove',
   removeFromKit: '/bl-api/kit/remove',
+  removeRecommendation: '/bl-api/kit/reco-remove',
   swapItemFromKit: '/bl-api/kit/swap',
   swapBag: '/bl-api/bag/swap',
   selectSwap: '/bl-api/kit/select',

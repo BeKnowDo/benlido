@@ -23,9 +23,26 @@ if (function_exists('get_field')) {
         $kits = bl_process_bags_list($selectable_kits);
     }
     //print_r ($kits);
+    //die;
 
 }
 //print_r ($bags);
+
+// adding build_your_own kit
+if (is_array($kits)) {
+    $build_your_own_index = count($kits);
+    if (function_exists('bl_get_kit_recommendations')) {
+        $recommendations = bl_get_kit_recommendations();
+    }
+    if (!empty($recommendations) && is_array($recommendations)) {
+        $recommendations['index'] = $build_your_own_index;
+    }
+    //print_r ($recommendations);
+    $kits[] = $recommendations;
+}
+
+//print_r ($kits);
+//die;
 
 if (function_exists('bl_get_no_bag')) {
     $empty = bl_get_no_bag();

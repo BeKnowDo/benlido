@@ -1,0 +1,28 @@
+<div
+  class="product-tile bg-white recommendation">
+
+  <div>
+    <div
+      class="text-center empty-product">
+        <h4
+          class="product-tile-sub-header">Recommendation:</h4>
+          <h3
+        class="product-tile-header">{{product.cat_name}}</h3>
+      
+      <a
+        class="product-tile-link bl-add-reco-product product-tile-empty-product-add"
+        href="{{product.href}}"
+        title="{{link_title_esc}}" data-cat_id="{{product.cat_id}}">
+        <img class="product-tile-image" alt="{{product.cat_name}}" itemprop="image" src="{{product.image}}"/>
+      </a>
+
+
+      <span class="btn btn-lg btn-block btn-primary btn-selected" data-category="{{product.cat_name}}" data-category_id="{{product.cat_id}}">
+          <span class="btn-selected-remove remove-from-cart" data-product_id="nnnn" data-category="{{product.cat_name}}" data-category_id="{{product.cat_id}}" data-is_recommendation="1" >Remove</span>
+          <a href="{{product.href}}" title="" class="btn-selected-swap swap-from-cart" data-category="{{product.cat_name}}" data-kit_id="{{product.kit_id}}"  data-cat_id="{{product.cat_id}}" data-is_recommendation="1">Select</a>
+      </span>
+
+    </div>
+  </div>
+
+</div>

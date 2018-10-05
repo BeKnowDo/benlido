@@ -21,12 +21,13 @@
     if (function_exists('bl_get_current_kit_id')) {
         $kit_id = bl_get_current_kit_id();
     }
+    //print_r ($kit_id);
+    //die;
     if ($_REQUEST['id']) {
         $kit_id = $_REQUEST['id'];
     }
     $selected_products = array();
     $delivery_frequency_page = '';
-
     // when we come back to this page, we disable the is_adding_item_to_kit action
     if (function_exists('bl_set_kit_add') && $kit_id > 0) {
         bl_set_kit_add($kit_id,0);

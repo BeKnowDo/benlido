@@ -280,12 +280,15 @@ export class LidoBagDetail {
     targets.forEach((target, index) => {
       const targetSwatch = target.querySelector('.select-option.selected') || undefined
 
-      if (targetSwatch !== undefined) {
+      if (targetSwatch !== undefined || targetSwatch != null) {
         const target = targetSwatch.querySelector('a')
         const src = target.dataset.hero_image
-        const hero = targetSwatch.closest('.hero-product-bag-image-container').querySelector('img.hero-product-bag-image') || undefined
-
-        if (hero !== undefined) {
+        let hero = undefined
+        let heroProductImageContainer = targetSwatch.closest('.hero-product-bag-image-container') || undefined
+        if (heroProductImageContainer != undefined || heroProductImageContainer != null) {
+          hero = heroProductImageContainer.querySelector('img.hero-product-bag-image') || undefined
+        }
+        if (hero !== undefined || hero != null) {
           hero.src = src
         }
 

@@ -579,6 +579,117 @@ if (!function_exists('bl_remove_from_cart')) {
     }
 }
 
+// removes a recommendation
+function bl_remove_recommendation($cat_id) {
+    if( function_exists('WC')) {
+        $current_removal = WC()->session->get('removed_recos');
+    }
+    if (empty($current_removal)) {
+        $current_removal = array();
+    }
+    if (!in_array($cat_id,$current_removal)) {
+        $current_removal[] = $cat_id;
+    }
+    //print_r ($current_removal);
+    if( function_exists('WC')) {
+        WC()->session->set_customer_session_cookie(true);
+        WC()->session->set( 'removed_recos', $current_removal);
+    }
+    return true;
+}
+
+// check the cat_id against saved session info like removed recos or items added to kit
+function bl_check_cat_against_session($cat_id) {
+    if( function_exists('WC')) {
+        $current_removal = WC()->session->get('removed_recos');
+    }
+    //print_r ($current_removal);
+    if (!empty($current_removal) && is_array($current_removal)) {
+        if (in_array($cat_id,$current_removal)) {
+            return true;
+        }
+    }
+    $kit_list = bl_get_kit_list();
+    //print_r ($kit_list);
+    if (!empty($kit_list) && is_array($kit_list) && !empty($kit_list['items'])) {
+        $items = $kit_list['items'];
+        foreach ($items as $item) {
+            //print_r ($item);
+            $item_cat_id = $item['category'];
+            if ($item_cat_id == $cat_id) {
+                return true;
+            }
+        }
+    }
+    return false;
+} // end bl_check_cat_against_session()
+
+// this is to get the recommendations
+function bl_get_kit_recommendations($kit_id=0) {
+    $result = array();
+    $categories = array();
+    if (function_exists('get_field')) {
+        $build_your_own_title = get_field('build_your_own_title','option');
+        $build_your_own_description = get_field('build_your_own_description','option');
+        $build_your_own_icon = get_field('build_your_own_icon','option');
+        $build_your_own_image = get_field('build_your_own_image','option');
+        $build_your_own_id = get_field('build_your_own_id','option');
+        $build_your_own_categories = get_field('build_your_own_categories','option');
+        $kitting_page = get_field('kitting_page','option');
+
+    }
+    if (!empty($build_your_own_icon) && is_array($build_your_own_icon)) {
+        $build_your_own_icon = $build_your_own_icon['url'];
+    }
+    if (!empty($build_your_own_image) && is_array($build_your_own_image)) {
+        $build_your_own_image = $build_your_own_image['url'];
+    }
+
+    if (!empty($build_your_own_categories) && is_array($build_your_own_categories)) {
+        foreach ($build_your_own_categories as $cat) {
+            //print_r ($cat);
+            $cat_id = $cat['category'];
+            $icon = $cat['icon'];
+            $cat_name = '';
+            if (!empty($cat_id) && is_numeric($cat_id)) {
+                $term = get_term($cat['category']);
+                if (!empty($term) && is_object($term)) {
+                    $cat_name = $term->name;
+                }
+            }
+            if (!empty($icon) && is_array($icon)) {
+                $icon = $icon['url'];
+            }
+            if ($cat_id) {
+                $href = get_term_link($cat_id);
+            }
+            $should_remove = bl_check_cat_against_session($cat_id);
+            if ($should_remove != true) {
+                $categories[] = array('kit_id'=>$kit_id,'cat_id'=>$cat_id,'cat_name'=>$cat_name,'image'=>$icon,'href'=>$href);
+            }
+            
+            
+        }
+    }
+    
+    if (!empty($kitting_page)) {
+        $href = get_permalink($kitting_page) . '?id=' . $build_your_own_id;
+    }
+
+    $result = array(
+        'is_kit' => true,
+        'css' => 'prebuilt-kit',
+        'header' => $build_your_own_title,
+        'copy' => $build_your_own_description,
+        'href' => $href,
+        'image' => $build_your_own_image,
+        'lifestyle_icon' => $build_your_own_icon,
+        'categories' => $categories,
+    );
+
+    return $result;
+}
+
 /** 
  * this gets the current kit items, whether it's a new kit page, or if there is an existing kit in session
  * @param int $kit the custom post type ID for travel_kit
@@ -682,7 +793,19 @@ function bl_get_kit_page_url($id) {
 
 function bl_save_current_kit($id) {
     // first, get the products of the kit
-    if (get_post_type($id) == 'travel_kit') {
+    $bypass_kit_check = false;
+    global $bl_custom_kit_id;
+    if ($bl_custom_kit_id == $id) {
+        $bypass_kit_check = true;
+    }
+    if (function_exists('get_field')) {
+        $build_your_own_id = get_field('build_your_own_id','option');
+    }
+    if ($build_your_own_id == $id) {
+        $bypass_kit_check = true;
+    }
+    // let's see if it's a build your own or
+    if (get_post_type($id) == 'travel_kit' || $bypass_kit_check == true) {
         $bag = null;
         // see if we have a bag already in cart
         $test_bag = bl_get_bag_from_cart();
@@ -1328,6 +1451,12 @@ function bl_ecommerce_url_intercept() {
                         header('Content-Type: application/json');
                         print_r (json_encode($resp));
                         die;
+                        break;
+                    case 'reco-remove':
+                        // /bl-api/kit/reco-remove/{cat_id}/
+                        if (!empty($id) && is_numeric($id)) {
+                            $resp = bl_remove_recommendation($id);
+                        }
                         break;
                     case 'remove':
                         // removing an item from a kit

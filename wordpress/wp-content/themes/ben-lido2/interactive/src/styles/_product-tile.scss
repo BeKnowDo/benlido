@@ -146,6 +146,15 @@
       padding: 0;
       margin-top: auto;
     }
+    &.recommendation {
+      h3 {
+        &.product-tile-header {
+          display:block;
+          margin-top: 10px;
+          min-height: 36px;
+        }
+      }
+    }
   }
 }
 
