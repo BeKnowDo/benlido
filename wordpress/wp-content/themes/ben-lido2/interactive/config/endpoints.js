@@ -12,5 +12,6 @@ export const endpoints = {
   setKitState: '/bl-api/kit/state',
   setKit: '/bl-api/kit/set',
   getProductData: '/bl-api/product/get',
+  setOrderKitName: '/bl-api/order/kit-name',
   setFrequency: '/bl-api/frequency/set'
 }

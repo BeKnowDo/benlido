@@ -14,7 +14,7 @@ export class MyAccount {
   }
 
   tiles () {
-    const tiles = this.frequencyTiles
+    let tiles = this.frequencyTiles
 
     tiles.forEach(tile => {
       const buttons = tile.querySelectorAll('.delivery-frequency-tile-main button')
@@ -26,16 +26,17 @@ export class MyAccount {
   }
 
   showTiles (button) {
-    const targetId = button.dataset.id
-    const targetNode = document.getElementById(targetId) || undefined
+    let targetId = button.dataset.id
+    let targetNode = document.getElementById(targetId) || undefined
 
     if (targetNode !== undefined) {
       this.tileActions(targetNode)
       button.onclick = e => {
         e.preventDefault()
         targetNode.classList.add('active')
+        targetNode.classList.remove('hide')
 
-        this.mainFrequencyTile.classList.add('hide')
+        button.parentElement.parentElement.parentElement.classList.add('hide')
         KUTE.fromTo(
           targetNode,
           {
@@ -61,30 +62,73 @@ export class MyAccount {
       buttons[i].onclick = e => {
         e.preventDefault()
 
-        const type = e.target.dataset.type
-        const value = e.target.dataset.value || undefined
+        let type = e.target.dataset.type
+        let value = e.target.dataset.value || undefined
+        let id = e.target.dataset.id || 0;
 
         if (type === 'cancel') {
-          this.closeAnimation(tile)
+          this.closeAnimation(tile,id);
+          // 
           console.log('cancelling')
+        }
+
+        if (type === 'save_name') {
+          console.log('save name');
+          let header = e.target.parentElement.parentElement.querySelector('.delivery-frequency-tile-header') || undefined
+          if (header) {
+            let inpt = header.querySelector('input[type="text"]');
+            if (inpt) {
+              let name = inpt.value;
+              if (name && id) {
+
+                let setOrderKitNameURL = endpoints.setOrderKitName + '/' + id;
+                let data = {'name':name};
+                fetch(setOrderKitNameURL, {
+                  method: 'POST',
+                  body: JSON.stringify(data),
+                  credentials: 'include',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+                  .then(res => res.json())
+                  .catch(error => console.error('Error:', error))
+                  .then(response => {
+                    if (response.error) {} else {
+                      if (response.parent) {
+                        let parentBlock = document.getElementById(response.parent);
+                        if (parentBlock) {
+                          let header = parentBlock.querySelector('.delivery-frequency-tile-header');
+                          header.innerHTML = name;
+                        }
+                        this.closeAnimation(tile,response.parent);
+                      }
+                      
+                    }
+                  })
+
+              }
+              
+            }
+          }
         }
 
         if (type === 'proceed') {
           console.log('proceeding')
           fetch(endpoints.setFrequency)
             .then(response => {
-              this.closeAnimation(tile)
+              this.closeAnimation(tile,id)
             })
             .catch(() => {
               console.log('error found?')
-              this.closeAnimation(tile)
+              this.closeAnimation(tile,id)
             })
         }
       }
     }
   }
 
-  closeAnimation (tile) {
+  closeAnimation (tile,id) {
     KUTE.fromTo(
       tile,
       {
@@ -99,7 +143,8 @@ export class MyAccount {
         duration: 150,
         complete: () => {
           tile.classList.remove('active')
-          this.mainFrequencyTile.classList.remove('hide')
+          document.getElementById(id).classList.remove('hide')
+          tile.classList.add('hide')
         }
       }
     ).start()

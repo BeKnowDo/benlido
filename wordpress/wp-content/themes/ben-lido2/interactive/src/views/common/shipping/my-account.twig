@@ -1,13 +1,13 @@
 {# parent PHP file is at template-parts/pages/my-account/dashboard #} {# tiles for the my accounts dashboard #}
 <div class="column col-xs-12 col-sm-12 col-md-6 col-4 delivery-frequency-tile bg-grey">
 
-  <div class="delivery-frequency-tile-main">
-    <h2 class="delivery-frequency-tile-header">PRODUCT NAME HERE</h2>
+  <div id="delivery-frequency-tile-main-{{id}}" class="delivery-frequency-tile-main">
+    <h2 class="delivery-frequency-tile-header">{{header}}</h2>
     <p class="delivery-frequency-tile-copy">{{copy}}</p>
 
     <div class="delivery-frequency-tile-actions">
       <div class="delivery-frequency-tile-actions-default">
-        <button class="delivery-frequency-tile-edit" data-id="delivery-frequency-rename">
+        <button class="delivery-frequency-tile-edit" data-id="delivery-frequency-rename-{{id}}">
           <i class="far fa-edit"></i>
         </button>
         <button class="btn btn-block btn-lg btn-primary" data-id="delivery-frequency-skip">Skip shipment</button>
@@ -18,7 +18,7 @@
   </div>
 
   <!-- Begin Skip Shipment Tile/Card -->
-  <div id="delivery-frequency-skip" class="delivery-frequency-tile-actions">
+  <div id="delivery-frequency-skip" class="delivery-frequency-tile-actions hide">
     <h2 class="delivery-frequency-tile-header">SKIP NEXT SHIPMENT?</h2>
     <p class="delivery-frequency-tile-copy">Hey {USER'S NAME}, your next box will now arrive on May 11th.</p>
 
@@ -30,7 +30,7 @@
   <!-- End Skip Shipment Tile/Card -->
 
   <!-- Begin Adjust Frequency Tile/Card -->
-  <div id="delivery-frequency-adjust" class="delivery-frequency-tile-actions">
+  <div id="delivery-frequency-adjust" class="delivery-frequency-tile-actions hide">
     <h2 class="delivery-frequency-tile-header">ADJUST FREQUENCY</h2>
     <p class="delivery-frequency-tile-copy">Your kit is currently shipped every month.</p>
     <div class="delivery-frequency-tile-actions">
@@ -46,15 +46,15 @@
   <!-- End Adjust Frequency Tile/Card -->
 
   <!-- Begin Renamging Tile/Card -->
-  <div id="delivery-frequency-rename" class="delivery-frequency-tile-actions">
+  <div id="delivery-frequency-rename-{{id}}" class="delivery-frequency-tile-actions hide">
     <h2 class="delivery-frequency-tile-header">
       <input type="text" name="kit_name" value="{{header}}" placeholder="{{header}}" />
     </h2>
     <p class="delivery-frequency-tile-copy">Make this kit yours. Give 'er a new name.</p>
 
     <div class="delivery-frequency-tile-actions">
-      <button class="btn btn-block btn-link btn-lg" data-type="cancel">Nevermind</button>
-      <button class="btn btn-block btn-lg btn-primary" data-type="proceed" data-value="skip">Save</button>
+      <button class="btn btn-block btn-link btn-lg" data-type="cancel" data-id="delivery-frequency-tile-main-{{id}}">Nevermind</button>
+      <button class="btn btn-block btn-lg btn-primary" data-type="save_name" data-id="id-{{id}}" data-value="skip">Save</button>
     </div>
   </div>
   <!-- End Renamging Tile/Card -->

@@ -1154,6 +1154,26 @@ function bl_process_items_for_hash_match($items) {
     return (md5(json_encode($holder)));
 }
 
+// sets the name of the saved kit
+function bl_set_order_kit_name($order_id,$name) {
+    $user_id = get_current_user_id();
+    $kits = array();
+    if ($user_id > 0 && function_exists('get_field')) {
+        $recurring_orders = get_field('recurring_orders','user_'.$user_id);
+    }
+
+    if (is_array($recurring_orders)) {
+        foreach ($recurring_orders as $recurring_order) {
+            if ($recurring_order['order_id'] == $order_id) {
+                $recurring_order['recurring_name'] = $name;
+            }
+            $kits[] = $recurring_order;
+        }
+        update_field('recurring_orders',$kits,'user_'.$user_id);
+    }
+    return true;
+}
+
 function bl_order_complete($order_id) {
     // let's see about getting the kit
     $kit_list = bl_get_kit_list();
@@ -1536,6 +1556,37 @@ function bl_ecommerce_url_intercept() {
                         $kit_id = bl_get_current_kit_id();
                         header('Content-Type: application/json');
                         print_r(json_encode(array('id'=>$kit_id)));
+                        die;
+                        break;
+                }
+                break;
+            case 'order':
+                switch ($action) {
+                    case 'kit-name':
+                        if (!empty($id)) {
+                            // just get the number
+                            $real_id = 0;
+                            $id_parts = explode('id-',$id);
+                            if (is_array($id_parts)) {
+                                $real_id = $id_parts[1];
+                                
+                            }
+                            if (is_numeric($real_id) && $real_id > 0) {
+                                $inputJSON = file_get_contents('php://input');
+                                $input = json_decode($inputJSON, TRUE); //convert JSON into array
+                                if (is_array($input) && isset($input['name'])) {
+                                    $name = strip_tags($input['name']);
+                                }
+                                bl_set_order_kit_name($real_id,$name);
+                            }
+
+                        }
+                        header('Content-Type: application/json');
+                            $result = array('success'=>true,'parent'=>'delivery-frequency-tile-main-'.$real_id);
+                            print_r (json_encode($result));
+                        die;
+                        break;
+                    default:
                         die;
                         break;
                 }
