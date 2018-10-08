@@ -104,6 +104,7 @@
         "wpackagist-plugin/woocommerce-auto-added-coupons":"*",
         "wpackagist-plugin/woocommerce-products-without-featured-images":"*",
         "wpackagist-plugin/wordpress-seo":"*",
+	"wpackagist-plugin/wp-mail-smtp":"*",
         "wpackagist-plugin/wp-ses":"*"
     }
 }
