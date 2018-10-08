@@ -20,6 +20,10 @@
 
         }
 
+        if ($('#wc-stripe-new-payment-method').not(':checked')) {
+            $('#wc-stripe-new-payment-method').click();
+        }
+
         var cartAPI = '/bl-api/cart';
         // update cart totals
         $( document.body ).on( 'updated_cart_totals', function(){
