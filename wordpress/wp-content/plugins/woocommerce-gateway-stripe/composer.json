@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-gateway-stripe",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Stripe Payment Gateway",
+    "version":"4.1.10",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-gateway-stripe.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

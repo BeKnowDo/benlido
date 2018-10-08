@@ -24,6 +24,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-gateway-stripe.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro.git"
         },
         {
@@ -64,6 +68,7 @@
         "up-plugins/facebook-for-woocommerce":"dev-master",
         "up-plugins/upco-performance":"dev-master",
         "up-plugins/woocommerce-brands":"dev-master",
+        "up-plugins/woocommerce-gateway-stripe":"dev-master",
         "up-plugins/woocommerce-google-analytics-pro":"dev-master",
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-social-login":"dev-master",
