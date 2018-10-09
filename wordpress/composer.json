@@ -79,6 +79,7 @@
         "up-plugins/woocommerce-additional-variation-images":"dev-master",
         "up-plugins/woocommerce-variation-swatches-and-photos":"dev-master",
         "wpackagist-plugin/akismet":"*",
+        "wpackagist-plugin/acf-content-analysis-for-yoast-seo":"*",
         "wpackagist-plugin/categories-images":"*",
         "wpackagist-plugin/disable-comments":"*",
         "wpackagist-plugin/disable-xml-rpc":"*",
