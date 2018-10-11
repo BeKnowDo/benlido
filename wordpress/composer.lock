@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0eedf4f1327b6a9551abb5ae0428fda",
+    "content-hash": "dc59743fe9d8889d4d9edce383b9e0ad",
     "packages": [
         {
             "name": "composer/installers",
@@ -373,6 +373,37 @@
                 "source": "https://bitbucket.org/upcomposer/woocommerce-google-analytics-pro/src/21801b9839e8dde1263104b813f4c2156676c1ae/?at=master"
             },
             "time": "2018-09-24T20:22:05+00:00"
+        },
+        {
+            "name": "up-plugins/woocommerce-shipment-tracking",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-shipment-tracking.git",
+                "reference": "1edbeca68899c32b9f9ffb7a36628a8523b28798"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-shipment-tracking/get/1edbeca68899c32b9f9ffb7a36628a8523b28798.zip",
+                "reference": "1edbeca68899c32b9f9ffb7a36628a8523b28798",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Shipment Tracking",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-shipment-tracking",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-shipment-tracking/src/1edbeca68899c32b9f9ffb7a36628a8523b28798/?at=master"
+            },
+            "time": "2018-10-11T10:03:01+00:00"
         },
         {
             "name": "up-plugins/woocommerce-social-login",
@@ -762,15 +793,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "6.6",
+            "version": "6.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/6.6"
+                "reference": "tags/6.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.6.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.6.6.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1153,6 +1184,7 @@
         "up-plugins/woocommerce-google-analytics-pro": 20,
         "up-plugins/woocommerce-cost-of-goods": 20,
         "up-plugins/woocommerce-social-login": 20,
+        "up-plugins/woocommerce-shipment-tracking": 20,
         "up-plugins/woocommerce-square": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
         "up-plugins/woothemes-updater": 20,

@@ -44,6 +44,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-shipment-tracking.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-square.git"
         },
         {
@@ -72,6 +76,7 @@
         "up-plugins/woocommerce-google-analytics-pro":"dev-master",
         "up-plugins/woocommerce-cost-of-goods":"dev-master",
         "up-plugins/woocommerce-social-login":"dev-master",
+        "up-plugins/woocommerce-shipment-tracking":"dev-master",
         "up-plugins/woocommerce-square":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",

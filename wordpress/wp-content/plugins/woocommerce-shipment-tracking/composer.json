@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-shipment-tracking",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Shipment Tracking",
+    "version":"1.6.12",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-shipment-tracking.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
