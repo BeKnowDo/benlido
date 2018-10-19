@@ -5851,7 +5851,7 @@ html[data-navigator-platform*="benlido-windows-platform"] .category-list .menu-i
 
 .woocommerce-cart .cart .actions { padding-top: 0.8rem; }
 
-.woocommerce-cart .cart .actions .coupon { display: none; padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
+.woocommerce-cart .cart .actions .coupon { padding-top: 0; padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
 
 .woocommerce-cart .cart .actions .coupon button { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; min-width: 166px; color: #fff; background-color: #87a4b0; padding: 0.8rem 2rem; border-radius: 0 4px 4px 0; text-shadow: 1px 0 4px rgba(0, 0, 0, 0.6); border: 0; }
 
