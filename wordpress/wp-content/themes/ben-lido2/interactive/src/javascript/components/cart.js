@@ -184,6 +184,11 @@ export class Cart {
         .singleAddToCartButtons
         .forEach(el => {
           let quantities = document.getElementsByName('quantity')
+          let is_variation = false;
+
+          if (el.parentElement.classList.contains('variations_button')) {
+            is_variation = true;
+          }
 
           if (el.value) {
             addKitCartUrl += '/' + el.value
@@ -199,23 +204,29 @@ export class Cart {
           } else {
             addKitCartUrl += '/1'
           }
-          el.addEventListener('click', e => {
-            e.preventDefault()
-            fetch(addKitCartUrl, {
-              credentials: 'include',
-              method: 'POST'
-            })
-              .then(function (response) {
-                return response.json()
+
+          if (is_variation == false) {
+
+            el.addEventListener('click', e => {
+              e.preventDefault()
+              fetch(addKitCartUrl, {
+                credentials: 'include',
+                method: 'POST'
               })
-              .then(response => {
-                if (response.success == 1 && response.href.length > 1) {
-                  // alert(response.href);
-                  document.location.href = response.href
-                }
-              })
-          })
-        })
+                .then(function (response) {
+                  return response.json()
+                })
+                .then(response => {
+                  if (response.success == 1 && response.href.length > 1) {
+                    // alert(response.href);
+                    document.location.href = response.href
+                  }
+                })
+            });
+
+          }
+
+        });
     }
   }
 

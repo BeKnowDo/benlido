@@ -224,6 +224,15 @@ if (!function_exists('bl_get_kit_list')) {
     function bl_get_kit_list($kit_name='') {
         $current_kit = WC()->session->get( 'current_kit' );
         //error_log('current kit list: '.json_encode($current_kit));
+        // NOTE: sometimes, people add a bag directly into the shopping cart. We will also see if there is a bag in the cart
+        if (empty($current_kit['bag'])) {
+            $bag = bl_get_bag_from_cart();
+            //print_r ($bag);
+            if ($bag) {
+                $current_kit['bag'] = $bag;
+            }
+        }
+
         return $current_kit;
     }
 }
@@ -374,6 +383,8 @@ if (!function_exists('bl_get_cart')) {
                 $variation_id = 0;
                 if (isset($item['data'])) {
                     //print_r ($item['data']);
+
+                    //die;
                     $mini_cart_max_num_words = 5;
                     if (function_exists('get_field')) {
                         $mini_cart_max_num_words = get_field('mini_cart_max_num_words','option');
@@ -423,6 +434,7 @@ if (!function_exists('bl_get_cart')) {
                 $holder[] = array('id'=>$id,'variation_id'=>$variation_id,'sku'=>$sku,'category'=>$category,'category_id'=>$category_id,'name'=>$name,'count'=>$quantity,'image'=>$image);
             }
         }
+        //print_r ($holder);
         return $holder;
     }
 }
@@ -745,13 +757,38 @@ function bl_get_bag_from_cart() {
     if ($bag_category > 0) {
         $items = bl_get_cart();
     }
+
     if (!empty($items) && is_array($items)) {
         foreach ($items as $item) {
             if ($item['category_id'] == $bag_category) {
                 return $item;
             }
         }
+        // just in case someone added a bag from regular add products
+        foreach ($items as $item) {
+            // see if it's a bag
+            $id = $item['id'];
+            $variation_id = $item['variation_id'];
+            if ($id == $variation_id) {
+                $id = wp_get_post_parent_id( $id );
+            }
+            $cats = wp_get_post_terms($id,'product_cat');
+            if (!empty($cats) && is_array($cats)) {
+                //print_r ($cats);
+                foreach ($cats as $cat) {
+                    //print_r ($cat);
+                    if ($cat->term_id == $bag_category) {
+                        //echo "MATCH!!!!";
+                        $item['category_id'] = $bag_category;
+                        return $item;
+                    }
+                }
+            }
+        }
+
     }
+    
+//die;
     return array();
 }
 
@@ -873,7 +910,6 @@ function bl_add_to_kit($kit_id,$product_id,$category_id) {
     // array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
     global $bl_custom_kit_id;
     $kit_list = bl_get_kit_list();
-
     if (!empty($kit_list)) {
         $current_kit_id = $kit_list['kit_id'];
     } else {
