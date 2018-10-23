@@ -41,7 +41,7 @@ $text_align = is_rtl() ? 'right' : 'left';
         <td style="text-align:<?php echo $text_align; ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; padding:0;" valign="top" width="50%">
             <h2><?php _e( 'Shipping address', 'woocommerce' ); ?></h2>
 
-            <address class="address"><?php echo $shipping; ?></address>
+            <address class="address"><?php echo $order->get_shipping_address(); ?></address>
         </td>
 	</tr>
 </table>
