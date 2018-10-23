@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc59743fe9d8889d4d9edce383b9e0ad",
+    "content-hash": "1446f4ef2e5b215b2adb10c458100f5a",
     "packages": [
         {
             "name": "composer/installers",
@@ -499,6 +499,37 @@
             "time": "2018-09-18T17:45:46+00:00"
         },
         {
+            "name": "up-plugins/woocommerce-url-coupons",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-url-coupons.git",
+                "reference": "390fa418d9334ebc7b7dc6c8e5675d83b96ff859"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/woocommerce-url-coupons/get/390fa418d9334ebc7b7dc6c8e5675d83b96ff859.zip",
+                "reference": "390fa418d9334ebc7b7dc6c8e5675d83b96ff859",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WooCommerce Coupon URL",
+            "homepage": "https://bitbucket.org/upcomposer/woocommerce-url-coupons",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/woocommerce-url-coupons/src/390fa418d9334ebc7b7dc6c8e5675d83b96ff859/?at=master"
+            },
+            "time": "2018-10-23T20:04:09+00:00"
+        },
+        {
             "name": "up-plugins/woocommerce-variation-swatches-and-photos",
             "version": "dev-master",
             "source": {
@@ -653,15 +684,15 @@
         },
         {
             "name": "wpackagist-plugin/disable-comments",
-            "version": "1.7.1",
+            "version": "1.8.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/disable-comments/",
-                "reference": "tags/1.7.1"
+                "reference": "tags/1.8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.7.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.8.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1053,15 +1084,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce",
-            "version": "3.4.5",
+            "version": "3.5.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce/",
-                "reference": "tags/3.4.5"
+                "reference": "tags/3.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.4.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce.3.5.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1073,15 +1104,15 @@
         },
         {
             "name": "wpackagist-plugin/woocommerce-auto-added-coupons",
-            "version": "3.0.2",
+            "version": "3.0.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce-auto-added-coupons/",
-                "reference": "tags/3.0.2"
+                "reference": "tags/3.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.3.0.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-auto-added-coupons.3.0.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1113,15 +1144,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "8.4",
+            "version": "9.0.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/8.4"
+                "reference": "tags/9.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.8.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.9.0.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1187,6 +1218,7 @@
         "up-plugins/woocommerce-shipment-tracking": 20,
         "up-plugins/woocommerce-square": 20,
         "up-plugins/woocommerce-table-rate-shipping": 20,
+        "up-plugins/woocommerce-url-coupons": 20,
         "up-plugins/woothemes-updater": 20,
         "up-plugins/wp-all-export-pro": 20,
         "up-plugins/woocommerce-additional-variation-images": 20,

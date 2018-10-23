@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/woocommerce-url-coupons",
+    "type": "wordpress-plugin",
+    "description": "WooCommerce Coupon URL",
+    "version":"2.7.0",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/woocommerce-url-coupons.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

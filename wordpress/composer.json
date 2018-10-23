@@ -32,6 +32,10 @@
         },
         {
             "type":"vcs",
+            "url":"https://bitbucket.org/upcomposer/woocommerce-url-coupons.git"
+        },
+        {
+            "type":"vcs",
             "url":"https://bitbucket.org/upcomposer/woocommerce-variation-swatches-and-photos.git"
         },
         {
@@ -79,6 +83,7 @@
         "up-plugins/woocommerce-shipment-tracking":"dev-master",
         "up-plugins/woocommerce-square":"dev-master",
         "up-plugins/woocommerce-table-rate-shipping":"dev-master",
+        "up-plugins/woocommerce-url-coupons":"dev-master",
         "up-plugins/woothemes-updater":"dev-master",
         "up-plugins/wp-all-export-pro":"dev-master",
         "up-plugins/woocommerce-additional-variation-images":"dev-master",
