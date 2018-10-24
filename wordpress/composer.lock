@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1446f4ef2e5b215b2adb10c458100f5a",
+    "content-hash": "bd08f903654334907534d54dca6a67a8",
     "packages": [
         {
             "name": "composer/installers",
@@ -597,12 +597,12 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/upcomposer/wp-all-export-pro.git",
-                "reference": "ac7fa61d7584a71a47b0454f310edb0c3d055efb"
+                "reference": "76d82d01c421b35b87e5cc168ebe784099a22b19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/upcomposer/wp-all-export-pro/get/ac7fa61d7584a71a47b0454f310edb0c3d055efb.zip",
-                "reference": "ac7fa61d7584a71a47b0454f310edb0c3d055efb",
+                "url": "https://bitbucket.org/upcomposer/wp-all-export-pro/get/76d82d01c421b35b87e5cc168ebe784099a22b19.zip",
+                "reference": "76d82d01c421b35b87e5cc168ebe784099a22b19",
                 "shasum": ""
             },
             "require": {
@@ -618,9 +618,102 @@
             "description": "WP All Export Pro",
             "homepage": "https://bitbucket.org/upcomposer/wp-all-export-pro",
             "support": {
-                "source": "https://bitbucket.org/upcomposer/wp-all-export-pro/src/ac7fa61d7584a71a47b0454f310edb0c3d055efb/?at=master"
+                "source": "https://bitbucket.org/upcomposer/wp-all-export-pro/src/76d82d01c421b35b87e5cc168ebe784099a22b19/?at=master"
             },
-            "time": "2017-08-15T13:45:21+00:00"
+            "time": "2018-10-24T21:57:19+00:00"
+        },
+        {
+            "name": "up-plugins/wp-all-import-pro",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/wp-all-import-pro.git",
+                "reference": "0bd59a95ee508e65fd17fc5ceb4382db981d1881"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/wp-all-import-pro/get/0bd59a95ee508e65fd17fc5ceb4382db981d1881.zip",
+                "reference": "0bd59a95ee508e65fd17fc5ceb4382db981d1881",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WP All Import Pro",
+            "homepage": "https://bitbucket.org/upcomposer/wp-all-import-pro",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/wp-all-import-pro/src/0bd59a95ee508e65fd17fc5ceb4382db981d1881/?at=master"
+            },
+            "time": "2018-10-24T21:58:31+00:00"
+        },
+        {
+            "name": "up-plugins/wpai-acf-add-on",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/wpai-acf-add-on.git",
+                "reference": "0a7ce20f340c27ffcc311a4401750b07c91706b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/wpai-acf-add-on/get/0a7ce20f340c27ffcc311a4401750b07c91706b6.zip",
+                "reference": "0a7ce20f340c27ffcc311a4401750b07c91706b6",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WP All Import - ACF Add-On",
+            "homepage": "https://bitbucket.org/upcomposer/wpai-acf-add-on",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/wpai-acf-add-on/src/0a7ce20f340c27ffcc311a4401750b07c91706b6/?at=master"
+            },
+            "time": "2018-10-24T22:00:50+00:00"
+        },
+        {
+            "name": "up-plugins/wpai-woocommerce-add-on",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/upcomposer/wpai-woocommerce-add-on.git",
+                "reference": "a9beade4af5177fc89763f5546166a38e2957817"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/upcomposer/wpai-woocommerce-add-on/get/a9beade4af5177fc89763f5546166a38e2957817.zip",
+                "reference": "a9beade4af5177fc89763f5546166a38e2957817",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Urban Pixels",
+                    "email": "info@urbanpixels.com"
+                }
+            ],
+            "description": "WP All Import - WooCommerce Add-On",
+            "homepage": "https://bitbucket.org/upcomposer/wpai-woocommerce-add-on",
+            "support": {
+                "source": "https://bitbucket.org/upcomposer/wpai-woocommerce-add-on/src/a9beade4af5177fc89763f5546166a38e2957817/?at=master"
+            },
+            "time": "2018-10-24T22:02:22+00:00"
         },
         {
             "name": "wpackagist-plugin/acf-content-analysis-for-yoast-seo",
@@ -1144,15 +1237,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "9.0.1",
+            "version": "9.0.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/9.0.1"
+                "reference": "tags/9.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.9.0.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.9.0.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1221,6 +1314,9 @@
         "up-plugins/woocommerce-url-coupons": 20,
         "up-plugins/woothemes-updater": 20,
         "up-plugins/wp-all-export-pro": 20,
+        "up-plugins/wp-all-import-pro": 20,
+        "up-plugins/wpai-acf-add-on": 20,
+        "up-plugins/wpai-woocommerce-add-on": 20,
         "up-plugins/woocommerce-additional-variation-images": 20,
         "up-plugins/woocommerce-variation-swatches-and-photos": 20
     },

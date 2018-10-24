@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/wp-all-import-pro",
+    "type": "wordpress-plugin",
+    "description": "WP All Import Pro",
+    "version":"4.5.5",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/wp-all-import-pro.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}

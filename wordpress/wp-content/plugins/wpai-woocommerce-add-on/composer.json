@@ -1,0 +1,21 @@
+{
+    "name": "up-plugins/wpai-woocommerce-add-on",
+    "type": "wordpress-plugin",
+    "description": "WP All Import - WooCommerce Add-On",
+    "version":"3.0.5",
+    "repositories":[
+	{
+	"type":"git",
+	"url":"https://bitbucket.org/upcomposer/wpai-woocommerce-add-on.git"
+	}
+    ],
+    "authors": [
+        {
+            "name": "Urban Pixels",
+            "email": "info@urbanpixels.com"
+        }
+    ],
+    "require": {
+	"composer/installers":"~1.0"
+    }
+}
