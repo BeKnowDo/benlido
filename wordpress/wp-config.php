@@ -21,7 +21,7 @@ switch($_SERVER['HTTP_HOST'])
         break;
     case 'benlido.upco.co':
     case 'ip-172-31-63-11':
-        define('SERVER_ENVIRONMENT','UPCO')
+        define('SERVER_ENVIRONMENT','UPCO');
         break;
     case 'dev.benlido.com':
     case 'ip-172-31-45-93':
