@@ -17,8 +17,12 @@ switch($_SERVER['HTTP_HOST'])
     case 'benlido.urbanpixels.localhost':
     case 'macminis-Mac-mini.local':
     case 'MacBook-Air-2.local':
-	define('SERVER_ENVIRONMENT','DAVE');
-	break;
+	    define('SERVER_ENVIRONMENT','DAVE');
+        break;
+    case 'benlido.upco.co':
+    case 'ip-172-31-63-11':
+        define('SERVER_ENVIRONMENT','UPCO')
+        break;
     case 'dev.benlido.com':
     case 'ip-172-31-45-93':
         define('SERVER_ENVIRONMENT','DEV');
@@ -39,6 +43,12 @@ switch(SERVER_ENVIRONMENT) {
 	    define('WP_CACHE_KEY_SALT', $_SERVER['SERVER_NAME'] );
         break;
 
+    case "UPCO":
+        define('DB_HOST', 'up-aurora-1-cluster.cluster-coy6j35ly0yk.us-east-1.rds.amazonaws.com');
+        define('DB_NAME', 'ben_lido_dev');
+        define('DB_USER', 'benlido');
+        define('DB_PASSWORD', 'benlido');
+        break;
     case "DEV":
         define('DB_HOST', 'localhost');
         define('DB_NAME', 'ben_lido_dev');
