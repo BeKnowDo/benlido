@@ -24,7 +24,7 @@
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_2_0 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_3_0 as Framework;
 
 /**
  * # WooCommerce Google Analytics Pro Main Plugin Class.
@@ -35,7 +35,7 @@ class WC_Google_Analytics_Pro extends Framework\SV_WC_Plugin {
 
 
 	/** plugin version number */
-	const VERSION = '1.6.3';
+	const VERSION = '1.6.4';
 
 	/** @var \WC_Google_Analytics_Pro the singleton instance of the plugin */
 	protected static $instance;

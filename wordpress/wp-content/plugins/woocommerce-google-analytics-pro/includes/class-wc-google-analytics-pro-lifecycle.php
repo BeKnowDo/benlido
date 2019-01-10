@@ -26,7 +26,7 @@ namespace SkyVerge\WooCommerce\Google_Analytics_Pro;
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_2_0 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_3_0 as Framework;
 
 /**
  * Plugin lifecycle handler.

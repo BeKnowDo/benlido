@@ -3,6 +3,7 @@ Author: skyverge
 Tags: woocommerce
 Requires at least: 4.4
 Tested up to: 4.9.8
+Requires PHP: 5.4
 
 Supercharge your Google Analytics tracking with enhanced eCommerce tracking and custom event tracking
 

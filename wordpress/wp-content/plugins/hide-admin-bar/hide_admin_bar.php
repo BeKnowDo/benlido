@@ -1,8 +1,8 @@
 <?php
 /* 
 Plugin Name: Hide Admin Bar
-Description: Hides the Admin Bar in WordPress 3.1+, credits to <a href="http://yoast.com/disable-wp-admin-bar/">Yoast</a>, and <a href="http://developersmind.com/2011/02/23/disable-admin-bar-and-hide-preferences/">Pete Mall</a>. If you love this plugin, <a href="https://paypal.me/sdenike">buy me a cup of coffee</a>.  [](http://coderisk.com/wp/plugin/hide-admin-bar/RIPS-YZAPQKY5XK)
-Version: 0.3.9.4
+Description: Hides the Admin Bar in WordPress 3.1+, credits to <a href="http://yoast.com/disable-wp-admin-bar/">Yoast</a>, and <a href="http://developersmind.com/2011/02/23/disable-admin-bar-and-hide-preferences/">Pete Mall</a>. If you love this plugin, <a href="https://paypal.me/sdenike">buy me a cup of coffee</a>.
+Version: 0.3.9.5
 Author: Shelby DeNike
 Author URI: https://systmweb.com
 Text Domain: hide-admin-bar

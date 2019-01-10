@@ -24,7 +24,7 @@
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_2_0 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_3_0 as Framework;
 
 /**
  * The plugin integration class.
@@ -2077,6 +2077,16 @@ window.wc_ga_pro.is_valid_email = function( email ) {
 		}
 
 		$order = wc_get_order( $order_id );
+
+		// can't track an order that doesn't exist
+		if ( ! $order || ! $order instanceof \WC_Order ) {
+			return;
+		}
+
+		// only track orders with a 'paid' order status
+		if ( ! $order->is_paid() ) {
+			return;
+		}
 
 		// bail if tracking is disabled but not if the status is being manually changed by the admin
 		if ( ! $this->is_tracking_enabled_for_user_role( Framework\SV_WC_Order_Compatibility::get_prop( $order, 'customer_id' ) ) ) {

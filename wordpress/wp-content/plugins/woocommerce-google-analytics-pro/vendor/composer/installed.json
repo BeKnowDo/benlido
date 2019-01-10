@@ -110,17 +110,17 @@
     },
     {
         "name": "google/apiclient-services",
-        "version": "v0.66",
-        "version_normalized": "0.66.0.0",
+        "version": "v0.71",
+        "version_normalized": "0.71.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/google/google-api-php-client-services.git",
-            "reference": "357a13e6f59e5590071b1d455c0ead482fac65db"
+            "url": "https://github.com/googleapis/google-api-php-client-services.git",
+            "reference": "f066aac8c0ea88cf5880611d589fd1e01c4fd082"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/357a13e6f59e5590071b1d455c0ead482fac65db",
-            "reference": "357a13e6f59e5590071b1d455c0ead482fac65db",
+            "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/f066aac8c0ea88cf5880611d589fd1e01c4fd082",
+            "reference": "f066aac8c0ea88cf5880611d589fd1e01c4fd082",
             "shasum": ""
         },
         "require": {
@@ -129,7 +129,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.8"
         },
-        "time": "2018-08-21T20:23:38+00:00",
+        "time": "2018-10-09T00:22:49+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -149,17 +149,17 @@
     },
     {
         "name": "google/auth",
-        "version": "v1.3.2",
-        "version_normalized": "1.3.2.0",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/google/google-auth-library-php.git",
-            "reference": "436007a77fd2037f933d3a5c8e4c7e0c9b88a7b0"
+            "url": "https://github.com/googleapis/google-auth-library-php.git",
+            "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/436007a77fd2037f933d3a5c8e4c7e0c9b88a7b0",
-            "reference": "436007a77fd2037f933d3a5c8e4c7e0c9b88a7b0",
+            "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/196237248e636a3554a7d9e4dfddeb97f450ab5c",
+            "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c",
             "shasum": ""
         },
         "require": {
@@ -176,7 +176,7 @@
             "phpunit/phpunit": "^4.8.36|^5.7",
             "sebastian/comparator": ">=1.2.3"
         },
-        "time": "2018-07-23T21:44:38+00:00",
+        "time": "2018-09-17T20:29:21+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -511,12 +511,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "6189452f1ba699ad64c8b2d6d9c44fa9b46b2468"
+            "reference": "99dcf43a7ac8f8ea790cebcb570d82782b27b125"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/6189452f1ba699ad64c8b2d6d9c44fa9b46b2468",
-            "reference": "6189452f1ba699ad64c8b2d6d9c44fa9b46b2468",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/99dcf43a7ac8f8ea790cebcb570d82782b27b125",
+            "reference": "99dcf43a7ac8f8ea790cebcb570d82782b27b125",
             "shasum": ""
         },
         "require": {
@@ -534,7 +534,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
             "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
         },
-        "time": "2018-08-21T02:41:18+00:00",
+        "time": "2018-10-13T13:21:22+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -839,17 +839,17 @@
     },
     {
         "name": "skyverge/wc-plugin-framework",
-        "version": "5.2.0",
-        "version_normalized": "5.2.0.0",
+        "version": "5.3.0",
+        "version_normalized": "5.3.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/skyverge/wc-plugin-framework.git",
-            "reference": "53e8298ef5332e9a250bb6142bc9f1d105bc77d8"
+            "reference": "303895149120fb90f93093e4ff2a8e619914452b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/skyverge/wc-plugin-framework/zipball/53e8298ef5332e9a250bb6142bc9f1d105bc77d8",
-            "reference": "53e8298ef5332e9a250bb6142bc9f1d105bc77d8",
+            "url": "https://api.github.com/repos/skyverge/wc-plugin-framework/zipball/303895149120fb90f93093e4ff2a8e619914452b",
+            "reference": "303895149120fb90f93093e4ff2a8e619914452b",
             "shasum": ""
         },
         "require-dev": {
@@ -858,12 +858,12 @@
             "php-coveralls/php-coveralls": "v2.1.0",
             "phpunit/phpunit": "6.0.*"
         },
-        "time": "2018-07-24T21:10:50+00:00",
+        "time": "2018-09-25T20:32:09+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "description": "The official SkyVerge WooCommerce plugin framework",
         "support": {
-            "source": "https://github.com/skyverge/wc-plugin-framework/tree/5.2.0",
+            "source": "https://github.com/skyverge/wc-plugin-framework/tree/5.3.0",
             "issues": "https://github.com/skyverge/wc-plugin-framework/issues"
         }
     }

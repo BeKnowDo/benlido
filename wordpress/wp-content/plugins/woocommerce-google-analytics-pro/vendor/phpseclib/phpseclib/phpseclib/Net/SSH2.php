@@ -927,6 +927,14 @@ class SSH2
     var $preferred_signature_format = false;
 
     /**
+     * Authentication Credentials
+     *
+     * @var array
+     * @access private
+     */
+    var $auth = array();
+
+    /**
      * Default Constructor.
      *
      * $host can either be a string, representing the host, or a stream resource.
@@ -1202,6 +1210,7 @@ class SSH2
         }
 
         if (feof($this->fsock)) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -1230,6 +1239,7 @@ class SSH2
         if (!$this->send_kex_first) {
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -1470,6 +1480,7 @@ class SSH2
 
             $kexinit_payload_server = $this->_get_binary_packet();
             if ($kexinit_payload_server === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -1606,6 +1617,7 @@ class SSH2
 
                 $response = $this->_get_binary_packet();
                 if ($response === false) {
+                    $this->bitmap = 0;
                     user_error('Connection closed by server');
                     return false;
                 }
@@ -1698,12 +1710,14 @@ class SSH2
         $data = pack('CNa*', $clientKexInitMessage, strlen($eBytes), $eBytes);
 
         if (!$this->_send_binary_packet($data)) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -1821,6 +1835,7 @@ class SSH2
         $response = $this->_get_binary_packet();
 
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -1842,7 +1857,7 @@ class SSH2
         $this->encrypt = $this->_encryption_algorithm_to_crypt_instance($encrypt);
         if ($this->encrypt) {
             if ($this->crypto_engine) {
-                $this->encrypt->setEngine($this->crypto_engine);
+                $this->encrypt->setPreferredEngine($this->crypto_engine);
             }
             if ($this->encrypt->block_size) {
                 $this->encrypt_block_size = $this->encrypt->block_size;
@@ -1866,7 +1881,7 @@ class SSH2
         $this->decrypt = $this->_encryption_algorithm_to_crypt_instance($decrypt);
         if ($this->decrypt) {
             if ($this->crypto_engine) {
-                $this->decrypt->setEngine($this->crypto_engine);
+                $this->decrypt->setPreferredEngine($this->crypto_engine);
             }
             if ($this->decrypt->block_size) {
                 $this->decrypt_block_size = $this->decrypt->block_size;
@@ -2117,6 +2132,7 @@ class SSH2
     function login($username)
     {
         $args = func_get_args();
+        $this->auth[] = $args;
         return call_user_func_array(array(&$this, '_login'), $args);
     }
 
@@ -2188,6 +2204,7 @@ class SSH2
                     }
                     return $this->_login_helper($username, $password);
                 }
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2240,6 +2257,7 @@ class SSH2
 
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2298,6 +2316,7 @@ class SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -2398,6 +2417,7 @@ class SSH2
         } else {
             $orig = $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2586,6 +2606,7 @@ class SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -2642,6 +2663,7 @@ class SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -2768,6 +2790,7 @@ class SSH2
 
             $response = $this->_get_binary_packet();
             if ($response === false) {
+                $this->bitmap = 0;
                 user_error('Connection closed by server');
                 return false;
             }
@@ -2907,6 +2930,7 @@ class SSH2
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
+            $this->bitmap = 0;
             user_error('Connection closed by server');
             return false;
         }
@@ -3219,6 +3243,66 @@ class SSH2
     function isAuthenticated()
     {
         return (bool) ($this->bitmap & self::MASK_LOGIN);
+    }
+
+    /**
+     * Pings a server connection, or tries to reconnect if the connection has gone down
+     *
+     * Inspired by http://php.net/manual/en/mysqli.ping.php
+     *
+     * @return bool
+     * @access public
+     */
+    function ping()
+    {
+        if (!$this->isAuthenticated()) {
+            return false;
+        }
+
+        $this->window_size_server_to_client[NET_SSH2_CHANNEL_KEEP_ALIVE] = $this->window_size;
+        $packet_size = 0x4000;
+        $packet = pack(
+            'CNa*N3',
+            NET_SSH2_MSG_CHANNEL_OPEN,
+            strlen('session'),
+            'session',
+            NET_SSH2_CHANNEL_KEEP_ALIVE,
+            $this->window_size_server_to_client[NET_SSH2_CHANNEL_KEEP_ALIVE],
+            $packet_size
+        );
+
+        if (!@$this->_send_binary_packet($packet)) {
+            return $this->_reconnect();
+        }
+
+        $this->channel_status[NET_SSH2_CHANNEL_KEEP_ALIVE] = NET_SSH2_MSG_CHANNEL_OPEN;
+
+        $response = @$this->_get_channel_packet(NET_SSH2_CHANNEL_KEEP_ALIVE);
+        if ($response !== false) {
+            $this->_close_channel(NET_SSH2_CHANNEL_KEEP_ALIVE);
+            return true;
+        }
+
+        return $this->_reconnect();
+    }
+
+    /**
+     * In situ reconnect method
+     *
+     * @return boolean
+     * @access private
+     */
+    function _reconnect()
+    {
+        $this->_reset_connection(NET_SSH2_DISCONNECT_CONNECTION_LOST);
+        $this->retry_connect = true;
+        if (!$this->_connect()) {
+            return false;
+        }
+        foreach ($this->auth as $auth) {
+            $result = call_user_func_array(array(&$this, 'parent::login'), $auth);
+        }
+        return $result;
     }
 
     /**
@@ -3621,6 +3705,7 @@ class SSH2
 
                 $response = $this->_get_binary_packet(true);
                 if ($response === false) {
+                    $this->bitmap = 0;
                     user_error('Connection closed by server');
                     return false;
                 }

@@ -2,7 +2,7 @@
     "name": "up-plugins/woocommerce-google-analytics-pro",
     "type": "wordpress-plugin",
     "description": "WooCommerce Google Analytics Pro",
-    "version":"1.6.3",
+    "version":"1.6.4",
     "repositories":[
 	{
 	"type":"git",

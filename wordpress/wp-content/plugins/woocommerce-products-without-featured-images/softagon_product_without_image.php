@@ -135,7 +135,7 @@ class Softagon_without_images extends WP_List_Table {
             WHERE p.post_type = 'product' AND meta_key IS NULL
             ORDER BY p.ID DESC", 'ARRAY_A');
 
-        $per_page = 100;
+        $per_page = 5;
 
         $columns = $this->get_columns();
         $hidden = array();

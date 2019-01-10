@@ -258,6 +258,16 @@ class Google_Service_CloudIot extends Google_Service
                   'type' => 'string',
                 ),
               ),
+            ),'sendCommandToDevice' => array(
+              'path' => 'v1/{+name}:sendCommandToDevice',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),
           )
         )
@@ -424,6 +434,16 @@ class Google_Service_CloudIot extends Google_Service
                 'updateMask' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+              ),
+            ),'sendCommandToDevice' => array(
+              'path' => 'v1/{+name}:sendCommandToDevice',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

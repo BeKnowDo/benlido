@@ -181,6 +181,8 @@ if ( ! function_exists( 'pys_get_woo_code' ) ) {
             }
             
             $params['content_ids']  = json_encode( $content_ids );
+	        $params['content_type'] = apply_filters( 'pys_fb_pixel_woo_product_content_type', $params['content_type'],
+		        'variable', null, pys_get_option( 'woo', 'content_id_format' ) );
     
             pys_add_event( 'ViewCategory', $params );
             

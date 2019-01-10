@@ -100,14 +100,14 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'WJECF_Autocoupon' ) ) {
 		public function wjecf_admin_before_settings() {
 			$page = WJECF_Admin_Settings::SETTINGS_PAGE;
 
-			if ( WJECF()->is_pro() ) {
-				add_settings_section(
-					WJECF_Admin_Settings::DOM_PREFIX . 'section_autocoupon',
-					__( 'Auto coupons', 'woocommerce-jos-autocoupon' ),
-					array( $this, 'render_section' ),
-					$page
-				);
+			add_settings_section(
+				WJECF_Admin_Settings::DOM_PREFIX . 'section_autocoupon',
+				__( 'Auto coupons', 'woocommerce-jos-autocoupon' ),
+				array( $this, 'render_section' ),
+				$page
+			);
 
+			if ( WJECF()->is_pro() ) {
 				add_settings_field(
 					WJECF_Admin_Settings::DOM_PREFIX . 'autocoupon_allow_remove',
 					__( 'Allow remove \'Auto Coupons\'', 'woocommerce-jos-autocoupon' ),

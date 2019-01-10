@@ -22,11 +22,11 @@
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
-namespace SkyVerge\WooCommerce\PluginFramework\v5_2_0;
+namespace SkyVerge\WooCommerce\PluginFramework\v5_3_0;
 
 defined( 'ABSPATH' ) or exit;
 
-if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\v5_2_0\\SV_WC_Plugin' ) ) :
+if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\v5_3_0\\SV_WC_Plugin' ) ) :
 
 /**
  * # WooCommerce Plugin Framework
@@ -36,13 +36,13 @@ if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\v5_2_0\\SV_WC_Pl
  * plugin.  This class handles all the "non-feature" support tasks such
  * as verifying dependencies are met, loading the text domain, etc.
  *
- * @version 5.2.0
+ * @version 5.3.0
  */
 abstract class SV_WC_Plugin {
 
 
 	/** Plugin Framework Version */
-	const VERSION = '5.2.0';
+	const VERSION = '5.3.0';
 
 	/** @var object single instance of plugin */
 	protected static $instance;
@@ -74,11 +74,14 @@ abstract class SV_WC_Plugin {
 	/** @var SV_WC_Hook_Deprecator hook deprecator instance */
 	private $hook_deprecator;
 
-	/** @var Plugin\Lifecycle lifecycle handler */
+	/** @var Plugin\Lifecycle lifecycle handler instance */
 	protected $lifecycle_handler;
 
-	/** @var REST_API REST API handler */
+	/** @var REST_API REST API handler instance */
 	protected $rest_api_handler;
+
+	/** @var Admin\Setup_Wizard handler instance */
+	protected $setup_wizard_handler;
 
 	/** @var SV_WC_Admin_Notice_Handler the admin notice handler class */
 	private $admin_notice_handler;
@@ -139,6 +142,9 @@ abstract class SV_WC_Plugin {
 
 		// build the REST API handler instance
 		$this->init_rest_api_handler();
+
+		// build the setup handler instance
+		$this->init_setup_wizard_handler();
 
 		// add the action & filter hooks
 		$this->add_hooks();
@@ -234,24 +240,37 @@ abstract class SV_WC_Plugin {
 
 
 	/**
+	 * Builds the Setup Wizard handler instance.
+	 *
+	 * Plugins can override and extend this method to add their own setup wizard.
+	 *
+	 * @since 5.3.0-dev
+	 */
+	protected function init_setup_wizard_handler() {
+
+		require_once( $this->get_framework_path() . '/admin/abstract-sv-wc-plugin-admin-setup-wizard.php' );
+	}
+
+
+	/**
 	 * Adds the action & filter hooks.
 	 *
 	 * @since 5.2.0
 	 */
 	private function add_hooks() {
 
-		// hook for translations seperately to ensure they're loaded
-		add_action( 'init', array( $this, 'load_translations' ) );
-
 		// initialize the plugin
-		add_action( 'init', array( $this, 'init_plugin' ), 0 );
+		add_action( 'plugins_loaded', array( $this, 'init_plugin' ), 15 );
 
 		// initialize the plugin admin
 		add_action( 'admin_init', array( $this, 'init_admin' ), 0 );
 
+		// hook for translations seperately to ensure they're loaded
+		add_action( 'init', array( $this, 'load_translations' ) );
+
 		// add the admin notices
-		add_action( 'admin_init', array( $this, 'add_admin_notices' ) );
-		add_action( 'admin_init', array( $this, 'add_delayed_admin_notices' ) );
+		add_action( 'admin_notices', array( $this, 'add_admin_notices' ) );
+		add_action( 'admin_footer',  array( $this, 'add_delayed_admin_notices' ) );
 
 		// add a 'Configure' link to the plugin action links
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->get_plugin_file() ), array( $this, 'plugin_action_links' ) );
@@ -275,7 +294,7 @@ abstract class SV_WC_Plugin {
 	 */
 	public function __clone() {
 		/* translators: Placeholders: %s - plugin name */
-		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'You cannot clone instances of %s.', 'woocommerce-plugin-framework' ), $this->get_plugin_name() ), '3.1.0' );
+		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'You cannot clone instances of %s.', 'woocommerce-plugin-framework' ), esc_html( $this->get_plugin_name() ) ), '3.1.0' );
 	}
 
 
@@ -286,7 +305,7 @@ abstract class SV_WC_Plugin {
 	 */
 	public function __wakeup() {
 		/* translators: Placeholders: %s - plugin name */
-		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'You cannot unserialize instances of %s.', 'woocommerce-plugin-framework' ), $this->get_plugin_name() ), '3.1.0' );
+		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'You cannot unserialize instances of %s.', 'woocommerce-plugin-framework' ), esc_html( $this->get_plugin_name() ) ), '3.1.0' );
 	}
 
 
@@ -386,6 +405,10 @@ abstract class SV_WC_Plugin {
 
 		// common exception class
 		require_once(  $framework_path . '/class-sv-wc-plugin-exception.php' );
+
+		// addresses
+		require_once(  $framework_path . '/Addresses/Address.php' );
+		require_once(  $framework_path . '/Addresses/Customer_Address.php' );
 
 		// common utility methods
 		require_once( $framework_path . '/class-sv-wc-helper.php' );
@@ -741,10 +764,25 @@ abstract class SV_WC_Plugin {
 	 * Gets the lifecycle handler instance.
 	 *
 	 * @since 5.1.0
+	 *
+	 * @return Plugin\Lifecycle
 	 */
 	public function get_lifecycle_handler() {
 
 		return $this->lifecycle_handler;
+	}
+
+
+	/**
+	 * Gets the Setup Wizard handler instance.
+	 *
+	 * @since 5.3.0-dev
+	 *
+	 * @return null|Admin\Setup_Wizard
+	 */
+	public function get_setup_wizard_handler() {
+
+		return $this->setup_wizard_handler;
 	}
 
 

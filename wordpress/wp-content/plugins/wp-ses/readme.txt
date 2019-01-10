@@ -2,7 +2,7 @@
 Contributors: deliciousbrains, bradt, SylvainDeaure
 Tags: email,ses,amazon,webservice,deliverability,newsletter,autoresponder,mail,wp_mail,smtp,service
 Requires at least: 3.0.0
-Tested up to: 4.9.1
+Tested up to: 5.0
 Requires PHP: 5.5+
 Stable tag: trunk
 
@@ -205,6 +205,9 @@ Yes, please do! It's easy.
 1. Settings screen
 
 == Changelog ==
+
+= 0.8.2 - 2019-01-09 =
+* Add discount for launch of WP Offload SES
 
 = 0.8.1 - 2018-06-06 =
 * Added dismissable admin notice that WP SES will soon require PHP 5.5+

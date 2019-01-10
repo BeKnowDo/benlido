@@ -1,5 +1,9 @@
 *** WooCommerce Google Analytics Pro ***
 
+2018.10.17 - version 1.6.4
+ * Fix - Only track orders with a paid order status on the completed_purchase event
+ * Misc - Add support for WooCommerce 3.5
+
 2018.09.05 - version 1.6.3
  * Fix - Fix an issue preventing some Subscriptions events from being reported correctly
  * Fix - Fix debug mode detection
