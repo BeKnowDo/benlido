@@ -49,12 +49,17 @@ class FieldCloneV5 extends Field {
         if (!$isUpdated){
             return FALSE;
         }
+        $field = $this->getData('field');
+        $prefix = $this->importData['container_name'];
+        if ($field['prefix_name']) {
+            $prefix = $field['name'] . '_' . $prefix;
+        }
 
         /** @var Field $subField */
         foreach ($this->getSubFields() as $subField){
             $subField->importData = $importData;
             $subField->import($importData, array(
-                'container_name' => $this->importData['container_name']
+                'container_name' => $prefix
             ));
         }
 
@@ -127,7 +132,13 @@ class FieldCloneV5 extends Field {
         $fieldsData = array();
         $field = $this->getData('field');
         if (!empty($field['clone'])) {
-            $fields = acf_local()->fields;
+            $fields = [];
+            if (function_exists('acf_local')) {
+                $fields = acf_local()->fields;
+            }
+            if (empty($fields) && function_exists('acf_get_local_fields')) {
+                $fields = acf_get_local_fields();
+            }
             foreach ($field['clone'] as $sub_field_key) {
                 if (strpos($sub_field_key, 'group_') === 0){
                     if (!empty($fields)){

@@ -554,14 +554,19 @@ function pys_pixel_options() {
 	 * GDPR
 	 */
 	
+	$ajax_enabled = apply_filters('pys_gdpr_ajax_enabled', pys_get_option( 'gdpr', 'gdpr_ajax_enabled', true ));
+	
 	$options['gdpr'] = array(
         'disable' => apply_filters( 'pys_disable_by_gdpr', false ),
+        'ajax_enabled' => $ajax_enabled,
         'enable_before_consent' => pys_get_option( 'gdpr', 'enable_before_consent' ),
 //        'gdpr_enabled' => pys_is_gdpr_plugin_activated() && pys_get_option( 'gdpr', 'gdpr_enabled' ),
         'ginger_enabled' => pys_is_ginger_plugin_activated() && pys_get_option( 'gdpr', 'ginger_enabled' ),
         'cookiebot_enabled' => pys_is_cookiebot_plugin_activated() && pys_get_option( 'gdpr', 'cookiebot_enabled' )
     );
 
+	$options['ajax_url'] = admin_url( 'admin-ajax.php' );
+	
     return $options;
     
 }

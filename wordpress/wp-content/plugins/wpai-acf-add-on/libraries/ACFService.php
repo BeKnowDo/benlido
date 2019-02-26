@@ -154,7 +154,7 @@ final class ACFService{
             $fileName = $img_url;
         }
 
-        return PMXI_API::upload_image($pid, $img_url, $downloadFiles, $logger, true, $fileName);
+        return PMXI_API::upload_image($pid, $img_url, $downloadFiles, $logger, true, $fileName, 'images', $search_in_gallery);
     }
 
     /**
@@ -195,7 +195,7 @@ final class ACFService{
             $fileName = $atch_url;
         }
 
-        return PMXI_API::upload_image($pid, $atch_url, $downloadFiles, $logger, true, $fileName, "files");
+        return PMXI_API::upload_image($pid, $atch_url, $downloadFiles, $logger, true, $fileName, "files", $search_in_gallery);
     }
 
     /**
@@ -230,6 +230,6 @@ final class ACFService{
                 }
             }
         }
-        return $post_ids;
+        return apply_filters( 'pmxi_acf_post_relationship_ids', $post_ids );
     }
 }

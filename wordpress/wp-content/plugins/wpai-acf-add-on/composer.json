@@ -2,7 +2,7 @@
     "name": "up-plugins/wpai-acf-add-on",
     "type": "wordpress-plugin",
     "description": "WP All Import - ACF Add-On",
-    "version":"3.1.9",
+    "version":"3.2.0",
     "repositories":[
 	{
 	"type":"git",

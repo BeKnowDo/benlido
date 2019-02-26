@@ -1074,8 +1074,14 @@ if( !function_exists( 'pys_get_default_options' ) ) {
 		$options['edd']['purchase_add_address']        = true;
 		$options['edd']['purchase_add_payment_method'] = true;
 		$options['edd']['purchase_add_coupons']        = true;
-		
+        
+        /**
+         * GDPR
+         */
 		$options['gdpr']['enable_before_consent'] = true;
+        $options['gdpr']['gdpr_ajax_enabled'] = true;
+        $options['gdpr']['ginger_enabled'] = false;
+        $options['gdpr']['cookiebot_enabled'] = false;
 		
 		return apply_filters( 'pys_fb_pixel_setting_defaults', $options );
 

@@ -216,8 +216,7 @@ var runPYS = function () {
 
 jQuery(document).ready(function ($) {
 
-    if (typeof pys_fb_pixel_options !== 'undefined') {
-
+    var loadPixel = function () {
         // tracking in not disabled with filter by 3rd party
         if (!pys_fb_pixel_options.gdpr.disable) {
 
@@ -295,7 +294,26 @@ jQuery(document).ready(function ($) {
         } else {
             console.warn('PixelYourSite is disabled by GDPR.');
         }
+    };
 
+    if (typeof pys_fb_pixel_options !== 'undefined') {
+        if (pys_fb_pixel_options.gdpr.ajax_enabled) {
+            $.get({
+                url: pys_fb_pixel_options.ajax_url,
+                dataType: 'json',
+                data: {
+                    action: 'pys_get_gdpr_filter_value'
+                },
+                success: function (res) {
+                    if (res.success) {
+                        pys_fb_pixel_options.gdpr.disable = res.data.disable;
+                    }
+                    loadPixel();
+                }
+            });
+
+        } else {
+            loadPixel();
+        }
     }
-
 });

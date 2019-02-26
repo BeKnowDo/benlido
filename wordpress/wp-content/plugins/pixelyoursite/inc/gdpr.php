@@ -43,3 +43,10 @@ function pys_is_cookiebot_plugin_activated() {
 
 }
 
+add_action( 'wp_ajax_pys_get_gdpr_filter_value', 'pys_get_gdpr_filter_value' );
+add_action( 'wp_ajax_nopriv_pys_get_gdpr_filter_value', 'pys_get_gdpr_filter_value' );
+function pys_get_gdpr_filter_value() {
+    wp_send_json_success( array(
+        'disable' => apply_filters( 'pys_disable_by_gdpr', false ),
+    ) );
+}

@@ -99,6 +99,22 @@ class Red_Database_Status {
 		return get_option( self::OLD_DB_VERSION );
 	}
 
+	public function check_tables_exist() {
+		$latest = Red_Database::get_latest_database();
+		$missing = $latest->get_missing_tables();
+
+		// No tables installed - do a fresh install
+		if ( count( $missing ) === count( $latest->get_all_tables() ) ) {
+			delete_option( Red_Database_Status::OLD_DB_VERSION );
+			red_set_options( [ 'database' => '' ] );
+			$this->status = self::STATUS_NEED_INSTALL;
+			$this->stop_update();
+		} elseif ( count( $missing ) > 0 && version_compare( $this->get_current_version(), '2.3.3', 'ge' ) ) {
+			// Some tables are missing - try and fill them in
+			$latest->install();
+		}
+	}
+
 	/**
 	 * Does the current database support a particular version
 	 *
@@ -125,6 +141,7 @@ class Red_Database_Status {
 
 		$latest = Red_Database::get_latest_database();
 		$this->debug = array_merge( $this->debug, $latest->get_table_schema() );
+		$this->debug[] = 'Stage: ' . $this->get_current_stage();
 	}
 
 	public function set_ok( $reason ) {
@@ -290,6 +307,11 @@ class Red_Database_Status {
 	private function get_next_stage( $stage ) {
 		$database = new Red_Database();
 		$upgraders = $database->get_upgrades_for_version( $this->get_current_version(), $this->get_current_stage() );
+
+		if ( count( $upgraders ) === 0 ) {
+			$upgraders = $database->get_upgrades_for_version( $this->get_current_version(), false );
+		}
+
 		$upgrader = Red_Database_Upgrader::get( $upgraders[0] );
 
 		// Where are we in this?

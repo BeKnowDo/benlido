@@ -126,7 +126,7 @@ class FieldRepeater extends Field {
                         @unlink($file);
 
                         $xpath_suffix = '';
-                        if ((is_array($rowFields[$this->getFieldKey()]) || strpos($rowFields[$this->getFieldKey()], "!") !== 0) && strpos($xpath['foreach'], "!") !== 0){
+                        if ((!isset($rowFields[$this->getFieldKey()]) || (is_array($rowFields[$this->getFieldKey()]) || strpos($rowFields[$this->getFieldKey()], "!") !== 0)) && strpos($xpath['foreach'], "!") !== 0){
                             $xpath_suffix = $this->getOption('base_xpath') . $repeaterXpath;
                             $xpath_suffix = str_replace($parsingData['xpath_prefix'] . $parsingData['import']->xpath, '', $xpath_suffix);
                         }
@@ -199,16 +199,25 @@ class FieldRepeater extends Field {
         if (!empty($values)){
             switch ($this->getMode()) {
                 case 'xml':
+                    $countRows = 0;
                     for ($k = 0; $k < $values[$this->getPostIndex()]['countRows']; $k++) {
+                        $importData['i'] = $k;
+                        // Init importData in all sub fields.
                         /** @var Field $subField */
                         foreach ($values[$this->getPostIndex()]['fields'] as $subFieldKey => $subField) {
-                            $importData['i'] = $k;
-                            $subField->import($importData, array(
-                                'container_name' => $this->getFieldName() . "_" . $k . "_"
-                            ));
+                            $subField->importData = $importData;
+                        }
+                        if ($this->isImportRow($values[$this->getPostIndex()]['fields'])) {
+                            /** @var Field $subField */
+                            foreach ($values[$this->getPostIndex()]['fields'] as $subFieldKey => $subField) {
+                                $subField->import($importData, array(
+                                    'container_name' => $this->getFieldName() . "_" . $countRows . "_"
+                                ));
+                            }
+                            $countRows++;
                         }
                     }
-                    ACFService::update_post_meta($this, $this->getPostID(), $this->getFieldName(), $values[$this->getPostIndex()]['countRows']);
+                    ACFService::update_post_meta($this, $this->getPostID(), $this->getFieldName(), $countRows);
                     break;
                 case 'csv':
                     $countRows = 0;

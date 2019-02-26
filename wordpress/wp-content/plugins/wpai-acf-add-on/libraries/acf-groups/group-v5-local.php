@@ -14,10 +14,22 @@ class GroupV5Local extends Group {
      *  Init group fields which are saved locally in the code for ACF v5.x
      */
     public function initFields() {
-        $fields = acf_local()->fields;
+        $fields = [];
+        if (function_exists('acf_local')) {
+            $fields = acf_local()->fields;
+        }
+        if (empty($fields) && function_exists('acf_get_local_fields')) {
+            $fields = acf_get_local_fields();
+        }
         // Re-init ACF group in case it was defined in ACF 4.x
         if (isset($this->group['ID'])) {
-            $groups = acf_local()->groups;
+            $groups = [];
+            if (function_exists('acf_local')) {
+                $groups = acf_local()->groups;
+            }
+            if (empty($groups) && function_exists('acf_get_local_field_groups')) {
+                $groups = acf_get_local_field_groups();
+            }
             if (!empty($groups)) {
                 foreach ($groups as $group) {
                     if (isset($group['id']) && $group['id'] == $this->group['ID']) {

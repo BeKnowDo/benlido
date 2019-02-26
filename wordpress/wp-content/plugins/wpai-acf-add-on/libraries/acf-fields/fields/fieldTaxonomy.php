@@ -183,7 +183,8 @@ class FieldTaxonomy extends Field {
             ACFService::update_post_meta($this, $this->getPostID(), $this->getFieldName(), $mult_values);
         }
         else {
-            ACFService::update_post_meta($this, $this->getPostID(), $this->getFieldName(), isset($values[$this->getPostIndex()]) ? $values[$this->getPostIndex()] : '');
+            $v = is_array($values) ? array_shift($values) : $values;
+            ACFService::update_post_meta($this, $this->getPostID(), $this->getFieldName(), $v);
         }
     }
 
@@ -227,8 +228,10 @@ class FieldTaxonomy extends Field {
                     foreach ($value as $i => $term){
                         $termName = $term['name'];
                         foreach ($parents as $key => $parent) {
-                            $termName = explode($parent['delimiter'], $termName);
-                            $termName = $termName[$parent['index']];
+                            if (!empty($parent['delimiter'])) {
+                                $termName = explode($parent['delimiter'], $termName);
+                                $termName = $termName[$parent['index']];
+                            }
                         }
                         $value[$i]['name'] = $termName;
                     }
@@ -266,6 +269,9 @@ class FieldTaxonomy extends Field {
                             $count = count($value);
                         }
                     }
+                }
+                if (!is_array($tx_terms) && !empty($tx_terms)) {
+                    $count = 1;
                 }
             }
         }

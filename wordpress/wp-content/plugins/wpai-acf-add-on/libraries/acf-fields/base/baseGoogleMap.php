@@ -55,10 +55,10 @@ abstract class BaseGoogleMap extends Field {
                     $values['address'][$this->getPostIndex()] = $address;
                 }
                 if (empty($values['lat'][$this->getPostIndex()])) {
-                    $values['lat'][$this->getPostIndex()] = $lat;
+                    $values['lat'][$this->getPostIndex()] = str_replace(',','.', $lat);
                 }
                 if (empty($values['lng'][$this->getPostIndex()])) {
-                    $values['lng'][$this->getPostIndex()] = $lng;
+                    $values['lng'][$this->getPostIndex()] = str_replace(',','.', $lng);
                 }
                 $this->setOption('values', $values);
             }

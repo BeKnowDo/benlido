@@ -26,7 +26,13 @@ class PMAI_Admin_Import extends PMAI_Controller_Admin {
                 'order' => 'ASC',
                 'orderby' => 'title'
             ));
-            $this->data['groups'] = acf_local()->groups;
+            $this->data['groups'] = [];
+            if (function_exists('acf_local')) {
+                $this->data['groups'] = acf_local()->groups;
+            }
+            if (empty($this->data['groups']) && function_exists('acf_get_local_field_groups')) {
+                $this->data['groups'] = acf_get_local_field_groups();
+            }
         }
         else {
             $this->data['groups'] = apply_filters('acf/get_field_groups', array());
@@ -47,7 +53,7 @@ class PMAI_Admin_Import extends PMAI_Controller_Admin {
                         }
                     }
                     // Only render visible field groups.
-                    if (in_array($post_type, array('taxonomies', 'import_users')) || acf_get_field_group_visibility($groupData, array('post_type' => $post_type))) {
+                    if (in_array($post_type, array('taxonomies', 'import_users')) || acf_get_field_group_visibility($groupData, array('post_type' => $post_type)) || empty($groupData['location'][0])) {
                         $this->addGroup($group);
                     }
                 }

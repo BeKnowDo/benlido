@@ -189,15 +189,25 @@ abstract class Field implements FieldInterface {
         if ("" != $args['field_path']) {
 
             $fieldKeys = preg_replace('%[\[\]]%', '', str_replace('][', ':', $args['field_path']));
+            $is_multiple_field_value = $parsingData['import']->options['is_multiple_field_value'];
+            $is_multiple_value = $parsingData['import']->options['multiple_value'];
 
             foreach (explode(":", $fieldKeys) as $n => $key) {
                 $xpath = (!$n) ? $parsingData['import']->options['fields'][$key] : $xpath[$key];
 
-                $is_multiple_field_value = $parsingData['import']->options['is_multiple_field_value'];
-                $isMultipleField = (!$n && isset($is_multiple_field_value[$key])) ? $is_multiple_field_value[$key] : $isMultipleField[$key];
+                if (!$n && isset($is_multiple_field_value[$key])) {
+                    $isMultipleField = $is_multiple_field_value[$key];
+                }
+                if (isset($isMultipleField[$key])) {
+                    $isMultipleField = $isMultipleField[$key];
+                }
 
-                $is_multiple_value = $parsingData['import']->options['multiple_value'];
-                $multipleValue = (!$n && isset($is_multiple_value[$key])) ? $is_multiple_value[$key] : $multipleValue[$key];
+                if (!$n && isset($is_multiple_value[$key])) {
+                    $multipleValue = $is_multiple_value[$key];
+                }
+                if (isset($multipleValue[$key])) {
+                    $multipleValue = $multipleValue[$key];
+                }
             }
 
             $xpath = empty($xpath[$field['key']]) ? false : $xpath[$field['key']];
@@ -411,7 +421,14 @@ abstract class Field implements FieldInterface {
     public function getFieldName(){
         $fieldName = ( isset($this->data['field']['name']) ? $this->data['field']['name'] : '' );
         if (empty($fieldName)) {
-            $field = _acf_get_field_by_id($this->data['field']['ID']);
+            if (function_exists('_acf_get_field_by_id')) {
+                $field = _acf_get_field_by_id($this->data['field']['ID']);
+            }
+            else {
+                $label = sanitize_title( $this->data['field']['label'] );
+                $fieldName = str_replace('-', '_', $label);
+            }
+
             if (!empty($field)) {
                 $fieldName = $this->data['field']['name'] = $field['name'];
             }
@@ -454,8 +471,10 @@ abstract class Field implements FieldInterface {
             $parents = $this->getParents();
             if (!empty($parents)){
                 foreach ($parents as $key => $parent) {
-                    $value = explode($parent['delimiter'], $value);
-                    $value = isset($value[$parent['index']]) ? $value[$parent['index']] : '';
+                    if ($parent['delimiter'] !== FALSE) {
+                        $value = explode($parent['delimiter'], $value);
+                        $value = isset($value[$parent['index']]) ? $value[$parent['index']] : '';
+                    }
                 }
             }
         }
@@ -547,12 +566,16 @@ abstract class Field implements FieldInterface {
         if (empty($subFields)){
 
             if (ACFService::isACFNewerThan('5.0.0')) {
-
-                $fields = acf_local()->fields;
-
+                $fields = [];
+                if (function_exists('acf_local')) {
+                    $fields = acf_local()->fields;
+                }
+                if (empty($fields) && function_exists('acf_get_local_fields')) {
+                    $fields = acf_get_local_fields();
+                }
                 if (!empty($fields)) {
                     foreach ($fields as $field) {
-                        if ($field['parent'] == $this->getFieldKey()) {
+                        if (isset($field['parent']) && $field['parent'] == $this->getFieldKey()) {
                             $subFieldData = $field;
                             $subFieldData['ID'] = $subFieldData['id'] = uniqid();
                             $subFieldsData[] = $subFieldData;
@@ -567,7 +590,7 @@ abstract class Field implements FieldInterface {
                 if (!empty($acf_register_field_group)){
                     foreach ($acf_register_field_group as $key => $group) {
                         foreach ($group['fields'] as $field) {
-                            if ($field['parent'] == $this->getFieldKey()) {
+                            if (isset($field['parent']) && $field['parent'] == $this->getFieldKey()) {
                                 $subFieldData = $field;
                                 $subFieldData['ID'] = $subFieldData['id'] = uniqid();
                                 $subFieldsData[] = $subFieldData;
@@ -605,7 +628,13 @@ abstract class Field implements FieldInterface {
      */
     protected function getLocalFieldDataByKey($fieldKey){
         $fieldData = false;
-        $fields = acf_local()->fields;
+        $fields = [];
+        if (function_exists('acf_local')) {
+            $fields = acf_local()->fields;
+        }
+        if (empty($fields) && function_exists('acf_get_local_fields')) {
+            $fields = acf_get_local_fields();
+        }
         if (!empty($fields)) {
             foreach ($fields as $sub_field) {
                 if ($sub_field['key'] == $fieldKey) {
@@ -680,8 +709,10 @@ abstract class Field implements FieldInterface {
                 if ($parentIndex !== false){
                     $value = $value[$parentIndex];
                 }
-                $value = explode($parent['delimiter'], $value);
-                $parentIndex = $parent['index'];
+                if ($parent['delimiter'] !== FALSE) {
+                    $value = explode($parent['delimiter'], $value);
+                    $parentIndex = $parent['index'];
+                }
             }
         }
         return is_array($value) ? count($value) : !$this->isEmptyValue($value);
@@ -717,7 +748,7 @@ abstract class Field implements FieldInterface {
             if ($parent){
                 switch ($parent->type){
                     case 'repeater':
-                        if ($parent->getMode() == 'csv' && $parent->getDelimiter()){
+                        if ($parent->getMode() == 'fixed' || $parent->getMode() == 'csv' && $parent->getDelimiter()){
                             $parents[] = array(
                                 'delimiter' => $parent->getDelimiter(),
                                 'index'     => $parent->getRowIndex()
@@ -750,7 +781,7 @@ abstract class Field implements FieldInterface {
             'is_variable' => $this->getOption('is_variable'),
             'is_ignore_empties' => $this->getOption('is_ignore_empties'),
             'xpath' => $this->getOption('xpath'),
-            'id' => empty($field['ID']) ? $field['ID'] : $field['id']
+            'id' => empty($field['ID']) ? $field['id'] : $field['ID']
         );
     }
 }

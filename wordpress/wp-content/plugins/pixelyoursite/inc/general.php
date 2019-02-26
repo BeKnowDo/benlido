@@ -61,7 +61,13 @@ if ( ! function_exists( 'pys_admin_page_callback' ) ) {
         if ( ! empty( $_POST['_wpnonce'] ) && wp_verify_nonce( $_POST['_wpnonce'],
                 'pys_update_options' ) && isset( $_POST['pys'] )
         ) {
-            update_option( 'pixel_your_site', $_POST['pys'] );
+            $options = $_POST['pys'];
+    
+            // allow 3rd party plugins to by-pass option value
+            $gdpr_ajax_enabled = isset( $options['gdpr']['gdpr_ajax_enabled'] ) ? $options['gdpr']['gdpr_ajax_enabled'] : false;
+            $options['gdpr']['gdpr_ajax_enabled'] = apply_filters( 'pys_gdpr_ajax_enabled', $gdpr_ajax_enabled );
+            
+            update_option( 'pixel_your_site', $options );
         }
         
         ## delete standard events

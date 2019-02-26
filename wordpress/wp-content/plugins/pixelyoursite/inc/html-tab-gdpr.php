@@ -76,6 +76,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                         tracking.</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <?php pys_checkbox( 'gdpr', 'gdpr_ajax_enabled' ); ?>Enable AJAX filter value update.
+                </td>
+            </tr>
         </table>
         <button class="pys-btn pys-btn-blue pys-btn-big aligncenter">Save Settings</button>
 	</div>

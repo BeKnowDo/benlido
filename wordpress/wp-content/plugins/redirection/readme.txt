@@ -3,8 +3,8 @@ Contributors: johnny5
 Donate link: https://redirection.me/donation/
 Tags: redirect, htaccess, 301, 404, seo, permalink, apache, nginx, post, admin
 Requires at least: 4.5
-Tested up to: 5.0
-Stable tag: 3.7
+Tested up to: 5.1
+Stable tag: 4.0
 Requires PHP: 5.4
 License: GPLv3
 
@@ -24,7 +24,7 @@ Full documentation can be found at [https://redirection.me](https://redirection.
 
 Create and manage redirects quickly and easily without needing Apache or Nginx knowledge. If your WordPress supports permalinks then you can use Redirection to redirect any URL.
 
-There is full support for regular expressions so you can create redirect patterns to match any number of URLs.
+There is full support for regular expressions so you can create redirect patterns to match any number of URLs. You can match query parameters and even pass them through to the target URL.
 
 The plugin can also be configured to monitor when post or page permalinks are changed and automatically create a redirect to the new URL.
 
@@ -58,6 +58,10 @@ You are able to disable or reduce IP collection to meet the legal requirements o
 Redirection will keep track of all 404 errors that occur on your site, allowing you to track down and fix problems.
 
 Errors can be grouped to show where you should focus your attention, and can be redirected in bulk.
+
+= Query parameter handling =
+
+You can match query parameters exactly, ignore them, and even pass them through to your target.
 
 = Apache & Nginx support =
 
@@ -148,7 +152,32 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 = 3.7 =
 * Requires minimum PHP 5.4. Do not upgrade if you are still using PHP < 5.4
 
+= 4.0 =
+* Alters database to support case insensitivity, trailing slashes, and query params. Please backup your data
+
 == Changelog ==
+= 4.0 - 23rd Feb 2019 =
+* Add option for case insensitive redirects
+* Add option to ignore trailing slashes
+* Add option to copy query parameters to target URL
+* Add option to ignore query parameters
+* Add option to set defaults for case, trailing, and query settings
+* Improve upgrade for sites with missing tables
+
+= 3.7.3 - 2nd Feb 2019 =
+* Add PHP < 5.4 message on plugins page
+* Prevent upgrade message being hidden by other plugins
+* Fix warning with regex and no leading slash
+* Fix missing display of disabled redirects with a title
+* Improve upgrade for sites with a missing IP column
+* Improve API detection with plugins that use sessions
+* Improve compatibility with ModSecurity
+* Improve compatibility with custom API prefix
+* Detect site where Redirection was once installed and has settings but no database tables
+
+= 3.7.2 - 16th Jan 2019 =
+* Add further partial upgrade detection
+* Add fallback for sites with no REST API value
 
 = 3.7.1 - 13th Jan 2019 =
 * Clarify database upgrade text
@@ -559,15 +588,10 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 = 2.2.3 =
 * Remove debug from htaccess module
 
-= 2.2.2 =
+= < 2.2.2 =
 * Fix encoding of JS strings
-
-= 2.2.1 =
-* More Dutch translation
 * Use fgetcsv for CSV importer - better handling
 * Allow http as URL parameter
-
-= < 2.2 =
 * Props to Ben Noordhuis for a patch
 * WordPress 2.9+ only - cleaned up all the old cruft
 * Better new-install process
@@ -587,7 +611,6 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 * Fix IIS problem
 * Install defaults when no existing redirection setup
 * Fix problem with custom post types auto-redirecting (click on 'groups' and then 'modified posts' and clear any entries for '/' from your list)
-* Brazilian Portuguese translation
 * WP 3.0 compatibility
 * Fix deep slashes
 * Database optimization
