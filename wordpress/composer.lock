@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd08f903654334907534d54dca6a67a8",
+    "content-hash": "3fcca2221eb587d9d63c0d94ab1db0b8",
     "packages": [
         {
             "name": "composer/installers",
@@ -776,6 +776,26 @@
             "homepage": "https://wordpress.org/plugins/categories-images/"
         },
         {
+            "name": "wpackagist-plugin/cmb2",
+            "version": "2.5.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/cmb2/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/cmb2.zip?timestamp=1544454788",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/cmb2/"
+        },
+        {
             "name": "wpackagist-plugin/disable-comments",
             "version": "1.8.0",
             "source": {
@@ -917,15 +937,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "6.8.1",
+            "version": "6.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/6.8.1"
+                "reference": "tags/6.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.6.8.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.6.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1017,15 +1037,15 @@
         },
         {
             "name": "wpackagist-plugin/redirection",
-            "version": "3.6.3",
+            "version": "3.7.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/3.6.3"
+                "reference": "tags/3.7.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.3.6.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.7.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1034,6 +1054,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/redirection/"
+        },
+        {
+            "name": "wpackagist-plugin/redux-framework",
+            "version": "3.6.15",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/redux-framework/",
+                "reference": "tags/3.6.15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/redux-framework.3.6.15.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/redux-framework/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
