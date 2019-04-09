@@ -1,0 +1,30 @@
+{
+  "name": "BenLido2019",
+  "version": "1.0.0",
+  "description": "Ben Lido styles and javascript",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "font-awesome": "^4.7.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-cli": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.1.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "jshint": "^2.10.2",
+    "jshint-stylish": "^2.2.1",
+    "node-modules": "^1.0.1",
+    "postcss-flexibility": "^2.0.0"
+  }
+}
