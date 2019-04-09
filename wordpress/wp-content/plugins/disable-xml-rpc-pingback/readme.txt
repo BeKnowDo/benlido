@@ -1,9 +1,10 @@
 === Disable XML-RPC Pingback ===
 Contributors: samuelaguilera
 Tags: xml-rpc, xml, rpc, pingback, ddos, firewall
-Requires at least: 3.8.1
-Tested up to: 4.8.3
-Stable tag: 1.1
+Requires at least: 4.8
+Tested up to: 5.1.1
+Requires PHP: 5.6
+Stable tag: 1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,8 +22,7 @@ Removes the following methods from XML-RPC interface.
 
 * pingback.ping
 * pingback.extensions.getPingbacks
-
-Also removes X-Pingback from HTTP headers. This will hopefully stops some bots from trying to hit your xmlrpc.php file.
+* X-Pingback from HTTP headers. This will hopefully stops some bots from trying to hit your xmlrpc.php file.
 
 = Requirements =
 
@@ -34,6 +34,10 @@ Also removes X-Pingback from HTTP headers. This will hopefully stops some bots f
 * There's not options page, simply install and activate.
   
 == Changelog ==
+
+= 1.2 =
+
+* Added support for X-Pingback header removal in recent versions of WP.
 
 = 1.1 =
 
