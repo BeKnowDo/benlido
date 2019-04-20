@@ -107,6 +107,7 @@
         "wpackagist-plugin/stackable-ultimate-gutenberg-blocks":"*",
 
         "wpackagist-plugin/akismet":"*",
+        "wpackagist-plugin/atomic-blocks":"*",
         "wpackagist-plugin/acf-content-analysis-for-yoast-seo":"*",
         "wpackagist-plugin/cmb2":"*",
         "wpackagist-plugin/categories-images":"*",
@@ -125,6 +126,7 @@
         "wpackagist-plugin/redirection":"*",
         "wpackagist-plugin/redux-framework":"*",
         "wpackagist-plugin/regenerate-thumbnails":"*",
+        "wpackagist-plugin/stackable-ultimate-gutenberg-blocks":"*",
         "wpackagist-plugin/subscribe-and-connect":"*",
         "wpackagist-plugin/sucuri-scanner":"*",
         "wpackagist-plugin/svg-support":"*",

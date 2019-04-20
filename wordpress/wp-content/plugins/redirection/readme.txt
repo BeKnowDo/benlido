@@ -2,9 +2,9 @@
 Contributors: johnny5
 Donate link: https://redirection.me/donation/
 Tags: redirect, htaccess, 301, 404, seo, permalink, apache, nginx, post, admin
-Requires at least: 4.5
-Tested up to: 5.1
-Stable tag: 4.0
+Requires at least: 4.6
+Tested up to: 5.1.1
+Stable tag: 4.2.1
 Requires PHP: 5.4
 License: GPLv3
 
@@ -19,6 +19,8 @@ Redirection is designed to be used on sites with a few redirects to sites with t
 It has been a WordPress plugin for over 10 years and has been recommended countless times. And it's free!
 
 Full documentation can be found at [https://redirection.me](https://redirection.me)
+
+Redirection is compatible with PHP from 5.4 and upwards (including 7.2).
 
 = Redirect manager =
 
@@ -156,6 +158,43 @@ The plugin works in a similar manner to how WordPress handles permalinks and sho
 * Alters database to support case insensitivity, trailing slashes, and query params. Please backup your data
 
 == Changelog ==
+
+= 4.2.1 - 8th Apr 2019 =
+* Fix incorrect CSV download link
+
+= 4.2 - 6th Apr 2019 =
+* Add auto-complete for target URLs
+* Add manual database upgrade
+* Add support for semi-colon separated import files
+* Add user agent to 404 export
+* Add workaround for qTranslate breaking REST API
+* Improve API problem detection
+* Fix JSON import ignoring group status
+
+= 4.1.1 - 23rd Mar 2019 =
+* Remove deprecated PHP
+* Fix REST API warning
+* Improve WP CLI database output
+
+= 4.1 - 16th Mar 2019 =
+* Move 404 export option to import/export page
+* Add additional redirect suggestions
+* Add import from Rank Math
+* Fix 'force https' causing WP to redirect to admin URL when accessing www subdomain
+* Fix .htaccess import adding ^ to the source
+* Fix handling of double-slashed URLs
+* Fix WP CLI on single site
+* Add DB upgrade to catch URLs with double-slash URLs
+* Remove unnecessary escaped slashes from JSON output
+
+= 4.0.1 - 2nd Mar 2019 =
+* Improve styling of query flags
+* Match DB upgrade for new match_url to creation script
+* Fix upgrade on some hosts where plugin is auto-updated
+* Fix pagination button style in WP 5.1
+* Fix IP match when action is 'error'
+* Fix database upgrade on multisite WP CLI
+
 = 4.0 - 23rd Feb 2019 =
 * Add option for case insensitive redirects
 * Add option to ignore trailing slashes

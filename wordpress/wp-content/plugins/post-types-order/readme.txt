@@ -3,7 +3,7 @@ Contributors: nsp-code, tdgu
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 4.9.7
+Tested up to: 5.0
 Stable tag: 1.9.3.9
 
 Post Order and custom Post Type Objects (custom post types) using a Drag and Drop Sortable JavaScript AJAX interface or default WordPress dashboard. 

@@ -1,199 +1,175 @@
-===PixelYourSite - Facebook Pixel (Events, WooCommerce & Easy Digital Downloads)===
-Contributors: PixelYourSite, c0d3fev3r, themister
-Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pixel Events, Facebook, New Facebook Pixel Events, Dynamic Events, Standard Events, Facebook Events, Facebook Standard Events, Facebook Dynamic Product Ads, WooCommerce, WooCommerce Facebook Pixel, Facebook Custom Events, Facebook Conversion Value, WooCommerce Affiliate Products, Easy Digital Downloads Pixel, Easy Digital Downloads Facebook Pixel
+===PixelYourSite - Facebook Pixel, Google Analytics, Head & Footer (WooCommerce, EDD, Events)===
+Contributors: PixelYourSite, themister
+Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pixel Events, Facebook, New Facebook Pixel Events, Dynamic Events, Standard Events, Facebook Events, Facebook Standard Events, Facebook Dynamic Product Ads, WooCommerce, WooCommerce Facebook Pixel, Facebook Custom Events, Facebook Conversion Value, WooCommerce Affiliate Products, Easy Digital Downloads Pixel, Easy Digital Downloads Google Analytics, Head & Footer scripts, Enhanced Ecommerce, Pinterest tag
 Requires at least: 3.0.1
-Requires PHP: 5.3
-Tested up to: 5.0
-Stable tag: 5.3.4
+Requires PHP: 5.4
+Tested up to: 5.1
+Stable tag: 7.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Insert the new Facebook Pixel on WordPress, add Events, enjoy superb WooCommerce & EDD Facebook Pixel integration
+Facebook Pixel, Google Analytics, plus ANY other script. WooCommerce and EDD with Facebook Dynamic Product Ads and Google Enhanced Ecommerce. Track any action with events. Pinterest Tag support via a free add-on.
 
 == Description ==
-<strong>Manage the New Facebook Pixel With Just a Few Clicks. WooCommerce and Easy Digital Downloads integration.</strong></br>
+**Manage your Facebook Pixel or Google Analytics code with a single plugin and add ANY other script (Head & Footer feature). The Pinterest Tag can be implemented via [free add-on](https://www.pixelyoursite.com/pinterest-tag).**
 
-The New Facebook Pixel can be a very powerful tool for anyone doing Facebook ads, and with the PixelYourSite plugin, you can unleash its real potential.
+PixelYourSite Global Events will automatically track important actions and send them to all your configured pixels (searches, form submit, comments, downloads).
 
+You can fire your own events with zero coding.
 
-**Take a look at this video to see the plugin in action:**
+**WooCommerce** and **Easy Digital Downloads** are fully supported, with Facebook Dynamic Ads pixel setup and Google Analytics Enhanced Ecommerce.
 
-[youtube https://www.youtube.com/watch?v=V_IWVxUrzSM]
+Take a look at this video to see the plugin in action:
 
->**GDPR update**
->
->PixelYourSite manages the Facebook pixel tracking code. Chances are that you have other scripts or third-party cookies running on your website (embedded videos, ad networks, chats, etc). In order to be GDPR compliant, you’ll need to implement a technical solution that will inform and obtain consent for all your tracking scripts and cookies, not just the Facebook pixel. That’s why we don’t have an individual solution to ask consent for our plugin only. We will offer a few ways to integrate with other existing cookie policy plugins.
->
->**[Find more about the Facebook pixel and GDPR here](http://www.pixelyoursite.com/gdpr-cookie-compliance)**
+[youtube https://www.youtube.com/watch?v=OUHU9lZ2lwQ]
 
-**PixelYourSite will help you insert the Facebook pixel code on every page of your site with just one click** and set up Custom or Standard Events.
+TRACK EVERYTHING WITH A SINGLE PLUGIN:
 
-**E-commerce Ready**
+The Facebook Pixel: one click install
+Google Analytics: one click install
+ANY script: add any other script with our flexible Head & Footer option
+The Pinterest Tag: via [free add-on](https://www.pixelyoursite.com/pinterest-tag)
+Google Ads (formerly AdWords) [pro feature](https://www.pixelyoursite.com/google-ads-tag)
 
-There is an automatic **WooCommerce integration** that will configure all the necessary standard events for you. **You don't have to add any event yourself.**
+FANTASTIC WOOCOMMERCE INTEGRATION:
 
-**Easy Digital Downloads** is also supported.
+Facebook Pixe: every e-commerce related event is fired automatically. Conversion value is tracked for each event. All the events are Dynamic Product Ads ready (content_ids and content_type parameters always present).
+Google Analytics: Enhanced Ecommerce implementation.
+Head & Footer scripts: you can insert scripts on the WooCommerce “order-received” page.
+Pinterest e-commerce events.
 
-**Facebook Dynamic Ads (Promote a product catalog) is fully supported for WooCommerce and Easy Digital Downloads**, with ViewContent, AddToCart and Purchase events being added on the corresponding pages (content_ids and content_type are pulled automatically by the plugin).
+EASY DIGITAL DOWNLOADS INTEGRATION:
 
-The plugin is **Custom Audience Super-Friendly**, extracting content_name, post_type, content_ids, content_category on every page of your site. Tags and product tags are tracked by the pro version of the plugin.
+The EDD integration works just like the WooCommerce integration, with full Dynamic Product Ads Facebook Pixel Support, Google Analytics Enhanced Ecommerce, and Pinterest Tag e-commerce events.
 
-You’ll find a **[Learning Section](http://www.pixelyoursite.com/learn)** on our website, with helpful articles that answer to our users common (and sometimes uncommon) questions, together with top-notch “how to” pages.
+TRACK IMPORTANT DATA WITH THE GLOBAL EVENTS:
 
-Find more info [about how to use the FB pixel plugin - Click here](http://www.pixelyoursite.com/facebook-pixel-plugin-help)
+The plugin will automatically fire the Global Events and send them to all active pixels. They will help you track your visitors’ activity, create Facebook Custom Audiences or Custom Conversions, Google Goals, Google Audiences, and Pinterest Audiences.
 
-Not ready to install yet? Read on some of the key features that make PYS a powerful tool in any Facebook marketer arsenal.
+The GeneralEvent: fired on every page, it will send Facebook and Pinterest key data on how your users interact with your content. It’s parameters will track things like the page title, category, or ID. Super useful for targeted Custom Audiences.
+The Search event: fired when your visitors use the search form, it will track the searched string. WooCommerce searches will be Dynamic Ads ready, sending the product’s ID to allow retargeting.
+The Comment event: it will track comments.
+The Download event: will be fired when a downloadable filled is clicked. You can configure what file types should fire this event.
+The Form event: will be fired when a form is submitted
 
-<strong>PixelYourSite Key Features:</strong></br>
+FIRE YOUR OWN EVENTS:
 
-* You can **insert the pixel on every page of your website with just ONE click**. No need to edit any posts or pages
+You can easily configure your own events and send them to all or just some of the networks (Facebook, Google, Pinterest).
 
-* **Optimise your site for Facebook Custom Audiences.** We add a special event (GeneralEvent) on every page that will send key parameters to Facebook, like content name, content ID, category name and post type. You can use it to create super-powerful Custom Audiences to retarget with your ads, or to expand your reach with Lookalike Audiences.
+You can fire standard or custom events using triggers like:
 
->**How to use the GeneralEvent**
->
->**1. Custom Audiences**
->
->The GeneralEvent will have the following parameters:
->
->* post_id
->* post_type (it will pull the WordPress post type, like post, category and so on)
->* content_category (for posts, it will show the post category)
->* domain (it will pull the domain name - useful if you are using the pixel on more than one sites)
->* tags - pro version
->
->**Example:** you can create a Custom Audience from people that viewed articles from one specific category in the last 30 days or people that visited articles having one or more tags, a particular page (using the name or the ID), or content that has a particular word in the name.
->
->**2. Custom Conversions**
->
->**Example:** You can define a Custom Conversion when someone reads at least 3 articles from a particular category, or when it lands on a specific page, or on any article that has a particular tag.
+URL contains.
+URL equals.
+Delay event: fire after X seconds.
 
-* **Search Event** on the search page with the search string pulled as a parameter - super useful for creating search based Custom Audiences
+GDPR SUPPORT:
 
->**How to use the Search Event:**
->
-Retargeting the users that performed a search on your site is a smart strategy because this is a highly engaged audience that knows you and it's interested in what you offer.
->
->It can be a good idea to go a little further and create Custom Audiences based on a few important keywords that potential buyers might search for.
+PixelYourSite works with 4 popular “cookie consent” plugins:
 
-* **Delay Events**, so you don't spend your money on retargeting bouncing visitors.
+Cookiebot - [link](https://wordpress.org/plugins/cookiebot/)
+GDPR Cookie Consent - [link](https://wordpress.org/plugins/cookie-law-info/)
+Cookie Notice Plugin - [link](https://wordpress.org/plugins/cookie-notice/)
+Ginger EU Cookie Law - [link](https://wordpress.org/plugins/ginger/)
 
-* You can turn ON/OFF the pixel based on user roles (remove it for admins, editors and so on)
+Additionally we offer filters that developers can use to create their own custom integrations. These filters can control the way each pixel works.
 
-* You can **set up and track Standard or Custom Events** and add parameters for each of them
+FACEBOOK FOR WOOCOMMERCE INTEGRATION:
 
-* All the events will have a **domain name parameter**, so you can easily create Custom Audiences from events when you have more than one site
+You can use Facebook for WooCommerce plugin along with PixelYourSite. This will let you benefit from all our advanced pixel features and still have a Facebook page shop.
 
-**Superb WooCommerce Integration**
+When Facebook for WooCommerce is detected, the plugin will offer you the option to use their ID logic for all the WooCommerce specific events. This will ensure product matching between your site and their Product Catalog.
 
-Tested with the latest WooCommerce version.
+[More details in this dedicated article](https://www.pixelyoursite.com/facebook-for-woocommerce-pixelyoursite)
 
-* You can **insert the Facebook pixel and start tracking events on any WooCommerce** website with just a few clicks (Purchase, ViewContent, AddToCart, InitiateCheckout, ViewCategory)
+OTHER USEFUL FEATURES:
 
-* Out of the box **Facebook Dynamic Ads** (promote a product catalog) pixel setup for your WooCommerce website (we also have a dedicated feed plugin for Facebook Dynamic Ads Product Catalog)
+Facebook Advanced Matching
+Remove Facebook default events
+Google Analytics Enhanced Link Attribution
+Google Analytics Anonymize IPs
+Pinterest Enhanced Matching
 
-* Flexible AddToCart Event: the event will fire by default on add to cart button clicks. Ajax buttons are supported. Additionally, the event can be fired on the Cart Page, or on the Checkout Page (useful for some particular web structures).
+**EVEN MORE FEATURES WITH THE PRO VERSION:**
 
-*  Track conversion value for WooCommerce - each event can use the product price as value. You can turn it on or off.
+[PixelYourSite Pro](https://www.pixelyoursite.com/) is used by thousands of businesses already and will offer you some extraordinary features.
 
-**Easy Digital Downloads Integration**
+[Click here for a comparison between the free and pro versions](https://www.pixelyoursite.com/free-versus-pro)
 
-* You can **insert the Facebook pixel and start tracking events on any Easy Digital Downloads** website with just a few clicks (Purchase, ViewContent, AddToCart, InitiateCheckout)
+EVEN MORE GLOBAL EVENTS:
 
-* Out of the box **Facebook Dynamic Ads** (promote a product catalog) pixel setup for your Easy Digital Downloads website.
+The ClickEvent: fired on every click and with useful parameters that will help you to identify what element was clicked (HTML links, buttons, images, etc). This event will be sent to all networks (Facebook, Google Analytics, Google Ads, Pinterest).
+The WatchVideo event: fired when an embedded video is played, will let you identify the video name and will be send to all networks
+The user registration event: fired when new user account is created on your website, will be sent to all networks
+The AdSense event: fired when an AdSense ad is clicked, it lets you optimize your Facebook or Pinterest Ads for Google AdSense clicks, as well as creating Custom Audiences or Lookalikes.
 
-* **Dynamic AddToCart** is fully supported (the AddToCart event will fire on add to cart button click)
+EVEN MORE EVENTS’ TRIGGERS:
 
-* **Track conversion value for Easy Digital Downloads**
+On top of the free triggers (URL equals and URL contains), the pro version will let you fire more complexe events:
 
-* You can turn ON/OFF each Easy Digital Downloads event.
+Clicks on CSS Selector: you can target virtually any clicks, like buttons, images etc.
+Mouse over CSS Selector
+Page Scroll: you can fire an event when any or a particular page is scrolled down to a percent.
 
-**Pro Version**
+EVEN MORE FACEBOOK EVENTS PARAMETERS:
 
-If you are serious about your Facebook ads, you'll love our [pro version](http://www.pixelyoursite.com/facebook-pixel-plugin)
+The pro version will track a vast amount of data for each event, like the traffic source, UTMs, your visitor’s browser’s time (hour, day, month).
 
-**Improved Custom Audiences & Custom Conversions**
+These parameters can be used for [Custom Audiences or Custom Conversions](https://www.pixelyoursite.com/facebook-pixel-plugin/custom-audiences-conversions)
 
-* **Traffic Source and URL tags (UTM)** are added to all the events and you can use them to create Custom Audiences based on where your visitors are coming from. It is possible to track a particular Facebook Ad too.
+EVEN MORE GOOGLE ANALYTICS FEATURES:
 
->You can create Custom Audiences based on where the traffic is coming from, like Google, Facebook or a particular referrer.
->
->Additionally, if you are using URL parameters they will be tracked and added as parameters for all your events. This is extremely useful because you can create Custom Audiences from people coming from a particular ad or campaign, for example.
+On top of the free version data, [the pro version](https://www.pixelyoursite.com/google-analytics) will track a number of useful Custom Dimensions.
 
-Find out more on [how the pro version can help you with Custom Conversion and Custom Audiences](http://www.pixelyoursite.com/facebook-pixel-plugin/custom-audiences-conversions)
+Browser’s hour, day, and month. They are useful if you sell globally and what to know at what time your visitors take a particular action (their time, not your server’s or Google Analytics time).
+Dynamic Remarketing vertical custom dimensions (Retail or Custom vertical). Useful if you want to configure dynamic remarketing via your Analytics account.
 
-* **NEW: The ClickEvent** - It will fire EVERY TIME a click is made on your site. Use it for Custom Audiences or Custom Conversions. [Find more here](http://www.pixelyoursite.com/clicks-facebook-custom-conversions-audiences)
+EVEN MORE HEAD & FOOTER OPTIONS:
 
-* **NEW: Head/Footer scripts** - Add any script you want with our Head/Footer option. It also works on the WooCommerce thank you page. [Find more here](http://www.pixelyoursite.com/head-footer-scripts)
+The pro version [Head & Footer](https://www.pixelyoursite.com/head-footer-scripts) lets you use dynamic values: [id], [title], [categories], [email], [first_name], [last_name]. 
 
-* **NEW: WatchVideo Event** - This event will fire on embedded videos on your site. It can be used to optimize your ads for video views or to retarget your video watchers using Custom Audiences. [Find more here](http://www.pixelyoursite.com/facebook-pixel-plugin/watchvideo-event)
+For WooCommerce you’ll have some additional dynamic values: [order_number], [order_subtotal], [order_total], [currency]. 
 
+EVEN MORE WOOCOMMERCE FEATURES:
 
-**Dynamic Events**
+Identify your most valuable customers with our Advanced Marketing Events. Useful to create Facebook Lookalikes or Google Similar Audiences.
+CSV Export for Facebook Custom Audiences with Lifetime Value. Useful for Facebook LTV Lookalikes.
+Super flexible events value configuration (include/exclude tax and shipping, use full price or a price percent for each event).
+Track the Lifetime Value for your customers as Purchase event parameter.
+Lots of extra parameters for the Facebook Purchase event. Useful to create advanced Custom Audiences. Check our [comparison tables](https://www.pixelyoursite.com/pixelyoursite-free-version) for details
+Fire the Purchase event on transaction only.
+Track WooCommerce affiliate buttons clicks.
+Track WooCommerce PayPal Standard clicks.
+[Google Ads Dynamic Remarketing parameters](https://www.pixelyoursite.com/google-ads-tag)
 
-Optimise your Facebook Campaigns for actions on your website with dynamic events. You can fire them:
+For more info on how the pro version can help you with your Facebook Pixel, [visit this WooCommerce  - Facebook Pixel page](https://www.pixelyoursite.com/facebook-pixel-plugin/woocommerce-facebook-pixel)
 
-* When a URL is clicked
-* When a CSS element is clicked (any form button, for example)
-* When the mouse is moved over a page element
-* On page scroll (scroll percent).
+GOOGLE ADS TAG (FORMER ADWORDS):
 
-Works with **almost all forms or pop-up plugins.**
+The Pro version will implement the [Google Ads Tag](https://www.pixelyoursite.com/google-ads-tag) with Dynamic Retargeting support for WooCommerce and Easy Digital Downloads. 
 
-Fire a Dynamic Event when the visitor performs a key action on your site and optimize your ads for that event (perfect for affiliate sites, newsletter signups and so on).
+Each Global event will be sent to Google Ads too, and you can configure Google Ads conversions.
 
-Additionally, you can create Custom Audiences based on these dynamic events and retarget them.
+NOT ENOUGH? GET MORE WITH THE SUPER PACK:
 
-Find out more about [PixelYourSite Pro events here](http://www.pixelyoursite.com/facebook-pixel-plugin/facebook-pixel-events)
+With the [Super Pack](https://www.pixelyoursite.com/super-pack) you get 5 extra add-ons:
 
-**Advanced Matching**
+Multiple pixels: add multiple Facebook pixels, Google Analytics, or Google Ads tags
+Remove a pixel from a particular page
+Dynamic parameters for events
+WooCommerce custom “thank you pages”
+AMP support
 
-This FB feature increases the chances to correctly identify users visiting your website without being logged to their Facebook accounts. The plugin will automatically send to Facebook the data you have about the visitors (email, first name, second name, phone, address info).
+The super pack comes as a free bonus with our [Advanced and Agency licenses](https://www.pixelyoursite.com/facebook-pixel-plugin/buy-pixelyoursite-pro).
 
-**Improved WooCommerce & Easy Digital Downloads Integration**
+DON’T MISS:
 
-* **Customise each event value:** You can include or exclude tax and shipping, you can use the product price, **a percent of the product price**, or a global value. Using the proper event value can improve your ads delivery and ROI.
+For more details about how [PixelYourSite Pro](https://www.pixelyoursite.com/) can help your business, visit our website. Make sure you check our [free versus pro comparison page](https://www.pixelyoursite.com/free-versus-pro)
 
-* Delay the WooCommerce & EDD ViewContent Event, so you don't spend your money on retargeting bouncing visitors.
+**Learning Section**: we’ve put together a number of articles with all sort of tips and tricks that will help you with your ads. [Click here for our learning section](https://www.pixelyoursite.com/learn)
 
-* Super-Powerful **Custom Audiences for WooCommerce**: - we automatically track product name, product category, and product tags. You can use them to create highly targeted Custom Audiences for improved retargeting campaigns.
+**Video Tips**: watch short videos showing how to do all sort of ads related things. [Click here to watch the video tips](https://www.pixelyoursite.com/video)
 
-* **Improved Purchase Event** - The purchase event will have payment and shipping methods, client city, state, and country, plus use of coupons and coupons names tracked as parameters.
-
->With the Improved Purchased Event you can create extremely useful Custom Audiences and retarget them with highly efficient ads.
->Example: Clients that bought products from category X for at least $100 and that never used coupon ABC.
->
->Retargeting this audience with products from the same or similar category and give them the coupon ABC might be a winning strategy.
-
-* **Advance Matching** is supported for all the events - it will work best for your Purchase event because we will use the client data directly.
-
-* **WooCommerce Affiliate Products Events:** you can add a dynamic event that will trigger on affiliate button clicks.
-
-* **WooCommerce PayPal Standard Events:** you can add a dynamic AddPaymentInfo event that will trigger on WooCommerce PayPal button clicks.
-
-Find more on the [WooCommerce integration here](http://www.pixelyoursite.com/facebook-pixel-plugin/woocommerce-facebook-pixel)
-
-Find more on the [EDD integration here](http://www.pixelyoursite.com/facebook-pixel-plugin/easy-digital-downloads-facebook-pixel)
-
-**The Super-Pack**
-
-* Add multiple pixels IDs - [with the Super-Pack](http://www.pixelyoursite.com/super-pack)
-* Use dynamic parameters - [with the Super-Pack](http://www.pixelyoursite.com/super-pack)
-* Remove the pixel from any page - [with the Super-Pack](http://www.pixelyoursite.com/super-pack)
-* Custom Thank You Page for WooCommerce - [with the Super-Pack](http://www.pixelyoursite.com/super-pack)
-
-<strong>Pixel Helper Errors</strong>
-
-If you are testing your pixel with Pixel Helper Chrome Extension, it is possible that you will see some errors:
-
-**Facebook Pixel can't match products**
-
-It means that the product ID is not found in a Dynamic Ads Product Catalog. If you are not doing Dynamic Ads, or if that event is not Dynamic Ads related, then you are fine. Otherwise, check your product catalog feed and make sure that the product ID is present in there.
-
-For more details on how to use Facebook Pixel Helper and how to interpret its reported errors  [read this special Pixel Helper article](http://www.pixelyoursite.com/facebook-pixel-helper-errors)
-
-**Let’s start now!** Join other thousands of users and install the plugin, because it is easy to use, and will help you with your Facebook campaigns for real
-
+**Documentation**: learn how to use PixelYourSite free plugin. [Click here for the HELP articles](https://www.pixelyoursite.com/pixelyoursite-free-version)
 
 
 == Installation ==
@@ -221,97 +197,213 @@ OR...
 
 
 == Frequently Asked Questions ==
-We maintain an up to date FAQ page on our site:
+We maintain an up-to-date FAQ page on our site: [Click Here for the FAQ Page](http://www.pixelyoursite.com/facebool-pixel-master-faq)
 
-<strong><a href="http://www.pixelyoursite.com/facebool-pixel-master-faq" target="_blank"><span style="color:#DE4D4D;">Click here for the FAQ page</span></a></strong>
-
-**Do I need to copy/paste the full Facebook Pixel code somewhere?**
+**FACEBOOK PIXEL: Do I need to copy/paste the full Facebook Pixel code somewhere?**
 
 No, you just have to enter your pixel ID in the dedicated field. The plugin will do the rest for you.
 
-**Where can I find the Facebook Pixel ID?**
+**FACEBOOK PIXEL: Where can I find the Facebook Pixel ID?**
 
 You can find it here:
 <a href="https://www.facebook.com/ads/manager/pixel/facebook_pixel" target="_blank">https://www.facebook.com/ads/manager/pixel/facebook_pixel</a>
 
-**Can I use the plugin for  Custom Audiences or Custom Conversions?**
+**FACEBOOK PIXEL: Can I use the plugin for  Custom Audiences or Custom Conversions?**
 
 Absolutely yes! Actually, the plugin will super-optimize your site for Custom Audiences and Custom Conversions.
+
 You will be able to create the classical ones based on URLs, but also Custom Combinations, like people who visited posts from category XYZ, or tagged with tag ABC in the last 30 days.
 
 Use the PRO version, and you'll be able to do crazy things, like targeting people that came from Google and visited products under category "blue widget", or clients who bought products of at least $100, using the discount coupon "promo".
 
-**I used the old Facebook Pixel, will my audiences still work?**
+**FACEBOOK PIXEL: I used the old Facebook Pixel, will my audiences still work?**
 
 Yes, they will, you won't lose anything.
 
-**Does it work with WooCommerce?**
+**FACEBOOK PIXEL: Does it work with WooCommerce?**
 
-Yes, it does. The plugin adds all the necessary events, like ViewContent, AddToCart, InitiateCheckout, and Purchase. This way you can easily track conversion and c**onversion value.**
+Yes, it does. The plugin adds all the necessary events, like ViewContent, AddToCart, InitiateCheckout, and Purchase. This way you can easily track conversions and conversion value.
 
-** Do I have to manually add the events for WooCommerce?**
+**FACEBOOK PIXEL: Do I have to manually add the events for WooCommerce?**
 
 No, you don't, the plugin will take care of everything for you.
 
-**Does it work with Easy Digital Downloads?**
+**FACEBOOK PIXEL: Does it work with Easy Digital Downloads?**
 
 Yes, it works in the same way it does with WooCommerce.
 
-**Does it work with Dynamic Ads (promote a product catalog)**
+**FACEBOOK PIXEL: Does it work with Dynamic Product Ads (promote a product catalog)**
 
 Yes, all the WooCommerce and EDD pixel events are Dynamic Ads ready.
 
-**Can I fire additional events if I need to?**
+**FACEBOOK PIXEL: Can I fire additional events if I need to?**
 
-Of course, you can fire any type of event (standard or custom) on any URL of your site. You can also use a partial URL by adding an * at the end of it (this way all the URLs starting with that string will be targeted).
+Of course, you can fire any type of event (standard or custom).
 
-With the PRO version, you can use Dynamic Events and fire them on:
+There are several triggers you can use:
 
-* clicks on external or internal links
-* clicks on CSS elements, like form buttons
-* mouse over CSS elements
-* page scroll
+*URL includes (supports delay)
+*URL equals (supports delay)
+*Click on HTML link (pro)
+*Click on CSS Selector (pro)
+*Mouse over CSS Selector (pro)
+*Page scroll (pro)
+
+**FACEBOOK PIXEL: I have the pixel installed on my website and I am running a Facebook Campaign, but the reports are confusing me. How can I see my campaign results?**
+
+We have an article about how to create Custom Reports: [How to optimize your Facebook Ads Reports for events tracking](https://www.pixelyoursite.com/how-to-manage-reports-inside-your-facebook-ads-manager-video)
+
+**GOOGLE ANALYTICS: Do I need to copy/paste all the Google Analytics code?**
+
+No, you just need to copy/paste your Google Analytics UA id.
+
+**GOOGLE ANALYTICS: Where can I find my Google Analytics UA id?**
+
+You can find it right inside your Google Analytics account, under Property Settings.
+For more information on how to get your UA id, [follow this link](https://www.pixelyoursite.com/documentation/add-your-google-analytics-code)
+
+**GOOGLE ANALYTICS: Is Google Analytics Enhanced Ecommerce supported?**
+
+Yes, Google Analytics Enhanced Ecommerce data is tracked automatically for WooCommerce and Easy Digital Downloads.
+
+**HEAD AND FOOTER: Can I add any scripts I want with your Head and Footer option?**
+
+Yes, you can add any type of scripts you want.
+
+**HEAD AND FOOTER: Can I show scripts just on mobile or desktop?**
+
+Yes, you can.
+You can configure scripts for all devices, just for mobile, or just for desktop.
+
+**HEAD AND FOOTER: Can I hide scripts on some pages.**
+
+Yes, you can hide the global scripts on any page you want.
+
+**HEAD AND FOOTER: Can I add scripts on WooCommerce's order-received page?**
+
+Yes, you can add or hide scripts on the WooCommerce's order-received page.
+
+**PINTEREST TAG: Do I need to install your free Pinterest add-on?**
+
+Yes, if you want to implement the Pinterest tag you'll need our free Pinterest add-on.
+You can [get it from here](https://www.pixelyoursite.com/pinterest-tag)
+
+**PINTEREST TAG: Where can I find my Pinterest tag ID?**
+
+You can find your Pinterest tag ID inside your Pinterest account.
+For more information go to our [help page](https://www.pixelyoursite.com/documentation/add-your-pinterest-tag)
+
+**PINTEREST TAG: Can I fire my own Pinterest events?**
+
+Yes, you can fire your own Pinterest tags events effortless.
+
+There are several triggers you can use:
+
+*URL includes (supports delay)
+*URL equals (supports delay)
+*Click on HTML link (pro)
+*Click on CSS Selector (pro)
+*Mouse over CSS Selector (pro)
+*Page scroll (pro)
+
+**PINTEREST TAG: I use WooCommerce or EDD, do I need to add the Pinterest events myself?**
+
+No, absolutely not!
+The plugin will fire all the Pinterest e-commerce events automatically.
 
 **Will your plugin increase the loading time of my site?**
 
-The plugin itself is really fast. However, you have to remember that the pixel has to communicate with Facebook to send all the data, and this will add a little load on your site.
+The plugin itself is really fast. However, you have to remember that the pixel has to communicate with Facebook, Google, or Pinterest to send all the data, and this will add a little load on your site.
 
 Will this impact on your visitors? No, because all the requests are asynchronous, meaning that the browser will continue to load and your users will not see any delay whatsoever.
 
 **Are there any known incompatibilities with other themes or plugins?**
 
-Any program, service, code or plugin that adds the Pixel Code, since you can't have two similar pixels on a page.
+There are a few you should consider:
 
-* We had a problem with Mamaya, a retargeting service
-* It won't work with LeadPages or any similar system  because those pages are generated outside WordPress
+*Any plugin or solution that implements the same pixel or tag. Having the same tracking pixel added twice can cause problems.
 
-If any incompatibilities will arise we will add them here and, of course, will try to fix them as soon as possible.
+*We had a problem with Mamaya, a retargeting service.
 
-**I have the pixel installed on my website and I am running a Facebook Campaign, but the reports are confusing me. How can I see my campaign results?**
+*It won’t work with LeadPages or any similar system because those pages are generated outside WordPress.
 
-We have an article about how to create Custom Reports:
-<strong><a href="http://www.pixelyoursite.com/facebook-ads-reports-optimisation" target="_blank"><span style="color:#DE4D4D;">How to optimize your Facebook Ads Reports for events tracking</span></a></strong>
+*Some clients reported problems with Thrive landing pages. This happens because Thrive removes other plugins JS files. 
+
+There's a strange solution: it appears that if you have the Yoast plugin installed the problem will go away.
+
+*Upsell plugins can cause problems with purchase tracking. If they add an intermediary page after the transaction, we have [a filter their developer can use to call our default Purchase event](https://bitbucket.org/snippets/the_mister/zeaXya)
+
 
 
 == Screenshots ==
 
-1. Add your Facebook Pixel ID and the plugin will insert the code on every page of your website
-2. You don’t have to copy/paste all the pixel code, but just the pixel ID. You can find it in your Ads Manager, under Pixels
-3. The Search Event will pull each search on your site as a parameter. You can use it to create Custom Audiences
-4. The GeneralEvent is triggered on every page and can be used for Custom Audiences. We have a free guide on how to use it, liked from the plugin itself
-5. Adding events to any URL of any page of your website is easy: just add the URL, select event type and fill the desired parameters values
-6. If you want you can insert a custom event code
-7. Or you can select a standard event and use the default parameters
-8. WooCommerce integration comes with out of the box Facebook Dynamic Ads setup
-9. These are the normal events on a WooCommerce thank you page: the Purchase event has content_ids and content_types (required by Dynamic Ads). The reported error for the GeneralEvent can be ignored (as explained in the help pages)
+1. Add your Facebook pixel ID, Google Analytics ID, or Pinterest ID. 
+2. You don’t have to copy/paste all the Facebook pixel code, but just the pixel ID. You can find it in your Ads Manager, under the Pixels link.
+3. You just need your Google Analytics Tracking ID, not the full code.
+4. You simply need your Pinterest Tag ID.
+5. You can exclude user roles from tracking (like Admin), so they won’t affect your stats.
+6. You can allow other user roles to use the plugin.
+7. The Global Events are fired automatically, tracking important actions and data.
+8. The GeneralEvent is fired on every page, tracking important data about your content.
+9. The Search event tracks searches. WooCommerce searches are Dynamic Ads ready.
+10. The Form event is fired when a form is submitted.
+11. The Comment event tracks comments.
+12. The Downloads event tracks downloads. You can configure the file types.
+13. You can fire your own events with NO coding.
+14. Events have flexible triggers and can be sent to Facebook, Google Analytics, or Pinterest.
+15. WooCommerce comes with Facebook Dynamic Ads events, Google Analytics Enhanced Ecommerce, and Pinterest e-commerce configuration.
+16. You can track value for each WooCommerce events, plus other useful parameters.
+17. The AddToCart event can be fired on cart buttons, cart page, or checkout page.
+18. Easy Digital Downloads integrations comes with Facebook Dynamic Ads events, Google Analytics Enhanced Ecommerce, and Pinterest e-commerce setup.
+19. Test your Facebook pixel with Pixel Helper Chrome extension.
+20. Test your Google Analytics code with Google Tag Assistant Chrome extension.
+21. Test your Pinterest tag with the Pinterest Tag Helper Chrome extension.
+22. With the Head & Footer option you an add ANY script. There’s an option to insert scripts on the  WooCommerce order-received page .
+23. You’ll have an option to insert scripts on any pages or posts.
+
 
 == Changelog ==
 
-= PixelYourSite 5.3.4 =
+= PixelYourSite 7.0.2 =
 
-* We've added an AJAX value update option for the GDPR filter.  If plugins use our filter to control the pixel, this option must be enabled in order to work with cache. Developers can use this filter to enable it automatically: pys_gdpr_ajax_enabled
+* IMPORTANT: fix for some fatal errors that could be triggered by the Pinterest add-on on WooCommerce and Easy Digital Downloads orders.
 
-* This new option will fix an issue that appeared when the "GDPR Cookie Consent" plugin is active and a cache plugin is in use. 
+= PixelYourSite 7.0.1 =
+
+* Fix for missing cookie dependency issue (GDPR integrations).
+
+* Adding developer Facebook ID in the pixel code (used internally by Facebook to identify partners activity).
+
+= PixelYourSite 7.0.0 =
+
+* Version 7.0.0 is a complete rewrite of the plugin, adding a lot more features.
+
+* New Google Analytics integration with Enhanced Ecommerce support for WooCommerce and Easy Digital Downloads.
+
+* Pinterest Tag support via free add-on.
+
+* Add ANY other script with the new Head & Footer option. It supports global or per-page scripts. You have the possibility to add scripts on the WooCommerce order-received page.
+
+* The Global Events will automatically track important actions: searches, form submit, comments, downloads.
+
+* You can configure your own events using “URL match” or URL include triggers” and add a “delay event” in seconds.
+
+* Every event can be sent to Facebook, Google Analytics, or Pinterest.
+
+* You can enable Facebook Advanced Matching.
+
+* The Pinterest Tag supports Enhanced Matching.
+
+* Google Analytics supports Enhanced Link Attribution and Anonymize IP. 
+
+* The WooCommerce integrations tracks remove from cart as an event and has support for Google Enhanced Ecommerce tracking.
+
+* You can now grant permissions to manage the plugin based on the user’s role.
+
+* We’ve extended our GDPR integrations with twom more “cookie consent” plugins.
+
+* We’ve added filters for developers to control each pixel, plus a filter to control our AJAX option (useful to make GDPR custom integrations cache friendly).
+
 
 = PixelYourSite 5.3.3 =
 
@@ -562,4 +654,5 @@ This is a major release, with a new design and new features:
 = 5.0 =
 
 Version 5.0 comes with full Easy Digital Downloads integrations plus the ability to give each WooCommerce and EDD event a global value.
+
 
