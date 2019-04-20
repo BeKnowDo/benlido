@@ -1,5 +1,5 @@
 <?php
-
+require_once 'inc/basel-overrides.php';
 add_action( 'wp_enqueue_scripts', 'basel_child_enqueue_styles', 1000 );
 
 function basel_child_enqueue_styles() {

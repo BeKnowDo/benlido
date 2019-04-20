@@ -103,6 +103,9 @@
         "up-plugins/wpai-woocommerce-add-on":"dev-master",
         "up-plugins/woocommerce-additional-variation-images":"dev-master",
         "up-plugins/woocommerce-variation-swatches-and-photos":"dev-master",
+        "wpackagist-plugin/atomic-blocks":"*",
+        "wpackagist-plugin/stackable-ultimate-gutenberg-blocks":"*",
+
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/acf-content-analysis-for-yoast-seo":"*",
         "wpackagist-plugin/cmb2":"*",
@@ -132,7 +135,7 @@
         "wpackagist-plugin/woocommerce-auto-added-coupons":"*",
         "wpackagist-plugin/woocommerce-products-without-featured-images":"*",
         "wpackagist-plugin/wordpress-seo":"*",
-	"wpackagist-plugin/wp-mail-smtp":"*",
+	    "wpackagist-plugin/wp-mail-smtp":"*",
         "wpackagist-plugin/wp-ses":"*"
     }
 }

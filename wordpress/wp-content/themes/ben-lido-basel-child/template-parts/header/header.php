@@ -1,23 +1,7 @@
 <div class="container">
 <div class="wrapp-header">
-    <div class="site-logo">
-        <div class="basel-logo-wrap">
-            <a href="http://benlido.urbanpixels.localhost/" class="basel-logo basel-main-logo" rel="home">
-                <img src="http://benlido.urbanpixels.localhost/wp-content/themes/basel/images/logo.png" alt="Ben Lido">					
-            </a>
-        </div>
-    </div><!-- END SITE LOGO -->
-    <div class="main-nav site-navigation basel-navigation menu-left" role="navigation">
-        <div class="menu-primary-menu-container">
-            <ul id="menu-primary-menu" class="menu">
-                <li id="menu-item-3707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3707 menu-item-design-default item-event-hover"><a href="http://benlido.urbanpixels.localhost/home/">Shop</a></li>
-                <li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25 menu-item-design-default item-event-hover"><a href="http://benlido.urbanpixels.localhost/about/">About</a></li>
-                <li id="menu-item-1810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1810 menu-item-design-default item-event-hover"><a href="http://benlido.urbanpixels.localhost/help/">Help</a></li>
-                <li id="menu-item-2519" class="hide-logged-in menu-item menu-item-type-post_type menu-item-object-page menu-item-2519 menu-item-design-default item-event-hover"><a href="http://benlido.urbanpixels.localhost/my-account/">Sign In</a></li>
-                <li id="menu-item-2520" class="show-logged-in menu-item menu-item-type-custom menu-item-object-custom menu-item-2520 menu-item-design-default item-event-hover"><a href="http://benlido.urbanpixels.localhost/my-account/customer-logout/?_wpnonce=7c47ebaefe">Logout</a></li>
-            </ul>
-        </div>			
-    </div><!--END MAIN-NAV-->
+    <?php echo basel_header_block_logo();?><!-- END SITE LOGO -->
+    <?php echo basel_header_block_main_nav();?><!--END MAIN-NAV-->
 
     <div class="right-column">
         <div class="header-links my-account-with-text">
