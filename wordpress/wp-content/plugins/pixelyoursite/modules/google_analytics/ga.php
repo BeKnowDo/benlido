@@ -537,6 +537,7 @@ class GA extends Settings implements Pixel {
 		
 		$params = array(
 			'event_category'  => 'ecommerce',
+            'transaction_id'  => $order_id,
 			'value'           => $order->get_total(),
 			'currency'        => get_woocommerce_currency(),
 			'items'           => $items,
@@ -742,6 +743,7 @@ class GA extends Settings implements Pixel {
 			$payment_key = getEddPaymentKey();
 			$payment_id = (int) edd_get_purchase_id_by_key( $payment_key );
 
+            $params['transaction_id'] = $payment_id;
 			$params['currency'] = edd_get_currency();
             $params['value'] = edd_get_payment_amount( $payment_id );
 

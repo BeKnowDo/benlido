@@ -4,7 +4,7 @@ Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pi
 Requires at least: 3.0.1
 Requires PHP: 5.4
 Tested up to: 5.1
-Stable tag: 7.0.2
+Stable tag: 7.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -363,6 +363,13 @@ There's a strange solution: it appears that if you have the Yoast plugin install
 
 
 == Changelog ==
+
+
+= PixelYourSite 7.0.3 =
+
+* Fix: Google Analytics purchase event was missing the transaction ID, blocking Enhanced Ecommerce tracking.
+
+* Fix: Head & Footer option was stripping backslashes from custom code on post or pages.
 
 = PixelYourSite 7.0.2 =
 

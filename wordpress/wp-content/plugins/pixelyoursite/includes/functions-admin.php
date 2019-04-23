@@ -396,21 +396,11 @@ function adminRenderNoPixelsNotice() {
     
     $user_id = get_current_user_id();
     
-    // show only if never dismissed or dismissed more than a week ago
+    // do not show dismissed notice
     $meta_key = 'pys_core_no_pixels_dismissed_at';
     $dismissed_at = get_user_meta( $user_id, $meta_key );
     if ( $dismissed_at ) {
-        
-        if ( is_array( $dismissed_at ) ) {
-            $dismissed_at = reset( $dismissed_at );
-        }
-        
-        $week_ago = time() - WEEK_IN_SECONDS;
-        
-        if ( $week_ago < $dismissed_at ) {
-            return;
-        }
-        
+        return;
     }
     
     ?>
@@ -453,21 +443,11 @@ function adminRenderNoPixelNotice( $plugin ) {
     $slug = $plugin->getSlug();
     $user_id = get_current_user_id();
     
-    // show only if never dismissed or dismissed more than a week ago
+    // do not show dismissed notice
     $meta_key = 'pys_' . $slug . '_no_pixel_dismissed_at';
     $dismissed_at = get_user_meta( $user_id, $meta_key );
     if ( $dismissed_at ) {
-        
-        if ( is_array( $dismissed_at ) ) {
-            $dismissed_at = reset( $dismissed_at );
-        }
-        
-        $week_ago = time() - WEEK_IN_SECONDS;
-        
-        if ( $week_ago < $dismissed_at ) {
-            return;
-        }
-        
+        return;
     }
     
     ?>

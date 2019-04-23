@@ -89,12 +89,12 @@ class HeadFooter extends Settings {
 
 		$meta = array(
 			'disable_global' => isset( $data['disable_global'] ) ? true : false,
-			'head_any'       => isset( $data['head_any'] ) ? trim( stripslashes( $data['head_any'] ) ) : '',
-			'head_desktop'   => isset( $data['head_desktop'] ) ? trim( stripslashes( $data['head_desktop'] ) ) : '',
-			'head_mobile'    => isset( $data['head_mobile'] ) ? trim( stripslashes( $data['head_mobile'] ) ) : '',
-			'footer_any'     => isset( $data['footer_any'] ) ? trim( stripslashes( $data['footer_any'] ) ) : '',
-			'footer_desktop' => isset( $data['footer_desktop'] ) ? trim( stripslashes( $data['footer_desktop'] ) ) : '',
-			'footer_mobile'  => isset( $data['footer_mobile'] ) ? trim( stripslashes( $data['footer_mobile'] ) ) : '',
+			'head_any'       => isset( $data['head_any'] ) ? trim( $data['head_any'] ) : '',
+			'head_desktop'   => isset( $data['head_desktop'] ) ? trim( $data['head_desktop'] ) : '',
+			'head_mobile'    => isset( $data['head_mobile'] ) ? trim( $data['head_mobile'] ) : '',
+			'footer_any'     => isset( $data['footer_any'] ) ? trim( $data['footer_any'] ) : '',
+			'footer_desktop' => isset( $data['footer_desktop'] ) ? trim( $data['footer_desktop'] ) : '',
+			'footer_mobile'  => isset( $data['footer_mobile'] ) ? trim( $data['footer_mobile'] ) : '',
 		);
 
 		update_post_meta( $post_id, '_pys_head_footer', $meta );
