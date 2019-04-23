@@ -1,5 +1,6 @@
 # UPCo Customizations
 Below are customizations done by us
+Reference: https://css-tricks.com/learning-gutenberg-6-setting-up-a-custom-webpack-config/
 
 ## Nested project directory
 Everything is nested in the {PLUGIN_DIR}/blocks/{BLOCK_PROJECT_NAME} and is actually included with the PHP file in the main plugin directory.
@@ -9,7 +10,7 @@ Please add additional projects there.
 We added more dev dependencies to facilitate development.
 
 ```
-npm install --save-dev babel-core babel-eslint babel-loader css-loader eslint @wordpress/babel-preset-default extract-text-webpack-plugin webpack webpack-cli
+npm install --save-dev babel-core babel-eslint babel-loader css-loader eslint @wordpress/babel-preset-default babel-plugin-add-module-exports babel-plugin-transform-react-jsx babel-preset-env extract-text-webpack-plugin webpack webpack-cli
 ```
 
 ## Webpack
