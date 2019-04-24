@@ -1,4 +1,7 @@
 <?php
+// disable revisions
+define('WP_POST_REVISIONS', false);
+
 ini_set('display_errors',0);
 if (!isset($_SERVER['HTTP_HOST'])) {
     $SERVER_NAME = php_uname('n');
