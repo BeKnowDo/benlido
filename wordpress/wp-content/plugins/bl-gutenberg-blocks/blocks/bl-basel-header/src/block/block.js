@@ -9,6 +9,8 @@
 import './style.scss';
 import './editor.scss';
 
+import { compose } from "@wordpress/compose";
+import times from 'lodash/times';
 var classNames = require('classnames');
 const { RichText, MediaUpload, PlainText } = wp.editor;
 const el = wp.element.createElement;

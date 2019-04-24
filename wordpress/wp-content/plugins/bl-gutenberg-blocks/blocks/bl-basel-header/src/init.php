@@ -53,6 +53,8 @@ function bl_basel_header_cgb_block_assets() { // phpcs:ignore
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
 
+	wp_add_inline_script( 'lodash', 'window.lodash = _.noConflict();', 'after' );
+
 	/**
 	 * Register Gutenberg block on server-side.
 	 *

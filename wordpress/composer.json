@@ -105,9 +105,10 @@
         "up-plugins/woocommerce-variation-swatches-and-photos":"dev-master",
         
         "wpackagist-plugin/atomic-blocks":"*",
+        "wpackagist-plugin/design":"*",
         "wpackagist-plugin/stackable-ultimate-gutenberg-blocks":"*",
 
-        "wpackagist-plugin/akismet":"*",,
+        "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/acf-content-analysis-for-yoast-seo":"*",
         "wpackagist-plugin/cmb2":"*",
         "wpackagist-plugin/categories-images":"*",
