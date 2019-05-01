@@ -28,6 +28,10 @@ function bl_storefront_overrides() {
 	if (function_exists('bl_add_to_cart_hook')) {
 		add_action('woocommerce_add_to_cart', 'bl_add_to_cart_hook',99,6);
 	}
+
+	if (function_exists('bl_add_add_kit_button')) {
+		add_action('woocommerce_widget_shopping_cart_buttons','bl_add_add_kit_button',99);
+	}
 	
 }
 

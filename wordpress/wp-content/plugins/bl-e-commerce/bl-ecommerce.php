@@ -206,9 +206,14 @@ if (!function_exists('bl_set_kit_list')) {
      */
     function bl_set_kit_list($current_kit_index,$kit_id,$bag,$items,$kit_name='') {
         // let's see if we have this $kit_id
+        $kit_name_index = $current_kit_index + 1;
+
         $kits = WC()->session->get( 'bl_kits' );
         if (is_array($kits)) {
             $test_kit = $kits[$kit_id];
+        }
+        if (empty($kit_name)) {
+            $kit_name = 'Travel Kit ' . $kit_name_index;
         }
         if (empty($test_kit)) {
             $kits[$current_kit_index] = array('kit_id'=>$kit_id,'kit_name'=>$kit_name,'bag'=>$bag,'items'=>$items);
@@ -407,10 +412,24 @@ if (!function_exists('bl_select_item_as_swapped')) {
     }
 }
 
+if (!function_exists('bl_get_basel_cart')) {
+    function bl_get_basel_cart() {
+        $final_kits = array();
+        // kits
+        $kits = bl_get_cart_kits();
+        $final_kits = $kits;
+        $cart = WC()->cart->get_cart();
+
+        // theoretically, the number of items in the cart should match up to the number of items in the kits
+        return $final_kits;
+    }
+}
+
 if (!function_exists('bl_get_cart')) {
     function bl_get_cart() {
         // this gets the shopping cart and displays in a format that the front end likes
         $cart = WC()->cart->get_cart();
+        
         $holder = array();
         if (!empty($cart) && is_array($cart)) {
             foreach ($cart as $hash => $item) {

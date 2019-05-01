@@ -723,3 +723,9 @@ function bl_process_acf_buttons($items) {
       }
     }
   }
+
+  if (!function_exists('bl_add_add_kit_button')) {
+    function bl_add_add_kit_button() {
+      echo '<a href="#" class="button new-kit wc-forward">Create New Travel Kit</a>';
+    }
+  }

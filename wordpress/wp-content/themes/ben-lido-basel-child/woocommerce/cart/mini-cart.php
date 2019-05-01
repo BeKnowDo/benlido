@@ -28,7 +28,8 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 			do_action( 'woocommerce_before_mini_cart_contents' );
 
             // this is where we have our custom cart
-
+			get_template_part('template-parts/cart/kits');
+			
 			do_action( 'woocommerce_mini_cart_contents' );
 		?>
 	</ul>
