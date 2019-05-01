@@ -40,12 +40,12 @@
             </div>
         </div> <!-- end search -->
         <div class="shopping-cart basel-cart-design-1 basel-cart-icon cart-widget-opener">
-			<a href="http://benlido.urbanpixels.localhost/cart/">
-				<span>Cart (<span>o</span>)</span>
+            <a href="<?php echo esc_url(wc_get_cart_url()); ?>">
+				<span><?php esc_html_e('Cart', 'basel'); ?> (<span>o</span>)</span>
 				<span class="basel-cart-totals">
-                <span class="basel-cart-number">11</span>
-                <span class="subtotal-divider">/</span> 
-                <span class="basel-cart-subtotal"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>68.00</span></span>
+                <?php basel_cart_count(); ?>
+					<span class="subtotal-divider">/</span> 
+					<?php basel_cart_subtotal(); ?>
                 </span>
 			</a>
         </div>

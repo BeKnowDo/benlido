@@ -85,4 +85,9 @@ WHERE wp.ID IS NULL;
 ```
 
 
+## Basel Theme info
+
+AJAX Add to cart: /themes/basel/js/functions.js
+
+
 

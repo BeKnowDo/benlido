@@ -1,0 +1,9 @@
+body {
+    .cart-widget-side {
+        display:flex;
+        flex-direction: column;
+        .widget-heading {
+            background-color: $blue;
+        }
+    }
+}

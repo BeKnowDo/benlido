@@ -14,12 +14,11 @@ gulp.task('jshint', function (done) {
 
 gulp.task('scripts', gulp.series('jshint', function (done) {
     return gulp.src([
-        'interactive/javascript/ui.js',
-        'interactive/javascript/main.js'
+        'interactive/javascript/cart.js'
     ])
         .on('error', function(e) { console.log(e);})
         .pipe(uglify().on('error',function(e) { console.log(e);}))
-        .pipe(concat('rethink.min.js'))
+        .pipe(concat('benlido.min.js'))
         .pipe(gulp.dest('assets/js'));
 }));
 
@@ -100,9 +99,10 @@ gulp.task('styles', function (done) {
 
 gulp.task('watch', function() {
   gulp.watch('interactive/scss/*.scss',gulp.series('styles'));
+  gulp.watch('interactive/javascript/*.js',gulp.series('scripts'));
 });
 
-gulp.task('default', gulp.series('styles','watch', function (done) {
+gulp.task('default', gulp.series('styles','scripts','watch', function (done) {
 
   //gulp.watch('interactive/javascript/*.js').on('change', function(path,stats) {
   //  gulp.series('javascript');
