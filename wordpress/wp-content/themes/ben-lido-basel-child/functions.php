@@ -1,6 +1,8 @@
 <?php
-require_once 'inc/basel-overrides.php';
+
 require_once 'inc/template-functions.php';
+require_once 'inc/basel-overrides.php';
+require_once 'inc/woocommerce-overrides.php';
 add_action( 'wp_enqueue_scripts', 'basel_child_enqueue_styles', 1000 );
 
 function basel_child_enqueue_styles() {
@@ -21,3 +23,12 @@ function basel_child_enqueue_styles() {
 	wp_enqueue_script('ben-lido-script');
 
 }
+
+function bl_storefront_overrides() {
+	if (function_exists('bl_add_to_cart_hook')) {
+		add_action('woocommerce_add_to_cart', 'bl_add_to_cart_hook',99,6);
+	}
+	
+}
+
+add_action( 'wp', 'bl_storefront_overrides' );

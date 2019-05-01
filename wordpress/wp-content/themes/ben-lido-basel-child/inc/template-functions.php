@@ -705,6 +705,13 @@ function bl_process_acf_buttons($items) {
   
   if (!function_exists('bl_get_product_category')) {
     function bl_get_product_category($product_id) {
+      // first, get category from the category page
+      if (is_product_category()) {
+          $category = get_queried_object();
+          if (!empty($category) && isset($category->name)) {
+            return $category;
+          }
+      }
       $terms = get_the_terms( $product_id, 'product_cat' );
       foreach ($terms as $term) {
           $product_cat_id = $term->term_id;

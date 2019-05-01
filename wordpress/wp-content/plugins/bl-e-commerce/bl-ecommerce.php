@@ -198,15 +198,25 @@ if (!function_exists('bl_get_purchase_flow')) {
 if (!function_exists('bl_set_kit_list')) {
     /**
      * Set Kit List
+     * @param int $current_kit_index this is the index in a number of kits
      * @param int $kit_id the id of the kit
      * @param mixed $bag array('bag'=>int,'variation'=>int)
      * @param mixed $items array of the product/category items: array('category'=>int, 'product'=>int, 'variation'=>int, 'quantity'=>int)
      * @param String $kit_name the name of the kit (for future use)
      */
-    function bl_set_kit_list($kit_id,$bag,$items,$kit_name='') {
-        $kit = array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
+    function bl_set_kit_list($current_kit_index,$kit_id,$bag,$items,$kit_name='') {
+        // let's see if we have this $kit_id
+        $kits = WC()->session->get( 'bl_kits' );
+        if (is_array($kits)) {
+            $test_kit = $kits[$kit_id];
+        }
+        if (empty($test_kit)) {
+            $kits[$current_kit_index] = array('kit_id'=>$kit_id,'kit_name'=>$kit_name,'bag'=>$bag,'items'=>$items);
+        }
+        
         WC()->session->set_customer_session_cookie(true);
-        WC()->session->set( 'current_kit', $kit);
+        WC()->session->set( 'bl_kits', $kits);
+        WC()->session->set( 'current_kit', $current_kit_index);
     }
 }
 
@@ -221,8 +231,15 @@ if (!function_exists('bl_clear_all_kit_data')) {
 }
 
 if (!function_exists('bl_get_kit_list')) {
-    function bl_get_kit_list($kit_name='') {
-        $current_kit = WC()->session->get( 'current_kit' );
+    function bl_get_kit_list($index=999999) {
+        if ($index > 9999) {
+            $index = bl_get_active_kit_index();
+        }
+        $kits = bl_get_cart_kits();
+        $current_kit = array();
+        if (!empty($kits) && is_array($kits)) {
+            $current_kit = $kits[$index];
+        }
         //error_log('current kit list: '.json_encode($current_kit));
         // NOTE: sometimes, people add a bag directly into the shopping cart. We will also see if there is a bag in the cart
         if (empty($current_kit['bag'])) {
@@ -234,6 +251,20 @@ if (!function_exists('bl_get_kit_list')) {
         }
 
         return $current_kit;
+    }
+}
+
+if (!function_exists('bl_get_cart_kits')) {
+    function bl_get_cart_kits() {
+        $kits = array();
+        if (function_exists('WC')) {
+            $kits = WC()->session->get('bl_kits');
+        }
+        
+        if (empty($kits)) {
+            $kits = array();
+        }
+        return $kits;
     }
 }
 
@@ -314,13 +345,18 @@ if (!function_exists('bl_create_custom_kit')) {
     function bl_create_custom_kit() {
         global $bl_custom_kit_id;
         $holder = array();
+        $index = 0;
+        $kits = bl_get_cart_kits();
+        if (!empty($kits) && is_array($kits)) {
+            $index = count($kits);
+        }
         //$kit_list = bl_get_kit_list();
         $bag_obj = bl_get_bag_from_cart();
         if (!empty($bag_obj)) {
             $bag = array('bag'=>$bag_obj['id'],'variation'=>$bag_obj['variation_id']);
         }
         $kit_id = $bl_custom_kit_id;
-        bl_set_kit_list($kit_id,$bag,$holder);
+        bl_set_kit_list($index,$kit_id,$bag,$holder);
         bl_set_kit_add($kit_id,true);
         //wp_redirect(wc_get_page_permalink( 'shop' ));
 
@@ -331,6 +367,7 @@ if (!function_exists('bl_create_custom_kit')) {
 if (!function_exists('bl_select_item_as_swapped')) {
     // this is to pick the item to swap with the one that was chosen before
     function bl_select_item_as_swapped($kit_id,$prod_id,$cat_id) {
+        $index = bl_get_active_kit_index();
         $kit_id = intval(trim($kit_id));
         $prod_id = intval(trim($prod_id));
         $cat_id = intval(trim($cat_id));
@@ -360,7 +397,7 @@ if (!function_exists('bl_select_item_as_swapped')) {
             $holder[] = array('category'=>$cat_id,'product'=>$prod_id,'variation'=>null,'quantity'=>1);
         }
         if (!empty($holder)) {
-            bl_set_kit_list($kit_id,$kit_list['bag'],$holder);
+            bl_set_kit_list($index,$kit_id,$kit_list['bag'],$holder);
             bl_clear_product_swap();
             return true;
         }
@@ -792,6 +829,16 @@ function bl_get_bag_from_cart() {
     return array();
 }
 
+function bl_get_active_kit_index() {
+    $index = WC()->session->get( 'current_kit' );
+    if (is_numeric($index)) {
+        return $index;
+    }
+    else {
+        return 0;
+    }
+}
+
 // some supporting functions
 // gets the current session kit ID
 function bl_get_current_kit_id() {
@@ -861,6 +908,7 @@ function bl_save_current_kit($id) {
     if ($build_your_own_id == $id) {
         $bypass_kit_check = true;
     }
+    $index = bl_get_active_kit_index();
     // let's see if it's a build your own or
     if (get_post_type($id) == 'travel_kit' || $bypass_kit_check == true) {
         $bag = null;
@@ -897,7 +945,7 @@ function bl_save_current_kit($id) {
             }
         }
         //$kit = array('kit_id'=>$id,'bag'=>$bag,'items'=>$items);
-        bl_set_kit_list($id,$bag,$items);
+        bl_set_kit_list($index,$id,$bag,$items);
         if (function_exists('bl_remove_cart_items')) {
             bl_remove_cart_items();
         }   
@@ -906,10 +954,11 @@ function bl_save_current_kit($id) {
 
 } // bl_save_current_kit()
 
-function bl_add_to_kit($kit_id,$product_id,$category_id) {
+function bl_add_to_kit($index,$kit_id,$product_id,$category_id) {
     // array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
     global $bl_custom_kit_id;
     $kit_list = bl_get_kit_list();
+    $index = bl_get_active_kit_index();
     if (!empty($kit_list)) {
         $current_kit_id = $kit_list['kit_id'];
     } else {
@@ -941,16 +990,17 @@ function bl_add_to_kit($kit_id,$product_id,$category_id) {
     }
     if (!empty($holder)) {
         //print_r ($holder);
-        bl_set_kit_list($kit_id,$kit_list['bag'],$holder);
+        bl_set_kit_list($index,$kit_id,$kit_list['bag'],$holder);
         return true;
     }
     return false;
 }
 
 // 
-function bl_add_to_kit_cart($product_id,$quantity) {
+function bl_add_to_kit_cart($product_id,$quantity,$category_id=0) {
     global $bl_custom_kit_id;
     $kitting_page = '';
+    $index = bl_get_active_kit_index();
     if (function_exists('get_field')) {
         $kitting_page = get_field('kitting_page','option');
     }
@@ -966,18 +1016,21 @@ function bl_add_to_kit_cart($product_id,$quantity) {
     //echo $quantity;
     if (empty($kit_id)) {
         $kit_id = $bl_custom_kit_id;
-        bl_set_kit_list($kit_id,array(),array());
+        bl_set_kit_list($index,$kit_id,array(),array());
     }
     // we need to get the main category from this product
-    $cats = get_the_terms( $product_id, 'product_cat' );
-    if (!empty($cats) && is_array($cats)) {
-        $category = $cats[0];
+    if ($category_id < 1) {
+        $cats = get_the_terms( $product_id, 'product_cat' );
+        if (!empty($cats) && is_array($cats)) {
+            $category = $cats[0];
+        }
+        if (!empty($category) && is_object($category) && isset($category->term_id)) {
+            $category_id = $category->term_id;
+        }
     }
-    if (!empty($category) && is_object($category) && isset($category->term_id)) {
-        $category_id = $category->term_id;
-    }
+
     //print_r ($cats);
-    $success = bl_add_to_kit($kit_id,$product_id,$category_id);
+    $success = bl_add_to_kit($index,$kit_id,$product_id,$category_id);
     if ($success == true) {
         $result['success'] = true;
         if ($kit_id != $bl_custom_kit_id) {
@@ -993,6 +1046,7 @@ function bl_remove_from_kit($kit_id,$product_id,$category_id) {
     // first see if we have a kit
     $has_category_id = true;
     $items_holder = array();
+    $index = bl_get_active_kit_index();
     if (empty($kit_id) || empty($product_id)) {
         return false;
     }
@@ -1034,7 +1088,7 @@ function bl_remove_from_kit($kit_id,$product_id,$category_id) {
                 
             }
         }
-        bl_set_kit_list($kit_list['kit_id'],$kit_list['bag'],$items_holder);
+        bl_set_kit_list($index,$kit_list['kit_id'],$kit_list['bag'],$items_holder);
         $kit_list = bl_get_kit_list();
         //print_r ($kit_list);
         return true;
@@ -1306,6 +1360,7 @@ function bl_get_kit_future_shippings($kits) {
 
 function bl_change_bag($product_id,$category_id,$variation_id,$personal_kit_id=0) {
     $kit = bl_get_kit_list();
+    $index = bl_get_active_kit_index();
     $kit_bag = $kit['bag'];
     $kit_product_id = 0; // NOTE: kit product ID is currently the same as variation id
     $kit_variation_id = 0; 
@@ -1325,7 +1380,7 @@ function bl_change_bag($product_id,$category_id,$variation_id,$personal_kit_id=0
         $kit_id = $kit['kit_id'];
         $items = $kit['items'];
         if (!empty($kit_id)) {
-            bl_set_kit_list($kit_id,$kit_bag,$items);
+            bl_set_kit_list($index,$kit_id,$kit_bag,$items);
         }
         
 
