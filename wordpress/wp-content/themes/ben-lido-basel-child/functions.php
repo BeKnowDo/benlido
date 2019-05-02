@@ -9,6 +9,16 @@ function basel_child_enqueue_styles() {
 	$version = '1.0';
 
 	wp_register_script('ben-lido-script', get_stylesheet_directory_uri() . '/assets/js/benlido.min.js', array('jquery'),$version);
+	wp_enqueue_script( 'jquery-ui-core', false, array('jquery') );
+	wp_enqueue_script( 'jquery-ui-accordion', false, array('jquery') );
+	$wp_scripts = wp_scripts();
+    wp_enqueue_style(
+      'jquery-ui-theme-smoothness',
+      sprintf(
+        '//ajax.googleapis.com/ajax/libs/jqueryui/%s/themes/smoothness/jquery-ui.css', // working for https as well now
+        $wp_scripts->registered['jquery-ui-core']->ver
+      )
+    );
 	
 	if( basel_get_opt( 'minified_css' ) ) {
 		wp_enqueue_style( 'basel-style', get_template_directory_uri() . '/style.min.css', array('bootstrap'), $version );

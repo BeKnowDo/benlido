@@ -418,11 +418,43 @@ if (!function_exists('bl_get_basel_cart')) {
         // kits
         $kits = bl_get_cart_kits();
         $final_kits = $kits;
-        $cart = WC()->cart->get_cart();
+        //$cart = WC()->cart->get_cart();
 
         // theoretically, the number of items in the cart should match up to the number of items in the kits
         return $final_kits;
     }
+}
+
+// gets the item from the kit cart from the real cart
+// this is so we can get an item key for default mini-cart functions
+if (!function_exists('bl_get_kit_item_from_cart')) {
+    function bl_get_kit_item_from_cart($product_id,$variation_id) {
+        $cart = array();
+        if (function_exists('WC')) {
+            $cart = WC()->cart->get_cart();
+        }
+        if (!empty($cart)) {
+            if (!empty($cart) && is_array($cart)) {
+                foreach ($cart as $hash => $item) {
+                    $tmp_variation_id = 0;
+                    $tmp_product_id = $item['data']->get_id();
+                    $quantity = $item['quantity'];
+                    if (isset($item['variation_id'])) {
+                        $tmp_variation_id = $item['variation_id'];
+                    }
+                    if (!empty($variation_id) && $variation_id == $tmp_variation_id) {
+                        return array('cart_item_key'=>$hash,'cart_item'=>$item,'quantity'=>$quantity,'is_variable'=>true);
+                    }
+                    else if (empty($variation_id) && $product_id == $tmp_product_id ) {
+                        return array('cart_item_key'=>$hash,'cart_item'=>$item,'quantity'=>$quantity,'is_variable'=>false);
+                    }
+                    
+                }
+            }
+        }
+        return array();
+    }
+    
 }
 
 if (!function_exists('bl_get_cart')) {
