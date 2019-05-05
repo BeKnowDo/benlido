@@ -27,6 +27,11 @@ function basel_child_enqueue_styles() {
 	}
 	
 	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css', array('bootstrap'), $version );
+
+	wp_dequeue_script('wc-add-to-cart');
+	wp_deregister_script('wc-add-to-cart');
+	wp_register_script('wc-add-to-cart', get_stylesheet_directory_uri() . '/assets/js/add-to-cart.min.js' , array( 'jquery',  'jquery-blockui' ), $version, TRUE);
+	wp_enqueue_script('wc-add-to-cart');
 	
 	wp_register_style('ben-lido-style', get_stylesheet_directory_uri() . '/assets/css/style.css', array(), $version, 'all');
 	wp_enqueue_style('ben-lido-style'); // Enqueue it!

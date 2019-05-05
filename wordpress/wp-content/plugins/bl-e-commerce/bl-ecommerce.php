@@ -103,6 +103,20 @@ function bl_get_cart_item_meta($data, $cartItem) {
     return $data;
 }
 
+function bl_generate_kit_cart_item($index,$product_id,$variation_id,$quantity) {
+    // structure is:
+    // first, find the product from the kit
+    $product_object = null;
+    $item = bl_get_item_in_kit($index,$product_id,$variation_id);
+    if (!empty($item)) {
+        $category_id = $item['category'];
+        $data = wc_get_product($product_id);
+    }
+    $cart_item = array('category'=>$category_id,'key'=>$item_key,'product_id'=>$product_id,'variation_id'=>$variation_id,'variation'=>array(),'quantity'=>$quantity,'data'=>$product_object);
+    print_r ($cart_item);
+    return $cart_item;
+}
+
 function bl_set_frequency($user_id,$order_id,$frequency=0) {
     $kits = array();
     $holder = array();
@@ -259,6 +273,33 @@ if (!function_exists('bl_get_kit_list')) {
     }
 }
 
+if (!function_exists('bl_get_item_in_kit')) {
+    function bl_get_item_in_kit($index,$product_id,$variation_id) {
+        $item = array();
+        $kits = bl_get_cart_kits();
+        if (empty($index)) {
+            $index = 0;
+        }
+        print_r ($kits);
+        $kit_list = $kits[$index];
+        if (!empty($kit_list) && isset($kit_list['items'])) {
+            // look for product
+            $items = $kit_list['items'];
+            if (!empty($items) && is_array($items)) {
+                foreach ($items as $item) {
+                    if (!empty($variation_id) && $item['variation'] == $variation_id) {
+                        return $item;
+                    }
+                    if (!empty($product_id) && $item['product'] == $product_id) {
+                        return $item;
+                    }
+                }
+            }
+        }
+        return $item;
+    }
+}
+
 if (!function_exists('bl_get_cart_kits')) {
     function bl_get_cart_kits() {
         $kits = array();
@@ -270,6 +311,67 @@ if (!function_exists('bl_get_cart_kits')) {
             $kits = array();
         }
         return $kits;
+    }
+}
+
+if (!function_exists('bl_get_cart_count')) {
+    function bl_get_cart_count() {
+        $count = 0;
+        $kits = bl_get_cart_kits();
+        if (!empty($kits) && is_array($kits)) {
+            foreach ($kits as $kit) {
+                $bag = $kit['bag'];
+                $items = $kit['items'];
+                if (!empty($bag) && isset($bag['bag'])) {
+                    $count++;
+                }
+                if (!empty($items) && is_array($items)) {
+                    foreach ($items as $item) {
+                        $quantity = $item['quantity'];
+                        $count += $quantity;
+                    }
+                }
+            }
+        }
+        return $count;
+    }
+}
+
+if (!function_exists('bl_get_subtotal')) {
+    function bl_get_subtotal() {
+        $subtotal = 0.0;
+        $kits = bl_get_cart_kits();
+        //print_r ($kits);
+        if (!empty($kits) && is_array($kits)) {
+            foreach ($kits as $kit) {
+                $bag = $kit['bag'];
+                $items = $kit['items'];
+                if (!empty($bag)) {
+                    $bag_id = $bag['bag'];
+                    $prod = wc_get_product( $bag_id );
+                    if (!empty($prod)) {
+                        $subtotal += floatval($prod->get_price());
+                    }
+                }
+                if (!empty($items) && is_array($items)) {
+                    foreach ($items as $item) {
+                        $quantity = $item['quantity'];
+                        if (!empty($item['variation']) && is_numeric($item['variation'])) {
+                            $prod = wc_get_product($item['variation']);
+                        }
+                        else if (!empty($item['product']) && is_numeric($item['product'])) {
+                            $prod = wc_get_product($item['product']);
+                        }
+
+                        if (!empty($prod)) {
+                            $subtotal += ($prod->get_price() * $quantity);
+                        }
+                    }
+                }
+            }
+        }
+
+        return wc_price($subtotal);
     }
 }
 
@@ -1093,29 +1195,25 @@ function bl_add_to_kit_cart($product_id,$quantity,$category_id=0) {
 }
 
 // removes the item from the kit
-function bl_remove_from_kit($kit_id,$product_id,$category_id) {
+function bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
     // first see if we have a kit
     $has_category_id = true;
     $items_holder = array();
     $index = bl_get_active_kit_index();
-    if (empty($kit_id) || empty($product_id)) {
+    if ( empty($product_id)) {
         return false;
     }
     if (empty($category_id)) {
         $has_category_id = false;
     }
-    $current_kit_id = bl_get_current_kit_id();
-    if (empty($current_kit_id)) {
-        bl_save_current_kit($kit_id);
-    }
+
     $kit_list = bl_get_kit_list();
     // first, match kit ID
     //print_r ($kit_list);
     if (!empty($kit_list)) {
-        if ($kit_list['kit_id'] != $kit_id) {
-            // this means that the person has navigated to a new kit
-            bl_save_current_kit($kit_id); // now, we are in a new kit
-            $kit_list = bl_get_kit_list();
+        $selected_kit = $kit_list[$index];
+        if (empty($selected_kit)) {
+            return false;
         }
         // now, let's see which to remove
         $items = $kit_list['items'];
@@ -1439,6 +1537,7 @@ function bl_change_bag($product_id,$category_id,$variation_id,$personal_kit_id=0
 }
 
 
+
 // this is the API endpoint parsing
 function bl_ecommerce_url_intercept() {
     global $bl_ecommerce_api_slug;
@@ -1657,7 +1756,7 @@ function bl_ecommerce_url_intercept() {
                             $res = json_decode($contents,TRUE);
                         }
                         if (!empty($id)) {
-                            $success = bl_remove_from_kit($id,$prod,$cat);
+                            $success = bl_remove_from_kit($index,$id,$prod,$cat);
                         }
                         header('Content-Type: application/json');
                         // we always return empty

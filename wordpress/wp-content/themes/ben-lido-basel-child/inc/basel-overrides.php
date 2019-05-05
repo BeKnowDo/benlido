@@ -74,3 +74,27 @@ if( ! function_exists( 'basel_header_block_main_nav' ) ) {
 		<?php
 	}
 }
+
+if( ! function_exists( 'basel_cart_count' ) ) {
+	function basel_cart_count() {
+		$count = WC()->cart->get_cart_contents_count();
+		if (function_exists('bl_get_cart_count')) {
+			
+		}
+		?>
+			<span class="basel-cart-number"><?php echo $count; ?></span>
+		<?php
+	}
+}
+
+if( ! function_exists( 'basel_cart_subtotal' ) ) {
+	function basel_cart_subtotal() {
+		$subtotal = WC()->cart->get_cart_subtotal();
+		if (function_exists('bl_get_subtotal')) {
+			$subtotal = bl_get_subtotal();
+		}
+		?>
+			<span class="basel-cart-subtotal"><?php echo  $subtotal; ?></span>
+		<?php
+	}
+}

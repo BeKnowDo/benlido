@@ -22,6 +22,16 @@ gulp.task('scripts', gulp.series('jshint', function (done) {
         .pipe(gulp.dest('assets/js'));
 }));
 
+gulp.task('script-add-to-cart', gulp.series('jshint', function (done) {
+  return gulp.src([
+      'interactive/javascript/add-to-cart.js'
+  ])
+      .on('error', function(e) { console.log(e);})
+      .pipe(uglify().on('error',function(e) { console.log(e);}))
+      .pipe(concat('add-to-cart.min.js'))
+      .pipe(gulp.dest('assets/js'));
+}));
+
 
 
 gulp.task('fonts', function(done) {
@@ -99,10 +109,10 @@ gulp.task('styles', function (done) {
 
 gulp.task('watch', function() {
   gulp.watch('interactive/scss/*.scss',gulp.series('styles'));
-  gulp.watch('interactive/javascript/*.js',gulp.series('scripts'));
+  gulp.watch('interactive/javascript/*.js',gulp.series('scripts','script-add-to-cart'));
 });
 
-gulp.task('default', gulp.series('styles','scripts','watch', function (done) {
+gulp.task('default', gulp.series('styles','scripts','script-add-to-cart','watch', function (done) {
 
   //gulp.watch('interactive/javascript/*.js').on('change', function(path,stats) {
   //  gulp.series('javascript');

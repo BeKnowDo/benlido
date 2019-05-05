@@ -31,6 +31,7 @@ if (function_exists('bl_get_basel_cart')) {
                             //print_r ($item);
                             $product_id = $item['product'];
                             $variation_id = $item['variation'];
+                            $quantity = $item['quantity'];
                             $cart_match = array();
                             if (function_exists('bl_get_kit_item_from_cart')) {
                                 $cart_match = bl_get_kit_item_from_cart($product_id,$variation_id);
@@ -39,6 +40,11 @@ if (function_exists('bl_get_basel_cart')) {
                             if (!empty($cart_match)) {
                                 $cart_item = $cart_match['cart_item'];
                                 $cart_item_key = $cart_match['cart_item_key'];
+                            }
+                            //print_r ($cart_item);
+                            // NOTE: we still need to reconstruct cart_item for displaying the product
+                            if (empty($cart_item) && function_exists('bl_generate_kit_cart_item')) {
+                                $cart_item = bl_generate_kit_cart_item($index,$product_id,$variation_id,$quantity);
                             }
                             $_product = wc_get_product($product_id);
                             if ($_product) {
@@ -51,12 +57,16 @@ if (function_exists('bl_get_basel_cart')) {
                         <li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
                         <?php
 						    echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-							'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">&times;</a>',
+                            '<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s"
+                            data-kit_index="%s" data-variation_id="%s"
+                            >&times;</a>',
 							esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 							__( 'Remove this item', 'woocommerce' ),
 							esc_attr( $product_id ),
 							esc_attr( $cart_item_key ),
-							esc_attr( $_product->get_sku() )
+                            esc_attr( $_product->get_sku() ),
+                            esc_attr( $index),
+                            esc_attr($variation_id)
 						), $cart_item_key );
 						?>
 						<?php if ( empty( $product_permalink ) ) : ?>
@@ -66,8 +76,10 @@ if (function_exists('bl_get_basel_cart')) {
 								<?php echo $thumbnail . $product_name; ?>
 							</a>
 						<?php endif; ?>
-						<?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
-						<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
+                        <?php if (!empty($cart_item)):?>
+                            <?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
+                            <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $quantity, $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
+                        <?php endif;?>
                         </li>
                     <?php endforeach;?>
                     </ul>

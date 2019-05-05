@@ -66,3 +66,15 @@ function bl_add_to_cart_hook($cart_item_key, $product_id, $quantity, $variation_
 		bl_add_to_kit_cart($product_id,$quantity,$category_id);
 	}
 }
+
+// define the woocommerce_cart_subtotal callback 
+function bl_woocommerce_cart_subtotal( $subtotal, $compound, $cart )  { 
+	// Need to get the subtotal from all the kits
+	if (function_exists('bl_get_subtotal')) {
+		$subtotal = bl_get_subtotal();
+	}
+	return $subtotal; 
+}; 
+             
+    // add the filter 
+    add_filter( 'woocommerce_cart_subtotal', 'bl_woocommerce_cart_subtotal', 10, 3 ); 

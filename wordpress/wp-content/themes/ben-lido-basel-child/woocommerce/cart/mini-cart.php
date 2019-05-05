@@ -20,9 +20,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// replaced WC()->cart->is_empty()
+// so that we can check our BL cart and not WooCommerce Cart
+$is_empty = WC()->cart->is_empty();
+$subtotal = WC()->cart->get_cart_subtotal();
+$kits = array();
+if (function_exists('bl_get_cart_kits')) {
+	$kits = bl_get_cart_kits();
+	if (!empty($kits)) {
+		$is_empty = false;
+	}
+}
+
+if (function_exists('bl_get_subtotal')) {
+	$subtotal = bl_get_subtotal();
+}
+
+
 do_action( 'woocommerce_before_mini_cart' ); ?>
 
-<?php if ( ! WC()->cart->is_empty() ) : ?>
+<?php if ( ! $is_empty ) : ?>
 	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr( $args['list_class'] ); ?>">
 		<?php
 			do_action( 'woocommerce_before_mini_cart_contents' );
@@ -34,7 +51,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 		?>
 	</ul>
 
-	<p class="woocommerce-mini-cart__total total"><strong><?php _e( 'Subtotal', 'woocommerce' ); ?>:</strong> <?php echo WC()->cart->get_cart_subtotal(); ?></p>
+	<p class="woocommerce-mini-cart__total total"><strong><?php _e( 'Subtotal', 'woocommerce' ); ?>:</strong> <?php echo $subtotal;  ?></p>
 
 	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
