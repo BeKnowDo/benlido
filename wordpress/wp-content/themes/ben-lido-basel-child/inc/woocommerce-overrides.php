@@ -76,5 +76,14 @@ function bl_woocommerce_cart_subtotal( $subtotal, $compound, $cart )  {
 	return $subtotal; 
 }; 
              
-    // add the filter 
-    add_filter( 'woocommerce_cart_subtotal', 'bl_woocommerce_cart_subtotal', 10, 3 ); 
+
+function bl_ajax_remove_from_cart() {
+	$cart_item_key = wc_clean( isset( $_POST['cart_item_key'] ) ? wp_unslash( $_POST['cart_item_key'] ) : '' );
+	$kit_index = wc_clean( isset( $_POST['kit_index'] ) ? wp_unslash( $_POST['kit_index'] ) : '0' );
+	$product_id = wc_clean( isset( $_POST['product_id'] ) ? wp_unslash( $_POST['product_id'] ) : '0' );
+	$variation_id = wc_clean( isset( $_POST['variation_id'] ) ? wp_unslash( $_POST['variation_id'] ) : '0' );
+	// first, remove item from kit
+	if ( $cart_item_key ) {
+		WC()->cart->remove_cart_item( $cart_item_key );
+	}
+}

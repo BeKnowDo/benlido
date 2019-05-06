@@ -47,6 +47,13 @@ function bl_storefront_overrides() {
 	if (function_exists('bl_add_add_kit_button')) {
 		add_action('woocommerce_widget_shopping_cart_buttons','bl_add_add_kit_button',99);
 	}
+
+	// replace wc_ajax for removing cart item with our own
+	remove_action('wc_ajax_remove_from_cart',array('WC_AJAX','remove_from_cart'));
+	add_action('wc_ajax_remove_from_cart','bl_ajax_remove_from_cart');
+
+	// customize subtotals to come from the kits and not the shopping cart 
+	add_filter( 'woocommerce_cart_subtotal', 'bl_woocommerce_cart_subtotal', 10, 3 ); 
 	
 }
 
