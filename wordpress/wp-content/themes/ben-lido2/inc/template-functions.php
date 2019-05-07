@@ -22,8 +22,19 @@ function bl_get_top_nav() {
     $menu_id = $locations[ 'primary' ] ;
     $nav = wp_get_nav_menu_items($menu_id);
     foreach ($nav as $item) {
-      $res = bl_generate_nav_links($item);
-      $final_nav[] = $res;
+        $submenu = [];
+        foreach ($nav as $submenuItem) {
+            if ($submenuItem->menu_item_parent == $item->ID) {
+                $submenu[] = bl_generate_nav_links($submenuItem);
+            }
+        }
+
+        if (empty($item->menu_item_parent)) {
+            $res = bl_generate_nav_links($item);
+            $final_nav[$item->ID] = $res;
+            if (!empty($submenu)) $final_nav[$item->ID]['submenu'] = $submenu;
+        }
+
     }
     return $final_nav;
 }

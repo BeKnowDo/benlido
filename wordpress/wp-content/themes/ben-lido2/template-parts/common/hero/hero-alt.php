@@ -18,7 +18,8 @@ if (function_exists('get_field')) {
 
 $leftCardData = [];
 $rightCardData = [];
-$homePageHeroes = [];
+$homePageLeftHeroes = [];
+$homePageRightHeroes = [];
 
 foreach($left_feature_cards as $item){
   $newArray = [];
@@ -43,7 +44,7 @@ foreach($left_feature_cards as $item){
       $newArray['button_url'] = $item['button_url'];
   }
 
-  array_push($homePageHeroes, $newArray);
+  array_push($homePageLeftHeroes, $newArray);
 }
 
 foreach($right_feature_cards as $item){
@@ -69,7 +70,7 @@ foreach($right_feature_cards as $item){
       $newArray['button_url'] = $item['button_url'];
   }
 
-  array_push($homePageHeroes, $newArray);
+  array_push($homePageRightHeroes, $newArray);
 }
 
 // if($right_feature_card['title'] == NULL || $left_feature_card['title'] == NULL) {
@@ -103,25 +104,29 @@ foreach($right_feature_cards as $item){
 // $homePageHeroes = array( $leftCardData, $rightCardData);
 // echo '<br/><br/><pre>' . var_export($right_feature_card['title'], true) . '</pre>';
 
-if (!empty($homePageHeroes)) {
-    $data['homePageHeroes'] = $homePageHeroes;
-    // echo '<br/><br/><pre>' . var_export($data, true) . '</pre>';
+if (!empty($homePageLeftHeroes)) {
+    $data['homePageLeftHeroes'] = $homePageLeftHeroes;
+}
+
+if (!empty($homePageRightHeroes)) {
+    $data['homePageRightHeroes'] = $homePageRightHeroes;
 }
 
 if (empty($data)) {
     $data = array(
-        'homePageHeroes' => array(
+        'homePageLeftHeroes' => array(
             array(
                 'header' => 'How it Works',
                 'copy' => "Premium, personalized bags packed with the products you love, delivered anywhere, with easy subscription reorders.",
                 'image' => '/images/hero-1.png'
-            ),
-            array(
-                'header'=> 'The Brands You Love',
-                'copy'=> "Unlike the aisle at your local retailer, if you want it, we'll have it - and we'll deliver it - right to your doorstep.",
-                'image'=> '/images/hero-2.png'
             )
-
+        ),
+        'homePageRightHeroes' => array(
+            array(
+                'header' => 'How it Works',
+                'copy' => "Premium, personalized bags packed with the products you love, delivered anywhere, with easy subscription reorders.",
+                'image' => '/images/hero-1.png'
+            )
         )
     );
 }

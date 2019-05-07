@@ -53,6 +53,8 @@ if (empty($data)) {
         )
     );
 }
-//print_r(json_encode($data));
+//echo '<pre>';
+//print_r($data);
+//echo '</pre>';
 //print_r(json_encode($data));
 Timber::render( 'common/hero/home-hero.twig', $data);

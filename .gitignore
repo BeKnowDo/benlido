@@ -5,6 +5,7 @@
 *.bak
 *.swp
 Thumbs.db
+.idea/
 
 # aptana
 .project
@@ -30,6 +31,9 @@ wordpress/vendor/*
 node_modules
 npm-debug.log
 package-lock.json
+
+*.map
+
 
 # yarn stuff
 yarn-error.log

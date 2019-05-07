@@ -1,3 +1,5 @@
+$theme-blue: #393d5b;
+
 .hero {
   &-home {
     h1,
@@ -6,7 +8,17 @@
     h4,
     h5,
     p {
+      color: $theme-blue;
+    }
+
+    .blue-button {
+      background-color: $theme-blue;
       color: $white;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .bl-diamond {
@@ -26,16 +38,17 @@
       position: relative;
 
       width: 100%;
+      height: 55rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      background-position-x: center;
+      background-position-y: top;
       position: relative;
 
       transition: background-position 0.2s ease-in-out;
       background-size: 240%;
       background-position: 69% bottom;
       padding: $unit-18 $unit-2 $unit-30;
-      margin-bottom: $unit-18;
+      margin-bottom: $unit-1;
 
       img {
         // visibility: hidden;
@@ -67,8 +80,8 @@
 
     .hero {
       &-header {
-        @include knockout($unit-14, 400);
-        text-shadow: $text-shadow;
+        font-size: 3rem;
+        line-height: 4rem;
       }
 
       &-copy {
@@ -151,9 +164,7 @@
 
 .bl {
   &-home-page {
-    background-color: $silver-white;
-
-    .hero {
+     .hero {
       &-row {
         &-background {
           border-bottom: $grey-border;
@@ -202,6 +213,88 @@
             padding-bottom: $unit-16;
           }
         }
+
+        .call-to-action-wrapper {
+
+          text-align: center;
+
+          strong {
+            font-size: 17px;
+            font-weight: normal;
+            color: #393D5B;
+            text-transform: uppercase;
+          }
+          a {
+            font-style: italic;
+            color: $goldenColor;
+          }
+        }
+
+        .section-title-wrapper {
+
+          h2 {
+            text-transform: uppercase;
+            font-size: 22px;
+            display: inline-block;
+            width: 100%;
+            padding: 3px 10px;
+            color: #393d5b;
+          }
+
+          strong {
+            text-transform: uppercase;
+            font-size: 13px;
+            padding: 2px 5px;
+            display: inline-block;
+            color: $subtitleGray;
+            font-weight: normal;
+          }
+
+          .title-decoration {
+            width: 80px;
+            height: 10px;
+            margin: 3px auto 5px auto;
+
+            .left-line {
+              float: left;
+              width: 30px;
+              height: 7px;
+              border-bottom: solid 1px $titleDecorationGray;
+            }
+            .right-line {
+              float: left;
+              width: 30px;
+              height: 7px;
+              border-bottom: solid 1px $titleDecorationGray;
+            }
+
+            .x-lines-holder {
+              width: 10px;
+              height: 5px;
+              padding: 0;
+              margin: 10px 4px;
+              position: relative;
+              float: left;
+
+              .line1 {
+                width: 12px;
+                height: 16px;
+                border-bottom: 1px solid $titleDecorationGray;
+                -webkit-transform: translateY(-17px) translateX(5px) rotate(45deg);
+                position: absolute;
+              }
+
+              .line2 {
+                width: 12px;
+                height: 16px;
+                border-bottom: 1px solid $titleDecorationGray;
+                -webkit-transform: translateY(-17px) translateX(-6.5px) rotate(-45deg);
+                position: absolute;
+              }
+            }
+          }
+        }
+
       }
     }
   }

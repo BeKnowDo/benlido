@@ -1,8 +1,17 @@
-<nav role="navigation">
+<nav role="navigation" class="">
     <ul class="{{ className }}">
         {% for item in list %}
-            <li {{ item.classes ? 'class="' ~ item.classes ~ '"' }}>
+            <li {{ item.classes ? 'class="' ~ item.classes ~ '"' }} class="top-menu-item">
                 <a href="{{item.url}}" title="{{item.alt_title}}" {{ item.classes ? 'class="' ~ item.classes ~ '"' }} {{ item.target ? 'rel="noopener noferrer" target="_blank"' }}>{{item.title}}</a>
+                {% if (item.submenu is not null) %}
+                    <ul class="inline-submenu" style="display: none">
+                        {% for submenuItem in item.submenu %}
+                        <li {{ submenuItem.classes ? 'class="' ~ submenuItem.classes ~ '"' }}>
+                            <a href="{{submenuItem.url}}" title="{{submenuItem.alt_title}}" {{ submenuItem.classes ? 'class="' ~ submenuItem.classes ~ '"' }} {{ submenuItem.target ? 'rel="noopener noferrer" target="_blank"' }}>{{submenuItem.title}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>

@@ -1,42 +1,55 @@
-{% for hero in homePageHeroes %}
-<div class="hero-row-background">
-  <div class="max-width-xl">
-    <div class="columns">
-
-      {% if hero.image is not empty %}
-      <div class="column col-5 col-xs-12 col-sm-12 col-md-12 col-ml-auto">
-        <div class="hero-image-container">
-          <img class="hero-image" src="{{hero.image}}" alt="{{hero.header}}" />
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-4 mb-1 p-1">
+      <div class="title-wrapper  basel-title-color-default basel-title-style-cross basel-title-size-default text-center vc_custom_1453400301393"><span class="title-subtitle font-default">MADE THE HARD WAY</span><div class="liner-continer"> <span class="left-line"></span><h4 class="title">FEATURED CATEGORIES<span class="title-separator"><span></span></span></h4> <span class="right-line"></span></div></div>
+      <div class="section-title-wrapper text-center">
+        <strong>Wander Well</strong>
+        <h2>Wherever, Whenever.</h2>
+        <div class="title-decoration">
+          <div class="left-line"></div>
+          <div class="x-lines-holder">
+            <div class="line1"></div>
+            <div class="line2"></div>
+          </div>
+          <div class="right-line"></div>
         </div>
       </div>
-      {% endif %}
-
-      <div class="column col-6 col-xs-12 col-sm-12 col-md-12 col-mx-auto">
-        <div class="hero">
-
-          {% if hero.header is not empty %}
-          <h1 class="hero-header">{{hero.header}}</h1>
-          {% endif %}
-
-          {% if hero.header is not empty %}
-          <div class="hero-copy">
-            {{hero.copy}}
-          </div>
-          {% endif %}
-
-          {% if hero.button_copy is not empty %}
-          <div class="hero-action-buttons columns">
-            <div class="column col-xs-6 col-sm-6 col-mx-auto col-sm-12 col-6">
-              <a href="{{ hero.button_url }}" class="btn btn-primary btn-lg btn-block ">{{ hero.button_copy }}</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="row">
+        {% for hero in homePageLeftHeroes %}
+          {% if hero.image is not empty %}
+            <div class="col-12">
+              <a href="{{ hero.button_url }}" >
+                <img class="hero-image my-xs-1 my-sm-3" src="{{hero.image}}" alt="{{hero.header}}" />
+              </a>
             </div>
-          </div>
-
           {% endif %}
-
-        </div>
+        {% endfor %}
       </div>
-
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="row">
+        {% for hero in homePageRightHeroes %}
+          {% if hero.image is not empty %}
+            <div class="col-12">
+              <a href="{{ hero.button_url }}" >
+                <img class="hero-image my-xs-1 my-sm-3" src="{{hero.image}}" alt="{{hero.header}}" />
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 my-5 py-1">
+      <div class="call-to-action-wrapper text-center">
+        <strong>Free with every purchase: A TSA 311 bag to hold liquids!</strong>
+        <a href="#">details›</a>
+      </div>
     </div>
   </div>
 </div>
-{% endfor %}
