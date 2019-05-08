@@ -55,6 +55,25 @@ if ( ! function_exists( 'woocommerce_template_loop_add_to_cart' ) ) {
 	}
 }
 
+if ( ! function_exists( 'woocommerce_mini_cart' ) ) {
+
+	/**
+	 * Output the Mini-cart - used by cart widget.
+	 *
+	 * @param array $args Arguments.
+	 */
+	function woocommerce_mini_cart( $args = array() ) {
+
+		$defaults = array(
+			'list_class' => '',
+		);
+		add_action('woocommerce_widget_shopping_cart_buttons','bl_add_add_kit_button',99);
+		$args = wp_parse_args( $args, $defaults );
+
+		wc_get_template( 'cart/mini-cart.php', $args, '', get_stylesheet_directory().'/woocommerce/' );
+	}
+}
+
 function bl_add_to_cart_hook($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data ) {
 	// using bl_add_to_kit_cart()
 	if (function_exists('bl_add_to_kit_cart')) {
@@ -82,8 +101,12 @@ function bl_ajax_remove_from_cart() {
 	$kit_index = wc_clean( isset( $_POST['kit_index'] ) ? wp_unslash( $_POST['kit_index'] ) : '0' );
 	$product_id = wc_clean( isset( $_POST['product_id'] ) ? wp_unslash( $_POST['product_id'] ) : '0' );
 	$variation_id = wc_clean( isset( $_POST['variation_id'] ) ? wp_unslash( $_POST['variation_id'] ) : '0' );
+	$quantity = wc_clean( isset( $_POST['quantity'] ) ? wp_unslash( $_POST['quantity'] ) : '1' );
 	// first, remove item from kit
-	if ( $cart_item_key ) {
-		WC()->cart->remove_cart_item( $cart_item_key );
+	if (empty($kit_index)) {
+		$kit_index = 0;
+	}
+	if (function_exists('bl_remove_from_cart')) {
+		bl_remove_from_cart($kit_index,$product_id,$variation_id,$quantity,$cart_item_key);
 	}
 }

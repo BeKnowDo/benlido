@@ -31,6 +31,7 @@ if (function_exists('bl_get_cart_kits')) {
 		$is_empty = false;
 	}
 }
+//print_r ($kits);
 
 if (function_exists('bl_get_subtotal')) {
 	$subtotal = bl_get_subtotal();

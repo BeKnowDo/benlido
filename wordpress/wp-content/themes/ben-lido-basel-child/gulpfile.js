@@ -14,6 +14,7 @@ gulp.task('jshint', function (done) {
 
 gulp.task('scripts', gulp.series('jshint', function (done) {
     return gulp.src([
+        'interactive/javascript/routes.js',
         'interactive/javascript/cart.js'
     ])
         .on('error', function(e) { console.log(e);})
