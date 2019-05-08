@@ -735,3 +735,42 @@ if (!function_exists('bl_create_your_own_kit_button')) {
         echo '<a href="#" class="button new-kit wc-forward"><div class="button-text"><div class="plus-sign"><span>+</span></div><div class="create-your-own-kit"><span class="call-to-action-text">Create Your Own</span><span class="button-info">Travel pack</span></div></div></a>';
     }
 }
+
+if (!function_exists('bl_get_bag_options')) {
+    function get_bag_options($product, $variation_slug)
+    {
+
+        $swatches_use_variation_images = basel_get_opt('swatches_use_variation_images');
+        $grid_swatches_attribute = basel_grid_swatches_attribute();
+        $available_variations = $product->get_available_variations();
+        $bag_colors = wc_get_product_terms($product->get_id(), $variation_slug, array('fields' => 'slugs'));
+        $attributes = [$variation_slug => $bag_colors];
+        do_action('woocommerce_before_add_to_cart_form'); ?>
+
+        <?php do_action('woocommerce_before_variations_form'); ?>
+
+        <?php if (empty($available_variations) && false !== $available_variations) :
+        // Product is currently out of stock and unavailable.
+        else : ?>
+        <table class="variations" cellspacing="0">
+            <tbody>
+            <?php $loop = 0;
+            foreach ($attributes as $attribute_name => $options) : $loop++; ?>
+                <?php
+                $swatches = basel_has_swatches($product->get_id(), $attribute_name, $options, $available_variations, $swatches_use_variation_images);
+                ?>
+                <tr>
+                    <td class="value bag-color-options <?php if (!empty($swatches)): ?>with-swatches<?php endif; ?>">
+                        <?php
+                        $selected = isset($_REQUEST['attribute_' . sanitize_title($attribute_name)]) ? wc_clean(stripslashes(urldecode($_REQUEST['attribute_' . sanitize_title($attribute_name)]))) : $product->get_variation_default_attribute($attribute_name);
+                        wc_dropdown_variation_attribute_options(array('options' => $options, 'attribute' => $attribute_name, 'product' => $product, 'selected' => $selected));
+                        ?>
+
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif;
+    }
+}

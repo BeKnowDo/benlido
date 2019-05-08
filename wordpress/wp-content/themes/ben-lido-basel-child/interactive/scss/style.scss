@@ -8,9 +8,9 @@
 @import "basel-overrides";
 @import "basel-custom-class";
 
-.travel-kits-container {
+.travel-kits-container, .travel-bags-container {
   padding: 0 10px;
-  .travel-kits-grid {
+  .travel-kits-grid, .travel-bags-grid {
 
     .create-kit {
       background-color: #EEEEF5;
@@ -62,6 +62,30 @@
     .product-grid-single {
       margin: 20px 0;
 
+      .bag-colors {
+
+        padding: 5px;
+
+        .bag-color-options {
+
+          border: none;
+
+          .select-option {
+            border-radius: 50%;
+            margin: 4px auto;
+            border: solid 1px $white;
+
+            &:hover {
+              border: solid 1px $black;
+            }
+
+            img {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+
       .description-left-side {
 
         margin: 6px 0 0;
@@ -70,12 +94,20 @@
           color: $kitsListingGray;
         }
 
-        h2 {
-          font-size: 20px;
-          text-transform: capitalize;
-          margin: -3px 0 3px;
-          color: $kitsTitleBlue;
+        .product-title-link {
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          h2 {
+            font-size: 20px;
+            text-transform: capitalize;
+            margin: -3px 0 3px;
+            color: $kitsTitleBlue;
+          }
         }
+
         .total-price {
           font-size: $kitsGridTextSize;
           color: $kitsListingGold;
