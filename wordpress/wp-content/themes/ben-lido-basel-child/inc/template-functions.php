@@ -729,3 +729,9 @@ function bl_process_acf_buttons($items) {
       echo '<a href="#" class="button new-kit wc-forward">Create New Travel Kit</a>';
     }
   }
+
+if (!function_exists('bl_create_your_own_kit_button')) {
+    function bl_create_your_own_kit_button() {
+        echo '<a href="#" class="button new-kit wc-forward"><div class="button-text"><div class="plus-sign"><span>+</span></div><div class="create-your-own-kit"><span class="call-to-action-text">Create Your Own</span><span class="button-info">Travel pack</span></div></div></a>';
+    }
+}
