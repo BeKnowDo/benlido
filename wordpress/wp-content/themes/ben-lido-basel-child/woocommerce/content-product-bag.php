@@ -20,20 +20,19 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 
 ?>
-
 <div class="col-xs-12 col-sm-6 product-grid-single ">
     <div class="row">
         <div class="col-xs-10 bag-image">
             <a class="bag-image-link" href="<?= get_permalink() ?>" ><?= get_the_post_thumbnail() ?></a>
         </div>
         <div class="col-xs-2 bag-colors">
-            <?php get_bag_options($product,'pa_color'); ?>
+            <?php bl_list_bag_color_variation($product); ?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-6 description-left-side">
-            <span class="kit-info">Brand: <?php basel_product_brands_links() ?></span>
+            <span class="kit-info"><?php bl_list_product_brands($product->get_id()); ?></span>
             <a class="product-title-link" href="<?= get_permalink() ?>" >
                 <h2><?= get_the_title() ?></h2>
             </a>
@@ -43,9 +42,12 @@ global $product;
         </div>
         <div class="col-xs-6 description-right-side">
             <div class="cart-button-container">
-                <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="1773" rel="nofollow">
-                    Add to travel kit
-                </a>
+                <a href="/shop/?add-to-cart=<?= $product->get_id() ?>" data-quantity="1" id="bag-<?= $product->get_id() ?>" class="button product_type_simple add_to_cart_button ajax_add_to_cart basel-tooltip"
+                   data-product_id="<?= $product->get_id() ?>"
+                   data-product_sku="<?= $product->get_sku() ?>"
+                   data-category_id="<?= $product->get_category_ids()[0] ?>"
+                   data-variation_id=""
+                >Add to travel kit</a>
             </div>
             <a class="kit-details" href="<?= get_permalink($product->get_id()) ?>">View details</a>
         </div>

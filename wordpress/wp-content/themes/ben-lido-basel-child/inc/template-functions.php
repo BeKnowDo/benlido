@@ -732,7 +732,7 @@ function bl_process_acf_buttons($items) {
 
 if (!function_exists('bl_create_your_own_kit_button')) {
     function bl_create_your_own_kit_button() {
-        echo '<a href="#" class="button new-kit wc-forward"><div class="button-text"><div class="plus-sign"><span>+</span></div><div class="create-your-own-kit"><span class="call-to-action-text">Create Your Own</span><span class="button-info">Travel pack</span></div></div></a>';
+        echo '<a href="#" class="button new-kit wc-forward"  onclick="bl_create_new_kit();return false;"><div class="button-text"><div class="plus-sign"><span>+</span></div><div class="create-your-own-kit"><span class="call-to-action-text">Create Your Own</span><span class="button-info">Travel pack</span></div></div></a>';
     }
 }
 
@@ -774,3 +774,34 @@ if (!function_exists('bl_get_bag_options')) {
     <?php endif;
     }
 }
+
+if (!function_exists('bl_list_product_brands')) {
+    function bl_list_product_brands($product_id) {
+        $brands = wc_get_product_terms( $product_id, 'product_brand', array( 'fields' => 'all' ) );
+        $output = '';
+        foreach ($brands as $brand) {
+            $brand_link = get_term_link( $brand->slug, 'product_brand' );
+            $output .= '<a class="brand-name-link" href="'. $brand_link .'">'. $brand->name .'</a>';
+
+        }
+        echo $output;
+    }
+}
+
+if (!function_exists('bl_list_bag_color_variation')) {
+    function bl_list_bag_color_variation($product) {
+        $available_variations = $product->get_available_variations();
+        $output = '<div class="variation-colors" id="product-id-'. $product->get_id() .'">';
+        foreach ($available_variations as $variation) {
+            if (isset($variation['attributes']['attribute_pa_color'])) {
+                $variation_image_id = $variation['image_id'];
+                $variation_image_thumb = wp_get_attachment_image_src(  $variation_image_id, [300,300]);
+                $output .= '<div class="bag-color-option js-variation-select" data-product_id = "'. $product->get_id() .'" data-variation_id = "'.$variation['variation_id'].'" style="background-image: url('. $variation_image_thumb[0] .')"></div>';
+            }
+        }
+        $output .= '</div>';
+        echo $output;
+    }
+}
+
+

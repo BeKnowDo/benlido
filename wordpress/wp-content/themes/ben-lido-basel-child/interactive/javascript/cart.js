@@ -1,6 +1,13 @@
 (function($){
     $(document).ready(function($) {
         $('.create-kit').height($('.last_kit').height());
+
+        $('.js-variation-select').on('click', function () {
+            $('#bag-'+ $(this).data('product_id')).data('variation_id', $(this).data('variation_id'));
+            $('#product-id-'+ $(this).data('product_id')+' div').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
     }); // end document ready
 
 
