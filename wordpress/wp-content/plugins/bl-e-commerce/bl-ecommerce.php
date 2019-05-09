@@ -517,6 +517,24 @@ if (!function_exists('bl_create_new_kit')) {
     }
 }
 
+if (!function_exists('bl_rename_kit')) {
+    function bl_rename_kit($index,$kit_name) {
+        $kit_name = strip_tags($kit_name);
+        $kits = bl_get_cart_kits();
+        $kit_list = $kits[$index];
+        if (!empty($kit_list)) {
+            $kit_id = $kit_list['kit_id'];
+            $bag = $kit_list['bag'];
+            $items = $kit_list['items'];
+            if (!empty($kit_name)) {
+                $kit_name = $kit_name;
+            }
+            bl_set_kit_list($index,$kit_id,$bag,$items,$kit_name);
+            
+        }
+    }
+}
+
 if (!function_exists('bl_select_item_as_swapped')) {
     // this is to pick the item to swap with the one that was chosen before
     function bl_select_item_as_swapped($kit_id,$prod_id,$cat_id) {
