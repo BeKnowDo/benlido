@@ -13,9 +13,8 @@
   .travel-kits-grid, .travel-bags-grid {
 
     .create-kit {
-      background-color: #EEEEF5;
       display: table;
-      padding: 0;
+      padding: 0 15px;
 
       a {
         display: table-cell;
@@ -116,18 +115,15 @@
           color: $kitsListingGray;
         }
 
-        .product-title-link {
+        &:hover {
+          text-decoration: none;
+        }
 
-          &:hover {
-            text-decoration: none;
-          }
-
-          h2 {
-            font-size: 20px;
-            text-transform: capitalize;
-            margin: -3px 0 3px;
-            color: $kitsTitleBlue;
-          }
+        h2 {
+          font-size: 20px;
+          text-transform: capitalize;
+          margin: -3px 0 3px !important;
+          color: $kitsTitleBlue;
         }
 
         .total-price {
@@ -176,3 +172,101 @@
   }
 }
 
+.footer-container {
+  &.color-scheme-light {
+    div {
+      p {
+        color: $kitsListingGray;
+      }
+    }
+  }
+
+  .footer-column {
+    h5 {
+      &.widget-title {
+        color: $kitsListingGold;
+        margin-bottom: 5px;
+        &:before {
+          height: 0;
+        }
+      }
+    }
+    ul {
+      &.menu {
+        li {
+          a {
+            color: $kitsTitleBlue;
+          }
+        }
+      }
+    }
+  }
+}
+
+header {
+  ul[id^=menu] {
+      li {
+        height: 35px;
+        padding: 0 4px 0 0 !important;
+        margin: 0 10px !important;
+        &.current-menu-item {
+          border-bottom: 3px solid $kitsListingGold;
+          a {
+            color: rgba(0,0,0,.9) !important;
+          }
+        }
+        a {
+          display: inline-block !important;
+          height: 33px !important;
+          line-height: 40px !important;
+          padding: 0 !important;
+          &:after {
+            margin: -4px -14px 0 !important;
+          }
+          &:hover {
+            color: $kitsListingGold !important;
+          }
+        }
+
+        .sub-menu-dropdown {
+          top: 120% !important;
+          &:hover {
+            top: 110% !important;
+          }
+          ul {
+            &.sub-menu {
+              li {
+                height: auto;
+                margin: auto;
+
+                &.current-menu-item {
+                  border-bottom: none;
+                  a {
+                    color: $kitsListingGold !important;
+                  }
+                }
+
+                a {
+                  &:hover {
+                    color: $kitsListingGold !important;
+                  }
+                  line-height: normal !important;
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+}
+
+.page-title-section {
+  h1 {
+    width: 100%;
+    font-size: 40px;
+    border-bottom: solid 2px #eeeeef;
+    color: $kitsTitleBlue;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
+}

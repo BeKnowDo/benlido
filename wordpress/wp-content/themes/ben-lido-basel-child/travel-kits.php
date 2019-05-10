@@ -5,6 +5,14 @@
 get_header();
 
 ?>
+<div class="shop-loop-head">
+    <?php
+    basel_current_breadcrumbs( 'shop' );
+    ?>
+</div>
+<div class="page-title-section">
+    <h1><?= get_the_title() ?></h1>
+</div>
 <div class="site-content" role="main">
     <div class="travel-kits-container">
         <div class="row travel-kits-grid">

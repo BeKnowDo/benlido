@@ -59,7 +59,7 @@ if ( basel_get_opt( 'cat_desc_position' ) == 'before' ) {
 		 * @hooked woocommerce_result_count - 20
 		 * @hooked woocommerce_catalog_ordering - 30
 		 */
-	//	do_action( 'woocommerce_before_shop_loop' );
+//		do_action( 'woocommerce_before_shop_loop' );
 	?>
 </div>
 
@@ -77,6 +77,14 @@ if ( basel_get_opt( 'cat_desc_position' ) == 'before' ) {
 	?>
 </div>
 
+<div class="page-title-section">
+    <h1>
+        <?php
+        $categories = get_the_terms(get_the_ID(), 'product_cat');
+        echo reset($categories)->name;
+        ?>
+    </h1>
+</div>
 <div class="basel-shop-loader"></div>
 
     <div class="site-content" role="main">
