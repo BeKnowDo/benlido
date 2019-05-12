@@ -1081,6 +1081,16 @@ function bl_get_active_kit_index() {
     }
 }
 
+function bl_set_active_kit_index($index) {
+    if (empty($index)) {
+        $index = 0;
+    }
+    if (is_numeric($index)) {
+        WC()->session->set('current_kit',$index);
+    }
+    
+}
+
 // some supporting functions
 // gets the current session kit ID
 function bl_get_current_kit_id() {
@@ -1612,6 +1622,22 @@ function bl_get_kit_future_shippings($kits) {
     return $future_kits;
 }
 
+// start the process of adding the bag
+function bl_start_add_bag_to_kit($index) {
+    $bags_url = '';
+    $resp = array();
+    if (function_exists('get_field')) {
+        $bags_page = get_field('bags_page','option');
+        if (!empty($bags_page)) {
+            $bags_url = get_permalink( $bags_page ) . '?is_adding=1';
+            $resp['redirect_url'] = $bags_url;
+        }
+    }
+    bl_set_active_kit_index($index);
+    return $resp;
+
+}
+
 function bl_change_bag($index,$product_id,$category_id,$variation_id,$personal_kit_id=0) {
     $kit = bl_get_kit_list();
     if (empty($index)) {
@@ -1834,6 +1860,17 @@ function bl_ecommerce_url_intercept() {
                         header('Content-Type: application/json');
                         // we always return success
                         $resp = array('success'=>true);
+                        print_r (json_encode($resp));
+                        die;
+                        break;
+                    case 'start-add-bag':
+                        // this starts the "add bag to kit" process
+                        // we need to set the kit index so we know which bad to add to. then, we'll need to redirect them to the bag page, and then allow them to add the bag
+                        $index = $_POST['index'];
+                        if (empty($index)) {
+                            $index = 0;
+                        }
+                        $resp = bl_start_add_bag_to_kit($index);
                         print_r (json_encode($resp));
                         die;
                         break;

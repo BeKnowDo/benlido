@@ -68,4 +68,27 @@ function bl_rename_cancel(e,OBJ) {
     }
 }
 
+function bl_start_add_bag(e,OBJ) {
+    e.stopPropagation(); // this is
+    e.preventDefault(); // the magic
+    var index = jQuery(OBJ).data('index');
+    var url = '';
+    if (!index) {
+        index = 0;
+    }
+    var data = {'index':index};
+    if (bl_api_url) {
+        url = bl_api_url + '/kit/start-add-bag';
+    }
+    if (url.length > 0) {
+        jQuery.post(url,data,function(resp) {
+            console.log(resp);
+            if (typeof resp.redirect_url != 'undefined') {
+                console.log(resp.redirect_url);
+                document.location.href = resp.redirect_url;
+            }
+        },'json');
+    }
+}
+
 

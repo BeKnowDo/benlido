@@ -35,7 +35,7 @@ if (function_exists('bl_get_basel_cart')) {
             <div class="bag-area">
                 <?php if (!empty($bag)):?>
                 <?php else: ?>
-                    <a class="button add-bag-button">+ add a bag</a>
+                    <a class="button add-bag-button" href="#" data-index="<?php echo $index;?>" onclick="bl_start_add_bag(event,this);return false;">+ add a bag</a>
                 <?php endif;?>
             </div>
         </div>
