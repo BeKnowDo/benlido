@@ -26,4 +26,46 @@ function bl_create_new_kit() {
     },'json');
 }
 
+function bl_rename_kit_start(e,OBJ) {
+    e.stopPropagation(); 
+    e.preventDefault(); 
+    var holder = jQuery(OBJ).closest('h3');
+    if (holder) {
+        jQuery(holder).addClass('edit');
+    }
+
+}
+function bl_rename_kit(e,OBJ) {
+    e.stopPropagation(); // this is
+    e.preventDefault(); // the magic
+    var data = {};
+    var url = '';
+    var index = jQuery(OBJ).data('index');
+    console.log('this');
+    console.log(OBJ);
+    var title = jQuery(OBJ).closest('.edit-title').find('input[type="text"]').first().val();
+    console.log('title');
+    console.log(title);
+    data = {'index':index,'kit_name':title};
+    if (bl_api_url) {
+        url = bl_api_url + '/kit/rename';
+    }
+    if (url.length > 0) {
+        jQuery.post(url,data,function(response) {
+            if (typeof response.fragments != 'undefined') {
+                jQuery( document.body ).trigger( 'added_to_cart', [ response.fragments, response.cart_hash, null ] );
+            }
+            
+        });
+    }
+}
+function bl_rename_cancel(e,OBJ) {
+    e.stopPropagation(); 
+    e.preventDefault(); 
+    var holder = jQuery(OBJ).closest('h3');
+    if (holder) {
+        jQuery(holder).removeClass('edit');
+    }
+}
+
 

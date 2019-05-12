@@ -519,7 +519,7 @@ if (!function_exists('bl_create_new_kit')) {
 
 if (!function_exists('bl_rename_kit')) {
     function bl_rename_kit($index,$kit_name) {
-        $kit_name = strip_tags($kit_name);
+        $kit_name = stripslashes(strip_tags($kit_name));
         $kits = bl_get_cart_kits();
         $kit_list = $kits[$index];
         if (!empty($kit_list)) {
@@ -532,6 +532,22 @@ if (!function_exists('bl_rename_kit')) {
             bl_set_kit_list($index,$kit_id,$bag,$items,$kit_name);
             
         }
+        // Get mini cart
+		ob_start();
+		woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+        
+        // Fragments and mini cart are returned
+		$data = array(
+			'notices' => $notices,
+			'fragments' => apply_filters( 'woocommerce_add_to_cart_fragments', array(
+					'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
+				)
+			),
+			'cart_hash' => apply_filters( 'woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '', WC()->cart->get_cart_for_session() )
+		);
+
+		return $data;
     }
 }
 
@@ -1922,6 +1938,21 @@ function bl_ecommerce_url_intercept() {
                         }
                         header('Content-Type: application/json');
                         print_r(json_encode(array('success'=>true))); // always return true
+                        die;
+                        break;
+                    case 'rename':
+                        // /bl-api/kit/rename/
+                        $index = $_POST['index'];
+                        $kit_name = strip_tags($_POST['kit_name']);
+                        $response = array();
+                        if (!empty($kit_name)) {
+                            if (empty($index)) {
+                                $index = 0;
+                            }
+                            $response = bl_rename_kit($index,$kit_name);
+                        }
+                        header('Content-Type: application/json');
+                        print_r(json_encode($response));
                         die;
                         break;
                     default:

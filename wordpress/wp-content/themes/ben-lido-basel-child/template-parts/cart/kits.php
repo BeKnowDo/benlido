@@ -14,12 +14,30 @@ if (function_exists('bl_get_basel_cart')) {
     <?php
         //print_r ($kit);
         $kit_name = $kit['kit_name'];
-
+        $bag = $kit['bag'];
     ?>
     <div class="mini-cart-kit-container" data-id="<?php echo $index;?>">
         <div class="kit-header">
-            <h3><?php echo $kit_name;?> <a href="#" data-index="<?php echo $index;?>" class="kit-rename">(rename it)</a></h3>
+            <div class="main-title">
+            <h3>
+                <span class="display-title">    
+                    <?php echo stripslashes($kit_name);?> 
+                    <a href="#" data-index="<?php echo $index;?>" class="kit-rename" onclick="bl_rename_kit_start(event,this);return false;">(rename it)</a>
+                </span>
+                <span class="edit-title">
+                    <input type="text" name="kit_title" class="kit-title" value="<?php echo esc_attr($kit_name);?>" />
+                    <a href="#" data-index="<?php echo $index;?>" class="rename-link" onclick="bl_rename_kit(event,this);return false;">update</a>
+                    <a href="#" data-index="<?php echo $index;?>" class="cancel-link" onclick="bl_rename_cancel(event,this);return false;">cancel</a>
+                </span>
+            </h3>
             <a href="#" data-index="<?php echo $index;?>" class="kit-hide-link">Hide</a>
+            </div>
+            <div class="bag-area">
+                <?php if (!empty($bag)):?>
+                <?php else: ?>
+                    <a class="button add-bag-button">+ add a bag</a>
+                <?php endif;?>
+            </div>
         </div>
         <div class="kit-contents">
             <?php if (!empty($kit) && is_array($kit)):?>
@@ -94,7 +112,12 @@ if (function_exists('bl_get_basel_cart')) {
 <script type="text/javascript">
 jQuery('document').ready(function($) {
     $('.bl-kits-container .mini-cart-kit-container').accordion({
-        collapsible: true
+        collapsible: true,
+        heightStyle: 'content'
+    });
+    $(".ui-accordion [role=tab]").unbind('keydown');
+    $('.mini-cart-kit-container .main-title input').on('click', function(e) {
+        e.stopPropagation();
     });
 });
 </script>

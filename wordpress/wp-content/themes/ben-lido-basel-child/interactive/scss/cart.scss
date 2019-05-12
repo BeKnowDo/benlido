@@ -1,0 +1,96 @@
+
+div {
+    // mini cart
+    &.cart-widget-side {
+        .bl-kits-container {
+            .mini-cart-kit-container {
+                border-top: 2px solid $blue;
+                &.ui-accordion {
+                    .ui-accordion-icons {
+                        padding-left:0;
+                    }
+                }
+                a {
+                    margin-bottom:0;
+                    &.kit-rename {
+                        display:inline;   
+                    }
+                    &.kit-hide-link {
+                        margin-top:auto;
+                        margin-bottom:auto;
+                    }
+                    &.add-bag-button {
+                        background-color: $blue;
+                        color: $colorButtonText;
+                        &:hover {
+                            border: 1px solid $blue;
+                            color: $white;
+                        }
+                    }
+
+                }
+                h3 {
+                    margin-bottom:0;
+                    .edit-title {
+                        display:none;
+                    }
+                    &.edit {
+                        .display-title {
+                            display:none;
+                        }
+                        .edit-title {
+                            display: inline;
+                        }
+                        a {
+                            &.cancel-link {
+                                color: $colorButtonText;
+                            }
+                        }
+
+                    }
+                    a {
+                        display:inline;
+                    }
+                }
+            }
+            
+        }
+        .woocommerce-mini-cart {
+            &__buttons {
+                .new-kit {
+                    background-color: $gold;
+                    color: $colorButtonText;
+                    &:hover {
+                        border: 1px solid $gold;
+                        color: $white;
+                    }
+                }
+            }
+        }
+        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+            background: transparent none;
+            border: 0;
+        }
+        .ui-widget-content, .ui-state-active {
+            border: 0;
+        }
+        .ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr, .ui-corner-left, .ui-corner-tl, .ui-corner-br, .ui-corner-bottom {
+            border-radius: 0;
+        }
+        .kit-header {
+            .ui-accordion-header-icon  {
+                display:none;
+            }
+            .main-title {
+                display:flex;
+                margin-bottom:10px;
+                h3 {
+                    flex-grow: 1;
+                }
+            }
+
+        }
+
+    }
+
+}
