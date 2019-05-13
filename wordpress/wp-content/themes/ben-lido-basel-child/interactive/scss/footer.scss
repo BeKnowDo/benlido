@@ -1,0 +1,30 @@
+.footer-container {
+    &.color-scheme-light {
+      div {
+        p {
+          color: $kitsListingGray;
+        }
+      }
+    }
+  
+    .footer-column {
+      h5 {
+        &.widget-title {
+          color: $gold;
+          margin-bottom: 5px;
+          &:before {
+            height: 0;
+          }
+        }
+      }
+      ul {
+        &.menu {
+          li {
+            a {
+              color: $kitsTitleBlue;
+            }
+          }
+        }
+      }
+    }
+  }

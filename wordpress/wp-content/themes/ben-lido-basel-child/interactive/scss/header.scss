@@ -6,3 +6,60 @@
         }
     }
 }
+
+header {
+    ul[id^=menu] {
+        li {
+          height: 35px;
+          padding: 0 4px 0 0 !important;
+          margin: 0 10px !important;
+          &.current-menu-item {
+            border-bottom: 3px solid $gold;
+            a {
+              color: rgba(0,0,0,.9) !important;
+            }
+          }
+          a {
+            display: inline-block !important;
+            height: 33px !important;
+            line-height: 40px !important;
+            padding: 0 !important;
+            &:after {
+              margin: -4px -14px 0 !important;
+            }
+            &:hover {
+              color: $gold !important;
+            }
+          }
+  
+          .sub-menu-dropdown {
+            top: 120% !important;
+            &:hover {
+              top: 110% !important;
+            }
+            ul {
+              &.sub-menu {
+                li {
+                  height: auto;
+                  margin: auto;
+  
+                  &.current-menu-item {
+                    border-bottom: none;
+                    a {
+                      color: $gold !important;
+                    }
+                  }
+  
+                  a {
+                    &:hover {
+                      color: $gold !important;
+                    }
+                    line-height: normal !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+  }

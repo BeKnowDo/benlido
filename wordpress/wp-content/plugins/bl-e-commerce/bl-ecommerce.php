@@ -519,7 +519,7 @@ if (!function_exists('bl_create_new_kit')) {
 
 if (!function_exists('bl_rename_kit')) {
     function bl_rename_kit($index,$kit_name) {
-        $kit_name = strip_tags($kit_name);
+        $kit_name = stripslashes(strip_tags($kit_name));
         $kits = bl_get_cart_kits();
         $kit_list = $kits[$index];
         if (!empty($kit_list)) {
@@ -532,6 +532,22 @@ if (!function_exists('bl_rename_kit')) {
             bl_set_kit_list($index,$kit_id,$bag,$items,$kit_name);
             
         }
+        // Get mini cart
+		ob_start();
+		woocommerce_mini_cart();
+        $mini_cart = ob_get_clean();
+        
+        // Fragments and mini cart are returned
+		$data = array(
+			'notices' => $notices,
+			'fragments' => apply_filters( 'woocommerce_add_to_cart_fragments', array(
+					'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
+				)
+			),
+			'cart_hash' => apply_filters( 'woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '', WC()->cart->get_cart_for_session() )
+		);
+
+		return $data;
     }
 }
 
@@ -1065,6 +1081,16 @@ function bl_get_active_kit_index() {
     }
 }
 
+function bl_set_active_kit_index($index) {
+    if (empty($index)) {
+        $index = 0;
+    }
+    if (is_numeric($index)) {
+        WC()->session->set('current_kit',$index);
+    }
+    
+}
+
 // some supporting functions
 // gets the current session kit ID
 function bl_get_current_kit_id() {
@@ -1596,6 +1622,22 @@ function bl_get_kit_future_shippings($kits) {
     return $future_kits;
 }
 
+// start the process of adding the bag
+function bl_start_add_bag_to_kit($index) {
+    $bags_url = '';
+    $resp = array();
+    if (function_exists('get_field')) {
+        $bags_page = get_field('bags_page','option');
+        if (!empty($bags_page)) {
+            $bags_url = get_permalink( $bags_page ) . '?is_adding=1';
+            $resp['redirect_url'] = $bags_url;
+        }
+    }
+    bl_set_active_kit_index($index);
+    return $resp;
+
+}
+
 function bl_change_bag($index,$product_id,$category_id,$variation_id,$personal_kit_id=0) {
     $kit = bl_get_kit_list();
     if (empty($index)) {
@@ -1821,6 +1863,17 @@ function bl_ecommerce_url_intercept() {
                         print_r (json_encode($resp));
                         die;
                         break;
+                    case 'start-add-bag':
+                        // this starts the "add bag to kit" process
+                        // we need to set the kit index so we know which bad to add to. then, we'll need to redirect them to the bag page, and then allow them to add the bag
+                        $index = $_POST['index'];
+                        if (empty($index)) {
+                            $index = 0;
+                        }
+                        $resp = bl_start_add_bag_to_kit($index);
+                        print_r (json_encode($resp));
+                        die;
+                        break;
                     case 'add':
                         //  /bl-api/kit/add/{kit_id}/{product_id}/{cat_id}
                         if (isset($api_parts[5])) {
@@ -1922,6 +1975,21 @@ function bl_ecommerce_url_intercept() {
                         }
                         header('Content-Type: application/json');
                         print_r(json_encode(array('success'=>true))); // always return true
+                        die;
+                        break;
+                    case 'rename':
+                        // /bl-api/kit/rename/
+                        $index = $_POST['index'];
+                        $kit_name = strip_tags($_POST['kit_name']);
+                        $response = array();
+                        if (!empty($kit_name)) {
+                            if (empty($index)) {
+                                $index = 0;
+                            }
+                            $response = bl_rename_kit($index,$kit_name);
+                        }
+                        header('Content-Type: application/json');
+                        print_r(json_encode($response));
                         die;
                         break;
                     default:
