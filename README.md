@@ -87,6 +87,18 @@ WHERE wp.ID IS NULL;
 
 ## Basel Theme info
 
+Current theme: Ben Lido Basel Child
+Theme Settings: 
+- Header: 
+    - Upload logo image
+    - Header Layout (Simplified)
+    - Main menu align (Center)
+    - Other -> Display wishlist icon (Off)
+- Footer: 
+    - Footer layout (Four Column)
+    - Copyrights (Off)
+    
+
 AJAX Add to cart: /themes/basel/js/functions.js
 
 
