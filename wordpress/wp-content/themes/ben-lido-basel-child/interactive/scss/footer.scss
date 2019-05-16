@@ -1,5 +1,10 @@
 .footer-container {
     &.color-scheme-light {
+
+      a {
+        color: $kitsTitleBlue;
+      }
+
       div {
         p {
           color: $kitsListingGray;
@@ -28,3 +33,5 @@
       }
     }
   }
+
+
