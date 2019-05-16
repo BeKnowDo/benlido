@@ -82,6 +82,9 @@ function bl_add_to_cart_hook($cart_item_key, $product_id, $quantity, $variation_
 		if (isset($_POST['category_id'])) {
 			$category_id = $_POST['category_id'];
 		}
+		if (isset($_POST['variation_id'])) {
+		    $product_id = $_POST['variation_id'];
+        }
 		bl_add_to_kit_cart($product_id,$quantity,$category_id);
 	}
 }

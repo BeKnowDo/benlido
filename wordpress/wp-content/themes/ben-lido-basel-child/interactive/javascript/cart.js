@@ -82,9 +82,7 @@ function bl_start_add_bag(e,OBJ) {
     }
     if (url.length > 0) {
         jQuery.post(url,data,function(resp) {
-            console.log(resp);
             if (typeof resp.redirect_url != 'undefined') {
-                console.log(resp.redirect_url);
                 document.location.href = resp.redirect_url;
             }
         },'json');

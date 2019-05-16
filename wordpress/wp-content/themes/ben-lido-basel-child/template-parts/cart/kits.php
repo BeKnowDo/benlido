@@ -46,24 +46,23 @@ if (function_exists('bl_get_basel_cart')) {
                     <ul>
                     <?php foreach ($items as $item):?>
                         <?php
-                            //print_r ($item);
+                    if (!empty($item['product'])):
                             $product_id = $item['product'];
                             $variation_id = $item['variation'];
                             $quantity = $item['quantity'];
                             $cart_match = array();
                             if (function_exists('bl_get_kit_item_from_cart')) {
                                 $cart_match = bl_get_kit_item_from_cart($product_id,$variation_id);
-                                //print_r ($cart_match);
                             }
                             if (!empty($cart_match)) {
                                 $cart_item = $cart_match['cart_item'];
                                 $cart_item_key = $cart_match['cart_item_key'];
                             }
-                            //print_r ($cart_item);
                             // NOTE: we still need to reconstruct cart_item for displaying the product
                             if (empty($cart_item) && function_exists('bl_generate_kit_cart_item')) {
                                 $cart_item = bl_generate_kit_cart_item($index,$product_id,$variation_id,$quantity);
                             }
+
                             $_product = wc_get_product($product_id);
                             if ($_product) {
                                 $product_name      = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
@@ -94,11 +93,12 @@ if (function_exists('bl_get_basel_cart')) {
 								<?php echo $thumbnail . $product_name; ?>
 							</a>
 						<?php endif; ?>
-                        <?php if (!empty($cart_item)):?>
+                        <?php if (!empty($cart_item['data'])):?>
                             <?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
                             <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $quantity, $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
                         <?php endif;?>
                         </li>
+                    <?php endif; ?>
                     <?php endforeach;?>
                     </ul>
                 <?php endif;?>

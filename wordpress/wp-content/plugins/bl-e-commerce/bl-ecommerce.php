@@ -113,7 +113,7 @@ function bl_generate_kit_cart_item($index,$product_id,$variation_id,$quantity) {
         $data = wc_get_product($product_id);
     }
     $cart_item = array('category'=>$category_id,'key'=>$item_key,'product_id'=>$product_id,'variation_id'=>$variation_id,'variation'=>array(),'quantity'=>$quantity,'data'=>$product_object);
-    print_r ($cart_item);
+//    print_r ($cart_item);
     return $cart_item;
 }
 
@@ -281,7 +281,7 @@ if (!function_exists('bl_get_item_in_kit')) {
         if (empty($index)) {
             $index = 0;
         }
-        print_r ($kits);
+//        print_r ($kits);
         $kit_list = $kits[$index];
         if (!empty($kit_list) && isset($kit_list['items'])) {
             // look for product
@@ -1302,7 +1302,8 @@ function bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity=1)
     $is_bag = bl_check_if_bag($product_id);
     $has_category_id = true;
     $items_holder = array();
-    $index = bl_get_active_kit_index();
+    // The right kit index is parameter $index, we should not overwrite it
+    //$index = bl_get_active_kit_index();
     if ( empty($product_id)) {
         return false;
     }
@@ -1627,9 +1628,11 @@ function bl_start_add_bag_to_kit($index) {
     $bags_url = '';
     $resp = array();
     if (function_exists('get_field')) {
-        $bags_page = get_field('bags_page','option');
-        if (!empty($bags_page)) {
-            $bags_url = get_permalink( $bags_page ) . '?is_adding=1';
+        $bags_category_slug = get_field('bags_page','option');
+        if (!empty($bags_category_slug)) {
+            $bags_category = get_term_by( 'slug', $bags_category_slug, 'product_cat' );
+            $bags_category_link = get_term_link( $bags_category->term_id, 'product_cat' );
+            $bags_url = $bags_category_link . '?is_adding=1';
             $resp['redirect_url'] = $bags_url;
         }
     }
