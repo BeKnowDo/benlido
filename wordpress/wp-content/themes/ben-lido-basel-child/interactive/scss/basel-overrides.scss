@@ -3,7 +3,7 @@ body {
         display:flex;
         flex-direction: column;
         .widget-heading {
-            background-color: $darkBlue;
+            background-color: $blue;
         }
     }
 }
@@ -24,3 +24,50 @@ body {
     }
 }
 
+.widget_shopping_cart {
+    .checkout {
+        background-color: $blue !important;
+        border-color: $blue !important;
+        &:hover {
+            background-color: #565979 !important;
+        }
+    }
+}
+
+.widget_shopping_cart {
+    .amount {
+        color: $gold !important;
+    }
+
+    .wp-block-image {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    p {
+        &.total {
+            text-align: center;
+
+            strong {
+                display: inline !important;
+                float: none !important;
+                font-weight: normal !important;
+            }
+            span {
+                display: inline !important;
+                float: none !important;
+                font-weight: normal !important;
+                padding-left: 10px;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 600px) {
+    .wp-block-column:not(:last-child) {
+        margin-right: 16px;
+    }
+    .wp-block-column:not(:first-child), .wp-block-column:nth-child(2n) {
+        margin-left: 16px;
+    }
+}

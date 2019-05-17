@@ -42,12 +42,21 @@ global $product;
         </div>
         <div class="col-xs-6 description-right-side">
             <div class="cart-button-container">
-                <a href="/shop/?add-to-cart=<?= $product->get_id() ?>" data-quantity="1" id="bag-<?= $product->get_id() ?>" class="button product_type_simple add_to_cart_button ajax_add_to_cart basel-tooltip"
-                   data-product_id="<?= $product->get_id() ?>"
-                   data-product_sku="<?= $product->get_sku() ?>"
-                   data-category_id="<?= $product->get_category_ids()[0] ?>"
-                   data-variation_id=""
-                >Add to travel kit</a>
+                <div class="button-wrapper">
+                    <a href="/shop/?add-to-cart=<?= $product->get_id() ?>" data-quantity="1" id="bag-<?= $product->get_id() ?>" class="button product_type_simple add_to_cart_button ajax_add_to_cart p-relative"
+                       data-product_id="<?= $product->get_id() ?>"
+                       data-product_sku="<?= $product->get_sku() ?>"
+                       data-category_id="<?= $product->get_category_ids()[0] ?>"
+                       data-variation_id=""
+                    >Add to travel kit</a>
+                    <div class="choices-container">
+                        <ul class="bl-tooltip-menu">
+                            <li><a href="#">Travel Kit 1</a></li>
+                            <li><a href="#">Travel Kit 2</a></li>
+                            <li><a href="#">Travel Kit 3</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <a class="kit-details" href="<?= get_permalink($product->get_id()) ?>">View details</a>
         </div>
