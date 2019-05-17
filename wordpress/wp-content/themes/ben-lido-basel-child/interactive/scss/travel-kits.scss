@@ -62,7 +62,7 @@
               width: 32px;
               height: 32px;
               background-position-y: 180px;
-              background-position-x: 110px;
+              background-position-x: 176px;
               border-radius: 50%;
               margin: 5px auto;
               &.selected {
@@ -108,12 +108,17 @@
           &:hover {
             text-decoration: none;
           }
-  
-          h2 {
-            font-size: 20px;
-            text-transform: capitalize;
-            margin: -3px 0 3px !important;
-            color: $kitsTitleBlue;
+
+          .product-title-link {
+            &:hover {
+              text-decoration: none;
+            }
+            h2 {
+              font-size: 20px;
+              text-transform: capitalize;
+              margin: -3px 0 3px !important;
+              color: $kitsTitleBlue;
+            }
           }
   
           .total-price {
