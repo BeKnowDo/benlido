@@ -472,6 +472,37 @@ if (!function_exists('bl_create_custom_kit')) {
 
 }
 
+if (!function_exists('bl_get_minicart')) {
+    function bl_get_minicart() {
+                		// Get messages
+		ob_start();
+
+		wc_print_notices();
+
+		$notices = ob_get_clean();
+
+
+		// Get mini cart
+		ob_start();
+
+		woocommerce_mini_cart();
+
+		$mini_cart = ob_get_clean();
+
+		// Fragments and mini cart are returned
+		$data = array(
+			'notices' => $notices,
+			'fragments' => apply_filters( 'woocommerce_add_to_cart_fragments', array(
+					'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
+				)
+			),
+			'cart_hash' => apply_filters( 'woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '', WC()->cart->get_cart_for_session() )
+		);
+
+		return $data;
+    }
+}
+
 if (!function_exists('bl_create_new_kit')) {
     function bl_create_new_kit() {
         global $bl_custom_kit_id;
@@ -823,49 +854,69 @@ if (!function_exists('bl_remove_from_cart')) {
     function bl_remove_from_cart($index,$product_id,$variation_id=0,$quantity=1,$cart_hash='') {
         // NOTE: sometimes, the product_id is the same as variation ID because some products returns the variation_id as the product_id as well.
         //       so, we need to work from trying to get 
+        $removed_item = array();
 
         // first, remove from the kit
         if (function_exists('bl_remove_from_kit')) {
             $kit_id = '';
-            bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity);
+            // we need to get the removed item because we need to see the quantity
+            $removed_item = bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity);
         }
         $response = false;
         $cart = WC()->cart->get_cart();
         $holder = array();
         $match_key = '';
         $match_quantity = 0;
-        if (!empty($cart) && is_array($cart)) {
+
+        if (!empty($removed_item) && !empty($cart) && is_array($cart)) {
+            $product_id = $removed_item['product'];
+            $variation_id = $removed_item['variation'];
+            if (!empty($removed_item['quantity'])) {
+                $item_quantity = $removed_item['quantity'];
+            } else {
+                $item_quantity = $quantity;
+            }
             foreach ($cart as $hash => $item) {
                 $temp_product_id = $item['product_id'];
                 $temp_variation_id = $item['variation_id'];
                 $temp_quantity = $item['quantity'];
+                
                 if ($product_id == $temp_product_id && $product_id != $variation_id) {
                     $match_key = $hash;
                     $match_quantity = $temp_quantity;
+                    $quantity = $item_quantity;
                 }
                 if ($variation_id > 0 && $variation_id == $temp_variation_id) {
                     $match_key = $hash;
                     $match_quantity = $temp_quantity;
+                    $quantity = $item_quantity;
                 }
                 // maybe product_id is the variation ID
                 if ($temp_variation_id == $product_id && $variation_id == 0) {
                     $match_key = $hash;
                     $match_quantity = $temp_quantity;
+                    $quantity = $item_quantity;
                 }
                 
             }
         }
-        if (!empty($match_key) && $match_quantity > 0) {
+        if (!empty($match_key)) {
             // we're just going to remove that whole line for now
             
             $final_quantity = intval($match_quantity) - $quantity;
             if ($final_quantity > 0) {
-                $response = WC()->cart->set_quantity($match_key, $final_quantity);
+                WC()->cart->set_quantity($match_key, $final_quantity);
             } else {
-                $response = WC()->cart->remove_cart_item($match_key);
+                WC()->cart->remove_cart_item($match_key);
             }
             
         }
+
+        $response = array();
+        if (function_exists('bl_get_minicart')) {
+            $response = bl_get_minicart();
+        }
+        
         return $response;
     }
 }
@@ -1299,6 +1350,7 @@ function bl_add_to_kit_cart($product_id,$quantity,$category_id=0) {
 function bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
     // first see if we have a kit
     // see if the product is a bag
+    $removed_item = array();
     $is_bag = bl_check_if_bag($product_id);
     $has_category_id = true;
     $items_holder = array();
@@ -1332,13 +1384,14 @@ function bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity=1)
         }
 
         // now, let's see which to remove
-        $items = $kit_list['items'];
+        $items = $selected_kit['items'];
         if (!empty($items) && is_array($items)) {
             foreach ($items as $item) {
                 if ($has_category_id == true) {
                     if ($item['category'] == $category_id && $item['product'] == $product_id) {
                         // this is how we remove
                         // we might want to do something else here.
+                        $removed_item = $item;
                     } else {
                         $items_holder[] = $item;
                     }
@@ -1346,6 +1399,7 @@ function bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity=1)
                     if ($item['product'] == $product_id) {
                         // this is how we remove
                         // we might want to do something else here.
+                        $removed_item = $item;
                     } else {
                         $items_holder[] = $item;
                     }
@@ -1356,9 +1410,8 @@ function bl_remove_from_kit($index,$kit_id,$product_id,$category_id,$quantity=1)
         bl_set_kit_list($index,$kit_list['kit_id'],$kit_list['bag'],$items_holder);
         //$kit_list = bl_get_kit_list();
         //print_r ($kit_list);
-        return true;
     }
-    return false;
+    return $removed_item;
 } // end bl_remove_from_kit()
 
 
@@ -1931,6 +1984,7 @@ function bl_ecommerce_url_intercept() {
                         // removing an item from a kit
                         // should have 3 IDs: Kit ID, product ID, category ID
                         // /bl-api/kit/remove/{kit_id}/{product_id}/{category_id}
+                        $success = false;
                         if (isset($api_parts[5])) {
                             $prod = $api_parts[5];
                         }
@@ -1944,7 +1998,10 @@ function bl_ecommerce_url_intercept() {
                             $res = json_decode($contents,TRUE);
                         }
                         if (!empty($id)) {
-                            $success = bl_remove_from_kit($index,$id,$prod,$cat);
+                            $removed_item = bl_remove_from_kit($index,$id,$prod,$cat);
+                            if (!empty($removed_item)) {
+                                $success = true;
+                            }
                         }
                         header('Content-Type: application/json');
                         // we always return empty

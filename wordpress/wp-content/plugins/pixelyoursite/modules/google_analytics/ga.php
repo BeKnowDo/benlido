@@ -6,6 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
+/** @noinspection PhpIncludeInspection */
+require_once PYS_FREE_PATH . '/modules/google_analytics/function-helpers.php';
+
 class GA extends Settings implements Pixel {
 	
 	private static $_instance;
@@ -63,21 +66,25 @@ class GA extends Settings implements Pixel {
 		return (array) reset( $ids ); // return first id only
 		
 	}
-	
-	public function getPixelOptions() {
-        
+
+    public function getPixelOptions()
+    {
+
         return array(
-            'trackingIds'                 => $this->getPixelIDs(),
-            'enhanceLinkAttr'             => $this->getOption( 'enhance_link_attribution' ),
-            'anonimizeIP'                 => $this->getOption( 'anonimize_ip' ),
-            'commentEventEnabled'         => $this->getOption( 'comment_event_enabled' ),
-            'commentEventNonInteractive'  => $this->getOption( 'comment_event_non_interactive' ),
-            'downloadEnabled'             => $this->getOption( 'download_event_enabled' ),
-            'downloadEventNonInteractive' => $this->getOption( 'download_event_non_interactive' ),
-            'formEventEnabled' => $this->getOption( 'form_event_enabled' ),
+            'trackingIds' => $this->getPixelIDs(),
+            'enhanceLinkAttr' => $this->getOption('enhance_link_attribution'),
+            'anonimizeIP' => $this->getOption('anonimize_ip'),
+            'commentEventEnabled' => $this->getOption('comment_event_enabled'),
+            'commentEventNonInteractive' => $this->getOption('comment_event_non_interactive'),
+            'downloadEnabled' => $this->getOption('download_event_enabled'),
+            'downloadEventNonInteractive' => $this->getOption('download_event_non_interactive'),
+            'formEventEnabled' => $this->getOption('form_event_enabled'),
+            'crossDomainEnabled' => $this->getOption('cross_domain_enabled'),
+            'crossDomainAcceptIncoming' => $this->getOption('cross_domain_accept_incoming'),
+            'crossDomainDomains' => $this->getOption('cross_domain_domains'),
         );
-		
-	}
+
+    }
 
 	public function getEventData( $eventType, $args = null ) {
 		

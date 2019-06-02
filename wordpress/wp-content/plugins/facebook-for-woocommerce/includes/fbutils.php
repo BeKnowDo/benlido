@@ -1,5 +1,10 @@
 <?php
 /**
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
  * @package FacebookCommerce
  */
 
@@ -16,7 +21,7 @@ if (!class_exists('WC_Facebookcommerce_Utils')) :
   class WC_Facebookcommerce_Utils {
 
     const FB_RETAILER_ID_PREFIX = 'wc_post_id_';
-    const PLUGIN_VERSION = '1.9.5';  // Change it in `facebook-for-*.php` also
+    const PLUGIN_VERSION = '1.9.10';  // Change it in `facebook-for-*.php` also
 
     const FB_VARIANT_IMAGE = 'fb_image';
     const FB_VARIANT_SIZE = 'size';
@@ -242,12 +247,46 @@ if (!class_exists('WC_Facebookcommerce_Utils')) :
       }
     }
 
+    /**
+     * Utility function for development Tip Events logging.
+     */
+     public static function tip_events_log(
+       $tip_id,
+       $channel_id,
+       $event,
+       $ems = '') {
+
+       $ems = $ems ?: self::$ems;
+       if ($ems) {
+         self::$fbgraph->log_tip_event(
+           $tip_id,
+           $channel_id,
+           $event);
+       } else {
+         error_log('external merchant setting is null');
+       }
+     }
+
     public static function is_variation_type($type) {
       return $type == 'variation' || $type == 'subscription_variation';
     }
 
     public static function is_variable_type($type) {
       return $type == 'variable' || $type == 'variable-subscription';
+    }
+
+    public static function check_woo_ajax_permissions($action_text, $die) {
+      if (!current_user_can('manage_woocommerce')) {
+        self::log(
+          'Non manage_woocommerce user attempting to'.$action_text.'!',
+          array(),
+          true);
+        if ($die) {
+          wp_die();
+        }
+        return false;
+      }
+      return true;
     }
 
     /**
@@ -294,7 +333,7 @@ if (!class_exists('WC_Facebookcommerce_Utils')) :
           error_log(json_encode($message));
         }
         else {
-          error_log($message);
+          error_log(sanitize_textarea_field($message));
         }
       }
     }
@@ -397,7 +436,7 @@ if (!class_exists('WC_Facebookcommerce_Utils')) :
       if (preg_match('/[^\\p{Common}\\p{Latin}]/u', $value)) {
         // Contains non-western characters
         // So, it can't be all uppercase
-        return true;
+        return false;
       }
       $latin_string = preg_replace('/[^\\p{Latin}]/u', '', $value);
       if ($latin_string === '') {
@@ -408,8 +447,11 @@ if (!class_exists('WC_Facebookcommerce_Utils')) :
     }
 
     public static function decode_json($json_string, $assoc = false) {
-      $data = json_decode($json_string, $assoc, 512, JSON_BIGINT_AS_STRING);
-      return $data;
+      // Plugin requires 5.6.0 but for some user use 5.5.9 JSON_BIGINT_AS_STRING
+      // will cause 502 issue when redirect.
+      return version_compare(phpversion(), '5.6.0') >= 0
+        ? json_decode($json_string, $assoc, 512, JSON_BIGINT_AS_STRING)
+        : json_decode($json_string, $assoc, 512);
     }
 
     public static function set_test_fail_reason($msg, $trace) {
@@ -419,6 +461,24 @@ if (!class_exists('WC_Facebookcommerce_Utils')) :
       }
       set_transient('facebook_plugin_test_fail', $msg);
       set_transient('facebook_plugin_test_stack_trace', $trace);
+    }
+
+    /**
+     * Helper function to check time cap.
+     */
+    public static function check_time_cap($from, $date_cap) {
+      if ($from == null) {
+        return true;
+      }
+      $now = new DateTime(current_time('mysql'));
+      $diff_in_day = $now->diff(new DateTime($from))->format('%a');
+      return is_numeric($diff_in_day) && (int)$diff_in_day > $date_cap;
+    }
+
+    public static function get_cached_best_tip() {
+      $cached_best_tip = WC_Facebookcommerce_Utils::decode_json(
+        get_option('fb_info_banner_last_best_tip', ''));
+      return $cached_best_tip;
     }
   }
 

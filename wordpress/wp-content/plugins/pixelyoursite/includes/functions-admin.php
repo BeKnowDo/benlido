@@ -283,6 +283,11 @@ function adminRenderNotices() {
             }
             
         }
+
+        // show notice if licence was never activated
+        if (Pinterest()->enabled() && empty($pinterest_license_status)) {
+            adminRenderActivatePinterestLicence();
+        }
         
     } else {
         
@@ -386,6 +391,21 @@ function adminNoticeDismissHandler() {
     $meta_key = 'pys_' . sanitize_text_field( $_REQUEST['addon_slug'] ) . '_' . sanitize_text_field( $_REQUEST['meta_key'] ) . '_dismissed_at';
     update_user_meta( $_REQUEST['user_id'], $meta_key, time() );
     
+}
+
+function adminRenderActivatePinterestLicence() {
+
+    if ( 'pixelyoursite_licenses' == getCurrentAdminPage() ) {
+        return; // do not show notice licenses page
+    }
+
+    ?>
+
+    <div class="notice notice-error">
+        <p>Activate your Pinterest add-on license: <a href="<?php echo esc_url( buildAdminUrl( 'pixelyoursite_licenses' ) ); ?>">click here</a>.</p>
+    </div>
+
+    <?php
 }
 
 function adminRenderNoPixelsNotice() {
@@ -585,6 +605,27 @@ function renderDummySelectInput( $value, $full_width = false ) {
         <option value="" disabled selected><?php esc_html_e( $value ); ?></option>
     </select>
     
+    <?php
+}
+
+function renderDummyGoogleAdsConversionLabelInputs() {
+    ?>
+
+    <div class="row mt-1 mb-2">
+        <div class="col-11 col-offset-left form-inline">
+            <label>Add conversion label </label>
+            <?php renderDummyTextInput( 'Enter conversion label' ); ?>
+            <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag'); ?>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-link" role="button" data-toggle="pys-popover" data-trigger="focus"
+                    data-placement="right" data-popover_id="google_ads_conversion_label" data-original-title=""
+                    title="">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
     <?php
 }
 

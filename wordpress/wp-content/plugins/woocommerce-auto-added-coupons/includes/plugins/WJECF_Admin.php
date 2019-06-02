@@ -370,7 +370,19 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'WJECF_Admin' ) ) {
 			<?php
 		}
 
-		public function admin_coupon_meta_fields( $coupon ) {
+		/**
+		 * Returns an array with the meta_keys for this plugin and the sanitation to apply.
+		 * Instead of a sanitation a callback can be supplied; which must return the meta value to save to the database
+		 *
+		 * e.g. [
+		 *  '_wjecf_some_comma_separated_ints' => 'int,',
+		 *  '_wjecf_some_callback' => [ 'callback' => [ callback ] ],
+		 * ]
+		 *
+		 * @param null|WC_Coupon $coupon Note: Can be null
+		 * @return array The fields for this plugin
+		 */
+		public function admin_coupon_meta_fields( $coupon = null ) {
 			$fields = array(
 				'_wjecf_min_matching_product_qty'      => 'int',
 				'_wjecf_max_matching_product_qty'      => 'int',

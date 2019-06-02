@@ -3,8 +3,8 @@ Contributors: josk79
 Tags: woocommerce, coupons, discount
 Requires at least: 4.8
 Requires PHP: 5.4
-Tested up to: 4.9.9
-Stable tag: 3.0.5
+Tested up to: 5.2.0
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,8 +17,8 @@ Very easy to use, the functionality is conveniently integrated to the WooCommerc
 
 Requires:
 * WooCommerce 3.0 or newer (3.4+ recommended)
-* PHP 5.4 or newer (7.0+ Recommended)
-* WordPress 4.8 or newer
+* PHP 5.4 or newer (7.2+ Recommended)
+* WordPress 4.9 or newer
 
 For compatibility with older versions of WooCommerce, please use "WooCommerce Extended Coupon Features" version 2.6.4.
 
@@ -101,11 +101,29 @@ On the settings page (Settings > WooCommerce Extended Coupon Features) check the
 
 == Changelog ==
 
+= 3.1.0 =
+*Release Date - 2019-05-21*
+* TWEAK: Remove domainname from redirect url after using ?apply_coupon=
+* (PRO) FIX: Free products: Don't apply a product that is not purchasable
+* (PRO) TWEAK: Call WC core add_to_cart instead of custom add_to_cart-function
+* (PRO) TWEAK: Free product selection: Show variation attributes in product title
+
+= 3.0.7 =
+*Release Date - 2019-02-14*
+* FIX: wjecf_dump missing meta values
+* TWEAK: Changed coupon discount html overwrite of Free-product-coupons (PRO) and Auto-coupons
+* (PRO) FEATURE: Custom coupon error message
+* (PRO) FIX: Bug in 'Limit discount to' in combination with WC prior to 3.3.0
+
+= 3.0.6 =
+*Release Date - 2018-11-27*
+* (PRO) FIX: Product custom field filter for internal meta (e.g. _sale_price)
+
 = 3.0.5 =
 *Release Date - 2018-11-10*
-* (FREE) FIX: 'Auto coupons'-settings not visible in FREE version
-* (PRO) FIX: Limit discount to: in combination with WC < 3.2
-* (PRO) FIX: Added quantity to 'woocommerce_add_cart_item_data'-filter (Fixes crash WooCommerce Product Addons)
+* FIX: Limit discount to: in combination with WC < 3.2
+* FIX: Added quantity to 'woocommerce_add_cart_item_data'-filter (Fixes crash WooCommerce Product Addons)
+* FIX: 'Auto coupons'-settings not visible in FREE version
 
 = 3.0.4 =
 *Release Date - 2018-10-12*

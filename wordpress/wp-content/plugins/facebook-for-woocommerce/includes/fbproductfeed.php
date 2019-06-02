@@ -1,7 +1,13 @@
 <?php
 /**
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
  * @package FacebookCommerce
  */
+
 if (! defined('ABSPATH')) {
   exit;
 }
@@ -120,6 +126,10 @@ class WC_Facebook_Product_Feed {
       foreach ($wp_ids as $wp_id) {
         $woo_product = new WC_Facebook_Product($wp_id);
         if ($woo_product->is_hidden()) {
+          continue;
+        }
+        if (get_option('woocommerce_hide_out_of_stock_items') === 'yes' &&
+          !$woo_product->is_in_stock()) {
           continue;
         }
         $product_data_as_feed_row = $this->prepare_product_for_feed(

@@ -810,14 +810,22 @@ if (!Array.prototype.includes) {
 
                 Utils.loadGoogleTag(options.ga.trackingIds[0]);
 
+                var config = {
+                    'link_attribution': options.ga.enhanceLinkAttr,
+                    'anonymize_ip': options.ga.anonimizeIP
+                };
+
+                // Cross-Domain tracking
+                if (options.ga.crossDomainEnabled) {
+                    config.linker = {
+                        accept_incoming: options.ga.crossDomainAcceptIncoming,
+                        domains: options.ga.crossDomainDomains
+                    };
+                }
+
                 // configure tracking ids
                 options.ga.trackingIds.forEach(function (trackingId) {
-
-                    gtag('config', trackingId, {
-                        'link_attribution': options.ga.enhanceLinkAttr,
-                        'anonymize_ip': options.ga.anonimizeIP
-                    });
-
+                    gtag('config', trackingId, config);
                 });
 
                 initialized = true;

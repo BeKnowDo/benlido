@@ -325,7 +325,7 @@ use PixelYourSite\Facebook\Helpers;
         <?php if ( Pinterest()->enabled() ) : ?>
             <div class="row">
                 <div class="col">
-                    <?php Pinterest()->render_switcher_input( 'woo_checkout_enabled' ); ?>
+                    <?php Pinterest()->render_switcher_input( 'woo_purchase_enabled' ); ?>
                     <h4 class="switcher-label">Enable the Checkout event on Pinterest</h4>
                     <?php Pinterest()->renderAddonNotice(); ?>
                 </div>
@@ -381,9 +381,10 @@ use PixelYourSite\Facebook\Helpers;
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the purchase event on Google Ads</h4>
-                <?php renderProBadge(); ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?>
             </div>
         </div>
+        <?php renderDummyGoogleAdsConversionLabelInputs(); ?>
 
         <div class="row mt-3">
             <div class="col">
@@ -473,9 +474,10 @@ use PixelYourSite\Facebook\Helpers;
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the begin_checkout event on Google Ads</h4>
-                <?php renderProBadge(); ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?>
             </div>
         </div>
+        <?php renderDummyGoogleAdsConversionLabelInputs(); ?>
 
     </div>
 </div>
@@ -515,7 +517,7 @@ use PixelYourSite\Facebook\Helpers;
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the remove_from_cart event on Google Ads</h4>
-                <?php renderProBadge(); ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?>
             </div>
         </div>
         
@@ -609,9 +611,10 @@ use PixelYourSite\Facebook\Helpers;
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the add_to_cart event on Google Ads</h4>
-                <?php renderProBadge(); ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?>
             </div>
         </div>
+        <?php renderDummyGoogleAdsConversionLabelInputs(); ?>
 
     </div>
 </div>
@@ -635,7 +638,7 @@ use PixelYourSite\Facebook\Helpers;
         <?php if ( Pinterest()->enabled() ) : ?>
             <div class="row">
                 <div class="col">
-                    <?php Pinterest()->render_switcher_input( 'woo_page_visit_enabled' ); ?>
+                    <?php Pinterest()->render_switcher_input( 'woo_view_content_enabled' ); ?>
                     <h4 class="switcher-label">Enable the PageVisit event on Pinterest</h4>
                     <?php Pinterest()->renderAddonNotice(); ?>
                 </div>
@@ -700,9 +703,10 @@ use PixelYourSite\Facebook\Helpers;
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the view_item event on Google Ads</h4>
-                <?php renderProBadge(); ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?>
             </div>
         </div>
+        <?php renderDummyGoogleAdsConversionLabelInputs(); ?>
 
     </div>
 </div>
@@ -742,9 +746,10 @@ use PixelYourSite\Facebook\Helpers;
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the view_item_list event on Google Ads</h4>
-                <?php renderProBadge(); ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?>
             </div>
         </div>
+        <?php renderDummyGoogleAdsConversionLabelInputs(); ?>
         
         <?php if ( Pinterest()->enabled() ) : ?>
             <div class="row">

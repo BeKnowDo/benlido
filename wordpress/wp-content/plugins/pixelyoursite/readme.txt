@@ -3,8 +3,8 @@ Contributors: PixelYourSite, themister
 Tags: Facebook Pixel, New Facebook Pixel, Facebook Conversion Pixel, Facebook Pixel Events, Facebook, New Facebook Pixel Events, Dynamic Events, Standard Events, Facebook Events, Facebook Standard Events, Facebook Dynamic Product Ads, WooCommerce, WooCommerce Facebook Pixel, Facebook Custom Events, Facebook Conversion Value, WooCommerce Affiliate Products, Easy Digital Downloads Pixel, Easy Digital Downloads Google Analytics, Head & Footer scripts, Enhanced Ecommerce, Pinterest tag
 Requires at least: 3.0.1
 Requires PHP: 5.4
-Tested up to: 5.1
-Stable tag: 7.0.3
+Tested up to: 5.2
+Stable tag: 7.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,8 @@ Google Analytics: one click install
 ANY script: add any other script with our flexible Head & Footer option
 The Pinterest Tag: via [free add-on](https://www.pixelyoursite.com/pinterest-tag)
 Google Ads (formerly AdWords) [pro feature](https://www.pixelyoursite.com/google-ads-tag)
+
+**Want to learn about your Facebook Pixel? We've put toghether [this help page](https://www.pixelyoursite.com/how-to-use-facebook-pixel)**
 
 FANTASTIC WOOCOMMERCE INTEGRATION:
 
@@ -83,11 +85,12 @@ When Facebook for WooCommerce is detected, the plugin will offer you the option 
 
 OTHER USEFUL FEATURES:
 
-Facebook Advanced Matching
-Remove Facebook default events
-Google Analytics Enhanced Link Attribution
-Google Analytics Anonymize IPs
-Pinterest Enhanced Matching
+Facebook Manual Advanced Matching.
+Remove Facebook default events.
+Google Analytics cross-domain measurement.
+Google Analytics Enhanced Link Attribution.
+Google Analytics Anonymize IPs.
+Pinterest Enhanced Matching.
 
 **EVEN MORE FEATURES WITH THE PRO VERSION:**
 
@@ -117,6 +120,8 @@ The pro version will track a vast amount of data for each event, like the traffi
 These parameters can be used for [Custom Audiences or Custom Conversions](https://www.pixelyoursite.com/facebook-pixel-plugin/custom-audiences-conversions)
 
 EVEN MORE GOOGLE ANALYTICS FEATURES:
+
+Support for Google Optimize (free A/B testing service by Google).
 
 On top of the free version data, [the pro version](https://www.pixelyoursite.com/google-analytics) will track a number of useful Custom Dimensions.
 
@@ -148,6 +153,8 @@ GOOGLE ADS TAG (FORMER ADWORDS):
 The Pro version will implement the [Google Ads Tag](https://www.pixelyoursite.com/google-ads-tag) with Dynamic Retargeting support for WooCommerce and Easy Digital Downloads. 
 
 Each Global event will be sent to Google Ads too, and you can configure Google Ads conversions.
+
+Add conversion label to any WooCommerce or EDD event.
 
 NOT ENOUGH? GET MORE WITH THE SUPER PACK:
 
@@ -364,6 +371,20 @@ There's a strange solution: it appears that if you have the Yoast plugin install
 
 == Changelog ==
 
+= PixelYourSite 7.0.5 =
+
+* Fixing a potential problem with Pinterest PageVisit and Checkout events when the Facebook Pixel was deactivated (for the Pinterest add-on users only).
+
+
+= PixelYourSite 7.0.4 =
+
+* New Feature: Google Analytics cross-domain measurement. Tell Analytics to see sessions on two related sites (such as an ecommerce site and a separate shopping cart site) as a single session.
+
+* UI changes to reflect some new features our PRO version has (Google Optimize, add conversion label to WooCommerce and EDD Google Ads events).
+
+* Pinterest add-on missing license notice.
+
+* Remove the pixels when you edit something with Elementor.
 
 = PixelYourSite 7.0.3 =
 

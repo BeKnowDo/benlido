@@ -130,7 +130,7 @@ class HeadFooter extends Settings {
 		 * Single Post
 		 */
 
-		if ( is_singular() ) {
+		if ( is_singular() && $post ) {
 			$post_meta = get_post_meta( $post->ID, '_pys_head_footer', true );
 		} else {
 			$post_meta = array();

@@ -2,7 +2,7 @@
     "name": "up-plugins/facebook-for-woocommerce",
     "type": "wordpress-plugin",
     "description": "Facebook for WooCommerce",
-    "version":"1.9.5",
+    "version":"1.9.10",
     "repositories":[
 	{
 	"type":"git",

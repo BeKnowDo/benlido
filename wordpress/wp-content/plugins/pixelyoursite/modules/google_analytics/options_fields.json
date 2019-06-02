@@ -4,6 +4,10 @@
   "enhance_link_attribution": "checkbox",
   "anonimize_ip": "checkbox",
 
+  "cross_domain_enabled": "checkbox",
+  "cross_domain_accept_incoming": "checkbox",
+  "cross_domain_domains": "array",
+
   "search_event_enabled": "checkbox",
   "search_event_non_interactive": "checkbox",
   "comment_event_enabled": "checkbox",

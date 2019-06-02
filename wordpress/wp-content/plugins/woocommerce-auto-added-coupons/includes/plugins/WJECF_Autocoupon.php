@@ -36,8 +36,8 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'WJECF_Autocoupon' ) ) {
 			add_action( 'woocommerce_after_calculate_totals', array( $this, 'maybe_update_matched_autocoupons' ), 5 );
 
 			//Frontend hooks - visualisation
-			add_filter( 'woocommerce_cart_totals_coupon_label', array( $this, 'coupon_label' ), 10, 2 );
-			add_filter( 'woocommerce_cart_totals_coupon_html', array( $this, 'coupon_html' ), 10, 2 );
+			add_filter( 'woocommerce_cart_totals_coupon_label', array( $this, 'woocommerce_cart_totals_coupon_label' ), 10, 2 );
+			add_filter( 'woocommerce_cart_totals_coupon_html', array( $this, 'woocommerce_cart_totals_coupon_html' ), 10, 3 );
 
 			//Checkout: force cart preview refresh
 			add_filter( 'woocommerce_checkout_fields', array( $this, 'filter_woocommerce_checkout_fields' ), 10, 1 );
@@ -417,56 +417,36 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'WJECF_Autocoupon' ) ) {
 			}
 
 			//Redirect to page without autocoupon query args
-			$requested_url  = is_ssl() ? 'https://' : 'http://';
-			$requested_url .= $_SERVER['HTTP_HOST'];
-			$requested_url .= $_SERVER['REQUEST_URI'];
-
-			wp_safe_redirect( remove_query_arg( array( 'apply_coupon', 'add-to-cart' ), ( $requested_url ) ) );
+			wp_safe_redirect( remove_query_arg( array( 'apply_coupon', 'add-to-cart' ) ) );
 			exit;
 		}
 
 		/**
 		 * Overwrite the html created by wc_cart_totals_coupon_label() so a descriptive text will be shown for the discount.
 		 *
-		 * @param string $originaltext The default text created by wc_cart_totals_coupon_label()
+		 * @param string $coupon_label The default text created by wc_cart_totals_coupon_label()
 		 * @param WC_Coupon $coupon The coupon data
 		 * @return string The overwritten text
 		 */
-		function coupon_label( $originaltext, $coupon ) {
+		function woocommerce_cart_totals_coupon_label( $coupon_label, $coupon ) {
 			if ( $this->is_auto_coupon( $coupon ) ) {
-				return $coupon->get_description();
-			} else {
-				return $originaltext;
+				$coupon_label = $coupon->get_description();
 			}
+			return $coupon_label;
 		}
 
 		/**
 		 * Overwrite the html created by wc_cart_totals_coupon_html(). This function is required to remove the "Remove" link.
-		 * @param  string $originaltext The html created by wc_cart_totals_coupon_html()
+		 * @param  string $coupon_html The html created by wc_cart_totals_coupon_html()
 		 * @param  WC_Coupon $coupon The coupon data
 		 * @return string The overwritten html
 		 */
-		function coupon_html( $originaltext, $coupon ) {
+		function woocommerce_cart_totals_coupon_html( $coupon_html, $coupon, $discount_amount_html ) {
 			if ( $this->is_auto_coupon( $coupon ) && ! $this->get_option_autocoupon_allow_remove() ) {
-				$value = array();
-
-				$amount = WC()->cart->get_coupon_discount_amount( $coupon->get_code(), WC()->cart->display_cart_ex_tax );
-				if ( $amount ) {
-					$discount_html = '-' . wc_price( $amount );
-				} else {
-					$discount_html = '';
-				}
-
-				$value[] = apply_filters( 'woocommerce_coupon_discount_amount_html', $discount_html, $coupon );
-
-				if ( $coupon->get_free_shipping() ) {
-					$value[] = __( 'Free shipping coupon', 'woocommerce' );
-				}
-
-				return implode( ', ', array_filter( $value ) ); //Remove empty array elements
-			} else {
-				return $originaltext;
+				//Remove the '[Remove]'-part.
+				$coupon_html = $discount_amount_html;
 			}
+			return $coupon_html;
 		}
 
 		// ============ BEGIN wjecf_autocoupon_removed_coupons =======================
@@ -666,7 +646,7 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'WJECF_Autocoupon' ) ) {
 				'shipping_methods'            => isset( WC()->session->chosen_shipping_methods ) ? WC()->session->chosen_shipping_methods : array(),
 				'payment_method'              => isset( WC()->session->chosen_payment_method ) ? WC()->session->chosen_payment_method : array(),
 				'situation_transient_version' => $this->get_situation_transient_version(),
-				'date'                        => strtotime( 'today' ), //Enforce auto coupons to be refreshed when the date has changed since last refresh.
+				'date'                        => current_time( 'Y-m-d' ), //Enforce auto coupons to be refreshed when the date has changed since last refresh.
 				// 'customer' => WC()->customer,
 			);
 

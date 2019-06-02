@@ -23,6 +23,7 @@ abstract class Abstract_WJECF_Plugin {
 	 *  '_wjecf_some_callback' => [ 'callback' => [ callback ] ],
 	 * ]
 	 *
+	 * @param null|WC_Coupon $coupon Note: Can be null
 	 * @return array The fields for this plugin
 	 */
 	public function admin_coupon_meta_fields( $coupon ) {

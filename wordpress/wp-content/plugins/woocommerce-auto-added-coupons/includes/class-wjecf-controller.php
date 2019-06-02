@@ -66,6 +66,9 @@ class WJECF_Controller {
 		//Last check for coupons with restricted_emails (moved from WJECF_AutoCoupon since 2.5.6)
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'fetch_billing_email' ), 10 ); // AJAX One page checkout
 		add_action( 'woocommerce_after_checkout_validation', array( $this, 'fetch_billing_email' ), 10 ); // Checkout posted
+
+		//Overwrite coupon info message
+		add_filter( 'woocommerce_coupon_message', array( $this, 'filter_woocommerce_coupon_message' ), 10, 3 );
 	}
 
 	protected function init_plugins() {
@@ -764,7 +767,7 @@ class WJECF_Controller {
 	}
 
 	// ===========================================================================
-	// START - OVERWRITE INFO MESSAGES
+	// START - OVERWRITE COUPON SUCCESS MESSAGE
 	// ===========================================================================
 
 	/**
@@ -774,8 +777,7 @@ class WJECF_Controller {
 	 * @param string $new_message The new message. Set to empty string if no message must be displayed
 	 */
 	public function start_overwrite_success_message( $coupon, $new_message = '' ) {
-		$this->overwrite_coupon_message[ $coupon->get_code() ] = array( $coupon->get_coupon_message( WC_Coupon::WC_COUPON_SUCCESS ) => $new_message );
-		add_filter( 'woocommerce_coupon_message', array( $this, 'filter_woocommerce_coupon_message' ), 10, 3 );
+		$this->overwrite_coupon_message[ $coupon->get_code() ] = array( WC_Coupon::WC_COUPON_SUCCESS => $new_message );
 	}
 
 	/**
@@ -783,21 +785,20 @@ class WJECF_Controller {
 	 * Stop overwriting messages
 	 */
 	public function stop_overwrite_success_message() {
-		remove_filter( 'woocommerce_coupon_message', array( $this, 'filter_woocommerce_coupon_message' ), 10 );
 		$this->overwrite_coupon_message = array();
 	}
 
-	private $overwrite_coupon_message = array(); /* [ 'coupon_code' => [ old_message' => 'new_message' ] ] */
+	private $overwrite_coupon_message = array(); /* [ 'coupon_code' => [ msg_code => 'new_message' ] ] */
 
 	function filter_woocommerce_coupon_message( $msg, $msg_code, $coupon ) {
-		if ( isset( $this->overwrite_coupon_message[ $coupon->get_code() ][ $msg ] ) ) {
-			$msg = $this->overwrite_coupon_message[ $coupon->get_code() ][ $msg ];
+		if ( isset( $this->overwrite_coupon_message[ $coupon->get_code() ][ $msg_code ] ) ) {
+			$msg = $this->overwrite_coupon_message[ $coupon->get_code() ][ $msg_code ];
 		}
 		return $msg;
 	}
 
 	// ===========================================================================
-	// END - OVERWRITE INFO MESSAGES
+	// END - OVERWRITE COUPON SUCCESS MESSAGE
 	// ===========================================================================
 
 	/**

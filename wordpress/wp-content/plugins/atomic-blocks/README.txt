@@ -3,8 +3,8 @@ Contributors: atomicblocks, mindctrl, arrayhq, wpengine, studiopress, marksabbat
 Donate link: https://atomicblocks.com
 Tags: Blocks, editor, gutenberg, gutenberg blocks, page builder, block enabled, page building, block, WP Engine
 Requires at least: 4.7
-Tested up to: 5.1.1
-Stable tag: 1.6.1
+Tested up to: 5.2
+Stable tag: 1.8.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ A collection of beautiful, customizable Gutenberg blocks for the new block edito
 
 == Description ==
 
-Atomic Blocks is a collection of content blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
+Atomic Blocks is a collection of page building blocks for the new [Gutenberg](https://atomicblocks.com/beginners-guide-gutenberg/?utm_source=WP.org%20Description%20Gberg%20Link&utm_campaign=wporg_desc_gberg_link) block editor. Blocks are chunks of content such as paragraphs, images, galleries, columns, and more. Building with blocks gives you more control to quickly create and launch any kind of site you want!
 
 Adding the customizable Atomic Block plugin adds a collection of beautiful, site-building blocks to help you customize page layouts, increase engagement, and get results for your business.
 
@@ -21,7 +21,9 @@ Along with the content blocks you'll find in Atomic Blocks, we're also publishin
 
 ## Atomic Blocks currently includes the following blocks:
 
-* Pricing Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/pricing-table-block/)
+* Advanced Columns Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/advanced-columns-block/)
+* Newsletter Block  – [Block Demo (NEW!)](https://atomicblocks.com/blocks/newsletter-block/)
+* Pricing Block  – [Block Demo](https://atomicblocks.com/blocks/pricing-table-block/)
 * Post Grid Block - [Block Demo](https://atomicblocks.com/blocks/post-grid-block/)
 * Container Block - [Block Demo](https://atomicblocks.com/blocks/container-block/)
 * Testimonial Block - [Block Demo](https://atomicblocks.com/blocks/testimonial-block/)
@@ -107,6 +109,26 @@ Yes, you will need to have WordPress 5.0 or later installed to take advantage of
 11. Spacer and Divider Block
 
 == Changelog ==
+= 1.8.1 =
+* Add files that were lost during transmission when releasing 1.8.0.
+
+= 1.8.0 =
+* Made all blocks compatible with the official AMP plugin. No more validation errors.
+* Notice block: Improve dismissible notice support for older browsers.
+* Notice block: Fix bug that caused dismiss icon to show on non-dismissible notices under certain conditions.
+* Post & Page Grid block: Improved grid support for Internet Explorer.
+* Post & Page Grid block: Fix compatibility issue with WordPress 5.2
+* Post & Page Grid block: Add support for custom image sizes registered by themes and other plugins.
+* Post & Page Grid block: Add full width alignment option.
+* Advanced Columns block: Add support for custom CSS class on inner columns.
+* Button block: Removed custom color palette in favor of the active theme's color palette.
+
+= 1.7.1 =
+* Post Grid: Improve IE11 support on the grid.
+
+= 1.7.0 =
+* Add the Advanced Columns block.
+* Newsletter: Change button to input and adjust styles.
 
 = 1.6.1 =
 * Newsletter: Add instance ID to input field.

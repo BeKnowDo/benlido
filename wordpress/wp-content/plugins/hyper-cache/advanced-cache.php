@@ -14,7 +14,7 @@ if (defined('HYPER_CACHE_IS_MOBILE')) {
 
 $hyper_cache_gzip_accepted = isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false;
 
-$hyper_cache_is_bot = preg_match('#(googlebot)#i', $_SERVER['HTTP_USER_AGENT']);
+$hyper_cache_is_bot = isset($_SERVER['HTTP_USER_AGENT']) && preg_match('#(googlebot)#i', $_SERVER['HTTP_USER_AGENT']);
 
 if (HC_MOBILE === 2 && $hyper_cache_is_mobile) {
     hyper_cache_header('stop - mobile');
@@ -23,12 +23,13 @@ if (HC_MOBILE === 2 && $hyper_cache_is_mobile) {
 }
 
 // Use this only if you can't or don't want to modify the .htaccess
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] != 'GET') {
+    hyper_cache_header('stop - non get');
     $cache_stop = true;
     return false;
 }
 
-if ($_SERVER['QUERY_STRING'] != '') {
+if (!empty($_SERVER['QUERY_STRING'])) {
     hyper_cache_header('stop - query string');
     $cache_stop = true;
     return false;
@@ -39,25 +40,26 @@ if (defined('SID') && SID != '') {
     return false;
 }
 
-if (!$hyper_cache_is_bot || $hyper_cache_is_bot && !HC_BOTS_IGNORE_NOCACHE) {
-    if (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache') {
-        hyper_cache_header('stop - no cache header');
-        $cache_stop = true;
-        return false;
-    }
-
-    if (isset($_SERVER['HTTP_PRAGMA']) && $_SERVER['HTTP_PRAGMA'] == 'no-cache') {
-        hyper_cache_header('stop - no cache header');
-        $cache_stop = true;
-        return false;
-    }
+if (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache') {
+    hyper_cache_header('stop - no cache header');
+    $cache_stop = true;
+    return false;
 }
+
+if (isset($_SERVER['HTTP_PRAGMA']) && $_SERVER['HTTP_PRAGMA'] == 'no-cache') {
+    hyper_cache_header('stop - no cache header');
+    $cache_stop = true;
+    return false;
+}
+
 
 // Used globally
 $hyper_cache_is_ssl = false;
 
+// Copied from WP core
 if (isset($_SERVER['HTTPS'])) {
-    if ('on' == strtolower($_SERVER['HTTPS']) || '1' == $_SERVER['HTTPS']) {
+    $server_https = strtolower($_SERVER['HTTPS']);
+    if ('on' == $server_https || '1' == $server_https) {
         $hyper_cache_is_ssl = true;
     } else if (isset($_SERVER['SERVER_PORT']) && ( '443' == $_SERVER['SERVER_PORT'] )) {
         $hyper_cache_is_ssl = true;
@@ -72,7 +74,7 @@ if (HC_HTTPS === 0 && $hyper_cache_is_ssl) {
 
 if (HC_REJECT_AGENTS_ENABLED && isset($_SERVER['HTTP_USER_AGENT'])) {
     if (preg_match('#(HC_REJECT_AGENTS)#i', $_SERVER['HTTP_USER_AGENT'])) {
-        hyper_cache_header('stop - user agent');
+        hyper_cache_header('stop - rejected user agent');
         $cache_stop = true;
         return false;
     }
@@ -97,9 +99,10 @@ if (!empty($_COOKIE)) {
             $cache_stop = true;
             return false;
         }
+        
         if (HC_REJECT_COOKIES_ENABLED) {
             if (preg_match('#(HC_REJECT_COOKIES)#i', $n)) {
-                hyper_cache_header('stop - bypass cookie');
+                hyper_cache_header('stop - rejected cookie');
                 $cache_stop = true;
                 return false;
             }
@@ -118,7 +121,6 @@ if (HC_MOBILE === 1 && $hyper_cache_is_mobile) {
     $hyper_cache_group .= '-mobile';
 }
 
-//$hc_file = ABSPATH . 'wp-content/cache/lite-cache' . $_SERVER['REQUEST_URI'] . '/index' . $hc_group . '.html';
 $hc_uri = hyper_cache_sanitize_uri($_SERVER['REQUEST_URI']);
 $hc_host = hyper_cache_sanitize_host($_SERVER['HTTP_HOST']);
 $hc_file = 'HC_FOLDER/' . $hc_host . $hc_uri . '/index' . $hyper_cache_group . '.html';
@@ -190,11 +192,11 @@ if ($hc_gzip) {
     header('Content-Length: ' . filesize($hc_file));
 }
 
-if (HC_READFILE) {
+//if (HC_READFILE) {
     readfile($hc_file);
-} else {
-    echo file_get_contents($hc_file);
-}
+//} else {
+//    echo file_get_contents($hc_file);
+//}
 die();
 
 function hyper_cache_sanitize_uri($uri) {

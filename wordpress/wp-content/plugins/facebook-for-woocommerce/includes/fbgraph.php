@@ -1,5 +1,10 @@
 <?php
 /**
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
  * @package FacebookCommerce
  */
 
@@ -166,6 +171,18 @@ class WC_Facebookcommerce_Graph_API {
     self::_post($log_url, $data);
   }
 
+  public function log_tip_event($tip_id, $channel_id, $event) {
+    $tip_event_log_url = $this->build_url('', '/log_tip_events');
+
+    $data = array(
+      'tip_id' => $tip_id,
+      'channel_id' => $channel_id,
+      'event' => $event
+    );
+
+    self::_post($tip_event_log_url, $data);
+  }
+
   public function create_upload($facebook_feed_id, $path_to_feed_file) {
     $url = $this->build_url(
       $facebook_feed_id,
@@ -202,6 +219,43 @@ class WC_Facebookcommerce_Graph_API {
     // {id: <upload id>, end_time: <time when upload completes>}
     // failure API will return {error: <error message>}
     return self::_get($url);
+  }
+
+  // success API call will return a JSON of tip info
+  public function get_tip_info($external_merchant_settings_id) {
+    $url = $this->build_url($external_merchant_settings_id, '/?fields=connect_woo');
+    $response = self::_get($url, $this->api_key);
+    $data = array(
+      'response' => $response,
+    );
+    if (is_wp_error($response)) {
+      $data['error_type'] = 'is_wp_error';
+      WC_Facebookcommerce_Utils::fblog(
+        'Failed to get AYMT tip info via API.',
+        $data,
+        true);
+      return;
+    }
+    if ($response['response']['code'] != '200') {
+      $data['error_type'] = 'Non-200 error code from FB';
+      WC_Facebookcommerce_Utils::fblog(
+        'Failed to get AYMT tip info via API.',
+        $data,
+        true);
+      return;
+    }
+
+    $response_body = wp_remote_retrieve_body($response);
+    $connect_woo =
+      WC_Facebookcommerce_Utils::decode_json($response_body)->connect_woo;
+    if (!isset($connect_woo)) {
+      $data['error_type'] = 'Response body not set';
+      WC_Facebookcommerce_Utils::fblog(
+        "Failed to get AYMT tip info via API.",
+        $data,
+        true);
+    }
+    return $connect_woo;
   }
 
   public function get_facebook_id($facebook_catalog_id, $product_id) {

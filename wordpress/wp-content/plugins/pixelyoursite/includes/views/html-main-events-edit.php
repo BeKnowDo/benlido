@@ -480,7 +480,7 @@ $event = isset( $_REQUEST['id'] ) ? CustomEventFactory::getById( $_REQUEST['id']
 
 <div class="card card-disabled">
     <div class="card-header">
-        Google Ads <?php renderProBadge(); ?><?php cardCollapseBtn(); ?>
+        Google Ads <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature'); ?><?php cardCollapseBtn(); ?>
     </div>
     <div class="card-body">
         <div class="row mb-2">

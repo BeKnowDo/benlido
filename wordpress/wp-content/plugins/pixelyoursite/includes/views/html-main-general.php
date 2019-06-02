@@ -126,7 +126,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable on Google Ads</h4>
-	            <?php renderProBadge() ?>
+	            <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature') ?>
             </div>
         </div>
 
@@ -266,7 +266,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col">
 			    <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the search event on Google Ads</h4>
-			    <?php renderProBadge() ?>
+			    <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature') ?>
             </div>
         </div>
         
@@ -326,7 +326,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the Form event on Google Ads</h4>
-                <?php renderProBadge() ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature') ?>
             </div>
         </div>
 
@@ -386,7 +386,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col">
 			    <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the Comment event on Google Ads</h4>
-			    <?php renderProBadge() ?>
+			    <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature') ?>
             </div>
         </div>
 
@@ -447,7 +447,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="col">
                 <?php renderDummySwitcher(); ?>
                 <h4 class="switcher-label">Enable the Download event on Google Ads</h4>
-                <?php renderProBadge() ?>
+                <?php renderProBadge('https://www.pixelyoursite.com/google-ads-tag/?utm_source=pys-free-plugin&utm_medium=pro-badge&utm_campaign=pro-feature') ?>
             </div>
         </div>
         

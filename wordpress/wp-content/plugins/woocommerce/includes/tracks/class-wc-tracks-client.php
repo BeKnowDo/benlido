@@ -34,7 +34,7 @@ class WC_Tracks_Client {
 	 */
 	public static function init() {
 		// Use wp hook for setting the identity cookie to avoid headers already sent warnings.
-		add_action( 'wp_loaded', array( __CLASS__, 'maybe_set_identity_cookie' ) );
+		add_action( 'admin_init', array( __CLASS__, 'maybe_set_identity_cookie' ) );
 	}
 
 	/**
@@ -137,10 +137,10 @@ class WC_Tracks_Client {
 	 * @return array Identity properties.
 	 */
 	public static function get_identity( $user_id ) {
-		$jetpack_lib = trailingslashit( WP_PLUGIN_DIR ) . 'jetpack/_inc/lib/tracks/client.php';
+		$jetpack_lib = '/tracks/client.php';
 
-		if ( class_exists( 'Jetpack' ) && file_exists( $jetpack_lib ) ) {
-			include_once $jetpack_lib;
+		if ( class_exists( 'Jetpack' ) && file_exists( jetpack_require_lib_dir() . $jetpack_lib ) ) {
+			include_once jetpack_require_lib_dir() . $jetpack_lib;
 
 			if ( function_exists( 'jetpack_tracks_get_identity' ) ) {
 				return jetpack_tracks_get_identity( $user_id );

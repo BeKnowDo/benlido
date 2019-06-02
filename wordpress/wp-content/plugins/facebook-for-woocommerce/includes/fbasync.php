@@ -1,5 +1,10 @@
 <?php
 /**
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
  * @package FacebookCommerce
  */
 
@@ -30,9 +35,6 @@ class WC_Facebookcommerce_Async_Request extends WP_Async_Request {
    */
   protected function handle() {
     // Actions to perform
-    error_log("Okay doing async HANDLE");
-
-    error_log($_POST['url']);
   }
 
 }

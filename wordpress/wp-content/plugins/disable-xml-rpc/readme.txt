@@ -3,7 +3,7 @@ Contributors: solvethenet, philerb
 Donate link: http://www.philerb.com/wp-plugins/appreciation/
 Tags: xmlrpc
 Requires at least: 3.5
-Tested up to: 5.1.1
+Tested up to: 5.0.2
 Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

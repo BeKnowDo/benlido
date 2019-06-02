@@ -562,3 +562,18 @@
     <p>You can use this option to match the product ID that Google Ads Tag will use for the Dynamic Remarketing
         parameters. The ID should be identical to the one used by your Google Merchant or Custom feed.</p>
 </div>
+
+<div id="pys-google_ads_conversion_label" style="display: none; visibility: hidden">
+    <p>Transform this event into a Google Ads conversion:</p>
+    <p>Create a conversion inside your Google Ads account, copy its label and paste it here.</p>
+    <p>If you have more than one Google Tags installed, select the same one where the conversion was created.</p>
+    <p><a href="https://www.pixelyoursite.com/documentation/track-google-ads-conversion-on-woocommerce"
+          target="_blank">Click here for details</a></p>
+</div>
+
+<div id="pys-ga_cross_domain_tracking" style="display: none; visibility: hidden">
+    <p>Cross-domain measurement makes it possible for Analytics to see sessions on two related sites (such as an
+        ecommerce site and a separate shopping cart site) as a single session.</p>
+    <p><a href="https://www.pixelyoursite.com/pixelyoursite-free-version/google-analytics-cross-domain-tracking"
+          target="_blank">Click here for help</a></p>
+</div>

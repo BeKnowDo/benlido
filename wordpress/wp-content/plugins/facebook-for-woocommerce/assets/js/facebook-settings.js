@@ -1,4 +1,26 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @package FacebookCommerce
+ */
+
 var fb_sync_no_response_count = 0;
+var fb_show_advanced_options = false;
+
+function toggleAdvancedOptions() {
+    var opts = document.getElementById("fbAdvancedOptions");
+    if (!fb_show_advanced_options) {
+      opts.style.display = "block";
+      document.getElementById('fbAdvancedOptionsText').innerHTML = 'Hide Advanced Settings';
+    } else {
+      opts.style.display = "none";
+      document.getElementById('fbAdvancedOptionsText').innerHTML = 'Show Advanced Settings';
+    }
+    fb_show_advanced_options = !fb_show_advanced_options;
+}
 
 function openPopup() {
   var width = 1153;
@@ -206,8 +228,7 @@ function save_settings(callback = null, failcallback = null, localsettings = nul
 //   1.  sync products again after plugin is configured
 //   2.  check api_key, which is from facebook and is only necessary
 //       for following sync products
-function save_settings_for_plugin(plugin_settings, callback, failcallback) {
-  settings = Object.assign({}, settings, plugin_settings);
+function save_settings_for_plugin(callback, failcallback) {
   save_settings(
     function(response){
       if (response && response.includes('settings_saved')){
@@ -261,6 +282,9 @@ function reset_buttons(){
     cta_element.style.width = '80px';
     cta_element.href = '#';
     cta_element.onclick= function() { facebookConfig(); };
+  }
+  if(document.querySelector('#learnmore_button')){
+    document.querySelector('#learnmore_button').style.display = 'none';
   }
   if(document.querySelector('#setup_h1')) {
     document.querySelector('#setup_h1').innerHTML =
@@ -325,6 +349,12 @@ function sync_not_in_progress(){
       };
     } else {
       cta_element.style['pointer-events'] = 'none';
+    }
+  }
+  if(document.querySelector('#learnmore_button')){
+    var learnmore_element = document.querySelector('#learnmore_button');
+    if (window.facebookAdsToolboxConfig.diaSettingId) {
+      learnmore_element.style.display = '';
     }
   }
   if(document.querySelector('#setup_h1')) {
@@ -491,16 +521,33 @@ function setAccessTokenAndPageId(message) {
 }
 
 function setMsgerChatSetup(data) {
-  if (data.hasOwnProperty('is_facebook_messenger_chat_plugin_enabled')) {
-    settings.messenger_chat_plugin_enabled =
-      data.is_facebook_messenger_chat_plugin_enabled;
+  if (data.hasOwnProperty('is_messenger_chat_plugin_enabled')) {
+    settings.is_messenger_chat_plugin_enabled =
+      data.is_messenger_chat_plugin_enabled;
   }
   if (data.hasOwnProperty('facebook_jssdk_version')) {
-    settings.messenger_chat_jssdk_version =
+    settings.facebook_jssdk_version =
       data.facebook_jssdk_version;
   }
   if (data.hasOwnProperty('page_id')) {
     settings.fb_page_id = data.page_id;
+  }
+
+  if (data.hasOwnProperty('customization')) {
+    var customization = data.customization;
+
+    if (customization.hasOwnProperty('greetingTextCode')) {
+      settings.msger_chat_customization_greeting_text_code =
+        customization.greetingTextCode;
+    }
+    if (customization.hasOwnProperty('locale')) {
+      settings.msger_chat_customization_locale =
+        customization.locale;
+    }
+    if (customization.hasOwnProperty('themeColorCode')) {
+      settings.msger_chat_customization_theme_color_code =
+        customization.themeColorCode;
+    }
   }
 }
 
@@ -550,8 +597,8 @@ function iFrameListener(event) {
       save_settings_and_sync(event.data);
       break;
     case 'set msger chat':
-      setMsgerChatSetup(event.data);
-      save_settings_for_plugin(event.data.params,
+      setMsgerChatSetup(event.data.params);
+      save_settings_for_plugin(
         function(response) {
           window.sendToFacebook('ack msger chat', event.data);
         },
@@ -766,4 +813,70 @@ function show_debug_info() {
     document.querySelector('#debug_info').style.display = 'none';
   }
   window.debug_info = '';
+}
+
+function fbe_init_nux_messages() {
+  var jQuery = window.jQuery;
+  jQuery(function() {
+    jQuery.each(jQuery('.nux-message'), function(_index, nux_msg) {
+      var nux_msg_elem = jQuery(nux_msg);
+      var targetid = nux_msg_elem.data('target');
+      var target_elem = jQuery('#' + targetid);
+      var t_pos = target_elem.position();
+      var t_half_height = target_elem.height() / 2;
+      var t_width = target_elem.outerWidth();
+      nux_msg_elem.css({
+        'top': '' + Math.ceil(t_pos.top + t_half_height) + 'px',
+        'left': '' + Math.ceil(t_pos.left + t_width) + 'px',
+        'display': 'block'
+      });
+      jQuery('.nux-message-close-btn', nux_msg_elem).click(function() {
+        jQuery(nux_msg).hide();
+      });
+    });
+  });
+}
+
+function saveAutoSyncSchedule() {
+    var isChecked = document.getElementsByClassName('autosyncCheck')[0].checked;
+    var timebox = document.getElementsByClassName('autosyncTime')[0];
+    var button = document.getElementsByClassName('autosyncSaveButton')[0];
+    var saved = document.getElementsByClassName('autosyncSavedNotice')[0];
+
+    if (!isChecked) {
+      timebox.setAttribute('disabled', true);
+    } else {
+      timebox.removeAttribute('disabled');
+      saved.style.transition = '';
+      saved.style.opacity = 1;
+      // Fade out the small 'Saved' after 3 seconds.
+      setTimeout(function() {
+        saved.style.opacity = 0;
+        saved.style.transition = 'opacity 5s';}
+        ,3000);
+    }
+
+    ajax('ajax_schedule_force_resync', {"enabled": isChecked ? 1 : 0, "time": timebox.value});
+}
+
+function onSetDisableSyncOnDevEnvironment() {
+  var isChecked = document.getElementsByClassName('disableOnDevEnvironment')[0].checked;
+  ajax(
+    'ajax_update_fb_option',
+    {
+      "option": "fb_disable_sync_on_dev_environment",
+      "option_value": isChecked ? 1 : 0
+    }
+  );
+}
+
+function syncShortDescription() {
+  var isChecked = document.getElementsByClassName('syncShortDescription')[0].checked;
+  ajax(
+    'ajax_update_fb_option',
+    {
+      "option": "fb_sync_short_description",
+      "option_value": isChecked ? 1 : 0
+    }
+  );
 }

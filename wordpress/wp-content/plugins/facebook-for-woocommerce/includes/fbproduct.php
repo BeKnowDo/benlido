@@ -1,7 +1,13 @@
 <?php
 /**
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
  * @package FacebookCommerce
  */
+
 if (! defined('ABSPATH')) {
   exit;
 }
@@ -20,6 +26,8 @@ class WC_Facebook_Product {
   // Should match facebook-commerce.php while we migrate that code over
   // to this object.
   const FB_PRODUCT_DESCRIPTION = 'fb_product_description';
+  const FB_PRODUCT_PRICE = 'fb_product_price';
+  const FB_PRODUCT_IMAGE = 'fb_product_image';
   const FB_VARIANT_IMAGE = 'fb_image';
   const FB_VISIBILITY = 'fb_visibility';
 
@@ -41,6 +49,7 @@ class WC_Facebook_Product {
     $this->fb_use_parent_image = null;
     $this->fb_price = 0;
     $this->main_description = '';
+    $this->sync_short_description = get_option('fb_sync_short_description', false);
 
     // Variable products should use some data from the parent_product
     // For performance reasons, that data shouldn't be regenerated every time.
@@ -106,6 +115,25 @@ class WC_Facebook_Product {
       return $this->fb_price;
     }
 
+    $price = get_post_meta(
+      $this->id,
+      self::FB_PRODUCT_PRICE,
+      true);
+
+    if (is_numeric($price)) {
+      return intval(round($price * 100));
+    }
+
+    // If product is composite product, we rely on their pricing.
+    if (class_exists('WC_Product_Composite')
+      && $this->woo_product->get_type() === 'composite') {
+      $price = get_option('woocommerce_tax_display_shop') === 'incl'
+        ? $this->woo_product->get_composite_price_including_tax()
+        : $this->woo_product->get_composite_price();
+        $this->fb_price = intval(round($price * 100));
+        return $this->fb_price;
+    }
+
     // Get regular price: regular price doesn't include sales
     $regular_price = floatval($this->get_regular_price());
 
@@ -161,6 +189,13 @@ class WC_Facebook_Product {
               . $name . '&w=530&h=530'; // TODO: BETTER PLACEHOLDER
       return array($image_url);
     }
+
+    $image_override = get_post_meta($this->id, self::FB_PRODUCT_IMAGE, true);
+    if ($image_override) {
+      array_unshift($image_urls, $image_override);
+      $image_urls = array_unique($image_urls);
+    }
+
     return $image_urls;
   }
 
@@ -181,6 +216,31 @@ class WC_Facebook_Product {
       $this->id,
       self::FB_PRODUCT_DESCRIPTION,
       $description);
+  }
+
+  public function set_product_image($image) {
+    if ($image !== null && strlen($image) !== 0) {
+      $image = WC_Facebookcommerce_Utils::clean_string($image);
+      $image = WC_Facebookcommerce_Utils::make_url($image);
+      update_post_meta(
+       $this->id,
+       self::FB_PRODUCT_IMAGE,
+       $image);
+    }
+  }
+
+  public function set_price($price) {
+    if (is_numeric($price)) {
+      $this->fb_price = intval(round($price * 100));
+      update_post_meta(
+        $this->id,
+        self::FB_PRODUCT_PRICE,
+        $price);
+    } else {
+      delete_post_meta(
+        $this->id,
+        self::FB_PRODUCT_PRICE);
+    }
   }
 
   public function get_use_parent_image() {
@@ -238,7 +298,7 @@ class WC_Facebook_Product {
     if ($post_content) {
       $description = $post_content;
     }
-    if ($description == '' && $post_excerpt) {
+    if ($this->sync_short_description || ($description == '' && $post_excerpt)) {
       $description = $post_excerpt;
     }
     if ($description == '') {

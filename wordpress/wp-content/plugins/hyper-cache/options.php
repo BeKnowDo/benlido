@@ -254,49 +254,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
         </div>
     <?php } ?>
     
-    <div class="hc-box">
-        <h3>Your donation helps children</h3>
-        
-        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><img style="width: auto; height: auto;" src="<?php echo plugins_url('hyper-cache')?>/images/donation.png"></a>
-        
-        <p>
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><strong>Help children</strong> and support this plugin</a>. <a href="https://www.satollo.net/donations" target="_blank">Read more</a>.
-        </p>
-    </div>
-    <!--
-    <div class="hc-box">
-        <h3>Optimize your images with ShortPixel</h3>
-        
-        <a href="https://www.satollo.net/affiliate/shortpixel" target="_blank"><img src="<?php echo plugins_url('hyper-cache')?>/images/shortpixel.png"></a>
-        
-        <p>
-            <a href="https://www.satollo.net/affiliate/shortpixel" target="_blank">Don't lose the cache benefits serving oversized pictures (affiliate).</a>
-        </p>
-    </div>
-    -->
     
-    <div class="hc-box">
-        <h3>Is your site without a newsletter?</h3>
-        
-        <a href="https://www.thenewsletterplugin.com/" target="_blank"><img src="<?php echo plugins_url('hyper-cache')?>/images/newsletter.png"></a>
-        
-        <p>
-            <a href="https://www.thenewsletterplugin.com/" target="_blank">More than a newsletter is a mail marketing plugin (owner).</a>
-        </p>
-    </div> 
-    
-    <div class="hc-box">
-        <h3>CSS and JS optimization</h3>
-        
-        <a href="https://it.wordpress.org/plugins/autoptimize/" target="_blank"><img src="<?php echo plugins_url('hyper-cache')?>/images/autoptimize.jpg"></a>
-        
-        <p>
-            <a href="https://it.wordpress.org/plugins/autoptimize/" target="_blank">Rank high on Google Pagespeed (friend).</a>
-        </p>
-    </div>  
-   
-    
-    <div style="clear: both"></div>
 
 
     <?php $controls->show(); ?>
@@ -309,9 +267,11 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
         <p>
             Please, refer to the <a href="https://www.satollo.net/plugins/hyper-cache" target="_blank">official page</a>
             and the <a href="https://www.satollo.net/forums/forum/hyper-cache" target="_blank">official forum</a> for support.
-
+        </p>
+        <p style="font-size: 1.2em; border: 1px solid #000; padding: 20px;">
             <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><img style="vertical-align: bottom" src="https://www.satollo.net/images/donate.png"></a>
-            Even <b>2$</b> helps! (<a href="https://www.satollo.net/donations" target="_blank">read more</a>)
+            but before <a href="https://www.satollo.net/donations" target="_blank">read why this is a good thing</a>.
+            Even <b>2$</b> helps!
         </p>
 
         <p>
@@ -325,6 +285,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                 <li><a href="#tabs-general"><?php _e('General', 'hyper-cache'); ?></a></li>
                 <li><a href="#tabs-rejects"><?php _e('Bypasses', 'hyper-cache'); ?></a></li>
                 <li><a href="#tabs-mobile"><?php _e('Mobile', 'hyper-cache'); ?></a></li>
+                <li><a href="#tabs-advanced"><?php _e('Advanced', 'hyper-cache'); ?></a></li>
                 <li><a href="#tabs-cdn"><?php _e('CDN', 'hyper-cache'); ?></a></li>
             </ul>
 
@@ -390,26 +351,8 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-                    <tr>
-                        <th><?php _e('Enable on-the-fly compression', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->checkbox('gzip_on_the_fly'); ?>
-
-                            <p class="description">
-                                <?php _e('Enable on the fly compression for non cached pages.', 'hyper-cache'); ?>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-
-                        <th><?php _e('When the home is refreshed, refresh even the', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->text('clean_last_posts', 5); ?> <?php _e('latest post', 'hyper-cache'); ?>
-                            <p class="description">
-                                <?php _e('The number of latest posts to invalidate when the home is invalidated.', 'hyper-cache'); ?>
-                            </p>
-                        </td>
-                    </tr>
+                    
+                    
 
                     <tr>
                         <th><?php _e('When a post is edited', 'hyper-cache'); ?></th>
@@ -423,41 +366,9 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                         </td>
                     </tr>
 
-                    <tr>
-                        <th><?php _e('When a post receives a comment', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->checkbox('clean_archives_on_comment'); ?> clean archives (categories, tags, ..., but not the home)
-                            <br>
-                            <?php $controls->checkbox('clean_home_on_comment'); ?> clean the home
-                            <p class="description">
+                 
 
-                            </p>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th><?php _e('Cache folder', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php if (defined('HYPER_CACHE_FOLDER')) { ?>
-                                <?php _e('A custom cache folder is deinfed in wp-config.php', 'hyper-cache'); ?>: <code><?php echo esc_html(HYPER_CACHE_FOLDER)?></code>
-                            <?php } else { ?>
-                                <?php _e('A custom cache folder can be defined in wp-config.php', 'hyper-cache'); ?>
-                                <code>define('HYPER_CACHE_FOLDER', '/path/to/cache/folder');</code>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><?php _e('Next autoclean will run in', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->checkbox('autoclean', 'enable it'); ?>
-
-                            (<?php _e('will run again in', 'hyper-cache'); ?> <?php echo (int)((wp_next_scheduled('hyper_cache_clean')-time())/60) ?> <?php _e('minutes', 'hyper-cache'); ?>)
-                            <p class="description">
-                                <?php _e('The autoclean process removes old files to save disk space.', 'hyper-cache'); ?>
-                                <?php _e('If you enable the "serve expired pages to bots", you should disable the auto clean.', 'hyper-cache'); ?>
-                            </p>
-                        </td>
-                    </tr>
+                   
                     <tr valign="top">
                         <th><?php _e('Allow browser caching', 'hyper-cache'); ?></th>
                         <td>
@@ -484,28 +395,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                         </td>
                     </tr>
 
-                    <tr>
-                        <th><?php _e('Use readfile()', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->checkbox('readfile', __('Enable', 'hyper-cache')); ?>
-                            <p class="description">
-                               <?php _e('Use the PHP function readfile() to send back a page.', 'hyper-cache'); ?>
-                               <?php _e('It should be better than the file_get_contents() actually used.', 'hyper-cache'); ?>
-                            </p>
-                        </td>
-                    </tr>
-<!--
-                    <tr>
-                        <th><?php _e('Ignore no-cache header from bots', 'hyper-cache'); ?></th>
-                        <td>
-                            <?php $controls->checkbox('bots_ignore_nocache', __('Enable', 'hyper-cache')); ?>
-                            <p class="description">
-                                Bots usually send a no-cache request to ask always fresh pages. This option force the cache to
-                                ignore such request and serve a caches page if available.
-                            </p>
-                        </td>
-                    </tr>
--->
+                   
                     <tr>
                         <th><?php _e('Serve expired pages to bots', 'hyper-cache'); ?></th>
                         <td>
@@ -634,6 +524,68 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                                 <?php _e('Older posts won\'t be cached and stored resulting in a lower disk space usage.', 'hyper-cache'); ?>
                                 <?php _e('Useful when older posts have low traffic.', 'hyper-cache'); ?>
                             </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="tabs-advanced">
+                <table class="form-table">
+                    <tr>
+                        <th><?php _e('Enable on-the-fly compression', 'hyper-cache'); ?></th>
+                        <td>
+                            <?php $controls->checkbox('gzip_on_the_fly'); ?>
+
+                            <p class="description">
+                                <?php _e('Enable on the fly compression for non cached pages.', 'hyper-cache'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                <tr>
+                    <tr>
+                        <th><?php _e('When a post receives a comment', 'hyper-cache'); ?></th>
+                        <td>
+                            <?php $controls->checkbox('clean_archives_on_comment'); ?> clean archives (categories, tags, ..., but not the home)
+                            <br>
+                            <?php $controls->checkbox('clean_home_on_comment'); ?> clean the home
+                            <p class="description">
+
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th><?php _e('When the home is refreshed, refresh even the', 'hyper-cache'); ?></th>
+                        <td>
+                            <?php $controls->text('clean_last_posts', 5); ?> <?php _e('latest post', 'hyper-cache'); ?>
+                            <p class="description">
+                                <?php _e('The number of latest posts to invalidate when the home is invalidated.', 'hyper-cache'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                        <th><?php _e('Next autoclean will run in', 'hyper-cache'); ?></th>
+                        <td>
+                            <?php $controls->checkbox('autoclean', 'enable it'); ?>
+
+                            (<?php _e('will run again in', 'hyper-cache'); ?> <?php echo (int)((wp_next_scheduled('hyper_cache_clean')-time())/60) ?> <?php _e('minutes', 'hyper-cache'); ?>)
+                            <p class="description">
+                                <?php _e('The autoclean process removes old files to save disk space.', 'hyper-cache'); ?>
+                                <?php _e('If you enable the "serve expired pages to bots", you should disable the auto clean.', 'hyper-cache'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th><?php _e('Cache folder', 'hyper-cache'); ?></th>
+                        <td>
+                            <?php if (defined('HYPER_CACHE_FOLDER')) { ?>
+                                <?php _e('A custom cache folder is deinfed in wp-config.php', 'hyper-cache'); ?>: <code><?php echo esc_html(HYPER_CACHE_FOLDER)?></code>
+                            <?php } else { ?>
+                                <?php _e('A custom cache folder can be defined in wp-config.php', 'hyper-cache'); ?>
+                                <code>define('HYPER_CACHE_FOLDER', '/path/to/cache/folder');</code>
+                            <?php } ?>
                         </td>
                     </tr>
                 </table>

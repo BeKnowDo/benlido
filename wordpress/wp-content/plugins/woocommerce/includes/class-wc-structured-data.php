@@ -233,9 +233,10 @@ class WC_Structured_Data {
 					);
 				} else {
 					$markup_offer = array(
-						'@type'     => 'AggregateOffer',
-						'lowPrice'  => wc_format_decimal( $lowest, wc_get_price_decimals() ),
-						'highPrice' => wc_format_decimal( $highest, wc_get_price_decimals() ),
+						'@type'      => 'AggregateOffer',
+						'lowPrice'   => wc_format_decimal( $lowest, wc_get_price_decimals() ),
+						'highPrice'  => wc_format_decimal( $highest, wc_get_price_decimals() ),
+						'offerCount' => count( $product->get_children() ),
 					);
 				}
 			} else {
@@ -256,7 +257,7 @@ class WC_Structured_Data {
 
 			$markup_offer += array(
 				'priceCurrency' => $currency,
-				'availability'  => 'https://schema.org/' . ( $product->is_in_stock() ? 'InStock' : 'OutOfStock' ),
+				'availability'  => 'http://schema.org/' . ( $product->is_in_stock() ? 'InStock' : 'OutOfStock' ),
 				'url'           => $permalink,
 				'seller'        => array(
 					'@type' => 'Organization',

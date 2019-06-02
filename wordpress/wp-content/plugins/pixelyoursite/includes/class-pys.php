@@ -60,9 +60,8 @@ final class PYS extends Settings implements Plugin {
         add_action( 'admin_notices', 'PixelYourSite\adminRenderPromoNotice' );
         add_action( 'admin_init', array( $this, 'adminProcessRequest' ), 11 );
 
-	    if ( ! defined( 'DOING_AJAX' ) ) {
-		    add_action( 'template_redirect', array( $this, 'managePixels' ) );
-	    }
+        // run Events Manager
+        add_action( 'template_redirect', array( $this, 'managePixels' ) );
 
 	    // "admin_permission" option custom sanitization function
 	    add_filter( 'pys_core_settings_sanitize_admin_permissions_field', function( $value ) {
@@ -176,6 +175,25 @@ final class PYS extends Settings implements Plugin {
 	 * Front-end entry point
 	 */
     public function managePixels() {
+
+        if (defined('DOING_AJAX') && DOING_AJAX) {
+            return;
+        }
+
+        // disable Events Manager on Customizer and preview mode
+        if (is_admin() || is_customize_preview() || is_preview()) {
+            return;
+        }
+
+        // disable Events Manager on Elementor editor
+        if (did_action('elementor/preview/init') || did_action('elementor/editor/init')) {
+            return;
+        }
+
+        // disable Events Manager on Divi Builder
+        if (function_exists('et_core_is_fb_enabled') && et_core_is_fb_enabled()) {
+            return;
+        }
 
     	// output debug info
 	    add_action( 'wp_head', function() {

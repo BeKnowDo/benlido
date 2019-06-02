@@ -138,20 +138,13 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'WJECF_Debug' ) ) {
 				$coupon      = new WC_Coupon( $coupon_code );
 				$coupon_id   = $coupon->get_id();
 
-				$array = array( 'result' => 'error' );
 				if ( $coupon_id ) {
-					$meta = array();
-					foreach ( array_keys( get_post_meta( $coupon_id ) ) as $key ) {
-						$meta[ $key ] = is_callable( array( $coupon, "get_{$key}" ) ) ? $coupon->{"get_{$key}"}() : $coupon->get_meta( $key );
-					}
-					ksort( $meta );
-					$array['coupons'] = array(
-						'coupon_id'   => $coupon_id,
-						'coupon_code' => $coupon->get_code(),
-						'meta'        => $meta,
+					$array = array(
+						'result'  => 'ok',
+						'coupons' => array( $coupon_id => $coupon->get_data() ),
 					);
-					$array['result']  = 'ok';
 				} else {
+					$array = array( 'result' => 'error' );
 				}
 				header( 'Content-Type: application/json' );
 				echo json_encode( $array );

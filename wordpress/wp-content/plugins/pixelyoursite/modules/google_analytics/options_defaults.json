@@ -4,6 +4,10 @@
   "enhance_link_attribution": false,
   "anonimize_ip": false,
 
+  "cross_domain_enabled": false,
+  "cross_domain_accept_incoming": false,
+  "cross_domain_domains": [],
+
   "search_event_enabled": true,
   "search_event_non_interactive": true,
   "comment_event_enabled": true,

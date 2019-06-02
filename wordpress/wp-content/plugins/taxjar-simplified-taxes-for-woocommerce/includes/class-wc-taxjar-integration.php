@@ -22,7 +22,7 @@ class WC_Taxjar_Integration extends WC_Integration {
 		$this->integration_uri    = $this->app_uri . 'account/apps/add/woo';
 		$this->regions_uri        = $this->app_uri . 'account#states';
 		$this->uri                = 'https://api.taxjar.com/v2/';
-		$this->ua                 = 'TaxJarWordPressPlugin/2.1.0/WordPress/' . get_bloginfo( 'version' ) . '+WooCommerce/' . WC()->version . '; ' . get_bloginfo( 'url' );
+		$this->ua                 = 'TaxJarWordPressPlugin/2.3.0/WordPress/' . get_bloginfo( 'version' ) . '+WooCommerce/' . WC()->version . '; ' . get_bloginfo( 'url' );
 		$this->debug              = filter_var( $this->get_option( 'debug' ), FILTER_VALIDATE_BOOLEAN );
 		$this->download_orders    = new WC_Taxjar_Download_Orders( $this );
 
@@ -49,6 +49,9 @@ class WC_Taxjar_Integration extends WC_Integration {
 
 			// Calculate Taxes for Backend Orders (Woo 2.6+)
 			add_action( 'woocommerce_before_save_order_items', array( $this, 'calculate_backend_totals' ), 20 );
+
+			// Calculate taxes for WooCommerce Subscriptions renewal orders
+            add_filter( 'wcs_new_order_created', array( $this, 'calculate_renewal_order_totals' ), 10, 3 );
 
 			// Settings Page
 			add_action( 'woocommerce_sections_tax',  array( $this, 'output_sections_before' ),  9 );
@@ -304,11 +307,22 @@ class WC_Taxjar_Integration extends WC_Integration {
 		if (
 			empty( $to_country ) ||
 			empty( $to_zip ) ||
-			( empty( $line_items ) && ( 0 == $shipping_amount ) ) ||
-			WC()->customer->is_vat_exempt()
+			( empty( $line_items ) && ( 0 == $shipping_amount ) )
 		) {
 			return false;
 		}
+
+		// validate customer exemption before sending API call
+		if ( is_object( WC()->customer ) ) {
+		    if ( WC()->customer->is_vat_exempt() ) {
+		        return false;
+            }
+        }
+
+		// Valid zip codes to prevent unnecessary API requests
+        if ( ! $this->is_postal_code_valid( $to_country, $to_state, $to_zip ) ) {
+            return false;
+        }
 
 		$taxjar_nexus = new WC_Taxjar_Nexus( $this );
 
@@ -381,7 +395,7 @@ class WC_Taxjar_Integration extends WC_Integration {
 		}
 
 		// Remove taxes if they are set somehow and customer is exempt
-		if ( WC()->customer->is_vat_exempt() ) {
+		if ( is_object( WC()->customer ) && WC()->customer->is_vat_exempt() ) {
 			WC()->cart->remove_taxes(); // Woo < 3.2
 		} elseif ( $taxes['has_nexus'] ) {
 			// Use Woo core to find matching rates for taxable address
@@ -529,6 +543,11 @@ class WC_Taxjar_Integration extends WC_Integration {
 			return;
 		}
 
+		// prevent unnecessary calls to API during add to cart process
+        if ( doing_action( 'woocommerce_add_to_cart' ) ) {
+            return;
+        }
+
 		$cart_taxes = array();
 		$cart_tax_total = 0;
 
@@ -580,9 +599,21 @@ class WC_Taxjar_Integration extends WC_Integration {
 			}
 		}
 
-		// Recalculate shipping package rates
-		foreach ( $wc_cart_object->get_shipping_packages() as $package_key => $package ) {
-			WC()->session->set( 'shipping_for_package_' . $package_key, null );
+		// ensure fully exempt orders have no tax on shipping
+		if ( ! $taxes[ 'freight_taxable' ] ) {
+			foreach ( $wc_cart_object->get_shipping_packages() as $package_key => $package ) {
+				$shipping_for_package = WC()->session->get( 'shipping_for_package_' . $package_key );
+				if ( ! empty( $shipping_for_package['rates'] ) ) {
+					foreach ( $shipping_for_package['rates'] as $shipping_rate ) {
+						if ( method_exists( $shipping_rate, 'set_taxes' ) ) {
+							$shipping_rate->set_taxes( array() );
+						} else {
+							$shipping_rate->taxes = array();
+						}
+						WC()->session->set( 'shipping_for_package_' . $package_key, $shipping_for_package );
+					}
+				}
+			}
 		}
 
 		if ( class_exists( 'WC_Cart_Totals' ) ) { // Woo 3.2+
@@ -656,6 +687,82 @@ class WC_Taxjar_Integration extends WC_Integration {
 	}
 
 	/**
+	 * Triggers tax calculation on both renewal order and subscription when creating a new renewal order
+	 *
+	 * @return WC_Order
+	 */
+	public function calculate_renewal_order_totals( $order, $subscription, $type ) {
+
+		if ( ! is_object( $subscription ) ) {
+			$subscription = wcs_get_subscription( $subscription );
+		}
+
+		// Ensure payment gateway allows order totals to be changed
+		if ( ! $subscription->payment_method_supports( 'subscription_amount_changes' ) ) {
+		    return $order;
+		}
+
+		$this->calculate_order_tax( $order );
+
+		// must calculate tax on subscription in order for my account to properly display the correct tax
+		$this->calculate_order_tax( $subscription );
+
+		$order->calculate_totals();
+		$subscription->calculate_totals();
+
+	    return $order;
+    }
+
+	/**
+	 * Calculate tax on an order
+	 *
+	 * @return null
+	 */
+    public function calculate_order_tax( $order ) {
+	    $address = $this->get_address_from_order( $order );
+	    $line_items = $this->get_backend_line_items( $order );
+
+	    if ( method_exists( $order, 'get_shipping_total' ) ) {
+		    $shipping = $order->get_shipping_total(); // Woo 3.0+
+	    } else {
+		    $shipping = $order->get_total_shipping(); // Woo 2.6
+	    }
+
+	    $taxes = $this->calculate_tax( array(
+		    'to_country' => $address[ 'to_country' ],
+		    'to_state' => $address[ 'to_state' ],
+		    'to_zip' => $address[ 'to_zip' ],
+		    'to_city' => $address[ 'to_city' ],
+		    'to_street' => $address[ 'to_street' ],
+		    'shipping_amount' => $shipping,
+		    'line_items' => $line_items,
+	    ) );
+
+	    if ( class_exists( 'WC_Order_Item_Tax' ) ) { // Add tax rates manually for Woo 3.0+
+		    foreach ( $order->get_items() as $item_key => $item ) {
+			    $product_id = $item->get_product_id();
+			    $line_item_key = $product_id . '-' . $item_key;
+
+			    if ( isset( $taxes['rate_ids'][ $line_item_key ] ) ) {
+				    $rate_id = $taxes['rate_ids'][ $line_item_key ];
+				    $item_tax = new WC_Order_Item_Tax();
+				    $item_tax->set_rate( $rate_id );
+				    $item_tax->set_order_id( $order->get_id() );
+				    $item_tax->save();
+			    }
+		    }
+	    } else { // Recalculate tax for Woo 2.6 to apply new tax rates
+		    if ( class_exists( 'WC_AJAX' ) ) {
+			    remove_action( 'woocommerce_before_save_order_items', array( $this, 'calculate_backend_totals' ), 20 );
+			    if ( check_ajax_referer( 'calc-totals', 'security', false ) ) {
+				    WC_AJAX::calc_line_taxes();
+			    }
+			    add_action( 'woocommerce_before_save_order_items', array( $this, 'calculate_backend_totals' ), 20 );
+		    }
+	    }
+    }
+
+	/**
 	 * Get address details of customer at checkout
 	 *
 	 * @return array
@@ -699,6 +806,22 @@ class WC_Taxjar_Integration extends WC_Integration {
 			'to_street' => $to_street,
 		);
 	}
+
+	/**
+	 * Get ship to address from order object
+	 *
+	 * @return array
+	 */
+	public function get_address_from_order( $order ) {
+	    $address = $order->get_address( 'shipping' );
+		return array(
+			'to_country' => $address[ 'country' ],
+			'to_state' => $address[ 'state' ],
+			'to_zip' => $address[ 'postcode' ],
+			'to_city' => $address[ 'city' ],
+			'to_street' => $address[ 'address_1' ],
+		);
+    }
 
 	/**
 	 * Get line items at checkout
@@ -841,7 +964,7 @@ class WC_Taxjar_Integration extends WC_Integration {
 
 			foreach ( $this->response_line_items as $line_item_key => $line_item ) {
 				// If line item belongs to rate and matches the price, manually set the tax
-				if ( in_array( $line_item_key, $line_items ) && $price == $line_item->line_total ) {
+				if ( in_array( $line_item_key, $line_items ) && round( $price, 2 ) == round( $line_item->line_total, 2 ) ) {
 					if ( function_exists( 'wc_add_number_precision' ) ) {
 						$taxes[ $tax_rate_id ] = wc_add_number_precision( $line_item->tax_collectable );
 					} else {
@@ -961,6 +1084,42 @@ class WC_Taxjar_Integration extends WC_Integration {
 		return apply_filters( 'woocommerce_customer_taxable_address', array( $country, $state, $postcode, $city, $street ) );
 	}
 
+	public function is_postal_code_valid( $to_country, $to_state, $to_zip ) {
+	    $postal_regexes = array(
+            'US' => '/^\d{5}([ \-]\d{4})?$/',
+            'CA' => '/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d$/',
+            'UK' => '/^GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\d{1,4}$/',
+            'FR' => '/^\d{2}[ ]?\d{3}$/',
+            'IT' => '/^\d{5}$/',
+            'DE' => '/^\d{5}$/',
+            'NL' => '/^\d{4}[ ]?[A-Z]{2}$/',
+            'ES' => '/^\d{5}$/',
+            'DK' => '/^\d{4}$/',
+            'SE' => '/^\d{3}[ ]?\d{2}$/',
+            'BE' => '/^\d{4}$/',
+            'IN' => '/^\d{6}$/',
+            'AU' => '/^\d{4}$/',
+        );
+
+	    if ( isset( $postal_regexes[ $to_country ] ) ) {
+	        // SmartCalcs api allows requests with no zip codes outside of the US, mark them as valid
+	        if ( empty( $to_zip ) ) {
+	            if ( $to_country == 'US' ) {
+	                return false;
+                } else {
+	                return true;
+                }
+            }
+
+	        if ( preg_match( $postal_regexes[ $to_country ], $to_zip ) === 0 ) {
+                $this->_log( ':::: Postal code ' . $to_zip . ' is invalid for country ' . $to_country . ', API request stopped. ::::' );
+	            return false;
+            }
+        }
+
+	    return true;
+    }
+
 	/**
 	 * Return either the post value or settings value of a key
 	 *
@@ -975,16 +1134,16 @@ class WC_Taxjar_Integration extends WC_Integration {
             $val = $this->settings[ $key ];
         }
 
-		if ( 'yes' == $val ) {
-			$val = 1;
-		}
+        if ( 'yes' == $val ) {
+            $val = 1;
+        }
 
-		if ( 'no' == $val ) {
-			$val = 0;
-		}
+        if ( 'no' == $val ) {
+            $val = 0;
+        }
 
-		return $val;
-	}
+        return $val;
+    }
 
 	/**
 	 * Check if there is an existing WooCommerce 2.4 API Key

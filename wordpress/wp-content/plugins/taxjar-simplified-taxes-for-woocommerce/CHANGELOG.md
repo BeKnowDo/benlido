@@ -1,3 +1,12 @@
+# 2.3.0 (2019-05-16)
+* Added full support for WooCommerce Subscriptions
+* Fix performance issue with recalculating shipping
+
+# 2.2.0 (2019-04-25)
+* Tested up to WooCommerce 3.6.2
+* Fix exemption not applying to large quantity exempt line items
+* Add zip code validation before sending SmartCalcs API request
+
 # 2.1.0 (2019-04-04)
 * Tested up to WooCommerce 3.5
 * Compatibility support for WooCommerce Smart Coupons
