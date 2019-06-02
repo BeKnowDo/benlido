@@ -10,48 +10,29 @@
 
 ?>
 <div class="site-branding">
-	<div class="wrap hero-wrap">
+	<div class="wrap">
 
-		<?php
-			$logo = '';
-			if (function_exists('get_field')) {
-				$logo = get_field('logo');
-				$hero_title = get_field('hero_title');
-				if (!empty($logo)) {
-					$logo = $logo['url'];
-				}
-			}
-		?>
-		<div class="logo">
-			<a href="<?php echo home_url();?>" title="<?php echo esc_attr(get_bloginfo('description'));?>"><img src="<?php echo $logo;?>" /> <h1 class="site-title"><?php echo get_bloginfo('title');?></h1></a>
-		</div>
-		<div class="row hero">
+		<?php the_custom_logo(); ?>
+
 		<div class="site-branding-text">
+			<?php if ( is_front_page() ) : ?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<?php else : ?>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<?php endif; ?>
+
 			<?php
 			$description = get_bloginfo( 'description', 'display' );
 
 			if ( $description || is_customize_preview() ) :
-			?>
-				<h2 class="hero-title"><?php echo $hero_title;?></h2>
+				?>
 				<p class="site-description"><?php echo $description; ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding-text -->
-		<div class="coming-soon-product-image">
-			<?php 
-			$product_image = '';
-			if (function_exists('get_field')) {
-				$product_image = get_field('product_image');
-				if (!empty($product_image)) {
-					$product_image = $product_image['url'];
-				}
-			}
-			if (!empty($product_image)) {
-				$product_image = '<img src="' . $product_image . '" class="coming-soon-product-image-image" />';
-			}
-			?>
-			<?php echo $product_image;?>
-		</div>
-		</div>
+
+		<?php if ( ( twentyseventeen_is_frontpage() || ( is_home() && is_front_page() ) ) && ! has_nav_menu( 'top' ) ) : ?>
+		<a href="#content" class="menu-scroll-down"><?php echo twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ); ?><span class="screen-reader-text"><?php _e( 'Scroll down to content', 'twentyseventeen' ); ?></span></a>
+	<?php endif; ?>
 
 	</div><!-- .wrap -->
 </div><!-- .site-branding -->
