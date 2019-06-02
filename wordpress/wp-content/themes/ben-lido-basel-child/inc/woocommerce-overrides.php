@@ -110,6 +110,7 @@ function bl_ajax_remove_from_cart() {
 		$kit_index = 0;
 	}
 	if (function_exists('bl_remove_from_cart')) {
-		bl_remove_from_cart($kit_index,$product_id,$variation_id,$quantity,$cart_item_key);
+		 $response = bl_remove_from_cart($kit_index,$product_id,$variation_id,$quantity,$cart_item_key);
 	}
+	wp_send_json( $response );
 }
