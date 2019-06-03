@@ -548,8 +548,27 @@ if (!function_exists('bl_create_new_kit')) {
     }
 }
 
+function bl_rename_kit_name_in_cart($original_name,$new_name) {
+    //error_log('renaming from ' . $original_name . ' to ' . $new_name);
+    $cart = array();
+    if (function_exists('WC')) {
+        $cart = WC()->cart->get_cart();
+    }
+    if (!empty($cart) && is_array($cart)) {
+        foreach ($cart as $hash => $item) {
+            if ($item['kit_name'] == $original_name) {
+                $item['kit_name'] = $new_name;
+            }
+            WC()->cart->cart_contents[$hash] = $item;
+        }
+
+    }
+    WC()->cart->set_session();
+}
+
 if (!function_exists('bl_rename_kit')) {
     function bl_rename_kit($index,$kit_name) {
+        $original_name = '';
         $kit_name = stripslashes(strip_tags($kit_name));
         $kits = bl_get_cart_kits();
         $kit_list = $kits[$index];
@@ -557,10 +576,13 @@ if (!function_exists('bl_rename_kit')) {
             $kit_id = $kit_list['kit_id'];
             $bag = $kit_list['bag'];
             $items = $kit_list['items'];
+            $orignal_kit_name = $kit_list['kit_name'];
             if (!empty($kit_name)) {
                 $kit_name = $kit_name;
             }
             bl_set_kit_list($index,$kit_id,$bag,$items,$kit_name);
+            // we need to rename the items that have this kit name
+            bl_rename_kit_name_in_cart($orignal_kit_name,$kit_name);
             
         }
         // Get mini cart
@@ -1257,17 +1279,41 @@ function bl_save_current_kit($id) {
 
 } // bl_save_current_kit()
 
+// this function updates the actuall woocommerce cart with the item
+function bl_update_cart($current_kit,$product_id,$category_id,$variation_id,$quantity,$is_bag=false) {
+
+}
+
+// this function adds the item to the kit and also to the cart
+// NOTE: should only be used by bl_add_to_kit_cart()
 function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
     // array('kit_id'=>$kit_id,'bag'=>$bag,'items'=>$items);
     global $bl_custom_kit_id;
     $kits = bl_get_cart_kits();
-    $index = bl_get_active_kit_index();
+    //$index = bl_get_active_kit_index();
     $kit_list = $kits[$index];
     $kit_name = $kit_list['kit_name'];
+    $bags_product_category = 0;
+    $is_bag = false;
     if (!empty($kit_list)) {
         $current_kit_id = $kit_list['kit_id'];
     } else {
         $current_kit_id = $bl_custom_kit_id;
+    }
+
+    // see if it's a bag
+    if (function_exists('get_field')) {
+        $bags_product_category = get_field('bags_product_category','option');
+    }
+
+    // see if this is a bag
+    if ($bags_product_category > 0 && $bags_product_category == $category_id) {
+        // see if we have an existing bag
+        $existing_bag = $kit_list['bag'];
+        if (!empty($existing_bag)) {
+            // we need to remove the bag from the cart, and then add the new bag
+            bl_update_cart();
+        }
     }
 
     $holder = array();
@@ -1278,7 +1324,7 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
         
         foreach ($items as $item) {
             // we're just going to use the existing category
-            if ($item['product'] == $product_id) {
+            if ($item['product'] == $product_id && $is_bag == false) {
                 $item['quantity']++;
                 $added = true;
             }
@@ -1286,10 +1332,10 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
         }
     }
 
-    if ($added == false && !empty($holder)) {
+    if ($added == false && !empty($holder) && $is_bag == false) {
         array_unshift($holder,array('category'=>$category_id,'product'=>$product_id,'variation'=>null,'quantity'=>1));
     }
-    else if (empty($holder)) {
+    else if (empty($holder) && $is_bag == false) {
         $holder[] = array('category'=>$category_id,'product'=>$product_id,'variation'=>null,'quantity'=>1);
     }
 
@@ -1303,10 +1349,13 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
 }
 
 // 
-function bl_add_to_kit_cart($product_id,$quantity,$category_id=0) {
+function bl_add_to_kit_cart($product_id,$quantity,$category_id=0,$index=0) {
     global $bl_custom_kit_id;
     $kitting_page = '';
-    $index = bl_get_active_kit_index();
+
+    if (empty($index) && $index !== 0) {
+        $index = bl_get_active_kit_index();
+    }
     if (function_exists('get_field')) {
         $kitting_page = get_field('kitting_page','option');
     }
@@ -1681,11 +1730,14 @@ function bl_start_add_bag_to_kit($index) {
     $bags_url = '';
     $resp = array();
     if (function_exists('get_field')) {
-        $bags_category_slug = get_field('bags_page','option');
+        $bags_category_slug = get_field('bags_product_category','option');
         if (!empty($bags_category_slug)) {
-            $bags_category = get_term_by( 'slug', $bags_category_slug, 'product_cat' );
+            $bags_category = get_term_by( 'id', $bags_category_slug, 'product_cat' );
             $bags_category_link = get_term_link( $bags_category->term_id, 'product_cat' );
-            $bags_url = $bags_category_link . '?is_adding=1';
+            if (!is_object($bags_category_link)) {
+                $bags_url = $bags_category_link . '?is_adding=1';
+            }   
+            
             $resp['redirect_url'] = $bags_url;
         }
     }

@@ -6,7 +6,7 @@ require_once 'inc/woocommerce-overrides.php';
 add_action( 'wp_enqueue_scripts', 'basel_child_enqueue_styles', 1000 );
 
 function basel_child_enqueue_styles() {
-	$version = '1.2';
+	$version = '1.3';
 
 	wp_register_script('ben-lido-script', get_stylesheet_directory_uri() . '/assets/js/benlido.min.js', array('jquery'),$version);
 	wp_enqueue_script( 'jquery-ui-core', false, array('jquery') );
@@ -39,7 +39,20 @@ function basel_child_enqueue_styles() {
 
 }
 
+
 function bl_storefront_overrides() {
+	// this replaces the AJAX add to cart functions with our own
+	if (function_exists('bl_replace_ajax_add_to_cart')) {
+		// first, remove existing action
+		remove_action( 'wp_ajax_woocommerce_add_to_cart', array( 'WC_AJAX', 'add_to_cart' ) );
+		remove_action( 'wp_ajax_nopriv_woocommerce_add_to_cart', array( 'WC_AJAX', 'add_to_cart' ) );
+
+		// WC AJAX can be used for frontend ajax requests.
+		remove_action( 'wc_ajax_add_to_cart', array( 'WC_AJAX', 'add_to_cart' ) );
+		bl_replace_ajax_add_to_cart();
+	}
+
+	// this adds the hook to add meta info to the cart items
 	if (function_exists('bl_add_to_cart_hook')) {
 		add_action('woocommerce_add_to_cart', 'bl_add_to_cart_hook',99,6);
 	}
@@ -54,6 +67,11 @@ function bl_storefront_overrides() {
 
 	// customize subtotals to come from the kits and not the shopping cart 
 	add_filter( 'woocommerce_cart_subtotal', 'bl_woocommerce_cart_subtotal', 10, 3 ); 
+
+	if (function_exists('bl_display_kit_name_cart')) {
+		add_filter( 'woocommerce_get_item_data', 'bl_display_kit_name_cart', 10, 2 );
+	}
+	
 	
 }
 

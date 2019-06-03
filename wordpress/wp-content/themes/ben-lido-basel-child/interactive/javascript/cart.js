@@ -3,15 +3,44 @@
         $('.create-kit').height($('.last_kit').height());
 
         $('.js-variation-select').on('click', function () {
-            $('#bag-'+ $(this).data('product_id')).data('variation_id', $(this).data('variation_id'));
-            $('#product-id-'+ $(this).data('product_id')+' div').removeClass('selected');
-            $(this).addClass('selected');
+            var variation_id = $(this).data('variation_id');
+            if (variation_id) {
+                $('#bag-'+ $(this).data('product_id')).data('variation_id', variation_id);
+                var el = $(this).closest('.product-grid-single');
+                $('.choices-container a',el).each(function(idx,elem) {
+                    console.log(elem);
+                    $(elem).data('variation_id', variation_id);
+                });
+                $('#product-id-'+ $(this).data('product_id')+' div').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
         });
 
     }); // end document ready
 
 
 })(jQuery);
+
+function bl_add_item_to_kit(OBJ) {
+    var has_variations = jQuery(OBJ).data('has_variations');
+    var variation_id = jQuery(OBJ).data('variation_id');
+    variation_id = parseInt(variation_id); 
+    var product_id = jQuery(OBJ).data('product_id');
+    var category_id = jQuery(OBJ).data('category_id');
+    var index = jQuery(OBJ).data('index');
+    var url = '/?wc-ajax=add_to_cart';
+    if (has_variations == 1 && variation_id > 0) {
+        var data = {'index':index,'product_id':product_id,'category_id':category_id,'variation_id':variation_id,'quantity':1};
+        jQuery.post(url,data,function(response) {
+            // Trigger event so themes can refresh other areas.
+            jQuery( document.body ).trigger( 'added_to_cart', [ response.fragments, response.cart_hash, null ] );
+        });
+    } else {
+        alert('Please select a color');
+    }
+
+}
 
 function bl_create_new_kit() {
 

@@ -19,6 +19,17 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
+// see how many kits we have
+$kits = array();
+$has_variations = false;
+if (function_exists('bl_get_cart_kits')) {
+    $kits = bl_get_cart_kits();
+}
+
+if ($product->is_type( 'variable' )) {
+    $has_variations = true;
+}
+
 ?>
 <div class="col-xs-12 col-sm-6 product-grid-single ">
     <div class="row">
@@ -33,29 +44,42 @@ global $product;
     <div class="row">
         <div class="col-xs-6 description-left-side">
             <span class="kit-info"><?php bl_list_product_brands($product->get_id()); ?></span>
-            <a class="product-title-link" href="<?= get_permalink() ?>" >
-                <h2><?= get_the_title() ?></h2>
+            <a class="product-title-link" href="<?php echo get_permalink() ?>" >
+                <h2><?php echo get_the_title() ?></h2>
             </a>
             <div class="products-price">
-                <span class="total-price"><?= get_woocommerce_currency_symbol() ?><?= $product->get_price() ?></span>
+                <span class="total-price"><?php echo get_woocommerce_currency_symbol() ?><?= $product->get_price() ?></span>
             </div>
         </div>
         <div class="col-xs-6 description-right-side">
             <div class="cart-button-container">
                 <div class="button-wrapper">
-                    <a href="/shop/?add-to-cart=<?= $product->get_id() ?>" data-quantity="1" id="bag-<?= $product->get_id() ?>" class="button product_type_simple add_to_cart_button ajax_add_to_cart p-relative"
-                       data-product_id="<?= $product->get_id() ?>"
-                       data-product_sku="<?= $product->get_sku() ?>"
-                       data-category_id="<?= $product->get_category_ids()[0] ?>"
+                    <a href="/shop/?add-to-cart=<?php echo $product->get_id() ?>" data-quantity="1" id="bag-<?php echo $product->get_id() ?>" class="button product_type_simple add_to_cart_button ajax_add_to_cart p-relative"
+                       data-product_id="<?php echo $product->get_id() ?>"
+                       data-product_sku="<?php echo $product->get_sku() ?>"
+                       data-category_id="<?php echo $product->get_category_ids()[0] ?>"
                        data-variation_id=""
+                       data-has_variations="<?php echo $has_variations;?>"
                     >Add to travel kit</a>
+                    <?php if (!empty($kits) && count($kits) > 1):?>
                     <div class="choices-container">
                         <ul class="bl-tooltip-menu">
-                            <li><a href="#">Travel Kit 1</a></li>
-                            <li><a href="#">Travel Kit 2</a></li>
-                            <li><a href="#">Travel Kit 3</a></li>
+                            
+                            <?php foreach ($kits as $index => $kit):?>
+                            <?php
+                            ?>
+                            <li><a href="#" onclick="bl_add_item_to_kit(this);return false" data-index="<?php echo $index;?>"
+                            data-product_id="<?= $product->get_id() ?>"
+                            data-product_sku="<?= $product->get_sku() ?>"
+                            data-category_id="<?= $product->get_category_ids()[0] ?>"
+                            data-variation_id=""
+                            data-has_variations="<?php echo $has_variations;?>"
+                            ><?php echo $kit['kit_name'];?></a></li>
+                            <?php endforeach;?>
+                            
                         </ul>
                     </div>
+                    <?php endif;?>
                 </div>
             </div>
             <a class="kit-details" href="<?= get_permalink($product->get_id()) ?>">View details</a>

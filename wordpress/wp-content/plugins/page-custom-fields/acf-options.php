@@ -36,8 +36,8 @@ if( function_exists('acf_add_local_field_group') ):
                     'id' => '',
                 ),
                 'message' => 'The main logo is in Appearance -> Customize area. We kept it there because that is the location for default assets.
-Any assets that need to be configured globally, and are unique to this site should be here.
-The Add Item to Kit Section is where you would enter the copy for anything to do with the extra block that allows you to add more items to your pre-built kit.',
+    Any assets that need to be configured globally, and are unique to this site should be here.
+    The Add Item to Kit Section is where you would enter the copy for anything to do with the extra block that allows you to add more items to your pre-built kit.',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ),
@@ -175,10 +175,10 @@ The Add Item to Kit Section is where you would enter the copy for anything to do
             ),
             array(
                 'key' => 'field_5b475859626dd',
-                'label' => 'Bags Page',
-                'name' => 'bags_page',
-                'type' => 'text',
-                'instructions' => 'Bags category slug',
+                'label' => 'Bags Product Category',
+                'name' => 'bags_product_category',
+                'type' => 'taxonomy',
+                'instructions' => 'The product category that displays all the bags that someone can put the items of the kit into.',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -186,11 +186,14 @@ The Add Item to Kit Section is where you would enter the copy for anything to do
                     'class' => '',
                     'id' => '',
                 ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
+                'taxonomy' => 'product_cat',
+                'field_type' => 'select',
+                'allow_null' => 0,
+                'add_term' => 0,
+                'save_terms' => 0,
+                'load_terms' => 0,
+                'return_format' => 'id',
+                'multiple' => 0,
             ),
             array(
                 'key' => 'field_5a9dbe5ef0bc4',
@@ -1259,5 +1262,5 @@ The Add Item to Kit Section is where you would enter the copy for anything to do
         'active' => true,
         'description' => '',
     ));
-
-endif;
+    
+    endif;
