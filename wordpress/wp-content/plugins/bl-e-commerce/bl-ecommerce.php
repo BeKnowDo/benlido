@@ -1291,6 +1291,9 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
     global $bl_custom_kit_id;
     $kits = bl_get_cart_kits();
     //$index = bl_get_active_kit_index();
+    if (empty($index)) {
+        $index = 0;
+    }
     $kit_list = $kits[$index];
     $kit_name = $kit_list['kit_name'];
     $bags_product_category = 0;
@@ -1326,6 +1329,9 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
                 $item['quantity']++;
                 $added = true;
             }
+            if ($is_bag == true) {
+                $added = true;
+            }
             $holder[] = $item;
         }
     }
@@ -1337,9 +1343,9 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
         $holder[] = array('category'=>$category_id,'product'=>$product_id,'variation'=>null,'quantity'=>1);
     }
 
-    if (!empty($holder)) {
+    if (!empty($holder) || $is_bag == true) {
         //print_r ($holder);
-        //error_log('adding item: index:' . $index . 'holder:' . json_encode($holder) );
+        error_log('adding item: index:' . $index . 'holder:' . json_encode($holder) . ' bag:' . json_encode($kit_list['bag']) );
         bl_set_kit_list($index,$kit_id,$kit_list['bag'],$holder,$kit_name);
         return true;
     }
@@ -1360,7 +1366,6 @@ function bl_add_to_kit_cart($product_id,$quantity,$category_id=0,$index=0) {
     if (!empty($kitting_page) && is_object($kitting_page)) {
         $kitting_page = get_permalink($kitting_page->ID);
     }
-    $category_id = 0;
     $result = array('success'=>false,'message'=>'error','href'=>$kitting_page);
     // let's see if we have a kit
     $kit_id = bl_get_current_kit_id();

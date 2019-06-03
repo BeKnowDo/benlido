@@ -79,7 +79,7 @@ function bl_add_to_cart_hook($cart_item_key, $product_id, $quantity, $variation_
 	if (function_exists('bl_add_to_kit_cart')) {
 		// first, let's see if there is a category passed:
 		$category_id = 0;
-		$index = bl_get_active_kit_index();
+		//$index = bl_get_active_kit_index();
 		if (isset($_POST['category_id'])) {
 			$category_id = $_POST['category_id'];
 		}
@@ -88,6 +88,9 @@ function bl_add_to_cart_hook($cart_item_key, $product_id, $quantity, $variation_
 		}
 		if (isset($_POST['index'])) {
 			$index = $_POST['index']; // TODO: make this the latest kit index
+		}
+		if (empty($index)) {
+			$index = 0;
 		}
 		bl_add_to_kit_cart($product_id,$quantity,$category_id,$index);
 	}
@@ -133,6 +136,7 @@ function bl_replace_ajax_add_to_cart() {
 	}
 	// maybe this is the first time we're adding something
 	$kit_name = 'Travel Kit 1';
+	$kit = $kits[$index];
 	if (empty($kit)) {
 		global $bl_custom_kit_id;
 		bl_set_kit_list($index,$bl_custom_kit_id,array(),array(),$kit_name);
