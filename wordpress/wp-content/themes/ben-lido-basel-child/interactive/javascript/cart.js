@@ -29,6 +29,19 @@
             }
         })
 
+        $('.bl-add-kit-to-cart').on('click', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            var _that = this;
+            $(this).addClass('loading');
+            if (url) {
+                $.post(url,{},function(response) {
+                    jQuery( document.body ).trigger( 'added_to_cart', [ response.fragments, response.cart_hash, null ] );
+                    $(_that).removeClass('loading');
+                },'json');
+            }
+        });
+
     }); // end document ready
 
 

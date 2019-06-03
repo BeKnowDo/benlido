@@ -1782,6 +1782,11 @@ function bl_change_bag($index,$product_id,$category_id,$variation_id,$personal_k
     }
 }
 
+// if there are more than 1 kit, we need to create the dropdown for all items
+function bl_check_if_multikit() {
+
+}
+
 // see if the product is a bag
 function bl_check_if_bag($product_id) {
     // first, let's see if this is a variation
@@ -1804,7 +1809,66 @@ function bl_check_if_bag($product_id) {
     return false;
 }
 
+// provides the url to add the kit
+function bl_add_kit_to_cart_url($id) {
+    global $bl_ecommerce_api_slug;
+    return $bl_ecommerce_api_slug . '/kit/add/' . intval($id);
+}
 
+function bl_generate_kit_unique_name($name) {
+    $is_unique = true;
+    if (function_exists('bl_get_cart_kits')) {
+		$kits = bl_get_cart_kits();
+    }
+    foreach ($kits as $kit) {
+        $kit_name = $kit['kit_name'];
+        if ($kit_name == $name) {
+            $is_unique = false;
+        }
+    }
+    if ($is_unique == false) {
+        $name = $name . ' 1';
+        $name = bl_generate_kit_unique_name($name);
+    }
+    return $name;
+}
+
+function bl_add_kit_to_cart($kit_id) {
+    // get the name of the kit and create it in the cart
+    $index = 0;
+    $kit_name = get_the_title($kit_id);
+    
+    $kit_name = bl_generate_kit_unique_name($kit_name);
+    
+    $kits = bl_get_cart_kits();
+    if (!empty($kits)) {
+        $index = count($kits);
+    }
+
+    bl_set_kit_list($index,$kit_id,array(),array(),$kit_name);
+
+    // get all the items for the kit
+    $items = bl_get_kit_items($kit_id);
+    if (!empty($items) && is_array($items)) {
+        foreach ($items as $item) {
+            $category_id = $item['category'];
+            $quantity = 1;
+            $featured_product = $item['featured_product'];
+            if (!empty($featured_product) && is_object($featured_product)) {
+                $product_id = $featured_product->ID;
+                bl_add_to_kit($index,$kit_id,$product_id,$category_id);
+                $variation = array();
+                $meta = array('kit_name' => $kit_name);
+                WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation, $meta );
+            }
+
+        }
+    }
+
+    // send mini cart
+    $data = bl_get_minicart();
+    wp_send_json($data);
+}
 
 // this is the API endpoint parsing
 function bl_ecommerce_url_intercept() {
@@ -1985,6 +2049,16 @@ function bl_ecommerce_url_intercept() {
                         print_r (json_encode($resp));
                         die;
                         break;
+                    // this adds a prebuilt kit to the cart
+
+                    case 'add':
+                        // /bl-api/kit/add/{kit_id}
+                        $resp = bl_add_kit_to_cart($id);
+                        header('Content-Type: application/json');
+                        print_r (json_encode($resp));
+                        die;
+                        break;
+                    /*    
                     case 'add':
                         //  /bl-api/kit/add/{kit_id}/{product_id}/{cat_id}
                         if (isset($api_parts[5])) {
@@ -2007,6 +2081,7 @@ function bl_ecommerce_url_intercept() {
                         }
                         die;
                         break;
+                    */
                     case 'kit-add':
                         //  /bl-api/kit/kit-add/{product_id}/{quantity}
                         // this is to replace the add to cart button so that it always tries to find a kit to add it to.
@@ -2102,6 +2177,14 @@ function bl_ecommerce_url_intercept() {
                                 $index = 0;
                             }
                             $response = bl_rename_kit($index,$kit_name);
+                        }
+                        header('Content-Type: application/json');
+                        print_r(json_encode($response));
+                        die;
+                        break;
+                    case 'has-multi':
+                        if ($_POST) {
+                            $res = bl_check_if_multikit();
                         }
                         header('Content-Type: application/json');
                         print_r(json_encode($response));

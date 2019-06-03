@@ -37,7 +37,7 @@ get_header();
                                     <span class="total-price"><?= get_woocommerce_currency_symbol() ?><?php if (function_exists('bl_get_kit_price')) echo bl_get_kit_price($post->ID); ?> </span>
                                     <span class="total-products">
                                 <?php if (function_exists('bl_get_current_kit_items')) {
-                                    $kit_products = bl_get_current_kit_items($kit_id);
+                                    $kit_products = bl_get_current_kit_items($post->ID);
                                     echo count($kit_products). ' Products';
                                 } ?>
                             </span>
@@ -46,7 +46,7 @@ get_header();
                             </div>
                             <div class="col-xs-6 description-right-side">
                                 <div class="cart-button-container">
-                                    <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?= $post->ID ?>" rel="nofollow">
+                                    <a href="<?php echo bl_add_kit_to_cart_url($post->ID);?>" data-quantity="1" class="button product_type_simple add_to_cart_button bl-add-kit-to-cart" data-kit_id="<?= $post->ID ?>" rel="nofollow">
                                         Add to cart
                                     </a>
                                 </div>
