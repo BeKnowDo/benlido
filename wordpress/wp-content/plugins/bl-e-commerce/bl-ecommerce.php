@@ -1309,11 +1309,9 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
     // see if this is a bag
     if ($bags_product_category > 0 && $bags_product_category == $category_id) {
         // see if we have an existing bag
-        $existing_bag = $kit_list['bag'];
-        if (!empty($existing_bag)) {
-            // we need to remove the bag from the cart, and then add the new bag
-            bl_update_cart();
-        }
+        $is_bag = true;
+        // now, let's replace the bag
+        $kit_list['bag'] = array('bag'=>$product_id,'variation'=>$product_id);
     }
 
     $holder = array();

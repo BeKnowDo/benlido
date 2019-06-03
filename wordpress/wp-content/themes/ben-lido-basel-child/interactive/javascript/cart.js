@@ -16,6 +16,18 @@
             }
 
         });
+        $('.needs-variation').on('click',function(e) {
+            e.preventDefault();
+            var _that = this;
+            var variation_id = $(_that).data('variation_id');
+            if (!variation_id) {
+                e.stopPropagation();
+                alert("Please select a color");
+                setTimeout(function() {
+                    jQuery(_that).removeClass('loading');
+                },100);
+            }
+        })
 
     }); // end document ready
 
@@ -37,7 +49,7 @@ function bl_add_item_to_kit(OBJ) {
             jQuery( document.body ).trigger( 'added_to_cart', [ response.fragments, response.cart_hash, null ] );
         });
     } else {
-        alert('Please select a color');
+        //alert('Please select a color');
     }
 
 }

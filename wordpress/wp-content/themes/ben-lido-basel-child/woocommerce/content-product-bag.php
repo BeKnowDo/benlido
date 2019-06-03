@@ -22,12 +22,20 @@ global $product;
 // see how many kits we have
 $kits = array();
 $has_variations = false;
+$needs_variation = '';
 if (function_exists('bl_get_cart_kits')) {
     $kits = bl_get_cart_kits();
 }
 
 if ($product->is_type( 'variable' )) {
     $has_variations = true;
+    $needs_variation = ' needs-variation product_type_variable';
+}
+
+$category_id = $product->get_categories()[0];
+$category = bl_get_product_category($product->get_id());
+if (!empty($category) && is_object($category)) {
+    $category_id = $category->term_id;
 }
 
 ?>
@@ -54,10 +62,10 @@ if ($product->is_type( 'variable' )) {
         <div class="col-xs-6 description-right-side">
             <div class="cart-button-container">
                 <div class="button-wrapper">
-                    <a href="/shop/?add-to-cart=<?php echo $product->get_id() ?>" data-quantity="1" id="bag-<?php echo $product->get_id() ?>" class="button product_type_simple add_to_cart_button ajax_add_to_cart p-relative"
+                    <a href="/shop/?add-to-cart=<?php echo $product->get_id() ?>" data-quantity="1" id="bag-<?php echo $product->get_id() ?>" class="button product_type_simple  product_type_variable add_to_cart_button ajax_add_to_cart p-relative <?php echo $needs_variation;?>"
                        data-product_id="<?php echo $product->get_id() ?>"
                        data-product_sku="<?php echo $product->get_sku() ?>"
-                       data-category_id="<?php echo $product->get_category_ids()[0] ?>"
+                       data-category_id="<?php echo $category_id ?>"
                        data-variation_id=""
                        data-has_variations="<?php echo $has_variations;?>"
                     >Add to travel kit</a>
@@ -68,10 +76,10 @@ if ($product->is_type( 'variable' )) {
                             <?php foreach ($kits as $index => $kit):?>
                             <?php
                             ?>
-                            <li><a href="#" onclick="bl_add_item_to_kit(this);return false" data-index="<?php echo $index;?>"
-                            data-product_id="<?= $product->get_id() ?>"
-                            data-product_sku="<?= $product->get_sku() ?>"
-                            data-category_id="<?= $product->get_category_ids()[0] ?>"
+                            <li><a href="#" class="<?php echo $needs_variation;?>" onclick="bl_add_item_to_kit(this);return false" data-index="<?php echo $index;?>"
+                            data-product_id="<?php echo $product->get_id() ?>"
+                            data-product_sku="<?php $product->get_sku() ?>"
+                            data-category_id="<?php echo $category_id ?>"
                             data-variation_id=""
                             data-has_variations="<?php echo $has_variations;?>"
                             ><?php echo $kit['kit_name'];?></a></li>

@@ -123,6 +123,7 @@ function bl_replace_ajax_add_to_cart() {
 
 	// for $meta, we just want the kit name
 	$index = $_POST['index'];
+	$category_id = $_POST['category_id'];
 	$kit = array();
 	if (empty($index)) {
 		$index = 0;
@@ -144,8 +145,26 @@ function bl_replace_ajax_add_to_cart() {
 		$kit_name = 'Travel Kit 1';
 	}
 
+	// check to see if it's a bag
+	// see if it's a bag
+    if (function_exists('get_field')) {
+        $bags_product_category = get_field('bags_product_category','option');
+	}
+	if ($category_id == $bags_product_category) {
+		// we will remove the existing bag and add this one.
+		$cart = WC()->cart->get_cart();
+		if (!empty($cart) && is_array($cart)) {
+			foreach ($cart as $hash => $item) {
+				if ($item['kit_name'] == $kit_name && $item['category_id'] == $category_id) {
+					WC()->cart->remove_cart_item($hash);
+				}
+			}
+		}
+	}
+
 	$meta = array(
-			'kit_name' => $kit_name
+		'category_id' => $category_id,
+		'kit_name' => $kit_name
 	);
 
 	if ( $passed_validation && false !== WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variation, $meta ) && 'publish' === $product_status ) {
