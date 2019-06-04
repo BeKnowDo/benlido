@@ -1,5 +1,8 @@
 (function($){
     $(document).ready(function($) {
+
+
+
         $('.create-kit').height($('.last_kit').height());
 
         $('.js-variation-select').on('click', function () {
@@ -28,6 +31,10 @@
                 },100);
             }
         })
+
+
+
+        
 
         $('.bl-add-kit-to-cart').on('click', function(e) {
             e.preventDefault();
@@ -65,6 +72,15 @@ function bl_add_item_to_kit(OBJ) {
         //alert('Please select a color');
     }
 
+}
+
+function bl_add_product_to_kit(OBJ) {
+    var index = jQuery(OBJ).data('index');
+    if (!index) {
+        index = 0;
+    }
+    jQuery(OBJ).closest('.wrap-price').find('a.add_to_cart_button').first().data('index',index);
+    jQuery(OBJ).closest('.wrap-price').find('a.add_to_cart_button').first().click();
 }
 
 function bl_create_new_kit() {
@@ -142,5 +158,27 @@ function bl_start_add_bag(e,OBJ) {
         },'json');
     }
 }
+
+function bl_update_choices_containers() {
+    console.log('update choices containers');
+    if (bl_has_multi) {
+        url = bl_has_multi;
+    }
+    if (jQuery('body.post-type-archive-product .choices-container').hasClass('.choices-container')) {
+        jQuery.post(url,{}, function(response) {
+
+            jQuery('body.post-type-archive-product .choices-container').each(function() {
+                jQuery(this).html(response);
+            });
+    
+        },'html');
+    }
+
+}
+
+
+jQuery(document).ready(function() {
+    bl_update_choices_containers();
+})
 
 

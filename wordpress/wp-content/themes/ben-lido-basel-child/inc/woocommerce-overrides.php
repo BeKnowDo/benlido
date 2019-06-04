@@ -38,8 +38,9 @@ if ( ! function_exists( 'woocommerce_template_loop_add_to_cart' ) ) {
 				'attributes' => array(
 					'data-product_id'  => $product->get_id(),
                     'data-product_sku' => $product->get_sku(),
-                    'data-category_id' => $category_id,
-					'aria-label'       => $product->add_to_cart_description(),
+					'data-category_id' => $category_id,
+					'data-index'	   => 0,
+					'aria-label'       => esc_attr($product->add_to_cart_description()),
 					'rel'              => 'nofollow',
 				),
 			);

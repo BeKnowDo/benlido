@@ -515,7 +515,7 @@ if (!function_exists('bl_create_new_kit')) {
             $index = 0;
         }
         $kit_name = 'Travel Kit ' . ($index + 1);
-        error_log('creating new kit: ' . $kit_name . ' -  ' . $index);
+        //error_log('creating new kit: ' . $kit_name . ' -  ' . $index);
         bl_set_kit_list($index,$kit_id,array(),array(),$kit_name);
 
 
@@ -1345,7 +1345,7 @@ function bl_add_to_kit($index,$kit_id,$product_id,$category_id,$quantity=1) {
 
     if (!empty($holder) || $is_bag == true) {
         //print_r ($holder);
-        error_log('adding item: index:' . $index . 'holder:' . json_encode($holder) . ' bag:' . json_encode($kit_list['bag']) );
+        //error_log('adding item: index:' . $index . 'holder:' . json_encode($holder) . ' bag:' . json_encode($kit_list['bag']) );
         bl_set_kit_list($index,$kit_id,$kit_list['bag'],$holder,$kit_name);
         return true;
     }
@@ -1784,7 +1784,18 @@ function bl_change_bag($index,$product_id,$category_id,$variation_id,$personal_k
 
 // if there are more than 1 kit, we need to create the dropdown for all items
 function bl_check_if_multikit() {
-
+    $html = '';
+    $kits = bl_get_cart_kits();
+    if (!empty($kits) && is_array($kits)) {
+        $html  .= '<ul class="bl-tooltip-menu">';
+        foreach ($kits as $index => $kit) {
+            $html .= '<li><a href="#" class="" onclick="bl_add_product_to_kit(this);return false" data-index="' . $index . '">' . $kit['kit_name'] . '</a></li>';
+                                            
+            
+        }
+        $html .= '</ul>';
+    }
+    return $html;
 }
 
 // see if the product is a bag
@@ -2183,11 +2194,13 @@ function bl_ecommerce_url_intercept() {
                         die;
                         break;
                     case 'has-multi':
-                        if ($_POST) {
-                            $res = bl_check_if_multikit();
+                        // /bl-api/kit/has-multi
+                        $response = '';
+                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                            $response = bl_check_if_multikit();
                         }
-                        header('Content-Type: application/json');
-                        print_r(json_encode($response));
+                        header('Content-Type: text/html');
+                        echo $response;
                         die;
                         break;
                     default:

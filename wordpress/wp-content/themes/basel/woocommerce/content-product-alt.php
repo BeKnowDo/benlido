@@ -49,6 +49,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="choices-container"></div>
 	<?php 
 		basel_swatches_list();
 	?>
