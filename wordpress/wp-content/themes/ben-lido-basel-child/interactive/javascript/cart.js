@@ -30,7 +30,11 @@
                     jQuery(_that).removeClass('loading');
                 },100);
             }
-        })
+        });
+
+        $('body.single-product .single_add_to_cart_button').on('click',function(e) {
+            e.preventDefault();
+        });
 
 
 
@@ -164,10 +168,10 @@ function bl_update_choices_containers() {
     if (bl_has_multi) {
         url = bl_has_multi;
     }
-    if (jQuery('body.post-type-archive-product .choices-container').hasClass('.choices-container')) {
+    if (jQuery('body.post-type-archive-product .choices-container, body.tax-product_cat .choices-container').hasClass('choices-container')) {
         jQuery.post(url,{}, function(response) {
 
-            jQuery('body.post-type-archive-product .choices-container').each(function() {
+            jQuery('body.post-type-archive-product .choices-container, body.tax-product_cat .choices-container').each(function() {
                 jQuery(this).html(response);
             });
     

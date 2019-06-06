@@ -98,3 +98,38 @@ if( ! function_exists( 'basel_cart_subtotal' ) ) {
 		<?php
 	}
 }
+
+
+if( ! function_exists( 'basel_ajax_add_to_cart' ) ) {
+	function basel_ajax_add_to_cart() {
+
+		// Get messages
+		ob_start();
+
+		wc_print_notices();
+
+		$notices = ob_get_clean();
+
+
+		// Get mini cart
+		ob_start();
+
+		woocommerce_mini_cart();
+
+		$mini_cart = ob_get_clean();
+
+		// Fragments and mini cart are returned
+		$data = array(
+			'notices' => $notices,
+			'fragments' => apply_filters( 'woocommerce_add_to_cart_fragments', array(
+					'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
+				)
+			),
+			'cart_hash' => apply_filters( 'woocommerce_add_to_cart_hash', WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '', WC()->cart->get_cart_for_session() )
+		);
+
+		wp_send_json( $data );
+
+		die();
+	}
+}

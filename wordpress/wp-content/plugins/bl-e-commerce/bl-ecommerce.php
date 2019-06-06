@@ -220,7 +220,7 @@ if (!function_exists('bl_set_kit_list')) {
      */
     function bl_set_kit_list($current_kit_index,$kit_id,$bag,$items,$kit_name='') {
         // let's see if we have this $kit_id
-        //error_log('begin set kit list items: ' . json_encode($items));
+        //  ('begin set kit list items: ' . json_encode($items));
         $kit_name_index = $current_kit_index + 1;
 
         $kits = bl_get_cart_kits();
