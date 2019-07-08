@@ -107,6 +107,7 @@ if (function_exists('bl_get_basel_cart')) {
                             $product_id = $item['product'];
                             $variation_id = $item['variation'];
                             $quantity = $item['quantity'];
+                            $category = $item['category'];
                             $cart_match = array();
                             if (function_exists('bl_get_kit_item_from_cart')) {
                                 $cart_match = bl_get_kit_item_from_cart($product_id,$variation_id);
@@ -153,6 +154,7 @@ if (function_exists('bl_get_basel_cart')) {
                         <?php if (!empty($cart_item['data'])):?>
                             <?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
                             <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $quantity, $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
+                            <a href="#" class="bl-swap-item" data-category_id="<?php echo $category;?>" data-product_id="<?php echo $product_id;?>" data-variation_id="<?php echo $variation_id;?>" data-index="<?php echo $index;?>" onclick="bl_swap_product(this);return false;">Swap <i class="fa fa-refresh" aria-hidden="true"></i></a>
                         <?php endif;?>
                         </li>
                     <?php endif; ?>

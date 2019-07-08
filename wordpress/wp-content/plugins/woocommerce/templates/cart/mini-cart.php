@@ -58,6 +58,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 						<?php endif; ?>
 						<?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
 						<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
+						<a href="#" class="">Swap <i class="fa fa-refresh" aria-hidden="true"></i></a>
 					</li>
 					<?php
 				}

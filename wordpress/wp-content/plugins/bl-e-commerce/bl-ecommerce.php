@@ -377,23 +377,27 @@ if (!function_exists('bl_get_subtotal')) {
 }
 
 if (!function_exists('bl_set_product_swap')) {
-    function bl_set_product_swap($kit_id,$category_id,$product_id) {
-        $kit_id = intval(trim($kit_id));
-        $kit_list = bl_get_kit_list();
-        if (empty($kit_list)) {
-            bl_save_current_kit($kit_id);
+    function bl_set_product_swap($index,$category_id,$product_id) {
+        if (empty($index)) {
+            $index = 0;
         }
+        $kits = bl_get_cart_kits();
+        $kit_list = $kits[$index];
         
-        $category_id = intval(trim($category_id));
-        $product_id = intval(trim($product_id));
-        if (is_numeric($kit_id) && is_numeric($product_id)) {
-            if (!empty($category_id)) {
-                $category_id = intval($category_id);
-            } 
-            $swapping = array('kit_id'=>$kit_id,'category_id'=>$category_id,'product_id'=>$product_id);
-            WC()->session->set_customer_session_cookie(true);
-            WC()->session->set( 'current_product_swap', $swapping);
+        // if no kit list, no swapping
+        if (!empty($kit_list)) {
+            $category_id = intval(trim($category_id));
+            $product_id = intval(trim($product_id));
+            if (is_numeric($product_id)) {
+                if (!empty($category_id)) {
+                    $category_id = intval($category_id);
+                } 
+                $swapping = array('index'=>$index,'category_id'=>$category_id,'product_id'=>$product_id);
+                WC()->session->set_customer_session_cookie(true);
+                WC()->session->set( 'current_product_swap', $swapping);
+            }
         }
+
     }
 }
 
@@ -434,9 +438,9 @@ if (!function_exists('bl_set_kit_add')) {
 
 if (!function_exists('bl_start_swap')) {
     // starting the swap process. register the item that is being swapped, waiting for the new item to be chosen
-    function bl_start_swap($kit_id,$prod_id,$cat_id) {
+    function bl_start_swap($index,$prod_id,$cat_id) {
         $url = '';
-        bl_set_product_swap($kit_id,$cat_id,$prod_id);
+        bl_set_product_swap($index,$cat_id,$prod_id);
         // then, we will redirect to the category
         if (!empty($cat_id) && is_numeric($cat_id)) {
             $url = get_term_link(intval($cat_id),'product_cat');
@@ -2151,7 +2155,7 @@ function bl_ecommerce_url_intercept() {
                         die;
                         break;
                     case 'swap':
-                        //  /bl-api/kit/swap/{kit_id}/{product_id}/{cat_id}
+                        //  /bl-api/kit/swap/{index}/{product_id}/{cat_id}
                         if (isset($api_parts[5])) {
                             $prod = $api_parts[5];
                         }

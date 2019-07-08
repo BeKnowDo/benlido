@@ -6,7 +6,7 @@ require_once 'inc/woocommerce-overrides.php';
 add_action( 'wp_enqueue_scripts', 'basel_child_enqueue_styles', 1000 );
 
 function basel_child_enqueue_styles() {
-	$version = '1.6';
+	$version = '1.7';
 
 	wp_register_script('ben-lido-script', get_stylesheet_directory_uri() . '/assets/js/benlido.min.js', array('jquery'),$version);
 	wp_enqueue_script( 'jquery-ui-core', false, array('jquery') );

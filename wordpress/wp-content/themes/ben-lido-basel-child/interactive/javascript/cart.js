@@ -87,6 +87,23 @@ function bl_add_product_to_kit(OBJ) {
     jQuery(OBJ).closest('.wrap-price').find('a.add_to_cart_button').first().click();
 }
 
+function bl_swap_product(OBJ) {
+    var index = jQuery(OBJ).data('index');
+    var product_id = jQuery(OBJ).data('product_id');
+    var variation_id = jQuery(OBJ).data('variation_id');
+    var category_id = jQuery(OBJ).data('category_id');
+    var data = {'product_id':product_id,'variation_id':variation_id,'category_id':category_id,'index':index};
+    if (bl_swap_url) {
+        url = bl_swap_url+'/'+index+'/'+product_id+'/'+category_id;
+        jQuery.post(url,data,function(response) {
+            // redirecting to the right section
+            if (response.url) {
+                location.href = response.url;
+            }
+        });
+    }
+}
+
 function bl_create_new_kit() {
 
     var url = '';
