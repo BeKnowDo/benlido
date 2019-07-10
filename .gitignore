@@ -24,6 +24,9 @@ wordpress/wp-content/wp-cache-config.php
 wordpress/wp-content/cache/*
 wordpress/wp-content/cache/supercache/*
 
+# for vvv
+wordpress/wp-config-local.php
+
 #composer specific
 wordpress/vendor/*
 

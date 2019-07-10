@@ -36,39 +36,43 @@ switch($_SERVER['HTTP_HOST'])
         break;
 }
 
-switch(SERVER_ENVIRONMENT) {
-    case "PROD":
-        // NOTE: we are temporarily using a local mysql database to save money until we have e-commerce ready to go
-        define('DB_HOST', 'localhost');
-        define('DB_NAME', 'ben_lido_live');
-        define('DB_USER', 'benlido');
-        define('DB_PASSWORD', 'benlido');
-        define("WP_CACHE", true);
-	    define('WP_CACHE_KEY_SALT', $_SERVER['SERVER_NAME'] );
-        break;
+if (file_exists(dirname(__FILE__) . '/wp-config-local.php')) {
+    require_once(dirname(__FILE__) . '/wp-config-local.php');
+} else {
+    switch(SERVER_ENVIRONMENT) {
+        case "PROD":
+            // NOTE: we are temporarily using a local mysql database to save money until we have e-commerce ready to go
+            define('DB_HOST', 'localhost');
+            define('DB_NAME', 'ben_lido_live');
+            define('DB_USER', 'benlido');
+            define('DB_PASSWORD', 'benlido');
+            define("WP_CACHE", true);
+            define('WP_CACHE_KEY_SALT', $_SERVER['SERVER_NAME'] );
+            break;
 
-    case "UPCO":
-        define('DB_HOST', 'up-aurora-1-cluster.cluster-coy6j35ly0yk.us-east-1.rds.amazonaws.com');
-        define('DB_NAME', 'ben_lido_dev');
-        define('DB_USER', 'benlido');
-        define('DB_PASSWORD', 'benlido');
-        break;
-    case "DEV":
-        define('DB_HOST', 'localhost');
-        define('DB_NAME', 'ben_lido_dev');
-        define('DB_USER', 'benlido');
-        define('DB_PASSWORD', 'benlido');
-        break;
+        case "UPCO":
+            define('DB_HOST', 'up-aurora-1-cluster.cluster-coy6j35ly0yk.us-east-1.rds.amazonaws.com');
+            define('DB_NAME', 'ben_lido_dev');
+            define('DB_USER', 'benlido');
+            define('DB_PASSWORD', 'benlido');
+            break;
+        case "DEV":
+            define('DB_HOST', 'localhost');
+            define('DB_NAME', 'ben_lido_dev');
+            define('DB_USER', 'benlido');
+            define('DB_PASSWORD', 'benlido');
+            break;
 
-    case "LOCAL":
-        define('DB_HOST', '127.0.0.1');
-        define('DB_NAME', 'ben_lido');
-        define('DB_USER', 'root');
-        define('DB_PASSWORD', '');
-        define( 'WP_DEBUG', false );
-        define( 'WP_DEBUG_DISPLAY', false );
-        define( 'WP_DEBUG_LOG', true );
-        break;
+        case "LOCAL":
+            define('DB_HOST', '127.0.0.1');
+            define('DB_NAME', 'ben_lido');
+            define('DB_USER', 'root');
+            define('DB_PASSWORD', '');
+            define( 'WP_DEBUG', false );
+            define( 'WP_DEBUG_DISPLAY', false );
+            define( 'WP_DEBUG_LOG', true );
+            break;
+    }
 }
 
 // ** MySQL settings ** //
