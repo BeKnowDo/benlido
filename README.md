@@ -49,6 +49,8 @@ Below is the configuration that needs to go into the vvv-custom.yml file.. make 
 
 If this is not the first time you are setting up vvv, then just add the lines to your existing vvv-custom.yml and proceed with step 6
 
+```
+
   ben-lido:
     hosts:
      - local.benlido.test
@@ -61,7 +63,8 @@ If this is not the first time you are setting up vvv, then just add the lines to
       http_passwd: benlido2018
       get_database: 1
       get_files: 1
-
+      
+```
 
 
 ## Site setup requirements
