@@ -26,6 +26,7 @@ wordpress/wp-content/cache/supercache/*
 
 # for vvv
 wordpress/wp-config-local.php
+log/*
 
 #composer specific
 wordpress/vendor/*

@@ -3,6 +3,66 @@
 # Ben Lido website
 The WooCommerce site for Ben Lido
 
+## USING VVV
+This is the latest way for us to set up our environment so that we do not have to worry about how to set up nginx (or apapche), mysql (or mariadb), php (or php-fpm).
+
+### Requirements
+Here is the documentation: https://varyingvagrantvagrants.org/docs/en-US/installation/
+
+Need (more info: https://varyingvagrantvagrants.org/docs/en-US/installation/software-requirements/):
+
+1. VirtualBox 5.x+ (6.+ is also okay) [ https://www.virtualbox.org/wiki/Downloads ] 
+2. Vagrant 2.1+ [ https://www.vagrantup.com/downloads.html ]
+
+## Installation
+
+NOTE!!!!! YOU WILL NEED TO Re-Check Out this code after setting up VVV.
+
+Basically, you set up VVV and everything first, then, you will need to check out this repo inside the VVV www directory.
+Then, you need to create a "provision" profile to provision and run this code from inside the www directory.
+When you change code inside the newly checked out code.
+
+For example, line #2 below will create a directory in your home directory called vagrant-local.
+Inside the vagrant-local, you will see a directory called www.
+cd into that www directory, then do the git clone there.
+
+If this is not the first time you are running vvv, then you should already have a vvv-custom.yml file.
+Skip steps #1 to #5. Start with Step #6.
+
+1. Install VirtualBox and Vagrant
+2. Install VVV: git clone -b master git://github.com/Varying-Vagrant-Vagrants/VVV.git ~/vagrant-local
+3. cd ~/vagrant-local
+4. install required vagrant plugin: ```vagrant plugin install vagrant-hostsupdate```
+5. copy vvv-config.yml to vvv-custom.yml ( ```cp vvv-config.yml vvv-custom.yml``` ) in the same directory (NOTE: only do this once. If you have already created a vvv-custom.yml, then just copy the site config lines to here)
+6. copy the site config lines from below into the vvv-custom.yml
+7. run ```vagrant up```
+8. ```cd www```
+9. ```git clone https://{YOUR_USERNAME}@bitbucket.org/urbanpixels/ben-lido.git```
+10. ```cd ben-lido```
+11. ```git checkout basel-base``` 
+12. ```cd ~/vagrant-local```
+13. ```vagrant provision --provision-with site-ben-lido```  you will need to enter your password to allow the script to update the /etc/hosts file for you
+14. view site in your browser at http://local.benlido.test/
+
+### VVV configuration
+Below is the configuration that needs to go into the vvv-custom.yml file.. make sure it goes below the "sites:" line. Also, DO NOT USE TABS.. because it's YAML, it needs to be spaces. Save it before you continue with step #6.
+
+If this is not the first time you are setting up vvv, then just add the lines to your existing vvv-custom.yml and proceed with step 6
+
+  ben-lido:
+    hosts:
+     - local.benlido.test
+    custom:
+      db_name: ben_lido
+      orig_host: dev.benlido.com
+      wp_admin: admin
+      wp_pass: aftertenthwave
+      http_user: benlido
+      http_passwd: benlido2018
+      get_database: 1
+      get_files: 1
+
+
 
 ## Site setup requirements
 
