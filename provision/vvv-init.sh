@@ -26,7 +26,7 @@ touch ${VVV_PATH_TO_SITE}/log/nginx-access.log
 echo -e "Creating database '${DB_NAME}' (if it's not already there)"
 mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS ${DB_NAME}"
 mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO wp@localhost IDENTIFIED BY 'wp';"
-if [ -f "${VVV_PATH_TO_SITE}/wordpress/wp-config-local.php"]; then
+if [ -f "${VVV_PATH_TO_SITE}/wordpress/wp-config-local.php" ]; then
   echo "local wp-config file exists"
 else 
   cp ${VVV_PATH_TO_SITE}/provision/wp-config-local.php ${VVV_PATH_TO_SITE}/wordpress/
@@ -65,7 +65,12 @@ if [ "$GET_DATABASE" == "1" ] && [ "$GET_FILES" == "1" ]; then
   noroot rm ${VVV_PATH_TO_SITE}/wordpress/db.sql
 fi
 
-
+echo ------------
+echo DONE!!!!
+echo
+echo open your browser and go to: http://$DOMAIN
+echo
+echo -------------
 
 #echo "Updating site URLs for local development..."
 #noroot wp search-replace ${ORIG_HOST} ${DOMAIN}

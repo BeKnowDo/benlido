@@ -32,7 +32,7 @@ Skip steps #1 to #5. Start with Step #6.
 1. Install VirtualBox and Vagrant
 2. Install VVV: git clone -b master git://github.com/Varying-Vagrant-Vagrants/VVV.git ~/vagrant-local
 3. cd ~/vagrant-local
-4. install required vagrant plugin: ```vagrant plugin install vagrant-hostsupdate```
+4. install required vagrant plugin: ```vagrant plugin install vagrant-hostsupdater```
 5. copy vvv-config.yml to vvv-custom.yml ( ```cp vvv-config.yml vvv-custom.yml``` ) in the same directory (NOTE: only do this once. If you have already created a vvv-custom.yml, then just copy the site config lines to here)
 6. copy the site config lines from below into the vvv-custom.yml
 7. run ```vagrant up```
@@ -63,11 +63,14 @@ If this is not the first time you are setting up vvv, then just add the lines to
       http_passwd: benlido2018
       get_database: 1
       get_files: 1
-      
+
 ```
 
 
-## Site setup requirements
+## Using your existing webserver and database server
+If you feel comfortable, you can also just use your existing method: XAMPP, MAMPP, or native Apache, MySQL, etc.
+
+Below are things you should know:
 
 * DocumentRoot is wordpress/
 * Easiest is to use this hostname: benlido.urbanpixels.localhost
