@@ -37,14 +37,12 @@ cd ${VVV_PATH_TO_SITE}/wordpress
 
 if [[ "$GET_FILES" == "1" ]]; then
   echo "Downloading files..."
-  noroot wget --http-user=$HTTP_USER --http-password=$HTTP_PASSWD https://$ORIG_HOST/wp-content/uploads.tgz --directory-prefix=${VVV_PATH_TO_SITE}/wordpress/wp-content/
+  noroot wget --http-user=$HTTP_USER --http-password=$HTTP_PASSWD https://$ORIG_HOST/wp-content/uploads/uploads.tgz --directory-prefix=${VVV_PATH_TO_SITE}/wordpress/wp-content/
   
   echo "Extracting uploads.tgz..."
   cd ${VVV_PATH_TO_SITE}/wordpress/wp-content
   noroot tar -zvxf ${VVV_PATH_TO_SITE}/wordpress/wp-content/uploads.tgz
-  noroot mv ${VVV_PATH_TO_SITE}/wordpress/wp-content/www/dev.benlido.com/wordpress/wp-content/uploads ${VVV_PATH_TO_SITE}/wordpress/wp-content/
   noroot chmod -R 777 ${VVV_PATH_TO_SITE}/wordpress/wp-content/uploads
-  noroot rm -Rf ${VVV_PATH_TO_SITE}/wordpress/wp-content/www
 
   echo "Cleaning up..."
   noroot rm -Rf ${VVV_PATH_TO_SITE}/wordpress/wp-content/uploads.*

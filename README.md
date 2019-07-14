@@ -66,6 +66,10 @@ If this is not the first time you are setting up vvv, then just add the lines to
 
 ```
 
+### Image Quality
+Since there are over 400MB of images, we optimized it by compressing it down to 50%.
+The quality is not the best, but for local development, it's sufficient.
+If you need higher quality images, please ask directly.
 
 ## Using your existing webserver and database server
 If you feel comfortable, you can also just use your existing method: XAMPP, MAMPP, or native Apache, MySQL, etc.
