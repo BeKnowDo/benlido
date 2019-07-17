@@ -1,0 +1,40 @@
+{
+  "name": "benlido",
+  "version": "2.0.0",
+  "description": "Ben-Lido Frontend Styling and JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "styles": "node scripts/styles",
+    "styles:watch": "onchange 'src/styles/**/*.scss' -- npm run styles",
+    "start": "node ./scripts"
+  },
+  "keywords": [
+    "frontend",
+    "wordpress",
+    "scss"
+  ],
+  "author": "Cesar M. Perez",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/bkd-digital/bdk-benlido#readme",
+  "devDependencies": {
+    "args": "^5.0.0",
+    "autoprefixer": "^8.6.5",
+    "browser-sync": "^2.26.7",
+    "chalk": "^2.4.1",
+    "clean-css": "^4.2.1",
+    "concurrently": "^3.6.1",
+    "dotenv": "^5.0.1",
+    "fs-extra": "^7.0.0",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.4",
+    "onchange": "^4.1.0",
+    "postcss": "^6.0.23",
+    "qs": "^6.5.2"
+  },
+  "testURL": "http://localhost",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "lodash": "^4.17.11"
+  }
+}
