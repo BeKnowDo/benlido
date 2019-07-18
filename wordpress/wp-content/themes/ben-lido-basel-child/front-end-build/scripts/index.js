@@ -17,7 +17,7 @@ bs.init({
 
 bs.watch(`${cssDestination}/*.css`, function (event, file) {
   if (event === "change") {
-      bs.reload();
+      bs.reload('*.css');
   }
 });
 

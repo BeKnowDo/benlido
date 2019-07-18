@@ -1,5 +1,5 @@
 body { font-size: 12px; }
 
-.topbar-content { display: flex; align-content: center; height: 100%; }
+.topbar-content { display: flex; align-content: center; align-items: center; height: 100%; }
 
 /*# sourceMappingURL=style.css.map */
