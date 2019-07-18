@@ -6,7 +6,8 @@
   "scripts": {
     "styles": "node scripts/styles",
     "styles:watch": "onchange 'src/styles/**/*.scss' -- npm run styles",
-    "start": "node ./scripts"
+    "start": "nodemon ./scripts & npm run styles:watch",
+    "dev": "concurrently \"npm run styles:watch\" \"npm run start\""
   },
   "keywords": [
     "frontend",
