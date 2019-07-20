@@ -1,0 +1,21 @@
+.topbar-content {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.top-bar-center {
+  text-align: center;
+  width: 100%;
+}
+
+.main-header {
+  .site-logo {
+    padding: 0;
+  }
+
+  .right-column {
+    padding-top: 0;
+  }
+}

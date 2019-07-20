@@ -1,0 +1,22 @@
+.main-nav {
+  .menu {
+    >li {
+      >a {
+        height: auto;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+
+.sub-menu-dropdown {
+  border: 1px solid rgba(3, 3, 3, .2);
+  border-radius: 4px;
+}
+
+.logged-in {
+  .hide-logged-in {
+    display: none;
+  }
+}

@@ -1,0 +1,36 @@
+.footer-container {
+  .widget-title {
+    color: #333;
+
+    &:before {
+      background-color: rgba(3, 3, 3, .2);
+    }
+  }
+
+  &.color-scheme-light {
+    p {
+      color: #333;
+    }
+
+    ul {
+      li {
+        a {
+          color: #333;
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
+
+    a {
+      color: #333;
+
+      &:hover {
+        color: #000;
+      }
+    }
+
+  }
+}
