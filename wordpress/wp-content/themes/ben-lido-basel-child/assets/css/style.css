@@ -1,19 +1,3 @@
-html, body { font-family: "Knockout 32 A", "Knockout 32 B", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 400; font-style: normal; }
-
-h1, h2, h3, h4, h5, h6 { font-family: "Knockout 47 A", "Knockout 47 B", Arial, Helvetica, sans-serif; font-size: 50px; font-weight: 400; font-style: normal; letter-spacing: 1.5px; line-height: 90%; margin: 0; }
-
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color: #87a4b0; text-decoration: none; }
-
-h1 { font-size: 75px; text-transform: uppercase; }
-
-p { color: #606060; }
-
-a { transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
-
-a:visited { color: #87a4b0; }
-
-a:hover { text-decoration: none; transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; }
-
 .topbar-content { display: flex; align-content: center; align-items: center; height: 100%; }
 
 .top-bar-center { text-align: center; width: 100%; }
@@ -22,27 +6,113 @@ a:hover { text-decoration: none; transition: color 0.2s ease-in-out, text-shadow
 
 .main-header .right-column { padding-top: 0; }
 
-.main-nav .menu > li > a { height: auto; line-height: normal; }
+.main-nav .menu-primary-menu-container > ul.menu:not(.sub-menu) > .current-menu-item > a { position: relative; text-align: center; color: #1a1a1a; }
+
+.main-nav .menu-primary-menu-container > ul.menu:not(.sub-menu) > .current-menu-item > a::before { content: ''; position: absolute; bottom: -6px; left: 0; display: block; width: 100%; height: 2px; border-radius: 4px; background-color: #A19678; }
+
+.main-nav .menu-primary-menu-container > ul.menu > li > a { height: auto; line-height: normal; }
+
+.main-nav .menu-primary-menu-container > ul.menu > li > a:hover { color: #A19678; }
 
 .sub-menu-dropdown { border: 1px solid rgba(3, 3, 3, 0.2); border-radius: 4px; }
 
 .logged-in .hide-logged-in { display: none; }
 
-.main-page-wrapper { padding-top: 0; }
+.footer-container .widget-title { margin: 0 0 6px; color: #A19678; }
 
-.footer-container .widget-title { color: #333; }
+.footer-container .widget-title::before { display: none; }
 
-.footer-container .widget-title:before { background-color: rgba(3, 3, 3, 0.2); }
+.footer-container.color-scheme-light p { color: #393D5B; }
 
-.footer-container.color-scheme-light p { color: #333; }
-
-.footer-container.color-scheme-light ul li a { color: #333; }
+.footer-container.color-scheme-light ul li a { color: #393D5B; }
 
 .footer-container.color-scheme-light ul li a:hover { color: #000; }
 
-.footer-container.color-scheme-light a { color: #333; }
+.footer-container.color-scheme-light a { color: #393D5B; }
 
 .footer-container.color-scheme-light a:hover { color: #000; }
+
+.travel-kits-container, .travel-bags-container { padding: 0 10px; }
+
+.travel-kits-container .travel-kits-grid .create-kit, .travel-kits-container .travel-bags-grid .create-kit, .travel-bags-container .travel-kits-grid .create-kit, .travel-bags-container .travel-bags-grid .create-kit { display: table; padding: 0 15px; }
+
+.travel-kits-container .travel-kits-grid .create-kit a, .travel-kits-container .travel-bags-grid .create-kit a, .travel-bags-container .travel-kits-grid .create-kit a, .travel-bags-container .travel-bags-grid .create-kit a { display: table-cell; vertical-align: middle; text-align: center; background-color: #EEEEF5; }
+
+.travel-kits-container .travel-kits-grid .create-kit a:hover, .travel-kits-container .travel-bags-grid .create-kit a:hover, .travel-bags-container .travel-kits-grid .create-kit a:hover, .travel-bags-container .travel-bags-grid .create-kit a:hover { background-color: #393d5b; }
+
+.travel-kits-container .travel-kits-grid .create-kit a .button-text, .travel-kits-container .travel-bags-grid .create-kit a .button-text, .travel-bags-container .travel-kits-grid .create-kit a .button-text, .travel-bags-container .travel-bags-grid .create-kit a .button-text { display: inline-block; }
+
+.travel-kits-container .travel-kits-grid .create-kit a .button-text .plus-sign, .travel-kits-container .travel-bags-grid .create-kit a .button-text .plus-sign, .travel-bags-container .travel-kits-grid .create-kit a .button-text .plus-sign, .travel-bags-container .travel-bags-grid .create-kit a .button-text .plus-sign { float: left; font-size: 80px; line-height: 68px; font-weight: normal; font-family: initial; }
+
+.travel-kits-container .travel-kits-grid .create-kit a .button-text .create-your-own-kit, .travel-kits-container .travel-bags-grid .create-kit a .button-text .create-your-own-kit, .travel-bags-container .travel-kits-grid .create-kit a .button-text .create-your-own-kit, .travel-bags-container .travel-bags-grid .create-kit a .button-text .create-your-own-kit { float: left; }
+
+.travel-kits-container .travel-kits-grid .create-kit a .button-text .create-your-own-kit .call-to-action-text, .travel-kits-container .travel-bags-grid .create-kit a .button-text .create-your-own-kit .call-to-action-text, .travel-bags-container .travel-kits-grid .create-kit a .button-text .create-your-own-kit .call-to-action-text, .travel-bags-container .travel-bags-grid .create-kit a .button-text .create-your-own-kit .call-to-action-text { width: 100%; display: block; padding: 6px 10px; font-size: 25px; line-height: 25px; text-align: left; }
+
+.travel-kits-container .travel-kits-grid .create-kit a .button-text .create-your-own-kit .button-info, .travel-kits-container .travel-bags-grid .create-kit a .button-text .create-your-own-kit .button-info, .travel-bags-container .travel-kits-grid .create-kit a .button-text .create-your-own-kit .button-info, .travel-bags-container .travel-bags-grid .create-kit a .button-text .create-your-own-kit .button-info { font-size: 17px; display: block; text-align: left; padding: 0 10px; text-transform: capitalize; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single, .travel-kits-container .travel-bags-grid .product-grid-single, .travel-bags-container .travel-kits-grid .product-grid-single, .travel-bags-container .travel-bags-grid .product-grid-single { margin: 20px 0; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors { padding: 5px; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .variation-colors, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .variation-colors, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .variation-colors, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .variation-colors { margin: 10px auto; width: 35px; float: none; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .variation-colors .bag-color-option, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .variation-colors .bag-color-option, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .variation-colors .bag-color-option, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .variation-colors .bag-color-option { width: 32px; height: 32px; background-position-y: 180px; background-position-x: 176px; border-radius: 50%; margin: 5px auto; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .variation-colors .bag-color-option.selected, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .variation-colors .bag-color-option.selected, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .variation-colors .bag-color-option.selected, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .variation-colors .bag-color-option.selected { border: solid 3px #d2d2d2; padding: 2px; border-radius: 50%; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options { border: none; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options .select-option, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options .select-option, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options .select-option, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options .select-option { border-radius: 50%; margin: 4px auto; border: solid 1px #ffffff; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options .select-option:hover, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options .select-option:hover, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options .select-option:hover, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options .select-option:hover { border: solid 1px #1a1a1a; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options .select-option img, .travel-kits-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options .select-option img, .travel-bags-container .travel-kits-grid .product-grid-single .bag-colors .bag-color-options .select-option img, .travel-bags-container .travel-bags-grid .product-grid-single .bag-colors .bag-color-options .select-option img { border-radius: 50%; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side { margin: 6px 0 0; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side .kit-info, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side .kit-info, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side .kit-info, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side .kit-info { color: #9b9b9b; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side .brand-name-link, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side .brand-name-link, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side .brand-name-link, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side .brand-name-link { color: #9b9b9b; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side:hover, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side:hover, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side:hover, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side:hover { text-decoration: none; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side .product-title-link:hover, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side .product-title-link:hover, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side .product-title-link:hover, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side .product-title-link:hover { text-decoration: none; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side .product-title-link h2, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side .product-title-link h2, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side .product-title-link h2, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side .product-title-link h2 { font-size: 20px; text-transform: capitalize; margin: -3px 0 3px !important; color: #393d5b; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side .total-price, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side .total-price, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side .total-price, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side .total-price { font-size: 16px; color: #A19678; margin-right: 16px; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-left-side .total-products, .travel-kits-container .travel-bags-grid .product-grid-single .description-left-side .total-products, .travel-bags-container .travel-kits-grid .product-grid-single .description-left-side .total-products, .travel-bags-container .travel-bags-grid .product-grid-single .description-left-side .total-products { font-size: 16px; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-right-side, .travel-kits-container .travel-bags-grid .product-grid-single .description-right-side, .travel-bags-container .travel-kits-grid .product-grid-single .description-right-side, .travel-bags-container .travel-bags-grid .product-grid-single .description-right-side { margin: 6px 0 0; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-right-side .cart-button-container, .travel-kits-container .travel-bags-grid .product-grid-single .description-right-side .cart-button-container, .travel-bags-container .travel-kits-grid .product-grid-single .description-right-side .cart-button-container, .travel-bags-container .travel-bags-grid .product-grid-single .description-right-side .cart-button-container { width: 100%; float: left; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button, .travel-kits-container .travel-bags-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button, .travel-bags-container .travel-kits-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button, .travel-bags-container .travel-bags-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button { float: right; margin: auto; background-color: #393d5b; color: white; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button:hover, .travel-kits-container .travel-bags-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button:hover, .travel-bags-container .travel-kits-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button:hover, .travel-bags-container .travel-bags-grid .product-grid-single .description-right-side .cart-button-container .add_to_cart_button:hover { background-color: #ECECEC; border: solid 1px #ECECEC; color: #393d5b; -webkit-transition: width 2s; /* Safari */ transition: width 2s; }
+
+.travel-kits-container .travel-kits-grid .product-grid-single .description-right-side .kit-details, .travel-kits-container .travel-bags-grid .product-grid-single .description-right-side .kit-details, .travel-bags-container .travel-kits-grid .product-grid-single .description-right-side .kit-details, .travel-bags-container .travel-bags-grid .product-grid-single .description-right-side .kit-details { float: right; display: block; color: #393d5b; padding: 7px 0; font-style: italic; font-size: 16px; }
+
+.page-title-section h1 { width: 100%; font-size: 40px; border-bottom: solid 2px #eeeeef; color: #393d5b; text-transform: capitalize; padding-bottom: 10px; }
+
+.p-relative { position: relative; }
+
+.button-wrapper .bl-tooltip-menu { display: none; }
+
+.button-wrapper:hover .choices-container { position: absolute; bottom: 90%; left: 116px; }
+
+.button-wrapper:hover .choices-container .bl-tooltip-menu { display: block; position: relative; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); background-color: #fff; padding: 10px 15px; border-radius: 3px; margin-bottom: 20px; }
+
+.button-wrapper:hover .choices-container .bl-tooltip-menu li { display: block; }
+
+.button-wrapper:hover .choices-container .bl-tooltip-menu li a { display: block; border-bottom: solid 1px #eee; padding: 5px; font-size: 16px; color: #b1b1b1; min-width: 133px; }
+
+.button-wrapper:hover .choices-container .bl-tooltip-menu li a.last { border-bottom: none; }
+
+.button-wrapper:hover .choices-container .bl-tooltip-menu li a:hover { text-decoration: none; color: #393D5B; cursor: pointer; }
+
+.button-wrapper:hover .choices-container .bl-tooltip-menu li:last-child a { border-bottom: none; }
 
 body { font-size: 12px; }
 

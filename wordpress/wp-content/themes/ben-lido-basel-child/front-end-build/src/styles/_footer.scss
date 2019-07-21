@@ -1,21 +1,22 @@
 .footer-container {
   .widget-title {
-    color: #333;
+    margin: 0 0 6px;
+    color: $gold;
 
-    &:before {
-      background-color: rgba(3, 3, 3, .2);
+    &::before {
+      display: none;
     }
   }
 
   &.color-scheme-light {
     p {
-      color: #333;
+      color: $blue;
     }
 
     ul {
       li {
         a {
-          color: #333;
+          color: $blue;
 
           &:hover {
             color: #000;
@@ -25,7 +26,7 @@
     }
 
     a {
-      color: #333;
+      color: $blue;
 
       &:hover {
         color: #000;

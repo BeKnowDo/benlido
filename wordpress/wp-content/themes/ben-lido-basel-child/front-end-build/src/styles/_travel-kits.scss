@@ -1,0 +1,249 @@
+.travel-kits-container,
+.travel-bags-container {
+  padding: 0 10px;
+
+  .travel-kits-grid,
+  .travel-bags-grid {
+
+    .create-kit {
+      display: table;
+      padding: 0 15px;
+
+      a {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        background-color: #EEEEF5;
+
+        &:hover {
+          background-color: $kitsTitleBlue;
+        }
+
+        .button-text {
+          display: inline-block;
+
+          .plus-sign {
+            float: left;
+            font-size: 80px;
+            line-height: 68px;
+            font-weight: normal;
+            font-family: initial;
+          }
+
+          .create-your-own-kit {
+            float: left;
+
+            .call-to-action-text {
+              width: 100%;
+              display: block;
+              padding: 6px 10px;
+              font-size: 25px;
+              line-height: 25px;
+              text-align: left;
+            }
+
+            .button-info {
+              font-size: 17px;
+              display: block;
+              text-align: left;
+              padding: 0 10px;
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+    }
+
+    .product-grid-single {
+      margin: 20px 0;
+
+      .bag-colors {
+        padding: 5px;
+
+        .variation-colors {
+          margin: 10px auto;
+          width: 35px;
+          float: none;
+
+          .bag-color-option {
+            width: 32px;
+            height: 32px;
+            background-position-y: 180px;
+            background-position-x: 176px;
+            border-radius: 50%;
+            margin: 5px auto;
+
+            &.selected {
+              border: solid 3px #d2d2d2;
+              padding: 2px;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        .bag-color-options {
+
+          border: none;
+
+          .select-option {
+            border-radius: 50%;
+            margin: 4px auto;
+            border: solid 1px $white;
+
+            &:hover {
+              border: solid 1px $black;
+            }
+
+            img {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+
+      .description-left-side {
+
+        margin: 6px 0 0;
+
+        .kit-info {
+          color: $kitsListingGray;
+        }
+
+        .brand-name-link {
+          color: $kitsListingGray;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        .product-title-link {
+          &:hover {
+            text-decoration: none;
+          }
+
+          h2 {
+            font-size: 20px;
+            text-transform: capitalize;
+            margin: -3px 0 3px !important;
+            color: $kitsTitleBlue;
+          }
+        }
+
+        .total-price {
+          font-size: $kitsGridTextSize;
+          color: $gold;
+          margin-right: 16px;
+        }
+
+        .total-products {
+          font-size: $kitsGridTextSize;
+        }
+      }
+
+      .description-right-side {
+
+        margin: 6px 0 0;
+
+        .cart-button-container {
+          width: 100%;
+          float: left;
+
+          .add_to_cart_button {
+            float: right;
+            margin: auto;
+            background-color: $kitsTitleBlue;
+            color: white;
+
+            &:hover {
+              background-color: #ECECEC;
+              border: solid 1px #ECECEC;
+              color: $kitsTitleBlue;
+              -webkit-transition: width 2s;
+              /* Safari */
+              transition: width 2s;
+            }
+          }
+        }
+
+        .kit-details {
+          float: right;
+          display: block;
+          color: $kitsTitleBlue;
+          padding: 7px 0;
+          font-style: italic;
+          font-size: $kitsGridTextSize;
+        }
+      }
+    }
+  }
+}
+
+.page-title-section {
+  h1 {
+    width: 100%;
+    font-size: 40px;
+    border-bottom: solid 2px #eeeeef;
+    color: $kitsTitleBlue;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+  }
+}
+
+.p-relative {
+  position: relative;
+}
+
+.button-wrapper {
+
+  .bl-tooltip-menu {
+    display: none;
+  }
+
+  &:hover {
+    .choices-container {
+      position: absolute;
+      bottom: 90%;
+      left: 116px;
+
+      .bl-tooltip-menu {
+        display: block;
+        position: relative;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        padding: 10px 15px;
+        border-radius: 3px;
+        margin-bottom: 20px;
+
+        li {
+          display: block;
+
+          a {
+            display: block;
+            border-bottom: solid 1px #eee;
+            padding: 5px;
+            font-size: 16px;
+            color: #b1b1b1;
+            min-width: 133px;
+
+            &.last {
+              border-bottom: none;
+            }
+
+            &:hover {
+              text-decoration: none;
+              color: $blue;
+              cursor: pointer;
+            }
+          }
+        }
+
+        li:last-child {
+          a {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

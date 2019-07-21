@@ -1,11 +1,13 @@
 @import './variables';
 @import './mixins';
-@import './typography';
+// @import './typography';
 @import './global';
 @import './header';
 @import './navigation';
 @import './layout';
 @import './footer';
+
+@import './travel-kits';
 
 
 body {
