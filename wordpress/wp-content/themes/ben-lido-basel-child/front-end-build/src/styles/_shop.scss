@@ -1,0 +1,66 @@
+// shop related css overrides
+.product-grid-item {
+  .wrap-price {
+    position: relative;
+
+    .choices-container {
+      position: absolute;
+      bottom: 90%;
+
+      .bl-tooltip-menu {
+        display: none;
+      }
+
+
+    }
+
+    &:hover {
+      .choices-container {
+        .bl-tooltip-menu {
+          display: block;
+          position: relative;
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+          background-color: $white;
+          padding: 10px 15px;
+          border-radius: 4px;
+          margin-bottom: 20px;
+
+          li {
+            display: block;
+
+            a {
+              display: block;
+              border-bottom: solid 1px #eee;
+              padding: 5px;
+              font-size: 16px;
+              color: #b1b1b1;
+              min-width: 133px;
+
+              &.last {
+                border-bottom: none;
+              }
+
+              &:hover {
+                text-decoration: none;
+                color: $blue;
+                cursor: pointer;
+              }
+            }
+          }
+
+          li:last-child {
+            a {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-page-wrapper {
+  .shop-loop-head {
+    margin-top: 0;
+  }
+}
