@@ -11,7 +11,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 const envPublicUrl = process.env.PUBLIC_URL
 
-function ensureSlash (path, needsSlash) {
+function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith('/')
   if (hasSlash && !needsSlash) {
     return path.substr(path, path.length - 1)
@@ -31,7 +31,7 @@ const getPublicUrl = appPackageJson =>
 // single-page apps that may serve index.html for nested URLs like /todos/42.
 // We can't use a relative path in HTML because we don't want to load something
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
-function getServedPath (appPackageJson) {
+function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson)
   const servedUrl =
     envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/')
@@ -40,33 +40,13 @@ function getServedPath (appPackageJson) {
 
 module.exports = {
   dotenv: resolveApp('.env'),
-  appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
-  imagePath: resolveApp('src/images'),
   styles: resolveApp('src/styles/main.scss'),
-  jsEntry: resolveApp('src/javascript/index.js'),
-  fontsSource: resolveApp('src/styles/font-awesome/webfonts'),
 
-  categoriesPath: resolveApp('data'),
-
-  appIndexJs: resolveApp('src/index.js'),
-  appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
-  imageSrc: resolveApp('src/images'),
-  fakeData: resolveApp('fake-data'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json')),
 
   cssDestination: resolveApp('../assets/css'),
-  cssMapPath: resolveApp('../assets/style.css.map'),
-  imageDestination: resolveApp('build/images'),
-  jsPath: resolveApp('build/javascript'),
-  fontsDestination: resolveApp('build/webfonts'),
+  cssMapPath: resolveApp('../assets/css/style.css.map'),
+  jsPath: resolveApp('../assets/js')
 
-  wordpressPath: resolveApp('../assets'),
-  wordpressImageDestination: resolveApp('../assets/images'),
-  wordpressCssPath: resolveApp('../assets/styles'),
-  wordpressJSPath: resolveApp('../assets/javascript/build'),
-  wordpressFontsDestination: resolveApp('../assets/webfonts')
 }

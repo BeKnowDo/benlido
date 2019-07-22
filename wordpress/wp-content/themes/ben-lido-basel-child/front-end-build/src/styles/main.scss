@@ -1,19 +1,17 @@
 @import './variables';
 @import './mixins';
 // @import './typography';
-@import './global';
+// @import './global';
+@import './layout';
 @import './header';
 @import './navigation';
-@import './layout';
 @import './footer';
 
 @import './travel-kits';
-
-
-body {
-  // display: none !important;
-  font-size: 12px;
-}
+@import './basel-overrides';
+@import './shop';
+@import './cart';
+@import './product-detail';
 
 .bl-callout {
   a {

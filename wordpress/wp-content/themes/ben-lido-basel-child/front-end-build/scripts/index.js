@@ -4,10 +4,6 @@ const paths = require('../config')
 
 const cssDestination = paths.cssDestination
 
-console.log(
-  chalk.red(`${cssDestination}`)
-  )
-
 // Start the Browsersync server
 bs.init({
   watch: true,
@@ -17,9 +13,6 @@ bs.init({
 
 bs.watch(`${cssDestination}/*.css`, function (event, file) {
   if (event === "change") {
-      bs.reload('*.css');
+    bs.reload('*.css');
   }
 });
-
-
-console.log(`We're running BrowserSync`)
