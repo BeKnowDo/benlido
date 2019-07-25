@@ -215,6 +215,38 @@ div.cart-widget-side .kit-header .main-title h3 { flex-grow: 1; }
 
 .site-content .entry-content { padding-bottom: 20px; }
 
+.benlido-kit-listing { padding: 20px; }
+
+.kit-list-grid { display: flex; flex-wrap: wrap; }
+
+.kit-list-breadcrumbs { position: relative; padding-right: 8px; margin-right: 8px; }
+
+.kit-list-breadcrumbs::after { content: ''; display: block; position: absolute; right: 0; top: 0; width: 1px; height: 100%; background-color: #979797; }
+
+.kit-list-breadcrumbs:last-child::after { display: none; }
+
+.kit-list-breadcrumbs-list { display: flex; flex-wrap: nowrap; }
+
+.kit-list-breadcrumbs-link { color: #979797; }
+
+.kit-list-breadcrumbs.active { text-transform: uppercase; font-weight: bold; color: #1a1a1a; }
+
+.kit-list-link { display: block; }
+
+.kit-list-image { width: 100%; max-width: 100%; }
+
+.kit-list-detail-wrapper { display: flex; flex-wrap: nowrap; }
+
+.kit-list-detail-page { display: block; margin: 8px 0 0; }
+
+.kit-list-actions { text-align: right; width: 50%; }
+
+.kit-list-description { width: 50%; }
+
+.kit-list-caption { padding: 0; margin: 0; line-height: normal; }
+
+.kit-list-title { padding: 8px 0; margin: 0; line-height: normal; }
+
 .bl-callout a { font-family: Lora, "MS Sans Serif", Geneva, sans-serif; color: #A19678; margin-left: 10px; }
 
 /*# sourceMappingURL=style.css.map */
