@@ -41,13 +41,17 @@
             <img src="//benlido.test/wp-content/uploads/2018/11/luxury_M.jpg" alt="" class="kit-list-image" />
           </a>
         </div>
+        <p class="kit-list-caption">
+          Travel Pack for Men
+        </p>
         <div class="kit-list-detail-wrapper">
+
           <div class="kit-list-description">
-            <p class="kit-list-caption">
-              Travel Pack for Men
-            </p>
+
             <h2 class="kit-list-title">
-              The Essentials
+              <a href="/" title=''>
+                The Essentials
+              </a>
             </h2>
             <p class="kit-list-price">
               $15.99
@@ -71,13 +75,15 @@
             <img src="//benlido.test/wp-content/uploads/2018/11/luxury_M.jpg" alt="" class="kit-list-image" />
           </a>
         </div>
+        <p class="kit-list-caption">
+          Travel Pack for Men
+        </p>
         <div class="kit-list-detail-wrapper">
           <div class="kit-list-description">
-            <p class="kit-list-caption">
-              Travel Pack for Men
-            </p>
             <h2 class="kit-list-title">
-              The Essentials
+              <a href="/" title=''>
+                The Essentials
+              </a>
             </h2>
             <p class="kit-list-price">
               $15.99
@@ -101,13 +107,15 @@
             <img src="//benlido.test/wp-content/uploads/2018/11/luxury_M.jpg" alt="" class="kit-list-image" />
           </a>
         </div>
+        <p class="kit-list-caption">
+          Travel Pack for Men
+        </p>
         <div class="kit-list-detail-wrapper">
           <div class="kit-list-description">
-            <p class="kit-list-caption">
-              Travel Pack for Men
-            </p>
             <h2 class="kit-list-title">
-              The Essentials
+              <a href="/" title=''>
+                The Essentials
+              </a>
             </h2>
             <p class="kit-list-price">
               $15.99
@@ -131,13 +139,47 @@
             <img src="//benlido.test/wp-content/uploads/2018/11/luxury_M.jpg" alt="" class="kit-list-image" />
           </a>
         </div>
+        <p class="kit-list-caption">
+          Travel Pack for Men
+        </p>
         <div class="kit-list-detail-wrapper">
           <div class="kit-list-description">
-            <p class="kit-list-caption">
-              Travel Pack for Men
-            </p>
             <h2 class="kit-list-title">
-              The Essentials
+              <a href="/" title=''>
+                The Essentials
+              </a>
+            </h2>
+            <p class="kit-list-price">
+              $15.99
+              <span class="kit-list-product-count">
+                10 products
+              </span>
+            </p>
+          </div>
+          <div class="kit-list-actions">
+            <button class="kit-list-add-to-cart">
+              Add to Cart
+            </button>
+            <a href="/" class="kit-list-detail-page">view details</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="kit-list-item">
+        <div class="kit-list-image-wrapper">
+          <a href="/" title='' class='kit-list-link'>
+            <img src="//benlido.test/wp-content/uploads/2018/11/luxury_M.jpg" alt="" class="kit-list-image" />
+          </a>
+        </div>
+        <p class="kit-list-caption">
+          Travel Pack for Men
+        </p>
+        <div class="kit-list-detail-wrapper">
+          <div class="kit-list-description">
+            <h2 class="kit-list-title">
+              <a href="/" title=''>
+                The Essentials
+              </a>
             </h2>
             <p class="kit-list-price">
               $15.99

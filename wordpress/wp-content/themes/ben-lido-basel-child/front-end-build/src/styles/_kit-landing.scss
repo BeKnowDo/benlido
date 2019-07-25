@@ -1,12 +1,14 @@
 .benlido-kit-listing {
-  padding: 20px;
+  padding: 0;
 }
 
 .kit-list {
-  &-grid {
-    display: flex;
-    flex-wrap: wrap;
-  }
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &-grid {}
 
   &-breadcrumbs {
     position: relative;
@@ -30,7 +32,9 @@
       }
     }
 
-    &-wrapper {}
+    &-wrapper {
+      margin: 0 0 20px;
+    }
 
     &-list {
       display: flex;
@@ -48,7 +52,27 @@
     }
   }
 
-  &-item {}
+  &-item {
+    box-sizing: border-box;
+    padding: 14px;
+
+    &:only-child {
+      width: 100%;
+    }
+
+    &:last-child {
+      margin: 0 auto;
+    }
+
+    @media (min-width: 700px) {
+      width: 50%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 33.333%;
+    }
+
+  }
 
   &-link {
     display: block;
@@ -86,6 +110,7 @@
     padding: 0;
     margin: 0;
     line-height: normal;
+    width: 100%;
   }
 
   &-title {
@@ -94,15 +119,20 @@
     line-height: normal;
   }
 
-  &-price {}
-
-  &-product {
-    &-count {}
+  &-price {
+    font-weight: bold;
   }
 
-  &-add-to-cart {}
+  &-product-count {
+    padding-left: 8px;
+    font-weight: normal;
+  }
+
+  &-add-to-cart {
+    border: 0;
+    border-radius: 4px;
+    background-color: $blue;
+    color: $white;
+  }
 
 }
-
-
-@media (min-width: 600px) {}
