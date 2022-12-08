@@ -53,7 +53,7 @@
     "compression-webpack-plugin": "^2.0.0",
     "concurrently": "^3.6.1",
     "dotenv": "^5.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "faker": "^4.1.0",
     "fs-extra": "^7.0.0",
     "image-downloader": "^3.4.1",
